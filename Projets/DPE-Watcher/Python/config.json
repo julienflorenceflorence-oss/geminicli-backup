@@ -36,7 +36,7 @@
     "send_email_if_empty": false
   },
   "google_sheets": {
-    "web_app_url": "https://script.google.com/macros/s/xxxx/exec"
+    "web_app_url": "https://script.google.com/macros/s/AKfycbyBg5NZXvvALPp3rarKQLd3nK2uF5afPWlMZBm0vdZeO1HcxgBm0XVM7Ol9yxVpb6QV8g/exec"
   },
   "paths": {
     "excel_output_dir": "../04_Livrables/Data",
