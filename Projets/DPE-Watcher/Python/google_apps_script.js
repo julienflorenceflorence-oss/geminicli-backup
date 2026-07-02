@@ -1,9 +1,67 @@
 /**
  * Google Apps Script pour DPE Watcher Premium
  * -------------------------------------------
- * Ce script gère la base de données DPE (Historique, DPE Actifs) et génère
- * automatiquement un Dashboard d'analyse de la classification sous charte Prestige.
+ * Ce script gère la base de données DPE (Historique, DPE Actifs), génère
+ * automatiquement un Dashboard Sheets et expose une API de lecture (CORS OK)
+ * pour alimenter le Dashboard Externe Premium en temps réel.
  */
+
+function doGet(e) {
+  try {
+    var ss = SpreadsheetApp.getActiveSpreadsheet();
+    var sheetActifs = ss.getSheetByName("DPE_Actifs");
+    if (!sheetActifs) {
+      return ContentService.createTextOutput(JSON.stringify({ "success": true, "dpes": [] }))
+                           .setMimeType(ContentService.MimeType.JSON)
+                           .setHeaders({ "Access-Control-Allow-Origin": "*" });
+    }
+    
+    var lastRow = sheetActifs.getLastRow();
+    var dpes = [];
+    if (lastRow > 1) {
+      var values = sheetActifs.getRange(2, 1, lastRow - 1, 10).getValues();
+      
+      for (var i = 0; i < values.length; i++) {
+        var row = values[i];
+        
+        // Formater la date d'établissement
+        var dateEtabStr = row[3];
+        if (dateEtabStr instanceof Date) {
+          dateEtabStr = Utilities.formatDate(dateEtabStr, "Europe/Paris", "dd/MM/yyyy");
+        }
+        
+        // Formater la date de récupération
+        var dateRecupStr = row[9];
+        if (dateRecupStr instanceof Date) {
+          dateRecupStr = Utilities.formatDate(dateRecupStr, "Europe/Paris", "dd/MM/yyyy HH:mm:ss");
+        }
+
+        var dpe = {
+          "commune": row[0],
+          "adresse": row[1],
+          "code_postal": row[2].toString(),
+          "date_etablissement": dateEtabStr,
+          "numero_dpe": row[4],
+          "type_batiment": row[5],
+          "etiquette_dpe": row[6],
+          "periode_construction": row[7],
+          "surface_habitable": row[8],
+          "date_recup": dateRecupStr
+        };
+        dpes.push(dpe);
+      }
+    }
+    
+    // Renvoyer les données au format JSON avec les en-têtes CORS nécessaires
+    return ContentService.createTextOutput(JSON.stringify({ "success": true, "dpes": dpes }))
+                         .setMimeType(ContentService.MimeType.JSON)
+                         .setHeaders({ "Access-Control-Allow-Origin": "*" });
+  } catch (error) {
+    return ContentService.createTextOutput(JSON.stringify({ "error": error.toString() }))
+                         .setMimeType(ContentService.MimeType.JSON)
+                         .setHeaders({ "Access-Control-Allow-Origin": "*" });
+  }
+}
 
 function doPost(e) {
   try {
@@ -13,14 +71,17 @@ function doPost(e) {
     if (action === "check_and_add") {
       var result = handleCheckAndAdd(requestData.dpes);
       return ContentService.createTextOutput(JSON.stringify(result))
-                           .setMimeType(ContentService.MimeType.JSON);
+                           .setMimeType(ContentService.MimeType.JSON)
+                           .setHeaders({ "Access-Control-Allow-Origin": "*" });
     } else {
       return ContentService.createTextOutput(JSON.stringify({ "error": "Action inconnue" }))
-                           .setMimeType(ContentService.MimeType.JSON);
+                           .setMimeType(ContentService.MimeType.JSON)
+                           .setHeaders({ "Access-Control-Allow-Origin": "*" });
     }
   } catch (error) {
     return ContentService.createTextOutput(JSON.stringify({ "error": error.toString() }))
-                         .setMimeType(ContentService.MimeType.JSON);
+                         .setMimeType(ContentService.MimeType.JSON)
+                         .setHeaders({ "Access-Control-Allow-Origin": "*" });
   }
 }
 
@@ -127,19 +188,16 @@ function handleCheckAndAdd(dpes) {
 function generateDashboard(ss) {
   var sheetDash = ss.getSheetByName("Dashboard");
   if (!sheetDash) {
-    sheetDash = ss.insertSheet("Dashboard", 0); // Placer en premier onglet
+    sheetDash = ss.insertSheet("Dashboard", 0);
   }
   
-  // Désactiver le quadrillage pour un rendu plus épuré (Prestige)
   sheetDash.setGridlines(false);
   
-  // 1. En-tête Titre
   sheetDash.getRange("A1:K1").merge().setValue("VEILLE STRATÉGIQUE DPE & PASSOIRES THERMIQUES")
            .setFontWeight("bold").setFontSize(16).setFontColor("#D4AF37")
            .setBackground("#0F1115").setHorizontalAlignment("center").setVerticalAlignment("middle");
   sheetDash.setRowHeight(1, 50);
   
-  // 2. Encadré Informations Réglementaires
   sheetDash.getRange("B3:J3").merge().setValue("CALENDRIER DES INTERDICTIONS DE LOUER (LOI CLIMAT & RÉSILIENCE)")
            .setFontWeight("bold").setFontSize(10).setFontColor("#0F1115").setBackground("#E5E7EB")
            .setHorizontalAlignment("center");
@@ -153,24 +211,20 @@ function generateDashboard(ss) {
   sheetDash.getRange("B4:B6").setFontWeight("bold").setHorizontalAlignment("center");
   sheetDash.getRange("B4:D6").setBorder(true, true, true, true, true, true, "#E5E7EB", SpreadsheetApp.BorderStyle.SOLID);
   
-  // Colorer les statuts réglementaires
-  sheetDash.getRange("D4").setFontColor("#DC2626").setFontWeight("bold"); // Rouge pour G
-  sheetDash.getRange("D5").setFontColor("#D97706").setFontWeight("bold"); // Orange pour F
-  sheetDash.getRange("D6").setFontColor("#2563EB").setFontWeight("bold"); // Bleu pour E
+  sheetDash.getRange("D4").setFontColor("#DC2626").setFontWeight("bold");
+  sheetDash.getRange("D5").setFontColor("#D97706").setFontWeight("bold");
+  sheetDash.getRange("D6").setFontColor("#2563EB").setFontWeight("bold");
 
-  // 3. Section des KPIs de Prospection (Chiffres clés)
   sheetDash.getRange("B8:K8").merge().setValue("INDICATEURS CLÉS - PARC DPE IDENTIFIÉ")
            .setFontWeight("bold").setFontSize(11).setFontColor("#D4AF37").setBackground("#0F1115")
            .setHorizontalAlignment("center");
   sheetDash.setRowHeight(8, 25);
   
-  // Titres des KPIs
   var kpiTitles = [
     ["Total DPE", "Passoires (F & G)", "Classe G", "Classe F", "Classe E", "Surface Moy. F/G (m²)"]
   ];
   sheetDash.getRange("B9:G9").setValues(kpiTitles).setFontWeight("bold").setBackground("#F3F4F6").setHorizontalAlignment("center");
   
-  // Formules de calcul dynamiques (syntaxe internationale / anglaise requise par Apps Script)
   var kpiFormulas = [
     [
       '=COUNTA(DPE_Actifs!E2:E)', 
@@ -185,15 +239,13 @@ function generateDashboard(ss) {
   sheetDash.getRange("B10:G10").setFormulas(kpiFormulas).setFontSize(14).setFontWeight("bold").setHorizontalAlignment("center");
   sheetDash.getRange("B9:G10").setBorder(true, true, true, true, true, true, "#E5E7EB", SpreadsheetApp.BorderStyle.SOLID);
   
-  // Style sur les valeurs KPI
-  sheetDash.getRange("B10").setFontColor("#1F2937"); // Total
-  sheetDash.getRange("C10").setFontColor("#DC2626"); // Total F+G
-  sheetDash.getRange("D10").setFontColor("#DC2626"); // G
-  sheetDash.getRange("E10").setFontColor("#D97706"); // F
-  sheetDash.getRange("F10").setFontColor("#2563EB"); // E
-  sheetDash.getRange("G10").setFontColor("#1F2937"); // Surf Moyenne
+  sheetDash.getRange("B10").setFontColor("#1F2937");
+  sheetDash.getRange("C10").setFontColor("#DC2626");
+  sheetDash.getRange("D10").setFontColor("#DC2626");
+  sheetDash.getRange("E10").setFontColor("#D97706");
+  sheetDash.getRange("F10").setFontColor("#2563EB");
+  sheetDash.getRange("G10").setFontColor("#1F2937");
 
-  // 4. Section Tableau Répartition Complète A-G (à gauche)
   sheetDash.getRange("B12:C12").merge().setValue("RÉPARTITION A-G").setFontWeight("bold").setBackground("#E5E7EB").setHorizontalAlignment("center");
   var labels = [["A"], ["B"], ["C"], ["D"], ["E"], ["F"], ["G"]];
   sheetDash.getRange("B13:B19").setValues(labels).setFontWeight("bold").setHorizontalAlignment("center");
@@ -210,30 +262,26 @@ function generateDashboard(ss) {
   sheetDash.getRange("C13:C19").setFormulas(distributionFormulas).setHorizontalAlignment("center");
   sheetDash.getRange("B12:C19").setBorder(true, true, true, true, true, true, "#E5E7EB", SpreadsheetApp.BorderStyle.SOLID);
 
-  // 5. Section Top 5 Communes cibles (à droite)
   sheetDash.getRange("H12:I12").merge().setValue("TOP 5 COMMUNES CIBLES (F & G)")
            .setFontWeight("bold").setBackground("#0F1115").setFontColor("#D4AF37").setHorizontalAlignment("center");
   
-  // Utilisation d'une requête QUERY SQL sur Sheets pour extraire dynamiquement le Top 5 des communes touchées
   sheetDash.getRange("H13").setFormula(
     '=QUERY(DPE_Actifs!A2:J, "select A, count(E) where (G = \'F\' or G = \'G\') and A is not null group by A order by count(E) desc limit 5 label A \'Commune\', count(E) \'Passoires\'", 0)'
   );
   
-  // Appliquer bordures et styles de tableau pour le Top 5 (lignes 13 à 18)
   sheetDash.getRange("H13:I13").setFontWeight("bold").setBackground("#F3F4F6").setHorizontalAlignment("center");
   sheetDash.getRange("H14:I18").setHorizontalAlignment("center");
   sheetDash.getRange("H12:I18").setBorder(true, true, true, true, true, true, "#E5E7EB", SpreadsheetApp.BorderStyle.SOLID);
 
-  // 6. Régénérer le graphique s'il n'existe pas déjà
   var charts = sheetDash.getCharts();
   for (var i = 0; i < charts.length; i++) {
-    sheetDash.removeChart(charts[i]); // On le réinitialise proprement pour éviter les doublons
+    sheetDash.removeChart(charts[i]);
   }
   
   var chart = sheetDash.newChart()
       .setChartType(Charts.ChartType.COLUMN)
       .addRange(sheetDash.getRange("B12:C19"))
-      .setPosition(12, 4, 25, 1) // Placer la colonne E à côté du tableau
+      .setPosition(12, 4, 25, 1)
       .setOption('title', 'Répartition des Classes Énergétiques')
       .setOption('colors', ['#D4AF37'])
       .setOption('legend', {position: 'none'})
@@ -244,14 +292,13 @@ function generateDashboard(ss) {
       .build();
   sheetDash.insertChart(chart);
 
-  // Ajustement des colonnes
-  sheetDash.setColumnWidth(1, 20);  // Marge gauche
-  sheetDash.setColumnWidth(2, 130); // Classe / Label
-  sheetDash.setColumnWidth(3, 90);  // Nombre
-  sheetDash.setColumnWidth(4, 300); // Colonne vide pour graphique
-  sheetDash.setColumnWidth(5, 50);  // Marge graphique
-  sheetDash.setColumnWidth(6, 120); // Colonnes KPI
+  sheetDash.setColumnWidth(1, 20);
+  sheetDash.setColumnWidth(2, 130);
+  sheetDash.setColumnWidth(3, 90);
+  sheetDash.setColumnWidth(4, 300);
+  sheetDash.setColumnWidth(5, 50);
+  sheetDash.setColumnWidth(6, 120);
   sheetDash.setColumnWidth(7, 120);
-  sheetDash.setColumnWidth(8, 160); // Top 5 Commune
-  sheetDash.setColumnWidth(9, 100); // Top 5 Passoires
+  sheetDash.setColumnWidth(8, 160);
+  sheetDash.setColumnWidth(9, 100);
 }
