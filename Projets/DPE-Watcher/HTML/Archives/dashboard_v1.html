@@ -258,24 +258,15 @@
         }
 
         /* Main Content Layout */
-        .analytics-section {
+        .main-layout {
             display: grid;
-            grid-template-columns: 2fr 1fr;
+            grid-template-columns: 1fr 1fr;
             gap: 30px;
             margin-bottom: 30px;
         }
 
-        .charts-row {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 20px;
-        }
-
         @media (max-width: 1024px) {
-            .analytics-section {
-                grid-template-columns: 1fr;
-            }
-            .charts-row {
+            .main-layout {
                 grid-template-columns: 1fr;
             }
         }
@@ -302,7 +293,7 @@
         /* Charts Container */
         .chart-container {
             position: relative;
-            height: 250px;
+            height: 280px;
             width: 100%;
         }
 
@@ -382,7 +373,7 @@
 
         /* Data Table Panel */
         .table-panel {
-            margin-bottom: 30px;
+            grid-column: 1 / -1;
         }
 
         .table-wrapper {
@@ -543,26 +534,16 @@
     </div>
 
     <!-- Main Analytics Section -->
-    <div class="analytics-section">
-        <!-- Charts Grid (Left Side) -->
-        <div class="charts-row">
-            <!-- DPE Classes Chart -->
-            <div class="panel">
-                <h3>Répartition des classes énergétiques</h3>
-                <div class="chart-container">
-                    <canvas id="dpeChart"></canvas>
-                </div>
-            </div>
-            <!-- Building Types Chart -->
-            <div class="panel">
-                <h3>Répartition par Type de Bâtiment</h3>
-                <div class="chart-container">
-                    <canvas id="typeChart"></canvas>
-                </div>
+    <div class="main-layout">
+        <!-- Chart Panel -->
+        <div class="panel">
+            <h3>Répartition des classes énergétiques</h3>
+            <div class="chart-container">
+                <canvas id="dpeChart"></canvas>
             </div>
         </div>
 
-        <!-- Regulatory Timeline Panel (Right Side) -->
+        <!-- Regulatory Timeline Panel -->
         <div class="panel">
             <h3>Calendrier Réglementaire National</h3>
             <div class="timeline">
@@ -588,50 +569,50 @@
                 </div>
             </div>
         </div>
-    </div>
 
-    <!-- Data Table Panel -->
-    <div class="panel table-panel">
-        <h3>Registre des Diagnostics Collectés</h3>
-        
-        <div class="filter-bar">
-            <input type="text" class="filter-input" id="search-commune" placeholder="🔍 Filtrer par commune...">
-            <input type="text" class="filter-input" id="search-cp" placeholder="🔍 Filtrer par code postal...">
-            <select class="filter-input" id="filter-classe">
-                <option value="">-- Filtrer par classe DPE --</option>
-                <option value="A">A</option>
-                <option value="B">B</option>
-                <option value="C">C</option>
-                <option value="D">D</option>
-                <option value="E">E</option>
-                <option value="F">F</option>
-                <option value="G">G</option>
-                <option value="FG">Passoires (F &amp; G)</option>
-            </select>
-            <button class="btn-prestige" id="export-csv-btn">📤 Export CSV</button>
-        </div>
+        <!-- Data Table Panel -->
+        <div class="panel table-panel">
+            <h3>Registre des Diagnostics Collectés</h3>
+            
+            <div class="filter-bar">
+                <input type="text" class="filter-input" id="search-commune" placeholder="🔍 Filtrer par commune...">
+                <input type="text" class="filter-input" id="search-cp" placeholder="🔍 Filtrer par code postal...">
+                <select class="filter-input" id="filter-classe">
+                    <option value="">-- Filtrer par classe DPE --</option>
+                    <option value="A">A</option>
+                    <option value="B">B</option>
+                    <option value="C">C</option>
+                    <option value="D">D</option>
+                    <option value="E">E</option>
+                    <option value="F">F</option>
+                    <option value="G">G</option>
+                    <option value="FG">Passoires (F &amp; G)</option>
+                </select>
+                <button class="btn-prestige" id="export-csv-btn">📤 Export CSV</button>
+            </div>
 
-        <div class="table-wrapper">
-            <table id="dpe-table">
-                <thead>
-                    <tr>
-                        <th data-col="commune">Commune ⇅</th>
-                        <th data-col="adresse">Adresse ⇅</th>
-                        <th data-col="code_postal">Code Postal ⇅</th>
-                        <th data-col="date_etablissement">Date Établissement ⇅</th>
-                        <th data-col="numero_dpe">N° DPE ⇅</th>
-                        <th data-col="type_batiment">Type Bâtiment ⇅</th>
-                        <th data-col="etiquette_dpe" style="text-align: center;">Classe DPE ⇅</th>
-                        <th data-col="surface_habitable" style="text-align: right;">Surface (m²) ⇅</th>
-                    </tr>
-                </thead>
-                <tbody id="dpe-table-body">
-                    <!-- Rempli par JavaScript -->
-                    <tr>
-                        <td colspan="8" class="empty-state">Veuillez renseigner votre URL de connexion API pour charger les données...</td>
-                    </tr>
-                </tbody>
-            </table>
+            <div class="table-wrapper">
+                <table id="dpe-table">
+                    <thead>
+                        <tr>
+                            <th data-col="commune">Commune ⇅</th>
+                            <th data-col="adresse">Adresse ⇅</th>
+                            <th data-col="code_postal">Code Postal ⇅</th>
+                            <th data-col="date_etablissement">Date Établissement ⇅</th>
+                            <th data-col="numero_dpe">N° DPE ⇅</th>
+                            <th data-col="type_batiment">Type Bâtiment ⇅</th>
+                            <th data-col="etiquette_dpe" style="text-align: center;">Classe DPE ⇅</th>
+                            <th data-col="surface_habitable" style="text-align: right;">Surface (m²) ⇅</th>
+                        </tr>
+                    </thead>
+                    <tbody id="dpe-table-body">
+                        <!-- Rempli par JavaScript -->
+                        <tr>
+                            <td colspan="8" class="empty-state">Veuillez renseigner votre URL de connexion API pour charger les données...</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
         </div>
     </div>
 
@@ -646,10 +627,7 @@
     let rawData = [];
     let filteredData = [];
     let currentSort = { col: 'date_recup', asc: false };
-    
-    // Graphiques
     let dpeChart = null;
-    let typeChart = null;
 
     // Éléments du DOM
     const modal = document.getElementById('config-modal');
@@ -674,9 +652,10 @@
             urlInput.value = savedUrl;
             fetchData(savedUrl);
         } else {
+            // Afficher le modal si aucune URL n'est configurée
             modal.style.display = 'flex';
         }
-        initCharts();
+        initEmptyChart();
     });
 
     // Événements Modal & Config
@@ -731,11 +710,10 @@
         }
     }
 
-    // Gestion des Graphiques
-    function initCharts() {
-        // 1. Graphique répartition DPE (A-G)
-        const ctxDpe = document.getElementById('dpeChart').getContext('2d');
-        dpeChart = new Chart(ctxDpe, {
+    // Gestion du Graphique
+    function initEmptyChart() {
+        const ctx = document.getElementById('dpeChart').getContext('2d');
+        dpeChart = new Chart(ctx, {
             type: 'bar',
             data: {
                 labels: ['A', 'B', 'C', 'D', 'E', 'F', 'G'],
@@ -769,78 +747,20 @@
                 }
             }
         });
-
-        // 2. Graphique par Type de Bâtiment (Maison, Appartement, Immeuble...)
-        const ctxType = document.getElementById('typeChart').getContext('2d');
-        typeChart = new Chart(ctxType, {
-            type: 'doughnut',
-            data: {
-                labels: ['Maison', 'Appartement', 'Immeuble', 'Autre'],
-                datasets: [{
-                    data: [0, 0, 0, 0],
-                    backgroundColor: [
-                        '#D4AF37', '#3B82F6', '#8B5CF6', '#9CA3AF'
-                    ],
-                    borderColor: '#0F1115',
-                    borderWidth: 2
-                }]
-            },
-            options: {
-                responsive: true,
-                maintainAspectRatio: false,
-                plugins: {
-                    legend: {
-                        display: true,
-                        position: 'right',
-                        labels: { color: '#F9FAFB', font: { family: 'Montserrat', size: 11 } }
-                    }
-                },
-                cutout: '65%'
-            }
-        });
     }
 
-    function updateCharts(data) {
-        if (!dpeChart || !typeChart) return;
-        
-        // 1. Calcul répartition DPE A-G
-        const dpeStats = { 'A': 0, 'B': 0, 'C': 0, 'D': 0, 'E': 0, 'F': 0, 'G': 0 };
-        // 2. Calcul répartition Type Batiment
-        const typeStats = { 'maison': 0, 'appartement': 0, 'immeuble': 0, 'autre': 0 };
-
-        data.forEach(item => {
-            // DPE
-            if (dpeStats[item.etiquette_dpe] !== undefined) {
-                dpeStats[item.etiquette_dpe]++;
-            }
-            
-            // Type Bâtiment (casse insensible et gestion des vides)
-            const typeRaw = (item.type_batiment || '').toLowerCase().trim();
-            if (typeRaw.includes('maison')) {
-                typeStats['maison']++;
-            } else if (typeRaw.includes('appartement')) {
-                typeStats['appartement']++;
-            } else if (typeRaw.includes('immeuble')) {
-                typeStats['immeuble']++;
-            } else {
-                typeStats['autre']++;
-            }
-        });
-
-        // MAJ Graphique DPE
+    function updateChart(stats) {
+        if (!dpeChart) return;
         dpeChart.data.datasets[0].data = [
-            dpeStats['A'], dpeStats['B'], dpeStats['C'], dpeStats['D'], dpeStats['E'], dpeStats['F'], dpeStats['G']
+            stats['A'] || 0,
+            stats['B'] || 0,
+            stats['C'] || 0,
+            stats['D'] || 0,
+            stats['E'] || 0,
+            stats['F'] || 0,
+            stats['G'] || 0
         ];
         dpeChart.update();
-
-        // MAJ Graphique Type
-        typeChart.data.datasets[0].data = [
-            typeStats['maison'],
-            typeStats['appartement'],
-            typeStats['immeuble'],
-            typeStats['autre']
-        ];
-        typeChart.update();
     }
 
     // Filtres et Calculs statistiques
@@ -863,11 +783,17 @@
             return matchCommune && matchCp && matchClasse;
         });
 
+        // Appliquer le tri
         sortData();
+
+        // Calculer les KPIs basés sur les données filtrées
         calculateKpis(filteredData);
+        
+        // Mettre à jour le tableau
         renderTable();
     }
 
+    // Événements de recherche et filtres
     searchCommune.addEventListener('input', applyFilters);
     searchCp.addEventListener('input', applyFilters);
     filterClasse.addEventListener('change', applyFilters);
@@ -895,8 +821,14 @@
         document.getElementById('kpi-f').innerText = countF;
         document.getElementById('kpi-surface').innerText = avgSurface > 0 ? `${avgSurface} m²` : "0 m²";
 
-        // Mettre à jour les deux graphiques
-        updateCharts(data);
+        // Mettre à jour le graphique
+        const stats = { 'A': 0, 'B': 0, 'C': 0, 'D': 0, 'E': 0, 'F': 0, 'G': 0 };
+        data.forEach(item => {
+            if (stats[item.etiquette_dpe] !== undefined) {
+                stats[item.etiquette_dpe]++;
+            }
+        });
+        updateChart(stats);
     }
 
     // Affichage des données du tableau
@@ -940,6 +872,7 @@
             let valA = a[col];
             let valB = b[col];
 
+            // Conversion numérique pour les surfaces
             if (col === 'surface_habitable') {
                 valA = valA ? parseFloat(valA) : 0;
                 valB = valB ? parseFloat(valB) : 0;
@@ -951,7 +884,7 @@
         });
     }
 
-    // Ajouter des écouteurs sur les en-têtes
+    // Ajouter des écouteurs sur les en-têtes du tableau pour le tri
     document.querySelectorAll('#dpe-table th').forEach(th => {
         th.addEventListener('click', () => {
             const col = th.getAttribute('data-col');
@@ -975,7 +908,7 @@
         filteredData.forEach(item => {
             const row = [
                 `"${item.commune}"`,
-                `"${item.adresse.replace(/'/g, "''").replace(/"/g, '""')}"`,
+                `"${item.adresse.replace(/"/g, '""')}"`,
                 `"${item.code_postal}"`,
                 `"${item.date_etablissement}"`,
                 `"${item.numero_dpe}"`,
