@@ -221,7 +221,7 @@ def generate_excel(new_dpes):
     
     # Formater la date en chaîne propre
     df["Date Établissement"] = df["Date Établissement"].dt.strftime('%d/%m/%Y')
-    df.fillna("", inplace=True)
+    df = df.astype(object).fillna("")
     
     # Gestion du versioning binaire du fichier actif Excel
     excel_filename = "DPE_Nouveaux.xlsx"
