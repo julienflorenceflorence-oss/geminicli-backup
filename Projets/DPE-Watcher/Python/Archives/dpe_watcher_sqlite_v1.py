@@ -1,9 +1,11 @@
 import os
 import sys
 import json
+import sqlite3
 import logging
 from datetime import datetime, timedelta
-import requests
+import urllib.request
+import urllib.parse
 import smtplib
 from email.mime.multipart import MIMEMultipart
 from email.mime.text import MIMEText
@@ -12,6 +14,7 @@ from email import encoders
 import shutil
 
 # Import optionnel de pandas et openpyxl pour l'export Excel stylisé.
+# Si non installés, on affiche un message d'erreur clair.
 try:
     import pandas as pd
     from openpyxl.styles import Font, Alignment, PatternFill, Border, Side
@@ -35,10 +38,12 @@ def load_config():
 config = load_config()
 
 # Setup des chemins absolus à partir de la config
+DATABASE_PATH = os.path.abspath(os.path.join(SCRIPT_DIR, config["paths"]["database_path"]))
 EXCEL_OUTPUT_DIR = os.path.abspath(os.path.join(SCRIPT_DIR, config["paths"]["excel_output_dir"]))
 LOG_OUTPUT_DIR = os.path.abspath(os.path.join(SCRIPT_DIR, config["paths"]["log_output_dir"]))
 
 # S'assurer que les dossiers de destination existent
+os.makedirs(os.path.dirname(DATABASE_PATH), exist_ok=True)
 os.makedirs(EXCEL_OUTPUT_DIR, exist_ok=True)
 os.makedirs(os.path.join(EXCEL_OUTPUT_DIR, "Archives"), exist_ok=True)
 os.makedirs(LOG_OUTPUT_DIR, exist_ok=True)
@@ -55,52 +60,60 @@ logging.basicConfig(
 )
 logger = logging.getLogger("DPEWatcher")
 
-# Interrogation de la Web App Google Sheets pour filtrer et ajouter les DPE
-def filter_and_register_dpes_via_sheets(dpe_records):
-    web_app_url = config["google_sheets"]["web_app_url"]
-    
-    if not web_app_url or "script.google.com" not in web_app_url:
-        logger.error("L'URL Google Sheets Web App n'est pas configurée dans config.json.")
-        # En mode test, si l'URL n'est pas configurée, on retourne tous les DPE pour pas bloquer
-        logger.warning("Mode dégradé : pas d'URL Google Sheets valide, traitement sans déduplication.")
-        return dpe_records
+# Initialisation de la base de données historique SQLite
+def init_db():
+    logger.info(f"Initialisation de la base de données historique : {DATABASE_PATH}")
+    conn = sqlite3.connect(DATABASE_PATH)
+    cursor = conn.cursor()
+    cursor.execute("""
+        CREATE TABLE IF NOT EXISTS processed_dpes (
+            numero_dpe TEXT PRIMARY KEY,
+            date_recup TEXT NOT NULL,
+            date_etablissement_dpe TEXT,
+            code_postal_brut TEXT,
+            nom_commune_brut TEXT
+        )
+    """)
+    conn.commit()
+    conn.close()
 
+# Vérifier si un DPE a déjà été traité
+def is_dpe_processed(numero_dpe):
+    conn = sqlite3.connect(DATABASE_PATH)
+    cursor = conn.cursor()
+    cursor.execute("SELECT 1 FROM processed_dpes WHERE numero_dpe = ?", (numero_dpe,))
+    result = cursor.fetchone()
+    conn.close()
+    return result is not None
+
+# Ajouter des DPE à l'historique
+def mark_dpes_as_processed(dpe_records):
     if not dpe_records:
-        return []
-
-    logger.info(f"Envoi de {len(dpe_records)} DPE à la Web App Google Sheets pour vérification et enregistrement...")
+        return
+    conn = sqlite3.connect(DATABASE_PATH)
+    cursor = conn.cursor()
+    now_str = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
     
-    payload = {
-        "action": "check_and_add",
-        "dpes": [
-            {
-                "numero_dpe": r.get("numero_dpe"),
-                "date_etablissement_dpe": r.get("date_etablissement_dpe"),
-                "code_postal_brut": str(r.get("code_postal_brut")),
-                "nom_commune_brut": r.get("nom_commune_brut"),
-                "adresse_brut": r.get("adresse_brut"),
-                "type_batiment": r.get("type_batiment"),
-                "etiquette_dpe": r.get("etiquette_dpe"),
-                "periode_construction": r.get("periode_construction"),
-                "surface_habitable_logement": r.get("surface_habitable_logement")
-            }
-            for r in dpe_records if r.get("numero_dpe")
-        ]
-    }
-
-    try:
-        # Google Apps Script gère une redirection 302, requests gère cela automatiquement par défaut
-        response = requests.post(web_app_url, json=payload, timeout=60)
-        response.raise_for_status()
-        
-        result_data = response.json()
-        new_dpes = result_data.get("new_dpes", [])
-        logger.info(f"Réponse Google Sheets : {len(new_dpes)} nouveaux DPE enregistrés sur cette session.")
-        return new_dpes
-    except Exception as e:
-        logger.error(f"Erreur lors de la communication avec la Web App Google Sheets : {e}")
-        # En cas d'erreur de base de données externe, on logue et on stoppe pour éviter les doublons par mail
-        return []
+    # Préparation des tuples pour insertion en masse
+    insert_data = [
+        (
+            r.get("numero_dpe"),
+            now_str,
+            r.get("date_etablissement_dpe"),
+            str(r.get("code_postal_brut")),
+            r.get("nom_commune_brut")
+        )
+        for r in dpe_records if r.get("numero_dpe")
+    ]
+    
+    cursor.executemany("""
+        INSERT OR IGNORE INTO processed_dpes 
+        (numero_dpe, date_recup, date_etablissement_dpe, code_postal_brut, nom_commune_brut)
+        VALUES (?, ?, ?, ?, ?)
+    """, insert_data)
+    conn.commit()
+    conn.close()
+    logger.info(f"{len(insert_data)} nouveaux DPE enregistrés dans l'historique local SQLite.")
 
 # Interroger l'API ADEME
 def fetch_new_dpes_from_api():
@@ -123,6 +136,7 @@ def fetch_new_dpes_from_api():
     end_date_str = end_date.strftime("%Y-%m-%d")
     
     # Construction de la clause Lucene
+    # Exemple: code_postal_brut:(11000 OR 11100) AND date_etablissement_dpe:[2026-06-25 TO 2026-07-02]
     cp_query = " OR ".join(codes_postaux)
     lucene_query = f"code_postal_brut:({cp_query}) AND date_etablissement_dpe:[{start_date_str} TO {end_date_str}]"
     logger.info(f"Filtre de recherche (Lucene): {lucene_query}")
@@ -132,7 +146,7 @@ def fetch_new_dpes_from_api():
         "numero_dpe,type_batiment,etiquette_dpe,periode_construction,surface_habitable_logement"
     )
     
-    all_fetched_dpes = []
+    new_dpes = []
     
     for dataset in datasets:
         dataset_id = dataset["id"]
@@ -142,50 +156,45 @@ def fetch_new_dpes_from_api():
         # URL de départ pour l'API DataFair
         url = f"https://data.ademe.fr/data-fair/api/v1/datasets/{dataset_id}/lines"
         params = {
-            "size": 100,
+            "size": 100,  # Récupérer par lots de 100
             "qs": lucene_query,
             "select": selected_fields
         }
         
+        query_string = urllib.parse.urlencode(params)
+        next_url = f"{url}?{query_string}"
+        
         dataset_count = 0
+        dataset_new_count = 0
         
-        try:
-            # Premier appel
-            response = requests.get(url, params=params, timeout=config["ademe_api"]["request_timeout_seconds"])
-            response.raise_for_status()
-            data = response.json()
-            
-            results = data.get("results", [])
-            all_fetched_dpes.extend(results)
-            dataset_count += len(results)
-            
-            # Gestion de la pagination via 'next'
-            next_url = data.get("next")
-            while next_url:
-                logger.info(f"Requête API (page suivante) : {next_url}")
-                next_response = requests.get(next_url, timeout=config["ademe_api"]["request_timeout_seconds"])
-                next_response.raise_for_status()
-                next_data = next_response.json()
+        while next_url:
+            logger.info(f"Requête API : {next_url}")
+            try:
+                req = urllib.request.Request(
+                    next_url, 
+                    headers={"User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) DPEWatcher/1.0"}
+                )
+                with urllib.request.urlopen(req, timeout=config["ademe_api"]["request_timeout_seconds"]) as response:
+                    data = json.loads(response.read().decode('utf-8'))
+                    
+                    results = data.get("results", [])
+                    dataset_count += len(results)
+                    
+                    for r in results:
+                        num_dpe = r.get("numero_dpe")
+                        if num_dpe and not is_dpe_processed(num_dpe):
+                            new_dpes.append(r)
+                            dataset_new_count += 1
+                    
+                    # Récupération de la page suivante
+                    next_url = data.get("next")
+            except Exception as e:
+                logger.error(f"Erreur lors de la requête API sur {dataset_name} : {e}")
+                break
                 
-                next_results = next_data.get("results", [])
-                all_fetched_dpes.extend(next_results)
-                dataset_count += len(next_results)
-                
-                next_url = next_data.get("next")
-                
-        except Exception as e:
-            logger.error(f"Erreur lors de la requête API sur {dataset_name} : {e}")
-            
-        logger.info(f"Terminé pour {dataset_name} : {dataset_count} DPE récupérés depuis l'API ADEME.")
+        logger.info(f"Terminé pour {dataset_name} : {dataset_count} DPE analysés, {dataset_new_count} nouveaux DPE identifiés.")
         
-    # Élimination des doublons dans le flux récupéré (au cas où un même DPE apparaîtrait plusieurs fois)
-    unique_fetched = {}
-    for dpe in all_fetched_dpes:
-        num = dpe.get("numero_dpe")
-        if num:
-            unique_fetched[num] = dpe
-            
-    return list(unique_fetched.values())
+    return new_dpes
 
 # Génération et stylisation du fichier Excel "Édition Prestige"
 def generate_excel(new_dpes):
@@ -193,6 +202,7 @@ def generate_excel(new_dpes):
         logger.info("Aucun nouveau DPE à exporter.")
         return None
         
+    # Conversion en DataFrame
     df = pd.DataFrame(new_dpes)
     
     # Réarrangement et renommage des colonnes demandées
@@ -208,6 +218,7 @@ def generate_excel(new_dpes):
         "surface_habitable_logement": "Surface Habitable (m²)"
     }
     
+    # S'assurer que toutes les colonnes requises existent dans le DataFrame
     for col in columns_mapping.keys():
         if col not in df.columns:
             df[col] = None
@@ -219,7 +230,7 @@ def generate_excel(new_dpes):
     df["Date Établissement"] = pd.to_datetime(df["Date Établissement"], errors='coerce')
     df.sort_values(by="Date Établissement", ascending=False, inplace=True)
     
-    # Formater la date en chaîne propre
+    # Formater la date en chaîne propre pour l'Excel
     df["Date Établissement"] = df["Date Établissement"].dt.strftime('%d/%m/%Y')
     df.fillna("", inplace=True)
     
@@ -227,6 +238,7 @@ def generate_excel(new_dpes):
     excel_filename = "DPE_Nouveaux.xlsx"
     excel_path = os.path.join(EXCEL_OUTPUT_DIR, excel_filename)
     
+    # Si le fichier actif existe déjà, on l'archive
     if os.path.exists(excel_path):
         archive_timestamp = datetime.now().strftime("%Y-%m-%d_%H%M%S")
         archive_filename = f"DPE_Nouveaux_{archive_timestamp}.xlsx"
@@ -234,29 +246,33 @@ def generate_excel(new_dpes):
         shutil.copy2(excel_path, archive_path)
         logger.info(f"Fichier actif précédent archivé sous : {archive_path}")
         
+    # Création du fichier Excel stylisé "Édition Prestige"
     logger.info(f"Génération du fichier Excel stylisé : {excel_path}")
     writer = pd.ExcelWriter(excel_path, engine='openpyxl')
     df.to_excel(writer, index=False, sheet_name="DPE Nouveaux")
     
+    # Application du style Prestige avec openpyxl
     workbook = writer.book
     worksheet = writer.sheets["DPE Nouveaux"]
     
     # Définition des couleurs de la charte Prestige
-    fill_header = PatternFill(start_color="0F1115", end_color="0F1115", fill_type="solid")
-    font_header = Font(name="Segoe UI", size=11, bold=True, color="D4AF37")
+    fill_header = PatternFill(start_color="0F1115", end_color="0F1115", fill_type="solid") # Noir profond
+    font_header = Font(name="Segoe UI", size=11, bold=True, color="D4AF37") # Texte Doré
     font_body = Font(name="Segoe UI", size=10, color="333333")
-    fill_zebra = PatternFill(start_color="F9FAFB", end_color="F9FAFB", fill_type="solid")
+    fill_zebra = PatternFill(start_color="F9FAFB", end_color="F9FAFB", fill_type="solid") # Légère teinte grise
     
     border_thin = Side(border_style="thin", color="E5E7EB")
-    border_header_bottom = Side(border_style="medium", color="D4AF37")
+    border_header_bottom = Side(border_style="medium", color="D4AF37") # Ligne inférieure dorée
     
     border_cell = Border(left=border_thin, right=border_thin, top=border_thin, bottom=border_thin)
     border_header = Border(left=border_thin, right=border_thin, top=border_thin, bottom=border_header_bottom)
     
+    # Alignements
     align_center = Alignment(horizontal="center", vertical="center")
     align_left = Alignment(horizontal="left", vertical="center")
     align_right = Alignment(horizontal="right", vertical="center")
     
+    # Styliser l'en-tête
     for col_idx in range(1, len(df.columns) + 1):
         cell = worksheet.cell(row=1, column=col_idx)
         cell.fill = fill_header
@@ -264,6 +280,7 @@ def generate_excel(new_dpes):
         cell.alignment = align_center
         cell.border = border_header
         
+    # Styliser les lignes de données
     for row_idx in range(2, len(df) + 2):
         is_even = row_idx % 2 == 0
         for col_idx in range(1, len(df.columns) + 1):
@@ -271,9 +288,11 @@ def generate_excel(new_dpes):
             cell.font = font_body
             cell.border = border_cell
             
+            # Effet zèbre discret
             if is_even:
                 cell.fill = fill_zebra
                 
+            # Alignements spécifiques aux colonnes
             col_name = df.columns[col_idx - 1]
             if col_name in ["Code Postal", "Date Établissement", "Classe DPE"]:
                 cell.alignment = align_center
@@ -281,6 +300,7 @@ def generate_excel(new_dpes):
                 cell.alignment = align_center
             elif col_name in ["Surface Habitable (m²)"]:
                 cell.alignment = align_right
+                # Formater les nombres si possible
                 if cell.value != "":
                     try:
                         cell.value = float(cell.value)
@@ -290,16 +310,22 @@ def generate_excel(new_dpes):
             else:
                 cell.alignment = align_left
 
+    # Ajustement automatique de la largeur des colonnes
     for col in worksheet.columns:
         max_len = 0
         col_letter = get_column_letter(col[0].column)
         for cell in col:
+            # Remplacement des sauts de ligne pour calculer la largeur
             val_str = str(cell.value or '').split('\n')[0]
             if len(val_str) > max_len:
                 max_len = len(val_str)
+        # Largeur min de 12, max de 40 pour l'adresse
         worksheet.column_dimensions[col_letter].width = min(max(max_len + 3, 12), 40)
         
+    # Figer les en-têtes
     worksheet.freeze_panes = "A2"
+    
+    # Sauvegarde
     writer.close()
     logger.info("Fichier Excel généré et stylisé avec succès.")
     return excel_path
@@ -308,17 +334,20 @@ def generate_excel(new_dpes):
 def send_email(attachment_path, num_records):
     email_config = config["email"]
     
+    # S'il n'y a pas d'enregistrements et qu'on ne veut pas envoyer d'email vide
     if num_records == 0 and not email_config["send_email_if_empty"]:
         logger.info("Aucun nouveau DPE. Envoi d'email ignoré (conformément à la configuration).")
         return
         
     subject = f"{email_config['subject_prefix']} Rapport quotidien - {num_records} nouveau(x) DPE"
     
+    # Création du message
     msg = MIMEMultipart()
     msg['From'] = email_config['from_email']
     msg['To'] = ", ".join(email_config['to_emails'])
     msg['Subject'] = subject
     
+    # Corps de l'e-mail au format HTML avec un léger design élégant
     date_now = datetime.now().strftime("%d/%m/%Y à %H:%M")
     if num_records > 0:
         html_body = f"""
@@ -326,17 +355,17 @@ def send_email(attachment_path, num_records):
         <body style="font-family: Arial, sans-serif; color: #333; line-height: 1.6;">
             <div style="max-width: 600px; margin: 0 auto; border: 1px solid #e5e7eb; border-radius: 8px; overflow: hidden; box-shadow: 0 4px 6px rgba(0,0,0,0.05);">
                 <div style="background-color: #0f1115; padding: 20px; text-align: center; border-bottom: 3px solid #d4af37;">
-                    <h2 style="color: #d4af37; margin: 0; font-weight: normal; letter-spacing: 1px;">DPE WATCHER PREMIER</h2>
-                    <p style="color: #a3a3a3; margin: 5px 0 0 0; font-size: 13px;">Rapport automatique de veille ADEME et Google Sheets</p>
+                    <h2 style="color: #d4af37; margin: 0; font-weight: normal; letter-spacing: 1px;">DPE WATCHER</h2>
+                    <p style="color: #a3a3a3; margin: 5px 0 0 0; font-size: 13px;">Rapport automatique de veille ADEME</p>
                 </div>
                 <div style="padding: 25px; background-color: #ffffff;">
                     <p>Bonjour,</p>
                     <p>L'analyse quotidienne de l'API ADEME a été effectuée avec succès le <strong>{date_now}</strong>.</p>
                     <div style="background-color: #f9fafb; border-left: 4px solid #d4af37; padding: 15px; margin: 20px 0; border-radius: 0 4px 4px 0;">
                         <span style="font-size: 24px; font-weight: bold; color: #0f1115;">{num_records}</span> 
-                        <span style="font-size: 16px; color: #4b5563; margin-left: 5px;">nouveau(x) DPE identifié(s) et sauvegardé(s) dans Google Sheets.</span>
+                        <span style="font-size: 16px; color: #4b5563; margin-left: 5px;">nouveau(x) DPE identifié(s) sur vos codes postaux cibles.</span>
                     </div>
-                    <p>Le fichier Excel récapitulatif contenant les nouvelles données de cette session est joint à ce message.</p>
+                    <p>Le fichier Excel récapitulatif contenant les nouvelles données est joint à ce message.</p>
                     <p style="font-size: 12px; color: #6b7280; margin-top: 30px; border-top: 1px solid #f3f4f6; padding-top: 15px;">
                         <em>Ce message a été généré automatiquement par votre robot de surveillance DPE.</em>
                     </p>
@@ -356,7 +385,7 @@ def send_email(attachment_path, num_records):
                 <div style="padding: 25px; background-color: #ffffff;">
                     <p>Bonjour,</p>
                     <p>L'analyse quotidienne de l'API ADEME a été effectuée avec succès le <strong>{date_now}</strong>.</p>
-                    <p><strong>Aucun nouveau DPE</strong> n'a été détecté pour vos codes postaux cibles.</p>
+                    <p><strong>Aucun nouveau DPE</strong> n'a été détecté pour vos codes postaux cibles durant les derniers jours.</p>
                     <p style="font-size: 12px; color: #6b7280; margin-top: 30px; border-top: 1px solid #f3f4f6; padding-top: 15px;">
                         <em>Ce message a été généré automatiquement par votre robot de surveillance DPE.</em>
                     </p>
@@ -368,6 +397,7 @@ def send_email(attachment_path, num_records):
         
     msg.attach(MIMEText(html_body, 'html'))
     
+    # Pièce jointe
     if attachment_path and os.path.exists(attachment_path):
         filename = os.path.basename(attachment_path)
         with open(attachment_path, "rb") as attachment:
@@ -380,6 +410,7 @@ def send_email(attachment_path, num_records):
             )
             msg.attach(part)
             
+    # Connexion et envoi SMTP
     try:
         logger.info(f"Connexion au serveur SMTP {email_config['smtp_server']}:{email_config['smtp_port']}...")
         if email_config["use_ssl"]:
@@ -405,33 +436,31 @@ def send_email(attachment_path, num_records):
 
 # Point d'entrée principal
 def main():
-    logger.info("=== DÉBUT DE L'EXÉCUTION DU DPE WATCHER (VERSION GOOGLE SHEETS) ===")
+    logger.info("=== DÉBUT DE L'EXÉCUTION DU DPE WATCHER ===")
     
     try:
-        # 1. Récupération des DPE depuis l'API ADEME
-        fetched_dpes = fetch_new_dpes_from_api()
-        logger.info(f"{len(fetched_dpes)} DPE récupérés au total depuis l'API ADEME.")
-        
-        # 2. Filtrage et enregistrement des nouveaux DPE via Google Sheets
-        new_dpes = filter_and_register_dpes_via_sheets(fetched_dpes)
+        init_db()
+        new_dpes = fetch_new_dpes_from_api()
         
         if new_dpes:
-            logger.info(f"{len(new_dpes)} nouveaux DPE uniques identifiés par rapport à l'historique Google Sheets.")
-            
-            # 3. Génération du fichier Excel Prestige de cette session
+            logger.info(f"{len(new_dpes)} nouveaux DPE uniques découverts au total.")
             excel_file = generate_excel(new_dpes)
             
-            # 4. Envoi de l'email
+            # Enregistrement dans l'historique pour ne plus les retraiter
+            mark_dpes_as_processed(new_dpes)
+            
+            # Envoi de l'email
             send_email(excel_file, len(new_dpes))
         else:
-            logger.info("Aucun nouveau DPE détecté par rapport à l'historique Google Sheets.")
+            logger.info("Aucun nouveau DPE trouvé aujourd'hui.")
+            # Si configuré pour envoyer même si vide
             if config["email"]["send_email_if_empty"]:
                 send_email(None, 0)
                 
     except Exception as e:
         logger.critical(f"Erreur critique lors de l'exécution : {e}", exc_info=True)
         
-    logger.info("=== FIN DE L'EXÉCUTION DU DPE WATCHER ===")
+    logger.info("=== FIN DE L'EXÉCUTION DO DPE WATCHER ===")
 
 if __name__ == "__main__":
     main()
