@@ -305,8 +305,9 @@ def generate_excel(new_dpes):
     return excel_path
 
 # Envoi de l'email avec le fichier Excel en pièce jointe
-def send_email(attachment_path, num_records):
+def send_email(attachment_path, new_dpes):
     email_config = config["email"]
+    num_records = len(new_dpes) if new_dpes else 0
     
     if num_records == 0 and not email_config["send_email_if_empty"]:
         logger.info("Aucun nouveau DPE. Envoi d'email ignoré (conformément à la configuration).")
@@ -321,22 +322,72 @@ def send_email(attachment_path, num_records):
     
     date_now = datetime.now().strftime("%d/%m/%Y à %H:%M")
     if num_records > 0:
+        # Calculs statistiques pour le corps de l'email
+        num_g = sum(1 for r in new_dpes if r.get("etiquette_dpe") == "G")
+        num_f = sum(1 for r in new_dpes if r.get("etiquette_dpe") == "F")
+        num_e = sum(1 for r in new_dpes if r.get("etiquette_dpe") == "E")
+        passoires = num_g + num_f
+        
+        surfaces = []
+        for r in new_dpes:
+            if r.get("etiquette_dpe") in ["F", "G"] and r.get("surface_habitable_logement") is not None:
+                try:
+                    surfaces.append(float(r.get("surface_habitable_logement")))
+                except (ValueError, TypeError):
+                    pass
+        surface_moy = sum(surfaces) / len(surfaces) if surfaces else 0
+        surface_moy_str = f"{surface_moy:.1f} m²" if surface_moy > 0 else "N/A"
+
         html_body = f"""
         <html>
         <body style="font-family: Arial, sans-serif; color: #333; line-height: 1.6;">
             <div style="max-width: 600px; margin: 0 auto; border: 1px solid #e5e7eb; border-radius: 8px; overflow: hidden; box-shadow: 0 4px 6px rgba(0,0,0,0.05);">
                 <div style="background-color: #0f1115; padding: 20px; text-align: center; border-bottom: 3px solid #d4af37;">
-                    <h2 style="color: #d4af37; margin: 0; font-weight: normal; letter-spacing: 1px;">DPE WATCHER PREMIER</h2>
+                    <h2 style="color: #d4af37; margin: 0; font-weight: normal; letter-spacing: 1px;">DPE WATCHER PREMIUM</h2>
                     <p style="color: #a3a3a3; margin: 5px 0 0 0; font-size: 13px;">Rapport automatique de veille ADEME et Google Sheets</p>
                 </div>
                 <div style="padding: 25px; background-color: #ffffff;">
                     <p>Bonjour,</p>
                     <p>L'analyse quotidienne de l'API ADEME a été effectuée avec succès le <strong>{date_now}</strong>.</p>
+                    
                     <div style="background-color: #f9fafb; border-left: 4px solid #d4af37; padding: 15px; margin: 20px 0; border-radius: 0 4px 4px 0;">
                         <span style="font-size: 24px; font-weight: bold; color: #0f1115;">{num_records}</span> 
                         <span style="font-size: 16px; color: #4b5563; margin-left: 5px;">nouveau(x) DPE identifié(s) et sauvegardé(s) dans Google Sheets.</span>
                     </div>
-                    <p>Le fichier Excel récapitulatif contenant les nouvelles données de cette session est joint à ce message.</p>
+
+                    <h4 style="color: #0f1115; border-bottom: 2px solid #d4af37; padding-bottom: 5px; margin-top: 25px;">RÉSUMÉ STATISTIQUE DE CETTE SESSION</h4>
+                    <table style="width: 100%; border-collapse: collapse; margin: 15px 0; font-size: 14px;">
+                        <tr style="background-color: #f3f4f6; font-weight: bold; border-bottom: 2px solid #e5e7eb;">
+                            <th style="padding: 8px; text-align: left; color: #374151;">Indicateur</th>
+                            <th style="padding: 8px; text-align: center; color: #374151; width: 140px;">Valeur</th>
+                        </tr>
+                        <tr>
+                            <td style="padding: 8px; border-bottom: 1px solid #e5e7eb;">Total nouveaux DPE détectés</td>
+                            <td style="padding: 8px; text-align: center; border-bottom: 1px solid #e5e7eb; font-weight: bold; color: #111827;">{num_records}</td>
+                        </tr>
+                        <tr>
+                            <td style="padding: 8px; border-bottom: 1px solid #e5e7eb; font-weight: bold; color: #dc2626;">Passoires Thermiques (F & G)</td>
+                            <td style="padding: 8px; text-align: center; border-bottom: 1px solid #e5e7eb; font-weight: bold; color: #dc2626;">{passoires}</td>
+                        </tr>
+                        <tr>
+                            <td style="padding: 8px; border-bottom: 1px solid #e5e7eb; padding-left: 20px; color: #dc2626;">└ Dont Classe G (Déjà Interdits)</td>
+                            <td style="padding: 8px; text-align: center; border-bottom: 1px solid #e5e7eb; font-weight: bold; color: #dc2626;">{num_g}</td>
+                        </tr>
+                        <tr>
+                            <td style="padding: 8px; border-bottom: 1px solid #e5e7eb; padding-left: 20px; color: #d97706;">└ Dont Classe F (Échéance 2028 - Cible)</td>
+                            <td style="padding: 8px; text-align: center; border-bottom: 1px solid #e5e7eb; font-weight: bold; color: #d97706;">{num_f}</td>
+                        </tr>
+                        <tr>
+                            <td style="padding: 8px; border-bottom: 1px solid #e5e7eb; padding-left: 20px; color: #2563eb;">└ Dont Classe E (Échéance 2034)</td>
+                            <td style="padding: 8px; text-align: center; border-bottom: 1px solid #e5e7eb; font-weight: bold; color: #2563eb;">{num_e}</td>
+                        </tr>
+                        <tr>
+                            <td style="padding: 8px; border-bottom: 1px solid #e5e7eb;">Surface hab. moyenne des passoires (F & G)</td>
+                            <td style="padding: 8px; text-align: center; border-bottom: 1px solid #e5e7eb; font-weight: bold; color: #111827;">{surface_moy_str}</td>
+                        </tr>
+                    </table>
+
+                    <p style="margin-top: 20px;">Le fichier Excel récapitulatif contenant les données stylisées de cette session est joint à ce message.</p>
                     <p style="font-size: 12px; color: #6b7280; margin-top: 30px; border-top: 1px solid #f3f4f6; padding-top: 15px;">
                         <em>Ce message a été généré automatiquement par votre robot de surveillance DPE.</em>
                     </p>
@@ -422,11 +473,11 @@ def main():
             excel_file = generate_excel(new_dpes)
             
             # 4. Envoi de l'email
-            send_email(excel_file, len(new_dpes))
+            send_email(excel_file, new_dpes)
         else:
             logger.info("Aucun nouveau DPE détecté par rapport à l'historique Google Sheets.")
             if config["email"]["send_email_if_empty"]:
-                send_email(None, 0)
+                send_email(None, [])
                 
     except Exception as e:
         logger.critical(f"Erreur critique lors de l'exécution : {e}", exc_info=True)
