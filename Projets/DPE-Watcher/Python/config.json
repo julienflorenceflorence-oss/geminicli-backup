@@ -24,8 +24,8 @@
   "email": {
     "smtp_server": "smtp.gmail.com",
     "smtp_port": 587,
-    "smtp_username": "votre.adresse@gmail.com",
-    "smtp_password": "votre_mot_de_passe_d_application",
+    "smtp_username": "julienflorence.florence@gmail.com",
+    "smtp_password": "tqsy zpcs zjkm oxpq",
     "use_tls": true,
     "use_ssl": false,
     "from_email": "votre.adresse@gmail.com",
