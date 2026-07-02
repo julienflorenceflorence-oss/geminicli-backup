@@ -1,0 +1,8 @@
+# Ignore local backups and media
+Archives/
+index_archive.html
+*.amr
+*.log
+temp_profile/
+*.pyc
+__pycache__/
