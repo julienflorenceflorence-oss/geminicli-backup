@@ -1,0 +1,43 @@
+{
+  "ademe_api": {
+    "datasets": [
+      {
+        "id": "meg-83tjwtg8dyz4vv7h1dqe",
+        "name": "Logements existants"
+      },
+      {
+        "id": "g3cgx7jb3cmys5voxz1mrm22",
+        "name": "Logements neufs"
+      }
+    ],
+    "days_to_check": 7,
+    "request_timeout_seconds": 30
+  },
+  "filtering": {
+    "codes_postaux": [
+      "11000",
+      "11100",
+      "31000",
+      "31100"
+    ]
+  },
+  "email": {
+    "smtp_server": "smtp.gmail.com",
+    "smtp_port": 587,
+    "smtp_username": "votre.adresse@gmail.com",
+    "smtp_password": "votre_mot_de_passe_d_application",
+    "use_tls": true,
+    "use_ssl": false,
+    "from_email": "votre.adresse@gmail.com",
+    "to_emails": [
+      "destinataire@example.com"
+    ],
+    "subject_prefix": "[DPE Watcher]",
+    "send_email_if_empty": false
+  },
+  "paths": {
+    "database_path": "../Data/dpe_history.db",
+    "excel_output_dir": "../04_Livrables/Data",
+    "log_output_dir": "../Data"
+  }
+}
