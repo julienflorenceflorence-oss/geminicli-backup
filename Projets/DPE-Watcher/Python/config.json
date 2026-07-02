@@ -22,19 +22,19 @@
     ]
   },
   "email": {
-    "smtp_server": "smtp.gmail.com",
-    "smtp_port": 587,
-    "smtp_username": "julienflorence.florence@gmail.com",
-    "smtp_password": "tqsy zpcs zjkm oxpq",
-    "use_tls": true,
-    "use_ssl": false,
-    "from_email": "votre.adresse@gmail.com",
-    "to_emails": [
-      "destinataire@example.com"
-    ],
-    "subject_prefix": "[DPE Watcher]",
-    "send_email_if_empty": false
-  },
+        "smtp_server": "smtp.gmail.com",
+        "smtp_port": 587,
+        "smtp_username": "julienflorence.florence@gmail.com,     
+        "smtp_password": "pbyd lnhn htsd miei",  
+        "use_tls": true,
+        "use_ssl": false,
+        "from_email": "julienflorence.florence@gmail.com",        
+        "to_emails": [
+          "julienflorence.florence@gmail.com"                         
+        ],
+        "subject_prefix": "[DPE Watcher]",
+        "send_email_if_empty": false
+      }
   "google_sheets": {
     "web_app_url": "https://script.google.com/macros/s/AKfycbyBg5NZXvvALPp3rarKQLd3nK2uF5afPWlMZBm0vdZeO1HcxgBm0XVM7Ol9yxVpb6QV8g/exec"
   },
