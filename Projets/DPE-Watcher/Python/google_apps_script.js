@@ -159,73 +159,99 @@ function generateDashboard(ss) {
   sheetDash.getRange("D6").setFontColor("#2563EB").setFontWeight("bold"); // Bleu pour E
 
   // 3. Section des KPIs de Prospection (Chiffres clés)
-  sheetDash.getRange("B8:J8").merge().setValue("INDICATEURS CLÉS - PARC DPE IDENTIFIÉ")
+  sheetDash.getRange("B8:K8").merge().setValue("INDICATEURS CLÉS - PARC DPE IDENTIFIÉ")
            .setFontWeight("bold").setFontSize(11).setFontColor("#D4AF37").setBackground("#0F1115")
            .setHorizontalAlignment("center");
   sheetDash.setRowHeight(8, 25);
   
-  // Formules dynamiques calculant les volumes sur DPE_Actifs
+  // Titres des KPIs
   var kpiTitles = [
-    ["DPE Analysés (Total)", "Passoires Thermiques (F & G)", "Classe G (Déjà Interdits)", "Classe F (Interdits 2028)", "Classe E (Interdits 2034)"]
+    ["Total DPE", "Passoires (F & G)", "Classe G", "Classe F", "Classe E", "Surface Moy. F/G (m²)"]
   ];
-  sheetDash.getRange("B9:F9").setValues(kpiTitles).setFontWeight("bold").setBackground("#F3F4F6").setHorizontalAlignment("center");
+  sheetDash.getRange("B9:G9").setValues(kpiTitles).setFontWeight("bold").setBackground("#F3F4F6").setHorizontalAlignment("center");
   
+  // Formules de calcul dynamiques (syntaxe internationale / anglaise requise par Apps Script)
   var kpiFormulas = [
     [
-      '=NBVAL(DPE_Actifs!E2:E)', 
-      '=COUNTIF(DPE_Actifs!G2:G; "F") + COUNTIF(DPE_Actifs!G2:G; "G")', 
-      '=COUNTIF(DPE_Actifs!G2:G; "G")', 
-      '=COUNTIF(DPE_Actifs!G2:G; "F")', 
-      '=COUNTIF(DPE_Actifs!G2:G; "E")'
+      '=COUNTA(DPE_Actifs!E2:E)', 
+      '=COUNTIF(DPE_Actifs!G2:G, "F") + COUNTIF(DPE_Actifs!G2:G, "G")', 
+      '=COUNTIF(DPE_Actifs!G2:G, "G")', 
+      '=COUNTIF(DPE_Actifs!G2:G, "F")', 
+      '=COUNTIF(DPE_Actifs!G2:G, "E")',
+      '=IFERROR(ROUND(AVERAGE(FILTER(DPE_Actifs!I2:I, (DPE_Actifs!G2:G="F") + (DPE_Actifs!G2:G="G"))), 1), 0)'
     ]
   ];
   
-  sheetDash.getRange("B10:F10").setFormulas(kpiFormulas).setFontSize(14).setFontWeight("bold").setHorizontalAlignment("center");
-  sheetDash.getRange("B9:F10").setBorder(true, true, true, true, true, true, "#E5E7EB", SpreadsheetApp.BorderStyle.SOLID);
+  sheetDash.getRange("B10:G10").setFormulas(kpiFormulas).setFontSize(14).setFontWeight("bold").setHorizontalAlignment("center");
+  sheetDash.getRange("B9:G10").setBorder(true, true, true, true, true, true, "#E5E7EB", SpreadsheetApp.BorderStyle.SOLID);
   
   // Style sur les valeurs KPI
-  sheetDash.getRange("B10").setFontColor("#1F2937"); // Noir
-  sheetDash.getRange("C10").setFontColor("#DC2626"); // Rouge (Total F+G)
-  sheetDash.getRange("D10").setFontColor("#DC2626"); // Rouge (G)
-  sheetDash.getRange("E10").setFontColor("#D97706"); // Orange (F)
-  sheetDash.getRange("F10").setFontColor("#2563EB"); // Bleu (E)
+  sheetDash.getRange("B10").setFontColor("#1F2937"); // Total
+  sheetDash.getRange("C10").setFontColor("#DC2626"); // Total F+G
+  sheetDash.getRange("D10").setFontColor("#DC2626"); // G
+  sheetDash.getRange("E10").setFontColor("#D97706"); // F
+  sheetDash.getRange("F10").setFontColor("#2563EB"); // E
+  sheetDash.getRange("G10").setFontColor("#1F2937"); // Surf Moyenne
 
-  // 4. Section Tableau Répartition Complète A-G
-  sheetDash.getRange("B12:C12").merge().setValue("RÉPARTITION DPE A-G").setFontWeight("bold").setBackground("#E5E7EB").setHorizontalAlignment("center");
+  // 4. Section Tableau Répartition Complète A-G (à gauche)
+  sheetDash.getRange("B12:C12").merge().setValue("RÉPARTITION A-G").setFontWeight("bold").setBackground("#E5E7EB").setHorizontalAlignment("center");
   var labels = [["A"], ["B"], ["C"], ["D"], ["E"], ["F"], ["G"]];
   sheetDash.getRange("B13:B19").setValues(labels).setFontWeight("bold").setHorizontalAlignment("center");
   
   var distributionFormulas = [
-    ['=COUNTIF(DPE_Actifs!G2:G; "A")'],
-    ['=COUNTIF(DPE_Actifs!G2:G; "B")'],
-    ['=COUNTIF(DPE_Actifs!G2:G; "C")'],
-    ['=COUNTIF(DPE_Actifs!G2:G; "D")'],
-    ['=COUNTIF(DPE_Actifs!G2:G; "E")'],
-    ['=COUNTIF(DPE_Actifs!G2:G; "F")'],
-    ['=COUNTIF(DPE_Actifs!G2:G; "G")']
+    ['=COUNTIF(DPE_Actifs!G2:G, "A")'],
+    ['=COUNTIF(DPE_Actifs!G2:G, "B")'],
+    ['=COUNTIF(DPE_Actifs!G2:G, "C")'],
+    ['=COUNTIF(DPE_Actifs!G2:G, "D")'],
+    ['=COUNTIF(DPE_Actifs!G2:G, "E")'],
+    ['=COUNTIF(DPE_Actifs!G2:G, "F")'],
+    ['=COUNTIF(DPE_Actifs!G2:G, "G")']
   ];
   sheetDash.getRange("C13:C19").setFormulas(distributionFormulas).setHorizontalAlignment("center");
   sheetDash.getRange("B12:C19").setBorder(true, true, true, true, true, true, "#E5E7EB", SpreadsheetApp.BorderStyle.SOLID);
 
-  // 5. Générer le graphique s'il n'existe pas déjà
-  var charts = sheetDash.getCharts();
-  if (charts.length === 0) {
-    var chart = sheetDash.newChart()
-        .setChartType(Charts.ChartType.COLUMN)
-        .addRange(sheetDash.getRange("B12:C19"))
-        .setPosition(12, 5, 1, 1)
-        .setOption('title', 'Répartition des Classes Énergétiques')
-        .setOption('colors', ['#D4AF37']) // Couleur Or Prestige
-        .setOption('legend', {position: 'none'})
-        .setOption('vAxis', {title: 'Nombre de logements'})
-        .setOption('hAxis', {title: 'Classe DPE'})
-        .build();
-    sheetDash.insertChart(chart);
-  }
+  // 5. Section Top 5 Communes cibles (à droite)
+  sheetDash.getRange("H12:I12").merge().setValue("TOP 5 COMMUNES CIBLES (F & G)")
+           .setFontWeight("bold").setBackground("#0F1115").setFontColor("#D4AF37").setHorizontalAlignment("center");
+  
+  // Utilisation d'une requête QUERY SQL sur Sheets pour extraire dynamiquement le Top 5 des communes touchées
+  sheetDash.getRange("H13").setFormula(
+    '=QUERY(DPE_Actifs!A2:J, "select A, count(E) where (G = \'F\' or G = \'G\') and A is not null group by A order by count(E) desc limit 5 label A \'Commune\', count(E) \'Passoires\'", 0)'
+  );
+  
+  // Appliquer bordures et styles de tableau pour le Top 5 (lignes 13 à 18)
+  sheetDash.getRange("H13:I13").setFontWeight("bold").setBackground("#F3F4F6").setHorizontalAlignment("center");
+  sheetDash.getRange("H14:I18").setHorizontalAlignment("center");
+  sheetDash.getRange("H12:I18").setBorder(true, true, true, true, true, true, "#E5E7EB", SpreadsheetApp.BorderStyle.SOLID);
 
-  // Ajustement des colonnes pour le dashboard
-  sheetDash.setColumnWidth(1, 30);  // Marge gauche
-  sheetDash.setColumnWidth(2, 180); // Classe / Label
-  sheetDash.setColumnWidth(3, 260); // Valeur / Formule
-  sheetDash.setColumnWidth(4, 380); // Statut / Description
+  // 6. Régénérer le graphique s'il n'existe pas déjà
+  var charts = sheetDash.getCharts();
+  for (var i = 0; i < charts.length; i++) {
+    sheetDash.removeChart(charts[i]); // On le réinitialise proprement pour éviter les doublons
+  }
+  
+  var chart = sheetDash.newChart()
+      .setChartType(Charts.ChartType.COLUMN)
+      .addRange(sheetDash.getRange("B12:C19"))
+      .setPosition(12, 4, 25, 1) // Placer la colonne E à côté du tableau
+      .setOption('title', 'Répartition des Classes Énergétiques')
+      .setOption('colors', ['#D4AF37'])
+      .setOption('legend', {position: 'none'})
+      .setOption('vAxis', {title: 'Nombre'})
+      .setOption('hAxis', {title: 'Classe DPE'})
+      .setOption('width', 300)
+      .setOption('height', 160)
+      .build();
+  sheetDash.insertChart(chart);
+
+  // Ajustement des colonnes
+  sheetDash.setColumnWidth(1, 20);  // Marge gauche
+  sheetDash.setColumnWidth(2, 130); // Classe / Label
+  sheetDash.setColumnWidth(3, 90);  // Nombre
+  sheetDash.setColumnWidth(4, 300); // Colonne vide pour graphique
+  sheetDash.setColumnWidth(5, 50);  // Marge graphique
+  sheetDash.setColumnWidth(6, 120); // Colonnes KPI
+  sheetDash.setColumnWidth(7, 120);
+  sheetDash.setColumnWidth(8, 160); // Top 5 Commune
+  sheetDash.setColumnWidth(9, 100); // Top 5 Passoires
 }
