@@ -1,8 +1,8 @@
-# 🎯 DPE Watcher Premium - Veille ADEME & Dashboard Google Sheets (100% Gratuit)
+# 🎯 DPE Watcher Premium - Veille ADEME & Google Sheets (100% Gratuit)
 
 DPE Watcher Premium est une solution automatisée haut de gamme conçue pour surveiller quotidiennement les nouveaux Diagnostics de Performance Énergétique (DPE) de l'ADEME, filtrer les résultats sur des codes postaux précis, dédupliquer les entrées via une feuille **Google Sheets** partagée, puis générer et envoyer un export Excel Premium (style "Édition Prestige") par email.
 
-Cette version intègre un **Dashboard de veille stratégique** automatique pour piloter la prospection des passoires thermiques (classes G et F).
+Cette architecture est entièrement **gratuite** et conçue pour être **facilement transférable** à un tiers (client ou collaborateur).
 
 ---
 
@@ -33,9 +33,9 @@ Projets/DPE-Watcher/
 
 ---
 
-## 📊 Étape 1 : Configuration du Google Sheet & Dashboard
+## ⚙️ Étape 1 : Configuration du Google Sheet (Base de Données)
 
-Le script utilise Google Sheets comme base de données et comme tableau de bord visuel interactif.
+Le script utilise Google Sheets comme base de données pour stocker l'historique de déduplication et pour permettre une consultation humaine en direct.
 
 1. Créez un nouveau document **Google Sheets** sur votre compte Google.
 2. Ouvrez le document, puis allez dans le menu supérieur **Extensions** > **Apps Script**.
@@ -44,17 +44,12 @@ Le script utilise Google Sheets comme base de données et comme tableau de bord 
 5. Cliquez sur le bouton bleu **Déployer** (en haut à droite) > **Nouveau déploiement**.
 6. Sélectionnez le type de déploiement en cliquant sur l'icône d'engrenage > **Application Web**.
 7. Remplissez les paramètres ainsi :
-   - **Description :** `DPE Watcher API & Dashboard`
+   - **Description :** `DPE Watcher API`
    - **Exécuter en tant que :** `Moi (votre adresse email)`
-   - **Qui a accès :** `Tous (ou Anyone)` *(Indispensable pour la liaison API)*.
-8. Cliquez sur **Déployer** et validez les autorisations d'accès de votre compte.
-9. Copiez l'**URL de l'application Web** fournie (se terminant par `/exec`).
-
-> [!NOTE]
-> À la première exécution du script de diagnostic ou d'importation, **trois onglets** seront automatiquement créés et stylisés dans votre Google Sheet :
-> - **`Dashboard` :** Tableau de bord de pilotage avec les volumes de passoires thermiques, la répartition graphique A-G (couleur Prestige or) et le calendrier réglementaire.
-> - **`DPE_Actifs` :** Liste triée par date de récupération des DPE identifiés.
-> - **`Historique` :** Base de données interne des DPE traités pour éviter les doublons.
+   - **Qui a accès :** `Tous (ou Anyone)` *(Indispensable pour que le script Python puisse communiquer avec lui)*.
+8. Cliquez sur **Déployer**. Google va vous demander d'autoriser les accès. Cliquez sur *Autoriser l'accès*, puis sur *Paramètres avancés* (en bas à gauche) et sur *Accéder à Projet sans titre (non sécurisé)*, puis validez.
+9. Copiez l'**URL de l'application Web** fournie (elle se termine par `/exec`). Elle ressemble à ceci :
+   `https://script.google.com/macros/s/XXXXXX_XXXXXX/exec`
 
 ---
 
@@ -84,27 +79,16 @@ Le script utilise Google Sheets comme base de données et comme tableau de bord 
 
 ---
 
-## 🚀 Étape 3 : Planification bi-quotidienne Windows (7j/7)
+## 🚀 Étape 3 : Planification quotidienne Windows
 
-Pour configurer une vérification automatique **le matin à 07h00** et **le soir à 23h55** :
-
-1. Ouvrez le **Planificateur de tâches** Windows (Task Scheduler).
-2. Dans le panneau de droite, cliquez sur **Créer une tâche...** (et non une tâche de base).
-3. **Onglet Général :**
-   - Nommez la tâche : `DPE Watcher - Veille ADEME`
-   - Sélectionnez *Exécuter même si l'utilisateur n'est pas connecté* et cochez *Exécuter avec les autorisations les plus élevées*.
-4. **Onglet Déclencheurs :** Cliquez sur **Nouveau...** :
-   - **Déclencheur 1 (Matin) :** Sélectionnez *Chaque jour*, réglez l'heure sur **07:00:00**, répétez tous les 1 jours, cochez *Activé*. Cliquez sur OK.
-   - Cliquez à nouveau sur **Nouveau...** :
-   - **Déclencheur 2 (Soir) :** Sélectionnez *Chaque jour*, réglez l'heure sur **23:55:00**, répétez tous les 1 jours, cochez *Activé*. Cliquez sur OK.
-5. **Onglet Actions :** Cliquez sur **Nouveau...** :
-   - **Action :** Démarrer un programme.
-   - **Programme/script :** Sélectionnez le chemin absolu de votre fichier batch :
-     `C:\Users\julien\OneDrive\Bureau\geminicli\Projets\DPE-Watcher\Python\run_dpe_watcher.bat`
-   - **Commencer dans (facultatif) :** Renseignez absolument le dossier Python (pour la résolution des chemins relatifs) :
-     `C:\Users\julien\OneDrive\Bureau\geminicli\Projets\DPE-Watcher\Python\`
-6. **Onglet Conditions :** Décochez *Démarrer la tâche uniquement si l'ordinateur est alimenté par secteur* (si vous utilisez un PC portable).
-7. Cliquez sur **OK** et saisissez votre mot de passe de session Windows si demandé.
+Pour que l'outil s'exécute automatiquement chaque matin :
+1. Lancez le **Planificateur de tâches** Windows.
+2. Créez une **Tâche de base** nommée `DPE Watcher`.
+3. Déclencheur : **Tous les jours** à l'heure de votre choix (ex : 08:30).
+4. Action : **Démarrer un programme**.
+5. Programme/script : Sélectionnez le fichier [run_dpe_watcher.bat](file:///C:/Users/julien/OneDrive/Bureau/geminicli/Projets/DPE-Watcher/Python/run_dpe_watcher.bat).
+6. **Commencer dans :** Renseignez absolument le chemin absolu du dossier Python :
+   `C:\Users\julien\OneDrive\Bureau\geminicli\Projets\DPE-Watcher\Python\`
 
 ---
 
