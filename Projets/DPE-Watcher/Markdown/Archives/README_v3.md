@@ -1,4 +1,4 @@
-# 🎯 DPE Watcher Premium - Veille ADEME & Dashboard Externe (100% Gratuit)
+# 🎯 DPE Watcher Premium - Veille ADEME & Dashboard Google Sheets (100% Gratuit)
 
 DPE Watcher Premium est une solution automatisée haut de gamme conçue pour surveiller quotidiennement les nouveaux Diagnostics de Performance Énergétique (DPE) de l'ADEME, filtrer les résultats sur des codes postaux précis, dédupliquer les entrées via une feuille **Google Sheets** partagée, puis générer et envoyer un export Excel Premium (style "Édition Prestige") par email.
 
@@ -26,9 +26,6 @@ Projets/DPE-Watcher/
 │   ├── test_installation.py       <- Script de diagnostic d'installation et de connexion
 │   ├── run_dpe_watcher.bat        <- Script de lancement pour le planificateur de tâches Windows
 │   └── Archives/                  <- Versions archivées du code source
-├── HTML/
-│   ├── dashboard.html             <- Dashboard Externe interactif Premium (Édition Prestige)
-│   └── Archives/                  <- Versions archivées du Dashboard
 └── Data/
     ├── dpe_watcher.log            <- Journal d'exécution (logs de l'outil)
     └── Archives/
@@ -36,7 +33,7 @@ Projets/DPE-Watcher/
 
 ---
 
-## 📊 Étape 1 : Configuration du Google Sheet (Base de Données)
+## 📊 Étape 1 : Configuration du Google Sheet & Dashboard
 
 Le script utilise Google Sheets comme base de données et comme tableau de bord visuel interactif.
 
@@ -53,24 +50,15 @@ Le script utilise Google Sheets comme base de données et comme tableau de bord 
 8. Cliquez sur **Déployer** et validez les autorisations d'accès de votre compte.
 9. Copiez l'**URL de l'application Web** fournie (se terminant par `/exec`).
 
----
-
-## 🎨 Étape 2 : Consultation du Dashboard Externe Premium
-
-Nous avons conçu une interface web autonome et immersive (Édition Prestige) pour piloter l'analyse des données en direct depuis Google Sheets.
-
-1. Allez dans le dossier du projet : `Projets/DPE-Watcher/HTML/`
-2. Double-cliquez sur le fichier **[dashboard.html](file:///C:/Users/julien/OneDrive/Bureau/geminicli/Projets/DPE-Watcher/HTML/dashboard.html)**. Il s'ouvrira directement dans votre navigateur (Chrome, Edge, etc.) sans nécessiter d'installation.
-3. Lors de la première ouverture, cliquez sur le bouton **🔑 Configuration** en haut à droite, collez l'**URL de la Web App** Google Sheets obtenue à l'Étape 1, puis cliquez sur **Sauvegarder**.
-4. Le Dashboard va charger et afficher instantanément :
-   - **Vos indicateurs de prospection :** Nombre de passoires thermiques, quantité de DPE critiques (G et F), surface habitable moyenne.
-   - **Graphiques interactifs :** Répartition complète des classes énergétiques de A à G.
-   - **Registre des diagnostics :** Tableau de tous les DPE, triable sur toutes les colonnes, avec un filtre de recherche instantané par commune et par code postal.
-   - **Exportateur de données :** Un bouton **📤 Export CSV** pour télécharger immédiatement les DPE filtrés dans un fichier exploitable.
+> [!NOTE]
+> À la première exécution du script de diagnostic ou d'importation, **trois onglets** seront automatiquement créés et stylisés dans votre Google Sheet :
+> - **`Dashboard` :** Tableau de bord de pilotage avec les volumes de passoires thermiques, la répartition graphique A-G (couleur Prestige or) et le calendrier réglementaire.
+> - **`DPE_Actifs` :** Liste triée par date de récupération des DPE identifiés.
+> - **`Historique` :** Base de données interne des DPE traités pour éviter les doublons.
 
 ---
 
-## 🛠️ Étape 3 : Configuration locale du script d'extraction
+## 🛠️ Étape 2 : Installation du script local
 
 1. Ouvrez votre console Windows (PowerShell ou Invite de commandes) dans le dossier du projet :
    ```powershell
@@ -86,32 +74,37 @@ Nous avons conçu une interface web autonome et immersive (Édition Prestige) po
    pip install -r requirements.txt
    ```
 4. Ouvrez le fichier [config.json](file:///C:/Users/julien/OneDrive/Bureau/geminicli/Projets/DPE-Watcher/Python/config.json) et :
-   - Renseignez l'URL de votre Web App Google Sheets dans la clé `"web_app_url"`.
+   - Renseignez l'URL récupérée à l'Étape 1 dans la clé `"web_app_url"`.
    - Modifiez vos codes postaux sous `"codes_postaux"`.
    - Configurez vos identifiants d'envoi SMTP (Gmail, Brevo, etc.) sous `"email"`.
-5. Validez l'installation et les connexions en exécutant le diagnostic :
+5. Validez l'installation et les connexions réseau en exécutant le script de diagnostic :
    ```powershell
    python test_installation.py
    ```
 
 ---
 
-## 🚀 Étape 4 : Planification bi-quotidienne Windows (7j/7)
+## 🚀 Étape 3 : Planification bi-quotidienne Windows (7j/7)
 
 Pour configurer une vérification automatique **le matin à 07h00** et **le soir à 23h55** :
 
 1. Ouvrez le **Planificateur de tâches** Windows (Task Scheduler).
 2. Dans le panneau de droite, cliquez sur **Créer une tâche...** (et non une tâche de base).
-3. **Onglet Général :** Nommez la tâche `DPE Watcher - Veille ADEME`. Sélectionnez *Exécuter même si l'utilisateur n'est pas connecté* et cochez *Exécuter avec les autorisations les plus élevées*.
+3. **Onglet Général :**
+   - Nommez la tâche : `DPE Watcher - Veille ADEME`
+   - Sélectionnez *Exécuter même si l'utilisateur n'est pas connecté* et cochez *Exécuter avec les autorisations les plus élevées*.
 4. **Onglet Déclencheurs :** Cliquez sur **Nouveau...** :
-   - **Déclencheur 1 (Matin) :** Sélectionnez *Chaque jour*, réglez l'heure sur **07:00:00**, répétez tous les 1 jours, cochez *Activé*.
-   - **Déclencheur 2 (Soir) :** Cliquez à nouveau sur *Nouveau...*, sélectionnez *Chaque jour*, réglez l'heure sur **23:55:00**, cochez *Activé*.
-5. **Onglet Actions :** Cliquez sur **Nouveau...** > Démarrer un programme > Sélectionnez le fichier batch :
-   `C:\Users\julien\OneDrive\Bureau\geminicli\Projets\DPE-Watcher\Python\run_dpe_watcher.bat`
-   - *Commencer dans :* Indiquez le chemin absolu du dossier Python :
+   - **Déclencheur 1 (Matin) :** Sélectionnez *Chaque jour*, réglez l'heure sur **07:00:00**, répétez tous les 1 jours, cochez *Activé*. Cliquez sur OK.
+   - Cliquez à nouveau sur **Nouveau...** :
+   - **Déclencheur 2 (Soir) :** Sélectionnez *Chaque jour*, réglez l'heure sur **23:55:00**, répétez tous les 1 jours, cochez *Activé*. Cliquez sur OK.
+5. **Onglet Actions :** Cliquez sur **Nouveau...** :
+   - **Action :** Démarrer un programme.
+   - **Programme/script :** Sélectionnez le chemin absolu de votre fichier batch :
+     `C:\Users\julien\OneDrive\Bureau\geminicli\Projets\DPE-Watcher\Python\run_dpe_watcher.bat`
+   - **Commencer dans (facultatif) :** Renseignez absolument le dossier Python (pour la résolution des chemins relatifs) :
      `C:\Users\julien\OneDrive\Bureau\geminicli\Projets\DPE-Watcher\Python\`
-6. **Onglet Conditions :** Décochez *Démarrer la tâche uniquement si l'ordinateur est alimenté par secteur*.
-7. Cliquez sur **OK** et saisissez votre mot de passe de session.
+6. **Onglet Conditions :** Décochez *Démarrer la tâche uniquement si l'ordinateur est alimenté par secteur* (si vous utilisez un PC portable).
+7. Cliquez sur **OK** et saisissez votre mot de passe de session Windows si demandé.
 
 ---
 
@@ -122,7 +115,7 @@ Puisque cet outil est destiné à une tierce personne, voici la marche à suivre
 1. **Création de la boîte mail projet :** Créez une adresse Gmail neutre (ex : `dpe.watcher.client@gmail.com`).
 2. **Propriété Google Sheet :** 
    - Créez le Google Sheet sur cette boîte mail.
-   - Partagez-le avec l'adresse du client et nommez-le **Propriétaire** (Owner).
+   - Si vous l'avez créé sur votre compte personnel, partagez-le avec l'adresse du client et nommez-le **Propriétaire** (Owner).
    - Ouvrez Apps Script sur le compte du client, et effectuez le déploiement (Étape 1) pour obtenir une URL de Web App rattachée à son compte. Renseignez cette URL dans le `config.json` final.
 3. **Propriété GitHub :** Invitez le compte GitHub du tiers (`https://github.com/...`) en tant que collaborateur ou transférez-lui directement le dépôt privé.
 4. **Remise des identifiants :** Donnez-lui le mot de passe de la boîte Gmail projet (qui lui permettra d'accéder au Google Sheet, à Render, à Brevo et à GitHub).
