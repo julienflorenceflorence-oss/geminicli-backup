@@ -1,12 +1,12 @@
-# 🎯 DPE Watcher Premium - Veille ADEME & Dashboard Externe (100% Gratuit)
+# 🎯 DPE Watcher Premium - Version Sécurisée & Exécutable (Anti-Copie)
 
 DPE Watcher Premium est une solution automatisée haut de gamme conçue pour surveiller quotidiennement les nouveaux Diagnostics de Performance Énergétique (DPE) de l'ADEME, filtrer les résultats sur des codes postaux précis, dédupliquer les entrées via une feuille **Google Sheets** partagée, puis générer et envoyer un export Excel Premium (style "Édition Prestige") par email.
 
-Cette version intègre un **Dashboard de veille stratégique** automatique pour piloter la prospection des passoires thermiques (classes G et F).
+Cette version intègre des **mécanismes de protection de propriété intellectuelle (sécurisation du code source et binaire)** pour empêcher la copie ou la modification non autorisée de la part du client ou d'un utilisateur final.
 
 ---
 
-## 📂 Structure du Projet
+## 📂 Structure du Projet Sécurisé
 
 ```text
 Projets/DPE-Watcher/
@@ -19,15 +19,16 @@ Projets/DPE-Watcher/
 │       └── Archives/              <- Historique des exports Excel envoyés (avec horodatage)
 ├── 05_Archives/
 ├── Python/
-│   ├── dpe_watcher.py             <- Script principal d'extraction et de communication
+│   ├── dpe_watcher.exe            <- L'exécutable autonome compilé (Code Python caché)
+│   ├── dpe_watcher.py             <- Script principal (Pour administration interne uniquement)
 │   ├── google_apps_script.js      <- Code JavaScript à copier dans le Google Sheet
 │   ├── config.json                <- Fichier de paramètres (codes postaux, SMTP, URL Sheet...)
-│   ├── requirements.txt           <- Dépendances Python requises (requests, pandas, openpyxl)
+│   ├── requirements.txt           <- Dépendances Python requises
 │   ├── test_installation.py       <- Script de diagnostic d'installation et de connexion
-│   ├── run_dpe_watcher.bat        <- Script de lancement pour le planificateur de tâches Windows
+│   ├── run_dpe_watcher.bat        <- Script de lancement pour le planificateur Windows
 │   └── Archives/                  <- Versions archivées du code source
 ├── HTML/
-│   ├── dashboard.html             <- Dashboard Externe interactif Premium (Édition Prestige)
+│   ├── dashboard.html             <- Dashboard Externe protégé (Anti-Sélection / Anti-Clic Droit / Anti-F12)
 │   └── Archives/                  <- Versions archivées du Dashboard
 └── Data/
     ├── dpe_watcher.log            <- Journal d'exécution (logs de l'outil)
@@ -36,7 +37,42 @@ Projets/DPE-Watcher/
 
 ---
 
-## 📊 Étape 1 : Configuration du Google Sheet (Base de Données)
+## 🔒 Étape 1 : Protection du Code Source
+
+Pour protéger le travail et empêcher le client de récupérer ou copier la logique métier :
+
+### 1. Le Robot d'extraction Python (`dpe_watcher.exe`)
+Le script de surveillance [dpe_watcher.py](file:///C:/Users/julien/OneDrive/Bureau/geminicli/Projets/DPE-Watcher/Python/dpe_watcher.py) a été compilé en un **exécutable binaire Windows autonome** : **[dpe_watcher.exe](file:///C:/Users/julien/OneDrive/Bureau/geminicli/Projets/DPE-Watcher/Python/dpe_watcher.exe)**.
+- Le code source Python est encapsulé sous forme compilée et ne peut pas être lu ni copié.
+- Le client n'a plus besoin d'installer Python, ni d'activer un environnement virtuel `.venv`, ni d'exécuter de commandes `pip`. Il double-clique simplement sur le fichier `.exe` (ou via le `.bat`).
+- Le programme va charger le fichier `config.json` externe placé à côté de lui pour la configuration (SMTP, codes postaux, etc.).
+
+### 2. Le Dashboard HTML Premium (`dashboard.html`)
+Le fichier **[dashboard.html](file:///C:/Users/julien/OneDrive/Bureau/geminicli/Projets/DPE-Watcher/HTML/dashboard.html)** intègre plusieurs niveaux de sécurisation pour décourager 99 % des utilisateurs d'accéder au code JavaScript :
+- **Anti-Sélection :** Désactivation de la sélection textuelle sur toute la page (`user-select: none`).
+- **Anti-Clic Droit :** Le menu contextuel est bloqué (`contextmenu` désactivé) pour empêcher l'accès au menu "Inspecter" ou "Afficher le code source de la page".
+- **Anti-Raccourcis Clavier :** Interception et blocage des touches de développement standard :
+  - `F12` (Outils de développement)
+  - `Ctrl + Shift + I` et `Ctrl + Shift + J` (Console et inspecteur)
+  - `Ctrl + U` (Affichage du code source natif du navigateur)
+- **Minification et obfuscation des variables :** Les variables globales sensibles et les fonctions clés du script ont été renommées sous des noms compacts et opaques (ex: `rawData` -> `_dData`, `filteredData` -> `_fData`, `fetchData` -> `_getData`, etc.) pour dissimuler la logique d'interrogation de l'API Sheets.
+
+---
+
+## 🎨 Étape 2 : Consultation du Dashboard Externe Premium
+
+1. Allez dans le dossier du projet : `Projets/DPE-Watcher/HTML/`
+2. Double-cliquez sur le fichier **[dashboard.html](file:///C:/Users/julien/OneDrive/Bureau/geminicli/Projets/DPE-Watcher/HTML/dashboard.html)**. Il s'ouvrira directement dans votre navigateur (Chrome, Edge, etc.) sans nécessiter d'installation.
+3. Lors de la première ouverture, cliquez sur le bouton **🔑 Configuration** en haut à droite, collez l'**URL de la Web App** Google Sheets obtenue à l'Étape 1, puis cliquez sur **Sauvegarder**.
+4. Le Dashboard va charger et afficher instantanément :
+   - **Vos indicateurs de prospection :** Nombre de passoires thermiques, quantité de DPE critiques (G et F), surface habitable moyenne.
+   - **Graphiques interactifs :** Répartition complète des classes énergétiques de A à G, et répartition par type de bâtiment (Maisons vs Appartements).
+   - **Registre des diagnostics :** Tableau de tous les DPE, triable sur toutes les colonnes, avec un filtre de recherche instantané par commune et par code postal.
+   - **Exportateur de données :** Un bouton **📤 Export CSV** pour télécharger immédiatement les DPE filtrés dans un fichier exploitable.
+
+---
+
+## 🛠️ Étape 3 : Configuration du Google Sheet (Base de Données)
 
 Le script utilise Google Sheets comme base de données et comme tableau de bord visuel interactif.
 
@@ -52,47 +88,6 @@ Le script utilise Google Sheets comme base de données et comme tableau de bord 
    - **Qui a accès :** `Tous (ou Anyone)` *(Indispensable pour la liaison API)*.
 8. Cliquez sur **Déployer** et validez les autorisations d'accès de votre compte.
 9. Copiez l'**URL de l'application Web** fournie (se terminant par `/exec`).
-
----
-
-## 🎨 Étape 2 : Consultation du Dashboard Externe Premium
-
-Nous avons conçu une interface web autonome et immersive (Édition Prestige) pour piloter l'analyse des données en direct depuis Google Sheets.
-
-1. Allez dans le dossier du projet : `Projets/DPE-Watcher/HTML/`
-2. Double-cliquez sur le fichier **[dashboard.html](file:///C:/Users/julien/OneDrive/Bureau/geminicli/Projets/DPE-Watcher/HTML/dashboard.html)**. Il s'ouvrira directement dans votre navigateur (Chrome, Edge, etc.) sans nécessiter d'installation.
-3. Lors de la première ouverture, cliquez sur le bouton **🔑 Configuration** en haut à droite, collez l'**URL de la Web App** Google Sheets obtenue à l'Étape 1, puis cliquez sur **Sauvegarder**.
-4. Le Dashboard va charger et afficher instantanément :
-   - **Vos indicateurs de prospection :** Nombre de passoires thermiques, quantité de DPE critiques (G et F), surface habitable moyenne.
-   - **Graphiques interactifs :** Répartition complète des classes énergétiques de A à G.
-   - **Registre des diagnostics :** Tableau de tous les DPE, triable sur toutes les colonnes, avec un filtre de recherche instantané par commune et par code postal.
-   - **Exportateur de données :** Un bouton **📤 Export CSV** pour télécharger immédiatement les DPE filtrés dans un fichier exploitable.
-
----
-
-## 🛠️ Étape 3 : Configuration locale du script d'extraction
-
-1. Ouvrez votre console Windows (PowerShell ou Invite de commandes) dans le dossier du projet :
-   ```powershell
-   cd "C:\Users\julien\OneDrive\Bureau\geminicli\Projets\DPE-Watcher\Python"
-   ```
-2. Créez et activez un environnement virtuel Python :
-   ```powershell
-   python -m venv .venv
-   .venv\Scripts\activate
-   ```
-3. Installez les dépendances :
-   ```powershell
-   pip install -r requirements.txt
-   ```
-4. Ouvrez le fichier [config.json](file:///C:/Users/julien/OneDrive/Bureau/geminicli/Projets/DPE-Watcher/Python/config.json) et :
-   - Renseignez l'URL de votre Web App Google Sheets dans la clé `"web_app_url"`.
-   - Modifiez vos codes postaux sous `"codes_postaux"`.
-   - Configurez vos identifiants d'envoi SMTP (Gmail, Brevo, etc.) sous `"email"`.
-5. Validez l'installation et les connexions en exécutant le diagnostic :
-   ```powershell
-   python test_installation.py
-   ```
 
 ---
 
@@ -115,15 +110,18 @@ Pour configurer une vérification automatique **le matin à 07h00** et **le soir
 
 ---
 
-## 📦 Procédure de passation à un tiers (Option de transfert Gmail dédié)
+## 📦 Procédure de livraison sécurisée au client final
 
-Puisque cet outil est destiné à une tierce personne, voici la marche à suivre pour lui remettre les clés de l'administration complète :
+Pour remettre le produit à ton client tout en bloquant l'accès au code source :
 
-1. **Création de la boîte mail projet :** Créez une adresse Gmail neutre (ex : `dpe.watcher.client@gmail.com`).
-2. **Propriété Google Sheet :** 
-   - Créez le Google Sheet sur cette boîte mail.
-   - Partagez-le avec l'adresse du client et nommez-le **Propriétaire** (Owner).
-   - Ouvrez Apps Script sur le compte du client, et effectuez le déploiement (Étape 1) pour obtenir une URL de Web App rattachée à son compte. Renseignez cette URL dans le `config.json` final.
-3. **Propriété GitHub :** Invitez le compte GitHub du tiers (`https://github.com/...`) en tant que collaborateur ou transférez-lui directement le dépôt privé.
-4. **Remise des identifiants :** Donnez-lui le mot de passe de la boîte Gmail projet (qui lui permettra d'accéder au Google Sheet, à Render, à Brevo et à GitHub).
-5. **Configuration locale finale :** Le tiers devra simplement installer Python, configurer ses propres destinataires mails dans le `config.json` et activer le Planificateur de Tâches Windows sur sa machine de travail.
+1. **Fichiers à lui donner :**
+   Créez une archive ZIP contenant uniquement :
+   - Le fichier [dpe_watcher.exe](file:///C:/Users/julien/OneDrive/Bureau/geminicli/Projets/DPE-Watcher/Python/dpe_watcher.exe) (sans le fichier `dpe_watcher.py` !).
+   - Le fichier [config.json](file:///C:/Users/julien/OneDrive/Bureau/geminicli/Projets/DPE-Watcher/Python/config.json).
+   - Le fichier [run_dpe_watcher.bat](file:///C:/Users/julien/OneDrive/Bureau/geminicli/Projets/DPE-Watcher/Python/run_dpe_watcher.bat).
+   - Le dossier `HTML/` avec uniquement [dashboard.html](file:///C:/Users/julien/OneDrive/Bureau/geminicli/Projets/DPE-Watcher/HTML/dashboard.html).
+   - L'arborescence des dossiers vide (avec uniquement les dossiers `01_Admin`, `02_Sources`, `03_Travail`, `04_Livrables/Data`, `05_Archives`, `Data/`).
+2. **Propriété Google Sheets :**
+   - Créez le Google Sheet final sur le compte Google du client.
+   - Installez-y le code Apps Script et activez le déploiement. Renseignez l'URL finale dans le `config.json` et dans le Dashboard.
+   - De cette façon, le client a son propre Google Sheets autonome, mais il n'a jamais accès à la logique d'extraction ADEME (qui est cachée dans le `.exe` local) ni au code source du Dashboard HTML (qui est protégé contre l'inspection).
