@@ -2,7 +2,7 @@
  * Google Apps Script pour DPE Watcher Premium
  * -------------------------------------------
  * Ce script gère la base de données DPE (Historique, DPE Actifs), génère
- * automatiquement un Dashboard Sheets et expose une API de lecture 
+ * automatiquement un Dashboard Sheets et expose une API de lecture (CORS OK)
  * pour alimenter le Dashboard Externe Premium en temps réel.
  */
 
@@ -12,7 +12,8 @@ function doGet(e) {
     var sheetActifs = ss.getSheetByName("DPE_Actifs");
     if (!sheetActifs) {
       return ContentService.createTextOutput(JSON.stringify({ "success": true, "dpes": [] }))
-                           .setMimeType(ContentService.MimeType.JSON);
+                           .setMimeType(ContentService.MimeType.JSON)
+                           .setHeaders({ "Access-Control-Allow-Origin": "*" });
     }
     
     var lastRow = sheetActifs.getLastRow();
@@ -51,11 +52,14 @@ function doGet(e) {
       }
     }
     
+    // Renvoyer les données au format JSON avec les en-têtes CORS nécessaires
     return ContentService.createTextOutput(JSON.stringify({ "success": true, "dpes": dpes }))
-                         .setMimeType(ContentService.MimeType.JSON);
+                         .setMimeType(ContentService.MimeType.JSON)
+                         .setHeaders({ "Access-Control-Allow-Origin": "*" });
   } catch (error) {
     return ContentService.createTextOutput(JSON.stringify({ "error": error.toString() }))
-                         .setMimeType(ContentService.MimeType.JSON);
+                         .setMimeType(ContentService.MimeType.JSON)
+                         .setHeaders({ "Access-Control-Allow-Origin": "*" });
   }
 }
 
@@ -67,14 +71,17 @@ function doPost(e) {
     if (action === "check_and_add") {
       var result = handleCheckAndAdd(requestData.dpes);
       return ContentService.createTextOutput(JSON.stringify(result))
-                           .setMimeType(ContentService.MimeType.JSON);
+                           .setMimeType(ContentService.MimeType.JSON)
+                           .setHeaders({ "Access-Control-Allow-Origin": "*" });
     } else {
       return ContentService.createTextOutput(JSON.stringify({ "error": "Action inconnue" }))
-                           .setMimeType(ContentService.MimeType.JSON);
+                           .setMimeType(ContentService.MimeType.JSON)
+                           .setHeaders({ "Access-Control-Allow-Origin": "*" });
     }
   } catch (error) {
     return ContentService.createTextOutput(JSON.stringify({ "error": error.toString() }))
-                         .setMimeType(ContentService.MimeType.JSON);
+                         .setMimeType(ContentService.MimeType.JSON)
+                         .setHeaders({ "Access-Control-Allow-Origin": "*" });
   }
 }
 
