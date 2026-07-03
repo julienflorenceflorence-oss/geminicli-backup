@@ -36,6 +36,11 @@
             min-height: 100vh;
             padding: 30px;
             overflow-x: hidden;
+            /* Anti-sélection de texte basique */
+            user-select: none;
+            -webkit-user-select: none;
+            -moz-user-select: none;
+            -ms-user-select: none;
         }
 
         /* Scrollbar Premium */
@@ -515,30 +520,32 @@
 
     <!-- KPIs Grid -->
     <div class="kpi-grid">
-        <div class="kpi-card">
-            <div class="kpi-title">DPE Analysés</div>
-            <div class="kpi-value" id="kpi-total">0</div>
-            <div class="kpi-desc">Total dans la base de données</div>
-        </div>
-        <div class="kpi-card passoire">
-            <div class="kpi-title">Passoires Thermiques</div>
-            <div class="kpi-value" id="kpi-passoires">0</div>
-            <div class="kpi-desc">Total classés F et G</div>
-        </div>
-        <div class="kpi-card passoire">
-            <div class="kpi-title">Classe G (Déjà interdits)</div>
-            <div class="kpi-value" id="kpi-g">0</div>
-            <div class="kpi-desc">Interdit à la location</div>
-        </div>
-        <div class="kpi-card cible">
-            <div class="kpi-title">Classe F (Échéance 2028)</div>
-            <div class="kpi-value" id="kpi-f">0</div>
-            <div class="kpi-desc">Prochaine cible prospection</div>
-        </div>
-        <div class="kpi-card">
-            <div class="kpi-title">Surf. Moyenne Passoires</div>
-            <div class="kpi-value" id="kpi-surface">0 m²</div>
-            <div class="kpi-desc">Pour les logements F &amp; G</div>
+        <div class="kpi-grid-container" style="display:contents;">
+            <div class="kpi-card">
+                <div class="kpi-title">DPE Analysés</div>
+                <div class="kpi-value" id="kpi-total">0</div>
+                <div class="kpi-desc">Total dans la base de données</div>
+            </div>
+            <div class="kpi-card passoire">
+                <div class="kpi-title">Passoires Thermiques</div>
+                <div class="kpi-value" id="kpi-passoires">0</div>
+                <div class="kpi-desc">Total classés F et G</div>
+            </div>
+            <div class="kpi-card passoire">
+                <div class="kpi-title">Classe G (Déjà interdits)</div>
+                <div class="kpi-value" id="kpi-g">0</div>
+                <div class="kpi-desc">Interdit à la location</div>
+            </div>
+            <div class="kpi-card cible">
+                <div class="kpi-title">Classe F (Échéance 2028)</div>
+                <div class="kpi-value" id="kpi-f">0</div>
+                <div class="kpi-desc">Prochaine cible prospection</div>
+            </div>
+            <div class="kpi-card">
+                <div class="kpi-title">Surf. Moyenne Passoires</div>
+                <div class="kpi-value" id="kpi-surface">0 m²</div>
+                <div class="kpi-desc">Pour les logements F &amp; G</div>
+            </div>
         </div>
     </div>
 
@@ -642,16 +649,25 @@
 </div>
 
 <script>
-    // Variables d'état
-    let rawData = [];
-    let filteredData = [];
-    let currentSort = { col: 'date_recup', asc: false };
-    
-    // Graphiques
-    let dpeChart = null;
-    let typeChart = null;
+    // --- PROTECTION ANTICOPIS ---
+    // Désactiver le clic droit
+    document.addEventListener('contextmenu', function(e) { e.preventDefault(); });
+    // Désactiver les touches de développement
+    document.addEventListener('keydown', function(e) {
+        // F12 (123) ou Ctrl+Shift+I (73) ou Ctrl+Shift+J (74) ou Ctrl+U (85)
+        if (e.keyCode === 123 || (e.ctrlKey && e.shiftKey && (e.keyCode === 73 || e.keyCode === 74)) || (e.ctrlKey && e.keyCode === 85)) {
+            e.preventDefault();
+            return false;
+        }
+    });
 
-    // Éléments du DOM
+    // --- VARIABLES D'ETAT OBFUSQUEES ---
+    let _dData = [];
+    let _fData = [];
+    let _cSort = { col: 'date_recup', asc: false };
+    let _dChart = null;
+    let _tChart = null;
+
     const modal = document.getElementById('config-modal');
     const configBtn = document.getElementById('config-btn');
     const closeModalBtn = document.getElementById('close-modal-btn');
@@ -660,91 +676,71 @@
     const refreshBtn = document.getElementById('refresh-btn');
     const loader = document.getElementById('api-loader');
 
-    // Filtres
     const searchCommune = document.getElementById('search-commune');
     const searchCp = document.getElementById('search-cp');
     const filterClasse = document.getElementById('filter-classe');
     const tableBody = document.getElementById('dpe-table-body');
     const exportCsvBtn = document.getElementById('export-csv-btn');
 
-    // Au chargement de la page
     window.addEventListener('load', () => {
         const savedUrl = localStorage.getItem('dpe_web_app_url');
         if (savedUrl) {
             urlInput.value = savedUrl;
-            fetchData(savedUrl);
+            _getData(savedUrl);
         } else {
             modal.style.display = 'flex';
         }
-        initCharts();
+        _initCharts();
     });
 
-    // Événements Modal & Config
-    configBtn.addEventListener('click', () => {
-        modal.style.display = 'flex';
-    });
-    closeModalBtn.addEventListener('click', () => {
-        modal.style.display = 'none';
-    });
+    configBtn.addEventListener('click', () => { modal.style.display = 'flex'; });
+    closeModalBtn.addEventListener('click', () => { modal.style.display = 'none'; });
     saveConfigBtn.addEventListener('click', () => {
         const url = urlInput.value.trim();
         if (url) {
             localStorage.setItem('dpe_web_app_url', url);
             modal.style.display = 'none';
-            fetchData(url);
+            _getData(url);
         }
     });
 
-    // Actualiser
     refreshBtn.addEventListener('click', () => {
         const url = localStorage.getItem('dpe_web_app_url');
-        if (url) {
-            fetchData(url);
-        } else {
-            modal.style.display = 'flex';
-        }
+        if (url) { _getData(url); } else { modal.style.display = 'flex'; }
     });
 
-    // Fetch des données de l'API Google Apps Script
-    async function fetchData(url) {
+    async function _getData(url) {
         loader.style.display = 'block';
         refreshBtn.disabled = true;
-        
         try {
             const response = await fetch(url);
-            if (!response.ok) throw new Error("HTTP error " + response.status);
+            if (!response.ok) throw new Error("HTTP " + response.status);
             const data = await response.json();
-            
             if (data.error) {
-                alert("Erreur de l'API : " + data.error);
+                alert("Erreur API : " + data.error);
                 return;
             }
-            
-            rawData = data.dpes || [];
-            applyFilters();
+            _dData = data.dpes || [];
+            _filter();
         } catch (error) {
             console.error(error);
-            alert("Erreur lors de la récupération des données. Vérifiez l'URL de votre Web App Apps Script et assurez-vous qu'elle est déployée avec accès 'Anyone'.");
+            alert("Erreur lors de la récupération des données. Vérifiez l'URL de votre Web App Apps Script.");
         } finally {
             loader.style.display = 'none';
             refreshBtn.disabled = false;
         }
     }
 
-    // Gestion des Graphiques
-    function initCharts() {
-        // 1. Graphique répartition DPE (A-G)
+    function _initCharts() {
         const ctxDpe = document.getElementById('dpeChart').getContext('2d');
-        dpeChart = new Chart(ctxDpe, {
+        _dChart = new Chart(ctxDpe, {
             type: 'bar',
             data: {
                 labels: ['A', 'B', 'C', 'D', 'E', 'F', 'G'],
                 datasets: [{
-                    label: 'Nombre de logements',
+                    label: 'Nombre',
                     data: [0, 0, 0, 0, 0, 0, 0],
-                    backgroundColor: [
-                        '#10B981', '#34D399', '#6EE7B7', '#FBBF24', '#F59E0B', '#EF4444', '#B91C1C'
-                    ],
+                    backgroundColor: ['#10B981', '#34D399', '#6EE7B7', '#FBBF24', '#F59E0B', '#EF4444', '#B91C1C'],
                     borderColor: 'rgba(212, 175, 55, 0.3)',
                     borderWidth: 1
                 }]
@@ -752,35 +748,22 @@
             options: {
                 responsive: true,
                 maintainAspectRatio: false,
-                plugins: {
-                    legend: { display: false },
-                    title: { display: false }
-                },
+                plugins: { legend: { display: false } },
                 scales: {
-                    y: {
-                        beginAtZero: true,
-                        grid: { color: 'rgba(255, 255, 255, 0.05)' },
-                        ticks: { color: '#9CA3AF' }
-                    },
-                    x: {
-                        grid: { display: false },
-                        ticks: { color: '#9CA3AF' }
-                    }
+                    y: { beginAtZero: true, grid: { color: 'rgba(255, 255, 255, 0.05)' }, ticks: { color: '#9CA3AF' } },
+                    x: { grid: { display: false }, ticks: { color: '#9CA3AF' } }
                 }
             }
         });
 
-        // 2. Graphique par Type de Bâtiment (Maison, Appartement, Immeuble...)
         const ctxType = document.getElementById('typeChart').getContext('2d');
-        typeChart = new Chart(ctxType, {
+        _tChart = new Chart(ctxType, {
             type: 'doughnut',
             data: {
                 labels: ['Maison', 'Appartement', 'Immeuble', 'Autre'],
                 datasets: [{
                     data: [0, 0, 0, 0],
-                    backgroundColor: [
-                        '#D4AF37', '#3B82F6', '#8B5CF6', '#9CA3AF'
-                    ],
+                    backgroundColor: ['#D4AF37', '#3B82F6', '#8B5CF6', '#9CA3AF'],
                     borderColor: '#0F1115',
                     borderWidth: 2
                 }]
@@ -800,87 +783,57 @@
         });
     }
 
-    function updateCharts(data) {
-        if (!dpeChart || !typeChart) return;
-        
-        // 1. Calcul répartition DPE A-G
+    function _charts(data) {
+        if (!_dChart || !_tChart) return;
         const dpeStats = { 'A': 0, 'B': 0, 'C': 0, 'D': 0, 'E': 0, 'F': 0, 'G': 0 };
-        // 2. Calcul répartition Type Batiment
         const typeStats = { 'maison': 0, 'appartement': 0, 'immeuble': 0, 'autre': 0 };
 
         data.forEach(item => {
-            // DPE
-            if (dpeStats[item.etiquette_dpe] !== undefined) {
-                dpeStats[item.etiquette_dpe]++;
-            }
-            
-            // Type Bâtiment (casse insensible et gestion des vides)
+            if (dpeStats[item.etiquette_dpe] !== undefined) { dpeStats[item.etiquette_dpe]++; }
             const typeRaw = (item.type_batiment || '').toLowerCase().trim();
-            if (typeRaw.includes('maison')) {
-                typeStats['maison']++;
-            } else if (typeRaw.includes('appartement')) {
-                typeStats['appartement']++;
-            } else if (typeRaw.includes('immeuble')) {
-                typeStats['immeuble']++;
-            } else {
-                typeStats['autre']++;
-            }
+            if (typeRaw.includes('maison')) { typeStats['maison']++; }
+            else if (typeRaw.includes('appartement')) { typeStats['appartement']++; }
+            else if (typeRaw.includes('immeuble')) { typeStats['immeuble']++; }
+            else { typeStats['autre']++; }
         });
 
-        // MAJ Graphique DPE
-        dpeChart.data.datasets[0].data = [
-            dpeStats['A'], dpeStats['B'], dpeStats['C'], dpeStats['D'], dpeStats['E'], dpeStats['F'], dpeStats['G']
-        ];
-        dpeChart.update();
+        _dChart.data.datasets[0].data = [dpeStats['A'], dpeStats['B'], dpeStats['C'], dpeStats['D'], dpeStats['E'], dpeStats['F'], dpeStats['G']];
+        _dChart.update();
 
-        // MAJ Graphique Type
-        typeChart.data.datasets[0].data = [
-            typeStats['maison'],
-            typeStats['appartement'],
-            typeStats['immeuble'],
-            typeStats['autre']
-        ];
-        typeChart.update();
+        _tChart.data.datasets[0].data = [typeStats['maison'], typeStats['appartement'], typeStats['immeuble'], typeStats['autre']];
+        _tChart.update();
     }
 
-    // Filtres et Calculs statistiques
-    function applyFilters() {
-        const communeQuery = searchCommune.value.toLowerCase().trim();
-        const cpQuery = searchCp.value.trim();
-        const classFilter = filterClasse.value;
+    function _filter() {
+        const commQ = searchCommune.value.toLowerCase().trim();
+        const cpQ = searchCp.value.trim();
+        const clF = filterClasse.value;
 
-        filteredData = rawData.filter(item => {
-            const matchCommune = !communeQuery || item.commune.toLowerCase().includes(communeQuery);
-            const matchCp = !cpQuery || item.code_postal.includes(cpQuery);
-            
+        _fData = _dData.filter(item => {
+            const matchCommune = !commQ || item.commune.toLowerCase().includes(commQ);
+            const matchCp = !cpQ || item.code_postal.includes(cpQ);
             let matchClasse = true;
-            if (classFilter === "FG") {
-                matchClasse = (item.etiquette_dpe === "F" || item.etiquette_dpe === "G");
-            } else if (classFilter) {
-                matchClasse = item.etiquette_dpe === classFilter;
-            }
-
+            if (clF === "FG") { matchClasse = (item.etiquette_dpe === "F" || item.etiquette_dpe === "G"); }
+            else if (clF) { matchClasse = item.etiquette_dpe === clF; }
             return matchCommune && matchCp && matchClasse;
         });
 
-        sortData();
-        calculateKpis(filteredData);
-        renderTable();
+        _sort();
+        _kpi(_fData);
+        _table();
     }
 
-    searchCommune.addEventListener('input', applyFilters);
-    searchCp.addEventListener('input', applyFilters);
-    filterClasse.addEventListener('change', applyFilters);
+    searchCommune.addEventListener('input', _filter);
+    searchCp.addEventListener('input', _filter);
+    filterClasse.addEventListener('change', _filter);
 
-    function calculateKpis(data) {
+    function _kpi(data) {
         const total = data.length;
-        
         const countG = data.filter(item => item.etiquette_dpe === 'G').length;
         const countF = data.filter(item => item.etiquette_dpe === 'F').length;
         const countE = data.filter(item => item.etiquette_dpe === 'E').length;
         const countPassoires = countG + countF;
 
-        // Calcul de la surface moyenne
         const passoires = data.filter(item => (item.etiquette_dpe === 'F' || item.etiquette_dpe === 'G') && item.surface_habitable);
         let avgSurface = 0;
         if (passoires.length > 0) {
@@ -888,35 +841,25 @@
             avgSurface = (sum / passoires.length).toFixed(1);
         }
 
-        // MAJ du DOM
         document.getElementById('kpi-total').innerText = total;
         document.getElementById('kpi-passoires').innerText = countPassoires;
         document.getElementById('kpi-g').innerText = countG;
         document.getElementById('kpi-f').innerText = countF;
         document.getElementById('kpi-surface').innerText = avgSurface > 0 ? `${avgSurface} m²` : "0 m²";
 
-        // Mettre à jour les deux graphiques
-        updateCharts(data);
+        _charts(data);
     }
 
-    // Affichage des données du tableau
-    function renderTable() {
+    function _table() {
         tableBody.innerHTML = '';
-
-        if (filteredData.length === 0) {
-            tableBody.innerHTML = `
-                <tr>
-                    <td colspan="8" class="empty-state">Aucun diagnostic trouvé pour ces filtres.</td>
-                </tr>
-            `;
+        if (_fData.length === 0) {
+            tableBody.innerHTML = `<tr><td colspan="8" class="empty-state">Aucun diagnostic trouvé.</td></tr>`;
             return;
         }
 
-        filteredData.forEach(item => {
+        _fData.forEach(item => {
             const row = document.createElement('tr');
-            
             const surfStr = item.surface_habitable ? parseFloat(item.surface_habitable).toFixed(1) : "-";
-
             row.innerHTML = `
                 <td><strong>${item.commune}</strong></td>
                 <td>${item.adresse}</td>
@@ -931,48 +874,36 @@
         });
     }
 
-    // Tri dynamique du tableau
-    function sortData() {
-        const col = currentSort.col;
-        const asc = currentSort.asc;
-
-        filteredData.sort((a, b) => {
+    function _sort() {
+        const col = _cSort.col;
+        const asc = _cSort.asc;
+        _fData.sort((a, b) => {
             let valA = a[col];
             let valB = b[col];
-
             if (col === 'surface_habitable') {
                 valA = valA ? parseFloat(valA) : 0;
                 valB = valB ? parseFloat(valB) : 0;
             }
-
             if (valA < valB) return asc ? -1 : 1;
             if (valA > valB) return asc ? 1 : -1;
             return 0;
         });
     }
 
-    // Ajouter des écouteurs sur les en-têtes
     document.querySelectorAll('#dpe-table th').forEach(th => {
         th.addEventListener('click', () => {
             const col = th.getAttribute('data-col');
-            if (currentSort.col === col) {
-                currentSort.asc = !currentSort.asc;
-            } else {
-                currentSort.col = col;
-                currentSort.asc = true;
-            }
-            applyFilters();
+            if (_cSort.col === col) { _cSort.asc = !_cSort.asc; }
+            else { _cSort.col = col; _cSort.asc = true; }
+            _filter();
         });
     });
 
-    // Export CSV
     exportCsvBtn.addEventListener('click', () => {
-        if (filteredData.length === 0) return;
-        
+        if (_fData.length === 0) return;
         let csvContent = "data:text/csv;charset=utf-8,";
         csvContent += "Commune;Adresse;Code Postal;Date Etablissement;Numero DPE;Type Batiment;Classe DPE;Surface Habitable;Date Recup\n";
-        
-        filteredData.forEach(item => {
+        _fData.forEach(item => {
             const row = [
                 `"${item.commune}"`,
                 `"${item.adresse.replace(/'/g, "''").replace(/"/g, '""')}"`,
@@ -986,11 +917,9 @@
             ].join(";");
             csvContent += row + "\n";
         });
-
         const encodedUri = encodeURI(csvContent);
         const link = document.createElement("a");
         link.setAttribute("href", encodedUri);
-        
         const timestamp = new Date().toISOString().split('T')[0];
         link.setAttribute("download", `DPE_Export_${timestamp}.csv`);
         document.body.appendChild(link);

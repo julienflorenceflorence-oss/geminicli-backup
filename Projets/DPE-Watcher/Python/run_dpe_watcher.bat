@@ -10,16 +10,18 @@ echo ===================================================
 :: Positionnement dans le dossier du script Python
 cd /d "%~dp0"
 
-:: Verification de la presence de l'environnement virtuel (.venv)
-if exist ".venv\Scripts\activate.bat" (
-    echo Activation de l'environnement virtuel local .venv...
-    call ".venv\Scripts\activate.bat"
+:: Verification de la presence de l'executable binaire compile (.exe)
+if exist "dpe_watcher.exe" (
+    echo Lancement de l'executable dpe_watcher.exe...
+    dpe_watcher.exe
 ) else (
-    echo Aucun environnement virtuel .venv trouve. Utilisation du Python global.
+    echo Executable introuvable. Tentative avec le script Python...
+    if exist ".venv\Scripts\activate.bat" (
+        echo Activation de l'environnement virtuel local .venv...
+        call ".venv\Scripts\activate.bat"
+    )
+    python dpe_watcher.py
 )
-
-:: Execution du script Python
-python dpe_watcher.py
 
 echo ===================================================
 echo Execution terminee.
