@@ -97,6 +97,10 @@ def filter_and_register_dpes_via_sheets(dpe_records):
         response.raise_for_status()
         
         result_data = response.json()
+        if "error" in result_data:
+            logger.error(f"La Web App Google Sheets a retourné une erreur : {result_data['error']}")
+            return []
+            
         new_dpes = result_data.get("new_dpes", [])
         logger.info(f"Réponse Google Sheets : {len(new_dpes)} nouveaux DPE enregistrés sur cette session.")
         return new_dpes
