@@ -20,11 +20,8 @@ try:
 except ImportError:
     PANDAS_AVAILABLE = False
 
-if getattr(sys, 'frozen', False):
-    SCRIPT_DIR = os.path.dirname(sys.executable)
-else:
-    SCRIPT_DIR = os.path.dirname(os.path.abspath(__file__))
-
+# Configuration globale du projet et chemins
+SCRIPT_DIR = os.path.dirname(os.path.abspath(__file__))
 CONFIG_FILE = os.path.join(SCRIPT_DIR, "config.json")
 
 # Charger la configuration
