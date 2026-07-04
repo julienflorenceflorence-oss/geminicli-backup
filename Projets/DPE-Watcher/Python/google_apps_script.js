@@ -184,7 +184,7 @@ function generateDashboard(ss) {
     sheetDash = ss.insertSheet("Dashboard", 0);
   }
   
-  sheetDash.setHideGridlines(true);
+  sheetDash.setHiddenGridlines(true);
   
   sheetDash.getRange("A1:K1").merge().setValue("VEILLE STRATÉGIQUE DPE & PASSOIRES THERMIQUES")
            .setFontWeight("bold").setFontSize(16).setFontColor("#D4AF37")
