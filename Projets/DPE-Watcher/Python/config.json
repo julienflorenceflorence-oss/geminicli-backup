@@ -33,7 +33,7 @@
       "julienflorence.florence@gmail.com"
     ],
     "subject_prefix": "[DPE Watcher]",
-    "send_email_if_empty": false
+    "send_email_if_empty": true
   },
   "google_sheets": {
     "web_app_url": "https://script.google.com/macros/s/AKfycby6_XHcLC8JviA4xK34jss5ys05XrDSo1P1oy4oT7T1_1Vh5_gUmBRSVvSOAL5WF59etQ/exec"
