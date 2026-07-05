@@ -67,11 +67,11 @@ async def generate_pdf(html_filename, pdf_filename):
 
 async def main():
     print("--- COMPILATEUR PDF PRESTIGE (CV & LETTRE DE MOTIVATION) ---")
-    cv_success = await generate_pdf("CV_Nextgen_Prestige.html", "CV_Julien_Florence_Nextgen.pdf")
-    lm_success = await generate_pdf("LM_Nextgen_Prestige.html", "LM_Julien_Florence_Nextgen.pdf")
+    cv_success = await generate_pdf("CV_MichaelPage_Prestige.html", "CV_Julien_Florence_MichaelPage.pdf")
+    lm_success = await generate_pdf("LM_MichaelPage_Prestige.html", "LM_Julien_Florence_MichaelPage.pdf")
     
     if cv_success and lm_success:
-        print("[*] Compilation de la candidature NEXTGEN RH terminée avec succès.")
+        print("[*] Compilation de la candidature MICHAEL PAGE terminée avec succès.")
     else:
         print("[X] Échec partiel ou total de la compilation.")
 
