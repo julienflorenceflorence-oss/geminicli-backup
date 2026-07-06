@@ -21,7 +21,9 @@ $FilesToCopy = @(
     "index.html",
     "diplomes.html",
     "bachelor-status.html",
-    "viewer.html"
+    "viewer.html",
+    "carte.html",
+    "qr-code.png"
 )
 
 $FoldersToCopy = @(
