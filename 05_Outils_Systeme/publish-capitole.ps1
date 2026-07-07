@@ -24,7 +24,8 @@ $FilesToCopy = @(
     "viewer.html",
     "carte.html",
     "qr-code.png",
-    "Carte_Julien_Florence_Capitole.png"
+    "Carte_Julien_Florence_Capitole.png",
+    "signature.html"
 )
 
 $FoldersToCopy = @(
