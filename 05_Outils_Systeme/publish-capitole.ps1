@@ -30,6 +30,7 @@ $FilesToCopy = @(
 
 $FoldersToCopy = @(
     "photo",
+    "video",
     "diplomes cadre"
 )
 
