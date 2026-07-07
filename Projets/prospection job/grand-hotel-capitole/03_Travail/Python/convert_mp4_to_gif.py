@@ -15,14 +15,14 @@ def convert_mp4_to_gif():
     print(f"[*] Lecture de la vidéo MP4 : {source_path}...")
     reader = imageio.get_reader(source_path)
     
-    print("[*] Optimisation avancée (1 frame sur 3, largeur 400px, vitesse originale 24 FPS)...")
-    # Nous lisons 1 frame sur 3 (pour diviser par 3 le poids initial)
-    # et écrivons le GIF à 8 FPS (24 / 3 = 8) pour conserver exactement la même vitesse d'exécution
-    writer = imageio.get_writer(dest_path, fps=8.0, loop=0)
+    print("[*] Optimisation ultime (1 frame sur 4, largeur 400px, vitesse originale 24 FPS)...")
+    # Nous lisons 1 frame sur 4 (pour diviser par 4 le poids initial)
+    # et écrivons le GIF à 6 FPS (24 / 4 = 6) pour conserver exactement la même vitesse d'exécution
+    writer = imageio.get_writer(dest_path, fps=6.0, loop=0)
     
     count = 0
     for frame in reader:
-        if count % 3 == 0:
+        if count % 4 == 0:
             # Redimensionner à 400px de large (excellent compromis qualité/poids pour e-mail)
             img = Image.fromarray(frame)
             img.thumbnail((400, 400))
