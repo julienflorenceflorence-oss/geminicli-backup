@@ -25,13 +25,15 @@ $FilesToCopy = @(
     "carte.html",
     "qr-code.png",
     "Carte_Julien_Florence_Capitole.png",
-    "signature.html"
+    "signature.html",
+    "cerveau 3.0.png"
 )
 
 $FoldersToCopy = @(
     "photo",
     "video",
-    "diplomes cadre"
+    "diplomes cadre",
+    "histoire Happy House"
 )
 
 foreach ($file in $FilesToCopy) {
