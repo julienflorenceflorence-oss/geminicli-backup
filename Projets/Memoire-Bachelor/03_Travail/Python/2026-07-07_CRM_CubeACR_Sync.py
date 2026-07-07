@@ -47,24 +47,14 @@ def rebuild_crm_html():
         email = row.get('email', 'Non précisé')
         web = row.get('web', '')
         
-        # Vérifier s'il y a un enregistrement Cube ACR associé à ce numéro
-        clean_phone = re.sub(r'\D', '', str(phone))
-        audio_filename = f"enregistrement_{clean_phone}.wav"
-        # Prendre en charge aussi le format mp3 natif de Cube ACR
-        audio_filename_mp3 = f"enregistrement_{clean_phone}.mp3"
-        
-        audio_path_wav = os.path.join(AUDIO_DEST_DIR, audio_filename)
-        audio_path_mp3 = os.path.join(AUDIO_DEST_DIR, audio_filename_mp3)
-        
-        active_audio_filename = None
-        if os.path.exists(audio_path_wav):
-            active_audio_filename = audio_filename
-        elif os.path.exists(audio_path_mp3):
-            active_audio_filename = audio_filename_mp3
-            
+        # Récupérer l'enregistrement depuis le CSV s'il est spécifié
+        saved_audio = row.get('enregistrement_audio', '')
         audio_player_html = ""
-        if active_audio_filename:
-            relative_audio_path = f"../Projets/Memoire-Bachelor/04_Livrables/Audio/{active_audio_filename}"
+        
+        if pd.notna(saved_audio) and saved_audio:
+            # Rendre le chemin relatif pour l'HTML
+            filename = os.path.basename(saved_audio)
+            relative_audio_path = f"../Projets/Memoire-Bachelor/04_Livrables/Audio/{filename}"
             audio_player_html = f"""
                 <div style="margin-top: 15px; padding: 10px; background: rgba(212, 175, 55, 0.05); border: 1px solid rgba(212, 175, 55, 0.2); border-radius: 5px;">
                     <div style="font-size: 0.75rem; color: var(--accent); margin-bottom: 5px; font-weight: bold; letter-spacing: 1px;">🎤 ENREGISTREMENT MOBILE (CUBE ACR)</div>
@@ -84,7 +74,7 @@ def rebuild_crm_html():
             
         phone_html = f'<a href="tel:{phone}" style="color: var(--accent); text-decoration: none; transition: 0.3s;" onmouseover="this.style.color=\'var(--accent-glow)\'" onmouseout="this.style.color=\'var(--accent)\'">{phone}</a>' if phone != 'Non précisé' else 'Non précisé'
         email_html = f'<a href="mailto:{email}" style="color: var(--accent); text-decoration: none; transition: 0.3s;" onmouseover="this.style.color=\'var(--accent-glow)\'" onmouseout="this.style.color=\'var(--accent)\'">{email}</a>' if email != 'Non précisé' else 'Non précisé'
-        
+
         cards_html += f"""
             <div class="card" id="gite-{idx}">
                 <div class="card-title">{name}</div>
@@ -145,22 +135,18 @@ try:
             if ext not in [".mp3", ".wav", ".m4a", ".amr"]:
                 continue
                 
-            # Laisser le temps à la synchronisation cloud de se stabiliser
             time.sleep(2.0)
             
             print(f"New Cube ACR recording detected: {f}")
-            # Extraction des chiffres du numéro de téléphone depuis le nom du fichier
-            # Cube ACR inclut généralement le numéro sous forme de série de chiffres
             numbers = re.findall(r'\d+', f)
             phone_num = None
             for num in numbers:
-                if len(num) >= 9:  # Un numéro de téléphone fait au moins 9 chiffres
+                if len(num) >= 9:
                     phone_num = num
                     break
                     
             if phone_num:
                 clean_target_phone = re.sub(r'\D', '', phone_num)
-                # Si le numéro commence par un indicatif pays (ex: 336...), on prend les 9 derniers chiffres
                 if len(clean_target_phone) > 10 and clean_target_phone.startswith('33'):
                     clean_target_phone = '0' + clean_target_phone[2:]
                     
@@ -169,28 +155,47 @@ try:
                 # Chercher dans la base CSV le gîte correspondant
                 if os.path.exists(CSV_PATH):
                     df = pd.read_csv(CSV_PATH, dtype=str)
-                    matched_row = None
+                    
+                    # S'assurer que la colonne "enregistrement_audio" existe dans le DataFrame
+                    if 'enregistrement_audio' not in df.columns:
+                        df['enregistrement_audio'] = ''
+                        
+                    matched_idx = None
                     for idx, row in df.iterrows():
                         row_phone = re.sub(r'\D', '', str(row.get('tel', '')))
                         if len(row_phone) > 10 and row_phone.startswith('33'):
                             row_phone = '0' + row_phone[2:]
                             
                         if row_phone and (clean_target_phone in row_phone or row_phone in clean_target_phone):
-                            matched_row = row
+                            matched_idx = idx
                             break
                             
-                    if matched_row is not None:
-                        gite_name = matched_row.get('nom')
+                    if matched_idx is not None:
+                        gite_name = df.loc[matched_idx, 'nom']
                         print(f"Matched with gîte: {gite_name}")
                         
                         # Copier le fichier dans les livrables
                         dest_filename = f"enregistrement_{clean_target_phone}{ext}"
-                        dest_path = os.path.join(AUDIO_DEST_DIR, dest_filename)
-                        shutil.copy(os.path.join(CUBEACR_SYNC_DIR, f), dest_path)
-                        print(f"Audio file copied to: {dest_path}")
+                        dest_path_full = os.path.join(AUDIO_DEST_DIR, dest_filename)
+                        shutil.copy(os.path.join(CUBEACR_SYNC_DIR, f), dest_path_full)
+                        print(f"Audio file copied to: {dest_path_full}")
+                        
+                        # Enregistrer le chemin relatif dans le CSV
+                        relative_path_csv = f"Projets/Memoire-Bachelor/04_Livrables/Audio/{dest_filename}"
+                        df.loc[matched_idx, 'enregistrement_audio'] = relative_path_csv
+                        df.to_csv(CSV_PATH, index=False, encoding='utf-8-sig')
+                        print("CSV database updated with the audio recording path.")
                         
                         # Mettre à jour l'HTML du CRM
                         rebuild_crm_html()
+                        
+                        # Mettre à jour aussi les versions de livrables
+                        dest_html_dir = r"C:\Users\julien\OneDrive\Bureau\geminicli\Projets\Memoire-Bachelor\04_Livrables\HTML"
+                        dest_data_dir = r"C:\Users\julien\OneDrive\Bureau\geminicli\Projets\Memoire-Bachelor\04_Livrables\Data"
+                        shutil.copy(HTML_OUT_PATH, os.path.join(dest_html_dir, "2026-07-07_Selection_Gites_Prestige.html"))
+                        shutil.copy(HTML_OUT_PATH, os.path.join(dest_html_dir, "Selection_Gites_Prestige.html"))
+                        shutil.copy(CSV_PATH, os.path.join(dest_data_dir, "2026-07-07_Selection_Gites_Prestige.csv"))
+                        shutil.copy(CSV_PATH, os.path.join(dest_data_dir, "Selection_Gites_Prestige.csv"))
                     else:
                         print(f"No matching gîte found for phone: {clean_target_phone}")
                 else:
