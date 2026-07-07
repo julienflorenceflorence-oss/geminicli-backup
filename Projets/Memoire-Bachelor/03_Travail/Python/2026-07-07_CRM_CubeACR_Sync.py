@@ -82,6 +82,9 @@ def rebuild_crm_html():
         if web and str(web).startswith("http"):
             web_btn_html = f'<a href="{web}" class="btn-prestige" target="_blank" style="padding: 6px 12px; font-size: 0.75rem; margin-top: 10px;">Visiter le site</a>'
             
+        phone_html = f'<a href="tel:{phone}" style="color: var(--accent); text-decoration: none; transition: 0.3s;" onmouseover="this.style.color=\'var(--accent-glow)\'" onmouseout="this.style.color=\'var(--accent)\'">{phone}</a>' if phone != 'Non précisé' else 'Non précisé'
+        email_html = f'<a href="mailto:{email}" style="color: var(--accent); text-decoration: none; transition: 0.3s;" onmouseover="this.style.color=\'var(--accent-glow)\'" onmouseout="this.style.color=\'var(--accent)\'">{email}</a>' if email != 'Non précisé' else 'Non précisé'
+        
         cards_html += f"""
             <div class="card" id="gite-{idx}">
                 <div class="card-title">{name}</div>
@@ -95,8 +98,8 @@ def rebuild_crm_html():
                     {desc}
                 </div>
                 <div style="border-top: 1px solid rgba(212, 175, 55, 0.1); padding-top: 15px; margin-top: 15px; font-size: 0.85rem;">
-                    <div style="margin-bottom: 4px;"><strong>Tél :</strong> {phone}</div>
-                    <div style="margin-bottom: 8px;"><strong>Email :</strong> {email}</div>
+                    <div style="margin-bottom: 6px;"><strong>Tél :</strong> {phone_html}</div>
+                    <div style="margin-bottom: 12px;"><strong>Email :</strong> {email_html}</div>
                     {web_btn_html}
                     {audio_player_html}
                 </div>
