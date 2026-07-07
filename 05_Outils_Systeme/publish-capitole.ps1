@@ -23,7 +23,8 @@ $FilesToCopy = @(
     "bachelor-status.html",
     "viewer.html",
     "carte.html",
-    "qr-code.png"
+    "qr-code.png",
+    "Carte_Julien_Florence_Capitole.png"
 )
 
 $FoldersToCopy = @(
