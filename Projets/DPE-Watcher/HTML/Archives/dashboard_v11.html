@@ -1907,9 +1907,6 @@
             pageSizeSelect.value = savedPageSize;
         }
 
-        // Charger tous les codes postaux de France métropolitaine via GeoAPI
-        _loadAllFrenchCps();
-
         // Charger les filtres favoris
         _loadFavFilters();
 
@@ -1950,14 +1947,7 @@
                 return;
             }
             _dData = data.dpes || [];
-            
-            // Si la datalist est encore vide (par exemple si l'appel GeoAPI a échoué ou n'est pas encore terminé),
-            // on la remplit avec les codes postaux locaux.
-            const cpDatalist = document.getElementById('cp-datalist');
-            if (cpDatalist && cpDatalist.children.length < 10) {
-                _updateCpDatalist(_dData);
-            }
-            
+            _updateCpDatalist(_dData);
             _filter();
 
             statusDot.classList.add('active');
@@ -2396,47 +2386,6 @@
             chip.appendChild(removeSpan);
             container.appendChild(chip);
         });
-    }
-
-    async function _loadAllFrenchCps() {
-        const cpDatalist = document.getElementById('cp-datalist');
-        if (!cpDatalist) return;
-        
-        try {
-            // Appel asynchrone à l'API officielle des communes de l'État français (GeoAPI)
-            const response = await fetch('https://geo.api.gouv.fr/communes?fields=codesPostaux');
-            if (!response.ok) throw new Error("Erreur GeoAPI status " + response.status);
-            const communes = await response.json();
-            
-            const allCps = new Set();
-            communes.forEach(c => {
-                if (c.codesPostaux) {
-                    c.codesPostaux.forEach(cp => {
-                        // Filtrer pour ne garder que la France métropolitaine (codes à 5 chiffres hors 97 et 98)
-                        if (cp && cp.length === 5 && !cp.startsWith('97') && !cp.startsWith('98')) {
-                            allCps.add(cp);
-                        }
-                    });
-                }
-            });
-            
-            const sortedCps = Array.from(allCps).sort();
-            
-            // Populer le datalist avec l'intégralité des codes postaux métropolitains
-            cpDatalist.innerHTML = '';
-            sortedCps.forEach(cp => {
-                const option = document.createElement('option');
-                option.value = cp;
-                cpDatalist.appendChild(option);
-            });
-            console.log(`${sortedCps.length} codes postaux métropolitains chargés via GeoAPI.`);
-        } catch (e) {
-            console.warn("Impossible de charger les codes postaux métropolitains via GeoAPI, repli local :", e);
-            // Fallback sur les codes postaux présents dans la base Google Sheets
-            if (_dData && _dData.length > 0) {
-                _updateCpDatalist(_dData);
-            }
-        }
     }
 </script>
 </body>
