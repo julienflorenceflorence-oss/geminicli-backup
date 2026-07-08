@@ -1085,6 +1085,81 @@
                 justify-content: space-between;
             }
         }
+
+        /* Pagination Prestige Styling */
+        .pagination-bar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-top: 16px;
+            padding-top: 16px;
+            border-top: 1px solid rgba(255, 255, 255, 0.04);
+            flex-shrink: 0;
+            flex-wrap: wrap;
+            gap: 12px;
+        }
+
+        .pagination-info {
+            font-size: 11.5px;
+            color: var(--text-muted);
+            font-weight: 500;
+        }
+
+        .pagination-actions {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .pagination-select {
+            background: rgba(7, 8, 11, 0.8);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            color: var(--text-color);
+            padding: 6px 10px;
+            border-radius: 6px;
+            font-family: inherit;
+            font-size: 11.5px;
+            cursor: pointer;
+            transition: var(--transition-smooth);
+        }
+
+        .pagination-select:focus {
+            outline: none;
+            border-color: var(--gold);
+        }
+
+        .btn-pagination {
+            background: rgba(255, 255, 255, 0.02);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            color: var(--text-muted);
+            padding: 6px 14px;
+            font-size: 11px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            cursor: pointer;
+            border-radius: 6px;
+            transition: var(--transition-smooth);
+        }
+
+        .btn-pagination:hover:not(:disabled) {
+            border-color: var(--gold);
+            color: var(--gold);
+            background: rgba(212, 175, 55, 0.06);
+        }
+
+        .btn-pagination:disabled {
+            opacity: 0.35;
+            cursor: not-allowed;
+        }
+
+        .pagination-page-indicator {
+            font-size: 12px;
+            color: var(--text-color);
+            font-weight: 600;
+            min-width: 90px;
+            text-align: center;
+        }
     </style>
 </head>
 <body>
@@ -1333,7 +1408,8 @@
                             <span class="filter-icon">
                                 <svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path><circle cx="12" cy="10" r="3"></circle></svg>
                             </span>
-                            <input type="text" class="filter-input" id="search-cp" placeholder="Filtrer par code postal...">
+                            <input type="text" class="filter-input" id="search-cp" placeholder="Ex: 75001, 75002..." list="cp-datalist">
+                            <datalist id="cp-datalist"></datalist>
                         </div>
                         
                         <select class="filter-input" id="filter-classe" style="flex: 0.8; min-width: 150px;">
@@ -1374,6 +1450,25 @@
                                 </tr>
                             </tbody>
                         </table>
+                    </div>
+
+                    <!-- Pagination Controls -->
+                    <div class="pagination-bar" id="pagination-controls" style="display: none;">
+                        <div class="pagination-info" id="pagination-info">
+                            Affichage de 0 à 0 sur 0 diagnostic
+                        </div>
+                        <div class="pagination-actions">
+                            <select class="pagination-select" id="page-size-select" title="Lignes par page">
+                                <option value="25">25 lignes</option>
+                                <option value="50" selected>50 lignes</option>
+                                <option value="100">100 lignes</option>
+                                <option value="250">250 lignes</option>
+                                <option value="all">Tout afficher</option>
+                            </select>
+                            <button class="btn-pagination" id="prev-page-btn" disabled>&lt; Précédent</button>
+                            <span class="pagination-page-indicator" id="page-indicator">Page 1 sur 1</span>
+                            <button class="btn-pagination" id="next-page-btn" disabled>Suivant &gt;</button>
+                        </div>
                     </div>
                 </div>
             </section>
@@ -1472,6 +1567,8 @@
     // --- VARIABLES D'ÉTAT ---
     let _dData = [];
     let _fData = [];
+    let _currentPage = 1;
+    let _pageSize = 50;
     let _cSort = { col: 'date_recup', asc: false };
     let _dChart = null;
     let _tChart = null;
@@ -1496,6 +1593,38 @@
     const hamburgerBtn = document.getElementById('hamburger-btn');
     const collapseSidebarBtn = document.getElementById('collapse-sidebar-btn');
     const collapseIcon = document.getElementById('collapse-icon');
+
+    // DOM Pagination selectors
+    const prevPageBtn = document.getElementById('prev-page-btn');
+    const nextPageBtn = document.getElementById('next-page-btn');
+    const pageIndicator = document.getElementById('page-indicator');
+    const pageSizeSelect = document.getElementById('page-size-select');
+    const paginationInfo = document.getElementById('pagination-info');
+
+    // --- PAGINATION LISTENERS ---
+    if (prevPageBtn && nextPageBtn && pageSizeSelect) {
+        prevPageBtn.addEventListener('click', () => {
+            if (_currentPage > 1) {
+                _currentPage--;
+                _table();
+            }
+        });
+
+        nextPageBtn.addEventListener('click', () => {
+            const totalPages = Math.ceil(_fData.length / _pageSize) || 1;
+            if (_currentPage < totalPages) {
+                _currentPage++;
+                _table();
+            }
+        });
+
+        pageSizeSelect.addEventListener('change', (e) => {
+            const val = e.target.value;
+            _pageSize = val === 'all' ? _fData.length : parseInt(val);
+            _currentPage = 1;
+            _table();
+        });
+    }
 
     // --- COLLAPSIBLE SIDEBAR LOGIQUE ---
     if (collapseSidebarBtn) {
@@ -1630,6 +1759,7 @@
                 return;
             }
             _dData = data.dpes || [];
+            _updateCpDatalist(_dData);
             _filter();
 
             statusDot.classList.add('active');
@@ -1761,13 +1891,24 @@
 
         _fData = _dData.filter(item => {
             const matchCommune = !commQ || item.commune.toLowerCase().includes(commQ);
-            const matchCp = !cpQ || item.code_postal.includes(cpQ);
+            
+            // Recherche multi-codes postaux séparés par des virgules
+            let matchCp = true;
+            if (cpQ) {
+                const searchCps = cpQ.split(',').map(s => s.trim().toLowerCase()).filter(s => s !== '');
+                if (searchCps.length > 0) {
+                    const itemCp = (item.code_postal || '').trim().toLowerCase();
+                    matchCp = searchCps.some(cp => itemCp.includes(cp));
+                }
+            }
+            
             let matchClasse = true;
             if (clF === "FG") { matchClasse = (item.etiquette_dpe === "F" || item.etiquette_dpe === "G"); }
             else if (clF) { matchClasse = item.etiquette_dpe === clF; }
             return matchCommune && matchCp && matchClasse;
         });
 
+        _currentPage = 1; // Toujours réinitialiser la page courante lors d'une recherche
         _sort();
         _kpi(_fData);
         _table();
@@ -1803,15 +1944,35 @@
     function _table() {
         tableBody.innerHTML = '';
         const counterEl = document.getElementById('table-counter');
+        const total = _fData.length;
+        
         if (counterEl) {
-            counterEl.innerText = `${_fData.length} diagnostic${_fData.length > 1 ? 's' : ''}`;
+            counterEl.innerText = `${total} diagnostic${total > 1 ? 's' : ''}`;
         }
-        if (_fData.length === 0) {
+        
+        const paginationControls = document.getElementById('pagination-controls');
+        
+        if (total === 0) {
             tableBody.innerHTML = `<tr><td colspan="8" class="empty-state">Aucun diagnostic trouvé.</td></tr>`;
+            if (paginationControls) paginationControls.style.display = 'none';
             return;
         }
+        
+        if (paginationControls) paginationControls.style.display = 'flex';
 
-        _fData.forEach(item => {
+        // Calcul des tranches de pagination
+        const limit = _pageSize;
+        const totalPages = Math.ceil(total / limit) || 1;
+        
+        if (_currentPage > totalPages) {
+            _currentPage = totalPages;
+        }
+
+        const start = (_currentPage - 1) * limit;
+        const end = Math.min(start + limit, total);
+        const pageData = _fData.slice(start, end);
+
+        pageData.forEach(item => {
             const row = document.createElement('tr');
             const surfStr = item.surface_habitable ? parseFloat(item.surface_habitable).toFixed(1) : "-";
             row.innerHTML = `
@@ -1826,6 +1987,20 @@
             `;
             tableBody.appendChild(row);
         });
+
+        // Mettre à jour les indicateurs de la pagination
+        if (paginationInfo) {
+            paginationInfo.innerText = `Affichage de ${total > 0 ? start + 1 : 0} à ${end} sur ${total} diagnostic${total > 1 ? 's' : ''}`;
+        }
+        if (pageIndicator) {
+            pageIndicator.innerText = `Page ${_currentPage} sur ${totalPages}`;
+        }
+        if (prevPageBtn) {
+            prevPageBtn.disabled = _currentPage === 1;
+        }
+        if (nextPageBtn) {
+            nextPageBtn.disabled = _currentPage === totalPages;
+        }
     }
 
     function _sort() {
@@ -1880,6 +2055,23 @@
         link.click();
         document.body.removeChild(link);
     });
+
+    function _updateCpDatalist(data) {
+        const cpDatalist = document.getElementById('cp-datalist');
+        if (!cpDatalist) return;
+        cpDatalist.innerHTML = '';
+        
+        // Extraire les codes postaux uniques présents dans la base de données
+        const uniqueCps = [...new Set(data.map(item => (item.code_postal || '').trim()))]
+            .filter(cp => cp && cp.length >= 2)
+            .sort();
+            
+        uniqueCps.forEach(cp => {
+            const option = document.createElement('option');
+            option.value = cp;
+            cpDatalist.appendChild(option);
+        });
+    }
 </script>
 </body>
 </html>
