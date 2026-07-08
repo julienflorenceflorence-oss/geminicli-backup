@@ -1086,6 +1086,102 @@
             }
         }
 
+        /* Favorite Filters Prestige Styling */
+        .favorite-filters {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-top: 14px;
+            flex-wrap: wrap;
+            font-size: 11px;
+            width: 100%;
+            flex-shrink: 0;
+            border-top: 1px solid rgba(255, 255, 255, 0.03);
+            padding-top: 12px;
+        }
+
+        .fav-label {
+            color: var(--text-muted);
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .fav-chips {
+            display: flex;
+            gap: 8px;
+            flex-wrap: wrap;
+            align-items: center;
+        }
+
+        .fav-chip {
+            background: rgba(212, 175, 55, 0.05);
+            border: 1px solid rgba(212, 175, 55, 0.15);
+            color: var(--gold);
+            padding: 4px 10px;
+            border-radius: 999px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            transition: var(--transition-smooth);
+            font-weight: 600;
+            user-select: none;
+        }
+
+        .fav-chip:hover {
+            background: rgba(212, 175, 55, 0.12);
+            border-color: var(--gold);
+            box-shadow: 0 0 8px rgba(212, 175, 55, 0.08);
+        }
+
+        .fav-chip-remove {
+            color: var(--text-muted-dark);
+            font-weight: 800;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+            width: 12px;
+            height: 12px;
+            transition: var(--transition-smooth);
+            font-size: 13px;
+            line-height: 12px;
+        }
+
+        .fav-chip-remove:hover {
+            color: var(--red-passoire);
+            background: rgba(239, 68, 68, 0.1);
+        }
+
+        .btn-save-filter {
+            background: transparent;
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            color: var(--text-muted);
+            padding: 4px 10px;
+            border-radius: 6px;
+            cursor: pointer;
+            font-weight: 600;
+            transition: var(--transition-smooth);
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            font-family: inherit;
+            font-size: 11px;
+            margin-left: auto;
+        }
+
+        .btn-save-filter:hover {
+            border-color: var(--gold);
+            color: var(--gold);
+            background: rgba(212, 175, 55, 0.05);
+        }
+
+        .btn-save-filter svg {
+            flex-shrink: 0;
+        }
+
         /* Pagination Prestige Styling */
         .pagination-bar {
             display: flex;
@@ -1430,7 +1526,18 @@
                         </button>
                     </div>
 
-                    <div class="table-wrapper">
+                    <div class="favorite-filters">
+                        <span class="fav-label">Favoris :</span>
+                        <div class="fav-chips" id="fav-chips-container">
+                            <span style="color: var(--text-muted-dark); font-style: italic;">Aucun favori enregistré</span>
+                        </div>
+                        <button class="btn-save-filter" id="save-filter-btn" title="Enregistrer la recherche actuelle en favori">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M19 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11l5 5v11a2 2 0 0 1-2 2z"></path><polyline points="17 21 17 13 7 13 7 21"></polyline><polyline points="7 3 7 8 15 8"></polyline></svg>
+                            Enregistrer le filtre
+                        </button>
+                    </div>
+
+                    <div class="table-wrapper" style="margin-top: 14px;">
                         <table id="dpe-table">
                             <thead>
                                 <tr>
@@ -1620,10 +1727,17 @@
 
         pageSizeSelect.addEventListener('change', (e) => {
             const val = e.target.value;
+            localStorage.setItem('dpe_page_size', val);
             _pageSize = val === 'all' ? _fData.length : parseInt(val);
             _currentPage = 1;
             _table();
         });
+    }
+
+    // DOM Favorite Filters selectors
+    const saveFilterBtn = document.getElementById('save-filter-btn');
+    if (saveFilterBtn) {
+        saveFilterBtn.addEventListener('click', _saveCurrentFilter);
     }
 
     // --- COLLAPSIBLE SIDEBAR LOGIQUE ---
@@ -1722,6 +1836,17 @@
         } else {
             modal.classList.add('show');
         }
+        
+        // Charger la taille de page sauvegardée
+        const savedPageSize = localStorage.getItem('dpe_page_size');
+        if (savedPageSize) {
+            _pageSize = savedPageSize === 'all' ? savedPageSize : parseInt(savedPageSize);
+            if (pageSizeSelect) pageSizeSelect.value = savedPageSize;
+        }
+
+        // Charger les filtres favoris
+        _loadFavFilters();
+
         _initCharts();
     });
 
@@ -2070,6 +2195,93 @@
             const option = document.createElement('option');
             option.value = cp;
             cpDatalist.appendChild(option);
+        });
+    }
+
+    // --- LOGIQUE FILTRES FAVORIS EN LOCALSTORAGE ---
+    let _favFilters = [];
+
+    function _loadFavFilters() {
+        const saved = localStorage.getItem('dpe_fav_filters');
+        if (saved) {
+            try {
+                _favFilters = JSON.parse(saved);
+            } catch (e) {
+                _favFilters = [];
+            }
+        }
+        _renderFavChips();
+    }
+
+    function _saveCurrentFilter() {
+        const commune = searchCommune.value.trim();
+        const cp = searchCp.value.trim();
+        const classe = filterClasse.value;
+        
+        if (!commune && !cp && !classe) {
+            alert("Veuillez définir au moins un critère de filtrage avant de le sauvegarder.");
+            return;
+        }
+        
+        // Construire un label lisible
+        let parts = [];
+        if (commune) parts.push(commune.toUpperCase());
+        if (cp) parts.push(cp);
+        if (classe) {
+            const labels = { 'FG': 'Passoires (F/G)' };
+            parts.push(labels[classe] || `Classe ${classe}`);
+        }
+        const label = parts.join(' | ');
+        
+        // Éviter les doublons
+        if (_favFilters.some(f => f.label === label)) {
+            alert("Ce filtre est déjà enregistré dans vos favoris.");
+            return;
+        }
+        
+        _favFilters.push({ label, commune, cp, classe });
+        localStorage.setItem('dpe_fav_filters', JSON.stringify(_favFilters));
+        _renderFavChips();
+    }
+
+    function _renderFavChips() {
+        const container = document.getElementById('fav-chips-container');
+        if (!container) return;
+        container.innerHTML = '';
+        
+        if (_favFilters.length === 0) {
+            container.innerHTML = '<span style="color: var(--text-muted-dark); font-style: italic;">Aucun favori enregistré</span>';
+            return;
+        }
+        
+        _favFilters.forEach((filter, index) => {
+            const chip = document.createElement('div');
+            chip.className = 'fav-chip';
+            
+            const labelSpan = document.createElement('span');
+            labelSpan.innerText = filter.label;
+            labelSpan.title = "Appliquer ce filtre favori";
+            labelSpan.addEventListener('click', () => {
+                searchCommune.value = filter.commune || '';
+                searchCp.value = filter.cp || '';
+                filterClasse.value = filter.classe || '';
+                _filter();
+            });
+            
+            const removeSpan = document.createElement('span');
+            removeSpan.className = 'fav-chip-remove';
+            removeSpan.innerHTML = '&times;';
+            removeSpan.title = "Supprimer des favoris";
+            removeSpan.addEventListener('click', (e) => {
+                e.stopPropagation(); // Évite de déclencher le clic sur le label
+                _favFilters.splice(index, 1);
+                localStorage.setItem('dpe_fav_filters', JSON.stringify(_favFilters));
+                _renderFavChips();
+            });
+            
+            chip.appendChild(labelSpan);
+            chip.appendChild(removeSpan);
+            container.appendChild(chip);
         });
     }
 </script>
