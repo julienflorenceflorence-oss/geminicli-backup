@@ -1708,7 +1708,6 @@
     let _dData = [];
     let _fData = [];
     let _currentPage = 1;
-    let _pageSize = 50;
     let _cSort = { col: 'date_recup', asc: false };
     let _dChart = null;
     let _tChart = null;
@@ -1751,7 +1750,12 @@
         });
 
         nextPageBtn.addEventListener('click', () => {
-            const totalPages = Math.ceil(_fData.length / _pageSize) || 1;
+            let limit = 50;
+            if (pageSizeSelect) {
+                const val = pageSizeSelect.value;
+                limit = val === 'all' ? _fData.length : (parseInt(val) || 50);
+            }
+            const totalPages = Math.ceil(_fData.length / limit) || 1;
             if (_currentPage < totalPages) {
                 _currentPage++;
                 _table();
@@ -1761,7 +1765,6 @@
         pageSizeSelect.addEventListener('change', (e) => {
             const val = e.target.value;
             localStorage.setItem('dpe_page_size', val);
-            _pageSize = val === 'all' ? _fData.length : parseInt(val);
             _currentPage = 1;
             _table();
         });
@@ -1900,9 +1903,8 @@
         
         // Charger la taille de page sauvegardée
         const savedPageSize = localStorage.getItem('dpe_page_size');
-        if (savedPageSize) {
-            _pageSize = savedPageSize === 'all' ? savedPageSize : parseInt(savedPageSize);
-            if (pageSizeSelect) pageSizeSelect.value = savedPageSize;
+        if (savedPageSize && pageSizeSelect) {
+            pageSizeSelect.value = savedPageSize;
         }
 
         // Charger les filtres favoris
@@ -2177,8 +2179,13 @@
         
         if (paginationControls) paginationControls.style.display = 'flex';
 
-        // Calcul des tranches de pagination
-        const limit = _pageSize;
+        // Calcul des tranches de pagination de manière sécurisée (lecture directe depuis le select)
+        let limit = 50;
+        if (pageSizeSelect) {
+            const val = pageSizeSelect.value;
+            limit = val === 'all' ? total : (parseInt(val) || 50);
+        }
+        
         const totalPages = Math.ceil(total / limit) || 1;
         
         if (_currentPage > totalPages) {
