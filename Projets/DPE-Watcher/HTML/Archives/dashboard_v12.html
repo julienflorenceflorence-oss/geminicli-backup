@@ -1686,7 +1686,7 @@
     <div class="modal-content">
         <h3>Configuration d'Accès API</h3>
         <p>Veuillez renseigner ci-dessous l'adresse de déploiement de votre Google Apps Script (URL se terminant par <code>/exec</code>) afin d'établir la liaison sécurisée avec votre base Google Sheets.</p>
-        <input type="text" id="web-app-url-input" placeholder="https://script.google.com/macros/s/XXXXXX/exec" value="https://script.google.com/macros/s/AKfycby6_XHcLC8JviA4xK34jss5ys05XrDSo1P1oy4oT7T1_1Vh5_gUmBRSVvSOAL5WF59etQ/exec">
+        <input type="text" id="web-app-url-input" placeholder="https://script.google.com/macros/s/XXXXXX/exec">
         <div class="modal-btns">
             <button class="btn-config" id="close-modal-btn">Annuler</button>
             <button class="btn-prestige" id="save-config-btn">Établir Connexion</button>
@@ -1893,14 +1893,13 @@
     });
 
     window.addEventListener('load', () => {
-        let savedUrl = localStorage.getItem('dpe_web_app_url');
-        if (!savedUrl) {
-            // URL de secours par défaut en dur (connexion automatique)
-            savedUrl = "https://script.google.com/macros/s/AKfycby6_XHcLC8JviA4xK34jss5ys05XrDSo1P1oy4oT7T1_1Vh5_gUmBRSVvSOAL5WF59etQ/exec";
-            localStorage.setItem('dpe_web_app_url', savedUrl);
+        const savedUrl = localStorage.getItem('dpe_web_app_url');
+        if (savedUrl) {
+            urlInput.value = savedUrl;
+            _getData(savedUrl);
+        } else {
+            modal.classList.add('show');
         }
-        urlInput.value = savedUrl;
-        _getData(savedUrl);
         
         // Charger la taille de page sauvegardée
         const savedPageSize = localStorage.getItem('dpe_page_size');
