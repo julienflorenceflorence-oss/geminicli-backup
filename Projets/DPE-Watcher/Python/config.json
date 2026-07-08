@@ -10,7 +10,7 @@
         "name": "Logements neufs"
       }
     ],
-    "days_to_check": 7,
+    "days_to_check": 14,
     "request_timeout_seconds": 30
   },
   "filtering": {
