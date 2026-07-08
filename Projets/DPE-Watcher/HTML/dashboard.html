@@ -834,6 +834,15 @@
             transition: var(--transition-smooth);
         }
 
+        .col-adresse {
+            font-size: 11px !important;
+            color: var(--text-muted) !important;
+            max-width: 250px;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+
         tr:nth-child(even) td {
             background: rgba(255, 255, 255, 0.005);
         }
@@ -1310,7 +1319,7 @@
                 <div class="panel">
                     <h3>
                         <span>Filtres &amp; Recherche de Biens</span>
-                        <span class="panel-header-badge">Recherche</span>
+                        <span class="panel-header-badge" id="table-counter">0 diagnostic</span>
                     </h3>
                     
                     <div class="filter-bar">
@@ -1793,6 +1802,10 @@
 
     function _table() {
         tableBody.innerHTML = '';
+        const counterEl = document.getElementById('table-counter');
+        if (counterEl) {
+            counterEl.innerText = `${_fData.length} diagnostic${_fData.length > 1 ? 's' : ''}`;
+        }
         if (_fData.length === 0) {
             tableBody.innerHTML = `<tr><td colspan="8" class="empty-state">Aucun diagnostic trouvé.</td></tr>`;
             return;
@@ -1803,7 +1816,7 @@
             const surfStr = item.surface_habitable ? parseFloat(item.surface_habitable).toFixed(1) : "-";
             row.innerHTML = `
                 <td><strong>${item.commune}</strong></td>
-                <td>${item.adresse}</td>
+                <td class="col-adresse" title="${item.adresse}">${item.adresse}</td>
                 <td>${item.code_postal}</td>
                 <td>${item.date_etablissement}</td>
                 <td style="font-family: monospace; font-size: 11.5px; letter-spacing: 0.5px;">${item.numero_dpe}</td>
