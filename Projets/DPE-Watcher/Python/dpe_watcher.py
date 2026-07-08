@@ -115,12 +115,13 @@ def fetch_new_dpes_from_api():
         logger.error("Les bibliothèques pandas ou openpyxl ne sont pas disponibles. Exécutez 'pip install -r requirements.txt'")
         sys.exit(1)
         
-    codes_postaux = config["filtering"]["codes_postaux"]
+    france_metro = config["filtering"].get("france_metropolitaine", False)
+    codes_postaux = config["filtering"].get("codes_postaux", [])
     days_to_check = config["ademe_api"]["days_to_check"]
     datasets = config["ademe_api"]["datasets"]
     
-    if not codes_postaux:
-        logger.warning("Aucun code postal n'est configuré dans config.json. La recherche sera vide.")
+    if not france_metro and not codes_postaux:
+        logger.warning("Aucun code postal ou filtre géographique configuré. La recherche sera vide.")
         return []
     
     # Calcul des dates de filtrage
@@ -129,9 +130,14 @@ def fetch_new_dpes_from_api():
     start_date_str = start_date.strftime("%Y-%m-%d")
     end_date_str = end_date.strftime("%Y-%m-%d")
     
-    # Construction de la clause Lucene
-    cp_query = " OR ".join(codes_postaux)
-    lucene_query = f"code_postal_brut:({cp_query}) AND date_etablissement_dpe:[{start_date_str} TO {end_date_str}]"
+    # Construction de la clause Lucene géographique
+    if france_metro:
+        geo_query = "code_postal_brut:[01000 TO 96000]"
+    else:
+        cp_query = " OR ".join(codes_postaux)
+        geo_query = f"code_postal_brut:({cp_query})"
+        
+    lucene_query = f"{geo_query} AND date_etablissement_dpe:[{start_date_str} TO {end_date_str}]"
     logger.info(f"Filtre de recherche (Lucene): {lucene_query}")
     
     selected_fields = (
