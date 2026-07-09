@@ -27,9 +27,7 @@ $FilesToCopy = @(
     "Carte_Julien_Florence_Capitole.png",
     "signature.html",
     "cerveau 3.0.png",
-    "ma-signature.html",
-    "CV_Capitole_Prestige.html",
-    "LM_Capitole_Prestige.html"
+    "ma-signature.html"
 )
 
 $FoldersToCopy = @(
