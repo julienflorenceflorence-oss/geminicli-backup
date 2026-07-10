@@ -31,7 +31,8 @@ $FilesToCopy = @(
     "CV_Capitole_Prestige.html",
     "LM_Capitole_Prestige.html",
     "dashboard_entretien.html",
-    "CV_Generique_Prestige.html"
+    "CV_Generique_Prestige.html",
+    "LM_Generique_Prestige.html"
 )
 
 $FoldersToCopy = @(
