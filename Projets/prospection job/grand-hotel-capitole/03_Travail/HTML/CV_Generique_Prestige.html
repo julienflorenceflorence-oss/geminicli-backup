@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CV Julien FLORENCE - Directeur Commercial & Centre de Profits - Édition Prestige A4</title>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&family=Montserrat:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg: #0A0B0E;
+            --sidebar: #111418;
+            --accent: #D4AF37;
+            --accent-light: #F7EF8A;
+            --text: #FFFFFF;
+            --text-dim: #A0A4B0;
+            --page-w: 210mm;
+            --page-h: 297mm;
+        }
+
+        @media print {
+            @page { size: A4; margin: 0; }
+            body { background: var(--bg) !important; -webkit-print-color-adjust: exact; }
+            .page { margin: 0 !important; border: none !important; box-shadow: none !important; width: var(--page-w); height: var(--page-h); }
+            .btn-action { display: block !important; line-height: 1.5; }
+        }
+
+        body { background: #000; color: var(--text); font-family: 'Montserrat', sans-serif; margin: 0; line-height: 1.3; font-size: 8pt; }
+
+        .page {
+            width: var(--page-w);
+            height: var(--page-h);
+            background: var(--bg);
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 220px 1fr;
+            position: relative;
+            overflow: hidden;
+            box-sizing: border-box;
+        }
+
+        /* --- SIDEBAR --- */
+        aside {
+            background: var(--sidebar);
+            padding: 15px 12px;
+            border-right: 1px solid rgba(212, 175, 55, 0.2);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .profile-frame {
+            width: 110px;
+            height: 110px;
+            border: 2px solid var(--accent);
+            padding: 3px;
+            margin-bottom: 12px;
+            border-radius: 10px;
+        }
+
+        .profile-frame img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            filter: grayscale(10%) contrast(110%);
+            border-radius: 10px;
+        }
+
+        .contact-buttons {
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            gap: 6px;
+            margin-bottom: 15px;
+        }
+
+        .btn-action {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 6px;
+            padding: 6px;
+            background: rgba(212, 175, 55, 0.05);
+            border: 1px solid rgba(212, 175, 55, 0.3);
+            color: var(--accent);
+            text-decoration: none;
+            font-size: 0.65rem;
+            font-family: 'Cinzel';
+            transition: all 0.3s;
+            text-align: center;
+            border-radius: 10px;
+        }
+
+        .btn-action:hover { background: var(--accent); color: var(--bg); }
+
+        .btn-calendar {
+            background: linear-gradient(135deg, var(--accent-light), var(--accent));
+            color: #000;
+            border: none;
+            font-weight: 700;
+        }
+
+        .btn-digital-cv {
+            border: 1px solid var(--accent);
+            background: rgba(212, 175, 55, 0.15);
+            font-weight: 600;
+        }
+
+        h2 { font-family: 'Cinzel'; color: var(--accent); font-size: 0.8rem; border-bottom: 1px solid var(--accent); padding-bottom: 2px; margin: 10px 0 6px 0; align-self: flex-start; width: 100%; }
+        
+        .side-list { list-style: none; padding: 0; width: 100%; font-size: 0.68rem; color: var(--text-dim); }
+        .side-list li { margin-bottom: 4px; display: flex; align-items: flex-start; gap: 4px; }
+        .side-list li::before { content: "›"; color: var(--accent); font-weight: bold; }
+
+        /* --- MAIN CONTENT --- */
+        main {
+            padding: 20px 25px 15px 25px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        header { margin-bottom: 8px; }
+        h1 { font-family: 'Cinzel'; font-size: 2rem; color: var(--accent); margin: 0; letter-spacing: 2px; }
+        .tagline { font-weight: 700; text-transform: uppercase; letter-spacing: 2px; color: var(--text); margin: 2px 0 6px 0; font-size: 0.85rem; border-left: 3px solid var(--accent); padding-left: 10px; }
+
+        .ats-summary { font-size: 0.78rem; text-align: justify; color: var(--text-dim); margin-bottom: 10px; line-height: 1.35; }
+
+        .section-title { font-family: 'Cinzel'; color: var(--accent); font-size: 0.95rem; margin: 8px 0 6px 0; display: flex; align-items: center; gap: 8px; }
+        .section-title::after { content: ""; flex: 1; height: 1px; background: linear-gradient(to right, var(--accent), transparent); }
+
+        .exp-card { margin-bottom: 8px; }
+        .exp-head { display: flex; justify-content: space-between; align-items: baseline; }
+        .role { font-weight: 700; color: var(--accent); font-size: 0.82rem; }
+        .date { font-family: 'Cinzel'; font-size: 0.68rem; color: var(--text-dim); }
+        .company { font-weight: 600; font-size: 0.75rem; color: var(--text); margin-bottom: 2px; }
+        
+        .exp-body { font-size: 0.73rem; color: var(--text-dim); padding-left: 8px; border-left: 1px solid rgba(255,255,255,0.1); }
+        .exp-body ul { margin: 2px 0; padding-left: 10px; }
+        .exp-body li { margin-bottom: 2px; }
+
+        .keyword-pill { display: inline-block; padding: 1px 4px; border: 1px solid rgba(212, 175, 55, 0.4); font-size: 0.58rem; color: var(--accent); margin: 1px; border-radius: 10px; }
+
+    </style>
+</head>
+<body>
+    <div class="page">
+        <aside>
+            <div class="profile-frame">
+                <img src="photo/photo_moi_pro.jpeg" alt="Julien FLORENCE">
+            </div>
+
+            <div class="contact-buttons">
+                <a href="tel:0661747573" class="btn-action">📞 06 61 74 75 73</a>
+                <a href="mailto:julienflorence.florence@gmail.com" class="btn-action">✉️ EMAIL</a>
+                <a href="https://calendar.app.google/iCzfE1GQrjxM3ZQ56" target="_blank" class="btn-action btn-calendar">📅 AGENDA</a>
+                <a href="https://julienflorenceflorence-oss.github.io/cv-prestige/" target="_blank" class="btn-action btn-digital-cv">🌐 ACCÈS PORTFOLIO</a>
+            </div>
+
+            <h2>Domaines de Réf.</h2>
+            <ul class="side-list">
+                <li>Pilotage Commercial & P&L</li>
+                <li>Management d'Équipes (3-20 ETP)</li>
+                <li>Acquisition Clients & B2B (SalesTech)</li>
+                <li>Gestion de Comptes Clés</li>
+                <li>Rigueur Opérationnelle & Luxe</li>
+                <li>Relations Publiques & VIPs</li>
+            </ul>
+
+            <h2>Méthodes & Outils</h2>
+            <ul class="side-list">
+                <li>Hubspot CRM / Salesforce</li>
+                <li>Growth & Acquisition Multi-canal</li>
+                <li>LinkedIn Sales Navigator & Apollo</li>
+                <li>Yield Management</li>
+                <li>Analyse KPI & Reporting</li>
+            </ul>
+
+            <h2>Soft Skills</h2>
+            <ul class="side-list">
+                <li>ENTJ-A | Rationnel & Organisé</li>
+                <li>Leadership & Rigueur</li>
+                <li>Dépassement de soi & Droit au but</li>
+                <li>Négociation & Closing</li>
+            </ul>
+
+            <h2>Langues</h2>
+            <ul class="side-list">
+                <li>Anglais : Pro (C1, 2 ans UK/IRL)</li>
+                <li>Néerlandais : Intermédiaire (B2)</li>
+            </ul>
+
+            <h2>Formation</h2>
+            <ul class="side-list">
+                <li><strong>Bachelor Responsable Marketing et Commercial</strong> (Spécialisation Acquisition Tech - 2025)</li>
+                <li>HTML5 & CSS3 - Google Academy</li>
+            </ul>
+        </aside>
+
+        <main>
+            <header>
+                <h1>Julien FLORENCE</h1>
+                <div class="tagline">Directeur Commercial & Management de Centre de Profits</div>
+            </header>
+
+            <div class="ats-summary">
+                <strong>Manager et Directeur Commercial d'excellence</strong> fort de 15 ans d'expérience combinant la direction stratégique de centres de profits et le management d'équipes pluridisciplinaires (3 à 20 collaborateurs). Expert en techniques de prospection et de closing B2B, je maîtrise à la fois l'acquisition digitale moderne (SalesTech, CRM, Growth) et la rigueur des relations publiques haut de gamme (Palaces 5*, clients VIP, grands comptes). Orienté performance et ROI (gestion de budgets jusqu'à 2.6 M€ et croissance de +140% de CA), je recherche un poste à haute responsabilité commerciale ou de direction opérationnelle à Toulouse ou au national.
+            </div>
+
+            <div class="section-title">Expériences Professionnelles</div>
+
+            <div class="exp-card">
+                <div class="exp-head"><span class="role">Responsable Commercial & Acquisition B2B</span><span class="date">2025 – PRÉSENT</span></div>
+                <div class="company">HAPPY HOUSE | STRATÉGIE DE CROISSANCE & ACQUISITION</div>
+                <div class="exp-body">
+                    <ul>
+                        <li><strong>Management opérationnel</strong> : Recrutement, coaching et animation d'une équipe de 3 business developers.</li>
+                        <li><strong>Stratégie Go-To-Market</strong> : Structuration du process commercial et implémentation de la stack d'acquisition technologique (CRM, automatisation multi-canal).</li>
+                        <li><strong>Reporting & Yield</strong> : Pilotage des marges commerciales et suivi hebdomadaire des indicateurs de performance (KPIs).</li>
+                    </ul>
+                    <div class="keyword-pill">Management d'Équipe</div><div class="keyword-pill">CRM & SalesTech</div><div class="keyword-pill">Pilotage ROI</div>
+                </div>
+            </div>
+
+            <div class="exp-card">
+                <div class="exp-head"><span class="role">Responsable de Division / Centre de Profits</span><span class="date">2022 – 2024</span></div>
+                <div class="company">RAS INTÉRIM | SERVICE & ÉVÉNEMENTIEL B2B (CA GÉRÉ : 2.6 M€)</div>
+                <div class="exp-body">
+                    <ul>
+                        <li><strong>Gestion de Centre de Profit</strong> : Pilotage global de l'activité commerciale et du compte de résultat (P&L) de la division.</li>
+                        <li><strong>Développement Commercial B2B</strong> : Négociation et fidélisation d'un portefeuille de 20 comptes clés d'envergure (hôtellerie haut de gamme, grands traiteurs, agences événementielles).</li>
+                        <li><strong>Management d'Équipes</strong> : Encadrement et pilotage hebdomadaire de plus de 20 collaborateurs (ETP).</li>
+                    </ul>
+                    <div class="keyword-pill">CA 2.6 M€</div><div class="keyword-pill">Gestion P&L</div><div class="keyword-pill">20 ETP</div><div class="keyword-pill">Négociation Grands Comptes</div>
+                </div>
+            </div>
+
+            <div class="exp-card">
+                <div class="exp-head"><span class="role">Négociateur Immobilier & Manager d'Agence</span><span class="date">2015 – 2021</span></div>
+                <div class="company">CENTURY 21 (Paris) & CABINET BEDIN (Toulouse)</div>
+                <div class="exp-body">
+                    <ul>
+                        <li><strong>Performance Individuelle</strong> : Gestion et closing de ventes à forte valeur ajoutée (120 k€ de CA annuel personnel).</li>
+                        <li><strong>Management & Formation</strong> : Recrutement, intégration et coaching terrain de 5 négociateurs juniors.</li>
+                        <li><strong>Partenariats</strong> : Développement du réseau de prescripteurs et actions commerciales de terrain.</li>
+                    </ul>
+                    <div class="keyword-pill">Ventes Complexes</div><div class="keyword-pill">Management & Coaching</div><div class="keyword-pill">Closing</div>
+                </div>
+            </div>
+
+            <div class="exp-card">
+                <div class="exp-head"><span class="role">Directeur Associé & Responsable Événementiel</span><span class="date">2010 – 2015</span></div>
+                <div class="company">MA SALLE À MANGER | PARIS 1er (PLACE DAUPHINE)</div>
+                <div class="exp-body">
+                    <ul>
+                        <li><strong>Direction opérationnelle</strong> : Gestion complète du restaurant (15 salariés, P&L) avec une **croissance de +140% du CA en 5 ans** (de 250 k€ à 600 k€).</li>
+                        <li><strong>Événementiel & Relations Publiques</strong> : Organisation exclusive de vernissages artistiques (Galerie Nabokof) et animation de clubs d'affaires VIP.</li>
+                    </ul>
+                    <div class="keyword-pill">Croissance +140% CA</div><div class="keyword-pill">Relations Publiques</div><div class="keyword-pill">Management 15 ETP</div>
+                </div>
+            </div>
+
+            <div class="exp-card">
+                <div class="exp-head"><span class="role">Management de Service de Prestige (Palaces 5* & Yachting)</span><span class="date">2000 – 2009</span></div>
+                <div class="company">HOTELS 5* (LHW), YACHTING DE LUXE & SOMMELLERIE ÉTOILÉE | IRLANDE, ANGLETERRE, ST-BARTH</div>
+                <div class="exp-body">
+                    <ul>
+                        <li><strong>The Westbury (5*, Dublin)</strong> : 1er Sommelier, management de 20 personnes et gestion de cave d'exception. Service privé VIP.</li>
+                        <li><strong>Le Clos (1* Michelin, Angleterre)</strong> : Chef Barman, gestion des stocks et de la clientèle, management d'équipe (CA global : 6 M€).</li>
+                        <li><strong>The Guanahani (5*, St-Barth)</strong> : Adjoint Room Service, supervision de 20 personnes. Événementiel haut de gamme sur yachts de luxe.</li>
+                    </ul>
+                    <div class="keyword-pill">Standards de Luxe Palaces</div><div class="keyword-pill">Gestion de Clientèles VIP</div><div class="keyword-pill">Management international</div>
+                </div>
+            </div>
+        </main>
+    </div>
+</body>
+</html>
