@@ -65,17 +65,11 @@ async def generate_pdf(html_filename, pdf_filename):
 
 async def main():
     print("--- COMPILATEUR PDF PRESTIGE GRAND HÔTEL CAPITOLE ---")
+    cv_success = await generate_pdf("CV_Capitole_Prestige.html", "CV_Julien_Florence_Capitole.pdf")
+    lm_success = await generate_pdf("LM_Capitole_Prestige.html", "LM_Julien_Florence_Capitole.pdf")
     
-    # 1. Candidature Capitole
-    cv_capitole = await generate_pdf("CV_Capitole_Prestige.html", "CV_Julien_Florence_Capitole.pdf")
-    lm_capitole = await generate_pdf("LM_Capitole_Prestige.html", "LM_Julien_Florence_Capitole.pdf")
-    
-    # 2. Candidature Générique (Postes à Responsabilité)
-    cv_generique = await generate_pdf("CV_Generique_Prestige.html", "CV_Julien_Florence_Generique.pdf")
-    lm_generique = await generate_pdf("LM_Generique_Prestige.html", "LM_Julien_Florence_Generique.pdf")
-    
-    if cv_capitole and lm_capitole and cv_generique and lm_generique:
-        print("[*] Compilation de tous les livrables PDF de prestige terminée avec succès.")
+    if cv_success and lm_success:
+        print("[*] Compilation de la candidature GRAND HÔTEL CAPITOLE terminée avec succès.")
     else:
         print("[X] Échec partiel ou total de la compilation.")
 
