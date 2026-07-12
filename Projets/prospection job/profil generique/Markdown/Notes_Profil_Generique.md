@@ -7,6 +7,9 @@ Ce dossier regroupe les éléments de base de candidature (CV, Lettre de Motivat
 *   **HTML** : 
     *   [CV_Julien_Florence.html](file:///C:/Users/julien/OneDrive/Bureau/geminicli/Projets/prospection%20job/profil%20generique/HTML/CV_Julien_Florence.html) : CV standard non ciblé.
     *   [LM_Julien_Florence.html](file:///C:/Users/julien/OneDrive/Bureau/geminicli/Projets/prospection%20job/profil%20generique/HTML/LM_Julien_Florence.html) : Lettre de motivation type avec des placeholders.
+*   **PDF** :
+    *   [CV_Julien_Florence.pdf](file:///C:/Users/julien/OneDrive/Bureau/geminicli/Projets/prospection%20job/profil%20generique/PDF/CV_Julien_Florence.pdf) : CV standard au format PDF.
+    *   [LM_Julien_Florence.pdf](file:///C:/Users/julien/OneDrive/Bureau/geminicli/Projets/prospection%20job/profil%20generique/PDF/LM_Julien_Florence.pdf) : Lettre de motivation standard au format PDF.
 *   **Images** :
     *   `photo moi pro.jpeg` : Photo de profil de Julien Florence.
     *   `signature julien V2.jpg` (et autres signatures) : Signatures manuscrites pour la lettre de motivation.
