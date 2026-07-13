@@ -46,3 +46,14 @@ Mon profil repose sur une double expertise unique :
 *   **Levier de valeur** : Mettre en avant le ROI (Retour sur Investissement) immédiat. Grâce à mes 15 ans d'expérience en management opérationnel et ma double compétence en automatisation des ventes (CRM), je n'ai pas besoin d'une courbe d'apprentissage managériale ou relationnelle. Je suis immédiatement productif.
 *   **Verbatim de négociation** :
     > *"Mes prétentions de 36k€ bruts annuels sont corrélées à mon autonomie opérationnelle immédiate. Mon expérience de gestionnaire de centre de profit me permet de comprendre vos indicateurs de marge et de rentabilité dès le premier jour, garantissant une transition rapide de la formation à la production de vos réseaux."*
+
+---
+
+## 🧭 5. Questions Stratégiques pour inverser la dynamique d'entretien (Posture ENTJ-A)
+
+1.  **Sur l'ancrage de la formation** :
+    > *"Quelle est la déperdition moyenne que vous observez aujourd'hui entre la fin d'une session de formation réseau et la première production concrète sur le terrain ? Comment mesurez-vous et suivez-vous cet indicateur actuellement ?"*
+2.  **Sur la logistique d'activation** :
+    > *"Quels ont été les principaux points de friction logistiques rencontrés lors du déploiement de vos dernières campagnes d'activation terrain ? Était-ce un sujet d'adhésion des réseaux ou de fluidité dans la coordination ?"*
+3.  **Sur l'objectif à 6 mois (ROI)** :
+    > *"Si nous faisons le point sur mon travail dans 6 mois et que vous considérez cette embauche comme une réussite totale, quel indicateur clé (KPI) de production réseau aura connu la plus forte progression ?"*
