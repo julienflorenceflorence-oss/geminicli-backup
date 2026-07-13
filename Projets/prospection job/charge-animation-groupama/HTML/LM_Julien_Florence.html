@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lettre de Motivation - Groupama - Julien FLORENCE</title>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&family=Montserrat:wght@300;400;600;700&family=Playfair+Display:ital,wght@0,400;1,400&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg: #0F1115;
+            --accent: #D4AF37;
+            --text: #FFFFFF;
+            --page-w: 210mm;
+            --page-h: 297mm;
+        }
+
+        @media print {
+            @page { size: A4; margin: 0; }
+            body { background: var(--bg) !important; -webkit-print-color-adjust: exact; }
+            .page { margin: 0 !important; border: none !important; box-shadow: none !important; width: var(--page-w); height: var(--page-h); }
+        }
+
+        body { background: #050505; color: var(--text); font-family: 'Montserrat', sans-serif; margin: 0; counter-reset: page; }
+
+        .page {
+            width: var(--page-w);
+            height: var(--page-h);
+            background: var(--bg);
+            margin: 0 auto;
+            position: relative;
+            padding: 25mm 22mm;
+            box-sizing: border-box;
+            display: flex;
+            flex-direction: column;
+            overflow: hidden;
+        }
+
+        .inner-border {
+            position: absolute; top: 10mm; left: 10mm; right: 10mm; bottom: 15mm;
+            border: 1px solid rgba(212, 175, 55, 0.15); pointer-events: none;
+        }
+
+        .header-letter {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 25px;
+            font-size: 0.95rem;
+            color: #dcdcdc;
+        }
+
+        .sender-info strong { font-family: 'Cinzel'; color: var(--accent); font-size: 1.15rem; display: block; margin-bottom: 4px; }
+        .receiver-info { text-align: right; }
+        .receiver-info strong { color: var(--text); display: block; margin-bottom: 4px; }
+
+        .object {
+            font-weight: 700;
+            color: var(--accent);
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 1px solid rgba(212, 175, 55, 0.3);
+            font-size: 1rem;
+        }
+
+        .content { flex-grow: 1; text-align: justify; font-size: 9.5pt; font-weight: 300; line-height: 1.55; color: #dcdcdc; }
+        .content p { margin-bottom: 14px; }
+
+        .signature-box { margin-top: 15px; text-align: right; }
+
+        .footer {
+            display: flex; justify-content: center; font-family: 'Cinzel'; font-size: 7.5pt; color: rgba(176, 176, 176, 0.4);
+            margin-top: auto;
+            padding-bottom: 5mm;
+            letter-spacing: 1.8px;
+        }
+    </style>
+</head>
+<body>
+    <div class="page">
+        <div class="inner-border"></div>
+        
+        <div class="header-letter">
+            <div class="sender-info">
+                <strong>Julien FLORENCE</strong><br>
+                31130 Quint-Fonsegrives (Toulouse)<br>
+                06 61 74 75 73<br>
+                julienflorence.florence@gmail.com<br>
+                Permis B - Véhiculé
+            </div>
+            <div class="receiver-info">
+                <strong>À l'attention de l'équipe Recrutement Groupama Gan Vie</strong><br>
+                Groupama Gan Vie<br>
+                Mérignac (33)<br>
+                <br>
+                Le 13 juillet 2026
+            </div>
+        </div>
+
+        <div class="object">
+            Objet : Candidature au poste de Chargé d'Animation & d'Activation Réseaux H/F
+        </div>
+
+        <div class="content">
+            <p>Madame, Monsieur,</p>
+
+            <p>Un développement commercial performant au sein des réseaux de distribution repose sur la capacité à transformer la formation en production concrète et durable. Responsable commercial et manager opérationnel rompu aux exigences de rentabilité, je vous propose ma candidature pour le poste de <strong>Chargé d'Animation & d'Activation Réseaux</strong> au sein de Groupama Gan Vie à Mérignac.</p>
+
+            <p>Mon parcours démontre ma capacité à structurer l'action commerciale et à coordonner des dispositifs d'envergure. Au cours de mes 15 années en hôtellerie de luxe (Palaces 5*), j'ai développé une culture de la logistique événementielle et de la rigueur d'exécution. J'ai transposé cette exigence sur le terrain comme négociateur immobilier, puis comme gestionnaire de centre de profit chez RAS Intérim. Sur ce dernier poste, j'ai piloté une agence générant 2,6 M€ de CA, encadré 20 ETP par semaine et assuré le suivi opérationnel quotidien pour 25 comptes B2B stratégiques.</p>
+
+            <p>Afin d'adapter mes compétences aux outils d'acquisition modernes, j'ai complété cette expérience par un Bachelor Marketing & Commerce (Sales & Acquisition Tech). Ma maîtrise des outils collaboratifs, des CRMs (Salesforce, HubSpot, Bitrix24) et de l'automatisation commerciale me permet d'industrialiser les processus post-formation, de bâtir des plans d'actions d'activation opérationnels et de piloter les indicateurs de performance (KPIs) nécessaires pour mesurer la production des réseaux (ACPS, AGRI, etc.).</p>
+
+            <p>Doté d'une réelle aisance relationnelle, dynamique et orienté résultats, je sais embarquer les équipes, animer des réunions et assurer une interface fluide entre les réseaux commerciaux, le marketing et les formateurs.</p>
+
+            <p>Actuellement basé à Toulouse, je suis immédiatement mobile sur Mérignac / Bordeaux et disponible sans délai pour rejoindre vos équipes.</p>
+
+            <p>Je vous prie d'agréer, Madame, Monsieur, l'expression de mes salutations distinguées.</p>
+
+            <div class="signature-box">
+                <div style="display: inline-block; text-align: center; position: relative; padding-right: 20px;">
+                    <!-- Signature en Or Prestige directement intégrée au document sombre -->
+                    <img src="../Images/signature_or.png" alt="Signature" style="width: 180px; height: auto; display: block; filter: drop-shadow(2px 2px 4px rgba(0, 0, 0, 0.5)); transform: rotate(-1deg); margin-bottom: 5px;">
+                    <div style="font-family: 'Cinzel'; font-size: 0.85rem; color: #D4AF37; font-weight: 700; letter-spacing: 2px; text-transform: uppercase;">
+                        JULIEN FLORENCE
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="footer">
+            LETTRE DE MOTIVATION – JULIEN FLORENCE
+        </div>
+    </div>
+</body>
+</html>
