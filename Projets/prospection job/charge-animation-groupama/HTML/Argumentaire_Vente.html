@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Argumentaire de Vente - Julien FLORENCE</title>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&family=Montserrat:wght@300;400;600&family=Playfair+Display:ital,wght@0,400;1,400&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg: #0F1115;
+            --accent: #D4AF37;
+            --text: #FFFFFF;
+            --page-w: 210mm;
+            --page-h: 297mm;
+        }
+
+        @media print {
+            @page { size: A4; margin: 0; }
+            body { background: var(--bg) !important; -webkit-print-color-adjust: exact; }
+            .page { margin: 0 !important; border: none !important; box-shadow: none !important; width: var(--page-w); height: var(--page-h); }
+        }
+
+        body { background: #050505; color: var(--text); font-family: 'Montserrat', sans-serif; margin: 0; counter-reset: page; }
+
+        .page {
+            width: var(--page-w);
+            height: var(--page-h);
+            background: var(--bg);
+            margin: 40px auto;
+            position: relative;
+            padding: 20mm 20mm;
+            box-sizing: border-box;
+            box-shadow: 0 0 30px rgba(0,0,0,0.5);
+            page-break-after: always;
+            display: flex;
+            flex-direction: column;
+            overflow: hidden;
+        }
+
+        .inner-border {
+            position: absolute; top: 10mm; left: 10mm; right: 10mm; bottom: 10mm;
+            border: 1px solid rgba(212, 175, 55, 0.15); pointer-events: none;
+        }
+
+        h1 { font-family: 'Cinzel'; color: var(--accent); text-align: center; border-bottom: 1px solid var(--accent); padding-bottom: 5px; margin-bottom: 20px; font-size: 1.6rem; letter-spacing: 2px; }
+        h2 { font-family: 'Cinzel'; color: var(--accent); border-left: 4px solid var(--accent); padding-left: 12px; margin: 15px 0 10px 0; font-size: 1.1rem; letter-spacing: 1px; }
+        
+        .quote {
+            font-family: 'Playfair Display'; font-style: italic; color: var(--accent);
+            text-align: center; padding: 12px; border-top: 1px solid rgba(212, 175, 55, 0.2);
+            border-bottom: 1px solid rgba(212, 175, 55, 0.2); margin: 15px 0;
+            font-size: 0.95rem;
+        }
+
+        .content { flex-grow: 1; text-align: justify; font-size: 9.5pt; font-weight: 300; line-height: 1.5; }
+        .content p { margin-bottom: 10px; }
+        
+        ul { list-style: none; margin-bottom: 15px; }
+        li { margin-bottom: 6px; position: relative; padding-left: 15px; }
+        li::before { content: "›"; color: var(--accent); position: absolute; left: 0; font-weight: bold; font-size: 1.1rem; }
+
+        table { width: 100%; border-collapse: collapse; margin-top: 15px; font-size: 9pt; }
+        th, td { padding: 10px; text-align: left; border: 1px solid rgba(212, 175, 55, 0.25); }
+        th { font-family: 'Cinzel'; color: var(--accent); background: rgba(212, 175, 55, 0.05); font-weight: 700; }
+        td { color: #dcdcdc; }
+
+        .footer {
+            border-top: 1px solid var(--accent); padding-top: 3mm;
+            display: flex; justify-content: space-between; font-family: 'Cinzel'; font-size: 8pt; color: rgba(176, 176, 176, 0.6);
+            margin-top: auto;
+        }
+        .page-num::after { counter-increment: page; content: "P. " counter(page, decimal-leading-zero); }
+    </style>
+</head>
+<body>
+    <!-- PAGE 1 -->
+    <div class="page">
+        <div class="inner-border"></div>
+        <h1>Argumentaire de Vente & Négociation</h1>
+        <div class="quote">"Transformer la formation en production concrète et durable."</div>
+        
+        <div class="content">
+            <h2>🎯 1. Le Pitch d'Accroche</h2>
+            <p>Un bon programme de formation sans ancrage terrain est un investissement stérile. Responsable commercial et manager opérationnel rompu aux exigences de rentabilité, ma mission chez Groupama Gan Vie est de transformer les concepts théoriques de vos formateurs en production commerciale concrète et durable pour vos réseaux (ACPS, AGRI).</p>
+            <p>Mon profil repose sur une double expertise : l'excellence et la logistique terrain (15 ans de management opérationnel d'équipes sous des standards de qualité stricts dans l'hôtellerie de luxe) couplées à une maîtrise de la vente moderne et des Sales Tech (Bachelor Rocket School, CRM Salesforce/HubSpot, Growth Automation) pour piloter vos indicateurs avec une rigueur analytique.</p>
+
+            <h2>🛠️ 2. Traitement des Objections (Objection Handling)</h2>
+            
+            <p><strong>Objection 1 : "Vous n'avez pas d'expérience dans la Banque / Assurance."</strong><br>
+            L'assurance est un produit technique qui s'assimile rapidement. En revanche, la persuasion, l'aisance relationnelle en public, l'animation et la rigueur de la logistique d'activation ne s'improvisent pas. Dans mes précédents rôles (Immobilier, RAS Intérim), j'ai maîtrisé des réglementations juridiques complexes en moins de 30 jours pour rester crédible face à des décideurs B2B.</p>
+            
+            <p><strong>Objection 2 : "Pourquoi ce rôle de Chargé d'Animation après avoir été Directeur ?"</strong><br>
+            Je souhaite canaliser mon énergie sur mon axe de force : l'animation de réseaux et le déploiement opérationnel. Avoir géré un CA de 2,6 M€ ou dirigé 15 salariés m'apporte une hauteur de vue sur la rentabilité (P&L) qui me permet de comprendre les enjeux financiers réels des agents généraux et des réseaux.</p>
+            
+            <p><strong>Objection 3 : "Vous êtes à Toulouse alors que le poste est à Mérignac."</strong><br>
+            Mobilité géographique immédiate et validée. Le projet de déménagement sur Bordeaux/Mérignac est planifié et opérationnel sans délai.</p>
+        </div>
+        
+        <div class="footer">
+            <div>Groupama Gan Vie - Candidature Julien FLORENCE</div>
+            <div class="page-num"></div>
+        </div>
+    </div>
+
+    <!-- PAGE 2 -->
+    <div class="page">
+        <div class="inner-border"></div>
+        <h1>Argumentaire de Vente & Négociation</h1>
+        
+        <div class="content">
+            <h2>📊 3. Grille d'Alignement aux Missions</h2>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Axe de Mission (Groupama)</th>
+                        <th>Mon Parallèle Expérience</th>
+                        <th>Preuve & Métrique</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>Animation & Suivi Post-formation</strong></td>
+                        <td>Coaching de collaborateurs sur les outils Sales & CRMs chez Happy House.</td>
+                        <td>Montée en compétences de 3 collaborateurs.</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Mise en place de KPIs</strong></td>
+                        <td>Suivi et analyse quotidienne de la production chez RAS Intérim.</td>
+                        <td>Gestion et pilotage d'un CA de 2,6 M€.</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Activation & Déploiement Terrain</strong></td>
+                        <td>Prospection de terrain et coordination d'actions commerciales de quartier.</td>
+                        <td>CA individuel moyen de 120k€ généré.</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Coordination & Interface Réseaux</strong></td>
+                        <td>Interface unique pour 25 comptes sédentaires B2B et coordination d'équipes.</td>
+                        <td>Gestion de 20 ETP par semaine.</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Qualité d'Exécution & Logistique</strong></td>
+                        <td>Planification et logistique sous haute exigence de service (standards LHW).</td>
+                        <td>Management opérationnel de 15 salariés.</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <h2>Euro 4. Prétentions Salariales (Cible : 36 000 €)</h2>
+            <p>Mes prétentions de 36k€ bruts annuels sont corrélées à mon autonomie opérationnelle immédiate. Grâce à mes 15 ans d'expérience opérationnelle et ma double compétence en automatisation des ventes (CRM), je n'ai pas besoin d'une courbe d'apprentissage managériale ou relationnelle. Mon expérience de gestionnaire de centre de profit me permet de comprendre vos indicateurs de marge et de rentabilité dès le premier jour, garantissant une transition rapide de la formation à la production de vos réseaux.</p>
+        </div>
+        
+        <div class="footer">
+            <div>Groupama Gan Vie - Candidature Julien FLORENCE</div>
+            <div class="page-num"></div>
+        </div>
+    </div>
+</body>
+</html>

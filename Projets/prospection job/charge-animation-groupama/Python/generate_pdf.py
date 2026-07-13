@@ -68,8 +68,9 @@ async def main():
     print("--- COMPILATEUR PDF GROUPAMA ---")
     cv_success = await generate_pdf("../HTML/CV_Julien_Florence.html", "../PDF/CV_Julien_Florence_Groupama.pdf")
     lm_success = await generate_pdf("../HTML/LM_Julien_Florence.html", "../PDF/LM_Julien_Florence_Groupama.pdf")
+    arg_success = await generate_pdf("../HTML/Argumentaire_Vente.html", "../PDF/Argumentaire_Vente_Groupama.pdf")
     
-    if cv_success and lm_success:
+    if cv_success and lm_success and arg_success:
         print("[*] Compilation de la candidature GROUPAMA terminée avec succès.")
     else:
         print("[X] Échec partiel ou total de la compilation.")
