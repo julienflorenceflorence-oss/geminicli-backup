@@ -14,9 +14,11 @@ Dossier de prospection pour le poste de **Chargé d'Animation & d'Activation Ré
     *   [index.html (CV Interactif / Landing Page)](file:///C:/Users/julien/OneDrive/Bureau/geminicli/Projets/prospection%20job/charge-animation-groupama/HTML/index.html)
     *   [CV_Julien_Florence.html (CV A4 source)](file:///C:/Users/julien/OneDrive/Bureau/geminicli/Projets/prospection%20job/charge-animation-groupama/HTML/CV_Julien_Florence.html)
     *   [LM_Julien_Florence.html (Lettre source)](file:///C:/Users/julien/OneDrive/Bureau/geminicli/Projets/prospection%20job/charge-animation-groupama/HTML/LM_Julien_Florence.html)
+    *   [Argumentaire_Vente.html (Argumentaire source)](file:///C:/Users/julien/OneDrive/Bureau/geminicli/Projets/prospection%20job/charge-animation-groupama/HTML/Argumentaire_Vente.html)
 *   **PDF (Livrables)** :
     *   [CV_Julien_Florence_Groupama.pdf](file:///C:/Users/julien/OneDrive/Bureau/geminicli/Projets/prospection%20job/charge-animation-groupama/PDF/CV_Julien_Florence_Groupama.pdf)
     *   [LM_Julien_Florence_Groupama.pdf](file:///C:/Users/julien/OneDrive/Bureau/geminicli/Projets/prospection%20job/charge-animation-groupama/PDF/LM_Julien_Florence_Groupama.pdf)
+    *   [Argumentaire_Vente_Groupama.pdf](file:///C:/Users/julien/OneDrive/Bureau/geminicli/Projets/prospection%20job/charge-animation-groupama/PDF/Argumentaire_Vente_Groupama.pdf)
 
 ## ⚙️ Compilation des Rendus
 Le script de génération automatique se situe dans [generate_pdf.py](file:///C:/Users/julien/OneDrive/Bureau/geminicli/Projets/prospection%20job/charge-animation-groupama/Python/generate_pdf.py).
