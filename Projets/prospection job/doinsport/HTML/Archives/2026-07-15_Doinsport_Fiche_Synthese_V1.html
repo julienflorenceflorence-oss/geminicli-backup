@@ -65,8 +65,8 @@
             color: var(--accent); 
             border-left: 3px solid var(--accent); 
             padding-left: 15px; 
-            margin: 25px 0 12px 0; 
-            font-size: 1.15rem; 
+            margin: 30px 0 15px 0; 
+            font-size: 1.2rem; 
             letter-spacing: 1px;
         }
         
@@ -75,18 +75,18 @@
             font-style: italic; 
             color: var(--accent);
             text-align: center; 
-            padding: 12px; 
+            padding: 15px; 
             border-top: 1px solid rgba(212, 175, 55, 0.2);
             border-bottom: 1px solid rgba(212, 175, 55, 0.2); 
-            margin: 15px 0;
-            font-size: 0.9rem;
+            margin: 20px 0;
+            font-size: 0.95rem;
         }
 
         .content { 
             flex-grow: 1; 
-            font-size: 9.5pt; 
+            font-size: 10pt; 
             font-weight: 300; 
-            line-height: 1.5;
+            line-height: 1.6;
         }
 
         .grid-identity {
@@ -106,15 +106,15 @@
         .identity-title {
             font-family: 'Cinzel';
             color: var(--accent);
-            font-size: 0.85rem;
+            font-size: 0.9rem;
             margin-bottom: 10px;
             border-bottom: 1px solid rgba(212, 175, 55, 0.2);
             padding-bottom: 5px;
         }
 
         .identity-item {
-            margin-bottom: 6px;
-            font-size: 0.8rem;
+            margin-bottom: 8px;
+            font-size: 0.85rem;
         }
 
         .identity-label {
@@ -127,33 +127,33 @@
         }
 
         .warning-box {
-            background: rgba(212, 175, 55, 0.03);
+            background: rgba(212, 175, 55, 0.05);
             border: 1px solid var(--accent);
-            padding: 12px;
+            padding: 15px;
             border-radius: 6px;
-            margin: 15px 0;
+            margin: 20px 0;
         }
 
         .warning-title {
             font-family: 'Cinzel';
             color: var(--accent);
             font-weight: 700;
-            margin-bottom: 6px;
+            margin-bottom: 8px;
             display: flex;
             align-items: center;
             gap: 10px;
-            font-size: 0.9rem;
+            font-size: 0.95rem;
         }
 
         .warning-content {
-            font-size: 0.8rem;
+            font-size: 0.85rem;
             color: var(--text-dim);
         }
 
         .footer {
             border-top: 1px solid rgba(212, 175, 55, 0.3); 
-            padding-top: 4mm;
-            margin-top: 15px;
+            padding-top: 5mm;
+            margin-top: 20px;
             display: flex; 
             justify-content: space-between; 
             font-family: 'Cinzel'; 
@@ -164,11 +164,11 @@
 
         ul {
             padding-left: 20px;
-            margin: 8px 0;
+            margin: 10px 0;
         }
 
         li {
-            margin-bottom: 4px;
+            margin-bottom: 6px;
             color: var(--text-dim);
         }
 
@@ -208,23 +208,6 @@
         .fixed-dock a {
             flex: 1;
             margin: 0;
-        }
-
-        .kpi-section {
-            margin-top: 15px;
-        }
-
-        .kpi-title {
-            font-weight: 600;
-            color: var(--accent);
-            font-size: 0.9rem;
-            margin-bottom: 5px;
-        }
-
-        .kpi-desc {
-            color: var(--text-dim);
-            font-size: 0.85rem;
-            margin-bottom: 12px;
         }
 
         @media (max-width: 600px) { 
@@ -279,7 +262,7 @@
             </div>
 
             <h2>2. Profils des Dirigeants</h2>
-            <p style="color: var(--text-dim); margin-bottom: 20px;">
+            <p style="color: var(--text-dim); font-size: 0.9rem; margin-bottom: 15px;">
                 <strong>Rémi Chevalier (Directeur Général & COO) :</strong> Interlocuteur de Julien. Profil très ancré sur le Business Development, les partenariats stratégiques et l'écosystème du Padel. Il s'occupe de la visibilité et du réseau de clubs.<br><br>
                 <strong>Nicolas Cassignol (CEO) :</strong> Orienté produit, vision stratégique globale et structuration financière. Il a conçu l'idée durant ses études de commerce (Kedge Marseille), validée par l'incubateur Belle de Mai.
             </p>
@@ -298,67 +281,14 @@
         </div>
     </div>
 
-    <!-- PAGE 2 : ANALYSE DE LA CROISSANCE ET DES KPIS -->
-    <div class="page">
-        <div class="inner-border"></div>
-        <h1>CROISSANCE &amp; KPIS D'ACTIVITÉ</h1>
-        <div class="quote">"Mesurer la performance d'un modèle d'infrastructure sportive SaaS."</div>
-        
-        <div class="content">
-            <h2>4. Analyse de la Croissance Financière &amp; SaaS</h2>
-            
-            <div class="kpi-section">
-                <div class="kpi-title">📊 MRR &amp; ARR (Monthly &amp; Annual Recurring Revenue)</div>
-                <div class="kpi-desc">
-                    Avec 1 000+ clubs et un panier moyen mensuel par club estimé entre <strong>120 € et 250 € HT</strong> (selon l'équipement de domotique d'accès), le <strong>MRR de Doinsport est estimé entre 150k€ et 250k€</strong>, soit un <strong>ARR de 1,8M€ à 3M€</strong>. C'est la base de calcul pour la valorisation de leur levée de fonds.
-                </div>
-            </div>
-
-            <div class="kpi-section">
-                <div class="kpi-title">📉 Churn Rate (Attrition) &amp; Switching Cost</div>
-                <div class="kpi-desc">
-                    Le taux de désabonnement des clubs. Doinsport bénéficie d'une forte rétention (un Churn structurellement bas, probablement &lt; 5% annuel) car les clubs installent des modules physiques (domotique, lecteurs de badge d'accès, caméras), rendant le coût de changement de logiciel extrêmement élevé.
-                </div>
-            </div>
-
-            <div class="kpi-section">
-                <div class="kpi-title">💸 LTV / CAC Ratio</div>
-                <div class="kpi-desc">
-                    Pour valider la viabilité de leur scale, la <strong>Lifetime Value</strong> (valeur d'usage d'un club sur sa durée de vie) doit être au moins <strong>3 fois supérieure</strong> au <strong>Customer Acquisition Cost</strong> (frais commerciaux et marketing nécessaires pour signer un nouveau club).
-                </div>
-            </div>
-
-            <h2>5. KPIs d'Engagement Joueur &amp; Monétisation</h2>
-            
-            <div class="kpi-section">
-                <div class="kpi-title">💳 GMV (Gross Merchandise Volume) &amp; Fintech</div>
-                <div class="kpi-desc">
-                    C'est le volume total des réservations de terrains transitant par Doinsport via Stripe. Bien qu'ils ne prennent pas de commissions sur les réservations (modèle d'abonnement fixe), une GMV importante leur donne un pouvoir de négociation élevé auprès de Stripe pour capter une marge Fintech indirecte.
-                </div>
-            </div>
-
-            <div class="kpi-section">
-                <div class="kpi-title">📱 MAU / DAU (Monthly / Daily Active Users)</div>
-                <div class="kpi-desc">
-                    Sur 800 000 joueurs inscrits, le ratio d'utilisateurs actifs quotidiens mesure l'engagement communautaire de l'application et sa valeur de réseau.
-                </div>
-            </div>
-        </div>
-        
-        <div class="footer">
-            <div>Édition Prestige - Julien Florence</div>
-            <div class="page-num"></div>
-        </div>
-    </div>
-
-    <!-- PAGE 3 : INCIDENT DE SÉCURITÉ & PRÉPARATION DE L'ENTRETIEN -->
+    <!-- PAGE 2 : ACTUALITÉ CHAUDE & PRÉPARATION DE L'ENTRETIEN -->
     <div class="page">
         <div class="inner-border"></div>
         <h1>SÉCURITÉ &amp; STRATÉGIE D'ENTRETIEN</h1>
         <div class="quote">"Transformer une crise technique en levier d'opportunité management."</div>
         
         <div class="content">
-            <h2>6. Alerte Critique : Fuite de Données (14 Juillet 2026)</h2>
+            <h2>4. Alerte Critique : Fuite de Données (14 Juillet 2026)</h2>
             <div class="warning-box">
                 <div class="warning-title">
                     ⚠️ INCIDENT DE CYBERSÉCURITÉ MAJEUR (HIER)
@@ -370,17 +300,16 @@
                 </div>
             </div>
 
-            <h2>7. Stratégie de Pitch (Profil Julien : Tech + Management)</h2>
-            <p style="color: var(--text-dim); margin-bottom: 20px;">
-                Ta posture doit être celle d'un <strong>Adulte pragmatique</strong> (ENTJ-A). Ne les critique pas sur la faille, montre que tu as l'œil sur l'actualité et que tu comprends qu'un scale de 800k utilisateurs génère ce type d'enjeux d'infrastructure.
+            <h2>5. Stratégie de Pitch (Profil Julien : Tech + Management)</h2>
+            <p style="color: var(--text-dim); font-size: 0.9rem;">
+                Ta posture doit être celle d'un <strong>Adulte pragmatique</strong> (ENTJ-A). Ne les critique pas sur la faille, montre que tu as l'œil sur l'actualité et que tu comprends qu'un scale de 800k utilisateurs génère ce type d'enjeux.
             </p>
             
-            <h2>8. Questions clés à poser à Rémi Chevalier</h2>
+            <h2 style="margin-top: 20px;">6. Questions clés à poser à Rémi Chevalier</h2>
             <ul style="font-size: 0.85rem; line-height: 1.5;">
                 <li><strong>Sur la levée :</strong> <em>"Quels sont les objectifs prioritaires de ce tour de table ? Scale commercial en Europe ou renforcement de l'infrastructure ?"</em></li>
                 <li><strong>Sur ton rôle :</strong> <em>"Comment envisagez-vous l'articulation de ce rôle hybride Tech/Management ? Est-ce pour structurer les opérations ou piloter l'intégration post-merger de Kirola ?"</em></li>
-                <li><strong>Sur les KPIs d'activité :</strong> <em>"Cherchez-vous principalement à étendre le MRR par l'acquisition de nouveaux clubs ou à maximiser l'expansion revenue sur votre parc installé via la domotique et des services Fintech ?"</em></li>
-                <li><strong>Sur la sécurité :</strong> <em>"L'incident de sécurité du 14 juillet est un enjeu classique de scale. Comment l'équipe gère-t-elle la remédiation ? Y a-t-il une volonté de renforcer la gouvernance technique avec cette levée ?"</em></li>
+                <li><strong>Sur la sécurité :</strong> <em>"L'incident de sécurité du 14 juillet est un enjeu classique de scale. Comment l'équipe gère-t-elle la remédiation ? Y a-t-il une volonté de renforcer la gouvernance des données et la cybersécurité avec cette levée ?"</em></li>
             </ul>
         </div>
         
