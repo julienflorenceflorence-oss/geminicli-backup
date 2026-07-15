@@ -1,5 +1,5 @@
 # FICHE DE SYNTHÈSE STRATÉGIQUE : DOINSPORT
-*Date de création : 15 Juillet 2026 (Mise à jour : Matrice Tactique MRR & Fintech)*
+*Date de création : 15 Juillet 2026 (Mise à jour : Matrice de Réponses par Cas de Figure)*
 *Auteur : Antigravity (IA) pour Julien Florence*
 *Projet : Prospection Job - Opportunité Doinsport*
 
@@ -48,16 +48,21 @@ Doinsport a opéré une transition majeure ces dernières années, passant d'une
 ### **A. Les KPIs SaaS B2B (Santé du Logiciel Clubs)**
 1. **MRR (Monthly Recurring Revenue) & ARR (Annual Recurring Revenue)** :
    * *Estimation* : Avec 1 000+ clubs équipés et un panier moyen estimé (selon les options de domotique et CRM) entre **120 € et 250 € HT / mois par club**, Doinsport génère un **MRR estimé de 150k€ à 250k€** (soit un **ARR entre 1,8M€ à 3M€**).
+   * *Enjeu de la levée* : Les fonds de capital-risque (VC) évaluent souvent les SaaS sur des multiples d'ARR (ex. : 5x à 8x l'ARR en phase de scale).
 2. **Logo Churn & Net Revenue Churn (Taux d'Attrition)** :
-   * Le taux de perte des clubs clients. Le Churn structurel doit être très bas (< 5% par an) car le coût de changement de logiciel est extrêmement élevé (domotique).
+   * Le taux de perte des clubs clients. Dans le padel, le coût de changement de logiciel (*switching cost*) is extrêmement élevé en raison de l'installation physique du matériel (lecteurs de badges, domotique d'accès). Le Churn structurel doit donc être très bas (< 5% par an).
 3. **LTV (Lifetime Value) / CAC (Customer Acquisition Cost)** :
-   * Le ratio de rentabilité de l'acquisition. La LTV (valeur de vie d'un client club) doit être au moins **3 à 4 fois supérieure** au CAC (frais d'acquisition).
+   * Le ratio de rentabilité de l'acquisition. Pour que le modèle soit sain à l'aube d'une levée de fonds, la LTV (ce que rapporte un club sur toute sa durée de vie) doit être au moins **3 à 4 fois supérieure** au CAC (ce que coûte l'acquisition d'un club via les commerciaux terrain et le marketing).
 
 ### **B. Les KPIs Applicatifs & Effets de Réseau (Côté Joueurs B2C)**
 1. **GMV (Gross Merchandise Volume - Volume d'Affaires Brut)** :
-   * Montant total des réservations de terrains payées par les joueurs via l'app. Une GMV élevée permet de renégocier les frais Stripe et de capter de la marge Fintech.
+   * C'est le montant total des réservations de terrains payées par les joueurs via l'application Doinsport (via Stripe). Même si Doinsport ne prend pas de commission directe, une GMV élevée (ex. : plusieurs dizaines de millions d'euros par an) leur permet de **renégocier drastiquement les frais Stripe** pour augmenter leur propre marge d'intermédiation financière (Fintech).
 2. **DAU / MAU Ratio (Daily / Monthly Active Users)** :
-   * Mesure de l'engagement de leurs 800 000 joueurs.
+   * Mesure de l'engagement de leurs 800 000 joueurs. Un ratio élevé prouve que l'application est un réflexe quotidien pour réserver son padel, renforçant la valeur du réseau pour les marques partenaires ou le cross-selling de services (assurances sportives, coaching, etc.).
+
+### **C. Les KPIs Post-Merger (Intégration de Kirola)**
+1. **Taux de Migration Produit** : Le pourcentage de clubs Kirola migrés avec succès sur la base de code unifiée de Doinsport pour supprimer les coûts de maintenance de la double plateforme.
+2. **Expansion Rate (Upsell Kirola)** : La capacité à vendre le module d'école/académie (historiquement développé par Kirola) aux 1000 clubs d'origine de Doinsport.
 
 ---
 
@@ -67,9 +72,11 @@ Doinsport a opéré une transition majeure ces dernières années, passant d'une
 | :--- | :--- | :--- |
 | **Volume de Clubs** | **1 000+ clubs** (Leader quantitatif, stimulé par le rachat de Kirola) | ~300 à 500 clubs (Acteur ciblé premium / sélectif) |
 | **ARR Estimé** | **~2,0 M€ - 3,0 M€** | ~1,0 M€ - 1,5 M€ |
-| **Tarification Publique** | Sur devis uniquement (Modulaire selon options) | Affichée : **197 € HT** à **247 € HT** / mois |
-| **Canal d'Acquisition (CAC)** | Force commerciale classique + Growth externe (Kirola) | **Inbound organique massif** via la marque personnelle de Loïc Tap |
-| **Points Forts Produit** | Domotique d'accès (QR codes, éclairage), ERP complet | Animation, gestion de tournois, intégration vidéo courts |
+| **Tarification Publique** | Sur devis uniquement (Modulaire selon options) | Affichée : **197 € HT** (Autonome) à **247 € HT** (Premium) / mois |
+| **Modèle Économique** | SaaS pur (Abonnement mensuel sans commission) | SaaS + Consulting / Coaching (Projet-Padel.fr) |
+| **Canal d'Acquisition (CAC)** | Force commerciale classique + Growth externe (Kirola) | **Inbound organique massif** via la marque personnelle et l'autorité de Loïc Tap sur les réseaux sociaux |
+| **Points Forts Produit** | Domotique d'accès (QR codes, éclairage), gestion multi-sites, ERP complet | Animation communautaire, gestion avancée de tournois, intégration caméra vidéo courts |
+| **Grands Comptes** | Racing Club de France, Country-clubs | Z5 de Zidane, Toulouse Padel Club, Le Mas Perpignan |
 
 ---
 
@@ -83,61 +90,39 @@ Doinsport a opéré une transition majeure ces dernières années, passant d'une
 
 ---
 
-## 🎯 7. MATRICE DE RÉPONSES D'ENTRETIEN : QUESTION "MRR VS EXPANSION"
+## 🎯 7. MATRICE DE RÉPONSES D'ENTRETIEN : STRATÉGIE PAR CAS DE FIGURE
 
 La question posée : **"Quels sont vos KPIs d'engagement prioritaires aujourd'hui ? MRR d'acquisition ou expansion revenue ?"**
 
+Voici la stratégie à adopter en fonction de la réponse de Rémi Chevalier :
+
 ### **Cas de figure A : Rémi répond "L'Acquisition (MRR d'acquisition)"**
-* **Pourquoi ce choix** : Verrouiller un maximum de "logos" (de clubs) très vite pour priver la concurrence de parts de marché.
-* **Ta réponse stratégique** : Valider la pertinence de l'effet de réseau des 800 000 joueurs. Se positionner sur la structuration des cycles de vente B2B (clubs municipaux vs privés).
-* **Ta relance (follow-up)** :
-  > *"Face à cet enjeu d'acquisition rapide, comment ciblez-vous vos segments commerciaux ? Ciblez-vous prioritairement les réseaux de franchises privées ou le segment municipal, dont le cycle administratif est plus long mais le volume de terrains captif ?"*
+* **Pourquoi ils font ce choix** : Ils veulent verrouiller un maximum de "logos" (de clubs) très vite pour priver leurs concurrents (Gestion Sports, Playtomic) de parts de marché.
+* **Ta réponse stratégique** : 
+  1. *Valider* : *"C'est le choix logique pour maximiser l'effet de réseau des 800 000 joueurs. Plus vous avez de clubs, plus l'application devient incontournable."*
+  2. *Proposer de l'aide (ton profil)* : *"Pour soutenir ce scale, il y a un enjeu sur le ciblage et la vélocité commerciale. Les clubs municipaux (associatifs) et les clubs privés n'ont pas les mêmes cycles de vente. C'est sur cette structuration des process de prospection B2B que mon profil hybride peut apporter de la valeur."*
+  3. *Relance technique ( follow-up )* : 
+     > *"Face à cet enjeu d'acquisition rapide, comment structurez-vous vos équipes commerciales ? Ciblez-vous prioritairement les réseaux de franchises privées ou le segment municipal, dont le cycle administratif est plus long mais le volume de terrains captif ?"*
 
 ### **Cas de figure B : Rémi répond "L'Expansion Revenue (Upsell/CS)"**
-* **Pourquoi ce choix** : Augmenter l'ARPU des 1000 clubs existants (domotique, module Kirola).
-* **Ta réponse stratégique** : Valider le ratio LTV/CAC élevé de l'upsell. Se positionner sur l'onboarding et l'adoption produit (domotique physique).
-* **Ta relance (follow-up)** :
-  > *"Depuis le rachat de Kirola en 2025, quel est le taux d'adoption de leur module 'académie' par vos clubs historiques ? Et comment vos équipes Customer Success gèrent-elles le goulot d'étranglement de l'installation physique de la domotique chez les clients existants ?"*
+* **Pourquoi ils font ce choix** : Signer de nouveaux clubs coûte cher. Ils préfèrent augmenter le panier moyen (ARPU) des 1000 clubs qu'ils possèdent déjà en leur vendant de la domotique d'accès ou les modules écoles issus de Kirola.
+* **Ta réponse stratégique** :
+  1. *Valider* : *"C'est excellent pour la rentabilité. Un euro d'upsell sur un client existant a un CAC quasi nul."*
+  2. *Proposer de l'aide (ton profil)* : *"L'upsell en SaaS dépend de deux choses : l'efficacité de l'onboarding et l'adoption du produit par le client. Installer du matériel physique (domotique d'accès) ou changer de méthode pour l'école de tennis requiert un accompagnement fort. C'est un rôle de Customer Success très orienté process et produit."*
+  3. *Relance technique ( follow-up )* :
+     > *"Depuis le rachat de Kirola en 2025, quel est le taux d'adoption de leur module 'académie' par vos clubs historiques ? Et comment vos équipes Customer Success gèrent-elles le goulot d'étranglement de l'installation physique de la domotique chez les clients existants ?"*
 
 ### **Cas de figure C : Rémi répond "Un mix des deux (On fait les deux en parallèle)"**
-* **Pourquoi ce choix** : Segmentation des équipes ("Chasseurs" vs "Customer Success / Account Managers").
-* **Ta réponse stratégique** : Valider l'ambition, mais souligner qu'un double focus nécessite une segmentation stricte pour éviter la dispersion des efforts.
-* **Ta relance (follow-up)** :
-  > *"Comment vos équipes commerciales sont-elles segmentées aujourd'hui ? Avez-vous une équipe de Business Developers dédiée purement à la chasse et une équipe d'Account Managers en charge du déploiement de la domotique et de l'upsell sur le parc installé ?"*
+* **Pourquoi ils font ce choix** : Réponse classique de dirigeant qui ne veut pas choisir, ou parce qu'ils ont scindé leurs équipes.
+* **Ta réponse stratégique** :
+  1. *Valider* : *"Mener les deux de front est ambitieux mais nécessaire quand on est leader du marché."*
+  2. *Proposer de l'aide (ton profil)* : *"Pour éviter que les équipes ne se dispersent, l'organisation doit être très claire : d'un côté des 'Chasseurs' B2B (Acquisition) et de l'autre des 'Éleveurs' CS / Account Managers (Expansion)."*
+  3. *Relance technique ( follow-up )* :
+     > *"Comment vos équipes commerciales sont-elles segmentées aujourd'hui ? Avez-vous une équipe de Business Developers dédiée purement à la chasse et une équipe d'Account Managers en charge du déploiement de la domotique et de l'upsell sur le parc installé ?"*
 
 ---
 
-## 💳 8. MATRICE DE RÉPONSES D'ENTRETIEN : QUESTION "FINTECH & STRIPE"
-
-La question posée : **"Comptez-vous valoriser la GMV des réservations pour des services Fintech à terme ?"**
-
-### **Cas de figure A : Rémi répond "Oui, c'est sur notre feuille de route"**
-* **Pourquoi ce choix** : C'est un levier de valorisation fantastique pour la levée de fonds. Le padel requiert de lourds investissements (terrains à 30k€), proposer du crédit ou du paiement fractionné est un énorme avantage.
-* **Ta réponse stratégique** :
-  1. *Valider* : *"C'est le choix le plus ambitieux pour capter de la valeur sans augmenter le prix de l'abonnement du club."*
-  2. *Proposer de l'aide (ton profil)* : *"Cela demande une grande maîtrise de l'intégration produit (Stripe Connect) et de la conformité réglementaire (KYC/KYB, ACPR). C'est un sujet complexe où la gestion de projet et la rigueur technique sont cruciales."*
-  3. *Ta relance (follow-up)* :
-     > *"Pour aller vers ce modèle d'intermédiation financière, envisagez-vous de vous associer avec des acteurs bancaires en marque blanche (Banking-as-a-Service) ou de développer des briques de Stripe Connect plus poussées, ce qui implique de gros chantiers de conformité (KYC/KYB) ?"*
-
-### **Cas de figure B : Rémi répond "Non, on reste un SaaS de gestion pur (sans commission)"**
-* **Pourquoi ce choix** : Ils veulent garder un modèle ultra lisible et éviter les contraintes réglementaires lourdes liées à l'argent.
-* **Ta réponse stratégique** :
-  1. *Valider* : *"C'est un excellent choix de différenciation commerciale, notamment face à Playtomic qui prélève des commissions."*
-  2. *Proposer de l'aide (ton profil)* : *"Même sans commissionner les réservations, le volume de transactions global (GMV) permet de négocier des tarifs de groupe auprès de Stripe. C'est un moyen d'apporter de la valeur financière aux clubs tout en générant des revenus d'apport d'affaires."*
-  3. *Ta relance (follow-up)* :
-     > *"Avec votre volume cumulé de GMV, avez-vous la possibilité de négocier des tarifs de transaction préférentiels auprès de Stripe pour en faire bénéficier vos clubs sous forme de partenariat exclusif, tout en captant une rétrocommission d'apporteur d'affaires ?"*
-
-### **Cas de figure C : Rémi répond "C'est délicat (allusion à l'incident du 14 juillet)"**
-* **Pourquoi ce choix** : La fuite de données récente ayant ciblé les soldes de portefeuilles de joueurs a rendu le sujet de la gestion de l'argent ultra-sensible en interne.
-* **Ta réponse stratégique** :
-  1. *Valider (Position Adulte)* : *"La confiance et la sécurité des données transactionnelles sont prioritaires. Aucun projet fintech ne peut se faire sans une base de sécurité irréprochable."*
-  2. *Proposer de l'aide (ton profil)* : *"Mon double profil tech et management me permet de comprendre les enjeux de remédiation technique (chiffrement, tokens Stripe) et la communication de crise auprès des gérants de clubs."*
-  3. *Ta relance (follow-up)* :
-     > *"Suite à l'incident récent, l'urgence est à la sécurisation. Prévoyez-vous d'implémenter des mécanismes de chiffrement renforcés au niveau de la base de données et des tokens Stripe pour rassurer vos partenaires et vos investisseurs ?"*
-
----
-
-## ⚠️ 9. ACTUALITÉ CRITIQUE : CYBERATTAQUE DU 14 JUILLET 2026
+## ⚠️ 8. ACTUALITÉ CRITIQUE : CYBERATTAQUE DU 14 JUILLET 2026
 
 > [!WARNING]
 > **Alerte Cybersécurité Majeure (Hier : 14 Juillet 2026)**
