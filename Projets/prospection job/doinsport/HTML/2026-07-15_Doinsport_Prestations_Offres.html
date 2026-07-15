@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Note Technique : Prestations Doinsport - Édition Prestige</title>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&family=Montserrat:wght@300;400;600&family=Playfair+Display:ital,wght@0,400;1,400&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg: #0F1115;
+            --accent: #D4AF37;
+            --text: #FFFFFF;
+            --text-dim: #B0B0B0;
+            --card-bg: #161A23;
+            --page-w: 210mm;
+            --page-h: 297mm;
+        }
+
+        @media print {
+            @page { size: A4; margin: 0; }
+            body { background: var(--bg) !important; }
+            .page { margin: 0 !important; border: none !important; box-shadow: none !important; }
+        }
+
+        body { 
+            background: #050505; 
+            color: var(--text); 
+            font-family: 'Montserrat', sans-serif; 
+            margin: 0; 
+            counter-reset: page; 
+        }
+
+        .page {
+            width: var(--page-w);
+            min-height: var(--page-h);
+            background: var(--bg);
+            margin: 40px auto;
+            position: relative;
+            padding: 25mm 20mm;
+            box-sizing: border-box;
+            box-shadow: 0 0 30px rgba(0,0,0,0.5);
+            page-break-after: always;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .inner-border {
+            position: absolute; top: 10mm; left: 10mm; right: 10mm; bottom: 10mm;
+            border: 1px solid rgba(212, 175, 55, 0.15); pointer-events: none;
+        }
+
+        h1 { 
+            font-family: 'Cinzel'; 
+            color: var(--accent); 
+            text-align: center; 
+            border-bottom: 1px solid var(--accent); 
+            padding-bottom: 15px; 
+            margin-bottom: 25px; 
+            font-size: 1.6rem;
+            letter-spacing: 3px;
+        }
+        
+        h2 { 
+            font-family: 'Cinzel'; 
+            color: var(--accent); 
+            border-left: 3px solid var(--accent); 
+            padding-left: 15px; 
+            margin: 25px 0 12px 0; 
+            font-size: 1.15rem; 
+            letter-spacing: 1px;
+        }
+        
+        .quote {
+            font-family: 'Playfair Display'; 
+            font-style: italic; 
+            color: var(--accent);
+            text-align: center; 
+            padding: 12px; 
+            border-top: 1px solid rgba(212, 175, 55, 0.2);
+            border-bottom: 1px solid rgba(212, 175, 55, 0.2); 
+            margin: 15px 0;
+            font-size: 0.9rem;
+        }
+
+        .content { 
+            flex-grow: 1; 
+            font-size: 10pt; 
+            font-weight: 300; 
+            line-height: 1.55;
+        }
+
+        .grid-identity {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+            margin-bottom: 20px;
+        }
+
+        .identity-card {
+            background: var(--card-bg);
+            border: 1px solid rgba(212, 175, 55, 0.1);
+            padding: 15px;
+            border-radius: 6px;
+        }
+
+        .identity-title {
+            font-family: 'Cinzel';
+            color: var(--accent);
+            font-size: 0.9rem;
+            margin-bottom: 10px;
+            border-bottom: 1px solid rgba(212, 175, 55, 0.2);
+            padding-bottom: 5px;
+        }
+
+        .identity-item {
+            margin-bottom: 6px;
+            font-size: 0.85rem;
+        }
+
+        .identity-label {
+            font-weight: 600;
+            color: var(--accent);
+        }
+
+        .identity-val {
+            color: var(--text-dim);
+        }
+
+        .footer {
+            border-top: 1px solid rgba(212, 175, 55, 0.3); 
+            padding-top: 5mm;
+            margin-top: 20px;
+            display: flex; 
+            justify-content: space-between; 
+            font-family: 'Cinzel'; 
+            font-size: 8pt;
+            color: var(--accent);
+        }
+        .page-num::after { counter-increment: page; content: "P. " counter(page, decimal-leading-zero); }
+
+        ul {
+            padding-left: 20px;
+            margin: 10px 0;
+        }
+
+        li {
+            margin-bottom: 5px;
+            color: var(--text-dim);
+        }
+
+        strong {
+            color: var(--accent);
+            font-weight: 600;
+        }
+
+        .btn-action {
+            display: inline-block;
+            padding: 10px 20px;
+            border: 1px solid var(--accent);
+            color: var(--accent);
+            text-decoration: none;
+            font-family: 'Cinzel';
+            font-size: 0.8rem;
+            letter-spacing: 1px;
+            transition: all 0.3s ease;
+            margin-top: 15px;
+            text-align: center;
+        }
+
+        .btn-action:hover {
+            background: var(--accent);
+            color: var(--bg);
+            box-shadow: 0 0 10px rgba(212, 175, 55, 0.5);
+        }
+
+        .fixed-dock { 
+            position: fixed; bottom: 20px; left: 50%; transform: translateX(-50%); 
+            width: 90%; max-width: 500px; background: rgba(15,17,21,0.95); backdrop-filter: blur(10px);
+            border: 1px solid var(--accent); border-radius: 8px; padding: 12px;
+            display: flex; gap: 15px; z-index: 1000;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.8);
+        }
+
+        .fixed-dock a {
+            flex: 1;
+            margin: 0;
+        }
+
+        @media (max-width: 600px) { 
+            .fixed-dock { flex-direction: column; width: 95%; } 
+            body { background: var(--bg); }
+            .page { width: 100%; height: auto; margin: 0; padding: 15px; box-shadow: none; }
+            .inner-border { display: none; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- PAGE 1 : PRESTATIONS LOGICIELLES -->
+    <div class="page">
+        <div class="inner-border"></div>
+        <h1>CATALOGUE DES PRESTATIONS DOINSPORT</h1>
+        <div class="quote">"Une infrastructure technologique unifiée pour piloter les clubs de sport."</div>
+        
+        <div class="content">
+            <h2>1. Prestations Logicielles B2B (Gérants)</h2>
+            <div class="grid-identity">
+                <div class="identity-card">
+                    <div class="identity-title">Exploitation B2B</div>
+                    <div class="identity-item">
+                        <span class="identity-label">Planning :</span> <span class="identity-val">Gestion des courts et créneaux.</span>
+                    </div>
+                    <div class="identity-item">
+                        <span class="identity-label">CRM :</span> <span class="identity-val">Fichiers membres & abonnements.</span>
+                    </div>
+                    <div class="identity-item">
+                        <span class="identity-label">Caisse :</span> <span class="identity-val">Facturation certifiée proshop & bar.</span>
+                    </div>
+                </div>
+                <div class="identity-card">
+                    <div class="identity-title">Module Académie (Kirola)</div>
+                    <div class="identity-item">
+                        <span class="identity-label">Écoles :</span> <span class="identity-val">Inscriptions annuelles tennis/padel.</span>
+                    </div>
+                    <div class="identity-item">
+                        <span class="identity-label">Groupes :</span> <span class="identity-val">Niveaux de joueurs & plannings coachs.</span>
+                    </div>
+                    <div class="identity-item">
+                        <span class="identity-label">Stages :</span> <span class="identity-val">Gestion des stages vacances.</span>
+                    </div>
+                </div>
+            </div>
+
+            <h2>2. Prestations Applicatives B2C (Joueurs)</h2>
+            <ul>
+                <li><strong>Application Marque Blanche</strong> : Application mobile iOS / Android personnalisée aux couleurs du club.</li>
+                <li><strong>Réservation 24h/24 & Partage de Part</strong> : Réservation de terrain en autonomie et paiement partagé sécurisé (Stripe).</li>
+                <li><strong>Wallet</strong> : Porte-monnaie virtuel rechargeable avec avantages fidélité.</li>
+                <li><strong>Matchmaking</strong> : Recherche automatique de partenaires de jeu de même niveau et communauté de club.</li>
+                <li><strong>Proshop en ligne</strong> : Achat de matériel sportif (raquettes, textiles) via l'application.</li>
+            </ul>
+        </div>
+        
+        <div class="footer">
+            <div>Édition Prestige - Julien Florence</div>
+            <div class="page-num"></div>
+        </div>
+    </div>
+
+    <!-- PAGE 2 : PRESTATIONS PHYSIQUES & ACCOMPAGNEMENT -->
+    <div class="page">
+        <div class="inner-border"></div>
+        <h1>DOMOTIQUE &amp; SERVICES CLIENTS</h1>
+        <div class="quote">"Automatiser l'accès physique et simplifier la transition numérique."</div>
+        
+        <div class="content">
+            <h2>3. Prestations Matérielles (Domotique &amp; Matériel)</h2>
+            <p style="color: var(--text-dim); margin-bottom: 15px;">
+                Doinsport se distingue par son offre d'automatisation des infrastructures physiques des complexes sportifs :
+            </p>
+            <ul>
+                <li><strong>Contrôle d'Accès Autonome</strong> : Lecteurs de QR codes ou digicodes connectés à l'entrée des terrains ou du club, déclenchant l'ouverture automatique des portes selon le planning de réservation.</li>
+                <li><strong>Éclairage Connecté des Courts</strong> : Allumage automatique des projecteurs au début de la réservation et extinction à la fin de la séance (générant des économies d'énergie substantielles).</li>
+            </ul>
+
+            <h2>4. Prestations de Service &amp; Accompagnement Humain</h2>
+            <p style="color: var(--text-dim); margin-bottom: 15px;">
+                Pour accompagner la digitalisation des complexes et minimiser l'attrition (churn) :
+            </p>
+            <ul>
+                <li><strong>Migration de Données</strong> : Récupération des historiques de membres et abonnements depuis un ancien logiciel (Gestion Sports, Balle Jaune, Deciplus) et intégration propre.</li>
+                <li><strong>Formation Professionnelle</strong> : Formation des gérants, enseignants et personnel d'accueil à la prise en main de l'outil et de la caisse.</li>
+                <li><strong>Accompagnement Marketing</strong> : Configuration des outils d'emailing/SMS de fidélisation et conseils en visibilité numérique.</li>
+            </ul>
+        </div>
+        
+        <div class="footer">
+            <div>Édition Prestige - Julien Florence</div>
+            <div class="page-num"></div>
+        </div>
+    </div>
+
+    <!-- NAVIGATION DOCK -->
+    <div class="fixed-dock">
+        <a href="file:///C:/Users/julien/OneDrive/Bureau/geminicli/Projets/prospection job/doinsport/Markdown/2026-07-15_Doinsport_Prestations_Offres.md" class="btn-prestige btn-action" style="background: var(--accent); color: var(--bg); font-weight: bold; margin: 0; width: 100%;">Voir Fiche Markdown</a>
+        <a href="file:///C:/Users/julien/OneDrive/Bureau/geminicli/Projets/prospection job/doinsport/HTML/2026-07-15_Doinsport_Fiche_Synthese.html" class="btn-prestige btn-action" style="margin: 0; width: 100%;">Dossier Général</a>
+    </div>
+
+</body>
+</html>
