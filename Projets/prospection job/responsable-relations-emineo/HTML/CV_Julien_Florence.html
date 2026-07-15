@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CV Julien FLORENCE - Responsable des Relations Entreprises - Édition Prestige A4</title>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&family=Montserrat:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg: #0A0B0E;
+            --sidebar: #111418;
+            --accent: #D4AF37;
+            --accent-light: #F7EF8A;
+            --text: #FFFFFF;
+            --text-dim: #A0A4B0;
+            --page-w: 210mm;
+            --page-h: 297mm;
+        }
+
+        @media print {
+            @page { size: A4; margin: 0; }
+            body { background: var(--bg) !important; -webkit-print-color-adjust: exact; }
+            .page { margin: 0 !important; border: none !important; box-shadow: none !important; width: var(--page-w); height: var(--page-h); }
+            .btn-action { display: block !important; line-height: 1.5; }
+        }
+
+        body { background: #000; color: var(--text); font-family: 'Montserrat', sans-serif; margin: 0; line-height: 1.3; font-size: 8.5pt; }
+
+        .page {
+            width: var(--page-w);
+            height: var(--page-h);
+            background: var(--bg);
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 220px 1fr;
+            position: relative;
+            overflow: hidden;
+            box-sizing: border-box;
+        }
+
+        /* --- SIDEBAR --- */
+        aside {
+            background: var(--sidebar);
+            padding: 15px 12px;
+            border-right: 1px solid rgba(212, 175, 55, 0.2);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .profile-frame {
+            width: 120px;
+            height: 120px;
+            border: 2px solid var(--accent);
+            padding: 3px;
+            margin-bottom: 12px;
+            border-radius: 10px; /* Arrondi 10px obligatoire */
+        }
+
+        .profile-frame img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            filter: grayscale(10%) contrast(110%);
+            border-radius: 10px; /* Arrondi 10px obligatoire */
+        }
+
+        .contact-buttons {
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            gap: 6px;
+            margin-bottom: 15px;
+        }
+
+        .btn-action {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 6px;
+            padding: 6px;
+            background: rgba(212, 175, 55, 0.05);
+            border: 1px solid rgba(212, 175, 55, 0.3);
+            color: var(--accent);
+            text-decoration: none;
+            font-size: 0.65rem;
+            font-family: 'Cinzel';
+            transition: all 0.3s;
+            text-align: center;
+            border-radius: 10px; /* Arrondi 10px obligatoire */
+        }
+
+        .btn-action:hover { background: var(--accent); color: var(--bg); }
+
+        .btn-calendar {
+            background: linear-gradient(135deg, var(--accent-light), var(--accent));
+            color: #000;
+            border: none;
+            font-weight: 700;
+        }
+
+        .btn-digital-cv {
+            border: 1px solid var(--accent);
+            background: rgba(212, 175, 55, 0.15);
+            font-weight: 600;
+        }
+
+        h2 { font-family: 'Cinzel'; color: var(--accent); font-size: 0.8rem; border-bottom: 1px solid var(--accent); padding-bottom: 2px; margin: 10px 0 6px 0; align-self: flex-start; width: 100%; }
+        
+        .side-list { list-style: none; padding: 0; width: 100%; font-size: 0.72rem; color: var(--text-dim); }
+        .side-list li { margin-bottom: 4px; display: flex; align-items: flex-start; gap: 4px; }
+        .side-list li::before { content: "›"; color: var(--accent); font-weight: bold; }
+
+        /* --- MAIN CONTENT --- */
+        main {
+            padding: 20px 25px 15px 25px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        header { margin-bottom: 10px; }
+        h1 { font-family: 'Cinzel'; font-size: 2rem; color: var(--accent); margin: 0; letter-spacing: 2px; }
+        .tagline { font-weight: 700; text-transform: uppercase; letter-spacing: 3px; color: var(--text); margin: 2px 0 8px 0; font-size: 0.9rem; border-left: 3px solid var(--accent); padding-left: 10px; }
+
+        .ats-summary { font-size: 0.8rem; text-align: justify; color: var(--text-dim); margin-bottom: 12px; line-height: 1.35; }
+
+        .section-title { font-family: 'Cinzel'; color: var(--accent); font-size: 1rem; margin: 10px 0 6px 0; display: flex; align-items: center; gap: 8px; }
+        .section-title::after { content: ""; flex: 1; height: 1px; background: linear-gradient(to right, var(--accent), transparent); }
+
+        .exp-card { margin-bottom: 8px; }
+        .exp-head { display: flex; justify-content: space-between; align-items: baseline; }
+        .role { font-weight: 700; color: var(--accent); font-size: 0.85rem; }
+        .date { font-family: 'Cinzel'; font-size: 0.7rem; color: var(--text-dim); }
+        .company { font-weight: 600; font-size: 0.78rem; color: var(--text); margin-bottom: 2px; }
+        
+        .exp-body { font-size: 0.75rem; color: var(--text-dim); padding-left: 8px; border-left: 1px solid rgba(255,255,255,0.1); }
+        .exp-body ul { margin: 2px 0; padding-left: 10px; }
+        .exp-body li { margin-bottom: 1px; }
+
+        .keyword-pill { display: inline-block; padding: 1px 4px; border: 1px solid rgba(212, 175, 55, 0.4); font-size: 0.6rem; color: var(--accent); margin: 1px; border-radius: 10px; /* Arrondi 10px obligatoire */ }
+
+    </style>
+</head>
+<body>
+    <div class="page">
+        <aside>
+            <div class="profile-frame">
+                <img src="../Images/photo moi pro.jpeg" alt="Julien FLORENCE">
+            </div>
+
+            <div class="contact-buttons">
+                <a href="tel:0661747573" class="btn-action">📞 06 61 74 75 73</a>
+                <a href="mailto:julienflorence.florence@gmail.com" class="btn-action">✉️ EMAIL</a>
+                <a href="https://calendar.app.google/iCzfE1GQrjxM3ZQ56" target="_blank" class="btn-action btn-calendar">📅 AGENDA</a>
+                <a href="https://julienflorenceflorence-oss.github.io/cv-prestige/" target="_blank" class="btn-action btn-digital-cv">🌐 ACCÈS CV INTERACTIF</a>
+            </div>
+
+            <h2>Expertises Métier</h2>
+            <ul class="side-list">
+                <li>Management Commercial (3-20 pers)</li>
+                <li>Développement B2B & Grands Comptes (KAM)</li>
+                <li>Gestion de Pipelines & CRMs</li>
+                <li>Organisation d'Événements & Job Datings</li>
+                <li>Législation de l'Emploi & Alternance</li>
+            </ul>
+
+            <h2>Compétences clés</h2>
+            <ul class="side-list">
+                <li>Coaching d'équipe & Montée en compétences</li>
+                <li>Force de persuasion & Leadership</li>
+                <li>Management de proximité</li>
+                <li>Rigueur administrative & Qualité (process)</li>
+                <li>Esprit d'initiative & Créativité (challenges)</li>
+            </ul>
+
+            <h2>Langues</h2>
+            <ul class="side-list">
+                <li>Anglais : Courant (B2)</li>
+                <li>Néerlandais : B2</li>
+            </ul>
+
+            <h2>Formation</h2>
+            <ul class="side-list">
+                <li><strong>Bachelor Marketing & Commerce</strong> (2025)</li>
+                <li>HTML5 & CSS3 - Google Academy</li>
+            </ul>
+        </aside>
+
+        <main>
+            <header>
+                <h1>Julien FLORENCE</h1>
+                <div class="tagline">Responsable des Relations Entreprises</div>
+            </header>
+
+            <div class="ats-summary">
+                <strong>Responsable des Relations Entreprises</strong> | 15 ans d'expérience dans le management commercial, l'animation de réseaux et le développement B2B. Issu du secteur de l'emploi et de la formation professionnelle (RAS Intérim, CA 2.6 M€, 20 ETP) et diplômé d'un Bachelor Commerce & Marketing (Sales Tech), je maîtrise la logique de placement en alternance et la gestion de pipelines commerciaux. Expert en négociation Grands Comptes (KAM) et en organisation d'événements de networking / Job Datings. Profil ENTJ-A, reconnu pour mon leadership et ma capacité à fédérer et faire monter en compétences des équipes commerciales sédentaires et terrain. <strong>Disponible immédiatement.</strong>
+            </div>
+
+            <div class="section-title">Expériences Professionnelles</div>
+
+            <div class="exp-card">
+                <div class="exp-head"><span class="role">Responsable Commercial & Acquisition B2B</span><span class="date">2025 – PRÉSENT</span></div>
+                <div class="company">HAPPY HOUSE | SOLUTIONS B2B & RENTABILITÉ</div>
+                <div class="exp-body">
+                    <ul>
+                        <li><strong>Management & Montée en compétences</strong> : Recrutement, onboarding et coaching de 3 collaborateurs sur les techniques de vente et l'usage des CRMs.</li>
+                        <li><strong>Stratégie & Négociation</strong> : Définition de la stratégie opérationnelle de prospection et négociation directe de partenariats Grands Comptes locaux (KAM).</li>
+                        <li><strong>Dynamisation commerciale</strong> : Création de challenges internes de vente pour stimuler la productivité collective.</li>
+                    </ul>
+                    <div class="keyword-pill">Management de Proximité</div><div class="keyword-pill">Partenariats Grands Comptes</div><div class="keyword-pill">Challenges Vente</div>
+                </div>
+            </div>
+
+            <div class="exp-card">
+                <div class="exp-head"><span class="role">Responsable d'Agence & Recrutement (CA 2.6 M€)</span><span class="date">2022 – 2024</span></div>
+                <div class="company">RAS INTÉRIM | LOGISTIQUE & SERVICES</div>
+                <div class="exp-body">
+                    <ul>
+                        <li><strong>Management de proximité & KPIs</strong> : Animation du quotidien et pilotage de la performance collective de 20 ETP par semaine.</li>
+                        <li><strong>Relations Entreprises</strong> : Gestion opérationnelle de 25 comptes clients B2B stratégiques. Vente de solutions d'emploi et de formation professionnelle (Contrats d'apprentissage, professionnalisation).</li>
+                        <li><strong>Processus & Qualité</strong> : Garant du respect des normes administratives strictes et de la qualité des recrutements.</li>
+                    </ul>
+                    <div class="keyword-pill">Secteur Alternance/Emploi</div><div class="keyword-pill">Pilotage KPIs</div><div class="keyword-pill">Négociation Grands Comptes</div>
+                </div>
+            </div>
+
+            <div class="exp-card">
+                <div class="exp-head"><span class="role">Animateur Commercial & Négociateur</span><span class="date">2015 – 2021</span></div>
+                <div class="company">CENTURY 21 (Paris) & CABINET BEDIN (Toulouse)</div>
+                <div class="exp-body">
+                    <ul>
+                        <li><strong>Animation & Networking</strong> : Organisation d'événements de quartier, animation de réseaux professionnels locaux pour accroître la visibilité de l'agence.</li>
+                        <li><strong>Coaching d'équipe</strong> : Accompagnement de 5 négociateurs sur le terrain en prospection et en closing de mandats (CA individuel de 110k€).</li>
+                        <li><strong>Gestion de pipeline</strong> : Suivi de portefeuilles clients sur CRM dédié.</li>
+                    </ul>
+                    <div class="keyword-pill">Événementiel / Networking</div><div class="keyword-pill">Coaching Terrain</div><div class="keyword-pill">Gestion de Pipeline</div>
+                </div>
+            </div>
+
+            <div class="exp-card">
+                <div class="exp-head"><span class="role">Directeur d'Établissement</span><span class="date">2010 – 2015</span></div>
+                <div class="company">MA SALLE À MANGER | PARIS 1er</div>
+                <div class="exp-body">
+                    <ul>
+                        <li><strong>Management & Rigueur opérationnelle</strong> : Recrutement, formation et animation d'une équipe de 15 salariés (croissance de +140% du CA).</li>
+                        <li><strong>Organisation d'événements</strong> : Logistique et pilotage de Job Datings locaux et de soirées de networking professionnel (jusqu'à 150 personnes).</li>
+                    </ul>
+                    <div class="keyword-pill">Rigueur de Gestion</div><div class="keyword-pill">Management (15 Salariés)</div><div class="keyword-pill">Job Datings / Événements</div>
+                </div>
+            </div>
+
+            <div class="exp-card">
+                <div class="exp-head"><span class="role">Superviseur Service d'Excellence & Sommelier</span><span class="date">2000 – 2009</span></div>
+                <div class="company">PALACES 5* & RESTAURANTS ÉTOILÉS | DUBLIN, SAINT-BARTH, ANGLETERRE</div>
+                <div class="exp-body">
+                    <ul>
+                        <li><strong>Management d'équipe</strong> de 7 à 20 personnes sous des standards stricts (LHW).</li>
+                        <li><strong>Logistique & Qualité</strong> : Organisation d'événements de prestige pour une clientèle corporate exigeante.</li>
+                    </ul>
+                    <div class="keyword-pill">Rigueur d'Exécution</div><div class="keyword-pill">Excellence Relationnelle</div>
+                </div>
+            </div>
+        </main>
+    </div>
+</body>
+</html>
