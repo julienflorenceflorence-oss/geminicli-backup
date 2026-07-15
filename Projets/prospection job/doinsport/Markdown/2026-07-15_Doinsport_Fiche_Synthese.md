@@ -1,5 +1,5 @@
 # FICHE DE SYNTHÈSE STRATÉGIQUE : DOINSPORT
-*Date de création : 15 Juillet 2026 (Mise à jour : Analyse KPIs & Croissance)*
+*Date de création : 15 Juillet 2026 (Mise à jour : Comparatif Gestion Sports & Pitch LTV/CAC/Fintech)*
 *Auteur : Antigravity (IA) pour Julien Florence*
 *Projet : Prospection Job - Opportunité Doinsport*
 
@@ -15,7 +15,7 @@
 | **Co-fondateurs** | Nicolas Cassignol (CEO) & Rémi Chevalier (Directeur Général / COO) |
 | **Secteur d'activité** | Sportech / Logiciels SaaS de gestion pour clubs de sport (Padel, Tennis, Multisports) |
 | **Traction & Chiffres clés** | <ul><li>**1 000+ clubs partenaires** en France et Europe.</li><li>**800 000+ utilisateurs (joueurs)** enregistrés sur la plateforme.</li><li>Modèle d'abonnement mensuel (sans commission sur le CA des clubs).</li></ul> |
-| **Opération marquante** | Acquisition de **KIROLA** (concurrent sur la gestion des académies et écoles de tennis/padel) en février 2025. |
+| **Opération marquante** | Acquisition de **KIROLA** (concurrent direct sur la gestion des académies et écoles de tennis/padel) en février 2025. |
 
 ---
 
@@ -49,7 +49,7 @@ Doinsport a opéré une transition majeure ces dernières années, passant d'une
 
 ### **A. Les KPIs SaaS B2B (Santé du Logiciel Clubs)**
 1. **MRR (Monthly Recurring Revenue) & ARR (Annual Recurring Revenue)** :
-   * *Estimation* : Avec 1 000+ clubs équipés et un panier moyen estimé (selon les options de domotique et CRM) entre **120 € et 250 € HT / mois par club**, Doinsport génère un **MRR estimé de 150k€ à 250k€** (soit un **ARR entre 1,8M€ et 3M€**).
+   * *Estimation* : Avec 1 000+ clubs équipés et un panier moyen estimé (selon les options de domotique et CRM) entre **120 € et 250 € HT / mois par club**, Doinsport génère un **MRR estimé de 150k€ à 250k€** (soit un **ARR entre 1,8M€ à 3M€**).
    * *Enjeu de la levée* : Les fonds de capital-risque (VC) évaluent souvent les SaaS sur des multiples d'ARR (ex. : 5x à 8x l'ARR en phase de scale).
 2. **Logo Churn & Net Revenue Churn (Taux d'Attrition)** :
    * Le taux de perte des clubs clients. Dans le padel, le coût de changement de logiciel (*switching cost*) est extrêmement élevé en raison de l'installation physique du matériel (lecteurs de badges, domotique d'accès). Le Churn structurel doit donc être très bas (< 5% par an).
@@ -68,16 +68,42 @@ Doinsport a opéré une transition majeure ces dernières années, passant d'une
 
 ---
 
-## 🎾 5. L'ÉCOSYSTÈME CONCURRENTIEL
+## 🆚 5. ANALYSE COMPARATIVE DÉTAILLÉE : DOINSPORT VS GESTION SPORTS
 
-1. **Gestion Sports (fondé par Loïc Tap)** : Le grand rival français historique. Gestion Sports est perçu comme une alternative très premium, particulièrement forte sur les fonctionnalités de tournois, l'expérience joueur poussée et les intégrations vidéo pour le padel.
-2. **Playtomic** : Le géant espagnol/international. Plus orienté "réseau social" et apporteur de réservations (B2C). Beaucoup de clubs utilisent Playtomic pour remplir leurs terrains, mais il prélève des commissions significatives, contrairement au modèle d'abonnement fixe de Doinsport.
-3. **Anybuddy** : Principalement un canal d'acquisition (marketplace) qui permet de réserver des créneaux dans des clubs affiliés sans y être abonné.
-4. **Ten'Up (FFT)** : Dédié principalement aux clubs de tennis affiliés à la Fédération Française de Tennis (FFT). Moins adapté aux structures privées de Padel multi-activités.
+| Dimension | **Doinsport** | **Gestion Sports (Loïc Tap)** |
+| :--- | :--- | :--- |
+| **Volume de Clubs** | **1 000+ clubs** (Leader quantitatif, stimulé par le rachat de Kirola) | ~300 à 500 clubs (Acteur ciblé premium / sélectif) |
+| **ARR Estimé** | **~2,0 M€ - 3,0 M€** | ~1,0 M€ - 1,5 M€ |
+| **Tarification Publique** | Sur devis uniquement (Modulaire selon options) | Affichée : **197 € HT** (Autonome) à **247 € HT** (Premium) / mois |
+| **Modèle Économique** | SaaS pur (Abonnement mensuel sans commission) | SaaS + Consulting / Coaching (Projet-Padel.fr) |
+| **Canal d'Acquisition (CAC)** | Force commerciale classique + Growth externe (Kirola) | **Inbound organique massif** via la marque personnelle et l'autorité de Loïc Tap sur les réseaux sociaux |
+| **Points Forts Produit** | Domotique d'accès (QR codes, éclairage), gestion multi-sites, ERP complet | Animation communautaire, gestion avancée de tournois, intégration caméra vidéo courts |
+| **Grands Comptes** | Racing Club de France, Country-clubs | Z5 de Zidane, Toulouse Padel Club, Le Mas Perpignan |
+
+### **Leçons de ce comparatif pour l'entretien**
+* **Doinsport est l'industriel du secteur** : Ils ont le volume et l'infrastructure technique (physique).
+* **Gestion Sports est le spécialiste de l'animation et de l'autorité** : Le CAC de Gestion Sports est extrêmement bas car les prospects viennent directement par le biais des contenus du fondateur (Loïc Tap).
+* **Opportunité pour Doinsport** : Avec la levée de fonds, Doinsport doit structurer sa croissance pour verrouiller sa place de leader avant que Gestion Sports ou Playtomic ne convertissent la majorité des gros complexes privés.
 
 ---
 
-## ⚠️ 6. ACTUALITÉ CRITIQUE : CYBERATTAQUE DU 14 JUILLET 2026
+## 💵 6. ARGUMENTAIRE STRUCTURE POUR L'ENTRETIEN
+
+*Julien, tu peux utiliser ces deux piliers techniques et managériaux pour structurer ton échange avec Rémi Chevalier et démontrer une réflexion de niveau d'investissement (C-Level).*
+
+### **Pilier A : Le levier LTV/CAC basé sur le Switching Cost Domotique**
+> *"Ce qui m'intéresse particulièrement dans votre modèle, c'est l'asymétrie positive du ratio LTV/CAC générée par votre brique domotique. Une fois qu'un club de padel intègre vos systèmes d'accès physiques et d'éclairage connecté aux courts, le Switching Cost (coût de changement de logiciel) devient prohibitif pour lui. Votre Churn structurel doit être proche de zéro sur ce segment. Même si votre coût d'acquisition client (CAC) initial est plus élevé que celui d'un SaaS 100% logiciel, la Lifetime Value (LTV) d'un club sur 5 ou 7 ans justifie largement des investissements commerciaux agressifs pour saturer le marché avant vos concurrents."*
+
+* **Objectif** : Montrer que tu comprends que la technologie physique (domotique) est la clé de la rentabilité à long terme de Doinsport par rapport à des solutions purement logicielles.
+
+### **Pilier B : La Valorisation Fintech & l'optimisation des flux financiers (Stripe)**
+> *"Même si vous avez choisi un modèle sans commission pour séduire les clubs, le volume brut de transactions (GMV) de vos 800 000 joueurs transitant par vos intégrations Stripe représente une mine d'or sous-exploitée. À l'échelle de 1 000 clubs, cette GMV se compte en dizaines de millions d'euros. C'est un levier de négociation immense auprès de Stripe pour obtenir un taux d'intermédiation minimal et potentiellement capter une marge Fintech en intégrant des portefeuilles virtuels (wallets) ou des solutions de paiement fractionné. C'est typiquement ce qui peut doper la valorisation de Doinsport auprès des investisseurs de votre levée de fonds."*
+
+* **Objectif** : Faire le lien avec l'incident de sécurité (où les soldes des portefeuilles et les Stripe IDs ont été fuités) pour montrer que tu comprends l'importance stratégique et la sensibilité de cette brique de paiement.
+
+---
+
+## ⚠️ 7. ACTUALITÉ CRITIQUE : CYBERATTAQUE DU 14 JUILLET 2026
 
 > [!WARNING]
 > **Alerte Cybersécurité Majeure (Hier : 14 Juillet 2026)**
@@ -89,7 +115,7 @@ Doinsport a opéré une transition majeure ces dernières années, passant d'une
 
 ---
 
-## 🎯 7. PRÉPARATION À L'ENTRETIEN (POSTURE ADULTE - ENTJ-A)
+## 🎯 8. PRÉPARATION À L'ENTRETIEN (POSTURE ADULTE - ENTJ-A)
 
 *Julien, ton double profil **Tech & Management (Bachelor)** est une force immense dans ce contexte précis. Tu es l'interlocuteur idéal pour comprendre à la fois leurs enjeux de développement commercial et leurs défis techniques de structuration.*
 
