@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lettre de Motivation - Emineo Education - Julien FLORENCE</title>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&family=Montserrat:wght@300;400;600;700&family=Playfair+Display:ital,wght@0,400;1,400&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg: #0F1115;
+            --accent: #D4AF37;
+            --text: #FFFFFF;
+            --page-w: 210mm;
+            --page-h: 297mm;
+        }
+
+        @media print {
+            @page { size: A4; margin: 0; }
+            body { background: var(--bg) !important; -webkit-print-color-adjust: exact; }
+            .page { margin: 0 !important; border: none !important; box-shadow: none !important; width: var(--page-w); height: var(--page-h); }
+        }
+
+        body { background: #050505; color: var(--text); font-family: 'Montserrat', sans-serif; margin: 0; counter-reset: page; }
+
+        .page {
+            width: var(--page-w);
+            height: var(--page-h);
+            background: var(--bg);
+            margin: 0 auto;
+            position: relative;
+            padding: 25mm 22mm;
+            box-sizing: border-box;
+            display: flex;
+            flex-direction: column;
+            overflow: hidden;
+        }
+
+        .inner-border {
+            position: absolute; top: 10mm; left: 10mm; right: 10mm; bottom: 15mm;
+            border: 1px solid rgba(212, 175, 55, 0.15); pointer-events: none;
+        }
+
+        .header-letter {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 25px;
+            font-size: 0.95rem;
+            color: #dcdcdc;
+        }
+
+        .sender-info strong { font-family: 'Cinzel'; color: var(--accent); font-size: 1.15rem; display: block; margin-bottom: 4px; }
+        .receiver-info { text-align: right; }
+        .receiver-info strong { color: var(--text); display: block; margin-bottom: 4px; }
+
+        .object {
+            font-weight: 700;
+            color: var(--accent);
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 1px solid rgba(212, 175, 55, 0.3);
+            font-size: 1rem;
+        }
+
+        .content { flex-grow: 1; text-align: justify; font-size: 9.5pt; font-weight: 300; line-height: 1.55; color: #dcdcdc; }
+        .content p { margin-bottom: 14px; }
+
+        .signature-box { margin-top: 15px; text-align: right; }
+
+        .footer {
+            display: flex; justify-content: center; font-family: 'Cinzel'; font-size: 7.5pt; color: rgba(176, 176, 176, 0.4);
+            margin-top: auto;
+            padding-bottom: 5mm;
+            letter-spacing: 1.8px;
+        }
+    </style>
+</head>
+<body>
+    <div class="page">
+        <div class="inner-border"></div>
+        
+        <div class="header-letter">
+            <div class="sender-info">
+                <strong>Julien FLORENCE</strong><br>
+                31130 Quint-Fonsegrives (Toulouse)<br>
+                06 61 74 75 73<br>
+                julienflorence.florence@gmail.com<br>
+                Permis B - Véhiculé
+            </div>
+            <div class="receiver-info">
+                <strong>À l'attention de l'équipe Recrutement Emineo Education</strong><br>
+                Emineo Education<br>
+                <br>
+                Le 13 juillet 2026
+            </div>
+        </div>
+
+        <div class="object">
+            Objet : Candidature au poste de Responsable des Relations Entreprise H/F
+        </div>
+
+        <div class="content">
+            <p>Madame, Monsieur,</p>
+
+            <p>La réussite d'une école d'alternance repose sur sa locomotive commerciale : celle qui sait fédérer ses équipes de relations entreprises, structurer les processus de prospection et nouer des partenariats durables avec les entreprises locales et nationales. Fort de mon parcours de manager opérationnel, de développeur B2B Grands Comptes et de ma maîtrise des processus d'apprentissage, je postule pour le poste de <strong>Responsable des Relations Entreprise</strong> au sein d'Emineo Education.</p>
+
+            <p>Mon parcours s'articule autour de la performance collective et de l'exigence opérationnelle. Chez RAS Intérim, en tant que Responsable d'Agence, j'ai managé une équipe de 20 ETP par semaine, piloté les KPIs d'activité pour générer 2,6 M€ de CA annuel, et assuré les relations de partenariat avec 25 clients B2B stratégiques. J'ai également œuvré directement dans la formation professionnelle et l'emploi (apprentissage, professionnalisation), ce qui me confère une maîtrise des enjeux réglementaires et qualité indispensables à la gestion des admissions et du placement en alternance.</p>
+
+            <p>Mon profil combine cette rigueur de gestion et de conformité (acquise également au cours de 15 années en hôtellerie de luxe et direction d'établissement) avec une audace commerciale moderne. Récemment diplômé d'un Bachelor Marketing & Commerce (spécialisé en Sales Tech et CRM), je maîtrise parfaitement la gestion de pipelines d'acquisition, le closing et le coaching commercial (3 collaborateurs accompagnés chez Happy House et 5 négociateurs chez Century 21/Cabinet Bedin).</p>
+
+            <p>Fédérateur et proactif, je sais concevoir des challenges internes et animer des Job Datings ou événements de networking à fort impact, en m'appuyant sur mon aisance relationnelle et mes compétences en relations publiques. Cadre de référence, j'ai à cœur de porter votre vision et de dynamiser le tissu économique local au profit de l'insertion de vos alternants.</p>
+
+            <p>Disponible immédiatement, je serais ravi de vous rencontrer afin de vous exposer mes plans d'actions pour le développement commercial d'Emineo Education.</p>
+
+            <p>Je vous prie d'agréer, Madame, Monsieur, l'expression de mes salutations distinguées.</p>
+
+            <div class="signature-box">
+                <div style="display: inline-block; text-align: center; position: relative; padding-right: 20px;">
+                    <img src="../Images/signature_or.png" alt="Signature" style="width: 180px; height: auto; display: block; filter: drop-shadow(2px 2px 4px rgba(0, 0, 0, 0.5)); transform: rotate(-1deg); margin-bottom: 5px;">
+                    <div style="font-family: 'Cinzel'; font-size: 0.85rem; color: #D4AF37; font-weight: 700; letter-spacing: 2px; text-transform: uppercase;">
+                        JULIEN FLORENCE
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="footer">
+            LETTRE DE MOTIVATION – JULIEN FLORENCE
+        </div>
+    </div>
+</body>
+</html>
