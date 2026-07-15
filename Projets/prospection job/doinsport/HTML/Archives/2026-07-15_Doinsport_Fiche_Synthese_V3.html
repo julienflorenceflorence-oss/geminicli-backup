@@ -1,0 +1,458 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Note Stratégique : Doinsport - Édition Prestige</title>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&family=Montserrat:wght@300;400;600&family=Playfair+Display:ital,wght@0,400;1,400&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg: #0F1115;
+            --accent: #D4AF37;
+            --text: #FFFFFF;
+            --text-dim: #B0B0B0;
+            --card-bg: #161A23;
+            --page-w: 210mm;
+            --page-h: 297mm;
+        }
+
+        @media print {
+            @page { size: A4; margin: 0; }
+            body { background: var(--bg) !important; }
+            .page { margin: 0 !important; border: none !important; box-shadow: none !important; }
+        }
+
+        body { 
+            background: #050505; 
+            color: var(--text); 
+            font-family: 'Montserrat', sans-serif; 
+            margin: 0; 
+            counter-reset: page; 
+        }
+
+        .page {
+            width: var(--page-w);
+            min-height: var(--page-h);
+            background: var(--bg);
+            margin: 40px auto;
+            position: relative;
+            padding: 20mm 15mm;
+            box-sizing: border-box;
+            box-shadow: 0 0 30px rgba(0,0,0,0.5);
+            page-break-after: always;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .inner-border {
+            position: absolute; top: 10mm; left: 10mm; right: 10mm; bottom: 10mm;
+            border: 1px solid rgba(212, 175, 55, 0.12); pointer-events: none;
+        }
+
+        h1 { 
+            font-family: 'Cinzel'; 
+            color: var(--accent); 
+            text-align: center; 
+            border-bottom: 1px solid var(--accent); 
+            padding-bottom: 12px; 
+            margin-bottom: 20px; 
+            font-size: 1.6rem;
+            letter-spacing: 3px;
+        }
+        
+        h2 { 
+            font-family: 'Cinzel'; 
+            color: var(--accent); 
+            border-left: 3px solid var(--accent); 
+            padding-left: 12px; 
+            margin: 22px 0 10px 0; 
+            font-size: 1.1rem; 
+            letter-spacing: 1px;
+        }
+        
+        .quote {
+            font-family: 'Playfair Display'; 
+            font-style: italic; 
+            color: var(--accent);
+            text-align: center; 
+            padding: 10px; 
+            border-top: 1px solid rgba(212, 175, 55, 0.15);
+            border-bottom: 1px solid rgba(212, 175, 55, 0.15); 
+            margin: 12px 0;
+            font-size: 0.85rem;
+        }
+
+        .content { 
+            flex-grow: 1; 
+            font-size: 9pt; 
+            font-weight: 300; 
+            line-height: 1.45;
+        }
+
+        .grid-identity {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 15px;
+            margin-bottom: 15px;
+        }
+
+        .identity-card {
+            background: var(--card-bg);
+            border: 1px solid rgba(212, 175, 55, 0.08);
+            padding: 12px;
+            border-radius: 6px;
+        }
+
+        .identity-title {
+            font-family: 'Cinzel';
+            color: var(--accent);
+            font-size: 0.8rem;
+            margin-bottom: 8px;
+            border-bottom: 1px solid rgba(212, 175, 55, 0.15);
+            padding-bottom: 4px;
+        }
+
+        .identity-item {
+            margin-bottom: 5px;
+            font-size: 0.75rem;
+        }
+
+        .identity-label {
+            font-weight: 600;
+            color: var(--accent);
+        }
+
+        .identity-val {
+            color: var(--text-dim);
+        }
+
+        .warning-box {
+            background: rgba(212, 175, 55, 0.02);
+            border: 1px solid var(--accent);
+            padding: 10px;
+            border-radius: 6px;
+            margin: 12px 0;
+        }
+
+        .warning-title {
+            font-family: 'Cinzel';
+            color: var(--accent);
+            font-weight: 700;
+            margin-bottom: 5px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 0.85rem;
+        }
+
+        .warning-content {
+            font-size: 0.75rem;
+            color: var(--text-dim);
+        }
+
+        .footer {
+            border-top: 1px solid rgba(212, 175, 55, 0.2); 
+            padding-top: 3mm;
+            margin-top: 10px;
+            display: flex; 
+            justify-content: space-between; 
+            font-family: 'Cinzel'; 
+            font-size: 7.5pt;
+            color: var(--accent);
+        }
+        .page-num::after { counter-increment: page; content: "P. " counter(page, decimal-leading-zero); }
+
+        ul {
+            padding-left: 15px;
+            margin: 6px 0;
+        }
+
+        li {
+            margin-bottom: 3px;
+            color: var(--text-dim);
+        }
+
+        strong {
+            color: var(--accent);
+            font-weight: 600;
+        }
+
+        /* Styling des tableaux comparatifs */
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 15px 0;
+            font-size: 0.78rem;
+        }
+
+        th {
+            font-family: 'Cinzel';
+            color: var(--accent);
+            background: var(--card-bg);
+            border: 1px solid rgba(212, 175, 55, 0.2);
+            padding: 8px;
+            text-align: left;
+        }
+
+        td {
+            border: 1px solid rgba(212, 175, 55, 0.1);
+            padding: 8px;
+            color: var(--text-dim);
+        }
+
+        tr:nth-child(even) td {
+            background: rgba(22, 26, 35, 0.5);
+        }
+
+        .pitch-box {
+            background: rgba(22, 26, 35, 0.8);
+            border-left: 2px solid var(--accent);
+            padding: 10px 15px;
+            margin: 12px 0;
+            font-style: italic;
+            color: var(--text-dim);
+            font-size: 0.82rem;
+            line-height: 1.5;
+        }
+
+        .btn-action {
+            display: inline-block;
+            padding: 8px 15px;
+            border: 1px solid var(--accent);
+            color: var(--accent);
+            text-decoration: none;
+            font-family: 'Cinzel';
+            font-size: 0.75rem;
+            letter-spacing: 1px;
+            transition: all 0.3s ease;
+            margin-top: 10px;
+            text-align: center;
+        }
+
+        .btn-action:hover {
+            background: var(--accent);
+            color: var(--bg);
+            box-shadow: 0 0 10px rgba(212, 175, 55, 0.5);
+        }
+
+        .fixed-dock { 
+            position: fixed; bottom: 20px; left: 50%; transform: translateX(-50%); 
+            width: 90%; max-width: 500px; background: rgba(15,17,21,0.95); backdrop-filter: blur(10px);
+            border: 1px solid var(--accent); border-radius: 8px; padding: 12px;
+            display: flex; gap: 15px; z-index: 1000;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.8);
+        }
+
+        .fixed-dock a {
+            flex: 1;
+            margin: 0;
+        }
+
+        .kpi-section {
+            margin-top: 10px;
+        }
+
+        .kpi-title {
+            font-weight: 600;
+            color: var(--accent);
+            font-size: 0.85rem;
+            margin-bottom: 3px;
+        }
+
+        .kpi-desc {
+            color: var(--text-dim);
+            font-size: 0.8rem;
+            margin-bottom: 8px;
+        }
+
+        @media (max-width: 600px) { 
+            .fixed-dock { flex-direction: column; width: 95%; } 
+            body { background: var(--bg); }
+            .page { width: 100%; height: auto; margin: 0; padding: 15px; box-shadow: none; }
+            .inner-border { display: none; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- PAGE 1 : PRÉSENTATION & ANALYSE DE L'ENTREPRISE -->
+    <div class="page">
+        <div class="inner-border"></div>
+        <h1>DOSSIER STRATÉGIQUE : DOINSPORT</h1>
+        <div class="quote">"Accompagner la croissance des clubs de Padel et de Tennis par la tech."</div>
+        
+        <div class="content">
+            <h2>1. Identité de la Structure</h2>
+            <div class="grid-identity">
+                <div class="identity-card">
+                    <div class="identity-title">Informations Générales</div>
+                    <div class="identity-item">
+                        <span class="identity-label">Nom :</span> <span class="identity-val">Doinsport (Doin Sport SAS)</span>
+                    </div>
+                    <div class="identity-item">
+                        <span class="identity-label">Création :</span> <span class="identity-val">2016 (Marseille)</span>
+                    </div>
+                    <div class="identity-item">
+                        <span class="identity-label">Modèle :</span> <span class="identity-val">SaaS B2B2C (Abonnement fixe)</span>
+                    </div>
+                    <div class="identity-item">
+                        <span class="identity-label">Co-fondateurs :</span> <span class="identity-val">N. Cassignol & R. Chevalier</span>
+                    </div>
+                </div>
+                <div class="identity-card">
+                    <div class="identity-title">Chiffres & Métriques</div>
+                    <div class="identity-item">
+                        <span class="identity-label">Clubs Partenaires :</span> <span class="identity-val">1 000+ (Europe)</span>
+                    </div>
+                    <div class="identity-item">
+                        <span class="identity-label">Utilisateurs actifs :</span> <span class="identity-val">800 000+ (Joueurs)</span>
+                    </div>
+                    <div class="identity-item">
+                        <span class="identity-label">Acquisition Clé :</span> <span class="identity-val">KIROLA (Février 2025)</span>
+                    </div>
+                    <div class="identity-item">
+                        <span class="identity-label">Phase Actuelle :</span> <span class="identity-val">Levée de fonds (Juillet 2026)</span>
+                    </div>
+                </div>
+            </div>
+
+            <h2>2. Profils des Dirigeants</h2>
+            <p style="color: var(--text-dim); margin-bottom: 15px;">
+                <strong>Rémi Chevalier (Directeur Général & COO) :</strong> Interlocuteur de Julien. Profil très ancré sur le Business Development, les partenariats stratégiques et l'écosystème du Padel. Il s'occupe de la visibilité et du réseau de clubs.<br><br>
+                <strong>Nicolas Cassignol (CEO) :</strong> Orienté produit, vision stratégique globale et structuration financière. Il a conçu l'idée durant ses études de commerce (Kedge Marseille), validée par l'incubateur Belle de Mai.
+            </p>
+
+            <h2>3. Analyse Positionnement & Concurrence</h2>
+            <ul>
+                <li><strong>Gestion Sports</strong> : Le principal rival français, très fort sur la vidéo et la gestion avancée de tournois premium.</li>
+                <li><strong>Playtomic</strong> : Géant espagnol orienté B2C (commissionnement sur les réservations), souvent perçu comme plus cher pour les clubs.</li>
+                <li><strong>Anybuddy</strong> : Apporteur d'affaires ponctuel pour remplir les créneaux vacants.</li>
+            </ul>
+        </div>
+        
+        <div class="footer">
+            <div>Édition Prestige - Julien Florence</div>
+            <div class="page-num"></div>
+        </div>
+    </div>
+
+    <!-- PAGE 2 : ANALYSE DE LA CROISSANCE ET COMPARATIF CONCURRENCE -->
+    <div class="page">
+        <div class="inner-border"></div>
+        <h1>CROISSANCE &amp; POSITIONNEMENT</h1>
+        <div class="quote">"Mesurer la performance d'un modèle d'infrastructure face au marché."</div>
+        
+        <div class="content">
+            <h2>4. Analyse des KPIs d'Activité SaaS &amp; Réseau</h2>
+            <div class="grid-identity" style="margin-bottom: 10px;">
+                <div class="identity-card">
+                    <div class="kpi-title">📊 MRR &amp; ARR</div>
+                    <div class="kpi-desc" style="font-size: 0.75rem; margin-bottom: 0;">
+                        1 000+ clubs à 120€-250€/mois. **MRR estimé : 150k€ à 250k€** (ARR : 1,8M€ à 3M€).
+                    </div>
+                </div>
+                <div class="identity-card">
+                    <div class="kpi-title">📉 Churn &amp; Switching Cost</div>
+                    <div class="kpi-desc" style="font-size: 0.75rem; margin-bottom: 0;">
+                        Barrière à la sortie élevée grâce à l'installation physique de domotique. Churn structurel &lt; 5%.
+                    </div>
+                </div>
+            </div>
+
+            <h2>5. Tableau Comparatif : Doinsport vs Gestion Sports</h2>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Indicateur</th>
+                        <th>Doinsport</th>
+                        <th>Gestion Sports (L. Tap)</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>Volume de Clubs</strong></td>
+                        <td><strong>1 000+ clubs</strong> (Leader, via Kirola)</td>
+                        <td>~300 à 500 clubs</td>
+                    </tr>
+                    <tr>
+                        <td><strong>ARR Estimé</strong></td>
+                        <td><strong>~2,0 M€ - 3,0 M€</strong></td>
+                        <td>~1,0 M€ - 1,5 M€</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Tarification</strong></td>
+                        <td>Sur devis (Modulaire options)</td>
+                        <td>Fixe : 197€ à 247€ HT / mois</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Acquisition (CAC)</strong></td>
+                        <td>Force commerciale terrain + M&A</td>
+                        <td>Inbound organique via marque Loïc Tap</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Point Fort Produit</strong></td>
+                        <td>Domotique d'accès (QR, électricité)</td>
+                        <td>Animation, tournois, intégration vidéo courts</td>
+                    </tr>
+                </tbody>
+            </table>
+            <p style="font-size: 0.8rem; color: var(--text-dim); margin-top: 5px;">
+                <strong>Constat stratégique :</strong> Doinsport a conquis le volume par croissance externe (Kirola), tandis que Gestion Sports maintient un CAC très bas grâce à l'autorité de son fondateur. Doinsport doit verrouiller le marché via la levée de fonds.
+            </p>
+        </div>
+        
+        <div class="footer">
+            <div>Édition Prestige - Julien Florence</div>
+            <div class="page-num"></div>
+        </div>
+    </div>
+
+    <!-- PAGE 3 : ARGUMENTAIRES DE PITCH & CRITIQUE SÉCURITÉ -->
+    <div class="page">
+        <div class="inner-border"></div>
+        <h1>ARGUMENTAIRES &amp; SÉCURITÉ D'ENTRETIEN</h1>
+        <div class="quote">"Transformer une crise technique en levier d'opportunité management."</div>
+        
+        <div class="content">
+            <h2>6. Argumentaires de Pitch Structurés</h2>
+            
+            <div class="kpi-title">💡 A. Le levier LTV/CAC basé sur le Switching Cost Domotique</div>
+            <div class="pitch-box">
+                "Ce qui m'intéresse dans votre modèle, c'est l'asymétrie positive du ratio LTV/CAC générée par votre brique domotique. Une fois qu'un club intègre vos accès connectés, le Switching Cost devient prohibitif. Votre Churn doit être proche de zéro. La LTV justifie donc d'investir massivement en CAC pour saturer le marché."
+            </div>
+
+            <div class="kpi-title">💡 B. La valorisation Fintech via la GMV et Stripe</div>
+            <div class="pitch-box">
+                "Même avec un modèle sans commission, le flux financier (GMV) de vos 800 000 joueurs transitant par Stripe est une mine d'or. Cela vous donne un levier de négociation colossal pour abaisser les frais et capter une marge Fintech sur les portefeuilles virtuuels (wallets) ou solutions de paiement fractionné."
+            </div>
+
+            <h2>7. Alerte Sécurité (Fuite du 14 Juillet 2026)</h2>
+            <div class="warning-box">
+                <div class="warning-title">⚠️ INCIDENT DE CYBERSÉCURITÉ MAJEUR</div>
+                <div class="warning-content">
+                    Échantillon de 12 000 profils publié sur un forum (800 000 revendiqués). Données : noms, emails, téléphones, Stripe ID, soldes wallet. Sujet brûlant à amener en **Position Adulte** comme un enjeu de remédiation technique post-scale.
+                </div>
+            </div>
+
+            <h2>8. Questions Clés à Poser à Rémi Chevalier</h2>
+            <ul style="font-size: 0.8rem; line-height: 1.4;">
+                <li><em>"Quels sont vos KPIs d'engagement prioritaires aujourd'hui ? MRR d'acquisition ou expansion revenue ?"</em></li>
+                <li><em>"Comptez-vous valoriser la GMV des réservations pour des services Fintech à terme ?"</em></li>
+                <li><em>"L'incident du 14 juillet est un classique de scale. Comment l'équipe gère-t-elle la remédiation et la gouvernance ?"</em></li>
+            </ul>
+        </div>
+        
+        <div class="footer">
+            <div>Édition Prestige - Julien Florence</div>
+            <div class="page-num"></div>
+        </div>
+    </div>
+
+    <!-- NAVIGATION DOCK -->
+    <div class="fixed-dock">
+        <a href="file:///C:/Users/julien/OneDrive/Bureau/geminicli/Projets/prospection job/doinsport/Markdown/2026-07-15_Doinsport_Fiche_Synthese.md" class="btn-prestige btn-action" style="background: var(--accent); color: var(--bg); font-weight: bold; margin: 0; width: 100%;">Voir Fiche Markdown</a>
+        <a href="https://www.linkedin.com/in/remicr/" target="_blank" class="btn-prestige btn-action" style="margin: 0; width: 100%;">LinkedIn de Rémi</a>
+    </div>
+
+</body>
+</html>
