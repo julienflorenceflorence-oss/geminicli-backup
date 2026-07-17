@@ -46,6 +46,8 @@ Lors de cet échange, nous devrons acter la liquidation de ma fin de contrat au 
    - Dénonciation formelle des manquements de l'entreprise auprès de la DREETS (Inspection du Travail) concernant le défaut de fourniture des moyens de travail et le non-respect des règles de rémunération.
    - Signalement auprès de l'OPCO. Je te rappelle qu'en cas de manquements avérés de l'employeur à ses obligations contractuelles en alternance, l'État et l'OPCO sont en droit d'exiger le remboursement intégral des aides financières (notamment l'aide unique de 6 000 €) perçues par Happy House au titre de mon contrat d'apprentissage, et de geler vos futurs dossiers d'alternance.
 
+Je te rappelle qu'un accord transactionnel amiable écrit (protocole transactionnel sous l'article 2044 du Code civil) pourra être rédigé et signé d'un commun accord lors de notre rendez-vous, éteignant définitivement tout litige futur, à la condition expresse et préalable du règlement intégral et immédiat de ces sommes et de la remise de mes documents administratifs au 24 juillet 2026.
+
 Mes réclamations sont basées sur des faits documentés et des textes de loi précis. Il est de l'intérêt direct de Happy House de régler cette situation à l'amiable et dans les temps afin d'éviter une escalade judiciaire et administrative inutile et coûteuse.
 
 Dans l'attente rapide de tes propositions de créneaux.
