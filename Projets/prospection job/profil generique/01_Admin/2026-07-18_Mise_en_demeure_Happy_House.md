@@ -31,8 +31,8 @@ Demande d'audience et de solde de tout compte
 Au vu de l'implication que j'ai démontrée tout au long de mon alternance – notamment en intégrant deux CSE d'envergure au réseau et en fidélisant plusieurs hébergeurs clés – je souhaite que nous convenions d'un rendez-vous physique d'ici le mardi 21 juillet 2026 au plus tard (merci de m'indiquer le jour, l'heure et le lieu).
 
 Lors de cet échange, nous devrons acter la liquidation de ma fin de contrat au 24 juillet 2026, incluant :
-1. Le versement intégral de mes rappels de salaires (avenant OPCO) et la remise de mes fiches de paie rectifiées.
-2. Le calcul et le paiement de mon indemnité compensatrice de congés payés non pris (article L. 3141-28 du Code du travail).
+1. Le versement intégral de mon rappel de salaire rétroactif (différence de taux légal obligatoire liée à mon avenant de contrat de professionnalisation pour un salarié de plus de 31 ans par rapport au barème appliqué initialement) et la remise de mes bulletins de paie rectifiés.
+2. Le calcul et le paiement de mon indemnité compensatrice de congés payés correspondant à mes 20 jours de congés acquis et non pris (article L. 3141-28 du Code du travail, calculée selon la règle du dixième de la rémunération brute totale).
 3. La remise de mes documents légaux obligatoires : Reçu pour solde de tout compte, certificat de travail et attestation France Travail (articles L. 1234-19 et L. 1234-20).
 
 À défaut de retour sous 48 heures pour fixer ce rendez-vous, ou en cas de non-régularisation financière et administrative intégrale au soir du 24 juillet 2026, je lancerai immédiatement les procédures suivantes sans autre préavis :
