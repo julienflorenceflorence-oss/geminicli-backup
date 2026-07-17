@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Argumentaire de Vente - Emineo Education - Julien FLORENCE</title>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&family=Montserrat:wght@300;400;600&family=Playfair+Display:ital,wght@0,400;1,400&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg: #0F1115;
+            --accent: #D4AF37;
+            --text: #FFFFFF;
+            --page-w: 210mm;
+            --page-h: 297mm;
+        }
+
+        @media print {
+            @page { size: A4; margin: 0; }
+            body { background: var(--bg) !important; -webkit-print-color-adjust: exact; }
+            .page { margin: 0 !important; border: none !important; box-shadow: none !important; width: var(--page-w); height: var(--page-h); }
+        }
+
+        body { background: #050505; color: var(--text); font-family: 'Montserrat', sans-serif; margin: 0; counter-reset: page; }
+
+        .page {
+            width: var(--page-w);
+            height: var(--page-h);
+            background: var(--bg);
+            margin: 40px auto;
+            position: relative;
+            padding: 20mm 20mm;
+            box-sizing: border-box;
+            box-shadow: 0 0 30px rgba(0,0,0,0.5);
+            page-break-after: always;
+            display: flex;
+            flex-direction: column;
+            overflow: hidden;
+        }
+
+        .inner-border {
+            position: absolute; top: 10mm; left: 10mm; right: 10mm; bottom: 10mm;
+            border: 1px solid rgba(212, 175, 55, 0.15); pointer-events: none;
+        }
+
+        h1 { font-family: 'Cinzel'; color: var(--accent); text-align: center; border-bottom: 1px solid var(--accent); padding-bottom: 5px; margin-bottom: 20px; font-size: 1.6rem; letter-spacing: 2px; }
+        h2 { font-family: 'Cinzel'; color: var(--accent); border-left: 4px solid var(--accent); padding-left: 12px; margin: 15px 0 10px 0; font-size: 1.1rem; letter-spacing: 1px; }
+        
+        .quote {
+            font-family: 'Playfair Display'; font-style: italic; color: var(--accent);
+            text-align: center; padding: 12px; border-top: 1px solid rgba(212, 175, 55, 0.2);
+            border-bottom: 1px solid rgba(212, 175, 55, 0.2); margin: 15px 0;
+            font-size: 0.95rem;
+        }
+
+        .content { flex-grow: 1; text-align: justify; font-size: 9.5pt; font-weight: 300; line-height: 1.5; }
+        .content p { margin-bottom: 10px; }
+        
+        ul { list-style: none; margin-bottom: 15px; }
+        li { margin-bottom: 6px; position: relative; padding-left: 15px; }
+        li::before { content: "›"; color: var(--accent); position: absolute; left: 0; font-weight: bold; font-size: 1.1rem; }
+
+        table { width: 100%; border-collapse: collapse; margin-top: 15px; font-size: 9pt; }
+        th, td { padding: 10px; text-align: left; border: 1px solid rgba(212, 175, 55, 0.25); }
+        th { font-family: 'Cinzel'; color: var(--accent); background: rgba(212, 175, 55, 0.05); font-weight: 700; }
+        td { color: #dcdcdc; }
+
+        .footer {
+            border-top: 1px solid var(--accent); padding-top: 3mm;
+            display: flex; justify-content: space-between; font-family: 'Cinzel'; font-size: 8pt; color: rgba(176, 176, 176, 0.6);
+            margin-top: auto;
+        }
+        .page-num::after { counter-increment: page; content: "P. " counter(page, decimal-leading-zero); }
+    </style>
+</head>
+<body>
+    <!-- PAGE 1 -->
+    <div class="page">
+        <div class="inner-border"></div>
+        <h1>Argumentaire de Vente & Négociation</h1>
+        <div class="quote">"La locomotive commerciale d'un campus : convertir l'admission en placement concret."</div>
+        
+        <div class="content">
+            <h2>🎯 1. Le Pitch d'Accroche</h2>
+            <p>La locomotive commerciale d'un campus ne se contente pas de piloter des KPIs ; elle incarne la vision de l'école et convertit l'admission des étudiants en contrats de placement en alternance durables auprès du tissu économique local.</p>
+            <p>Mon profil apporte à Emineo Education une triple synergie : une légitimité dans le secteur de l'emploi et de la formation professionnelle (Responsable d'Agence chez RAS Intérim), une expérience éprouvée du management de proximité (jusqu'à 20 ETP encadrés), et la maîtrise des méthodes de vente modernes (Bachelor Rocket School, qualification, closing et industrialisation des pipelines CRM).</p>
+
+            <h2>🛠️ 2. Traitement des Objections (Objection Handling)</h2>
+            
+            <p><strong>Objection 1 : "Nous recherchons idéalement un profil Bac+5."</strong><br>
+            Mon Bachelor Marketing & Commerce (Sales Tech) couplé à mes 15 ans d'expérience managériale et à mon historique de gestionnaire d'agence d'emploi compensent largement le cadre académique théorique. J'apporte un savoir-faire opérationnel direct et une légitimité de terrain immédiate face aux chefs d'entreprises.</p>
+            
+            <p><strong>Objection 2 : "Quelle est votre connaissance réelle de l'alternance ?"</strong><br>
+            Chez RAS Intérim, j'ai géré l'ingénierie des contrats de formation (apprentissage, professionnalisation) et la relation avec les OPCO. Je comprends parfaitement le rythme de l'alternance et l'importance de faire le lien entre les besoins des entreprises locales et l'accompagnement des candidats.</p>
+            
+            <p><strong>Objection 3 : "Quel est le lien entre l'hôtellerie de luxe et la formation ?"</strong><br>
+            L'hôtellerie de luxe m'a inculqué une exigence de service et un sens des relations publiques indispensables pour la négociation Grands Comptes (KAM). De plus, en tant que Directeur d'établissement, j'ai recruté des alternants et organisé des Job Datings locaux d'envergure.</p>
+        </div>
+        
+        <div class="footer">
+            <div>Emineo Education - Candidature Julien FLORENCE</div>
+            <div class="page-num"></div>
+        </div>
+    </div>
+
+    <!-- PAGE 2 -->
+    <div class="page">
+        <div class="inner-border"></div>
+        <h1>Argumentaire de Vente & Négociation</h1>
+        
+        <div class="content">
+            <h2>📊 3. Grille d'Alignement aux Missions</h2>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Axe de Mission (Emineo)</th>
+                        <th>Mon Parallèle Expérience</th>
+                        <th>Preuve & Métrique</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>Management & Leadership</strong></td>
+                        <td>Recrutement, onboarding et management d'équipes commerciales.</td>
+                        <td>Management de 20 ETP par semaine.</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Développement B2B & KAM</strong></td>
+                        <td>Prospection et négociation directe de partenariats Grands Comptes locaux.</td>
+                        <td>Volume d'affaires de 110k€ (Century 21).</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Événementiel & Job Datings</strong></td>
+                        <td>Logistique et animation de Job Datings et de soirées de networking.</td>
+                        <td>Événements professionnels jusqu'à 150 personnes.</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Rigueur & Qualité</strong></td>
+                        <td>Gestion de la conformité des contrats et respect des normes réglementaires.</td>
+                        <td>Pilotage d'agence sédentaire (CA 2,6 M€).</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <h2>4. Prétentions Salariales (Cible : Fixe + Variable)</h2>
+            <p>Mes prétentions salariales sont corrélées à mon autonomie opérationnelle immédiate. Mon passé de gestionnaire de centre de profit garantit que je comprends immédiatement les notions de marge brute, de coûts de placement et de retour sur investissement d'un campus.</p>
+
+            <h2>🧭 5. Questions Stratégiques (Posture ENTJ-A)</h2>
+            <ul>
+                <li><strong>Sur la performance d'équipe :</strong> "Quels sont les principaux freins de performance ou d'onboarding que vous observez chez vos CRE actuellement ? Comment suivez-vous leur montée en compétences ?"</li>
+                <li><strong>Sur le pipeline :</strong> "Quelle la part du pipeline de placement qui provient de la prospection pure (outbound) par rapport à la conversion des leads étudiants admissibles (inbound) ?"</li>
+                <li><strong>Sur le succès à 6 mois (ROI) :</strong> "Si nous faisons le point sur mon rôle dans 6 mois, quelle sera la métrique la plus parlante : le taux de placement des étudiants, le panier moyen de recrutement des entreprises, ou l'atteinte des objectifs de chiffre d'affaires du campus ?"</li>
+            </ul>
+        </div>
+        
+        <div class="footer">
+            <div>Emineo Education - Candidature Julien FLORENCE</div>
+            <div class="page-num"></div>
+        </div>
+    </div>
+</body>
+</html>
