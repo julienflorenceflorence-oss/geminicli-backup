@@ -35,7 +35,18 @@ Lors de cet échange, nous devrons acter la liquidation de ma fin de contrat au 
 2. Le calcul et le paiement de mon indemnité compensatrice de congés payés non pris (article L. 3141-28 du Code du travail).
 3. La remise de mes documents légaux obligatoires : Reçu pour solde de tout compte, certificat de travail et attestation France Travail (articles L. 1234-19 et L. 1234-20).
 
-À défaut de retour sous 48 heures pour fixer ce rendez-vous, ou en cas de non-régularisation financière complète le 24 juillet 2026 au soir, je transmettrai immédiatement mon dossier à mon conseil juridique afin de saisir le Conseil de Prud'hommes en référé (procédure d'urgence pour le paiement des salaires) et de signaler ces manquements à l'Inspection du Travail ainsi qu'à l'OPCO.
+À défaut de retour sous 48 heures pour fixer ce rendez-vous, ou en cas de non-régularisation financière et administrative intégrale au soir du 24 juillet 2026, je lancerai immédiatement les procédures suivantes sans autre préavis :
+
+1. Saisine du Conseil de Prud'hommes en référé (procédure d'urgence) afin d'exiger :
+   - Le paiement forcé de mes rappels de salaires et de mon indemnité compensatrice de congés payés majorés des intérêts de retard au taux légal ;
+   - La délivrance sous astreinte financière journalière de 100 € par jour de retard et par document de mes fiches de paie rectifiées, de mon attestation France Travail, de mon reçu pour solde de tout compte et de mon certificat de travail ;
+   - La condamnation de l'entreprise au titre de l'article 700 du Code de procédure civile (remboursement de mes frais de procédure et d'avocat) à hauteur de 2 000 €.
+
+2. Signalement et blocage administratif :
+   - Dénonciation formelle des manquements de l'entreprise auprès de la DREETS (Inspection du Travail) concernant le défaut de fourniture des moyens de travail et le non-respect des règles de rémunération.
+   - Signalement auprès de l'OPCO. Je te rappelle qu'en cas de manquements avérés de l'employeur à ses obligations contractuelles en alternance, l'État et l'OPCO sont en droit d'exiger le remboursement intégral des aides financières (notamment l'aide unique de 6 000 €) perçues par Happy House au titre de mon contrat d'apprentissage, et de geler vos futurs dossiers d'alternance.
+
+Mes réclamations sont basées sur des faits documentés et des textes de loi précis. Il est de l'intérêt direct de Happy House de régler cette situation à l'amiable et dans les temps afin d'éviter une escalade judiciaire et administrative inutile et coûteuse.
 
 Dans l'attente rapide de tes propositions de créneaux.
 
