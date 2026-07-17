@@ -68,9 +68,10 @@ async def main():
     print("--- COMPILATEUR PDF PROFIL GÉNÉRIQUE ---")
     cv_success = await generate_pdf("../HTML/CV_Julien_Florence.html", "../PDF/CV_Julien_Florence.pdf")
     lm_success = await generate_pdf("../HTML/LM_Julien_Florence.html", "../PDF/LM_Julien_Florence.pdf")
+    litige_success = await generate_pdf("../01_Admin/2026-07-18_Mise_en_demeure_Happy_House.html", "../01_Admin/2026-07-18_Mise_en_demeure_Happy_House.pdf")
     
-    if cv_success and lm_success:
-        print("[*] Compilation du profil générique terminée avec succès.")
+    if cv_success and lm_success and litige_success:
+        print("[*] Compilation du profil générique et dossier litige terminée avec succès.")
     else:
         print("[X] Échec partiel ou total de la compilation.")
 
