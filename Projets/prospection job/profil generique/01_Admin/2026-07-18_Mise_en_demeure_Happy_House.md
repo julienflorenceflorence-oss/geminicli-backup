@@ -6,49 +6,39 @@
 
 ## ✉️ Courriel à envoyer à Patrice (Copie Yones & Ruddy)
 
-```text
-Objet : MISE EN DEMEURE – Régularisation de fin de contrat et exécution des obligations contractuelles
+Objet : Préparation de ma fin de contrat et proposition d'accord amiable
 
 Patrice,
 
-Je reviens vers toi par écrit afin de formaliser nos derniers échanges et de fixer le cadre juridique de ma fin de contrat d'alternance, prévue pour le 24 juillet 2026. Sans retour écrit de ta part suite à mon SMS de relance du mercredi 15 juillet 2026, je me vois contraint de t'adresser cette mise en demeure concernant plusieurs manquements à tes obligations d'employeur.
+Je reviens vers toi par écrit afin de préparer sereinement mon départ de l'entreprise, prévu pour le 24 juillet 2026, et de m'assurer que notre collaboration se termine de la façon la plus constructive et fluide possible. 
 
-Je souhaite porter à ton attention et consigner par écrit les points suivants :
+N'ayant pas eu de retour à mon SMS de relance du mercredi 15 juillet, je me permets de t'adresser cette note afin de lister les points administratifs et financiers que nous devons régulariser ensemble pour que tout soit parfaitement en ordre d'ici le 24 juillet au soir. Mon objectif est que nous sécurisions juridiquement et financièrement cette fin de contrat, en évitant des démarches administratives complexes ou des litiges inutiles pour Happy House.
 
-1. Défaut de fourniture des outils de travail nécessaires à l'activité
-Comme je te l'ai signalé de vive voix le vendredi 10 juillet 2026, puis par écrit le mercredi 15 juillet 2026, l'ordinateur personnel (datant de 2016) que j'utilisais à titre gracieux pour mes missions est tombé en panne. 
-Je te rappelle qu'en vertu de l'obligation générale d'exécution de bonne foi du contrat de travail (article L. 1222-1 du Code du travail) et d'une jurisprudence constante de la Cour de cassation (Cass. Soc., 3 mai 2012, n° 10-21.396), l'employeur est tenu de fournir le travail convenu et les moyens de l'exécuter. L'obligation de prendre en charge les frais inhérents à l'activité professionnelle est également d'ordre public (Cass. Soc., 25 février 1998, n° 95-44.096). L'absence de mise à disposition d'une machine professionnelle par l'entreprise depuis le 10 juillet 2026 suspend de fait ma capacité à effectuer une prospection numérique sans que cela ne puisse m'être imputé à faute.
+Voici les sujets que nous devons aborder :
 
-2. Non-paiement des salaires et régularisations (Avenant OPCO)
-À ce jour, je n'ai toujours pas perçu les rappels de salaires dus au titre des modifications de mon contrat validées avec l'OPCO, ni reçu les bulletins de paie rectifiés correspondants. L'obligation de verser le salaire à l'échéance est une règle d’ordre public (article L. 3241-1 du Code du travail). Les démarches administratives ou les rendez-vous URSSAF de ton côté ne suspendent pas cette obligation légale.
+1. Fourniture des outils de travail
+Comme je te l'ai signalé de vive voix le vendredi 10 juillet 2026, puis par écrit le mercredi 15 juillet 2026, l'ordinateur personnel (datant de 2016) que j'utilisais à titre gracieux est en panne. En vertu de l'obligation générale d'exécution de bonne foi du contrat de travail (article L. 1222-1 du Code du travail) et d'une jurisprudence constante de la Cour de cassation (Cass. Soc., 3 mai 2012, n° 10-21.396), l'employeur est tenu de fournir le travail convenu et les moyens de l'exécuter. L'absence de mise à disposition d'une machine professionnelle depuis le 10 juillet suspend de fait ma capacité à effectuer ma prospection numérique sans que cela ne puisse m'être imputé à faute.
 
-3. Cadre légal de la non-atteinte d'objectifs (Alternance)
-Au vu de tes remarques verbales, je tiens à rappeler que le contrat d'apprentissage et de professionnalisation a pour but premier la formation pédagogique de l'étudiant (article L. 6211-1 du Code du travail). Conformément à la jurisprudence, un alternant ne peut sous aucun prétexte être sanctionné contractuellement ou financièrement pour une non-atteinte d'objectifs commerciaux.
+2. Régularisation salariale (Avenant OPCO - Salarié de plus de 31 ans)
+Il convient de régulariser la différence de rémunération obligatoire liée à mon contrat de professionnalisation (grille légale pour les salariés de plus de 31 ans, qui impose 100 % du SMIC ou de la rémunération conventionnelle). Le paiement du salaire à l'échéance est une obligation d'ordre public (article L. 3241-1 du Code du travail) que les démarches administratives (comme ton rendez-vous URSSAF) ne peuvent pas différer.
 
----
+3. Cadre légal de l'alternance et congés payés
+Je te rappelle que le contrat en alternance a pour but premier la formation (article L. 6211-1 du Code du travail) et qu'un alternant ne peut être sanctionné pour non-atteinte d'objectifs. Par ailleurs, j'ai acquis 20 jours de congés payés non pris. Conformément à l'article L. 3141-28 du Code du travail, ces jours doivent donner lieu au versement d'une indemnité compensatrice de congés payés (calculée selon la règle du dixième la plus favorable).
 
-Demande d'audience et de solde de tout compte
-Au vu de l'implication que j'ai démontrée tout au long de mon alternance – notamment en intégrant deux CSE d'envergure au réseau et en fidélisant plusieurs hébergeurs clés – je souhaite que nous convenions d'un rendez-vous physique d'ici le mardi 21 juillet 2026 au plus tard (merci de m'indiquer le jour, l'heure et le lieu).
+Afin d'acter tout cela proprement, je te propose que nous convenions d'un rendez-vous physique d'ici le mardi 21 juillet 2026 au plus tard. 
 
-Lors de cet échange, nous devrons acter la liquidation de ma fin de contrat au 24 juillet 2026, incluant :
-1. Le versement intégral de mon rappel de salaire rétroactif (différence de taux légal obligatoire liée à mon avenant de contrat de professionnalisation pour un salarié de plus de 31 ans par rapport au barème appliqué initialement) et la remise de mes bulletins de paie rectifiés.
-2. Le calcul et le paiement de mon indemnité compensatrice de congés payés correspondant à mes 20 jours de congés acquis et non pris (article L. 3141-28 du Code du travail, calculée selon la règle du dixième de la rémunération brute totale).
-3. La remise de mes documents légaux obligatoires : Reçu pour solde de tout compte, certificat de travail et attestation France Travail (articles L. 1234-19 et L. 1234-20).
+Pour sécuriser définitivement notre accord et éteindre tout risque de litige futur pour toi comme pour moi, nous pourrons signer d'un commun accord un protocole transactionnel amiable (sous l'article 2044 du Code civil) lors de la remise des documents obligatoires (solde de tout compte, certificat de travail et attestation France Travail) le 24 juillet.
 
-À défaut de retour sous 48 heures pour fixer ce rendez-vous, ou en cas de non-régularisation financière et administrative intégrale au soir du 24 juillet 2026, je lancerai immédiatement les procédures suivantes sans autre préavis :
+Je tiens sincèrement à ce que nous privilégions cette voie amiable et professionnelle. Si toutefois nous ne parvenions pas à un accord d'ici le 24 juillet au soir, je me verrais contraint, à mon grand regret, de solliciter mon conseil pour faire valoir mes droits en référé devant le Conseil de Prud'hommes et de signaler la situation aux organismes compétents (DREETS et OPCO), ce qui engendrerait des coûts et des risques administratifs évitables pour l'entreprise (notamment le remboursement potentiel des aides d'apprentissage perçues).
 
-1. Saisine du Conseil de Prud'hommes en référé (procédure d'urgence) afin d'exiger :
-   - Le paiement forcé de mes rappels de salaires et de mon indemnité compensatrice de congés payés majorés des intérêts de retard au taux légal ;
-   - La délivrance sous astreinte financière journalière de 100 € par jour de retard et par document de mes fiches de paie rectifiées, de mon attestation France Travail, de mon reçu pour solde de tout compte et de mon certificat de travail ;
-   - La condamnation de l'entreprise au titre de l'article 700 du Code de procédure civile (remboursement de mes frais de procédure et d'avocat) à hauteur de 2 000 €.
+Je suis convaincu que nous saurons trouver une issue positive et équitable. Merci de me proposer rapidement tes créneaux de disponibilité pour notre échange.
 
-2. Signalement et blocage administratif :
-   - Dénonciation formelle des manquements de l'entreprise auprès de la DREETS (Inspection du Travail) concernant le défaut de fourniture des moyens de travail et le non-respect des règles de rémunération.
-   - Signalement auprès de l'OPCO. Je te rappelle qu'en cas de manquements avérés de l'employeur à ses obligations contractuelles en alternance, l'État et l'OPCO sont en droit d'exiger le remboursement intégral des aides financières (notamment l'aide unique de 6 000 €) perçues par Happy House au titre de mon contrat d'apprentissage, et de geler vos futurs dossiers d'alternance.
+Cordialement,
 
-Je te rappelle qu'un accord transactionnel amiable écrit (protocole transactionnel sous l'article 2044 du Code civil) pourra être rédigé et signé d'un commun accord lors de notre rendez-vous, éteignant définitivement tout litige futur, à la condition expresse et préalable du règlement intégral et immédiat de ces sommes et de la remise de mes documents administratifs au 24 juillet 2026.
-
-Mes réclamations sont basées sur des faits documentés et des textes de loi précis. Il est de l'intérêt direct de Happy House de régler cette situation à l'amiable et dans les temps afin d'éviter une escalade judiciaire et administrative inutile et coûteuse.
+Julien FLORENCE
+Directeur Commercial (Alternant)
+06 61 74 75 73
+```administrative inutile et coûteuse.
 
 Dans l'attente rapide de tes propositions de créneaux.
 
