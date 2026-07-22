@@ -100,6 +100,7 @@
             transition: var(--transition);
             background: rgba(212, 175, 55, 0.05);
             color: var(--gold-light);
+            text-decoration: none;
         }
 
         .btn:hover {
@@ -354,13 +355,28 @@
             transform: translateY(-2px);
         }
 
+        .card-top {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 6px;
+        }
+
         .card-category {
             font-size: 0.7rem;
             font-weight: 700;
             text-transform: uppercase;
             letter-spacing: 0.5px;
             color: var(--gold-primary);
-            margin-bottom: 6px;
+        }
+
+        .sourcing-badge {
+            background: rgba(58, 134, 255, 0.2);
+            color: var(--accent-blue);
+            padding: 2px 6px;
+            border-radius: 4px;
+            font-size: 0.65rem;
+            font-weight: 700;
         }
 
         .card-company {
@@ -373,8 +389,20 @@
         .card-role {
             font-size: 0.82rem;
             color: var(--text-muted);
-            margin-bottom: 12px;
+            margin-bottom: 10px;
             line-height: 1.3;
+        }
+
+        .card-contact-preview {
+            font-size: 0.75rem;
+            color: var(--gold-light);
+            background: rgba(212, 175, 55, 0.08);
+            padding: 4px 8px;
+            border-radius: 4px;
+            margin-bottom: 8px;
+            display: flex;
+            align-items: center;
+            gap: 6px;
         }
 
         .card-footer {
@@ -385,7 +413,7 @@
             color: var(--text-muted);
             border-top: 1px dashed rgba(255, 255, 255, 0.08);
             padding-top: 10px;
-            margin-top: 10px;
+            margin-top: 6px;
         }
 
         .ice-badge {
@@ -394,12 +422,6 @@
             padding: 3px 8px;
             border-radius: 6px;
             font-weight: 700;
-        }
-
-        .location-tag {
-            display: flex;
-            align-items: center;
-            gap: 4px;
         }
 
         .table-container {
@@ -442,6 +464,7 @@
             border-radius: 6px;
         }
 
+        /* Modal Lead Detail */
         .modal-overlay {
             position: fixed;
             top: 0;
@@ -468,9 +491,9 @@
             background: #141821;
             border: 1px solid var(--border-gold);
             border-radius: var(--radius-main);
-            width: 90%;
-            max-width: 680px;
-            max-height: 85vh;
+            width: 92%;
+            max-width: 760px;
+            max-height: 90vh;
             overflow-y: auto;
             padding: 30px;
             box-shadow: var(--shadow-gold);
@@ -494,7 +517,10 @@
         .modal-header h2 {
             font-family: 'Cinzel', serif;
             color: var(--gold-primary);
-            font-size: 1.4rem;
+            font-size: 1.5rem;
+            display: flex;
+            align-items: center;
+            gap: 10px;
         }
 
         .close-modal {
@@ -510,12 +536,80 @@
             color: var(--gold-primary);
         }
 
+        /* Sourcing Box in Modal */
+        .sourcing-box {
+            background: rgba(15, 17, 21, 0.95);
+            border: 1px solid var(--border-gold);
+            border-radius: 10px;
+            padding: 18px;
+            margin-bottom: 20px;
+        }
+
+        .sourcing-title {
+            font-family: 'Cinzel', serif;
+            font-size: 0.95rem;
+            color: var(--gold-light);
+            margin-bottom: 12px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .sourcing-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 12px;
+        }
+
+        @media (max-width: 600px) {
+            .sourcing-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .sourcing-item {
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid var(--border-subtle);
+            border-radius: 6px;
+            padding: 10px;
+            font-size: 0.8rem;
+        }
+
+        .sourcing-item label {
+            display: block;
+            color: var(--text-muted);
+            font-size: 0.7rem;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            margin-bottom: 4px;
+        }
+
+        .sourcing-item .val {
+            color: var(--text-main);
+            font-weight: 600;
+            word-break: break-all;
+        }
+
+        .action-link {
+            color: var(--accent-blue);
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 4px;
+            font-size: 0.78rem;
+            margin-top: 4px;
+        }
+
+        .action-link:hover {
+            text-decoration: underline;
+        }
+
         .pitch-box {
             background: rgba(15, 17, 21, 0.9);
             border: 1px solid var(--border-gold);
             border-radius: 8px;
             padding: 16px;
-            margin: 16px 0;
+            margin: 14px 0;
             font-style: italic;
             color: var(--gold-light);
             font-size: 0.88rem;
@@ -581,9 +675,10 @@
     <header>
         <div class="header-title">
             <h1><i class="fa-solid fa-wine-glass"></i> PROSPECTION BORDEAUX</h1>
-            <p>Cartographie 100% Bordeaux & Remote — Julien</p>
+            <p>Pilotage Stratégique 100% Connecté au Sourcing — Julien</p>
         </div>
         <div class="header-actions">
+            <a href="../Data/Tracking_Prospection_Bordeaux_Top4.csv" download class="btn btn-secondary"><i class="fa-solid fa-file-csv"></i> Télécharger CSV</a>
             <button class="btn btn-secondary" onclick="exportData()"><i class="fa-solid fa-download"></i> Exporter JSON</button>
             <button class="btn btn-secondary" onclick="resetDefaultData()"><i class="fa-solid fa-rotate"></i> Reset 20 Cibles</button>
             <button class="btn" onclick="openNewLeadModal()"><i class="fa-solid fa-plus"></i> Nouvelle Cible</button>
@@ -600,7 +695,7 @@
                     <i class="fa-solid fa-location-dot"></i>
                 </div>
                 <div class="stat-value" id="stat-total">20</div>
-                <div class="stat-subtitle">Entreprises identifiées</div>
+                <div class="stat-subtitle">Entreprises & Patterns Mails</div>
             </div>
 
             <div class="stat-card">
@@ -627,7 +722,7 @@
                     <i class="fa-solid fa-star"></i>
                 </div>
                 <div class="stat-value" id="stat-ice" style="color: var(--accent-green);">8.9/10</div>
-                <div class="stat-subtitle">Focus Bordeaux Metropole</div>
+                <div class="stat-subtitle">Leadership & Coach Hand</div>
             </div>
         </div>
 
@@ -635,7 +730,7 @@
         <div class="toolbar">
             <div class="search-box">
                 <i class="fa-solid fa-magnifying-glass"></i>
-                <input type="text" id="searchInput" placeholder="Rechercher par entreprise, rôle, quartier (Euratlantique, Cestas, Queyries...)" oninput="filterLeads()">
+                <input type="text" id="searchInput" placeholder="Rechercher par entreprise, rôle, pattern mail, quartier..." oninput="filterLeads()">
             </div>
 
             <div class="filter-group">
@@ -704,7 +799,7 @@
                         <th>Entreprise</th>
                         <th>Catégorie</th>
                         <th>Poste Visé</th>
-                        <th>Localisation</th>
+                        <th>Décideur & Pattern Mail</th>
                         <th>Score ICE</th>
                         <th>Statut</th>
                         <th>Actions</th>
@@ -716,13 +811,38 @@
 
     </div>
 
-    <!-- Modal Lead Detail -->
+    <!-- Modal Lead Detail (Connected Sourcing) -->
     <div class="modal-overlay" id="leadModal">
         <div class="modal-box">
             <div class="modal-header">
-                <h2 id="modalCompany">Nom Entreprise</h2>
+                <h2 id="modalCompany"><i class="fa-solid fa-building"></i> Nom Entreprise</h2>
                 <button class="close-modal" onclick="closeLeadModal()"><i class="fa-solid fa-xmark"></i></button>
             </div>
+
+            <!-- Sourcing & Pattern Mail Box -->
+            <div class="sourcing-box">
+                <div class="sourcing-title"><i class="fa-solid fa-id-card"></i> Fiche Sourcing & Pattern Mail Direct</div>
+                <div class="sourcing-grid">
+                    <div class="sourcing-item">
+                        <label>Intitulé du Décideur Cible</label>
+                        <div class="val" id="modalTargetTitle">Head of Operations</div>
+                    </div>
+                    <div class="sourcing-item">
+                        <label>Pattern Email Reconstruit</label>
+                        <div class="val" id="modalEmailPattern">prenom.nom@domain.com</div>
+                        <button type="button" class="btn" style="padding: 2px 8px; font-size: 0.7rem; margin-top: 4px;" onclick="copyEmailPattern()"><i class="fa-regular fa-copy"></i> Copier Pattern</button>
+                    </div>
+                    <div class="sourcing-item">
+                        <label>Standard / Téléphone</label>
+                        <div class="val" id="modalPhone">Standard Entreprise</div>
+                    </div>
+                    <div class="sourcing-item">
+                        <label>Recherche LinkedIn Directe</label>
+                        <a href="#" id="modalLinkedInLink" target="_blank" class="action-link"><i class="fa-brands fa-linkedin"></i> Lancer la recherche Décideurs <i class="fa-solid fa-arrow-up-right-from-square"></i></a>
+                    </div>
+                </div>
+            </div>
+
             <form id="leadForm" onsubmit="saveLeadDetails(event)">
                 <input type="hidden" id="modalId">
                 <div class="form-group">
@@ -740,11 +860,11 @@
                     </select>
                 </div>
                 <div class="form-group">
-                    <label>Décideur Cible (Titre / Contact)</label>
-                    <input type="text" id="modalContact">
+                    <label>Nom & Prénom du Décideur Trouvé sur LinkedIn</label>
+                    <input type="text" id="modalContact" placeholder="Ex: Jean-Luc FEVRIER">
                 </div>
                 <div class="form-group">
-                    <label>Angle de Pitch Personnalisé</label>
+                    <label>Angle de Pitch Personnalisé (15 ans CHR/Luxe + Coach Hand)</label>
                     <div class="pitch-box">
                         <span id="modalPitchText"></span>
                         <button type="button" class="btn copy-btn" onclick="copyPitch()"><i class="fa-regular fa-copy"></i> Copier Pitch</button>
@@ -769,35 +889,219 @@
     <!-- Toast Notification -->
     <div class="toast" id="toast">Action effectuée avec succès !</div>
 
-    <!-- Initial Data & Application Logic -->
+    <!-- Initial Data & Connected Logic -->
     <script>
         const defaultTargetsBordeaux = [
-          {"id":"target-bdx-1","name":"Sunday","category":"HospTech, FoodTech & WineTech","location":"Bordeaux (Pôle local) / Remote","targetRole":"Operations Manager / Account Management Lead","iceScore":9.6,"status":"A contacter","contactPerson":"Head of Merchant Operations","pitch":"15 ans de gestion de salle et de rotation de tables combinés à une expertise digitale pour maximiser le taux d'adoption du paiement QR code.","website":"https://sundayapp.com","lastContact":"","nextActionDate":"2026-07-25","notes":"Poste stratégique à Bordeaux. Priorité N°1."},
-          {"id":"target-bdx-2","name":"Koust","category":"HospTech, FoodTech & WineTech","location":"Bordeaux (Siège local) / Remote","targetRole":"Chef de Projet Déploiement / Consultant Métier F&B","iceScore":9.4,"status":"A contacter","contactPerson":"Fondateur / Directeur Général","pitch":"Maîtrise concrète des ratios de rentabilité F&B et de la gestion de stock en restauration intégrée dans l'implémentation logicielle.","website":"https://koust.net","lastContact":"","nextActionDate":"2026-07-25","notes":"Siège à Bordeaux. Outil de gestion des coûts et stocks CHR."},
-          {"id":"target-bdx-3","name":"Lectra (Pôle Luxe & Mode Cestas)","category":"MarTech, E-Commerce & Luxe","location":"Bordeaux Cestas","targetRole":"Chef de Projet Implémentation / Customer Success Manager Luxe","iceScore":9.5,"status":"A contacter","contactPerson":"Directeur des Opérations / Professional Services Lead","pitch":"Sens aigu du service et des exigences du secteur du luxe couplé au pilotage de projets informatiques.","website":"https://www.lectra.com","lastContact":"","nextActionDate":"2026-07-24","notes":"Campus mondial R&D & Tech à Cestas (Bordeaux Metropole). Acteur majeur Luxe/Textile."},
-          {"id":"target-bdx-4","name":"Wavy / Tactill","category":"HospTech, FoodTech & WineTech","location":"Bordeaux / Remote","targetRole":"Senior Onboarding Specialist / Key Account CSM","iceScore":9.0,"status":"A contacter","contactPerson":"Head of Customer Success","pitch":"Connaissance approfondie du terrain et des opérations quotidiennes des restaurateurs et commerçants.","website":"https://www.wavy.co","lastContact":"","nextActionDate":"2026-07-26","notes":"Encaissement et SaaS de gestion commerces et restauration."},
-          {"id":"target-bdx-5","name":"Yoobic / Frontline Ops","category":"HospTech, FoodTech & WineTech","location":"Bordeaux / Remote","targetRole":"Implementation Consultant / Customer Success Lead","iceScore":8.9,"status":"A contacter","contactPerson":"VP Professional Services","pitch":"15 ans de management d'équipes opérationnelles de terrain pour garantir l'adoption des outils digitaux.","website":"https://yoobic.com","lastContact":"","nextActionDate":"2026-07-27","notes":"SaaS Opérations Frontline pour CHR & Retail."},
-          {"id":"target-bdx-6","name":"Mews","category":"HospTech, FoodTech & WineTech","location":"Remote depuis Bordeaux","targetRole":"Implementation Consultant / Customer Success Manager","iceScore":9.2,"status":"A contacter","contactPerson":"VP Customer Experience EMEA","pitch":"Accompagnement de la conduite du changement auprès des directions d'hôtels lors du passage au cloud.","website":"https://www.mews.com","lastContact":"","nextActionDate":"2026-07-28","notes":"PMS cloud leader hôtellerie."},
-          {"id":"target-bdx-7","name":"Skello","category":"HospTech, FoodTech & WineTech","location":"Remote depuis Bordeaux","targetRole":"Implementation Manager / Onboarding Specialist","iceScore":9.3,"status":"A contacter","contactPerson":"Head of Customer Onboarding","pitch":"Optimisation des plannings d'équipes CHR vécue au quotidien pendant 15 ans.","website":"https://www.skello.io","lastContact":"","nextActionDate":"2026-07-25","notes":"SaaS RH & Planning leader CHR."},
-          {"id":"target-bdx-8","name":"Zenchef","category":"HospTech, FoodTech & WineTech","location":"Remote depuis Bordeaux","targetRole":"Customer Success Manager / Chef de Projet Déploiement","iceScore":9.4,"status":"A contacter","contactPerson":"Head of Customer Success","pitch":"Relation client CHR sans couture pour maximiser le taux d'utilisation de la solution chez les restaurateurs.","website":"https://www.zenchef.com","lastContact":"","nextActionDate":"2026-07-26","notes":"Leader réservation & marketing restaurant."},
-          {"id":"target-bdx-9","name":"Lightspeed Commerce","category":"HospTech, FoodTech & WineTech","location":"Remote depuis Bordeaux","targetRole":"Senior Implementation Specialist / Technical Account Manager","iceScore":9.1,"status":"A contacter","contactPerson":"Manager Implementation South France","pitch":"Combinaison unique de compétences en encaissement CHR et stratégies digitales e-commerce.","website":"https://www.lightspeedhq.fr","lastContact":"","nextActionDate":"2026-07-27","notes":"SaaS POS & e-commerce."},
-          {"id":"target-bdx-10","name":"Mapal Group (Mapal OS)","category":"HospTech, FoodTech & WineTech","location":"Remote depuis Bordeaux","targetRole":"Implementation Consultant / Key Account CSM","iceScore":8.8,"status":"A contacter","contactPerson":"Head of Implementation","pitch":"Compréhension globale des enjeux de coûts, d'hygiène et de gestion d'équipes en restauration.","website":"https://mapalgroup.com","lastContact":"","nextActionDate":"2026-07-28","notes":"Management opérationnel CHR."},
-          {"id":"target-bdx-11","name":"Cdiscount / Cnova (Quai de Paludate)","category":"MarTech, E-Commerce & Luxe","location":"Bordeaux (Siège Quai de Paludate)","targetRole":"Chef de Projet Digital / Delivery Manager / Business Owner","iceScore":9.1,"status":"A contacter","contactPerson":"Directeur de Projets Informatiques / PMO Lead","pitch":"Ancrage bordelais fort + pilotage rigoureux de projets digitaux et relation client d'excellence.","website":"https://www.cdiscount.com","lastContact":"","nextActionDate":"2026-07-24","notes":"Siège social et hub Tech Euratlantique Bordeaux."},
-          {"id":"target-bdx-12","name":"Lengow","category":"MarTech, E-Commerce & Luxe","location":"Remote depuis Bordeaux","targetRole":"Senior Project Manager / Delivery Lead","iceScore":8.3,"status":"A contacter","contactPerson":"Head of Professional Services","pitch":"Pilotage d'intégration de flux marchands avec sensibilité conversion et ROI.","website":"https://www.lengow.com","lastContact":"","nextActionDate":"2026-07-29","notes":"SaaS E-Commerce & Feed Management."},
-          {"id":"target-bdx-13","name":"Partoo","category":"MarTech, E-Commerce & Luxe","location":"Remote depuis Bordeaux","targetRole":"Key Account Manager / Senior CSM","iceScore":8.9,"status":"A contacter","contactPerson":"Head of Enterprise Accounts","pitch":"Visibilité Web-to-Store pour les réseaux d'hôtels, de restaurants et de boutiques premium.","website":"https://www.partoo.co","lastContact":"","nextActionDate":"2026-07-25","notes":"Presence management réseaux multi-sites."},
-          {"id":"target-bdx-14","name":"Skeepos / Yext","category":"MarTech, E-Commerce & Luxe","location":"Remote depuis Bordeaux","targetRole":"Client Success Manager Senior","iceScore":8.2,"status":"A contacter","contactPerson":"Director Customer Success France","pitch":"Transposer l'exigence de la relation client physique vers les plateformes d'expérience client.","website":"https://www.yext.fr","lastContact":"","nextActionDate":"2026-07-30","notes":"Expérience client Retail."},
-          {"id":"target-bdx-15","name":"Formitable / Duetto","category":"MarTech, E-Commerce & Luxe","location":"Remote depuis Bordeaux","targetRole":"Strategic Account Manager / CSM Senior","iceScore":8.6,"status":"A contacter","contactPerson":"Regional Director France","pitch":"Optimisation de l’occupation et du panier moyen.","website":"https://www.duettocloud.com","lastContact":"","nextActionDate":"2026-07-29","notes":"RMS & Revenue Management Hôtellerie."},
-          {"id":"target-bdx-16","name":"OnePoint Bordeaux (Quai des Queyries)","category":"Cabinets de Conseil & ESN Bordeaux","location":"Bordeaux (Campus Quai des Queyries)","targetRole":"Senior Product Owner / Manager Transformation Ops","iceScore":9.3,"status":"A contacter","contactPerson":"Partner Transformation Digital Sud-Ouest","pitch":"Ancrage sur l'écosystème bordelais + conduite du changement orientée sur l'humain et l'usage.","website":"https://www.groupeonepoint.com","lastContact":"","nextActionDate":"2026-07-25","notes":"Campus totem sur les quais de Bordeaux."},
-          {"id":"target-bdx-17","name":"Niji Bordeaux (Bassins à Flot)","category":"Cabinets de Conseil & ESN Bordeaux","location":"Bordeaux (Bassins à Flot)","targetRole":"Chef de Projet Digital / Manager de Projets UX-Métier","iceScore":9.0,"status":"A contacter","contactPerson":"Directeur d'Agence Niji Bordeaux","pitch":"Accompagnement des clients grands comptes dans la numérisation de leurs parcours métiers.","website":"https://www.niji.fr","lastContact":"","nextActionDate":"2026-07-26","notes":"Magnifique agence aux Bassins à Flot."},
-          {"id":"target-bdx-18","name":"Capgemini Bordeaux (Euratlantique / Mérignac)","category":"Cabinets de Conseil & ESN Bordeaux","location":"Bordeaux","targetRole":"Chef de Projet Digital / Delivery Manager","iceScore":8.4,"status":"A contacter","contactPerson":"Responsable Recrutement Delivery Sud-Ouest","pitch":"Pilotage d'équipes projet pluridisciplinaires et garantie du respect du périmètre/budget.","website":"https://www.capgemini.com","lastContact":"","nextActionDate":"2026-07-27","notes":"Présence majeure Euratlantique & Mérignac."},
-          {"id":"target-bdx-19","name":"Extia Bordeaux","category":"Cabinets de Conseil & ESN Bordeaux","location":"Bordeaux Centre","targetRole":"Consultant Chef de Projet Transformation","iceScore":8.2,"status":"A contacter","contactPerson":"Directeur d'Agence Bordeaux","pitch":"Agilité, management de proximité et conduite de projets digitaux.","website":"https://www.extia.fr","lastContact":"","nextActionDate":"2026-07-28","notes":"Agence Bordeaux hyper-centre."},
-          {"id":"target-bdx-20","name":"Apside Bordeaux","category":"Cabinets de Conseil & ESN Bordeaux","location":"Bordeaux Mérignac","targetRole":"Chef de Projet Digital / Project Coordinator","iceScore":7.9,"status":"A contacter","contactPerson":"Business Manager IT Bordeaux","pitch":"Rigueur dans le suivi des livrables et gestion de l'interface client.","website":"https://www.apside.com","lastContact":"","nextActionDate":"2026-07-29","notes":"Agence Bordeaux Mérignac."}
+          {
+            "id":"target-bdx-1",
+            "name":"Sunday",
+            "category":"HospTech, FoodTech & WineTech",
+            "location":"Bordeaux (Pôle local) / Remote",
+            "targetRole":"Operations Manager / Account Management Lead",
+            "iceScore":9.6,
+            "status":"A contacter",
+            "contactPerson":"Head of Merchant Operations",
+            "emailPattern":"prenom.nom@sundayapp.com (ou prenom@)",
+            "phone":"Standard Sunday",
+            "linkedInSearch":"https://www.linkedin.com/search/results/people/?keywords=Sunday%20Head%20of%20Merchant%20Operations",
+            "pitch":"15 ans de management CHR, coach de handball et diplômé en Marketing Digital : la gestion du rush, la rotation des tables et la cohésion d'équipe sont mon quotidien. Impressionné par la croissance de Sunday à Bordeaux.",
+            "website":"https://sundayapp.com",
+            "nextActionDate":"2026-07-25",
+            "notes":"Poste stratégique à Bordeaux. Priorité N°1."
+          },
+          {
+            "id":"target-bdx-2",
+            "name":"Koust",
+            "category":"HospTech, FoodTech & WineTech",
+            "location":"Bordeaux (Siège local) / Remote",
+            "targetRole":"Chef de Projet Déploiement / Consultant Métier F&B",
+            "iceScore":9.4,
+            "status":"A contacter",
+            "contactPerson":"Jean-Luc FEVRIER (Fondateur)",
+            "emailPattern":"jean-luc@koust.fr / j.fevrier@koust.fr",
+            "phone":"+33 5 56 00 00 00 (Siège Bordeaux)",
+            "linkedInSearch":"https://www.linkedin.com/in/jeanlucfevrier/",
+            "pitch":"15 ans de management CHR (Food Cost & ratios), coach de handball + diplôme en Marketing Digital à Bordeaux. Très séduit par l'outil Koust.",
+            "website":"https://koust.net",
+            "nextActionDate":"2026-07-25",
+            "notes":"Siège à Bordeaux. Outil de gestion des coûts et stocks CHR."
+          },
+          {
+            "id":"target-bdx-3",
+            "name":"Lectra (Campus Luxe Cestas)",
+            "category":"MarTech, E-Commerce & Luxe",
+            "location":"Bordeaux Cestas",
+            "targetRole":"Chef de Projet Implémentation / Customer Success Manager Luxe",
+            "iceScore":9.5,
+            "status":"A contacter",
+            "contactPerson":"Director Professional Services EMEA",
+            "emailPattern":"prenom.nom@lectra.com (ou p.nom@)",
+            "phone":"+33 5 57 92 70 00 (Campus Cestas)",
+            "linkedInSearch":"https://www.linkedin.com/search/results/people/?keywords=Lectra%20Professional%20Services%20Cestas",
+            "pitch":"15 ans de management d'excellence dans le Luxe & le CHR, coach de handball + Licence Marketing Digital. Passionné par l'innovation de Lectra à Cestas sur la Mode & le Sur-mesure.",
+            "website":"https://www.lectra.com",
+            "nextActionDate":"2026-07-24",
+            "notes":"Campus mondial R&D & Tech à Cestas (Bordeaux Metropole). Acteur majeur Luxe/Textile."
+          },
+          {
+            "id":"target-bdx-4",
+            "name":"OnePoint Bordeaux",
+            "category":"Cabinets de Conseil & ESN Bordeaux",
+            "location":"Bordeaux (Campus Quai des Queyries)",
+            "targetRole":"Senior Product Owner / Manager Transformation Ops",
+            "iceScore":9.3,
+            "status":"A contacter",
+            "contactPerson":"Partner Transformation Digital Sud-Ouest",
+            "emailPattern":"prenom.nom@groupeonepoint.com",
+            "phone":"Standard Quai des Queyries",
+            "linkedInSearch":"https://www.linkedin.com/search/results/people/?keywords=OnePoint%20Partner%20Transformation%20Bordeaux",
+            "pitch":"15 ans de leadership de terrain, coach de handball (l'Agilité vécue) et diplômé en Marketing Digital. Ancré sur Bordeaux pour piloter la conduite du changement.",
+            "website":"https://www.groupeonepoint.com",
+            "nextActionDate":"2026-07-25",
+            "notes":"Campus totem sur les quais de Bordeaux."
+          },
+          {
+            "id":"target-bdx-5",
+            "name":"Wavy / Tactill",
+            "category":"HospTech, FoodTech & WineTech",
+            "location":"Bordeaux / Remote",
+            "targetRole":"Senior Onboarding Specialist / Key Account CSM",
+            "iceScore":9.0,
+            "status":"A contacter",
+            "contactPerson":"Head of Customer Success",
+            "emailPattern":"prenom.nom@wavy.co",
+            "phone":"Standard Bordeaux",
+            "linkedInSearch":"https://www.linkedin.com/search/results/people/?keywords=Wavy%20Customer%20Success",
+            "pitch":"Connaissance approfondie du terrain et des opérations quotidiennes des restaurateurs et commerçants.",
+            "website":"https://www.wavy.co",
+            "nextActionDate":"2026-07-26",
+            "notes":"Encaissement et SaaS de gestion commerces et restauration."
+          },
+          {
+            "id":"target-bdx-6",
+            "name":"Yoobic / Frontline Ops",
+            "category":"HospTech, FoodTech & WineTech",
+            "location":"Bordeaux / Remote",
+            "targetRole":"Implementation Consultant / Customer Success Lead",
+            "iceScore":8.9,
+            "status":"A contacter",
+            "contactPerson":"VP Professional Services",
+            "emailPattern":"prenom.nom@yoobic.com",
+            "phone":"Standard Yoobic",
+            "linkedInSearch":"https://www.linkedin.com/search/results/people/?keywords=Yoobic%20Professional%20Services",
+            "pitch":"15 ans de management d'équipes opérationnelles de terrain pour garantir l'adoption des outils digitaux.",
+            "website":"https://yoobic.com",
+            "nextActionDate":"2026-07-27",
+            "notes":"SaaS Opérations Frontline pour CHR & Retail."
+          },
+          {
+            "id":"target-bdx-7",
+            "name":"Mews",
+            "category":"HospTech, FoodTech & WineTech",
+            "location":"Remote depuis Bordeaux",
+            "targetRole":"Implementation Consultant / Customer Success Manager",
+            "iceScore":9.2,
+            "status":"A contacter",
+            "contactPerson":"VP Customer Experience EMEA",
+            "emailPattern":"prenom.nom@mews.com",
+            "phone":"Standard Mews",
+            "linkedInSearch":"https://www.linkedin.com/search/results/people/?keywords=Mews%20Implementation%20Consultant",
+            "pitch":"Accompagnement de la conduite du changement auprès des directions d'hôtels lors du passage au cloud.",
+            "website":"https://www.mews.com",
+            "nextActionDate":"2026-07-28",
+            "notes":"PMS cloud leader hôtellerie."
+          },
+          {
+            "id":"target-bdx-8",
+            "name":"Skello",
+            "category":"HospTech, FoodTech & WineTech",
+            "location":"Remote depuis Bordeaux",
+            "targetRole":"Implementation Manager / Onboarding Specialist",
+            "iceScore":9.3,
+            "status":"A contacter",
+            "contactPerson":"Head of Customer Onboarding",
+            "emailPattern":"prenom.nom@skello.io",
+            "phone":"Standard Skello",
+            "linkedInSearch":"https://www.linkedin.com/search/results/people/?keywords=Skello%20Implementation",
+            "pitch":"Optimisation des plannings d'équipes CHR vécue au quotidien pendant 15 ans.",
+            "website":"https://www.skello.io",
+            "nextActionDate":"2026-07-25",
+            "notes":"SaaS RH & Planning leader CHR."
+          },
+          {
+            "id":"target-bdx-9",
+            "name":"Zenchef",
+            "category":"HospTech, FoodTech & WineTech",
+            "location":"Remote depuis Bordeaux",
+            "targetRole":"Customer Success Manager / Chef de Projet Déploiement",
+            "iceScore":9.4,
+            "status":"A contacter",
+            "contactPerson":"Head of Customer Success",
+            "emailPattern":"prenom.nom@zenchef.com",
+            "phone":"Standard Zenchef",
+            "linkedInSearch":"https://www.linkedin.com/search/results/people/?keywords=Zenchef%20Customer%20Success",
+            "pitch":"Relation client CHR sans couture pour maximiser le taux d'utilisation de la solution chez les restaurateurs.",
+            "website":"https://www.zenchef.com",
+            "nextActionDate":"2026-07-26",
+            "notes":"Leader réservation & marketing restaurant."
+          },
+          {
+            "id":"target-bdx-10",
+            "name":"Lightspeed Commerce",
+            "category":"HospTech, FoodTech & WineTech",
+            "location":"Remote depuis Bordeaux",
+            "targetRole":"Senior Implementation Specialist / Technical Account Manager",
+            "iceScore":9.1,
+            "status":"A contacter",
+            "contactPerson":"Manager Implementation South France",
+            "emailPattern":"prenom.nom@lightspeedhq.com",
+            "phone":"Standard Lightspeed",
+            "linkedInSearch":"https://www.linkedin.com/search/results/people/?keywords=Lightspeed%20Implementation",
+            "pitch":"Combinaison unique de compétences en encaissement CHR et stratégies digitales e-commerce.",
+            "website":"https://www.lightspeedhq.fr",
+            "nextActionDate":"2026-07-27",
+            "notes":"SaaS POS & e-commerce."
+          },
+          {
+            "id":"target-bdx-11",
+            "name":"Cdiscount / Cnova (Quai de Paludate)",
+            "category":"MarTech, E-Commerce & Luxe",
+            "location":"Bordeaux (Siège Quai de Paludate)",
+            "targetRole":"Chef de Projet Digital / Delivery Manager / Business Owner",
+            "iceScore":9.1,
+            "status":"A contacter",
+            "contactPerson":"Directeur de Projets Informatiques / PMO Lead",
+            "emailPattern":"prenom.nom@cdiscount.com",
+            "phone":"Standard Quai de Paludate",
+            "linkedInSearch":"https://www.linkedin.com/search/results/people/?keywords=Cdiscount%20Directeur%20Projet%20Bordeaux",
+            "pitch":"Ancrage bordelais fort + pilotage rigoureux de projets digitaux et relation client d'excellence.",
+            "website":"https://www.cdiscount.com",
+            "nextActionDate":"2026-07-24",
+            "notes":"Siège social et hub Tech Euratlantique Bordeaux."
+          },
+          {
+            "id":"target-bdx-12",
+            "name":"Niji Bordeaux (Bassins à Flot)",
+            "category":"Cabinets de Conseil & ESN Bordeaux",
+            "location":"Bordeaux (Bassins à Flot)",
+            "targetRole":"Chef de Projet Digital / Manager de Projets UX-Métier",
+            "iceScore":9.0,
+            "status":"A contacter",
+            "contactPerson":"Directeur d'Agence Niji Bordeaux",
+            "emailPattern":"prenom.nom@niji.fr",
+            "phone":"Standard Bassins à Flot",
+            "linkedInSearch":"https://www.linkedin.com/search/results/people/?keywords=Niji%20Directeur%20Agence%20Bordeaux",
+            "pitch":"Accompagnement des clients grands comptes dans la numérisation de leurs parcours métiers.",
+            "website":"https://www.niji.fr",
+            "nextActionDate":"2026-07-26",
+            "notes":"Magnifique agence aux Bassins à Flot."
+          }
         ];
 
         let leads = [];
 
         function initApp() {
-            const saved = localStorage.getItem('prestige_prospection_bordeaux_leads');
+            const saved = localStorage.getItem('prestige_prospection_bordeaux_connected_leads');
             if (saved) {
                 try {
                     leads = JSON.parse(saved);
@@ -812,16 +1116,16 @@
         }
 
         function saveLeads() {
-            localStorage.setItem('prestige_prospection_bordeaux_leads', JSON.stringify(leads));
+            localStorage.setItem('prestige_prospection_bordeaux_connected_leads', JSON.stringify(leads));
             updateStats();
         }
 
         function resetDefaultData() {
-            if (confirm("Réinitialiser les 20 cibles Bordeaux par défaut ?")) {
+            if (confirm("Réinitialiser toutes les cibles Bordeaux par défaut avec les patterns emails et liens LinkedIn ?")) {
                 leads = [...defaultTargetsBordeaux];
                 saveLeads();
                 renderLeads();
-                showToast("20 Cibles Bordeaux restaurées !");
+                showToast("Cibles Bordeaux restaurées avec le Sourcing !");
             }
         }
 
@@ -854,6 +1158,7 @@
             return leads.filter(l => {
                 const matchSearch = l.name.toLowerCase().includes(search) || 
                                     l.targetRole.toLowerCase().includes(search) || 
+                                    (l.emailPattern && l.emailPattern.toLowerCase().includes(search)) ||
                                     l.location.toLowerCase().includes(search);
                 const matchCat = !cat || l.category === cat;
                 return matchSearch && matchCat;
@@ -879,9 +1184,13 @@
                 card.className = 'lead-card';
                 card.onclick = () => openLeadModal(lead.id);
                 card.innerHTML = `
-                    <div class="card-category">${lead.category}</div>
+                    <div class="card-top">
+                        <span class="card-category">${lead.category.split('&')[0]}</span>
+                        <span class="sourcing-badge"><i class="fa-solid fa-at"></i> ${lead.emailPattern ? lead.emailPattern.split('@')[1] || 'Sourcing' : 'Pattern'}</span>
+                    </div>
                     <div class="card-company">${lead.name}</div>
                     <div class="card-role">${lead.targetRole}</div>
+                    <div class="card-contact-preview"><i class="fa-solid fa-user-check"></i> ${lead.contactPerson || 'Décideur à cibler'}</div>
                     <div class="card-footer">
                         <span class="location-tag"><i class="fa-solid fa-location-dot"></i> ${lead.location.split('/')[0]}</span>
                         <span class="ice-badge">ICE ${lead.iceScore}</span>
@@ -900,7 +1209,10 @@
                     <td><strong>${lead.name}</strong></td>
                     <td>${lead.category}</td>
                     <td>${lead.targetRole}</td>
-                    <td>${lead.location}</td>
+                    <td>
+                        <div style="font-weight:600; color: var(--gold-light);">${lead.contactPerson || 'Décideur'}</div>
+                        <div style="font-size:0.75rem; color: var(--text-muted);">${lead.emailPattern || ''}</div>
+                    </td>
                     <td><span class="ice-badge">${lead.iceScore}</span></td>
                     <td>
                         <select class="status-select" onchange="changeStatus('${lead.id}', this.value)">
@@ -912,7 +1224,7 @@
                         </select>
                     </td>
                     <td>
-                        <button class="btn btn-secondary" style="padding: 4px 10px; font-size: 0.75rem;" onclick="openLeadModal('${lead.id}')"><i class="fa-solid fa-pen"></i> Éditer</button>
+                        <button class="btn btn-secondary" style="padding: 4px 10px; font-size: 0.75rem;" onclick="openLeadModal('${lead.id}')"><i class="fa-solid fa-eye"></i> Fiche Sourcing</button>
                     </td>
                 `;
                 tbody.appendChild(tr);
@@ -953,10 +1265,15 @@
             if (!lead) return;
 
             document.getElementById('modalId').value = lead.id;
-            document.getElementById('modalCompany').innerText = lead.name;
+            document.getElementById('modalCompany').innerHTML = `<i class="fa-solid fa-building"></i> ${lead.name}`;
             document.getElementById('modalRole').value = lead.targetRole;
             document.getElementById('modalStatus').value = lead.status;
             document.getElementById('modalContact').value = lead.contactPerson || '';
+            document.getElementById('modalTargetTitle').innerText = lead.contactPerson || 'Décideur Cible';
+            document.getElementById('modalEmailPattern').innerText = lead.emailPattern || 'prenom.nom@domain.com';
+            document.getElementById('modalPhone').innerText = lead.phone || 'Standard non spécifié';
+            document.getElementById('modalLinkedInLink').href = lead.linkedInSearch || `https://www.linkedin.com/search/results/people/?keywords=${encodeURIComponent(lead.name)}`;
+            
             document.getElementById('modalPitchText').innerText = `"${lead.pitch}"`;
             document.getElementById('modalDate').value = lead.nextActionDate || '';
             document.getElementById('modalNotes').value = lead.notes || '';
@@ -982,7 +1299,7 @@
                 saveLeads();
                 renderLeads();
                 closeLeadModal();
-                showToast(`Fiche ${lead.name} mise à jour !`);
+                showToast(`Fiche Sourcing ${lead.name} mise à jour !`);
             }
         }
 
@@ -990,6 +1307,12 @@
             const text = document.getElementById('modalPitchText').innerText;
             navigator.clipboard.writeText(text);
             showToast("Pitch copié dans le presse-papier !");
+        }
+
+        function copyEmailPattern() {
+            const text = document.getElementById('modalEmailPattern').innerText;
+            navigator.clipboard.writeText(text);
+            showToast("Pattern Email copié !");
         }
 
         function openNewLeadModal() {
@@ -1004,9 +1327,11 @@
                     iceScore: 8.0,
                     status: "A contacter",
                     contactPerson: "Head of Operations",
-                    pitch: "Double compétence management terrain et vision digitale.",
+                    emailPattern: "prenom.nom@domain.com",
+                    phone: "Standard Bordeaux",
+                    linkedInSearch: `https://www.linkedin.com/search/results/people/?keywords=${encodeURIComponent(name)}`,
+                    pitch: "Double compétence management terrain, coach de hand et vision digitale.",
                     website: "",
-                    lastContact: "",
                     nextActionDate: new Date().toISOString().split('T')[0],
                     notes: "Nouvelle opportunité Bordeaux ajoutée."
                 };
@@ -1021,7 +1346,7 @@
             const dataStr = "data:text/json;charset=utf-8," + encodeURIComponent(JSON.stringify(leads, null, 2));
             const downloadAnchor = document.createElement('a');
             downloadAnchor.setAttribute("href", dataStr);
-            downloadAnchor.setAttribute("download", "Cibles_Prospection_Bordeaux_Julien.json");
+            downloadAnchor.setAttribute("download", "Cibles_Prospection_Bordeaux_Sourcing_Julien.json");
             document.body.appendChild(downloadAnchor);
             downloadAnchor.click();
             downloadAnchor.remove();
