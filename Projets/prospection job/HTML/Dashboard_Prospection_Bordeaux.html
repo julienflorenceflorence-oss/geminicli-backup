@@ -536,7 +536,6 @@
             color: var(--gold-primary);
         }
 
-        /* Sourcing Box in Modal */
         .sourcing-box {
             background: rgba(15, 17, 21, 0.95);
             border: 1px solid var(--border-gold);
@@ -675,9 +674,10 @@
     <header>
         <div class="header-title">
             <h1><i class="fa-solid fa-wine-glass"></i> PROSPECTION BORDEAUX</h1>
-            <p>Pilotage Stratégique 100% Connecté au Sourcing — Julien</p>
+            <p>Pilotage Stratégique 100% Connecté au Sourcing Live — Julien</p>
         </div>
         <div class="header-actions">
+            <a href="https://sundayapp.com/fr/" target="_blank" class="btn btn-secondary"><i class="fa-solid fa-globe"></i> Sunday Live</a>
             <a href="../Data/Tracking_Prospection_Bordeaux_Top4.csv" download class="btn btn-secondary"><i class="fa-solid fa-file-csv"></i> Télécharger CSV</a>
             <button class="btn btn-secondary" onclick="exportData()"><i class="fa-solid fa-download"></i> Exporter JSON</button>
             <button class="btn btn-secondary" onclick="resetDefaultData()"><i class="fa-solid fa-rotate"></i> Reset 20 Cibles</button>
@@ -864,7 +864,7 @@
                     <input type="text" id="modalContact" placeholder="Ex: Jean-Luc FEVRIER">
                 </div>
                 <div class="form-group">
-                    <label>Angle de Pitch Personnalisé (15 ans CHR/Luxe + Coach Hand)</label>
+                    <label>Angle de Pitch Personnalisé (15 ans CHR/Luxe + Coach Hand + Data Live)</label>
                     <div class="pitch-box">
                         <span id="modalPitchText"></span>
                         <button type="button" class="btn copy-btn" onclick="copyPitch()"><i class="fa-regular fa-copy"></i> Copier Pitch</button>
@@ -889,7 +889,6 @@
     <!-- Toast Notification -->
     <div class="toast" id="toast">Action effectuée avec succès !</div>
 
-    <!-- Initial Data & Connected Logic -->
     <script>
         const defaultTargetsBordeaux = [
           {
@@ -902,12 +901,12 @@
             "status":"A contacter",
             "contactPerson":"Head of Merchant Operations",
             "emailPattern":"prenom.nom@sundayapp.com (ou prenom@)",
-            "phone":"Standard Sunday",
+            "phone":"Standard Sunday (sundayapp.com/fr/)",
             "linkedInSearch":"https://www.linkedin.com/search/results/people/?keywords=Sunday%20Head%20of%20Merchant%20Operations",
-            "pitch":"15 ans de management CHR, coach de handball et diplômé en Marketing Digital : la gestion du rush, la rotation des tables et la cohésion d'équipe sont mon quotidien. Impressionné par la croissance de Sunday à Bordeaux.",
-            "website":"https://sundayapp.com",
+            "pitch":"15 ans de management CHR, coach de handball & diplômé Marketing Digital. Je connais par cœur la réalité des 12 min gagnées par table et le levier du Direct Tipping / Staff App pour les équipes. Convaincu par la suite Sunday, seriez-vous ouvert à 15 min d'échange sur vos déploiements marchands ?",
+            "website":"https://sundayapp.com/fr/",
             "nextActionDate":"2026-07-25",
-            "notes":"Poste stratégique à Bordeaux. Priorité N°1."
+            "notes":"Données Live Sunday 2026 : Staff App, Direct Tipping, (Re)commande digitale, 12 min par table."
           },
           {
             "id":"target-bdx-2",
@@ -1121,11 +1120,11 @@
         }
 
         function resetDefaultData() {
-            if (confirm("Réinitialiser toutes les cibles Bordeaux par défaut avec les patterns emails et liens LinkedIn ?")) {
+            if (confirm("Réinitialiser toutes les cibles Bordeaux par défaut avec les données Sunday Live et patterns d'emails ?")) {
                 leads = [...defaultTargetsBordeaux];
                 saveLeads();
                 renderLeads();
-                showToast("Cibles Bordeaux restaurées avec le Sourcing !");
+                showToast("Cibles Bordeaux restaurées avec données Live !");
             }
         }
 

@@ -1,4 +1,4 @@
-# 💬 Messages de Prospection Directe — Top 3 Bordeaux (Version Coach de Handball)
+# 💬 Messages de Prospection Directe — Top 3 Bordeaux (Version Coach & Data Live Sunday)
 
 **Candidat :** Julien  
 **Positionnement :** 15 ans Management CHR/Luxe × **Coach de Handball** × Licence Marketing Digital  
@@ -6,28 +6,30 @@
 
 ---
 
-## 🎯 Target 1: SUNDAY (Bordeaux / Remote)
+## 🎯 Target 1: SUNDAY (Bordeaux / Remote) — *Données Directes Sunday App 2026*
 
 **Cible Décideur :** *Head of Merchant Operations / VP Operations / Talent Acquisition Lead*  
 **Poste Visé :** Operations Manager / Account Management Lead / Delivery Manager
 
-### 📩 Message LinkedIn (Court - < 300 caractères)
+### 📩 Message LinkedIn (Court - < 300 caractères avec invitation)
 > Bonjour [Prénom],  
-> 15 ans de management CHR, **coach de handball** et diplômé en Marketing Digital : la gestion du rush, la rotation des tables et la cohésion d'équipe sont mon quotidien.  
-> Impressionné par la croissance de Sunday à Bordeaux. Seriez-vous ouvert à un rapide échange sur vos enjeux de déploiement marchand ?  
-> Cordialement, Julien
+> 15 ans de management CHR, **coach de handball** & diplômé Marketing Digital. Je connais par cœur la réalité des 12 min gagnées par table et le levier du Direct Tipping / Staff App pour les équipes.  
+> Convaincu par la suite Sunday, seriez-vous ouvert à 15 min d'échange sur vos déploiements marchands ?  
+> Julien
 
-### 📧 Email Complet
+### 📧 Email Complet (Inspiré des produits live Sunday : Staff App, Direct Tipping, TPE Intelligent)
 
-> **Objet :** 15 ans de terrain CHR x Leadership de Coach x Déploiement Sunday
+> **Objet :** 15 ans de terrain CHR x Leadership de Coach x Déploiement Sunday (Staff App & QR)
 >
 > Bonjour [Prénom],
 > 
-> Après 15 ans à piloter des établissements et des équipes en CHR & Luxe, en parallèle d'un engagement fort comme **coach de handball**, j'ai développé une culture ancrée du résultat collectif et de la gestion de la performance sous pression.
+> Après 15 ans à piloter des équipes en salle dans le CHR & Luxe, doublés d'un engagement de **coach de handball**, j'ai développé une culture ancrée du résultat collectif et de la gestion de la performance sous pression.
 > 
-> Je constate quotidiennement l'impact du paiement à table sur la rotation et la marge des restaurateurs. Le développement de **Sunday** nécessite des profils capables de parler le langage du terrain tout en cadrant les opérations de déploiement SaaS avec une vraie discipline de coach.
+> Je suis de très près l'évolution de **Sunday** — notamment l'intégration du *Direct Tipping*, de la *Staff App* et de la *(re)commande digitale*. En restauration, faire adopter une nouveauté à l'équipe en salle est la clé n°1 pour tenir la promesse des **12 minutes gagnées par table** et de la hausse des avis Google.
 > 
-> Seriez-vous disponible pour un échange téléphonique informel de 15 minutes la semaine prochaine afin d'échanger sur vos actualités et vos besoins d'encadrement opérationnel à Bordeaux ?
+> Ma double compétence (management de terrain CHR + leadership de coach + Licence Marketing Digital) me permet de parler d'égal à égal avec les gérants de restaurant tout en cadrant les opérations de déploiement SaaS avec une vraie rigueur.
+> 
+> Seriez-vous disponible pour un rapide échange téléphonique de 15 minutes la semaine prochaine afin d'échanger sur vos besoins d'encadrement opérationnel et d'onboarding marchands ?
 > 
 > **Julien [Nom]**  
 > 📱 [Numéro de Téléphone] | 🔗 [Profil LinkedIn]
