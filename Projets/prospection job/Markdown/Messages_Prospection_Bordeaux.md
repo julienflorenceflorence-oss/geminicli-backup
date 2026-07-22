@@ -1,8 +1,8 @@
-# 💬 Messages de Prospection Directe — Top 3 Bordeaux
+# 💬 Messages de Prospection Directe — Top 3 Bordeaux (Version Coach de Handball)
 
 **Candidat :** Julien  
-**Positionnement :** 15 ans Management CHR/Luxe × Licence Marketing Digital  
-**Format :** Messages LinkedIn (ou Email Direct) courts, percutants et orientés ROI.
+**Positionnement :** 15 ans Management CHR/Luxe × **Coach de Handball** × Licence Marketing Digital  
+**Format :** Messages LinkedIn et Emails courts, percutants et axés sur la culture du résultat et du collectif.
 
 ---
 
@@ -11,29 +11,26 @@
 **Cible Décideur :** *Head of Merchant Operations / VP Operations / Talent Acquisition Lead*  
 **Poste Visé :** Operations Manager / Account Management Lead / Delivery Manager
 
-### 📩 Option A: Message LinkedIn (Format Court - < 300 caractères avec invitation)
+### 📩 Message LinkedIn (Court - < 300 caractères)
 > Bonjour [Prénom],  
-> 15 ans à piloter des salles & équipes CHR + un cursus en Marketing Digital : je connais par cœur la réalité de la rotation des tables et du paiement en restaurant.  
-> La croissance de Sunday à Bordeaux est impressionnante. Seriez-vous ouvert à un rapide échange sur vos enjeux de déploiement marchand ?  
+> 15 ans de management CHR, **coach de handball** et diplômé en Marketing Digital : la gestion du rush, la rotation des tables et la cohésion d'équipe sont mon quotidien.  
+> Impressionné par la croissance de Sunday à Bordeaux. Seriez-vous ouvert à un rapide échange sur vos enjeux de déploiement marchand ?  
 > Cordialement, Julien
 
-### 📧 Option B: InMail / Email Complet
+### 📧 Email Complet
 
-> **Objet :** 15 ans de terrain CHR x Déploiement Sunday : Échange informel Bordeaux
+> **Objet :** 15 ans de terrain CHR x Leadership de Coach x Déploiement Sunday
 >
 > Bonjour [Prénom],
 > 
-> Après 15 ans à piloter des établissements et des équipes en CHR & Luxe, alliés à une formation en Marketing Digital, je constate quotidiennement l'impact critique du paiement à table sur la rotation et la marge des restaurateurs.
+> Après 15 ans à piloter des établissements et des équipes en CHR & Luxe, en parallèle d'un engagement fort comme **coach de handball**, j'ai développé une culture ancrée du résultat collectif et de la gestion de la performance sous pression.
 > 
-> J'observe avec beaucoup d'intérêt le développement de **Sunday** sur le bassin bordelais et en France. Vos enjeux d'onboarding et d'adoption par les commerçants nécessitent des profils capables de parler d'égal à égal avec les patrons de CHR tout en maîtrisant les exigences d'un déploiement SaaS.
+> Je constate quotidiennement l'impact du paiement à table sur la rotation et la marge des restaurateurs. Le développement de **Sunday** nécessite des profils capables de parler le langage du terrain tout en cadrant les opérations de déploiement SaaS avec une vraie discipline de coach.
 > 
-> Seriez-vous disponible pour un échange téléphonique informel de 15 minutes la semaine prochaine afin d'échanger sur vos actualités et vos besoins d'encadrement opérationnel ?
-> 
-> En vous remerciant pour votre temps,
+> Seriez-vous disponible pour un échange téléphonique informel de 15 minutes la semaine prochaine afin d'échanger sur vos actualités et vos besoins d'encadrement opérationnel à Bordeaux ?
 > 
 > **Julien [Nom]**  
-> 📱 [Numéro de Téléphone]  
-> 🔗 [Lien Profil LinkedIn]
+> 📱 [Numéro de Téléphone] | 🔗 [Profil LinkedIn]
 
 ---
 
@@ -42,57 +39,51 @@
 **Cible Décideur :** *Fondateur / Directeur Général / Responsable Opérations*  
 **Poste Visé :** Chef de Projet Déploiement / Consultant Métier F&B
 
-### 📩 Option A: Message LinkedIn (Format Court)
+### 📩 Message LinkedIn (Court)
 > Bonjour [Prénom],  
-> 15 ans en management CHR (maîtrise du Food Cost & ratios) + diplôme en Marketing Digital.  
-> Très séduit par l'approche de Koust basée à Bordeaux. Avez-vous des besoins d'accompagnement sur le déploiement client et l'adoption métier de votre SaaS ?  
+> 15 ans de management CHR (Food Cost & ratios), **coach de handball** + diplôme en Marketing Digital à Bordeaux.  
+> Très séduit par l'outil Koust. Avez-vous des besoins d'accompagnement sur le déploiement client et l'adoption métier de votre SaaS ?  
 > À bientôt, Julien
 
-### 📧 Option B: InMail / Email Complet
+### 📧 Email Complet
 
-> **Objet :** Maîtrise du Food Cost x Implémentation SaaS Koust : Échange direct à Bordeaux
+> **Objet :** Maîtrise du Food Cost x Culture de Coach : Échange direct Koust Bordeaux
 >
 > Bonjour [Prénom],
 > 
-> Ayant géré pendant 15 ans des structures en restauration et hôtellerie, la maîtrise des ratios F&B, de la fiche technique et du stock a toujours été mon levier principal de rentabilité. 
+> Ayant géré pendant 15 ans des structures en restauration et engagé comme **coach de handball**, la rigueur des ratios F&B et l'entraînement des équipes à l'exécution ont toujours été mes leviers de performance.
 > 
-> En tant que diplômé en Marketing Digital basé à Bordeaux, je suis particulièrement impressionné par la pertinence de **Koust** pour répondre aux vraies douleurs des restaurateurs. Un outil d'excellence ne vaut que par son taux d'adoption sur le terrain.
+> Basé à Bordeaux et diplômé en Marketing Digital, je suis impressionné par la valeur de **Koust**. Un outil puissant ne vaut que par son niveau d'adoption par les chefs et les équipes en cuisine.
 > 
-> Je serais ravi de vous rencontrer dans vos locaux à Bordeaux ou d'échanger par téléphone 15 minutes sur la manière dont ma double compétence (management métier + gestion de projet digital) peut renforcer vos équipes de déploiement et de Customer Success.
-> 
-> Excellente journée à vous,
+> Je serais ravi de venir échanger 15 minutes dans vos locaux à Bordeaux sur la manière dont ma double compétence (métier F&B + leadership de coach) peut accélérer vos déploiements clients.
 > 
 > **Julien [Nom]**  
-> 📱 [Numéro de Téléphone]  
-> 🔗 [Lien Profil LinkedIn]
+> 📱 [Numéro de Téléphone] | 🔗 [Profil LinkedIn]
 
 ---
 
 ## 🎯 Target 3: LECTRA (Campus R&D & Tech Cestas / Bordeaux)
 
-**Cible Décideur :** *Directeur des Opérations / Manager Professional Services / Talent Acquisition Lead Luxe*  
+**Cible Décideur :** *Directeur des Opérations / Manager Professional Services / Head of Luxe*  
 **Poste Visé :** Chef de Projet Implémentation / Customer Success Manager Luxe
 
-### 📩 Option A: Message LinkedIn (Format Court)
+### 📩 Message LinkedIn (Court)
 > Bonjour [Prénom],  
-> 15 ans de management d'excellence dans le Luxe & le CHR + diplôme en Marketing Digital.  
+> 15 ans de management d'excellence dans le Luxe & le CHR, **coach de handball** + Licence Marketing Digital.  
 > Passionné par l'innovation de Lectra à Cestas sur la Mode & le Sur-mesure, je serais ravi d'échanger sur vos projets d'implémentation client.  
 > Bien cordialement, Julien
 
-### 📧 Option B: InMail / Email Complet
+### 📧 Email Complet
 
-> **Objet :** Exigence du Luxe x Pilotage de Projet IT : Échange informel Lectra Cestas
+> **Objet :** Exigence du Luxe x Posture de Coach : Échange informel Lectra Cestas
 >
 > Bonjour [Prénom],
 > 
-> Fort de 15 ans d'expérience dans le management et la relation client à très forte exigence (secteurs du Luxe et du CHR haut de gamme), doublés d'une formation en Marketing Digital, je sais à quel point la valeur perçue d'une solution technologique repose sur la qualité de l'exécution et l'accompagnement humain.
+> Fort de 15 ans d'expérience dans le management dans le Luxe et le CHR haut de gamme, alliés à la pratique de **coach de handball** et un diplôme en Marketing Digital, je sais que la réussite d'un projet technologique repose à 80% sur l'accompagnement humain et la discipline d'exécution.
 > 
-> Le Campus de **Lectra à Cestas** est une référence absolue dans l'intégration de technologies avancées pour la Mode et le Luxe. Mes compétences en gestion d'équipes, conduite du changement et sens du détail s'alignent directement avec les défis d'implémentation auprès de vos clients exigeants.
+> Le Campus de **Lectra à Cestas** est la référence absolue pour la Mode et le Luxe. Mes compétences en leadership d'équipe, gestion du stress et rigueur de service s'alignent directement avec les défis d'implémentation de vos solutions auprès de clients exigeants.
 > 
 > Seriez-vous ouvert à un rapide échange de 15 minutes pour aborder vos perspectives de déploiement et les besoins de vos équipes projets ?
 > 
-> Au plaisir d'échanger avec vous,
-> 
 > **Julien [Nom]**  
-> 📱 [Numéro de Téléphone]  
-> 🔗 [Lien Profil LinkedIn]
+> 📱 [Numéro de Téléphone] | 🔗 [Profil LinkedIn]

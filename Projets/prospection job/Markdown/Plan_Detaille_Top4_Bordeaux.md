@@ -1,7 +1,7 @@
 # 🎯 Plan d'Attaque Détaillé — Top 4 Opportunités Maximale Compatibilité (Bordeaux)
 
 **Candidat :** Julien  
-**Positionnement :** 15 ans Management CHR/Luxe × Licence Marketing Digital  
+**Positionnement :** 15 ans Management CHR/Luxe × **Coach de Handball** × Licence Marketing Digital  
 **Focus :** Diagnostic approfondi des 4 entreprises avec le plus fort taux de matching.
 
 ---
@@ -21,6 +21,18 @@
 
 ---
 
+## 🤾‍♂️ Le Triptyque de Valeur Unique (UVP)
+
+```
+ [15 ans Management CHR/Luxe]  +  [Coach de Handball]  +  [Licence Marketing Digital]
+                                        │
+                                        ▼
+                      "LE CATALYSEUR D'ÉQUIPE & D'USAGE"
+           (Management de Terrain + Culture de la Gagne + Conduite Agile)
+```
+
+---
+
 ## 1. 🚀 SUNDAY (Paiement QR Code Restauration)
 
 ### 📌 Le Besoin Caché & Le Pain Point
@@ -29,17 +41,9 @@
 
 ### 🧩 La Matrice de Match de Julien
 * **15 ans de gestion de salle CHR** ➔ *Preuve :* Connaissance du coup de feu, de la gestion du ticket moyen et de la dynamique de pourboire.
+* **Coach de Handball** ➔ *Preuve :* Animation d'équipe en temps réel, gestion des temps forts/temps faibles pendant le rush.
 * **Licence Marketing Digital** ➔ *Preuve :* Analyse des métriques d'usage, entonnoir de conversion et boucle de rétention client.
 * **Bénéfice immédiat pour Sunday :** Zéro temps de formation sur le métier. Capacité à convaincre les patrons de restos et former les équipes en 24h.
-
-### 👤 Cartographie des Décideurs Cibles
-1. **Head of Merchant Operations France** (Sur LinkedIn)
-2. **Regional Operations Lead Sud-Ouest**
-3. **Talent Acquisition Manager Sales & Ops**
-
-### 💬 Stratégie d'Approche en 2 Temps
-* **Prise de contact (J0) :** Focus sur l'adoption serveur/manager en salle.
-* **Relance Valeur (J+4) :** Envoi d'une mini-analyse : *"3 leviers observés sur le terrain pour augmenter de 20% l'usage du QR code pendant le rush du midi"*.
 
 ---
 
@@ -51,17 +55,9 @@
 
 ### 🧩 La Matrice de Match de Julien
 * **15 ans de Management dans le Luxe/CHR haut de gamme** ➔ *Preuve :* Posture managériale affirmée, gestion de clients VIP, souci du détail et rigueur de service.
+* **Coach de Handball** ➔ *Preuve :* Discipline collective, résistance à la pression et rigueur d'exécution.
 * **Licence Marketing Digital** ➔ *Preuve :* Compréhension des enjeux omnicanaux et de l'intégration des flux clients.
 * **Bénéfice immédiat pour Lectra :** Crédibilité immédiate face aux directions industrielles et retail des maisons de luxe.
-
-### 👤 Cartographie des Décideurs Cibles
-1. **Director of Professional Services EMEA** (Basé à Cestas / Paris)
-2. **Head of Customer Success & Delivery Luxe**
-3. **HR Business Partner R&D & Operations**
-
-### 💬 Stratégie d'Approche en 2 Temps
-* **Prise de contact (J0) :** Alignement sur l'exigence de la relation client dans le Luxe.
-* **Relance Valeur (J+4) :** Partage d'une réflexion sur l'accompagnement au changement des équipes ateliers/boutiques lors de l'intégration d'un nouvel ERP/PLM.
 
 ---
 
@@ -73,16 +69,9 @@
 
 ### 🧩 La Matrice de Match de Julien
 * **15 ans d'expérience F&B & Restauration** ➔ *Preuve :* Maîtrise des ratios de perte, des fiches techniques, des négociations fournisseurs et des inventaires.
+* **Coach de Handball** ➔ *Preuve :* Pédagogie d'entraînement pour faire adopter les bons gestes métier aux cuisiniers et gérants.
 * **Bordeaux Native / Proximité** ➔ *Preuve :* Capacité à intervenir en direct au siège à Bordeaux et auprès du réseau régional.
 * **Bénéfice immédiat pour Koust :** Le client final a l'impression de parler à un confrère consultant F&B plutôt qu'à un vendeur de logiciel.
-
-### 👤 Cartographie des Décideurs Cibles
-1. **Jean-Luc Fevrier / Fondateur & Dirigeant de Koust** (Directement sur LinkedIn ou email direct)
-2. **Responsable Déploiement & Relation Client**
-
-### 💬 Stratégie d'Approche en 2 Temps
-* **Prise de contact (J0) :** Approche directe de confrère à confrère ("15 ans de Food Cost CHR").
-* **Relance Valeur (J+4) :** Proposition d'échanger autour d'un café au siège à Bordeaux.
 
 ---
 
@@ -94,14 +83,6 @@
 
 ### 🧩 La Matrice de Match de Julien
 * **15 ans de Leadership & Management d'équipe** ➔ *Preuve :* Gestion de crise, animation de réunions, résolution de conflits et leadership naturel.
+* **Coach de Handball** ➔ *Preuve :* L'Agilité vécue sur le terrain (un temps mort = un Daily Agile).
 * **Diplôme Marketing Digital** ➔ *Preuve :* Méthodologie Agile, vision produit orientée utilisateur final.
 * **Bénéfice immédiat pour OnePoint :** Un profil senior sur le plan humain et managérial, prêt à être projeté chez leurs clients bordelais.
-
-### 👤 Cartographie des Décideurs Cibles
-1. **Partner Transformation Digital Sud-Ouest** (Basé Quai des Queyries)
-2. **Leader de la Communauté Product / Agile Bordeaux**
-3. **Talent Acquisition Lead OnePoint Bordeaux**
-
-### 💬 Stratégie d'Approche en 2 Temps
-* **Prise de contact (J0) :** Mise en avant de l'ancrage bordelais et de l'approche par l'usage humain.
-* **Relance Valeur (J+4) :** Message axé sur la conduite du changement dans les transformations d'outils métiers.
