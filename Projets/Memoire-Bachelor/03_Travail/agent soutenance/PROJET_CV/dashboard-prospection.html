@@ -219,13 +219,14 @@
         }
 
         .challenge-box {
-            background: rgba(0, 0, 0, 0.3);
+            background: rgba(0, 0, 0, 0.35);
             border-left: 3px solid var(--gold);
-            padding: 10px 14px;
+            padding: 12px 14px;
             font-size: 0.82rem;
             color: #E2E8F0;
             margin-bottom: 15px;
             border-radius: 0 8px 8px 0;
+            line-height: 1.45;
         }
 
         /* POSTE VISE & MESSAGE CONFIG */
@@ -302,7 +303,7 @@
             display: inline-flex;
             align-items: center;
             gap: 6px;
-            background: rgba(212, 175, 55, 0.12);
+            background: rgba(212, 175, 55, 0.15);
             border: 1px solid var(--gold);
             color: var(--gold-light);
             padding: 8px 14px;
@@ -620,8 +621,8 @@ const companiesData = [
         sector: "B2B Tech / CRM & Facturation",
         defaultRole: "Chief Revenue Officer (VP Sales) / Head of Sales B2B",
         defaultPitch: "Bonjour Victor, Votre virage RevOps et l'adossement à TeamSystem démontrent que la priorité stratégique de Sellsy repose désormais sur la rétention du parc PME existant autant que sur l'acquisition. Mon profil hybride (15 ans de direction d'équipes P&L + spécialisation Rocket School) me permet d'apporter ce double regard : rigueur opérationnelle terrain et culture du chiffre. Installé à Bordeaux, seriez-vous ouvert à un café informel ?",
-        postUrl: "https://www.google.com/search?q=Sellsy+TeamSystem+French+Tech+Bordeaux+retention",
-        postTitle: "📰 Article Stratégique : Rapprochement TeamSystem & Rétention PME",
+        webUrl: "https://www.sellsy.com/",
+        pressQuote: "📢 Prise de parole : Rapprochement TeamSystem, alignement RevOps (Sales + CS) et rétention des PME.",
         desc: "Pépite française basée à La Rochelle & Bordeaux, suite SaaS globale de gestion B2B.",
         challenge: "Stabilisation du Churn client + recrutement et encadrement de la force de vente directe.",
         contacts: [
@@ -637,8 +638,8 @@ const companiesData = [
         sector: "PropTech / ESG & Smart Building Data",
         defaultRole: "Chief Client Officer / Director Account Management & CS",
         defaultPitch: "Bonjour Philippe, J'ai noté la structuration de votre pôle Client Delivery sous votre impulsion de CCO. Dans la phase actuelle d'expansion européenne de Deepki, la rétention et l'accompagnement des grands comptes investisseurs deviennent le véritable moteur de marge. Fort de 15 ans d'encadrement opérationnel aux exigences de rigueur élevées (gastronomie 5*) combinés à un Bachelor Rocket School (Growth & CRM), j'accompagne la fidélisation et la performance des équipes CS. Échangeons 10 min lors de mon prochain passage sur Paris ?",
-        postUrl: "https://www.google.com/search?q=Deepki+Philippe+Parlange+Chief+Client+Officer+presse",
-        postTitle: "📰 Annonce Officielle CCO : Organisation du Client Success chez Deepki",
+        webUrl: "https://www.deepki.com/fr/",
+        pressQuote: "📢 Prise de parole : Philippe Parlange nommé CCO pour structurer le Customer Success & Rétention ESG.",
         desc: "Entreprise 100% française née à Paris, leader européen ESG pour l'immobilier.",
         challenge: "Upsell et Rétention (Account Management) sur les géants de l'immobilier.",
         contacts: [
@@ -654,8 +655,8 @@ const companiesData = [
         sector: "PropTech / Copropriété & Logement",
         defaultRole: "Directeur des Opérations Clients & Rétention Habitat (NPS +65)",
         defaultPitch: "Bonjour Raphaël, Votre récente prise de parole sur le cap de la rentabilité et le maintien d'un NPS à +65 montre que la fidélisation des copropriétés est votre plus bel actif. Ayant dirigé des structures à fort niveau d'exigence (Place Dauphine, Guanahani) avec une approche client sans couture, je saurai encadrer vos équipes Customer Success/Ops pour pérenniser cette satisfaction. Échangeons-nous à Paris ?",
-        postUrl: "https://www.google.com/search?q=Matera+Raphael+Di+Meglio+rentabilite+satisfaction+NPS",
-        postTitle: "📰 Article Stratégique CEO : Le cap Matera de la Croissance à la Rentabilité & NPS",
+        webUrl: "https://matera.eu/fr/",
+        pressQuote: "📢 Prise de parole : Raphaël Di Meglio sur le virage Rentabilité & Excellence Client (NPS +65).",
         desc: "French Tech fondée à Paris, réinvente le syndic et la gestion locative.",
         challenge: "Satisfaction & rétention des syndics bénévole + prospection de nouvelles copros.",
         contacts: [
@@ -671,8 +672,8 @@ const companiesData = [
         sector: "Smart Office & Building Experience",
         defaultRole: "Head of Customer Experience & Hospitality Tech 'We Care'",
         defaultPitch: "Bonjour Éliane, Votre vision de la valeur 'We Care' pour limiter le Churn applicatif dans les immeubles tertiaires rejoint directement mes codes de l'hôtellerie de luxe parisienne. Rendre le bureau désirable et fidéliser les occupants exige des managers capables de marier rigueur d'accueil et outils digitaux. Je serais ravi de vous présenter mon approche.",
-        postUrl: "https://www.google.com/search?q=Witco+Eliane+Lugassy+satisfaction+We+Care",
-        postTitle: "📰 Interview CEO Éliane Lugassy : L'expérience occupant & la valeur 'We Care'",
+        webUrl: "https://www.witco.io/fr/",
+        pressQuote: "📢 Prise de parole : Éliane Lugassy sur l'engagement 'We Care' pour limiter le Churn des immeubles.",
         desc: "Pépite française fondée à Paris, dédiée à l'expérience bureau et occupants.",
         challenge: "Customer Success / Rétention pour limiter le Churn sur les immeubles tertiaires.",
         contacts: [
@@ -687,8 +688,8 @@ const companiesData = [
         sector: "PropTech / ConTech & LegalTech",
         defaultRole: "Directeur de BU / Management Régional Support & Ventes (Bordeaux)",
         defaultPitch: "Bonjour Hugues, La régionalisation de votre support client pour renforcer la proximité avec vos parcs d'agences immobilières exige une présence managériale forte sur le terrain Sud-Ouest. Basé à Bordeaux avec une solide expérience de management d'équipes et de P&L, je serais ravi de contribuer à la structuration de cette relation client de confiance.",
-        postUrl: "https://www.google.com/search?q=Septeo+Hugues+Galambrun+regionalisation+support+client",
-        postTitle: "📰 Post Stratégique Hugues Galambrun : Régionalisation du support & relation client",
+        webUrl: "https://www.septeo.com/fr/",
+        pressQuote: "📢 Prise de parole : Hugues Galambrun sur la régionalisation du support client & l'IA.",
         desc: "Groupe 100% français basé à Lattes/Bordeaux, géant de l'édition logicielle immo/droit.",
         challenge: "Fidélisation du parc installé et management de proximité des équipes régionales.",
         contacts: [
@@ -704,8 +705,8 @@ const companiesData = [
         sector: "Smart Home Energy & Domotique",
         defaultRole: "Directeur du Développement Commercial & Réseau Partenaires B2B",
         defaultPitch: "Bonjour Vincent, Maintenir une note de 4,6/5 avec une telle croissance et structurer l'accompagnement de votre réseau B2B est un défi d'encadrement passionnant. Mon expérience en animation de réseau commercial et coaching d'équipes terrain serait un atout précieux pour pérenniser vos partenariats. Prenons un moment pour en discuter.",
-        postUrl: "https://www.google.com/search?q=Sunology+Vincent+Arrouet+developpement+Trustpilot",
-        postTitle: "📰 Article Développement Sunology : Autoconsommation & Qualité de Service (4.6/5)",
+        webUrl: "https://sunology.eu/",
+        pressQuote: "📢 Prise de parole : Vincent Arrouet sur le réseau B2B, le SAV et la satisfaction Trustpilot (4,6/5).",
         desc: "Entreprise 100% française née à Nantes/Sud-Ouest, pionnier solaire plug & play.",
         challenge: "Animation du réseau de distribution B2B et structuration de la force de vente.",
         contacts: [
@@ -721,8 +722,8 @@ const companiesData = [
         sector: "PropTech / Gestion Immobilière",
         defaultRole: "Directeur Régional Sud-Ouest / Head of Ops & Rétention Hôtes",
         defaultPitch: "Bonjour Aurélien, Consolidation de votre parc de logements sous gestion à Bordeaux et fidélisation des propriétaires nécessitent un encadrement des opérations et de la qualité sans faille. Fort de 15 ans en conciergerie et hôtellerie 5*, j'accompagne la structuration de vos équipes.",
-        postUrl: "https://www.google.com/search?q=HostnFly+PropTech+Bordeaux+croissance",
-        postTitle: "📰 Article Développement : Expansion Régionale & Qualité de Service HostnFly",
+        webUrl: "https://www.hostnfly.com/",
+        pressQuote: "📢 Prise de parole : Expansion régionale & structuration de la qualité de service pour hôtes.",
         desc: "French Tech fondée à Paris avec forte antenne à Bordeaux, leader de conciergerie immo.",
         challenge: "Satisfaction des propriétaires bailleurs & développement réseau Sud-Ouest.",
         contacts: [
@@ -737,8 +738,8 @@ const companiesData = [
         sector: "PropTech / Gestion Locative 100% En Ligne",
         defaultRole: "Head of Customer Success / Directeur de la Rétention Bailleurs",
         defaultPitch: "Bonjour Nicolas, La gestion locative en ligne exige de maintenir un NPS élevé et d'éliminer toute friction client pour limiter le churn des bailleurs. Échangeons sur vos enjeux.",
-        postUrl: "https://www.google.com/search?q=Flatlooker+PropTech+gestion+locative+developpement",
-        postTitle: "📰 Post Stratégique : Rétention & Digitalisation de l'Immobilier Flatlooker",
+        webUrl: "https://www.flatlooker.com/",
+        pressQuote: "📢 Prise de parole : Digitalisation et fidélisation des bailleurs locatifs.",
         desc: "PropTech 100% française née à Paris, réinvente la gestion locative pour bailleurs.",
         challenge: "Fidélisation des propriétaires bailleurs et optimisation du taux d'occupation.",
         contacts: [
@@ -753,8 +754,8 @@ const companiesData = [
         sector: "B2B Tech / Logistics & Storage Cloud",
         defaultRole: "Directeur Commercial & Customer Retention B2B",
         defaultPitch: "Bonjour Maxime, Accompagner les industriels dans la gestion de leurs espaces logistiques demande un accompagnement grand compte réactif. Basé à Bordeaux, je serais ravi d'échanger.",
-        postUrl: "https://www.google.com/search?q=Spacefill+B2B+Tech+Bordeaux+croissance",
-        postTitle: "📰 Article Stratégique : Digitalisation B2B Spacefill",
+        webUrl: "https://www.spacefill.eu/fr/",
+        pressQuote: "📢 Prise de parole : Digitalisation B2B et rétention des comptes industriels.",
         desc: "French Tech fondée en France (Paris/Bordeaux), solution SaaS de gestion logistique B2B.",
         challenge: "Rétention des comptes industriels et expansion commerciale Sud-Ouest.",
         contacts: [
@@ -769,8 +770,8 @@ const companiesData = [
         sector: "Domotique & Smart Home Leader",
         defaultRole: "Head of Sales B2B / Directeur Régional",
         defaultPitch: "Bonjour, L'accélération de la numérisation des bâtiments tertiaires et le suivi d'énergie nécessitent un encadrement des équipes commerciales terrain mûr et engagé. Mon parcours en direction opérationnelle me permet de structurer vos ventes B2B.",
-        postUrl: "https://www.google.com/search?q=Delta+Dore+strategie+bâtiment+connecté",
-        postTitle: "📰 Actualité Stratégique : Numérisation des Bâtiments Delta Dore",
+        webUrl: "https://www.deltadore.fr/",
+        pressQuote: "📢 Prise de parole : Numérisation des bâtiments et accompagnement du réseau installateurs.",
         desc: "Pionnier 100% français du logement connecté et de la gestion d'énergie (Bretagne / Sud-Ouest).",
         challenge: "Fidélisation des installateurs & accélération de l'acquisition B2B tertiaire.",
         contacts: [
@@ -785,8 +786,8 @@ const companiesData = [
         sector: "Smart Home & Objets Connectés",
         defaultRole: "VP Smart Building / Directeur Partenariats B2B",
         defaultPitch: "Bonjour, Le déploiement des objets connectés auprès des grands comptes exige d'allier rigueur de service et maîtrise des outils d'acquisition B2B. Je serais ravi de vous apporter mon expertise managériale.",
-        postUrl: "https://www.google.com/search?q=Netatmo+Legrand+strategie+smart+home",
-        postTitle: "📰 Article Développement : Intégration Smart Home Legrand Netatmo",
+        webUrl: "https://www.netatmo.com/fr-fr",
+        pressQuote: "📢 Prise de parole : Intégration Smart Home Legrand & partenariats promoteurs B2B.",
         desc: "Société française fondée à Boulogne-Billancourt, référence objets connectés.",
         challenge: "Déploiement grands comptes promoteurs et rétention du réseau B2B.",
         contacts: [
@@ -801,8 +802,8 @@ const companiesData = [
         sector: "Smart Building Data Platform",
         defaultRole: "Directeur de la Relation Client & Déploiement B2B",
         defaultPitch: "Bonjour Benjamin, La fidélisation des bailleurs sociaux et tertiaires sur votre plateforme cloud exige une proximité managériale et une vraie culture du Customer Success. Échangeons sur vos enjeux.",
-        postUrl: "https://www.google.com/search?q=Intent+Technologies+smart+building+croissance",
-        postTitle: "📰 Post Stratégique : Croissance Cloud & Data Intent Technologies",
+        webUrl: "https://intent.tech/fr/",
+        pressQuote: "📢 Prise de parole : Data cloud et accompagnement long terme des bailleurs sociaux.",
         desc: "Plateforme française de gestion des données du bâtiment résidenciel et tertiaire.",
         challenge: "Rétention des bailleurs sociaux/tertiaires + conquête B2B.",
         contacts: [
@@ -817,8 +818,8 @@ const companiesData = [
         sector: "B2B Carbon & ESG Software",
         defaultRole: "Head of Sales Mid-Market / CS Lead",
         defaultPitch: "Bonjour Rachel, Accompagner les grands comptes dans le pilotage de leur empreinte carbone exige un encadrement des équipes Account Management solide et orienté résultats. Basé à Bordeaux, je serais ravi d'échanger.",
-        postUrl: "https://www.google.com/search?q=Sweep+carbon+Rachel+Delacour+strategie",
-        postTitle: "📰 Article Stratégique Rachel Delacour : Rétention & ESG Enterprise",
+        webUrl: "https://www.sweep.net/",
+        pressQuote: "📢 Prise de parole : Rachel Delacour sur la rétention et l'accompagnement ESG entreprise.",
         desc: "Née à Montpellier/Bordeaux par Rachel Delacour, championne française ESG SaaS.",
         challenge: "Structuration des équipes Account Management & Sales Mid-Market.",
         contacts: [
@@ -833,8 +834,8 @@ const companiesData = [
         sector: "PropTech Immobilière",
         defaultRole: "Directeur Réseau & Partenariats B2B",
         defaultPitch: "Bonjour Rémy, Animer et fidéliser le réseau d'agents immobiliers partenaires nécessite un accompagnement terrain de haut niveau. Échangeons lors de mon prochain passage à Bordeaux.",
-        postUrl: "https://www.google.com/search?q=Zefir+PropTech+Remy+Fabre+strategie",
-        postTitle: "📰 Post Stratégique Rémy Fabre : Réseau Partenaires Zefir",
+        webUrl: "https://www.zefir.fr/",
+        pressQuote: "📢 Prise de parole : Rémy Fabre sur le réseau partenaires et la rétention d'agents immo.",
         desc: "French Tech créée à Paris avec fort ancrage Bordeaux, outils pour agents immobiliers.",
         challenge: "Rétention du réseau d'agents partenaires et développement force de vente.",
         contacts: [
@@ -849,8 +850,8 @@ const companiesData = [
         sector: "ConTech / SaaS Bâtiment",
         defaultRole: "Head of Sales & Customer Success",
         defaultPitch: "Bonjour Jean-Gabriel, Réduire le churn des PME du bâtiment sur votre solution de gestion financière demande un Customer Success proactif et un encadrement managérial engagé.",
-        postUrl: "https://www.google.com/search?q=Graneet+ConTech+croissance+PME",
-        postTitle: "📰 Article Développement : Graneet & l'accompagnement des PME",
+        webUrl: "https://www.graneet.com/",
+        pressQuote: "📢 Prise de parole : Accompagnement proactif des PME et réduction du Churn.",
         desc: "French Tech fondée à Paris, logiciel financier pour PME du bâtiment.",
         challenge: "Stabilisation du Churn des PME et recrutement de nouveaux clients.",
         contacts: [
@@ -865,8 +866,8 @@ const companiesData = [
         sector: "Smart Lock & Contrôle d'accès",
         defaultRole: "Head of Business Development & Key Accounts",
         defaultPitch: "Bonjour Alexis, La rétention des gestionnaires de bureaux connectés s'appuie sur la qualité de l'expérience utilisateur et du service. Présentons-nous de manière informelle.",
-        postUrl: "https://www.google.com/search?q=Welcomr+smart+lock+bureaux+développement",
-        postTitle: "📰 Article Stratégique : Contrôle d'accès Cloud Welcomr",
+        webUrl: "https://www.welcomr.fr/",
+        pressQuote: "📢 Prise de parole : Qualité de service et rétention des gestionnaires de bureaux.",
         desc: "Société française basée à Tours et Paris, contrôle d'accès cloud pour bureaux.",
         challenge: "Rétention des gestionnaires de bureaux et déploiement B2B.",
         contacts: [
@@ -881,8 +882,8 @@ const companiesData = [
         sector: "PropTech Flex-Office",
         defaultRole: "Directeur d'Agence Régionale / Head of Ops",
         defaultPitch: "Bonjour Benjamin, La fidélisation des entreprises locataires de flex-office exige un sens poussé de l'accueil de haut niveau et de la gestion de site. Échangeons sur vos projets à Bordeaux.",
-        postUrl: "https://www.google.com/search?q=Deskeo+flex+office+bordeaux+developpement",
-        postTitle: "📰 Post Développement : Expansion Flex-Office Deskeo",
+        webUrl: "https://www.deskeo.fr/",
+        pressQuote: "📢 Prise de parole : Rétention des locataires corporate et accueil haut de gamme.",
         desc: "Acteur 100% français du flex-office et espaces de travail gérés.",
         challenge: "Rétention des locataires corporate et commercialisation d'espaces.",
         contacts: [
@@ -897,8 +898,8 @@ const companiesData = [
         sector: "PropTech Gestion Locative Connectée",
         defaultRole: "Directeur de la Relation Bailleurs & Partenariats",
         defaultPitch: "Bonjour Gilles, Fidéliser les propriétaires et les administrateurs de biens exige de la transparence et un encadrement des équipes de support rigoureux.",
-        postUrl: "https://www.google.com/search?q=Homepilot+gestion+locative+Somfy",
-        postTitle: "📰 Article Stratégique : Homepilot & la Gestion Locative Transparente",
+        webUrl: "https://www.homepilot.fr/",
+        pressQuote: "📢 Prise de parole : Transparence de la relation bailleur & accompagnement support.",
         desc: "Filiale du groupe français Somfy, plateforme de gestion locative transparente.",
         challenge: "Fidélisation des propriétaires et acquisition d'administrateurs de biens.",
         contacts: [
@@ -913,8 +914,8 @@ const companiesData = [
         sector: "B2B Tech Terrain & Bâtiment",
         defaultRole: "Directeur Commercial & grands Comptes",
         defaultPitch: "Bonjour Philippe, Développer la fidélité de vos comptes industriels et techniciens exige une organisation commerciale terrain claire et motivée.",
-        postUrl: "https://www.google.com/search?q=Kizeo+Form+croissance+B2B",
-        postTitle: "📰 Article Stratégique : Kizeo & la Transformation Terrain",
+        webUrl: "https://www.kizeo-forms.com/fr/",
+        pressQuote: "📢 Prise de parole : Proximité terrain et fidélisation des comptes industriels.",
         desc: "Pépite 100% française d'Avignon / Sud-Ouest, diagnostics et formulaires pro.",
         challenge: "Rétention des comptes industriels et prospection B2B.",
         contacts: [
@@ -929,8 +930,8 @@ const companiesData = [
         sector: "IoT & Smart Home Cloud",
         defaultRole: "Head of Sales / Business Development IoT",
         defaultPitch: "Bonjour, Accompagner les intégrateurs domotiques et industriels exige un sens aigu de la relation partenaire et de l'encadrement d'équipes.",
-        postUrl: "https://www.google.com/search?q=Overkiz+Somfy+IoT+smart+home",
-        postTitle: "📰 Article Stratégique : Overkiz IoT Cloud & Partenariats Somfy",
+        webUrl: "https://www.overkiz.com/fr/",
+        pressQuote: "📢 Prise de parole : Qualité de service cloud IoT & fidélisation des partenaires industriels.",
         desc: "Leader industriel français du logement connecté basé en Haute-Savoie / Paris.",
         challenge: "Fidélisation des partenaires industriels et intégrateurs.",
         contacts: [
@@ -998,12 +999,18 @@ function renderCards(data) {
                     </div>
                 </div>
                 <div class="company-desc">${item.desc}</div>
-                <div class="challenge-box"><strong>🎯 Enjeu Clé :</strong> ${item.challenge}</div>
 
-                <!-- BOUTON DU POST / ARTICLE STRATEGIQUE SUR LE DEVELOPPEMENT -->
+                <!-- AFFICHAGE DIRECT DE LA PRISE DE PAROLE / STRATEGIE -->
+                <div class="challenge-box">
+                    <div style="font-weight: 700; color: var(--gold-light); margin-bottom: 4px;">🎯 Enjeu Clé & Prise de parole :</div>
+                    <div>${item.challenge}</div>
+                    <div style="margin-top: 6px; font-style: italic; color: #FFF;">${item.pressQuote}</div>
+                </div>
+
+                <!-- BOUTON ACCES SITE OFFICIEL ET ACTUS -->
                 <div style="margin-bottom: 12px;">
-                    <a href="${item.postUrl}" target="_blank" class="btn-post-article">
-                        ${item.postTitle || '📰 Voir le Post / Article Stratégique (Croissance & Rétention)'}
+                    <a href="${item.webUrl}" target="_blank" class="btn-post-article">
+                        🌐 Visiter le Site Officiel & Actualités de ${item.name}
                     </a>
                 </div>
                 
