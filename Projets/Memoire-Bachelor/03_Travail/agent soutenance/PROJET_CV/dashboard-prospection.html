@@ -288,12 +288,34 @@
             font-size: 0.8rem;
             padding: 8px 12px;
             resize: vertical;
-            min-height: 55px;
+            min-height: 80px;
             outline: none;
+            line-height: 1.4;
         }
 
         .pitch-textarea:focus {
             border-color: var(--gold);
+        }
+
+        .btn-jobs {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            background: rgba(16, 185, 129, 0.15);
+            border: 1px solid var(--success);
+            color: #A7F3D0;
+            padding: 6px 12px;
+            border-radius: 6px;
+            font-size: 0.75rem;
+            font-weight: 700;
+            text-decoration: none;
+            transition: 0.2s;
+            margin-top: 8px;
+        }
+
+        .btn-jobs:hover {
+            background: var(--success);
+            color: #000;
         }
 
         /* CONTACTS & BUTTONS */
@@ -593,6 +615,8 @@ const companiesData = [
         funding: "55 M€ (PSG Equity)",
         sector: "B2B Tech / CRM & Facturation",
         defaultRole: "Chief Revenue Officer (VP Sales) / Head of Sales B2B",
+        defaultPitch: "Bonjour Victor, Votre virage RevOps et l'adossement à TeamSystem démontrent que la priorité stratégique de Sellsy repose désormais sur la rétention du parc PME existant autant que sur l'acquisition. Mon profil hybride (15 ans de direction d'équipes P&L + spécialisation Rocket School) me permet d'apporter ce double regard : rigueur opérationnelle terrain et culture du chiffre. Installé à Bordeaux, seriez-vous ouvert à un café informel ?",
+        jobsUrl: "https://www.linkedin.com/company/sellsy/jobs/",
         desc: "Suite SaaS globale de gestion B2B pour PME et entreprises de services.",
         challenge: "Stabilisation du Churn client + recrutement et encadrement de la force de vente directe.",
         contacts: [
@@ -606,7 +630,9 @@ const companiesData = [
         region: "paris",
         funding: "150 M€ (Série C)",
         sector: "PropTech / ESG & Smart Building Data",
-        defaultRole: "Head of Customer Success / Director Account Management",
+        defaultRole: "Chief Client Officer / Director Account Management & CS",
+        defaultPitch: "Bonjour Philippe, J'ai noté la structuration de votre pôle Client Delivery sous votre impulsion de CCO. Dans la phase actuelle d'expansion européenne de Deepki, la rétention et l'accompagnement des grands comptes investisseurs deviennent le véritable moteur de marge. Fort de 15 ans d'encadrement opérationnel aux exigences de rigueur élevées (gastronomie 5*) combinés à un Bachelor Rocket School (Growth & CRM), j'accompagne la fidélisation et la performance des équipes CS. Échangeons 10 min lors de mon prochain passage sur Paris ?",
+        jobsUrl: "https://www.linkedin.com/company/deepki/jobs/",
         desc: "Leader européen de la transition énergétique pour le patrimoine immobilier tertiaire.",
         challenge: "Upsell et Rétention (Account Management) sur les géants de l'immobilier.",
         contacts: [
@@ -620,7 +646,9 @@ const companiesData = [
         region: "paris",
         funding: "44 M€ (Mubadala, Bpifrance)",
         sector: "PropTech / Copropriété & Logement",
-        defaultRole: "Directeur des Opérations Clients & Rétention Habitat",
+        defaultRole: "Directeur des Opérations Clients & Rétention Habitat (NPS +65)",
+        defaultPitch: "Bonjour Raphaël, Votre récente prise de parole sur le cap de la rentabilité et le maintien d'un NPS à +65 montre que la fidélisation des copropriétés est votre plus bel actif. Ayant dirigé des structures à fort niveau d'exigence (Place Dauphine, Guanahani) avec une approche client sans couture, je saurai encadrer vos équipes Customer Success/Ops pour pérenniser cette satisfaction. Échangeons-nous à Paris ?",
+        jobsUrl: "https://www.linkedin.com/company/matera-eu/jobs/",
         desc: "Plateforme de gestion de copropriété (syndic) et de gestion locative.",
         challenge: "Satisfaction & rétention des syndics bénévole + prospection de nouvelles copros.",
         contacts: [
@@ -634,7 +662,9 @@ const companiesData = [
         region: "paris",
         funding: "12 M€ (Eurazeo, Daphni)",
         sector: "Smart Office & Building Experience",
-        defaultRole: "Head of Sales / CS Smart Building & Hospitality Tech",
+        defaultRole: "Head of Customer Experience & Hospitality Tech 'We Care'",
+        defaultPitch: "Bonjour Éliane, Votre vision de la valeur 'We Care' pour limiter le Churn applicatif dans les immeubles tertiaires rejoint directement mes codes de l'hôtellerie de luxe parisienne. Rendre le bureau désirable et fidéliser les occupants exige des managers capables de marier rigueur d'accueil et outils digitaux. Je serais ravi de vous présenter mon approche.",
+        jobsUrl: "https://www.linkedin.com/company/witco-app/jobs/",
         desc: "App tout-en-un de gestion d'expérience occupant et des espaces de travail.",
         challenge: "Customer Success / Rétention pour limiter le Churn sur les immeubles tertiaires.",
         contacts: [
@@ -647,7 +677,9 @@ const companiesData = [
         region: "bordeaux",
         funding: "> 3.5 Mds€ (Hg Capital)",
         sector: "PropTech / ConTech & LegalTech",
-        defaultRole: "Directeur de BU / Directeur Commercial Pôle Immobilier",
+        defaultRole: "Directeur de BU / Management Régional Support & Ventes (Bordeaux)",
+        defaultPitch: "Bonjour Hugues, La régionalisation de votre support client pour renforcer la proximité avec vos parcs d'agences immobilières exige une présence managériale forte sur le terrain Sud-Ouest. Basé à Bordeaux avec une solide expérience de management d'équipes et de P&L, je serais ravi de contribuer à la structuration de cette relation client de confiance.",
+        jobsUrl: "https://www.linkedin.com/company/septeo/jobs/",
         desc: "Géant européen des logiciels pour agences immobilières, notaires et bâtiment.",
         challenge: "Fidélisation du parc installé et management de proximité des équipes régionales.",
         contacts: [
@@ -661,7 +693,9 @@ const companiesData = [
         region: "bordeaux",
         funding: "> 10 M€ (Sowefund)",
         sector: "Smart Home Energy & Domotique",
-        defaultRole: "Directeur du Développement Commercial & Réseau B2B",
+        defaultRole: "Directeur du Développement Commercial & Réseau Partenaires B2B",
+        defaultPitch: "Bonjour Vincent, Maintenir une note de 4,6/5 avec une telle croissance et structurer l'accompagnement de votre réseau B2B est un défi d'encadrement passionnant. Mon expérience en animation de réseau commercial et coaching d'équipes terrain serait un atout précieux pour pérenniser vos partenariats. Prenons un moment pour en discuter.",
+        jobsUrl: "https://www.linkedin.com/company/sunology/jobs/",
         desc: "Stations solaires et équipements d'énergie intelligente pour la maison.",
         challenge: "Animation du réseau de distribution B2B et structuration de la force de vente.",
         contacts: [
@@ -676,6 +710,8 @@ const companiesData = [
         funding: "CA > 140 M€",
         sector: "Domotique & Smart Home Leader",
         defaultRole: "Head of Sales B2B / Directeur Régional",
+        defaultPitch: "Bonjour, L'accélération de la numérisation des bâtiments tertiaires et le suivi d'énergie nécessitent un encadrement des équipes commerciales terrain mûr et engagé. Mon parcours en direction opérationnelle me permet de structurer vos ventes B2B.",
+        jobsUrl: "https://www.linkedin.com/company/delta-dore/jobs/",
         desc: "Pionnier français du logement connecté et de la gestion d'énergie.",
         challenge: "Fidélisation des installateurs & accélération de l'acquisition B2B tertiaire.",
         contacts: [
@@ -689,6 +725,8 @@ const companiesData = [
         funding: "Groupe Legrand",
         sector: "Smart Home & Objets Connectés",
         defaultRole: "VP Smart Building / Directeur Partenariats B2B",
+        defaultPitch: "Bonjour, Le déploiement des objets connectés auprès des grands comptes exige d'allier rigueur de service et maîtrise des outils d'acquisition B2B. Je serais ravi de vous apporter mon expertise managériale.",
+        jobsUrl: "https://www.linkedin.com/company/netatmo/jobs/",
         desc: "Équipements de maison intelligente, thermostats et sécurité connectée.",
         challenge: "Déploiement grands comptes promoteurs et rétention du réseau B2B.",
         contacts: [
@@ -702,6 +740,8 @@ const companiesData = [
         funding: "15 M€ (Amundi)",
         sector: "Smart Building Data Platform",
         defaultRole: "Directeur de la Relation Client & Déploiement B2B",
+        defaultPitch: "Bonjour Benjamin, La fidélisation des bailleurs sociaux et tertiaires sur votre plateforme cloud exige une proximité managériale et une vraie culture du Customer Success. Échangeons sur vos enjeux.",
+        jobsUrl: "https://www.linkedin.com/company/intent-technologies/jobs/",
         desc: "Plateforme Cloud de gestion des données du bâtiment résidenciel et tertiaire.",
         challenge: "Rétention des bailleurs sociaux/tertiaires + conquête B2B.",
         contacts: [
@@ -715,6 +755,8 @@ const companiesData = [
         funding: "> 100 M$",
         sector: "B2B Carbon & ESG Software",
         defaultRole: "Head of Sales Mid-Market / CS Lead",
+        defaultPitch: "Bonjour Rachel, Accompagner les grands comptes dans le pilotage de leur empreinte carbone exige un encadrement des équipes Account Management solide et orienté résultats. Basé à Bordeaux, je serais ravi d'échanger.",
+        jobsUrl: "https://www.linkedin.com/company/sweep-carbon/jobs/",
         desc: "SaaS de pilotage carbone pour entreprises et actifs immobiliers.",
         challenge: "Structuration des équipes Account Management & Sales Mid-Market.",
         contacts: [
@@ -728,6 +770,8 @@ const companiesData = [
         funding: "> 100 M$",
         sector: "PropTech / Real Estate Ops",
         defaultRole: "Head of Sales France / Account Executive Director",
+        defaultPitch: "Bonjour, Structurer la fidélisation des artisans et des grands bailleurs français demande une vraie maîtrise de l'animation d'équipes et de la gestion de P&L.",
+        jobsUrl: "https://www.linkedin.com/company/plentific/jobs/",
         desc: "SaaS & Marketplace de gestion d'interventions pour propriétaires et bailleurs.",
         challenge: "Fidélisation du réseau d'artisans/bailleurs et acquisition grands comptes.",
         contacts: [
@@ -741,6 +785,8 @@ const companiesData = [
         funding: "> 20 M€",
         sector: "PropTech Immobilière",
         defaultRole: "Directeur Réseau & Partenariats B2B",
+        defaultPitch: "Bonjour Rémy, Animer et fidéliser le réseau d'agents immobiliers partenaires nécessite un accompagnement terrain de haut niveau. Échangeons lors de mon prochain passage à Bordeaux.",
+        jobsUrl: "https://www.linkedin.com/company/zefir-co/jobs/",
         desc: "Outils et services d'achat/revente pour agents immobiliers.",
         challenge: "Rétention du réseau d'agents partenaires et développement force de vente.",
         contacts: [
@@ -754,6 +800,8 @@ const companiesData = [
         funding: "> 6 M€ (Point Nine)",
         sector: "ConTech / SaaS Bâtiment",
         defaultRole: "Head of Sales & Customer Success",
+        defaultPitch: "Bonjour Jean-Gabriel, Réduire le churn des PME du bâtiment sur votre solution de gestion financière demande un Customer Success proactif et un encadrement managérial engagé.",
+        jobsUrl: "https://www.linkedin.com/company/graneet/jobs/",
         desc: "Logiciel de gestion financière pour PME du bâtiment et second œuvre.",
         challenge: "Stabilisation du Churn des PME et recrutement de nouveaux clients.",
         contacts: [
@@ -767,6 +815,8 @@ const companiesData = [
         funding: "> 10 M€",
         sector: "ConTech SaaS Bâtiment",
         defaultRole: "Directeur Commercial & Customer Experience",
+        defaultPitch: "Bonjour Dominique, Accompagner la numérisation des entreprises de construction en garantissant un fort taux de réabonnement est une mission passionnante qui résonne avec mes compétences.",
+        jobsUrl: "https://www.linkedin.com/company/vertuoza/jobs/",
         desc: "SaaS de gestion pour entreprises de construction et rénovation.",
         challenge: "Accompagnement client (CSM) et prospection commerciale B2B.",
         contacts: [
@@ -780,6 +830,8 @@ const companiesData = [
         funding: "> 5 M€",
         sector: "Smart Lock & Contrôle d'accès",
         defaultRole: "Head of Business Development & Key Accounts",
+        defaultPitch: "Bonjour Alexis, La rétention des gestionnaires de bureaux connectés s'appuie sur la qualité de l'expérience utilisateur et du service. Présentons-nous de manière informelle.",
+        jobsUrl: "https://www.linkedin.com/company/welcomr/jobs/",
         desc: "Solution de contrôle d'accès cloud et intelligent pour bureaux.",
         challenge: "Rétention des gestionnaires de bureaux et déploiement B2B.",
         contacts: [
@@ -793,6 +845,8 @@ const companiesData = [
         funding: "> 20 M€",
         sector: "PropTech Flex-Office",
         defaultRole: "Directeur d'Agence Régionale / Head of Ops",
+        defaultPitch: "Bonjour Benjamin, La fidélisation des entreprises locataires de flex-office exige un sens poussé de l'accueil de haut niveau et de la gestion de site. Échangeons sur vos projets à Bordeaux.",
+        jobsUrl: "https://www.linkedin.com/company/deskeo/jobs/",
         desc: "Aménagement et gestion d'espaces de travail connectés.",
         challenge: "Rétention des locataires corporate et commercialisation d'espaces.",
         contacts: [
@@ -806,6 +860,8 @@ const companiesData = [
         funding: "Groupe Loxone Europe",
         sector: "Domotique Pro & Bâtiment Connecté",
         defaultRole: "Managing Director / Head of Sales France",
+        defaultPitch: "Bonjour, Structurer la fidélisation du réseau Loxone Partners et piloter l'acquisition B2B exige une présence managériale et commerciale réactive.",
+        jobsUrl: "https://www.linkedin.com/company/loxone/jobs/",
         desc: "Leader européen des systèmes d'automatisation pour bâtiments intelligentes.",
         challenge: "Rétention des Loxone Partners installateurs et conquête B2B.",
         contacts: [
@@ -819,6 +875,8 @@ const companiesData = [
         funding: "Filiale Somfy",
         sector: "PropTech Gestion Locative Connectée",
         defaultRole: "Directeur de la Relation Bailleurs & Partenariats",
+        defaultPitch: "Bonjour Gilles, Fidéliser les propriétaires et les administrateurs de biens exige de la transparence et un encadrement des équipes de support rigoureux.",
+        jobsUrl: "https://www.linkedin.com/company/homepilot-fr/jobs/",
         desc: "Plateforme de gestion locative intelligente et transparente.",
         challenge: "Fidélisation des propriétaires et acquisition d'administrateurs de biens.",
         contacts: [
@@ -832,6 +890,8 @@ const companiesData = [
         funding: "> 10 M€ CA Rentable",
         sector: "B2B Tech Terrain & Bâtiment",
         defaultRole: "Directeur Commercial & grands Comptes",
+        defaultPitch: "Bonjour Philippe, Développer la fidélité de vos comptes industriels et techniciens exige une organisation commerciale terrain claire et motivée.",
+        jobsUrl: "https://www.linkedin.com/company/kizeo/jobs/",
         desc: "App mobile de formulaires et diagnostics pour techniciens du bâtiment.",
         challenge: "Rétention des comptes industriels et prospection B2B.",
         contacts: [
@@ -845,6 +905,8 @@ const companiesData = [
         funding: "Groupe Somfy",
         sector: "IoT & Smart Home Cloud",
         defaultRole: "Head of Sales / Business Development IoT",
+        defaultPitch: "Bonjour, Accompagner les intégrateurs domotiques et industriels exige un sens aigu de la relation partenaire et de l'encadrement d'équipes.",
+        jobsUrl: "https://www.linkedin.com/company/overkiz/jobs/",
         desc: "Plateforme IoT pour domotique et bâtiments connectés.",
         challenge: "Fidélisation des partenaires industriels et intégrateurs.",
         contacts: [
@@ -863,7 +925,7 @@ function renderCards(data) {
         const savedNotes = localStorage.getItem('notes_' + item.id) || '';
         const savedAudio = localStorage.getItem('card_audio_' + item.id);
         const savedRole = localStorage.getItem('role_title_' + item.id) || item.defaultRole || '';
-        const savedPitch = localStorage.getItem('role_pitch_' + item.id) || '';
+        const savedPitch = localStorage.getItem('role_pitch_' + item.id) || item.defaultPitch || '';
         const isRoleValidated = localStorage.getItem('role_validated_' + item.id) === 'true';
 
         const card = document.createElement('div');
@@ -912,6 +974,12 @@ function renderCards(data) {
                 </div>
                 <div class="company-desc">${item.desc}</div>
                 <div class="challenge-box"><strong>🎯 Enjeu Clé :</strong> ${item.challenge}</div>
+
+                <div style="margin-bottom: 12px;">
+                    <a href="${item.jobsUrl}" target="_blank" class="btn-jobs">
+                        🔎 Voir les Offres & Postes de ${item.name}
+                    </a>
+                </div>
                 
                 <!-- POSTE VISE ET PITCH DEDIE -->
                 <div class="role-config-box">
@@ -919,12 +987,12 @@ function renderCards(data) {
                         <span class="role-title">🎯 Intitulé du Poste Cible :</span>
                         <label class="role-checkbox-label">
                             <input type="checkbox" ${isRoleValidated ? 'checked' : ''} onchange="toggleRoleValidation('${item.id}', this.checked)">
-                            Poste Choisis & Validé
+                            Poste Choisi & Validé
                         </label>
                     </div>
                     <input type="text" class="role-input" placeholder="Ex: Head of Sales, Directeur d'Agence..." value="${savedRole}" onchange="saveRoleTitle('${item.id}', this.value)">
                     
-                    <div class="role-title" style="margin-top: 6px; margin-bottom: 4px;">📝 Commentaire / Pitch Rédigé pour ce Poste :</div>
+                    <div class="role-title" style="margin-top: 8px; margin-bottom: 4px;">📝 Commentaire / Pitch Rédigé pour ce Poste :</div>
                     <textarea class="pitch-textarea" placeholder="Consigner l'approche personnalisée rédigée pour ce poste..." onchange="saveRolePitch('${item.id}', this.value)">${savedPitch}</textarea>
                 </div>
 
