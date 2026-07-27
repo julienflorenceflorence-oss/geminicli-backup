@@ -633,6 +633,16 @@ Bien cordialement,
 </div>
 
 <script>
+// Helper to format French phone numbers into international +33 format for Mac & iPhone Continuity
+function formatTelUri(phoneStr) {
+    if (!phoneStr) return '';
+    let digits = phoneStr.replace(/\D/g, '');
+    if (digits.startsWith('0')) {
+        digits = '33' + digits.substring(1);
+    }
+    return '+' + digits;
+}
+
 const companiesData = [
     {
         id: "sellsy",
@@ -998,9 +1008,10 @@ function renderCards(data) {
         card.className = `company-card category-${item.region} ${isRoleValidated ? 'role-validated' : ''}`;
         card.setAttribute('data-name', item.name.toLowerCase());
 
+        const formattedTelUri = formatTelUri(item.phone);
+
         let contactsHtml = '';
         item.contacts.forEach(c => {
-            const rawPhone = item.phone ? item.phone.replace(/\s+/g, '') : '';
             contactsHtml += `
                 <div class="contact-item">
                     <div class="contact-info">
@@ -1010,7 +1021,7 @@ function renderCards(data) {
                     <div class="action-btns">
                         <a href="${c.linkedin}" target="_blank" class="btn-action btn-linkedin">LinkedIn</a>
                         <a href="mailto:${c.email}?subject=Prospection%20Ex%C3%A9cutive%20-%20Julien%20FLORENCE&body=Bonjour%20${c.name.split(' ')[0]}%2C%0A%0AJe%20me%20permets%20de%20vous%20contacter..." class="btn-action btn-email">Email</a>
-                        ${item.phone ? `<a href="tel:${rawPhone}" class="btn-action btn-phone" title="Téléphoner au siège">📞 Appeler</a>` : ''}
+                        ${item.phone ? `<a href="tel:${formattedTelUri}" class="btn-action btn-phone" title="Téléphoner au siège via iPhone / Mac">📞 Appeler</a>` : ''}
                     </div>
                 </div>
             `;
@@ -1045,10 +1056,10 @@ function renderCards(data) {
                 </div>
                 <div class="company-desc">${item.desc}</div>
 
-                <!-- AFFICHAGE DU TELEPHONE DU SIEGE -->
+                <!-- AFFICHAGE DU TELEPHONE DU SIEGE AVEC FORMAT +33 CONTINUITE IPAD/IPHONE/MAC -->
                 <div class="phone-box">
-                    <span>📞 <strong>Téléphone Siège / Standard :</strong> ${formattedPhone}</span>
-                    ${item.phone ? `<a href="tel:${item.phone.replace(/\s+/g, '')}" class="btn-action btn-phone">📞 Appeler Directement</a>` : ''}
+                    <span>📞 <strong>Téléphone Siège :</strong> ${formattedPhone}</span>
+                    ${item.phone ? `<a href="tel:${formattedTelUri}" class="btn-action btn-phone">📞 Appeler Directement</a>` : ''}
                 </div>
 
                 <!-- AFFICHAGE DIRECT DE LA PRISE DE PAROLE / STRATEGIE -->
