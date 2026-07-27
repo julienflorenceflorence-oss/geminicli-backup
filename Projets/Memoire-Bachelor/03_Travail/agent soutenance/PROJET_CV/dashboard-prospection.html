@@ -223,7 +223,7 @@
             padding: 10px 14px;
             font-size: 0.82rem;
             color: #E2E8F0;
-            margin-bottom: 20px;
+            margin-bottom: 15px;
             border-radius: 0 8px 8px 0;
         }
 
@@ -297,25 +297,28 @@
             border-color: var(--gold);
         }
 
-        .btn-jobs {
+        .btn-post-article {
             display: inline-flex;
             align-items: center;
             gap: 6px;
-            background: rgba(16, 185, 129, 0.15);
-            border: 1px solid var(--success);
-            color: #A7F3D0;
-            padding: 6px 12px;
+            background: rgba(212, 175, 55, 0.12);
+            border: 1px solid var(--gold);
+            color: var(--gold-light);
+            padding: 8px 14px;
             border-radius: 6px;
-            font-size: 0.75rem;
+            font-size: 0.78rem;
             font-weight: 700;
             text-decoration: none;
             transition: 0.2s;
-            margin-top: 8px;
+            margin-bottom: 15px;
+            width: 100%;
+            justify-content: center;
         }
 
-        .btn-jobs:hover {
-            background: var(--success);
-            color: #000;
+        .btn-post-article:hover {
+            background: var(--gold);
+            color: var(--bg);
+            box-shadow: 0 0 12px rgba(212, 175, 55, 0.4);
         }
 
         /* CONTACTS & BUTTONS */
@@ -616,7 +619,8 @@ const companiesData = [
         sector: "B2B Tech / CRM & Facturation",
         defaultRole: "Chief Revenue Officer (VP Sales) / Head of Sales B2B",
         defaultPitch: "Bonjour Victor, Votre virage RevOps et l'adossement à TeamSystem démontrent que la priorité stratégique de Sellsy repose désormais sur la rétention du parc PME existant autant que sur l'acquisition. Mon profil hybride (15 ans de direction d'équipes P&L + spécialisation Rocket School) me permet d'apporter ce double regard : rigueur opérationnelle terrain et culture du chiffre. Installé à Bordeaux, seriez-vous ouvert à un café informel ?",
-        jobsUrl: "https://www.linkedin.com/company/sellsy/jobs/",
+        postUrl: "https://frenchtechbordeaux.com/sellsy-rejoint-le-groupe-teamsystem/",
+        postTitle: "📰 Article Stratégique : Rapprochement TeamSystem & Rétention PME",
         desc: "Suite SaaS globale de gestion B2B pour PME et entreprises de services.",
         challenge: "Stabilisation du Churn client + recrutement et encadrement de la force de vente directe.",
         contacts: [
@@ -632,7 +636,8 @@ const companiesData = [
         sector: "PropTech / ESG & Smart Building Data",
         defaultRole: "Chief Client Officer / Director Account Management & CS",
         defaultPitch: "Bonjour Philippe, J'ai noté la structuration de votre pôle Client Delivery sous votre impulsion de CCO. Dans la phase actuelle d'expansion européenne de Deepki, la rétention et l'accompagnement des grands comptes investisseurs deviennent le véritable moteur de marge. Fort de 15 ans d'encadrement opérationnel aux exigences de rigueur élevées (gastronomie 5*) combinés à un Bachelor Rocket School (Growth & CRM), j'accompagne la fidélisation et la performance des équipes CS. Échangeons 10 min lors de mon prochain passage sur Paris ?",
-        jobsUrl: "https://www.linkedin.com/company/deepki/jobs/",
+        postUrl: "https://www.deepki.com/fr/communique-de-presse/deepki-nomme-philippe-parlange-chief-client-officer/",
+        postTitle: "📰 Annonce Officielle CCO : Organisation du Client Success chez Deepki",
         desc: "Leader européen de la transition énergétique pour le patrimoine immobilier tertiaire.",
         challenge: "Upsell et Rétention (Account Management) sur les géants de l'immobilier.",
         contacts: [
@@ -648,7 +653,8 @@ const companiesData = [
         sector: "PropTech / Copropriété & Logement",
         defaultRole: "Directeur des Opérations Clients & Rétention Habitat (NPS +65)",
         defaultPitch: "Bonjour Raphaël, Votre récente prise de parole sur le cap de la rentabilité et le maintien d'un NPS à +65 montre que la fidélisation des copropriétés est votre plus bel actif. Ayant dirigé des structures à fort niveau d'exigence (Place Dauphine, Guanahani) avec une approche client sans couture, je saurai encadrer vos équipes Customer Success/Ops pour pérenniser cette satisfaction. Échangeons-nous à Paris ?",
-        jobsUrl: "https://www.linkedin.com/company/matera-eu/jobs/",
+        postUrl: "https://www.dynamique-mag.com/article/matera-passage-de-la-croissance-a-la-rentabilite.57248",
+        postTitle: "📰 Article Stratégique CEO : Le cap Matera de la Croissance à la Rentabilité & NPS",
         desc: "Plateforme de gestion de copropriété (syndic) et de gestion locative.",
         challenge: "Satisfaction & rétention des syndics bénévole + prospection de nouvelles copros.",
         contacts: [
@@ -664,7 +670,8 @@ const companiesData = [
         sector: "Smart Office & Building Experience",
         defaultRole: "Head of Customer Experience & Hospitality Tech 'We Care'",
         defaultPitch: "Bonjour Éliane, Votre vision de la valeur 'We Care' pour limiter le Churn applicatif dans les immeubles tertiaires rejoint directement mes codes de l'hôtellerie de luxe parisienne. Rendre le bureau désirable et fidéliser les occupants exige des managers capables de marier rigueur d'accueil et outils digitaux. Je serais ravi de vous présenter mon approche.",
-        jobsUrl: "https://www.linkedin.com/company/witco-app/jobs/",
+        postUrl: "https://www.choiseul-magazine.fr/eliane-lugassy-witco/",
+        postTitle: "📰 Interview CEO Éliane Lugassy : L'expérience occupant & la valeur 'We Care'",
         desc: "App tout-en-un de gestion d'expérience occupant et des espaces de travail.",
         challenge: "Customer Success / Rétention pour limiter le Churn sur les immeubles tertiaires.",
         contacts: [
@@ -679,7 +686,8 @@ const companiesData = [
         sector: "PropTech / ConTech & LegalTech",
         defaultRole: "Directeur de BU / Management Régional Support & Ventes (Bordeaux)",
         defaultPitch: "Bonjour Hugues, La régionalisation de votre support client pour renforcer la proximité avec vos parcs d'agences immobilières exige une présence managériale forte sur le terrain Sud-Ouest. Basé à Bordeaux avec une solide expérience de management d'équipes et de P&L, je serais ravi de contribuer à la structuration de cette relation client de confiance.",
-        jobsUrl: "https://www.linkedin.com/company/septeo/jobs/",
+        postUrl: "https://www.lesindiscretions.com/sept-hugues-galambrun-septeo/",
+        postTitle: "📰 Post Stratégique Hugues Galambrun : Régionalisation du support & relation client",
         desc: "Géant européen des logiciels pour agences immobilières, notaires et bâtiment.",
         challenge: "Fidélisation du parc installé et management de proximité des équipes régionales.",
         contacts: [
@@ -695,7 +703,8 @@ const companiesData = [
         sector: "Smart Home Energy & Domotique",
         defaultRole: "Directeur du Développement Commercial & Réseau Partenaires B2B",
         defaultPitch: "Bonjour Vincent, Maintenir une note de 4,6/5 avec une telle croissance et structurer l'accompagnement de votre réseau B2B est un défi d'encadrement passionnant. Mon expérience en animation de réseau commercial et coaching d'équipes terrain serait un atout précieux pour pérenniser vos partenariats. Prenons un moment pour en discuter.",
-        jobsUrl: "https://www.linkedin.com/company/sunology/jobs/",
+        postUrl: "https://maddyness.com/2023/11/15/sunology-station-solaire/",
+        postTitle: "📰 Article Développement Sunology : Autoconsommation & Qualité de Service (4.6/5)",
         desc: "Stations solaires et équipements d'énergie intelligente pour la maison.",
         challenge: "Animation du réseau de distribution B2B et structuration de la force de vente.",
         contacts: [
@@ -711,7 +720,8 @@ const companiesData = [
         sector: "Domotique & Smart Home Leader",
         defaultRole: "Head of Sales B2B / Directeur Régional",
         defaultPitch: "Bonjour, L'accélération de la numérisation des bâtiments tertiaires et le suivi d'énergie nécessitent un encadrement des équipes commerciales terrain mûr et engagé. Mon parcours en direction opérationnelle me permet de structurer vos ventes B2B.",
-        jobsUrl: "https://www.linkedin.com/company/delta-dore/jobs/",
+        postUrl: "https://www.google.com/search?q=Delta+Dore+strategie+bâtiment+connecté&tbm=nws",
+        postTitle: "📰 Actualité Stratégique : Numérisation des Bâtiments Delta Dore",
         desc: "Pionnier français du logement connecté et de la gestion d'énergie.",
         challenge: "Fidélisation des installateurs & accélération de l'acquisition B2B tertiaire.",
         contacts: [
@@ -726,7 +736,8 @@ const companiesData = [
         sector: "Smart Home & Objets Connectés",
         defaultRole: "VP Smart Building / Directeur Partenariats B2B",
         defaultPitch: "Bonjour, Le déploiement des objets connectés auprès des grands comptes exige d'allier rigueur de service et maîtrise des outils d'acquisition B2B. Je serais ravi de vous apporter mon expertise managériale.",
-        jobsUrl: "https://www.linkedin.com/company/netatmo/jobs/",
+        postUrl: "https://www.google.com/search?q=Netatmo+Legrand+strategie+smart+home&tbm=nws",
+        postTitle: "📰 Article Développement : Intégration Smart Home Legrand Netatmo",
         desc: "Équipements de maison intelligente, thermostats et sécurité connectée.",
         challenge: "Déploiement grands comptes promoteurs et rétention du réseau B2B.",
         contacts: [
@@ -741,7 +752,8 @@ const companiesData = [
         sector: "Smart Building Data Platform",
         defaultRole: "Directeur de la Relation Client & Déploiement B2B",
         defaultPitch: "Bonjour Benjamin, La fidélisation des bailleurs sociaux et tertiaires sur votre plateforme cloud exige une proximité managériale et une vraie culture du Customer Success. Échangeons sur vos enjeux.",
-        jobsUrl: "https://www.linkedin.com/company/intent-technologies/jobs/",
+        postUrl: "https://www.google.com/search?q=Intent+Technologies+smart+building+croissance&tbm=nws",
+        postTitle: "📰 Post Stratégique : Croissance Cloud & Data Intent Technologies",
         desc: "Plateforme Cloud de gestion des données du bâtiment résidenciel et tertiaire.",
         challenge: "Rétention des bailleurs sociaux/tertiaires + conquête B2B.",
         contacts: [
@@ -756,7 +768,8 @@ const companiesData = [
         sector: "B2B Carbon & ESG Software",
         defaultRole: "Head of Sales Mid-Market / CS Lead",
         defaultPitch: "Bonjour Rachel, Accompagner les grands comptes dans le pilotage de leur empreinte carbone exige un encadrement des équipes Account Management solide et orienté résultats. Basé à Bordeaux, je serais ravi d'échanger.",
-        jobsUrl: "https://www.linkedin.com/company/sweep-carbon/jobs/",
+        postUrl: "https://www.google.com/search?q=Sweep+carbon+Rachel+Delacour+strategie&tbm=nws",
+        postTitle: "📰 Article Stratégique Rachel Delacour : Rétention & ESG Enterprise",
         desc: "SaaS de pilotage carbone pour entreprises et actifs immobiliers.",
         challenge: "Structuration des équipes Account Management & Sales Mid-Market.",
         contacts: [
@@ -771,7 +784,8 @@ const companiesData = [
         sector: "PropTech / Real Estate Ops",
         defaultRole: "Head of Sales France / Account Executive Director",
         defaultPitch: "Bonjour, Structurer la fidélisation des artisans et des grands bailleurs français demande une vraie maîtrise de l'animation d'équipes et de la gestion de P&L.",
-        jobsUrl: "https://www.linkedin.com/company/plentific/jobs/",
+        postUrl: "https://www.google.com/search?q=Plentific+PropTech+France+developpement&tbm=nws",
+        postTitle: "📰 Article Stratégique : Déploiement France & Rétention Plentific",
         desc: "SaaS & Marketplace de gestion d'interventions pour propriétaires et bailleurs.",
         challenge: "Fidélisation du réseau d'artisans/bailleurs et acquisition grands comptes.",
         contacts: [
@@ -786,7 +800,8 @@ const companiesData = [
         sector: "PropTech Immobilière",
         defaultRole: "Directeur Réseau & Partenariats B2B",
         defaultPitch: "Bonjour Rémy, Animer et fidéliser le réseau d'agents immobiliers partenaires nécessite un accompagnement terrain de haut niveau. Échangeons lors de mon prochain passage à Bordeaux.",
-        jobsUrl: "https://www.linkedin.com/company/zefir-co/jobs/",
+        postUrl: "https://www.google.com/search?q=Zefir+PropTech+Remy+Fabre+strategie&tbm=nws",
+        postTitle: "📰 Post Stratégique Rémy Fabre : Réseau Partenaires Zefir",
         desc: "Outils et services d'achat/revente pour agents immobiliers.",
         challenge: "Rétention du réseau d'agents partenaires et développement force de vente.",
         contacts: [
@@ -801,7 +816,8 @@ const companiesData = [
         sector: "ConTech / SaaS Bâtiment",
         defaultRole: "Head of Sales & Customer Success",
         defaultPitch: "Bonjour Jean-Gabriel, Réduire le churn des PME du bâtiment sur votre solution de gestion financière demande un Customer Success proactif et un encadrement managérial engagé.",
-        jobsUrl: "https://www.linkedin.com/company/graneet/jobs/",
+        postUrl: "https://www.google.com/search?q=Graneet+ConTech+croissance+PME&tbm=nws",
+        postTitle: "📰 Article Développement : Graneet & l'accompagnement des PME",
         desc: "Logiciel de gestion financière pour PME du bâtiment et second œuvre.",
         challenge: "Stabilisation du Churn des PME et recrutement de nouveaux clients.",
         contacts: [
@@ -816,7 +832,8 @@ const companiesData = [
         sector: "ConTech SaaS Bâtiment",
         defaultRole: "Directeur Commercial & Customer Experience",
         defaultPitch: "Bonjour Dominique, Accompagner la numérisation des entreprises de construction en garantissant un fort taux de réabonnement est une mission passionnante qui résonne avec mes compétences.",
-        jobsUrl: "https://www.linkedin.com/company/vertuoza/jobs/",
+        postUrl: "https://www.google.com/search?q=Vertuoza+ConTech+développement&tbm=nws",
+        postTitle: "📰 Article Stratégique : Croissance & Fidélisation Vertuoza",
         desc: "SaaS de gestion pour entreprises de construction et rénovation.",
         challenge: "Accompagnement client (CSM) et prospection commerciale B2B.",
         contacts: [
@@ -831,7 +848,8 @@ const companiesData = [
         sector: "Smart Lock & Contrôle d'accès",
         defaultRole: "Head of Business Development & Key Accounts",
         defaultPitch: "Bonjour Alexis, La rétention des gestionnaires de bureaux connectés s'appuie sur la qualité de l'expérience utilisateur et du service. Présentons-nous de manière informelle.",
-        jobsUrl: "https://www.linkedin.com/company/welcomr/jobs/",
+        postUrl: "https://www.google.com/search?q=Welcomr+smart+lock+bureaux+développement&tbm=nws",
+        postTitle: "📰 Article Stratégique : Contrôle d'accès Cloud Welcomr",
         desc: "Solution de contrôle d'accès cloud et intelligent pour bureaux.",
         challenge: "Rétention des gestionnaires de bureaux et déploiement B2B.",
         contacts: [
@@ -846,7 +864,8 @@ const companiesData = [
         sector: "PropTech Flex-Office",
         defaultRole: "Directeur d'Agence Régionale / Head of Ops",
         defaultPitch: "Bonjour Benjamin, La fidélisation des entreprises locataires de flex-office exige un sens poussé de l'accueil de haut niveau et de la gestion de site. Échangeons sur vos projets à Bordeaux.",
-        jobsUrl: "https://www.linkedin.com/company/deskeo/jobs/",
+        postUrl: "https://www.google.com/search?q=Deskeo+flex+office+bordeaux+developpement&tbm=nws",
+        postTitle: "📰 Post Développement : Expansion Flex-Office Deskeo",
         desc: "Aménagement et gestion d'espaces de travail connectés.",
         challenge: "Rétention des locataires corporate et commercialisation d'espaces.",
         contacts: [
@@ -861,7 +880,8 @@ const companiesData = [
         sector: "Domotique Pro & Bâtiment Connecté",
         defaultRole: "Managing Director / Head of Sales France",
         defaultPitch: "Bonjour, Structurer la fidélisation du réseau Loxone Partners et piloter l'acquisition B2B exige une présence managériale et commerciale réactive.",
-        jobsUrl: "https://www.linkedin.com/company/loxone/jobs/",
+        postUrl: "https://www.google.com/search?q=Loxone+France+domotique+bâtiment+connecté&tbm=nws",
+        postTitle: "📰 Article Stratégique : Automatisation de Bâtiment Loxone",
         desc: "Leader européen des systèmes d'automatisation pour bâtiments intelligentes.",
         challenge: "Rétention des Loxone Partners installateurs et conquête B2B.",
         contacts: [
@@ -876,7 +896,8 @@ const companiesData = [
         sector: "PropTech Gestion Locative Connectée",
         defaultRole: "Directeur de la Relation Bailleurs & Partenariats",
         defaultPitch: "Bonjour Gilles, Fidéliser les propriétaires et les administrateurs de biens exige de la transparence et un encadrement des équipes de support rigoureux.",
-        jobsUrl: "https://www.linkedin.com/company/homepilot-fr/jobs/",
+        postUrl: "https://www.google.com/search?q=Homepilot+gestion+locative+Somfy&tbm=nws",
+        postTitle: "📰 Article Stratégique : Homepilot & la Gestion Locative Transparente",
         desc: "Plateforme de gestion locative intelligente et transparente.",
         challenge: "Fidélisation des propriétaires et acquisition d'administrateurs de biens.",
         contacts: [
@@ -891,7 +912,8 @@ const companiesData = [
         sector: "B2B Tech Terrain & Bâtiment",
         defaultRole: "Directeur Commercial & grands Comptes",
         defaultPitch: "Bonjour Philippe, Développer la fidélité de vos comptes industriels et techniciens exige une organisation commerciale terrain claire et motivée.",
-        jobsUrl: "https://www.linkedin.com/company/kizeo/jobs/",
+        postUrl: "https://www.google.com/search?q=Kizeo+Form+croissance+B2B&tbm=nws",
+        postTitle: "📰 Article Stratégique : Kizeo & la Transformation Terrain",
         desc: "App mobile de formulaires et diagnostics pour techniciens du bâtiment.",
         challenge: "Rétention des comptes industriels et prospection B2B.",
         contacts: [
@@ -906,7 +928,8 @@ const companiesData = [
         sector: "IoT & Smart Home Cloud",
         defaultRole: "Head of Sales / Business Development IoT",
         defaultPitch: "Bonjour, Accompagner les intégrateurs domotiques et industriels exige un sens aigu de la relation partenaire et de l'encadrement d'équipes.",
-        jobsUrl: "https://www.linkedin.com/company/overkiz/jobs/",
+        postUrl: "https://www.google.com/search?q=Overkiz+Somfy+IoT+smart+home&tbm=nws",
+        postTitle: "📰 Article Stratégique : Overkiz IoT Cloud & Partenariats Somfy",
         desc: "Plateforme IoT pour domotique et bâtiments connectés.",
         challenge: "Fidélisation des partenaires industriels et intégrateurs.",
         contacts: [
@@ -975,9 +998,10 @@ function renderCards(data) {
                 <div class="company-desc">${item.desc}</div>
                 <div class="challenge-box"><strong>🎯 Enjeu Clé :</strong> ${item.challenge}</div>
 
+                <!-- BOUTON DU POST / ARTICLE STRATEGIQUE SUR LE DEVELOPPEMENT -->
                 <div style="margin-bottom: 12px;">
-                    <a href="${item.jobsUrl}" target="_blank" class="btn-jobs">
-                        🔎 Voir les Offres & Postes de ${item.name}
+                    <a href="${item.postUrl}" target="_blank" class="btn-post-article">
+                        ${item.postTitle || '📰 Voir le Post / Article Stratégique (Croissance & Rétention)'}
                     </a>
                 </div>
                 
