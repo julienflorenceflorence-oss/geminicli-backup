@@ -143,7 +143,129 @@
             outline: none;
         }
 
-        /* GRID DES CIBLES */
+        /* SECTION AUDIO DEBRIEF */
+        .audio-section {
+            background: var(--card-bg);
+            border: 1px solid var(--card-border);
+            border-radius: 14px;
+            padding: 30px;
+            margin-bottom: 40px;
+            backdrop-filter: blur(12px);
+            box-shadow: 0 8px 30px rgba(0,0,0,0.4);
+        }
+
+        .audio-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+            flex-wrap: wrap;
+            gap: 15px;
+        }
+
+        .audio-title {
+            font-family: 'Cinzel', serif;
+            color: var(--gold);
+            font-size: 1.4rem;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .dropzone {
+            border: 2px dashed var(--gold);
+            background: rgba(212, 175, 55, 0.05);
+            border-radius: 12px;
+            padding: 30px;
+            text-align: center;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            margin-bottom: 25px;
+        }
+
+        .dropzone:hover, .dropzone.dragover {
+            background: rgba(212, 175, 55, 0.15);
+            border-color: var(--gold-light);
+            transform: scale(1.01);
+        }
+
+        .dropzone-icon {
+            font-size: 2.5rem;
+            margin-bottom: 10px;
+            color: var(--gold);
+        }
+
+        .dropzone-text {
+            font-size: 0.95rem;
+            color: var(--text);
+            font-weight: 600;
+        }
+
+        .dropzone-sub {
+            font-size: 0.8rem;
+            color: var(--text-dim);
+            margin-top: 5px;
+        }
+
+        .audio-list {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+
+        .audio-item {
+            background: rgba(0, 0, 0, 0.4);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            border-radius: 10px;
+            padding: 18px;
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+
+        .audio-item-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+
+        .audio-name {
+            font-weight: 700;
+            color: var(--gold-light);
+            font-size: 0.95rem;
+        }
+
+        .audio-meta {
+            font-size: 0.75rem;
+            color: var(--text-dim);
+        }
+
+        audio {
+            width: 100%;
+            height: 40px;
+            border-radius: 8px;
+            outline: none;
+        }
+
+        .btn-delete-audio {
+            background: rgba(239, 68, 68, 0.2);
+            border: 1px solid #EF4444;
+            color: #FCA5A5;
+            padding: 4px 10px;
+            border-radius: 6px;
+            font-size: 0.75rem;
+            cursor: pointer;
+            transition: 0.2s;
+        }
+
+        .btn-delete-audio:hover {
+            background: #EF4444;
+            color: #FFF;
+        }
+
+        /* GRID DES CARTE ENTREPRISES */
         .cards-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(380px, 1fr));
@@ -383,6 +505,29 @@
         <div class="kpi-card">
             <div class="kpi-num" id="kpi-contacted">0</div>
             <div class="kpi-label">Messages Envoyés</div>
+        </div>
+    </div>
+
+    <!-- ESPACE DEBRIEF AUDIO & NOTES VOCALES -->
+    <div class="audio-section">
+        <div class="audio-header">
+            <div class="audio-title">
+                🎙️ Espace Mémos Audio & Débriefs Téléphoniques
+            </div>
+            <span style="font-size: 0.8rem; color: var(--gold-light);">Glissez vos fichiers audio (MP3, WAV, M4A, AMR) pour écoute & archivage</span>
+        </div>
+
+        <!-- DROPZONE AUDIO -->
+        <div class="dropzone" id="audio-dropzone" onclick="document.getElementById('audio-input').click()">
+            <div class="dropzone-icon">📁 🎧</div>
+            <div class="dropzone-text">Glissez-déposez un fichier audio ici ou cliquez pour importer</div>
+            <div class="dropzone-sub">Formats pris en charge : .mp3, .wav, .m4a, .amr, .ogg, .webm</div>
+            <input type="file" id="audio-input" accept="audio/*" style="display: none;" onchange="handleAudioUpload(event)">
+        </div>
+
+        <!-- LISTE DES AUDIOS UPLOADES -->
+        <div class="audio-list" id="audio-list">
+            <!-- Rempli dynamiquement -->
         </div>
     </div>
 
@@ -680,6 +825,111 @@ const companiesData = [
     }
 ];
 
+// INDEXEDDB / LOCAL STORAGE POUR LES FICHIERS AUDIO
+let audioFiles = JSON.parse(localStorage.getItem('prospection_audios') || '[]');
+
+function handleAudioUpload(event) {
+    const files = event.target.files;
+    if (!files || files.length === 0) return;
+
+    for (let i = 0; i < files.length; i++) {
+        const file = files[i];
+        const reader = new FileReader();
+
+        reader.onload = function(e) {
+            const audioData = {
+                id: 'audio_' + Date.now() + '_' + Math.random().toString(36).substr(2, 4),
+                name: file.name,
+                size: (file.size / (1024 * 1024)).toFixed(2) + ' MB',
+                date: new Date().toLocaleString('fr-FR'),
+                dataUrl: e.target.result,
+                note: ''
+            };
+
+            audioFiles.unshift(audioData);
+            try {
+                localStorage.setItem('prospection_audios', JSON.stringify(audioFiles));
+            } catch (err) {
+                alert("Le fichier audio est volumineux pour le stockage local du navigateur. Pour les gros fichiers, l'écoute se fait pendant la session.");
+            }
+            renderAudios();
+        };
+
+        reader.readAsDataURL(file);
+    }
+}
+
+function renderAudios() {
+    const list = document.getElementById('audio-list');
+    list.innerHTML = '';
+
+    if (audioFiles.length === 0) {
+        list.innerHTML = '<div style="text-align:center; color: var(--text-dim); font-size: 0.85rem; padding: 15px;">Aucun mémo audio transféré pour le moment.</div>';
+        return;
+    }
+
+    audioFiles.forEach((item, index) => {
+        const div = document.createElement('div');
+        div.className = 'audio-item';
+        div.innerHTML = `
+            <div class="audio-item-header">
+                <div>
+                    <span class="audio-name">🎙️ ${item.name}</span>
+                    <span class="audio-meta"> &bull; ${item.size} &bull; Transféré le ${item.date}</span>
+                </div>
+                <button class="btn-delete-audio" onclick="deleteAudio(${index})">Supprimer</button>
+            </div>
+            <audio controls src="${item.dataUrl}"></audio>
+            <input type="text" class="notes-area" style="min-height:35px;" placeholder="Ajouter une note ou résumé de cet enregistrement..." value="${item.note || ''}" onchange="saveAudioNote(${index}, this.value)">
+        `;
+        list.appendChild(div);
+    });
+}
+
+function deleteAudio(index) {
+    if (confirm('Voulez-vous vraiment supprimer ce mémo audio ?')) {
+        audioFiles.splice(index, 1);
+        localStorage.setItem('prospection_audios', JSON.stringify(audioFiles));
+        renderAudios();
+    }
+}
+
+function saveAudioNote(index, text) {
+    audioFiles[index].note = text;
+    localStorage.setItem('prospection_audios', JSON.stringify(audioFiles));
+}
+
+// SETUP DRAG & DROP ZONE
+document.addEventListener('DOMContentLoaded', () => {
+    const dropzone = document.getElementById('audio-dropzone');
+    
+    ['dragenter', 'dragover', 'dragleave', 'drop'].forEach(eventName => {
+        dropzone.addEventListener(eventName, preventDefaults, false);
+    });
+
+    function preventDefaults(e) {
+        e.preventDefault();
+        e.stopPropagation();
+    }
+
+    ['dragenter', 'dragover'].forEach(eventName => {
+        dropzone.addEventListener(eventName, () => dropzone.classList.add('dragover'), false);
+    });
+
+    ['dragleave', 'drop'].forEach(eventName => {
+        dropzone.addEventListener(eventName, () => dropzone.classList.remove('dragover'), false);
+    });
+
+    dropzone.addEventListener('drop', (e) => {
+        const dt = e.dataTransfer;
+        const files = dt.files;
+        handleAudioUpload({ target: { files: files } });
+    });
+
+    renderAudios();
+    renderCards(companiesData);
+});
+
 // RENDER CARDS
 function renderCards(data) {
     const container = document.getElementById('cards-container');
@@ -796,11 +1046,6 @@ function copyScript(id) {
         alert('Script d\'accroche copié dans votre presse-papier !');
     });
 }
-
-// Initial render
-document.addEventListener('DOMContentLoaded', () => {
-    renderCards(companiesData);
-});
 </script>
 </body>
 </html>
