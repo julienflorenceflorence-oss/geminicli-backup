@@ -164,6 +164,11 @@
             justify-content: space-between;
         }
 
+        .company-card.role-validated {
+            border-color: var(--success);
+            box-shadow: 0 0 20px rgba(16, 185, 129, 0.15);
+        }
+
         .company-card:hover {
             transform: translateY(-4px);
             border-color: var(--gold);
@@ -203,6 +208,7 @@
         .badge-bordeaux { background: rgba(139, 0, 0, 0.4); border: 1px solid #FF4D4D; color: #FFAAAA; }
         .badge-paris { background: rgba(30, 58, 138, 0.4); border: 1px solid #60A5FA; color: #93C5FD; }
         .badge-funding { background: rgba(212, 175, 55, 0.15); border: 1px solid var(--gold); color: var(--gold-light); }
+        .badge-validated { background: rgba(16, 185, 129, 0.2); border: 1px solid var(--success); color: #A7F3D0; }
 
         .company-desc {
             font-size: 0.88rem;
@@ -219,6 +225,75 @@
             color: #E2E8F0;
             margin-bottom: 20px;
             border-radius: 0 8px 8px 0;
+        }
+
+        /* POSTE VISE & MESSAGE CONFIG */
+        .role-config-box {
+            background: rgba(0, 0, 0, 0.4);
+            border: 1px solid rgba(212, 175, 55, 0.3);
+            border-radius: 10px;
+            padding: 14px;
+            margin-top: 15px;
+            margin-bottom: 15px;
+        }
+
+        .role-config-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 10px;
+        }
+
+        .role-title {
+            font-size: 0.8rem;
+            font-weight: 700;
+            color: var(--gold-light);
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .role-checkbox-label {
+            font-size: 0.75rem;
+            color: var(--success);
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            cursor: pointer;
+            font-weight: 600;
+        }
+
+        .role-input {
+            width: 100%;
+            background: rgba(0, 0, 0, 0.5);
+            border: 1px solid rgba(255, 255, 255, 0.12);
+            border-radius: 6px;
+            color: #FFF;
+            font-size: 0.82rem;
+            padding: 8px 12px;
+            margin-bottom: 8px;
+            outline: none;
+        }
+
+        .role-input:focus {
+            border-color: var(--gold);
+        }
+
+        .pitch-textarea {
+            width: 100%;
+            background: rgba(0, 0, 0, 0.5);
+            border: 1px solid rgba(255, 255, 255, 0.12);
+            border-radius: 6px;
+            color: #DDD;
+            font-size: 0.8rem;
+            padding: 8px 12px;
+            resize: vertical;
+            min-height: 55px;
+            outline: none;
+        }
+
+        .pitch-textarea:focus {
+            border-color: var(--gold);
         }
 
         /* CONTACTS & BUTTONS */
@@ -317,7 +392,6 @@
 
         .card-audio-player {
             margin-top: 8px;
-
         }
 
         .card-audio-player audio {
@@ -447,6 +521,10 @@
             <div class="kpi-label">Cibles Qualifiées</div>
         </div>
         <div class="kpi-card">
+            <div class="kpi-num" id="kpi-roles">0</div>
+            <div class="kpi-label">Postes Validés</div>
+        </div>
+        <div class="kpi-card">
             <div class="kpi-num" id="kpi-bordeaux">7</div>
             <div class="kpi-label">Bordeaux / Grand Ouest</div>
         </div>
@@ -466,6 +544,7 @@
             <button class="btn-filter active" onclick="filterCategory('all')">Toutes les Cibles</button>
             <button class="btn-filter" onclick="filterCategory('bordeaux')">Bordeaux / Sud-Ouest</button>
             <button class="btn-filter" onclick="filterCategory('paris')">Paris</button>
+            <button class="btn-filter" onclick="filterCategory('validated')">Postes Validés ✓</button>
             <button class="btn-filter" onclick="filterCategory('contacted')">En cours de Prospection</button>
         </div>
         <input type="text" id="search-input" class="search-box" placeholder="Rechercher une entreprise..." onkeyup="searchCards()">
@@ -513,6 +592,7 @@ const companiesData = [
         region: "bordeaux",
         funding: "55 M€ (PSG Equity)",
         sector: "B2B Tech / CRM & Facturation",
+        defaultRole: "Chief Revenue Officer (VP Sales) / Head of Sales B2B",
         desc: "Suite SaaS globale de gestion B2B pour PME et entreprises de services.",
         challenge: "Stabilisation du Churn client + recrutement et encadrement de la force de vente directe.",
         contacts: [
@@ -526,6 +606,7 @@ const companiesData = [
         region: "paris",
         funding: "150 M€ (Série C)",
         sector: "PropTech / ESG & Smart Building Data",
+        defaultRole: "Head of Customer Success / Director Account Management",
         desc: "Leader européen de la transition énergétique pour le patrimoine immobilier tertiaire.",
         challenge: "Upsell et Rétention (Account Management) sur les géants de l'immobilier.",
         contacts: [
@@ -539,6 +620,7 @@ const companiesData = [
         region: "paris",
         funding: "44 M€ (Mubadala, Bpifrance)",
         sector: "PropTech / Copropriété & Logement",
+        defaultRole: "Directeur des Opérations Clients & Rétention Habitat",
         desc: "Plateforme de gestion de copropriété (syndic) et de gestion locative.",
         challenge: "Satisfaction & rétention des syndics bénévole + prospection de nouvelles copros.",
         contacts: [
@@ -552,6 +634,7 @@ const companiesData = [
         region: "paris",
         funding: "12 M€ (Eurazeo, Daphni)",
         sector: "Smart Office & Building Experience",
+        defaultRole: "Head of Sales / CS Smart Building & Hospitality Tech",
         desc: "App tout-en-un de gestion d'expérience occupant et des espaces de travail.",
         challenge: "Customer Success / Rétention pour limiter le Churn sur les immeubles tertiaires.",
         contacts: [
@@ -564,6 +647,7 @@ const companiesData = [
         region: "bordeaux",
         funding: "> 3.5 Mds€ (Hg Capital)",
         sector: "PropTech / ConTech & LegalTech",
+        defaultRole: "Directeur de BU / Directeur Commercial Pôle Immobilier",
         desc: "Géant européen des logiciels pour agences immobilières, notaires et bâtiment.",
         challenge: "Fidélisation du parc installé et management de proximité des équipes régionales.",
         contacts: [
@@ -577,6 +661,7 @@ const companiesData = [
         region: "bordeaux",
         funding: "> 10 M€ (Sowefund)",
         sector: "Smart Home Energy & Domotique",
+        defaultRole: "Directeur du Développement Commercial & Réseau B2B",
         desc: "Stations solaires et équipements d'énergie intelligente pour la maison.",
         challenge: "Animation du réseau de distribution B2B et structuration de la force de vente.",
         contacts: [
@@ -590,6 +675,7 @@ const companiesData = [
         region: "bordeaux",
         funding: "CA > 140 M€",
         sector: "Domotique & Smart Home Leader",
+        defaultRole: "Head of Sales B2B / Directeur Régional",
         desc: "Pionnier français du logement connecté et de la gestion d'énergie.",
         challenge: "Fidélisation des installateurs & accélération de l'acquisition B2B tertiaire.",
         contacts: [
@@ -602,6 +688,7 @@ const companiesData = [
         region: "paris",
         funding: "Groupe Legrand",
         sector: "Smart Home & Objets Connectés",
+        defaultRole: "VP Smart Building / Directeur Partenariats B2B",
         desc: "Équipements de maison intelligente, thermostats et sécurité connectée.",
         challenge: "Déploiement grands comptes promoteurs et rétention du réseau B2B.",
         contacts: [
@@ -614,6 +701,7 @@ const companiesData = [
         region: "paris",
         funding: "15 M€ (Amundi)",
         sector: "Smart Building Data Platform",
+        defaultRole: "Directeur de la Relation Client & Déploiement B2B",
         desc: "Plateforme Cloud de gestion des données du bâtiment résidenciel et tertiaire.",
         challenge: "Rétention des bailleurs sociaux/tertiaires + conquête B2B.",
         contacts: [
@@ -626,6 +714,7 @@ const companiesData = [
         region: "bordeaux",
         funding: "> 100 M$",
         sector: "B2B Carbon & ESG Software",
+        defaultRole: "Head of Sales Mid-Market / CS Lead",
         desc: "SaaS de pilotage carbone pour entreprises et actifs immobiliers.",
         challenge: "Structuration des équipes Account Management & Sales Mid-Market.",
         contacts: [
@@ -638,6 +727,7 @@ const companiesData = [
         region: "paris",
         funding: "> 100 M$",
         sector: "PropTech / Real Estate Ops",
+        defaultRole: "Head of Sales France / Account Executive Director",
         desc: "SaaS & Marketplace de gestion d'interventions pour propriétaires et bailleurs.",
         challenge: "Fidélisation du réseau d'artisans/bailleurs et acquisition grands comptes.",
         contacts: [
@@ -650,6 +740,7 @@ const companiesData = [
         region: "bordeaux",
         funding: "> 20 M€",
         sector: "PropTech Immobilière",
+        defaultRole: "Directeur Réseau & Partenariats B2B",
         desc: "Outils et services d'achat/revente pour agents immobiliers.",
         challenge: "Rétention du réseau d'agents partenaires et développement force de vente.",
         contacts: [
@@ -662,6 +753,7 @@ const companiesData = [
         region: "paris",
         funding: "> 6 M€ (Point Nine)",
         sector: "ConTech / SaaS Bâtiment",
+        defaultRole: "Head of Sales & Customer Success",
         desc: "Logiciel de gestion financière pour PME du bâtiment et second œuvre.",
         challenge: "Stabilisation du Churn des PME et recrutement de nouveaux clients.",
         contacts: [
@@ -674,6 +766,7 @@ const companiesData = [
         region: "paris",
         funding: "> 10 M€",
         sector: "ConTech SaaS Bâtiment",
+        defaultRole: "Directeur Commercial & Customer Experience",
         desc: "SaaS de gestion pour entreprises de construction et rénovation.",
         challenge: "Accompagnement client (CSM) et prospection commerciale B2B.",
         contacts: [
@@ -686,6 +779,7 @@ const companiesData = [
         region: "paris",
         funding: "> 5 M€",
         sector: "Smart Lock & Contrôle d'accès",
+        defaultRole: "Head of Business Development & Key Accounts",
         desc: "Solution de contrôle d'accès cloud et intelligent pour bureaux.",
         challenge: "Rétention des gestionnaires de bureaux et déploiement B2B.",
         contacts: [
@@ -698,6 +792,7 @@ const companiesData = [
         region: "bordeaux",
         funding: "> 20 M€",
         sector: "PropTech Flex-Office",
+        defaultRole: "Directeur d'Agence Régionale / Head of Ops",
         desc: "Aménagement et gestion d'espaces de travail connectés.",
         challenge: "Rétention des locataires corporate et commercialisation d'espaces.",
         contacts: [
@@ -710,6 +805,7 @@ const companiesData = [
         region: "bordeaux",
         funding: "Groupe Loxone Europe",
         sector: "Domotique Pro & Bâtiment Connecté",
+        defaultRole: "Managing Director / Head of Sales France",
         desc: "Leader européen des systèmes d'automatisation pour bâtiments intelligentes.",
         challenge: "Rétention des Loxone Partners installateurs et conquête B2B.",
         contacts: [
@@ -722,6 +818,7 @@ const companiesData = [
         region: "paris",
         funding: "Filiale Somfy",
         sector: "PropTech Gestion Locative Connectée",
+        defaultRole: "Directeur de la Relation Bailleurs & Partenariats",
         desc: "Plateforme de gestion locative intelligente et transparente.",
         challenge: "Fidélisation des propriétaires et acquisition d'administrateurs de biens.",
         contacts: [
@@ -734,6 +831,7 @@ const companiesData = [
         region: "bordeaux",
         funding: "> 10 M€ CA Rentable",
         sector: "B2B Tech Terrain & Bâtiment",
+        defaultRole: "Directeur Commercial & grands Comptes",
         desc: "App mobile de formulaires et diagnostics pour techniciens du bâtiment.",
         challenge: "Rétention des comptes industriels et prospection B2B.",
         contacts: [
@@ -746,6 +844,7 @@ const companiesData = [
         region: "paris",
         funding: "Groupe Somfy",
         sector: "IoT & Smart Home Cloud",
+        defaultRole: "Head of Sales / Business Development IoT",
         desc: "Plateforme IoT pour domotique et bâtiments connectés.",
         challenge: "Fidélisation des partenaires industriels et intégrateurs.",
         contacts: [
@@ -763,9 +862,12 @@ function renderCards(data) {
         const savedStatus = localStorage.getItem('status_' + item.id) || 'to_contact';
         const savedNotes = localStorage.getItem('notes_' + item.id) || '';
         const savedAudio = localStorage.getItem('card_audio_' + item.id);
+        const savedRole = localStorage.getItem('role_title_' + item.id) || item.defaultRole || '';
+        const savedPitch = localStorage.getItem('role_pitch_' + item.id) || '';
+        const isRoleValidated = localStorage.getItem('role_validated_' + item.id) === 'true';
 
         const card = document.createElement('div');
-        card.className = `company-card category-${item.region}`;
+        card.className = `company-card category-${item.region} ${isRoleValidated ? 'role-validated' : ''}`;
         card.setAttribute('data-name', item.name.toLowerCase());
 
         let contactsHtml = '';
@@ -804,12 +906,28 @@ function renderCards(data) {
                         <div class="tag-row">
                             <span class="badge ${item.region === 'bordeaux' ? 'badge-bordeaux' : 'badge-paris'}">${item.region.toUpperCase()}</span>
                             <span class="badge badge-funding">${item.funding}</span>
+                            ${isRoleValidated ? '<span class="badge badge-validated">✓ POSTE CHOISI</span>' : ''}
                         </div>
                     </div>
                 </div>
                 <div class="company-desc">${item.desc}</div>
                 <div class="challenge-box"><strong>🎯 Enjeu Clé :</strong> ${item.challenge}</div>
                 
+                <!-- POSTE VISE ET PITCH DEDIE -->
+                <div class="role-config-box">
+                    <div class="role-config-header">
+                        <span class="role-title">🎯 Intitulé du Poste Cible :</span>
+                        <label class="role-checkbox-label">
+                            <input type="checkbox" ${isRoleValidated ? 'checked' : ''} onchange="toggleRoleValidation('${item.id}', this.checked)">
+                            Poste Choisis & Validé
+                        </label>
+                    </div>
+                    <input type="text" class="role-input" placeholder="Ex: Head of Sales, Directeur d'Agence..." value="${savedRole}" onchange="saveRoleTitle('${item.id}', this.value)">
+                    
+                    <div class="role-title" style="margin-top: 6px; margin-bottom: 4px;">📝 Commentaire / Pitch Rédigé pour ce Poste :</div>
+                    <textarea class="pitch-textarea" placeholder="Consigner l'approche personnalisée rédigée pour ce poste..." onchange="saveRolePitch('${item.id}', this.value)">${savedPitch}</textarea>
+                </div>
+
                 <div class="contacts-section">
                     <div style="font-size: 0.8rem; font-weight: 700; color: var(--gold); margin-bottom: 8px;">DÉCIDEURS C-LEVEL :</div>
                     ${contactsHtml}
@@ -849,6 +967,20 @@ function renderCards(data) {
     updateCounters();
 }
 
+// SAVE ROLE & PITCH PER CARD
+function saveRoleTitle(id, val) {
+    localStorage.setItem('role_title_' + id, val);
+}
+
+function saveRolePitch(id, val) {
+    localStorage.setItem('role_pitch_' + id, val);
+}
+
+function toggleRoleValidation(id, isChecked) {
+    localStorage.setItem('role_validated_' + id, isChecked ? 'true' : 'false');
+    renderCards(companiesData);
+}
+
 // UPLOAD AUDIO DEDICATED TO A CARD
 function uploadCardAudio(id, event) {
     const file = event.target.files[0];
@@ -884,6 +1016,9 @@ function filterCategory(cat) {
 
     if (cat === 'all') {
         renderCards(companiesData);
+    } else if (cat === 'validated') {
+        const filtered = companiesData.filter(item => localStorage.getItem('role_validated_' + item.id) === 'true');
+        renderCards(filtered);
     } else if (cat === 'contacted') {
         const filtered = companiesData.filter(item => {
             const status = localStorage.getItem('status_' + item.id);
@@ -913,13 +1048,18 @@ function saveNotes(id, val) {
 
 function updateCounters() {
     let contactedCount = 0;
+    let validatedCount = 0;
     companiesData.forEach(item => {
         const status = localStorage.getItem('status_' + item.id);
         if (status && status !== 'to_contact') {
             contactedCount++;
         }
+        if (localStorage.getItem('role_validated_' + item.id) === 'true') {
+            validatedCount++;
+        }
     });
     document.getElementById('kpi-contacted').textContent = contactedCount;
+    document.getElementById('kpi-roles').textContent = validatedCount;
 }
 
 function copyScript(id) {
