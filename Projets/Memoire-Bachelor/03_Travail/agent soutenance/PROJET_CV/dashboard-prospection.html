@@ -349,14 +349,15 @@
 
         .action-btns {
             display: flex;
-            gap: 8px;
+            gap: 6px;
+            flex-wrap: wrap;
         }
 
         .btn-action {
             display: inline-flex;
             align-items: center;
             justify-content: center;
-            padding: 6px 12px;
+            padding: 6px 10px;
             border-radius: 6px;
             font-size: 0.75rem;
             font-weight: 600;
@@ -379,6 +380,26 @@
         }
 
         .btn-email:hover { background: var(--gold-light); }
+
+        .btn-phone {
+            background: #10B981;
+            color: #000;
+            font-weight: 700;
+        }
+
+        .btn-phone:hover { background: #34D399; }
+
+        .phone-box {
+            background: rgba(16, 185, 129, 0.1);
+            border: 1px solid rgba(16, 185, 129, 0.3);
+            border-radius: 8px;
+            padding: 8px 12px;
+            margin-bottom: 12px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-size: 0.8rem;
+        }
 
         /* CARD DEDICATED AUDIO SECTION */
         .card-audio-box {
@@ -619,6 +640,7 @@ const companiesData = [
         region: "bordeaux",
         funding: "55 M€ (PSG Equity)",
         sector: "B2B Tech / CRM & Facturation",
+        phone: "05 46 30 50 00",
         defaultRole: "Chief Revenue Officer (VP Sales) / Head of Sales B2B",
         defaultPitch: "Bonjour Victor, Votre virage RevOps et l'adossement à TeamSystem démontrent que la priorité stratégique de Sellsy repose désormais sur la rétention du parc PME existant autant que sur l'acquisition. Mon profil hybride (15 ans de direction d'équipes P&L + spécialisation Rocket School) me permet d'apporter ce double regard : rigueur opérationnelle terrain et culture du chiffre. Installé à Bordeaux, seriez-vous ouvert à un café informel ?",
         webUrl: "https://www.sellsy.com/",
@@ -636,6 +658,7 @@ const companiesData = [
         region: "paris",
         funding: "150 M€ (Série C)",
         sector: "PropTech / ESG & Smart Building Data",
+        phone: "01 46 06 09 19",
         defaultRole: "Chief Client Officer / Director Account Management & CS",
         defaultPitch: "Bonjour Philippe, J'ai noté la structuration de votre pôle Client Delivery sous votre impulsion de CCO. Dans la phase actuelle d'expansion européenne de Deepki, la rétention et l'accompagnement des grands comptes investisseurs deviennent le véritable moteur de marge. Fort de 15 ans d'encadrement opérationnel aux exigences de rigueur élevées (gastronomie 5*) combinés à un Bachelor Rocket School (Growth & CRM), j'accompagne la fidélisation et la performance des équipes CS. Échangeons 10 min lors de mon prochain passage sur Paris ?",
         webUrl: "https://www.deepki.com/fr/",
@@ -653,6 +676,7 @@ const companiesData = [
         region: "paris",
         funding: "44 M€ (Mubadala, Bpifrance)",
         sector: "PropTech / Copropriété & Logement",
+        phone: "01 76 35 01 25",
         defaultRole: "Directeur des Opérations Clients & Rétention Habitat (NPS +65)",
         defaultPitch: "Bonjour Raphaël, Votre récente prise de parole sur le cap de la rentabilité et le maintien d'un NPS à +65 montre que la fidélisation des copropriétés est votre plus bel actif. Ayant dirigé des structures à fort niveau d'exigence (Place Dauphine, Guanahani) avec une approche client sans couture, je saurai encadrer vos équipes Customer Success/Ops pour pérenniser cette satisfaction. Échangeons-nous à Paris ?",
         webUrl: "https://matera.eu/fr/",
@@ -670,6 +694,7 @@ const companiesData = [
         region: "paris",
         funding: "12 M€ (Eurazeo, Daphni)",
         sector: "Smart Office & Building Experience",
+        phone: "01 84 80 43 00",
         defaultRole: "Head of Customer Experience & Hospitality Tech 'We Care'",
         defaultPitch: "Bonjour Éliane, Votre vision de la valeur 'We Care' pour limiter le Churn applicatif dans les immeubles tertiaires rejoint directement mes codes de l'hôtellerie de luxe parisienne. Rendre le bureau désirable et fidéliser les occupants exige des managers capables de marier rigueur d'accueil et outils digitaux. Je serais ravi de vous présenter mon approche.",
         webUrl: "https://www.witco.io/fr/",
@@ -686,6 +711,7 @@ const companiesData = [
         region: "bordeaux",
         funding: "> 3.5 Mds€ (Hg Capital)",
         sector: "PropTech / ConTech & LegalTech",
+        phone: "04 67 15 44 00",
         defaultRole: "Directeur de BU / Management Régional Support & Ventes (Bordeaux)",
         defaultPitch: "Bonjour Hugues, La régionalisation de votre support client pour renforcer la proximité avec vos parcs d'agences immobilières exige une présence managériale forte sur le terrain Sud-Ouest. Basé à Bordeaux avec une solide expérience de management d'équipes et de P&L, je serais ravi de contribuer à la structuration de cette relation client de confiance.",
         webUrl: "https://www.septeo.com/fr/",
@@ -703,6 +729,7 @@ const companiesData = [
         region: "bordeaux",
         funding: "> 10 M€ (Sowefund)",
         sector: "Smart Home Energy & Domotique",
+        phone: "02 52 33 14 33",
         defaultRole: "Directeur du Développement Commercial & Réseau Partenaires B2B",
         defaultPitch: "Bonjour Vincent, Maintenir une note de 4,6/5 avec une telle croissance et structurer l'accompagnement de votre réseau B2B est un défi d'encadrement passionnant. Mon expérience en animation de réseau commercial et coaching d'équipes terrain serait un atout précieux pour pérenniser vos partenariats. Prenons un moment pour en discuter.",
         webUrl: "https://sunology.eu/",
@@ -720,6 +747,7 @@ const companiesData = [
         region: "bordeaux",
         funding: "> 15 M€ (Breega)",
         sector: "PropTech / Gestion Immobilière",
+        phone: "01 86 76 07 24",
         defaultRole: "Directeur Régional Sud-Ouest / Head of Ops & Rétention Hôtes",
         defaultPitch: "Bonjour Aurélien, Consolidation de votre parc de logements sous gestion à Bordeaux et fidélisation des propriétaires nécessitent un encadrement des opérations et de la qualité sans faille. Fort de 15 ans en conciergerie et hôtellerie 5*, j'accompagne la structuration de vos équipes.",
         webUrl: "https://www.hostnfly.com/",
@@ -736,6 +764,7 @@ const companiesData = [
         region: "paris",
         funding: "> 10 M€",
         sector: "PropTech / Gestion Locative 100% En Ligne",
+        phone: "01 84 80 32 30",
         defaultRole: "Head of Customer Success / Directeur de la Rétention Bailleurs",
         defaultPitch: "Bonjour Nicolas, La gestion locative en ligne exige de maintenir un NPS élevé et d'éliminer toute friction client pour limiter le churn des bailleurs. Échangeons sur vos enjeux.",
         webUrl: "https://www.flatlooker.com/",
@@ -752,6 +781,7 @@ const companiesData = [
         region: "bordeaux",
         funding: "> 10 M€ (Breyer, Kima)",
         sector: "B2B Tech / Logistics & Storage Cloud",
+        phone: "01 84 88 56 12",
         defaultRole: "Directeur Commercial & Customer Retention B2B",
         defaultPitch: "Bonjour Maxime, Accompagner les industriels dans la gestion de leurs espaces logistiques demande un accompagnement grand compte réactif. Basé à Bordeaux, je serais ravi d'échanger.",
         webUrl: "https://www.spacefill.eu/fr/",
@@ -768,6 +798,7 @@ const companiesData = [
         region: "bordeaux",
         funding: "CA > 140 M€",
         sector: "Domotique & Smart Home Leader",
+        phone: "02 99 73 45 17",
         defaultRole: "Head of Sales B2B / Directeur Régional",
         defaultPitch: "Bonjour, L'accélération de la numérisation des bâtiments tertiaires et le suivi d'énergie nécessitent un encadrement des équipes commerciales terrain mûr et engagé. Mon parcours en direction opérationnelle me permet de structurer vos ventes B2B.",
         webUrl: "https://www.deltadore.fr/",
@@ -784,6 +815,7 @@ const companiesData = [
         region: "paris",
         funding: "Groupe Legrand",
         sector: "Smart Home & Objets Connectés",
+        phone: "01 41 41 85 85",
         defaultRole: "VP Smart Building / Directeur Partenariats B2B",
         defaultPitch: "Bonjour, Le déploiement des objets connectés auprès des grands comptes exige d'allier rigueur de service et maîtrise des outils d'acquisition B2B. Je serais ravi de vous apporter mon expertise managériale.",
         webUrl: "https://www.netatmo.com/fr-fr",
@@ -800,6 +832,7 @@ const companiesData = [
         region: "paris",
         funding: "15 M€ (Amundi)",
         sector: "Smart Building Data Platform",
+        phone: "03 20 19 09 10",
         defaultRole: "Directeur de la Relation Client & Déploiement B2B",
         defaultPitch: "Bonjour Benjamin, La fidélisation des bailleurs sociaux et tertiaires sur votre plateforme cloud exige une proximité managériale et une vraie culture du Customer Success. Échangeons sur vos enjeux.",
         webUrl: "https://intent.tech/fr/",
@@ -816,6 +849,7 @@ const companiesData = [
         region: "bordeaux",
         funding: "> 100 M$",
         sector: "B2B Carbon & ESG Software",
+        phone: "04 67 13 00 00",
         defaultRole: "Head of Sales Mid-Market / CS Lead",
         defaultPitch: "Bonjour Rachel, Accompagner les grands comptes dans le pilotage de leur empreinte carbone exige un encadrement des équipes Account Management solide et orienté résultats. Basé à Bordeaux, je serais ravi d'échanger.",
         webUrl: "https://www.sweep.net/",
@@ -832,6 +866,7 @@ const companiesData = [
         region: "bordeaux",
         funding: "> 20 M€",
         sector: "PropTech Immobilière",
+        phone: "01 87 66 12 00",
         defaultRole: "Directeur Réseau & Partenariats B2B",
         defaultPitch: "Bonjour Rémy, Animer et fidéliser le réseau d'agents immobiliers partenaires nécessite un accompagnement terrain de haut niveau. Échangeons lors de mon prochain passage à Bordeaux.",
         webUrl: "https://www.zefir.fr/",
@@ -848,6 +883,7 @@ const companiesData = [
         region: "paris",
         funding: "> 6 M€ (Point Nine)",
         sector: "ConTech / SaaS Bâtiment",
+        phone: "01 89 16 42 00",
         defaultRole: "Head of Sales & Customer Success",
         defaultPitch: "Bonjour Jean-Gabriel, Réduire le churn des PME du bâtiment sur votre solution de gestion financière demande un Customer Success proactif et un encadrement managérial engagé.",
         webUrl: "https://www.graneet.com/",
@@ -864,6 +900,7 @@ const companiesData = [
         region: "paris",
         funding: "> 5 M€",
         sector: "Smart Lock & Contrôle d'accès",
+        phone: "02 47 68 00 00",
         defaultRole: "Head of Business Development & Key Accounts",
         defaultPitch: "Bonjour Alexis, La rétention des gestionnaires de bureaux connectés s'appuie sur la qualité de l'expérience utilisateur et du service. Présentons-nous de manière informelle.",
         webUrl: "https://www.welcomr.fr/",
@@ -880,6 +917,7 @@ const companiesData = [
         region: "bordeaux",
         funding: "> 20 M€",
         sector: "PropTech Flex-Office",
+        phone: "01 76 34 00 88",
         defaultRole: "Directeur d'Agence Régionale / Head of Ops",
         defaultPitch: "Bonjour Benjamin, La fidélisation des entreprises locataires de flex-office exige un sens poussé de l'accueil de haut niveau et de la gestion de site. Échangeons sur vos projets à Bordeaux.",
         webUrl: "https://www.deskeo.fr/",
@@ -896,6 +934,7 @@ const companiesData = [
         region: "paris",
         funding: "Filiale Somfy FR",
         sector: "PropTech Gestion Locative Connectée",
+        phone: "01 84 88 40 40",
         defaultRole: "Directeur de la Relation Bailleurs & Partenariats",
         defaultPitch: "Bonjour Gilles, Fidéliser les propriétaires et les administrateurs de biens exige de la transparence et un encadrement des équipes de support rigoureux.",
         webUrl: "https://www.homepilot.fr/",
@@ -912,6 +951,7 @@ const companiesData = [
         region: "bordeaux",
         funding: "> 10 M€ CA Rentable",
         sector: "B2B Tech Terrain & Bâtiment",
+        phone: "04 90 23 67 60",
         defaultRole: "Directeur Commercial & grands Comptes",
         defaultPitch: "Bonjour Philippe, Développer la fidélité de vos comptes industriels et techniciens exige une organisation commerciale terrain claire et motivée.",
         webUrl: "https://www.kizeo-forms.com/fr/",
@@ -928,6 +968,7 @@ const companiesData = [
         region: "paris",
         funding: "Groupe Somfy FR",
         sector: "IoT & Smart Home Cloud",
+        phone: "04 50 96 70 00",
         defaultRole: "Head of Sales / Business Development IoT",
         defaultPitch: "Bonjour, Accompagner les intégrateurs domotiques et industriels exige un sens aigu de la relation partenaire et de l'encadrement d'équipes.",
         webUrl: "https://www.overkiz.com/fr/",
@@ -959,6 +1000,7 @@ function renderCards(data) {
 
         let contactsHtml = '';
         item.contacts.forEach(c => {
+            const rawPhone = item.phone ? item.phone.replace(/\s+/g, '') : '';
             contactsHtml += `
                 <div class="contact-item">
                     <div class="contact-info">
@@ -968,6 +1010,7 @@ function renderCards(data) {
                     <div class="action-btns">
                         <a href="${c.linkedin}" target="_blank" class="btn-action btn-linkedin">LinkedIn</a>
                         <a href="mailto:${c.email}?subject=Prospection%20Ex%C3%A9cutive%20-%20Julien%20FLORENCE&body=Bonjour%20${c.name.split(' ')[0]}%2C%0A%0AJe%20me%20permets%20de%20vous%20contacter..." class="btn-action btn-email">Email</a>
+                        ${item.phone ? `<a href="tel:${rawPhone}" class="btn-action btn-phone" title="Téléphoner au siège">📞 Appeler</a>` : ''}
                     </div>
                 </div>
             `;
@@ -985,6 +1028,8 @@ function renderCards(data) {
             `;
         }
 
+        const formattedPhone = item.phone || "Standard siège non publié";
+
         card.innerHTML = `
             <div>
                 <div class="card-header">
@@ -999,6 +1044,12 @@ function renderCards(data) {
                     </div>
                 </div>
                 <div class="company-desc">${item.desc}</div>
+
+                <!-- AFFICHAGE DU TELEPHONE DU SIEGE -->
+                <div class="phone-box">
+                    <span>📞 <strong>Téléphone Siège / Standard :</strong> ${formattedPhone}</span>
+                    ${item.phone ? `<a href="tel:${item.phone.replace(/\s+/g, '')}" class="btn-action btn-phone">📞 Appeler Directement</a>` : ''}
+                </div>
 
                 <!-- AFFICHAGE DIRECT DE LA PRISE DE PAROLE / STRATEGIE -->
                 <div class="challenge-box">
@@ -1030,7 +1081,7 @@ function renderCards(data) {
                 </div>
 
                 <div class="contacts-section">
-                    <div style="font-size: 0.8rem; font-weight: 700; color: var(--gold); margin-bottom: 8px;">DÉCIDEURS C-LEVEL :</div>
+                    <div style="font-size: 0.8rem; font-weight: 700; color: var(--gold); margin-bottom: 8px;">DÉCIDEURS C-LEVEL & CONTACTS :</div>
                     ${contactsHtml}
                 </div>
 
@@ -1097,7 +1148,7 @@ function uploadCardAudio(id, event) {
         try {
             localStorage.setItem('card_audio_' + id, JSON.stringify(audioObj));
         } catch (err) {
-            alert("L'enregistrement audio est volumineux pour le stockage du navigateur. Écoute active pendant la session.");
+            alert("L'enregistrement audio mémo est volumineux pour le stockage du navigateur. Écoute active pendant la session.");
         }
         renderCards(companiesData);
     };
