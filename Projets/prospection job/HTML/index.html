@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Funnel de Prospection d'Emploi | Executive Job Pipeline</title>
+  <meta name="description" content="Dashboard interactif et pipeline Kanban de prospection d'emploi stratégique.">
+  <link rel="stylesheet" href="style.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+</head>
+<body>
+
+  <!-- En-tête / Header -->
+  <header>
+    <div class="brand">
+      <div class="brand-icon">⚡</div>
+      <div class="brand-text">
+        <h1>Funnel Prospection Job</h1>
+        <p>Pipeline & CRM Strategique 2026</p>
+      </div>
+    </div>
+
+    <nav class="nav-tabs" role="tablist">
+      <button class="tab-btn active" data-tab="kanban-view" id="tab-kanban">
+        <span>📋</span> Funnel Kanban
+      </button>
+      <button class="tab-btn" data-tab="table-view" id="tab-table">
+        <span>📊</span> Vue Tableau CRM
+      </button>
+      <button class="tab-btn" data-tab="analytics-view" id="tab-analytics">
+        <span>📈</span> Analytics & Conversion
+      </button>
+      <button class="tab-btn" data-tab="generator-view" id="tab-generator">
+        <span>✉️</span> Générateur d'Accroche
+      </button>
+    </nav>
+
+    <div class="header-actions">
+      <button class="btn btn-primary" id="btn-add-target">
+        <span>➕</span> Nouvelle Cible
+      </button>
+      <button class="btn btn-secondary" id="btn-export-data">
+        <span>💾</span> Exporter JSON
+      </button>
+    </div>
+  </header>
+
+  <!-- Toolbar & Filtres -->
+  <div class="toolbar">
+    <div class="search-filter-group">
+      <div class="search-box">
+        <span>🔍</span>
+        <input type="text" id="search-input" placeholder="Rechercher une entreprise, rôle, pitch ou ville...">
+      </div>
+
+      <select class="filter-select" id="filter-category">
+        <option value="ALL">Toutes les catégories</option>
+        <option value="SportTech">SportTech (Toutes)</option>
+        <option value="HospTech & FoodTech">HospTech & FoodTech</option>
+        <option value="MarTech & Retail Luxe">MarTech & Retail Luxe</option>
+        <option value="ESN & Conseil Spécialisés">ESN & Conseil Spécialisés</option>
+      </select>
+
+      <select class="filter-select" id="filter-location">
+        <option value="ALL">Toutes les localisations</option>
+        <option value="Bordeaux">Bordeaux</option>
+        <option value="Toulouse">Toulouse</option>
+        <option value="Paris">Paris</option>
+        <option value="Remote">Remote</option>
+      </select>
+    </div>
+
+    <div class="stats-summary">
+      <div class="stat-pill">Cibles totales: <strong id="stat-total-count">0</strong></div>
+      <div class="stat-pill">Score ICE Moyen: <strong id="stat-avg-ice">0.0</strong></div>
+      <div class="stat-pill">Relances à venir: <strong id="stat-actions-pending">0</strong></div>
+    </div>
+  </div>
+
+  <!-- Contenu Principal / Views -->
+  <main>
+    <!-- 1. Vue Kanban Funnel -->
+    <section id="kanban-view" class="view-section active">
+      <div class="kanban-board" id="kanban-board-container">
+        <!-- Généré dynamiquement par JavaScript -->
+      </div>
+    </section>
+
+    <!-- 2. Vue Tableau CRM -->
+    <section id="table-view" class="view-section">
+      <div class="table-container">
+        <table>
+          <thead>
+            <tr>
+              <th>Entreprise</th>
+              <th>Catégorie</th>
+              <th>Localisation</th>
+              <th>Rôle Visé</th>
+              <th>Score ICE</th>
+              <th>Statut Funnel</th>
+              <th>Prochaine Action</th>
+              <th>Actions</th>
+            </tr>
+          </thead>
+          <tbody id="table-body">
+            <!-- Généré par JavaScript -->
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <!-- 3. Vue Analytics -->
+    <section id="analytics-view" class="view-section">
+      <div class="analytics-grid">
+        <div class="stat-card">
+          <div class="stat-card-title">Taux de Réponse Global</div>
+          <div class="stat-card-value" id="analytic-response-rate">0%</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-card-title">Entretiens Décrochés</div>
+          <div class="stat-card-value" id="analytic-interviews-count">0</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-card-title">Cibles Haute Priorité (ICE > 9)</div>
+          <div class="stat-card-value" id="analytic-high-ice-count">0</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-card-title">Volume en Cours d'Échange</div>
+          <div class="stat-card-value" id="analytic-in-discussion">0</div>
+        </div>
+      </div>
+
+      <div class="funnel-visualization">
+        <h2 style="margin-bottom: 20px; font-size: 18px;">📊 Conversion du Funnel de Prospection</h2>
+        <div id="funnel-bars-container">
+          <!-- Bars générées en JavaScript -->
+        </div>
+      </div>
+    </section>
+
+    <!-- 4. Vue Générateur d'Accroche -->
+    <section id="generator-view" class="view-section">
+      <div class="generator-layout">
+        <div class="generator-sidebar">
+          <h3 style="margin-bottom: 16px; font-size: 16px;">Sélectionner une Cible</h3>
+          <div class="form-group">
+            <label for="generator-target-select">Entreprise Cible :</label>
+            <select id="generator-target-select" class="filter-select" style="width: 100%;">
+              <!-- Options générées par JS -->
+            </select>
+          </div>
+
+          <div class="form-group">
+            <label for="generator-canal-select">Canal d'approche :</label>
+            <select id="generator-canal-select" class="filter-select" style="width: 100%;">
+              <option value="linkedin">LinkedIn InMail / Connexion</option>
+              <option value="email">Email Direct Décideur</option>
+              <option value="relance">Relance après 5 jours</option>
+            </select>
+          </div>
+
+          <button class="btn btn-primary" id="btn-generate-message" style="width: 100%; margin-top: 10px;">
+            ✨ Générer le Message
+          </button>
+        </div>
+
+        <div class="generator-preview">
+          <div style="display: flex; justify-content: space-between; align-items: center;">
+            <h3 id="generator-preview-title">Aperçu du Message</h3>
+            <button class="btn btn-secondary" id="btn-copy-message">📋 Copier le texte</button>
+          </div>
+          <div class="message-box" id="generator-message-output">
+            Sélectionnez une cible et cliquez sur "Générer le Message" pour créer une accroche sur-mesure basée sur votre pitch métier.
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Modal d'Ajout / Édition de Cible -->
+  <div class="modal-overlay" id="target-modal">
+    <div class="modal">
+      <div class="modal-header">
+        <h2 id="modal-title">Ajouter une Nouvelle Cible</h2>
+        <button class="icon-btn" id="modal-close">❌</button>
+      </div>
+      <form id="target-form">
+        <input type="hidden" id="form-target-id">
+
+        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 12px;">
+          <div class="form-group">
+            <label for="form-name">Nom de l'entreprise *</label>
+            <input type="text" id="form-name" required placeholder="Ex: Zenchef">
+          </div>
+          <div class="form-group">
+            <label for="form-category">Catégorie</label>
+            <select id="form-category">
+              <option value="HospTech & FoodTech">HospTech & FoodTech</option>
+              <option value="MarTech & Retail Luxe">MarTech & Retail Luxe</option>
+              <option value="ESN & Conseil Spécialisés">ESN & Conseil Spécialisés</option>
+            </select>
+          </div>
+        </div>
+
+        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 12px;">
+          <div class="form-group">
+            <label for="form-role">Rôle visé *</label>
+            <input type="text" id="form-role" required placeholder="Ex: Customer Success Manager">
+          </div>
+          <div class="form-group">
+            <label for="form-location">Localisation</label>
+            <input type="text" id="form-location" placeholder="Ex: Bordeaux / Remote">
+          </div>
+        </div>
+
+        <div style="display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 12px;">
+          <div class="form-group">
+            <label for="form-ice">Score ICE (0-10)</label>
+            <input type="number" step="0.1" min="0" max="10" id="form-ice" value="8.5">
+          </div>
+          <div class="form-group">
+            <label for="form-status">Statut Funnel</label>
+            <select id="form-status">
+              <option value="A contacter">À contacter</option>
+              <option value="Premier contact">Premier contact</option>
+              <option value="Échange / Relance">Échange / Relance</option>
+              <option value="Entretien">Entretien</option>
+              <option value="Proposition">Proposition</option>
+              <option value="Archivé">Archivé</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label for="form-contact">Personne Cible / Contact</label>
+            <input type="text" id="form-contact" placeholder="Ex: Head of Ops">
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label for="form-pitch">Pitch d'accroche personnalisé</label>
+          <textarea id="form-pitch" placeholder="15 ans d'expérience métier CHR + gestion de projet IT..."></textarea>
+        </div>
+
+        <div class="form-group">
+          <label for="form-notes">Notes / Contexte</label>
+          <input type="text" id="form-notes" placeholder="Notes stratégiques sur l'entreprise...">
+        </div>
+
+        <div style="display: flex; justify-content: flex-end; gap: 12px; margin-top: 20px;">
+          <button type="button" class="btn btn-secondary" id="modal-cancel">Annuler</button>
+          <button type="submit" class="btn btn-primary">Enregistrer</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <script src="data.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>

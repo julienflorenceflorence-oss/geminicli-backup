@@ -1,4 +1,5 @@
-[
+const DEFAULT_TARGETS = [
+  // --- NOUVELLES CIBLES SPORTTECH LEVÉES DE FONDS (> 6M€ / Serie A-B) ---
   {
     "id": "target-st-1",
     "name": "SkillCorner",
@@ -149,6 +150,8 @@
     "nextActionDate": "2026-07-28",
     "notes": "Enveloppe gouvernementale & Bpifrance 50M€."
   },
+
+  // --- CIBLES HISTORIQUES ---
   {
     "id": "target-1",
     "name": "Zenchef",
@@ -449,4 +452,13 @@
     "nextActionDate": "2026-07-29",
     "notes": "ESN implantée à Toulouse Compans-Caffarelli."
   }
-]
+];
+
+const STAGES = [
+  { id: "A contacter", label: "🎯 À contacter", color: "#38bdf8" },
+  { id: "Premier contact", label: "📩 Contact envoyé", color: "#60a5fa" },
+  { id: "Échange / Relance", label: "💬 En échange / Relance", color: "#fbbf24" },
+  { id: "Entretien", label: "🤝 Entretien obtenu", color: "#c084fc" },
+  { id: "Proposition", label: "🏆 Offre / Proposition", color: "#34d399" },
+  { id: "Archivé", label: "📁 Classé / Archivé", color: "#9ca3af" }
+];
