@@ -417,6 +417,64 @@ def build_prices_pdf(out_path):
     pdf.output(out_path)
     print(f"✅ PDF généré : {out_path}")
 
+def build_strategic_post_pdf(out_path):
+    pdf = DarkGoldPDF("ANALYSE STRATÉGIQUE DES POSTS & ACTUS", "ENJEUX CLÉS MELT GROUP / JOST HÔTEL BORDEAUX")
+    pdf.add_page()
+    
+    # Sidebar
+    draw_sidebar_section(pdf, 32, "Enjeux Clés", [
+        "Virage MICE B2B",
+        "Partenariat Doyield",
+        "Revenue Management",
+        "Gare Saint-Jean",
+        "Baisse com. OTAs"
+    ])
+    
+    pdf.set_xy(68, 32)
+    pdf.set_font('Times', 'B', 10.5)
+    pdf.set_text_color(212, 175, 55)
+    pdf.cell(132, 5, clean_txt("1. LE VIRAGE STRATEGIQUE MICE & EVENEMENTIEL B2B"))
+    pdf.set_draw_color(212, 175, 55)
+    pdf.line(68, 38, 200, 38)
+    pdf.set_xy(68, 40)
+    
+    p1 = [
+        "Podcast Event Shake #90 & Posts Alban Ruggiero / Damien Ferrieres :",
+        "La direction de MELT Group a formalise un pivot majeur : faire du MICE (seminaires, afterworks d'entreprises, conventions) le relais de croissance N o1 du groupe.",
+        "Enjeu JOST Bordeaux : Transformer le Lieu Cheri et le Rooftop en espaces d'affaires privatisables du lundi au jeudi pour les 50 grands comptes du quartier Amédee St-Germain."
+    ]
+    
+    pdf.set_font('Helvetica', '', 7.5)
+    pdf.set_text_color(226, 232, 240)
+    for p in p1:
+        pdf.set_x(68)
+        pdf.multi_cell(132, 3.6, clean_txt(p))
+        pdf.ln(1.5)
+        
+    pdf.ln(3)
+    pdf.set_x(68)
+    pdf.set_font('Times', 'B', 10.5)
+    pdf.set_text_color(212, 175, 55)
+    pdf.cell(132, 5, clean_txt("2. PARTENARIAT REVENUE MANAGEMENT DOYIELD"))
+    pdf.line(68, pdf.get_y() + 5, 200, pdf.get_y() + 5)
+    pdf.set_xy(68, pdf.get_y() + 7)
+    
+    p2 = [
+        "Annonce Officielle MELT Group x Doyield :",
+        "MELT Group s'est associe a Doyield pour automatiser le Revenue Management et booster la reservation directe sur l'ensemble de ses 4 hotels (Bordeaux, Montpellier, Le Havre, Lille).",
+        "Enjeu JOST Bordeaux : Arbitrage dynamique des lits en dortoir vs chambres Signature selon le calendrier bordelais, et reduction directe des commissions versees a Booking/Airbnb."
+    ]
+    
+    pdf.set_font('Helvetica', '', 7.5)
+    pdf.set_text_color(226, 232, 240)
+    for p in p2:
+        pdf.set_x(68)
+        pdf.multi_cell(132, 3.6, clean_txt(p))
+        pdf.ln(1.5)
+
+    pdf.output(out_path)
+    print(f"✅ PDF généré : {out_path}")
+
 if __name__ == "__main__":
     out_dir = "Projets/prospection job/jost-hotel-bordeaux/04_Livrables/PDF"
     os.makedirs(out_dir, exist_ok=True)
@@ -425,3 +483,5 @@ if __name__ == "__main__":
     build_pl_pdf(os.path.join(out_dir, "2026-07-29_PL_Simulation_Et_Formules_Gestion_JOST.pdf"))
     build_questions_pdf(os.path.join(out_dir, "2026-07-29_Guide_5_Questions_Pieges_Financieres_Ruggiero.pdf"))
     build_prices_pdf(os.path.join(out_dir, "2026-07-29_Grille_Tarifaire_Et_Prix_JOST_Bordeaux.pdf"))
+    build_strategic_post_pdf(os.path.join(out_dir, "2026-07-31_Analyse_Post_Linkedin_Strategique_MELT_JOST.pdf"))
+
