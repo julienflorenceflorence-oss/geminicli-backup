@@ -6,54 +6,50 @@
 
 ---
 
-## 🎯 Vision & Objectifs Globaux (Les 3 Piliers)
+## 🎯 Vision & Objectifs Globaux (Les 4 Piliers Stratégiques)
 
 ```
-[ 1. ACCÉLÉRATION F&B & ROOFTOP ]  ──► Maximiser les marges du Solia & du JOST On Top
-[ 2. MACHINE COMMERCIALE & SOCIAL ] ──► Ranker #1 sur Instagram/TikTok à Bordeaux & MICE Gare St-Jean
-[ 3. ROUAGE OPÉRATIONNEL & P&L ]   ──► Maîtriser le Coût Matière & l'Acoustique Hébergement
+[ 1. PILOTAGE REVENUE MANAGEMENT DOYIELD ] ──► Optimiser le Yield Hybride & faire chuter les coms OTAs
+[ 2. OFFENSIVE MICE B2B GARE ST-JEAN ]     ──► Transformer le Lieu Chéri & le Rooftop en hub d'affaires
+[ 3. RENTABILITÉ F&B & PRIME COST ]         ──► Maîtriser le Coût Matière (<30%) et la masse salariale (Flextime)
+[ 4. EXPÉRIENCE CLIENT & SÉCURITÉ ]        ──► Conserver un score d'avis > 8.5/10 (Cohabitation festif/sommeil)
 ```
 
 ---
 
-## 📅 PHASE 1 : Jours 1 à 30 — Immersions, Audits Ratios & Prise en Main
+## 📅 PHASE 1 : Jours 1 à 30 — Audits Ratios, Doyield & Prise en Main Opérationnelle
 
-### 1. Audit Opérationnel F&B & Hébergement
-* **Restauration (*Solia* & *Lieu Chéri*)** : Audit des fiches techniques, analyse du Coût Matière (Food Cost / Beverage Cost), revue des fournisseurs et temps de service aux heures de pointe.
-* **Rooftop (*JOST On Top*)** : Vérification des protocoles de sécurité piscine, flux de bar en rooftop et optimisation de la carte cocktails à forte marge.
-* **Hébergement (98 chambres & dortoirs)** : Contrôle qualité du housekeeping, état des équipements et vérification du système de réservation (PMS) / Yield Management.
+### 1. Prise en Main de la Solution Doyield & Audits Ratios
+* **Doyield & Yield Management Hybride** : Audit des grilles tarifaires de la plateforme Doyield pour calibrer la tarification dynamique entre dortoirs capsules (21€–45€) et chambres Signature (85€–160€) selon les événements bordelais.
+* **Audit F&B (*Solia* & *Nonna Gioia*)** : Contrôle des fiches techniques, analyse du Coût Matière Food/Beverage (<30%) et vérification des inventaires d'alcools précieux sur le rooftop.
+* **Masse Salariale & Flextime** : Ajustement des plannings agiles pour mensualiser les heures en basse saison et renforcer le service bar/restauration lors des coups de feu.
 
-### 2. Management & Équipes (20 à 49 salariés)
-* **Entretiens individuels 1-to-1** avec chaque responsable de pôle (Chef de cuisine, Responsable Bar, Chef de réception, Housekeeping).
-* **Mise en place des rituels managériaux** : Briefing quotidien de 10 minutes ("Temps mort tactique") et ajustement des plannings en Flextime.
-
-### 3. Audit E-Réputation & Expérience Client
-* Analyse chirurgicale des avis Booking, Google et TripAdvisor (Cible : Score > 8.5/10).
-* Mise en place d'un protocole immédiat d'isolation acoustique et de régulation des flux festifs pour protéger le sommeil des clients corporate aux étages.
+### 2. Management & Équipes (30 Salariés)
+* **Entretiens individuels 1-to-1** avec les responsables de pôle (Chef de cuisine, Responsable Bar, Réception, Housekeeping).
+* **Rituels de brief quotidiens ("Temps mort tactique")** inspirés du coaching sportif pour motiver les équipes et fixer 1 seule priorité opérationnelle par service.
 
 ---
 
-## 🚀 PHASE 2 : Jours 31 à 60 — Machine Commerciale, MICE & Social Media
+## 🚀 PHASE 2 : Jours 31 à 60 — Lancement de la Machine MICE B2B & Social Media
 
-### 1. Offensive Commerciale Locale (Zone Gare Saint-Jean / Amédée St-Germain)
-* **Plan de prospection MICE & Corporate** : Démarchage direct des 50 grands comptes et entreprises du quartier d'affaires de la Gare Saint-Jean (offres d'afterworks privatifs, séminaires et formules coworking).
-* **Partenariats Événementiels** : Programmation culturelle régulière au *Lieu Chéri* (DJ sets locaux, cabarets, soirées à thème) pour ancrer JOST comme le repère de la jeunesse et des actifs bordelais.
+### 1. Offensive Commerciale MICE (Pôle Gare Saint-Jean / Amédée St-Germain)
+* **Partenariats B2B Grands Comptes** : Démarchage direct des 50 grands comptes et entreprises du quartier d'affaires de la Gare Saint-Jean (offres d'afterworks privatifs, séminaires et formules coworking au *Lieu Chéri*).
+* **Privatisation d'Espaces** : Commercialisation du Rooftop *JOST On Top* et du *Lieu Chéri* du lundi au jeudi pour lisser la saisonnalité et garantir un taux d'occupation semaine élevé.
 
-### 2. Stratégie "Spot N°1 Social Media Bordeaux"
-* **Lancement d'un plan d'influence local** : Invitations ciblées d'influenceurs Food & Lifestyle bordelais sur le Rooftop avec piscine.
-* **User Generated Content (UGC)** : Création de "spots instagrammables" dans l'hôtel et mise en place d'un concours mensuel pour inciter les clients à tagger `@jostbordeaux`.
-* **Cadence de publication** : 4 posts/reels par semaine centrés sur l'ambiance, les plats du Solia et la vue Rooftop.
+### 2. Notoriété "Spot N°1 Social Media Bordeaux" & Événementiel
+* **Campagnes Événementielles** : Optimisation des Pool Parties du jeudi commercialisées sur **Shotgun** et du Pool Party Brunch du dimanche.
+* **Conversion F&B** : Veiller à ce que chaque participant aux événements Shotgun convertisse en consommation de cocktails signatures à forte marge brute.
 
 ---
 
-## 📈 PHASE 3 : Jours 61 à 90 — Consolidation Financière & Excellence Opérationnelle
+## 📈 PHASE 3 : Jours 61 à 90 — Consolidation Financière & Restitution Direction
 
-### 1. Optimisation du P&L & Ratios de Marge
-* **Yield Management Hybride** : Ajustement dynamique du mix d'occupation entre dortoirs partagés (groupes/jeunes) et chambres individuelles (corporate/couples) selon le calendrier événementiel bordelais (salon, congrès, festivals).
-* **Revue de la masse salariale** : Alignement de la flexibilité des équipes (Flextime) sur les pics d'affluence prévisibles (week-ends, saison estivale Rooftop).
+### 1. Consolidation du P&L & Baisse des Commissions OTAs
+* **Canal Direct JOST** : Analyse des données Doyield pour augmenter la part des réservations directes sur le site web JOST et réduire de 5% à 15% les frais de commissions versés à Booking/Airbnb.
+* **Marge d'EBITDA Target (35,5%)** : Stabilisation du Prime Cost (Matière + Masse Salariale) sous les 60%.
 
 ### 2. Rapport de Performance à la Direction Générale (MELT Group)
 * Présentation du **Bilan des 90 Jours** à Alban Ruggiero et Damien Ferrières :
-  * Évolution du chiffre d'affaires F&B et Taux d'Occupation.
-  * Évolution des avis clients et classement Social Media Bordeaux.
-  * Plan d'investissements et d'innovations pour le trimestre suivant.
+  * Bilan de l'intégration Doyield et évolution du RevPAR / RevPAG.
+  * Chiffre d'affaires MICE généré sur l'espace *Lieu Chéri*.
+  * Taux de satisfaction client (> 8.5/10) et plan de développement du trimestre suivant.
