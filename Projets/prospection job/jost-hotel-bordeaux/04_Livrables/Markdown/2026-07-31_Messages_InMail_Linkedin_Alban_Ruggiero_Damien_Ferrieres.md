@@ -1,26 +1,26 @@
-# 📩 Message InMail LinkedIn 200 Mots (Destiné à Alban RUGGIERO — CEO MELT Group)
+# 📩 Message InMail LinkedIn Stricte Sub-200 Mots (Alban RUGGIERO — CEO MELT Group)
 
-Ce document contient la **version calibrée à 200 mots** du message de candidature directe pour **Alban Ruggiero**, reprenant le virage MICE, l'outil Doyield et les preuves factuelles de **Julien Florence** (+140% CA, Guanahani, Clos Angleterre, Conseil Hôtelier).
+Ce document contient la version **stricte sous la barre des 200 mots (175 mots exactement)** pour l'envoi InMail direct à **Alban Ruggiero**.
 
 ---
 
-## 🎯 Message InMail LinkedIn (Calibré à ~200 mots)
+## 🎯 Message InMail LinkedIn (175 mots exactement)
 
 > **Objet** : Direction JOST Bordeaux Gare — Virage MICE B2B, Doyield & Preuves Opérationnelles
 >
 > Bonjour Alban,
 >
-> Votre virage stratégique vers l'événementiel d'entreprises (MICE) et l'intégration de la technologie Doyield sur les établissements JOST témoignent d'une vision d'avance. Votre annonce pour la direction du site de Bordeaux Gare pose un constat juste : *un profil uniquement hôtelier n'est pas adapté pour animer et rentabiliser un tel hotspot hybride.*
+> Votre virage stratégique vers le MICE B2B et l'intégration de Doyield sur les hôtels JOST témoignent d'une vision d'avance. Votre annonce pour Bordeaux Gare pose un constat juste : *un profil uniquement hôtelier n'est pas adapté pour animer ce hotspot hybride.*
 >
-> C'est précisément l'addition factuelle de mes expériences de terrain qui garantit mon succès immédiat sur le poste :
+> La somme factuelle de mes expériences garantit mon succès immédiat :
 >
-> 1. **Direction & Performance P&L** : En tant que Directeur de restaurant à Paris (*"Ma Salle à Manger"*), j'ai **fait progresser le Chiffre d'Affaires de +140% en 5 ans** en déployant une étude d'environnement poussée et des partenariats commerciaux ciblés (galeries d'art, événements privatifs EVG/EVJF, mariages, Tour Opérateurs).
-> 2. **Rigueur F&B & Standards Luxe** : Formé en Angleterre (*Au Clos / Relais & Châteaux*), ex-Manager Sommelier et responsable du Room Service au *Guanahani (Palace 5* St-Barth LHW)*, je maîtrise la rentabilité des boissons et le contrôle strict du Prime Cost (<60%).
-> 3. **Vision 360° & Revenue Management** : Une année passée à conseiller des hôteliers me permet d'opérer votre outil Doyield (Yield Management hybride dortoirs/chambres) et de commercialiser le *Lieu Chéri* et le *Rooftop* auprès des 50 grands comptes de la Gare Saint-Jean.
+> 1. **Direction & Performance P&L** : En tant que Directeur de restaurant à Paris (*Ma Salle à Manger*), j'ai **fait progresser le CA de +140% en 5 ans** via l'étude d'environnement, des partenariats (galeries d'art, EVG/EVJF, mariages) et Tour Opérateurs.
+> 2. **Rigueur F&B & Luxe** : Formé en Angleterre (*Au Clos*), ex-Manager Sommelier et responsable Room Service au *Guanahani (Palace 5* St-Barth)*, je maîtrise la rentabilité boissons et le Prime Cost (<60%).
+> 3. **Vision 360° & Revenue Management** : Une année de conseil hôtelier me permet d'opérer Doyield (Yield hybride dortoirs/chambres) et de commercialiser le *Lieu Chéri* et le *Rooftop* auprès des 50 grands comptes de la Gare Saint-Jean.
 >
-> J'ai formalisé un **Plan d'Action Opérationnel à 90 Jours** dédié au site de Bordeaux.
+> J'ai formalisé un **Plan d'Action à 90 Jours** dédié à Bordeaux.
 >
 > Seriez-vous disponible pour échanger 10 minutes cette semaine ?
 >
-> Bien cordialement,  
-> **Julien FLORENCE** — 📞 06 61 74 75 73 | ✉️ julien.florence@email.com
+> Cordialement,  
+> **Julien FLORENCE** — 📞 06 61 74 75 73
