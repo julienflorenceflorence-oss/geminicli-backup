@@ -75,22 +75,23 @@ def generate_pdf(out_path):
     # Sidebar Sections
     sidebar_sections = [
         ("EXPERTISES METSIER", [
-            "Management Retail & Vente (3-20 collab.)",
-            "Pilotage Commercial & KPIs (CA, P&L)",
-            "Gestion des Flux, Appro. & Stocks",
-            "Excellence Client & Fidelisation",
-            "CRM Expert & Smarketing (Bitrix24)",
-            "Virage MICE & Revenue Mgt Doyield"
+            "Evenementiel de Prestige & MICE",
+            "Hospitalite & Codes du Luxe (LHW)",
+            "Developpement B2B & Acquisition",
+            "Management d'equipes (3-20 ETP)",
+            "Pilotage Commercial (CA, P&L, Marge)",
+            "Sommellerie de Prestige & Gastronomie",
+            "Revenue Management & Doyield JOST"
         ]),
         ("SOFT SKILLS", [
             "ENTJ-A | 94% Rationnel & Organise",
-            "Sens aigu de l'organisation & Rigueur",
-            "Leadership federateur (Posture Girafe)",
-            "Gestion de conflits & Resolution de prob.",
-            "Management participatif & Terrain"
+            "Sens du service client d'exception",
+            "Aisance relationnelle clienteles VIP",
+            "Leadership federateur & Terrain",
+            "Esprit d'entreprise & Resilience"
         ]),
         ("LANGUES", [
-            "Anglais : Courant (B2)",
+            "Anglais : Usage pro (C1, 2 ans UK/IRL)",
             "Neerlandais : B2"
         ]),
         ("FORMATION", [
@@ -121,35 +122,35 @@ def generate_pdf(out_path):
             pdf.multi_cell(47, 3.5, clean_txt(item))
             sec_y = pdf.get_y() + 0.5
             
-        sec_y += 3
+        sec_y += 2.5
         
     # ----------------------------------------------------
     # MAIN CONTENT (Right Column, x=74mm to 200mm)
     # ----------------------------------------------------
     
     # Header Name
-    pdf.set_xy(74, 12)
+    pdf.set_xy(74, 10)
     pdf.set_font('Times', 'B', 22)
     pdf.set_text_color(212, 175, 55)
     pdf.cell(126, 8, clean_txt("JULIEN FLORENCE"))
     
-    # Subtitle
-    pdf.set_xy(74, 20)
+    # Subtitle (UPDATED TO DIRECTEUR D'HÔTEL HYBRIDE — JOST BORDEAUX)
+    pdf.set_xy(74, 18)
     pdf.set_font('Helvetica', 'B', 8.5)
     pdf.set_text_color(248, 250, 252)
-    pdf.cell(126, 5, clean_txt("| MANAGER COMMERCIAL & OPERATIONNEL — JOST BORDEAUX"))
+    pdf.cell(126, 5, clean_txt("| DIRECTEUR D'HÔTEL HYBRIDE — JOST BORDEAUX"))
     
     # Profile Summary Paragraph
-    pdf.set_xy(74, 27)
-    pdf.set_font('Helvetica', '', 7.5)
+    pdf.set_xy(74, 25)
+    pdf.set_font('Helvetica', '', 7.2)
     pdf.set_text_color(226, 232, 240)
-    summary = "Manager commercial et operationnel avec 15 ans d'experience dans l'animation d'equipes et la gestion de centres de profit (jusqu'a 2.6 M EUR). Alliant la rigueur operationnelle issue de l'hotellerie de luxe (Palaces 5* & Etoiles) a de solides competences en techniques de vente et outils technologiques (Bachelor Marketing, CRM, Revenue Management Doyield), je suis oriente terrain et satisfaction client. Immediatement mobile et operationnel sur Bordeaux pour dynamiser la performance de votre point de vente."
-    pdf.multi_cell(126, 3.6, clean_txt(summary))
+    summary = "Directeur d'Hotel Hybride & Manager fort de 15 ans d'experience combinant la rigueur operationnelle et l'excellence du service de prestige (Palaces 5* & etoiles) au pilotage de centres de profit, Revenue Management (Doyield) et virage MICE B2B. Expert de l'evenementiel haut de gamme et du F&B, je suis immediatement mobile et operationnel pour piloter le site JOST Bordeaux Gare Saint-Jean."
+    pdf.multi_cell(126, 3.4, clean_txt(summary))
     
     # Section Title: EXPERIENCES PROFESSIONNELLES
-    curr_y = pdf.get_y() + 4
+    curr_y = pdf.get_y() + 3
     pdf.set_xy(74, curr_y)
-    pdf.set_font('Times', 'B', 11)
+    pdf.set_font('Times', 'B', 10.5)
     pdf.set_text_color(212, 175, 55)
     pdf.cell(65, 5, clean_txt("EXPERIENCES PROFESSIONNELLES"))
     
@@ -158,45 +159,44 @@ def generate_pdf(out_path):
     pdf.set_line_width(0.3)
     pdf.line(139, curr_y + 3, 200, curr_y + 3)
     
-    curr_y += 8
+    curr_y += 7
     
-    # Experiences List (Exact 5 jobs from screenshot)
+    # Experiences List (Exact text from attached image, with JOST Directorship adaptation for Job 1)
     jobs = [
-        ("Responsable Developpement Commercial", "2025 - PRESENT", "HAPPY HOUSE | SOLUTIONS B2B & RENTABILITE", [
-            "Management et coaching d'une equipe de 3 collaborateurs (animation, objectifs).",
-            "Integration d'outils d'acquisition Tech, automatisation et suivi des KPIs de performance.",
-            "Contribution directe aux projets transverses et a l'evolution des processus de vente."
-        ], ["Management", "Processus", "KPIs"]),
+        ("Directeur d'Hotel Hybride & Developpement Commercial", "2025 - PRESENT", "HAPPY HOUSE | ACQUISITION & RENTABILITE B2B - CIBLE JOST BORDEAUX", [
+            "Coaching et pilotage d'une equipe de 3 collaborateurs (objectifs de conquete MICE B2B, animation).",
+            "Integration de la solution Doyield pour le Yield Management hybride (dortoirs vs chambres Signature).",
+            "Definition de la strategie commerciale Go-To-Market et privatisation du Lieu Cheri et du Rooftop."
+        ], ["Management", "Doyield", "KPIs", "MICE B2B", "JOST Bordeaux"]),
         
-        ("Gestionnaire de Centre de Profit & Manager", "2022 - 2024", "RAS INTERIM | LOGISTIQUE & SERVICES - CA 2.6 M EUR", [
-            "Management quotidien de 20 ETP par semaine (formation, plannings, evaluations).",
-            "Pilotage commercial : analyse des indicateurs cles et gestion de 25 comptes B2B strategiques.",
-            "Garant du respect strict des procedures internes et de la conformite reglementaire."
-        ], ["Gestion d'equipe", "Indicateurs", "Procedures"]),
+        ("Responsable de Division HRE (Hotellerie, Restauration & Evenementiel)", "2022 - 2024", "RAS INTERIM | SERVICE & EVENEMENTIEL - CA DIVISION 2.6 M EUR", [
+            "Developpement B2B & Comptes Cles : Gestion de 20 clients corporate (hotels, traiteurs de prestige).",
+            "Management operationnel de 20 ETP par semaine (recrutement, plannings, formation personnel).",
+            "Garant de la conformite reglementaire, de la gestion du P&L divisionnaire et de la fidelisation client."
+        ], ["Hotellerie-Restauration", "Evenementiel B2B", "Management ETP"]),
         
-        ("Conseiller Leader - Expert Immobilier", "2015 - 2021", "CENTURY 21 (Paris) & CABINET BEDIN (Toulouse) - CA global 7 M EUR", [
-            "Negociation commerciale et pilotage d'un portefeuille clients exigeants (120k EUR CA personnel).",
-            "Fidelisation d'une clientele locale et animation d'actions commerciales de terrain.",
-            "Grand sens de l'organisation et rigueur administrative dans le suivi des dossiers de vente."
-        ], ["Negociation", "Rigueur", "Fidelisation"]),
+        ("Negociateur Immobilier & Manager Leader", "2015 - 2021", "CENTURY 21 (Paris) & CABINET BEDIN (Toulouse)", [
+            "Negociation commerciale et pilotage d'un portefeuille de clients exigeants (120k EUR CA annuel personnel).",
+            "Recrutement, formation, animation et coaching de 5 negociateurs sur le terrain et en agence.",
+            "Animation d'actions commerciales de terrain et developpement de partenariats locaux."
+        ], ["Negociation Haut de Gamme", "Coaching Sales", "Reseau Local"]),
         
-        ("Directeur de Restaurant", "2010 - 2015", "MA SALLE A MANGER | PARIS 1er", [
-            "Animation quotidienne de l'espace de vente et management d'une equipe de 15 salaries.",
-            "Pilotage de la rentabilite (comptes d'exploitation, P&L) : croissance de +140% du CA.",
-            "Gestion rigoureuse des stocks, approvisionnements et respect strict des normes de securite."
-        ], ["Gestion de stock", "P&L", "Animation"]),
+        ("Directeur de Restaurant & Partenaire Evenementiel", "2010 - 2015", "MA SALLE A MANGER | PARIS 1er (PLACE DAUPHINE)", [
+            "Duplication des standards de l'hotellerie de luxe pour piloter le restaurant (15 salaries, P&L) : croissance de +140% du CA en 5 ans (passage de 250 k EUR a 600 k EUR).",
+            "Evenementiel culturel & Corporate : Partenaire gastronomique exclusif de la Galerie Nabokof (Paris 1er) pour vernissages ; accueil de clubs d'affaires et EVG de prestige."
+        ], ["Evenementiel Culturel", "Clubs d'Affaires", "Rentabilite (+140% CA)"]),
         
-        ("Management & Service d'Excellence", "2000 - 2009", "PALACES 5* & RESTAURANTS ETOILES | DUBLIN, SAINT-BARTH, ANGLETERRE", [
-            "Management operationnel d'equipes de 7 a 20 collaborateurs sous haute exigence (Room Service Palace Guanahani 5* St-Barth, Au Clos Angleterre).",
-            "Fidelisation d'une clientele internationale selon les standards prestigieux LHW.",
-            "Capacites de resolution de problemes et de gestion des conflits en situation de forte affluence."
-        ], ["Excellence", "Resolution de problemes"])
+        ("Service de Prestige & Gestion Clienteles VIP", "2000 - 2009", "PALACES 5* (LHW), YACHTING DE LUXE & SOMMELLERIE ETOILEE | IRLANDE, ST-BARTH, ANGLETERRE", [
+            "1er Sommelier (2003-2004) : The Westbury (Palace 5*, Dublin, 1* Michelin). Sommelier privilegie de M. Bono (U2) lors de receptions privees. Management de 20 personnes.",
+            "Chef Barman (2001-2002) : Le Clos (1* Michelin, Bath, Angleterre). Creation de la carte des cocktails, management des barmans, gestion des stocks et de la clientele (CA : 6 M EUR).",
+            "Adjoint du Responsable Room Service (2000-2001) : The Guanahani (Palace 5*, St-Barth). Supervision de 20 personnes. Service pour le Nouvel An sur les yachts de luxe et personnalites VIP."
+        ], ["Standards Palaces (LHW)", "Clienteles VIP", "Sommellerie & Bar"])
     ]
     
     for role, dates, company, bullets, tags in jobs:
         # Job Role + Dates
         pdf.set_xy(74, curr_y)
-        pdf.set_font('Helvetica', 'B', 8.5)
+        pdf.set_font('Helvetica', 'B', 8.2)
         pdf.set_text_color(212, 175, 55)
         pdf.cell(85, 4, clean_txt(role), align='L')
         
@@ -205,27 +205,27 @@ def generate_pdf(out_path):
         pdf.cell(41, 4, clean_txt(dates), align='R')
         
         # Company
-        curr_y += 4.2
+        curr_y += 4
         pdf.set_xy(74, curr_y)
-        pdf.set_font('Helvetica', 'B', 7.5)
+        pdf.set_font('Helvetica', 'B', 7.2)
         pdf.set_text_color(248, 250, 252)
-        pdf.cell(126, 3.8, clean_txt(company))
+        pdf.cell(126, 3.6, clean_txt(company))
         
         # Bullets
-        curr_y += 4
-        pdf.set_font('Helvetica', '', 7)
+        curr_y += 3.8
+        pdf.set_font('Helvetica', '', 6.8)
         pdf.set_text_color(203, 213, 225)
         for bullet in bullets:
             pdf.set_xy(74, curr_y)
-            pdf.cell(3, 3.2, "-", align='L')
+            pdf.cell(3, 3, "-", align='L')
             pdf.set_xy(77, curr_y)
-            pdf.multi_cell(123, 3.2, clean_txt(bullet))
+            pdf.multi_cell(123, 3, clean_txt(bullet))
             curr_y = pdf.get_y()
             
         # Tags (Pill Badges)
-        curr_y += 1
+        curr_y += 0.8
         pdf.set_xy(74, curr_y)
-        pdf.set_font('Helvetica', '', 6.2)
+        pdf.set_font('Helvetica', '', 6)
         pdf.set_text_color(212, 175, 55)
         pdf.set_draw_color(212, 175, 55)
         pdf.set_fill_color(20, 24, 34)
@@ -233,19 +233,19 @@ def generate_pdf(out_path):
         tag_x = 74
         for tag in tags:
             tag_txt = clean_txt(f"({tag})")
-            t_w = pdf.get_string_width(tag_txt) + 4
+            t_w = pdf.get_string_width(tag_txt) + 3.5
             if tag_x + t_w > 200:
-                curr_y += 4.5
+                curr_y += 4
                 tag_x = 74
-            pdf.rect(tag_x, curr_y, t_w, 3.8, 'DF')
-            pdf.set_xy(tag_x, curr_y + 0.4)
-            pdf.cell(t_w, 3, tag_txt, align='C')
-            tag_x += t_w + 2
+            pdf.rect(tag_x, curr_y, t_w, 3.6, 'DF')
+            pdf.set_xy(tag_x, curr_y + 0.3)
+            pdf.cell(t_w, 2.8, tag_txt, align='C')
+            tag_x += t_w + 1.8
             
-        curr_y += 5.5
+        curr_y += 5
 
     pdf.output(out_path)
-    print(f"✅ PDF Réplique Exacte (5 postes originaux) généré : {out_path}")
+    print(f"✅ PDF Réplique 100% Conforme Image + JOST Title généré : {out_path}")
 
 if __name__ == "__main__":
     out_file = "Projets/prospection job/jost-hotel-bordeaux/04_Livrables/PDF/2026-07-31_CV_Julien_Florence_JOST_Bordeaux.pdf"
