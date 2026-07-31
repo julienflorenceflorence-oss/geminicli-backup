@@ -1,0 +1,493 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CV Julien Florence — Directeur JOST Hôtel Bordeaux</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;700;800&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-main: #0B0C10;
+            --bg-sidebar: #13161F;
+            --gold-primary: #D4AF37;
+            --gold-light: #F3E5AB;
+            --text-main: #F8FAFC;
+            --text-muted: #94A3B8;
+            --border-gold: rgba(212, 175, 55, 0.4);
+            --pill-bg: rgba(20, 24, 34, 0.8);
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            background-color: var(--bg-main);
+            color: var(--text-main);
+            font-family: 'Inter', sans-serif;
+            line-height: 1.5;
+            display: flex;
+            justify-content: center;
+            padding: 30px 15px;
+        }
+
+        .cv-container {
+            width: 100%;
+            max-width: 960px;
+            background-color: var(--bg-main);
+            display: grid;
+            grid-template-columns: 280px 1fr;
+            border: 1px solid var(--border-gold);
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.8);
+        }
+
+        /* Sidebar Styles */
+        .sidebar {
+            background-color: var(--bg-sidebar);
+            padding: 30px 20px;
+            border-right: 1px solid var(--border-gold);
+            display: flex;
+            flex-direction: column;
+            gap: 24px;
+        }
+
+        .profile-photo-container {
+            width: 100%;
+            display: flex;
+            justify-content: center;
+        }
+
+        .profile-photo {
+            width: 150px;
+            height: 170px;
+            object-fit: cover;
+            border-radius: 10px;
+            border: 2px solid var(--gold-primary);
+            box-shadow: 0 8px 16px rgba(212, 175, 55, 0.2);
+            background-color: #1E2430;
+        }
+
+        .contact-buttons {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        .btn-action {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            padding: 10px 14px;
+            border-radius: 20px;
+            font-size: 0.82rem;
+            font-weight: 600;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            cursor: pointer;
+            border: 1px solid var(--border-gold);
+            background-color: rgba(255, 255, 255, 0.03);
+            color: var(--text-main);
+            text-align: center;
+        }
+
+        .btn-action:hover {
+            border-color: var(--gold-primary);
+            color: var(--gold-primary);
+            background-color: rgba(212, 175, 55, 0.1);
+        }
+
+        .btn-action.highlight {
+            background: linear-gradient(135deg, #EAB308, #D4AF37);
+            color: #0F1117;
+            border: none;
+            box-shadow: 0 4px 12px rgba(234, 179, 8, 0.4);
+        }
+
+        .btn-action.highlight:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 16px rgba(234, 179, 8, 0.6);
+            color: #0F1117;
+        }
+
+        .sidebar-section-title {
+            font-family: 'Cinzel', serif;
+            color: var(--gold-primary);
+            font-size: 0.95rem;
+            font-weight: 700;
+            letter-spacing: 1px;
+            margin-bottom: 10px;
+            position: relative;
+            padding-bottom: 6px;
+        }
+
+        .sidebar-section-title::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 1px;
+            background: linear-gradient(90deg, var(--gold-primary), transparent);
+        }
+
+        .sidebar-list {
+            list-style: none;
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+
+        .sidebar-list li {
+            font-size: 0.83rem;
+            color: #CBD5E1;
+            display: flex;
+            align-items: flex-start;
+            gap: 6px;
+            line-height: 1.4;
+        }
+
+        .sidebar-list li .chevron {
+            color: var(--gold-primary);
+            font-weight: bold;
+        }
+
+        /* Main Content Styles */
+        .main-content {
+            padding: 35px 35px;
+            display: flex;
+            flex-direction: column;
+            gap: 24px;
+        }
+
+        .header-title {
+            font-family: 'Cinzel', serif;
+            font-size: 2.2rem;
+            color: var(--gold-primary);
+            font-weight: 700;
+            letter-spacing: 2px;
+            line-height: 1.1;
+        }
+
+        .header-subtitle {
+            font-size: 0.95rem;
+            font-weight: 700;
+            letter-spacing: 2px;
+            color: var(--text-main);
+            margin-top: 6px;
+            margin-bottom: 16px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .header-subtitle::before {
+            content: '|';
+            color: var(--gold-primary);
+            font-weight: bold;
+        }
+
+        .profile-summary {
+            font-size: 0.88rem;
+            color: #E2E8F0;
+            line-height: 1.6;
+            text-align: justify;
+            background-color: rgba(255, 255, 255, 0.02);
+            padding: 14px 16px;
+            border-left: 3px solid var(--gold-primary);
+            border-radius: 0 8px 8px 0;
+        }
+
+        .section-header {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            margin-top: 10px;
+            margin-bottom: 15px;
+        }
+
+        .section-title {
+            font-family: 'Cinzel', serif;
+            color: var(--gold-primary);
+            font-size: 1.15rem;
+            font-weight: 700;
+            letter-spacing: 1.5px;
+            white-space: nowrap;
+        }
+
+        .section-line {
+            flex-grow: 1;
+            height: 1px;
+            background: linear-gradient(90deg, var(--gold-primary), transparent);
+        }
+
+        .job-item {
+            display: flex;
+            flex-direction: column;
+            gap: 6px;
+            margin-bottom: 20px;
+            padding-bottom: 16px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        .job-item:last-child {
+            border-bottom: none;
+            margin-bottom: 0;
+        }
+
+        .job-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: baseline;
+        }
+
+        .job-role {
+            font-size: 1.05rem;
+            font-weight: 700;
+            color: var(--gold-primary);
+        }
+
+        .job-dates {
+            font-size: 0.82rem;
+            color: var(--text-muted);
+            font-weight: 600;
+            letter-spacing: 0.5px;
+        }
+
+        .job-company {
+            font-size: 0.88rem;
+            font-weight: 700;
+            color: var(--text-main);
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .job-bullets {
+            list-style: none;
+            margin-top: 6px;
+            display: flex;
+            flex-direction: column;
+            gap: 4px;
+        }
+
+        .job-bullets li {
+            font-size: 0.84rem;
+            color: #CBD5E1;
+            padding-left: 14px;
+            position: relative;
+            line-height: 1.45;
+        }
+
+        .job-bullets li::before {
+            content: '•';
+            position: absolute;
+            left: 0;
+            color: var(--gold-primary);
+        }
+
+        .pill-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin-top: 8px;
+        }
+
+        .pill-tag {
+            font-size: 0.73rem;
+            color: var(--gold-primary);
+            border: 1px solid var(--border-gold);
+            padding: 3px 10px;
+            border-radius: 12px;
+            background-color: var(--pill-bg);
+            font-weight: 500;
+        }
+
+        @media (max-width: 768px) {
+            .cv-container {
+                grid-template-columns: 1fr;
+            }
+            .sidebar {
+                border-right: none;
+                border-bottom: 1px solid var(--border-gold);
+            }
+        }
+    </style>
+</head>
+<body>
+
+<div class="cv-container">
+    <!-- LEFT SIDEBAR -->
+    <aside class="sidebar">
+        <div class="profile-photo-container">
+            <img class="profile-photo" src="file:///Users/admin/.gemini/antigravity/brain/3b3f54ca-b09a-4ea4-9dc8-59a0af5a76aa/.user_uploaded/media__1785320733290.png" alt="Julien Florence" onerror="this.src='https://via.placeholder.com/150x170/1E2430/D4AF37?text=Julien+Florence';">
+        </div>
+
+        <div class="contact-buttons">
+            <a href="tel:0661747573" class="btn-action">📞 06 61 74 75 73</a>
+            <a href="mailto:julien.florence@email.com" class="btn-action">✉️ EMAIL</a>
+            <a href="https://linkedin.com/in/alban-ruggiero/" class="btn-action highlight" target="_blank">📅 AGENDA</a>
+            <a href="https://github.com/julienflorenceflorence-oss/geminicli-backup/tree/main/Projets/prospection%20job/jost-hotel-bordeaux/04_Livrables/PDF" class="btn-action" target="_blank">🌐 ACCÈS CV INTERACTIF</a>
+        </div>
+
+        <div>
+            <h3 class="sidebar-section-title">EXPERTISES MÉTSIER</h3>
+            <ul class="sidebar-list">
+                <li><span class="chevron">›</span> Management Hôtelier Hybride & F&B</li>
+                <li><span class="chevron">›</span> Pilotage P&L & Ratios (<60% Prime Cost)</li>
+                <li><span class="chevron">›</span> Revenue Management (Doyield & Yield)</li>
+                <li><span class="chevron">›</span> Virage MICE B2B Gare St-Jean</li>
+                <li><span class="chevron">›</span> Leadership 30 Collaborateurs</li>
+                <li><span class="chevron">›</span> Smarketing & Social Media (Bitrix24)</li>
+            </ul>
+        </div>
+
+        <div>
+            <h3 class="sidebar-section-title">SOFT SKILLS</h3>
+            <ul class="sidebar-list">
+                <li><span class="chevron">›</span> ENTJ-A | 94% Rationnel & Organisé</li>
+                <li><span class="chevron">›</span> Sens aigu de l'organisation & Rigueur</li>
+                <li><span class="chevron">›</span> Leadership fédérateur (Coach Handball)</li>
+                <li><span class="chevron">›</span> Sang-froid & Gestion du stress</li>
+                <li><span class="chevron">›</span> Culture de l'Excellence & EX/UX</li>
+            </ul>
+        </div>
+
+        <div>
+            <h3 class="sidebar-section-title">LANGUES</h3>
+            <ul class="sidebar-list">
+                <li><span class="chevron">›</span> Anglais : Courant (B2)</li>
+                <li><span class="chevron">›</span> Néerlandais : B2</li>
+            </ul>
+        </div>
+
+        <div>
+            <h3 class="sidebar-section-title">FORMATION</h3>
+            <ul class="sidebar-list">
+                <li><span class="chevron">›</span> <strong>Bachelor Marketing & Commerce</strong> (2025)</li>
+                <li><span class="chevron">›</span> HTML5 & CSS3 - Google Academy</li>
+            </ul>
+        </div>
+    </aside>
+
+    <!-- RIGHT MAIN CONTENT -->
+    <main class="main-content">
+        <div>
+            <h1 class="header-title">JULIEN FLORENCE</h1>
+            <div class="header-subtitle">DIRECTEUR D'HÔTEL HYBRIDE & F&B — JOST BORDEAUX</div>
+            <p class="profile-summary">
+                <strong>Manager commercial et opérationnel</strong> avec 15 ans d'expérience dans l'animation d'équipes et la gestion de centres de profit (jusqu'à 2.6 M€). Alliant la rigueur opérationnelle issue de l'hôtellerie de luxe (Palaces 5* & Relais & Châteaux) à de solides compétences en pilotage P&L, Revenue Management (Doyield) et développement MICE B2B. <strong>Immédiatement mobile et opérationnel sur Bordeaux</strong> pour faire du site JOST Gare Saint-Jean le hub leader de la zone.
+            </p>
+        </div>
+
+        <div>
+            <div class="section-header">
+                <h2 class="section-title">EXPÉRIENCES PROFESSIONNELLES</h2>
+                <div class="section-line"></div>
+            </div>
+
+            <!-- JOB 1 -->
+            <div class="job-item">
+                <div class="job-header">
+                    <span class="job-role">Candidat Directeur d'Hôtel Hybride & F&B</span>
+                    <span class="job-dates">2026 – PRÉSENT</span>
+                </div>
+                <div class="job-company">JOST HÔTEL BORDEAUX | MELT GROUP — GARE ST-JEAN</div>
+                <ul class="job-bullets">
+                    <li>Conception d'un <strong>Plan d'Action Opérationnel à 90 Jours</strong> ciblant le virage MICE B2B et l'intégration Doyield.</li>
+                    <li>Stratégie de commercialisation du <em>Lieu Chéri</em> et du <em>Rooftop</em> auprès des 50 grands comptes du quartier Amédée St-Germain.</li>
+                    <li>Opérationnalisation du Yield Management hybride (dortoirs capsules vs chambres Signature) et baisse des commissions OTAs.</li>
+                </ul>
+                <div class="pill-tags">
+                    <span class="pill-tag">MICE B2B</span>
+                    <span class="pill-tag">Doyield</span>
+                    <span class="pill-tag">P&L Management</span>
+                    <span class="pill-tag">Rooftop & F&B</span>
+                </div>
+            </div>
+
+            <!-- JOB 2 -->
+            <div class="job-item">
+                <div class="job-header">
+                    <span class="job-role">Consultant & Formateur Hôtellerie 360°</span>
+                    <span class="job-dates">2024 – 2025</span>
+                </div>
+                <div class="job-company">CONSEIL B2B HÔTELLERIE & CHR — TOUS FORMATS</div>
+                <ul class="job-bullets">
+                    <li>Accompagnement stratégique d'hôtels indépendants, châteaux, gîtes et chambres d'hôtes sur le Revenue Management.</li>
+                    <li>Optimisation des canaux de réservation directe et restructuration des coûts d'exploitation F&B.</li>
+                </ul>
+                <div class="pill-tags">
+                    <span class="pill-tag">Revenue Management</span>
+                    <span class="pill-tag">Conseil B2B</span>
+                    <span class="pill-tag">Optimisation OTAs</span>
+                </div>
+            </div>
+
+            <!-- JOB 3 -->
+            <div class="job-item">
+                <div class="job-header">
+                    <span class="job-role">Gestionnaire de Centre de Profit & Manager</span>
+                    <span class="job-dates">2022 – 2024</span>
+                </div>
+                <div class="job-company">RAS INTÉRIM | LOGISTIQUE & SERVICES — CA 2.6 M€</div>
+                <ul class="job-bullets">
+                    <li>Management quotidien de <strong>20 ETP par semaine</strong> (formation, plannings agiles Flextime, évaluations).</li>
+                    <li>Pilotage commercial : analyse des indicateurs clés et gestion de 25 comptes B2B stratégiques.</li>
+                    <li>Garant du respect strict des procédures internes et de la conformité réglementaire.</li>
+                </ul>
+                <div class="pill-tags">
+                    <span class="pill-tag">Gestion d'équipe</span>
+                    <span class="pill-tag">KPIs & P&L</span>
+                    <span class="pill-tag">Flextime</span>
+                </div>
+            </div>
+
+            <!-- JOB 4 -->
+            <div class="job-item">
+                <div class="job-header">
+                    <span class="job-role">Directeur de Restaurant & Centre de Profit</span>
+                    <span class="job-dates">2010 – 2015</span>
+                </div>
+                <div class="job-company">MA SALLE À MANGER | PARIS 1er — RENTABILITÉ F&B</div>
+                <ul class="job-bullets">
+                    <li>Animation quotidienne de l'espace de vente et management d'une équipe de 15 salariés.</li>
+                    <li>Pilotage de la rentabilité (comptes d'exploitation, P&L) : <strong>croissance de +140% du CA en 5 ans</strong> via étude d'environnement.</li>
+                    <li>Partenariats commerciaux B2B : galeries d'art, événements privatifs EVG/EVJF, mariages et Tour Opérateurs.</li>
+                </ul>
+                <div class="pill-tags">
+                    <span class="pill-tag">Croissance +140%</span>
+                    <span class="pill-tag">P&L & Food Cost</span>
+                    <span class="pill-tag">Événementiel</span>
+                </div>
+            </div>
+
+            <!-- JOB 5 -->
+            <div class="job-item">
+                <div class="job-header">
+                    <span class="job-role">Management & Service d'Excellence Hôtelière</span>
+                    <span class="job-dates">2000 – 2009</span>
+                </div>
+                <div class="job-company">PALACES 5* & RELAIS & CHÂTEAUX | ST-BARTH, ANGLETERRE, DUBLIN</div>
+                <ul class="job-bullets">
+                    <li>Management du Room Service au <strong>Guanahani (Palace 5* Saint-Barth LHW)</strong>.</li>
+                    <li>Direction du service gastronomique <strong>Au Clos (Angleterre)</strong> et organisation de soirées Fooding et œnologiques.</li>
+                    <li>Fidélisation d'une clientèle internationale selon les standards prestigieux LHW.</li>
+                </ul>
+                <div class="pill-tags">
+                    <span class="pill-tag">Excellence 5*</span>
+                    <span class="pill-tag">Palace Guanahani</span>
+                    <span class="pill-tag">Sommelier Fooding</span>
+                </div>
+            </div>
+        </div>
+    </main>
+</div>
+
+</body>
+</html>
