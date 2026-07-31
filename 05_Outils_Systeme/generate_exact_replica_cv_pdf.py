@@ -22,33 +22,30 @@ def modify_original_pdf():
     text_white = colors.HexColor('#F8FAFC')
     text_gray = colors.HexColor('#E2E8F0')
     
-    # Cover old subtitle & old presentation text
+    # Cover old subtitle & old presentation text area (y=565 to y=775 pt)
     can.setFillColor(bg_main)
-    can.rect(205, 672, 380, 102, fill=1, stroke=0)
+    can.rect(200, 565, 385, 210, fill=1, stroke=0)
     
     # 1. New Subtitle
     can.setFillColor(text_white)
     can.setFont('Helvetica-Bold', 9.5)
-    can.drawString(208, 764, '| DIRECTEUR D\'HOTEL HYBRIDE & MANAGER')
+    can.drawString(205, 764, '| DIRECTEUR D\'HOTEL HYBRIDE & MANAGER')
     
-    # 2. New Presentation Text
-    summary_text = "Directeur d'Hotel Hybride & Manager fort de 25 ans d'experience combinant la rigueur operationnelle et l'excellence du service de prestige (Palaces 5* & etoiles) au pilotage de centres de profit, Revenue Management et virage MICE B2B. Expert de l'evenementiel et du F&B, je suis operationnel pour piloter le site JOST Bordeaux Gare Saint-Jean."
+    # 2. New Presentation Text (Exact text requested by user, perfectly spaced)
+    p_lines = [
+        "Directeur d'Hotel Hybride & Manager fort de 25 ans d'experience combinant la rigueur",
+        "operationnelle et l'excellence du service de prestige (Palaces 5* & etoiles) au pilotage",
+        "de centres de profit, Revenue Management et virage MICE B2B. Expert de l'evenementiel",
+        "et du F&B, je suis operationnel pour piloter le site JOST Bordeaux Gare Saint-Jean."
+    ]
     
     can.setFillColor(text_gray)
-    can.setFont('Helvetica', 8.2)
+    can.setFont('Helvetica', 8.5)
     
-    words = summary_text.split()
-    line = ''
-    y = 748
-    for w in words:
-        if can.stringWidth(line + ' ' + w, 'Helvetica', 8.2) < 365:
-            line += (' ' if line else '') + w
-        else:
-            can.drawString(208, y, line)
-            y -= 11
-            line = w
-    if line:
-        can.drawString(208, y, line)
+    y = 744
+    for line in p_lines:
+        can.drawString(205, y, line)
+        y -= 13.5
         
     # Add Clickable Hyperlinks on the 4 Action Buttons
     buttons_links = [
@@ -78,7 +75,16 @@ def modify_original_pdf():
     with open(out_file, 'wb') as f:
         writer.write(f)
         
-    print("✅ Modification du PDF original réussie sans changer quoi que ce soit d'autre !")
+    # Also save to Desktop and Desktop/JOST folder
+    desktop_jost = '/Users/admin/Desktop/JOST/2026-07-31_CV_Julien_Florence_JOST_Bordeaux.pdf'
+    desktop_root = '/Users/admin/Desktop/CV_Julien_Florence_JOST_Bordeaux.pdf'
+    os.makedirs(os.path.dirname(desktop_jost), exist_ok=True)
+    with open(desktop_jost, 'wb') as f:
+        writer.write(f)
+    with open(desktop_root, 'wb') as f:
+        writer.write(f)
+        
+    print("✅ Precision Text Spacing Merge Completed!")
 
 if __name__ == "__main__":
     modify_original_pdf()
