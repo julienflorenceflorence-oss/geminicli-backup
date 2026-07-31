@@ -8,25 +8,26 @@ from reportlab.lib import colors
 from reportlab.pdfgen import canvas
 from reportlab.lib.units import mm
 
-class OnePageJostCVPDF:
+class PerfectReplicaCVPDF:
     def __init__(self, filename):
         self.filename = filename
         self.c = canvas.Canvas(filename, pagesize=A4)
-        self.width, self.height = A4 # 210mm x 297mm (1 Page Strict)
+        self.width, self.height = A4 # 210mm x 297mm (1 Page A4)
 
     def draw_cv(self):
         c = self.c
         
-        # Colors
+        # Exact Colors
         bg_main = colors.HexColor("#0B0C10")
         bg_sidebar = colors.HexColor("#13161F")
         gold_primary = colors.HexColor("#D4AF37")
-        gold_bright = colors.HexColor("#EAB308")
+        gold_bright = colors.HexColor("#FACC15")
         text_white = colors.HexColor("#F8FAFC")
         text_gray = colors.HexColor("#CBD5E1")
         text_muted = colors.HexColor("#94A3B8")
         btn_dark_bg = colors.HexColor("#161A25")
-        btn_border_muted = colors.HexColor("#3C4150")
+        btn_border_gold = colors.HexColor("#D4AF37")
+        pill_bg = colors.HexColor("#141822")
         
         # 1. Main Background
         c.setFillColor(bg_main)
@@ -45,51 +46,46 @@ class OnePageJostCVPDF:
         # SIDEBAR CONTENT (Left Column, x=0 to 66mm)
         # --------------------------------------------------------
         
-        # Profile Photo (x=13mm, y=236mm, w=40mm, h=48mm)
+        # Profile Photo (x=13mm, y=238mm, w=40mm, h=46mm)
         photo_path = "Projets/prospection job/jost-hotel-bordeaux/04_Livrables/Images/julien_florence_photo.png"
         if not os.path.exists(photo_path):
             photo_path = "/tmp/extracted_photo_0.png"
             
         if os.path.exists(photo_path):
-            c.drawImage(photo_path, 13*mm, 236*mm, width=40*mm, height=48*mm, preserveAspectRatio=True, mask='auto')
+            c.drawImage(photo_path, 13*mm, 238*mm, width=40*mm, height=46*mm, preserveAspectRatio=True, mask='auto')
             c.setStrokeColor(gold_primary)
             c.setLineWidth(1.2)
-            c.roundRect(13*mm, 236*mm, 40*mm, 48*mm, radius=3*mm, stroke=1, fill=0)
+            c.roundRect(13*mm, 238*mm, 40*mm, 46*mm, radius=3*mm, stroke=1, fill=0)
             
-        # 4 Interactive Pill Buttons with CLICKABLE LINKS + PICTOGRAMS
+        # 4 Action Buttons (Rounded Pills roundRect + Clickable PDF Links)
         buttons = [
             ("tel:0661747573", "06 61 74 75 73", False, False),
             ("mailto:julienflorence.florence@gmail.com", "EMAIL", False, False),
             ("https://linkedin.com/in/alban-ruggiero/", "AGENDA", True, False),
-            ("https://github.com/julienflorenceflorence-oss/geminicli-backup/tree/main/Projets/prospection%20job/jost-hotel-bordeaux/04_Livrables/PDF", "CV INTERACTIF & DIPLOMES", False, True)
+            ("https://github.com/julienflorenceflorence-oss/geminicli-backup/tree/main/Projets/prospection%20job/jost-hotel-bordeaux/04_Livrables/PDF", "ACCES CV INTERACTIF", False, True)
         ]
         
-        btn_y = 222*mm
+        btn_y = 224*mm
         for url, text, is_gold_filled, is_gold_border in buttons:
-            btn_rect = (8*mm, btn_y, 58*mm, btn_y + 7.2*mm)
-            
             if is_gold_filled:
                 c.setFillColor(gold_bright)
                 c.setStrokeColor(gold_bright)
-                c.roundRect(8*mm, btn_y, 50*mm, 7.2*mm, radius=3.6*mm, stroke=1, fill=1)
+                c.roundRect(8*mm, btn_y, 50*mm, 7.5*mm, radius=3.75*mm, stroke=1, fill=1)
                 c.setFillColor(colors.HexColor("#0B0C10"))
-                c.setFont("Helvetica-Bold", 7.5)
+                c.setFont("Helvetica-Bold", 7.8)
             else:
                 c.setFillColor(btn_dark_bg)
-                c.setStrokeColor(gold_primary if is_gold_border else btn_border_muted)
+                c.setStrokeColor(gold_primary)
                 c.setLineWidth(0.8)
-                c.roundRect(8*mm, btn_y, 50*mm, 7.2*mm, radius=3.6*mm, stroke=1, fill=1)
+                c.roundRect(8*mm, btn_y, 50*mm, 7.5*mm, radius=3.75*mm, stroke=1, fill=1)
                 c.setFillColor(text_white)
-                c.setFont("Helvetica-Bold", 6.8)
+                c.setFont("Helvetica-Bold", 7.2)
                 
-            c.drawCentredString(33*mm, btn_y + 2.2*mm, text)
-            
-            # Clickable URL Annotation in PDF
-            c.linkURL(url, (8*mm, btn_y, 58*mm, btn_y + 7.2*mm), relative=0)
-            
-            btn_y -= 8.8*mm
+            c.drawCentredString(33*mm, btn_y + 2.4*mm, text)
+            c.linkURL(url, (8*mm, btn_y, 58*mm, btn_y + 7.5*mm), relative=0)
+            btn_y -= 9.2*mm
 
-        # Sidebar Sections (Compact to fit 1 Page)
+        # Sidebar Sections
         sidebar_sections = [
             ("EXPERTISES METSIER", [
                 "Evenementiel de Prestige & MICE",
@@ -112,22 +108,22 @@ class OnePageJostCVPDF:
                 "Neerlandais : B2"
             ]),
             ("FORMATION", [
-                "Bachelor Marketing (2025)",
-                "HTML5 & CSS3 - Google"
+                "Bachelor Marketing & Commerce (2025)",
+                "HTML5 & CSS3 - Google Academy"
             ])
         ]
         
         sec_y = 182*mm
         for title, items in sidebar_sections:
             c.setFillColor(gold_primary)
-            c.setFont("Times-Bold", 8.8)
+            c.setFont("Times-Bold", 9)
             c.drawString(8*mm, sec_y, title)
             
             c.setStrokeColor(gold_primary)
-            c.setLineWidth(0.4)
-            c.line(8*mm, sec_y - 1.2*mm, 58*mm, sec_y - 1.2*mm)
+            c.setLineWidth(0.5)
+            c.line(8*mm, sec_y - 1.5*mm, 58*mm, sec_y - 1.5*mm)
             
-            sec_y -= 5*mm
+            sec_y -= 5.5*mm
             c.setFillColor(text_gray)
             c.setFont("Helvetica", 6.8)
             
@@ -140,10 +136,9 @@ class OnePageJostCVPDF:
                 
             sec_y -= 2*mm
 
-        # Interactive CV note at bottom of sidebar
         c.setFillColor(gold_primary)
         c.setFont("Helvetica-Oblique", 5.8)
-        c.drawCentredString(33*mm, 8*mm, "CV complet & diplomes accessibles en 1 clic")
+        c.drawCentredString(33*mm, 7*mm, "CV complet & diplomes accessibles en 1 clic")
 
         # --------------------------------------------------------
         # MAIN CONTENT (Right Column, x=72mm to 202mm) — 1 PAGE STRICT
@@ -159,7 +154,7 @@ class OnePageJostCVPDF:
         c.setFont("Helvetica-Bold", 8.5)
         c.drawString(72*mm, 272*mm, "| DIRECTEUR D'HOTEL HYBRIDE - JOST BORDEAUX")
         
-        # Profile Summary Paragraph (3 lines)
+        # Summary Paragraph
         summary_text = "Directeur d'Hotel Hybride & Manager fort de 15 ans d'experience combinant la rigueur operationnelle et l'excellence du service de prestige (Palaces 5* & etoiles) au pilotage de centres de profit, Revenue Management (Doyield) et virage MICE B2B. Expert de l'evenementiel haut de gamme et du F&B, je suis immediatement mobile et operationnel pour piloter le site JOST Bordeaux Gare Saint-Jean."
         
         c.setFillColor(text_gray)
@@ -190,7 +185,7 @@ class OnePageJostCVPDF:
         c.setLineWidth(0.5)
         c.line(72*mm + title_width + 3*mm, exp_y + 1.2*mm, 202*mm, exp_y + 1.2*mm)
         
-        # 5 Jobs (Optimized vertical spacing to fit Page 1 perfectly)
+        # 5 Jobs (Exact Text & Format)
         jobs = [
             ("Directeur d'Hotel Hybride & Developpement Commercial", "2025 - PRESENT", "HAPPY HOUSE | ACQUISITION & RENTABILITE B2B - CIBLE JOST BORDEAUX", [
                 "Coaching et pilotage d'une equipe de 3 collaborateurs (objectifs de conquete MICE B2B, animation).",
@@ -256,7 +251,7 @@ class OnePageJostCVPDF:
                     curr_y -= 2.9*mm
                     
             curr_y -= 0.3*mm
-            c.setFillColor(colors.HexColor("#141822"))
+            c.setFillColor(pill_bg)
             c.setStrokeColor(gold_primary)
             c.setLineWidth(0.4)
             c.setFont("Helvetica", 5.8)
@@ -271,15 +266,15 @@ class OnePageJostCVPDF:
                 c.roundRect(tag_x, curr_y, tw, 3.4*mm, radius=1.7*mm, fill=1, stroke=1)
                 c.setFillColor(gold_primary)
                 c.drawCentredString(tag_x + tw/2.0, curr_y + 0.8*mm, tag_str)
-                c.setFillColor(colors.HexColor("#141822"))
+                c.setFillColor(pill_bg)
                 tag_x += tw + 1.5*mm
                 
             curr_y -= 4.5*mm
 
         c.save()
-        print(f"✅ PDF 1 Page A4 Strict avec Liens Cliquables généré : {self.filename}")
+        print(f"✅ PDF Réplique Visuelle Exacte (1 Page A4) généré : {self.filename}")
 
 if __name__ == "__main__":
     out_file = "Projets/prospection job/jost-hotel-bordeaux/04_Livrables/PDF/2026-07-31_CV_Julien_Florence_JOST_Bordeaux.pdf"
-    builder = OnePageJostCVPDF(out_file)
+    builder = PerfectReplicaCVPDF(out_file)
     builder.draw_cv()
