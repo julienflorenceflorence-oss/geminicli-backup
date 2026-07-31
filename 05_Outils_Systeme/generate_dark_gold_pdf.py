@@ -83,10 +83,12 @@ def draw_sidebar_section(pdf, y_start, title, items):
     pdf.set_text_color(226, 232, 240)
     for item in items:
         pdf.set_x(5)
-        pdf.multi_cell(50, 3.8, f"> {item}")
+        pdf.multi_cell(50, 3.8, clean_txt(f"> {item}"))
         pdf.ln(1)
 
 def clean_txt(text):
+    for emoji in ["📞", "✉️", "📍", "🔗", "🏆", "📌", "😊", "🧐", "⚡", "🎯", "🤾", "✨", "📜", "📊", "💰", "💼", "🏢", "👤", "⚙️", "🎙️", "📩", "🤝", "🛏️", "🍽️", "🍸", "🚀", "🧠", "🏛️", "📐", "💬"]:
+        text = text.replace(emoji, "")
     return text.replace("—", "-").replace("’", "'").replace("°", "o").replace("€", "EUR").replace("…", "...").replace("«", '"').replace("»", '"').replace("œ", "oe").replace("Œ", "OE")
 
 def build_cover_letter_pdf(out_path):
@@ -633,6 +635,91 @@ def build_ui_ux_comment_pdf(out_path):
     pdf.output(out_path)
     print(f"✅ PDF généré : {out_path}")
 
+def build_tailored_cv_pdf(out_path):
+    pdf = DarkGoldPDF("JULIEN FLORENCE", "CANDIDAT DIRECTEUR D'HOTELE HYBRIDE & F&B - JOST BORDEAUX")
+    pdf.add_page()
+    
+    # Sidebar
+    draw_sidebar_section(pdf, 32, "Contacts", [
+        "📞 06 61 74 75 73",
+        "✉️ julien.florence@email.com",
+        "📍 Bordeaux & Gironde",
+        "🔗 LinkedIn : Julien Florence"
+    ])
+    
+    draw_sidebar_section(pdf, 75, "Expertises Métier", [
+        "Pilotage P&L & Ratios F&B",
+        "Revenue Mgt (Doyield)",
+        "Virage MICE & B2B Gare",
+        "Management 30 ETP",
+        "Excellence Client & EX/UX"
+    ])
+    
+    draw_sidebar_section(pdf, 135, "Soft Skills & Profil", [
+        "Posture ENTJ-A (94% Org.)",
+        "Coach de Handball",
+        "Rigueur & Sang-froid",
+        "Bachelor Mktg & Digital",
+        "Anglais : B2 / Néerlandais"
+    ])
+    
+    # Main Content
+    pdf.set_xy(68, 32)
+    pdf.set_font('Helvetica', 'B', 8.5)
+    pdf.set_text_color(248, 250, 252)
+    pdf.multi_cell(132, 3.8, clean_txt("Manager commercial et operationnel avec 15 ans d'experience en CHR, Luxe et Management Digital. Specialiste du pilotage P&L, de la rentabilite F&B et de l'animation d'equipes. Operationnel sur Bordeaux pour faire du site JOST Gare Saint-Jean le hub leader."))
+    
+    pdf.ln(3)
+    pdf.set_x(68)
+    pdf.set_font('Times', 'B', 10.5)
+    pdf.set_text_color(212, 175, 55)
+    pdf.cell(132, 5, clean_txt("EXPÉRIENCES PROFESSIONNELLES SUR-MESURE JOST"))
+    pdf.set_draw_color(212, 175, 55)
+    pdf.line(68, pdf.get_y() + 5, 200, pdf.get_y() + 5)
+    pdf.set_xy(68, pdf.get_y() + 7)
+    
+    exps = [
+        ("Directeur de Restaurant & Centre de Profit (2010 - 2015)", "MA SALLE A MANGER | Paris 1er", [
+            "+140% de hausse du Chiffre d'Affaires en 5 ans via etude d'environnement.",
+            "Developpement commercial B2B : galeries d'art, EVG/EVJF, mariages, Tour Operateurs.",
+            "Gestion stricte du P&L, fiches techniques F&B et controle de la masse salariale."
+        ]),
+        ("Consultant & Formateur Hôtellerie 360o (2024 - 2025)", "CONSEIL B2B HÔTELLERIE & CHR", [
+            "Accompagnement de chateaux, hotels independants, gites et chambres d'hotes.",
+            "Optimisation du Revenue Management et baisse des commissions OTAs (Booking/Airbnb)."
+        ]),
+        ("Management Hôtelier & Service d'Excellence (2000 - 2009)", "PALACES 5* & RELAIS & CHÂTEAUX | St-Barth, Angleterre, Dublin", [
+            "Management du Room Service au Guanahani (Palace 5* Saint-Barth LHW).",
+            "Service gastronomique Au Clos (Angleterre) et organisation de soirees Fooding/Oenologie."
+        ]),
+        ("Gestionnaire de Centre de Profit & Manager (2022 - 2024)", "RAS INTÉRIM | Logistique & Services - CA 2.6 M EUR", [
+            "Management quotidien de 20 ETP/semaine (plannings Flextime, rituels d'equipe).",
+            "Pilotage des indicateurs cles et suivi de 25 comptes B2B strategiques."
+        ])
+    ]
+    
+    for title, sub, bullets in exps:
+        pdf.set_x(68)
+        pdf.set_font('Helvetica', 'B', 8.5)
+        pdf.set_text_color(212, 175, 55)
+        pdf.cell(132, 4.5, clean_txt(title))
+        pdf.set_xy(68, pdf.get_y() + 4.5)
+        
+        pdf.set_font('Helvetica', 'I', 7.5)
+        pdf.set_text_color(148, 163, 184)
+        pdf.cell(132, 4, clean_txt(sub))
+        pdf.set_xy(68, pdf.get_y() + 4)
+        
+        pdf.set_font('Helvetica', '', 7)
+        pdf.set_text_color(226, 232, 240)
+        for b in bullets:
+            pdf.set_x(68)
+            pdf.multi_cell(132, 3.4, clean_txt(f"- {b}"))
+        pdf.ln(2)
+
+    pdf.output(out_path)
+    print(f"✅ PDF généré : {out_path}")
+
 if __name__ == "__main__":
     out_dir = "Projets/prospection job/jost-hotel-bordeaux/04_Livrables/PDF"
     bi_dir = "Projets/Outils-BI/Power-BI/04_Livrables/PDF"
@@ -647,6 +734,8 @@ if __name__ == "__main__":
     build_power_bi_pdf(os.path.join(bi_dir, "2026-07-31_Synthese_Executive_Microsoft_Power_BI.pdf"))
     build_linkedin_replies_pdf(os.path.join(out_dir, "2026-07-31_Guide_Reponses_Posts_Linkedin_MICE_Doyield.pdf"))
     build_ui_ux_comment_pdf(os.path.join(out_dir, "2026-07-31_Commentaires_Linkedin_UI_UX_LTV_Lightspeed_JOST.pdf"))
+    build_tailored_cv_pdf(os.path.join(out_dir, "2026-07-31_CV_Julien_Florence_JOST_Bordeaux.pdf"))
+
 
 
 
