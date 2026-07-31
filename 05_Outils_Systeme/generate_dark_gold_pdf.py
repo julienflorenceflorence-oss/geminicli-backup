@@ -594,6 +594,45 @@ def build_linkedin_replies_pdf(out_path):
     pdf.output(out_path)
     print(f"✅ PDF généré : {out_path}")
 
+def build_ui_ux_comment_pdf(out_path):
+    pdf = DarkGoldPDF("COMMENTAIRE LINKEDIN UI/UX & LTV", "ANALYSE DU POST LIGHTSPEED / JOST HOTELS")
+    pdf.add_page()
+    
+    # Sidebar
+    draw_sidebar_section(pdf, 32, "Thématiques UI/UX", [
+        "User Interface (UI)",
+        "User Experience (UX)",
+        "Lifetime Value (LTV)",
+        "Lightspeed TPE",
+        "Employee Exp. (EX)"
+    ])
+    
+    pdf.set_xy(68, 32)
+    pdf.set_font('Times', 'B', 10.5)
+    pdf.set_text_color(212, 175, 55)
+    pdf.cell(132, 5, clean_txt("PROPOSITION 1 (EXPERT UI/UX & LTV CLIENT)"))
+    pdf.set_draw_color(212, 175, 55)
+    pdf.line(68, 38, 200, 38)
+    pdf.set_xy(68, 40)
+    
+    p1 = [
+        "Texte a copier-coller :",
+        "Demonstration magistrale du pouvoir de l'UX/UI lorsqu'elle est pensee pour l'humain !",
+        "Le choix d'un TPE avec une interface (UI) epuree demontre une verite fondamentale : la qualite de l'User Experience (UX) ne s'arrete pas a la reservation en ligne, elle doit irriguer chaque point de contact du parcours client tout au long de sa LTV (Lifetime Value).",
+        "En reduisant la charge mentale au paiement, l'outil debloque un geste naturel de reconnaissance. Resultat : meilleure experience client et Employee Experience (EX) forte qui reduit le turnover.",
+        "Bravo JOST Hotels et Lightspeed HQ !"
+    ]
+    
+    pdf.set_font('Helvetica', '', 7.5)
+    pdf.set_text_color(226, 232, 240)
+    for p in p1:
+        pdf.set_x(68)
+        pdf.multi_cell(132, 3.6, clean_txt(p))
+        pdf.ln(1.5)
+
+    pdf.output(out_path)
+    print(f"✅ PDF généré : {out_path}")
+
 if __name__ == "__main__":
     out_dir = "Projets/prospection job/jost-hotel-bordeaux/04_Livrables/PDF"
     bi_dir = "Projets/Outils-BI/Power-BI/04_Livrables/PDF"
@@ -607,6 +646,8 @@ if __name__ == "__main__":
     build_strategic_post_pdf(os.path.join(out_dir, "2026-07-31_Analyse_Post_Linkedin_Strategique_MELT_JOST.pdf"))
     build_power_bi_pdf(os.path.join(bi_dir, "2026-07-31_Synthese_Executive_Microsoft_Power_BI.pdf"))
     build_linkedin_replies_pdf(os.path.join(out_dir, "2026-07-31_Guide_Reponses_Posts_Linkedin_MICE_Doyield.pdf"))
+    build_ui_ux_comment_pdf(os.path.join(out_dir, "2026-07-31_Commentaires_Linkedin_UI_UX_LTV_Lightspeed_JOST.pdf"))
+
 
 
 
