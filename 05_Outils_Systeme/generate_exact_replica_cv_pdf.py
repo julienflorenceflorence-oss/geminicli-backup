@@ -3,250 +3,292 @@ import os
 import sys
 
 sys.path.insert(0, '/Users/admin/Library/Python/3.9/lib/python/site-packages')
-from fpdf import FPDF
+from reportlab.lib.pagesizes import A4
+from reportlab.lib import colors
+from reportlab.pdfgen import canvas
+from reportlab.lib.units import mm
 
-class ExactReplicaCVPDF(FPDF):
-    def __init__(self):
-        super().__init__(orientation='P', unit='mm', format='A4')
-        self.set_auto_page_break(auto=False)
-        self.set_margins(0, 0, 0)
-        
-    def draw_layout(self):
-        # 1. Main Background (#0B0C10)
-        self.set_fill_color(11, 12, 16)
-        self.rect(0, 0, 210, 297, 'F')
-        
-        # 2. Sidebar Background (#13161F)
-        self.set_fill_color(19, 22, 31)
-        self.rect(0, 0, 68, 297, 'F')
-        
-        # 3. Sidebar Divider Line (#D4AF37)
-        self.set_draw_color(212, 175, 55)
-        self.set_line_width(0.3)
-        self.line(68, 0, 68, 297)
+class ExactReplicaCVReportLab:
+    def __init__(self, filename):
+        self.filename = filename
+        self.c = canvas.Canvas(filename, pagesize=A4)
+        self.width, self.height = A4 # 210mm x 297mm
 
-def clean_txt(text):
-    for emoji in ["📞", "✉️", "📍", "🔗", "🏆", "📌", "😊", "🧐", "⚡", "🎯", "🤾", "✨", "📜", "📊", "💰", "💼", "🏢", "👤", "⚙️", "🎙️", "📩", "🤝", "🛏️", "🍽️", "🍸", "🚀", "🧠", "🏛️", "📐", "💬"]:
-        text = text.replace(emoji, "")
-    return text.replace("—", "-").replace("’", "'").replace("°", "o").replace("€", "EUR").replace("…", "...").replace("«", '"').replace("»", '"').replace("œ", "oe").replace("Œ", "OE")
+    def draw_cv(self):
+        c = self.c
+        
+        # Colors
+        bg_main = colors.HexColor("#0B0C10")
+        bg_sidebar = colors.HexColor("#13161F")
+        gold_primary = colors.HexColor("#D4AF37")
+        gold_bright = colors.HexColor("#EAB308")
+        text_white = colors.HexColor("#F8FAFC")
+        text_gray = colors.HexColor("#CBD5E1")
+        text_muted = colors.HexColor("#94A3B8")
+        btn_dark_bg = colors.HexColor("#161A25")
+        btn_border_gold = colors.HexColor("#D4AF37")
+        btn_border_muted = colors.HexColor("#3C4150")
+        
+        # 1. Main Background
+        c.setFillColor(bg_main)
+        c.rect(0, 0, self.width, self.height, fill=1, stroke=0)
+        
+        # 2. Sidebar Background (width 68mm)
+        c.setFillColor(bg_sidebar)
+        c.rect(0, 0, 68*mm, self.height, fill=1, stroke=0)
+        
+        # 3. Vertical Gold Line Divider
+        c.setStrokeColor(gold_primary)
+        c.setLineWidth(0.8)
+        c.line(68*mm, 0, 68*mm, self.height)
+        
+        # --------------------------------------------------------
+        # SIDEBAR CONTENT (Left Column, x=0 to 68mm)
+        # --------------------------------------------------------
+        
+        # Photo (x=14mm, top_y=287mm -> y=235mm, w=40mm, h=46mm)
+        photo_path = "Projets/prospection job/jost-hotel-bordeaux/04_Livrables/Images/julien_florence_photo.png"
+        if not os.path.exists(photo_path):
+            photo_path = "/tmp/extracted_photo_0.png"
+            
+        if os.path.exists(photo_path):
+            # Draw photo image
+            c.drawImage(photo_path, 14*mm, 237*mm, width=40*mm, height=48*mm, preserveAspectRatio=True, mask='auto')
+            # Gold Rounded Border for Photo
+            c.setStrokeColor(gold_primary)
+            c.setLineWidth(1.2)
+            c.roundRect(14*mm, 237*mm, 40*mm, 48*mm, radius=3*mm, stroke=1, fill=0)
+            
+        # 4 Action Buttons with Rounded Corners (roundRect)
+        buttons = [
+            ("06 61 74 75 73", False, False),
+            ("EMAIL", False, False),
+            ("AGENDA", True, False),
+            ("ACCES CV INTERACTIF", False, True)
+        ]
+        
+        btn_y = 222*mm
+        for text, is_gold_filled, is_gold_border in buttons:
+            if is_gold_filled:
+                c.setFillColor(gold_bright)
+                c.setStrokeColor(gold_bright)
+                c.roundRect(9*mm, btn_y, 50*mm, 7.5*mm, radius=3.75*mm, stroke=1, fill=1)
+                c.setFillColor(colors.HexColor("#0B0C10"))
+                c.setFont("Helvetica-Bold", 8)
+            else:
+                c.setFillColor(btn_dark_bg)
+                c.setStrokeColor(gold_primary if is_gold_border else btn_border_muted)
+                c.setLineWidth(0.8)
+                c.roundRect(9*mm, btn_y, 50*mm, 7.5*mm, radius=3.75*mm, stroke=1, fill=1)
+                c.setFillColor(text_white)
+                c.setFont("Helvetica-Bold", 7.5)
+                
+            c.drawCentredString(34*mm, btn_y + 2.2*mm, text)
+            btn_y -= 9.5*mm
 
-def generate_pdf(out_path):
-    pdf = ExactReplicaCVPDF()
-    pdf.add_page()
-    pdf.draw_layout()
-    
-    # ----------------------------------------------------
-    # SIDEBAR CONTENT (Left Column, width 68mm)
-    # ----------------------------------------------------
-    
-    # Profile Photo (Top Left)
-    photo_path = "/Users/admin/.gemini/antigravity/brain/3b3f54ca-b09a-4ea4-9dc8-59a0af5a76aa/.user_uploaded/media__1785320733290.png"
-    if os.path.exists(photo_path):
-        pdf.image(photo_path, x=14, y=10, w=40, h=46)
-        pdf.set_draw_color(212, 175, 55)
-        pdf.set_line_width(0.5)
-        pdf.rect(14, 10, 40, 46, 'D')
-    
-    # 4 Action Buttons
-    buttons = [
-        ("06 61 74 75 73", False, False),
-        ("EMAIL", False, False),
-        ("AGENDA", True, False),
-        ("ACCES CV INTERACTIF", False, True)
-    ]
-    
-    btn_y = 60
-    for text, is_yellow, is_border_gold in buttons:
-        if is_yellow:
-            pdf.set_fill_color(234, 179, 8)
-            pdf.set_draw_color(234, 179, 8)
-            pdf.set_text_color(11, 12, 16)
-        else:
-            pdf.set_fill_color(22, 26, 37)
-            pdf.set_draw_color(212, 175, 55) if is_border_gold else pdf.set_draw_color(60, 65, 80)
-            pdf.set_text_color(248, 250, 252)
+        # Sidebar Sections
+        sidebar_sections = [
+            ("EXPERTISES METSIER", [
+                "Evenementiel de Prestige & MICE",
+                "Hospitalite & Codes du Luxe (LHW)",
+                "Developpement B2B & Acquisition",
+                "Management d'equipes (3-20 ETP)",
+                "Pilotage Commercial (CA, P&L, Marge)",
+                "Sommellerie de Prestige & Gastronomie",
+                "Revenue Management & Doyield JOST"
+            ]),
+            ("SOFT SKILLS", [
+                "ENTJ-A | 94% Rationnel & Organise",
+                "Sens du service client d'exception",
+                "Aisance relationnelle clienteles VIP",
+                "Leadership federateur & Terrain",
+                "Esprit d'entreprise & Resilience"
+            ]),
+            ("LANGUES", [
+                "Anglais : Usage pro (C1, 2 ans UK/IRL)",
+                "Neerlandais : B2"
+            ]),
+            ("FORMATION", [
+                "Bachelor Marketing & Commerce (2025)",
+                "HTML5 & CSS3 - Google Academy"
+            ])
+        ]
+        
+        sec_y = 175*mm
+        for title, items in sidebar_sections:
+            # Section Title
+            c.setFillColor(gold_primary)
+            c.setFont("Times-Bold", 9.5)
+            c.drawString(9*mm, sec_y, title)
             
-        pdf.set_font('Helvetica', 'B', 7)
-        pdf.rect(9, btn_y, 50, 6.5, 'DF')
-        pdf.set_xy(9, btn_y + 1.2)
-        pdf.cell(50, 4, clean_txt(text), align='C')
-        btn_y += 8.5
-        
-    # Sidebar Sections
-    sidebar_sections = [
-        ("EXPERTISES METSIER", [
-            "Evenementiel de Prestige & MICE",
-            "Hospitalite & Codes du Luxe (LHW)",
-            "Developpement B2B & Acquisition",
-            "Management d'equipes (3-20 ETP)",
-            "Pilotage Commercial (CA, P&L, Marge)",
-            "Sommellerie de Prestige & Gastronomie",
-            "Revenue Management & Doyield JOST"
-        ]),
-        ("SOFT SKILLS", [
-            "ENTJ-A | 94% Rationnel & Organise",
-            "Sens du service client d'exception",
-            "Aisance relationnelle clienteles VIP",
-            "Leadership federateur & Terrain",
-            "Esprit d'entreprise & Resilience"
-        ]),
-        ("LANGUES", [
-            "Anglais : Usage pro (C1, 2 ans UK/IRL)",
-            "Neerlandais : B2"
-        ]),
-        ("FORMATION", [
-            "Bachelor Marketing & Commerce (2025)",
-            "HTML5 & CSS3 - Google Academy"
-        ])
-    ]
-    
-    sec_y = 98
-    for title, items in sidebar_sections:
-        pdf.set_xy(9, sec_y)
-        pdf.set_font('Times', 'B', 9)
-        pdf.set_text_color(212, 175, 55)
-        pdf.cell(50, 4, clean_txt(title))
-        
-        pdf.set_draw_color(212, 175, 55)
-        pdf.set_line_width(0.2)
-        pdf.line(9, sec_y + 4.5, 59, sec_y + 4.5)
-        
-        sec_y += 6.5
-        pdf.set_font('Helvetica', '', 6.8)
-        pdf.set_text_color(203, 213, 225)
-        
-        for item in items:
-            pdf.set_xy(9, sec_y)
-            pdf.cell(3, 3.5, ">", align='L')
-            pdf.set_xy(12, sec_y)
-            pdf.multi_cell(47, 3.5, clean_txt(item))
-            sec_y = pdf.get_y() + 0.5
+            # Gold Line under Title
+            c.setStrokeColor(gold_primary)
+            c.setLineWidth(0.5)
+            c.line(9*mm, sec_y - 1.5*mm, 59*mm, sec_y - 1.5*mm)
             
-        sec_y += 2.5
-        
-    # ----------------------------------------------------
-    # MAIN CONTENT (Right Column, x=74mm to 200mm)
-    # ----------------------------------------------------
-    
-    # Header Name
-    pdf.set_xy(74, 10)
-    pdf.set_font('Times', 'B', 22)
-    pdf.set_text_color(212, 175, 55)
-    pdf.cell(126, 8, clean_txt("JULIEN FLORENCE"))
-    
-    # Subtitle (UPDATED TO DIRECTEUR D'HÔTEL HYBRIDE — JOST BORDEAUX)
-    pdf.set_xy(74, 18)
-    pdf.set_font('Helvetica', 'B', 8.5)
-    pdf.set_text_color(248, 250, 252)
-    pdf.cell(126, 5, clean_txt("| DIRECTEUR D'HÔTEL HYBRIDE — JOST BORDEAUX"))
-    
-    # Profile Summary Paragraph
-    pdf.set_xy(74, 25)
-    pdf.set_font('Helvetica', '', 7.2)
-    pdf.set_text_color(226, 232, 240)
-    summary = "Directeur d'Hotel Hybride & Manager fort de 15 ans d'experience combinant la rigueur operationnelle et l'excellence du service de prestige (Palaces 5* & etoiles) au pilotage de centres de profit, Revenue Management (Doyield) et virage MICE B2B. Expert de l'evenementiel haut de gamme et du F&B, je suis immediatement mobile et operationnel pour piloter le site JOST Bordeaux Gare Saint-Jean."
-    pdf.multi_cell(126, 3.4, clean_txt(summary))
-    
-    # Section Title: EXPERIENCES PROFESSIONNELLES
-    curr_y = pdf.get_y() + 3
-    pdf.set_xy(74, curr_y)
-    pdf.set_font('Times', 'B', 10.5)
-    pdf.set_text_color(212, 175, 55)
-    pdf.cell(65, 5, clean_txt("EXPERIENCES PROFESSIONNELLES"))
-    
-    # Gold horizontal rule
-    pdf.set_draw_color(212, 175, 55)
-    pdf.set_line_width(0.3)
-    pdf.line(139, curr_y + 3, 200, curr_y + 3)
-    
-    curr_y += 7
-    
-    # Experiences List (Exact text from attached image, with JOST Directorship adaptation for Job 1)
-    jobs = [
-        ("Directeur d'Hotel Hybride & Developpement Commercial", "2025 - PRESENT", "HAPPY HOUSE | ACQUISITION & RENTABILITE B2B - CIBLE JOST BORDEAUX", [
-            "Coaching et pilotage d'une equipe de 3 collaborateurs (objectifs de conquete MICE B2B, animation).",
-            "Integration de la solution Doyield pour le Yield Management hybride (dortoirs vs chambres Signature).",
-            "Definition de la strategie commerciale Go-To-Market et privatisation du Lieu Cheri et du Rooftop."
-        ], ["Management", "Doyield", "KPIs", "MICE B2B", "JOST Bordeaux"]),
-        
-        ("Responsable de Division HRE (Hotellerie, Restauration & Evenementiel)", "2022 - 2024", "RAS INTERIM | SERVICE & EVENEMENTIEL - CA DIVISION 2.6 M EUR", [
-            "Developpement B2B & Comptes Cles : Gestion de 20 clients corporate (hotels, traiteurs de prestige).",
-            "Management operationnel de 20 ETP par semaine (recrutement, plannings, formation personnel).",
-            "Garant de la conformite reglementaire, de la gestion du P&L divisionnaire et de la fidelisation client."
-        ], ["Hotellerie-Restauration", "Evenementiel B2B", "Management ETP"]),
-        
-        ("Negociateur Immobilier & Manager Leader", "2015 - 2021", "CENTURY 21 (Paris) & CABINET BEDIN (Toulouse)", [
-            "Negociation commerciale et pilotage d'un portefeuille de clients exigeants (120k EUR CA annuel personnel).",
-            "Recrutement, formation, animation et coaching de 5 negociateurs sur le terrain et en agence.",
-            "Animation d'actions commerciales de terrain et developpement de partenariats locaux."
-        ], ["Negociation Haut de Gamme", "Coaching Sales", "Reseau Local"]),
-        
-        ("Directeur de Restaurant & Partenaire Evenementiel", "2010 - 2015", "MA SALLE A MANGER | PARIS 1er (PLACE DAUPHINE)", [
-            "Duplication des standards de l'hotellerie de luxe pour piloter le restaurant (15 salaries, P&L) : croissance de +140% du CA en 5 ans (passage de 250 k EUR a 600 k EUR).",
-            "Evenementiel culturel & Corporate : Partenaire gastronomique exclusif de la Galerie Nabokof (Paris 1er) pour vernissages ; accueil de clubs d'affaires et EVG de prestige."
-        ], ["Evenementiel Culturel", "Clubs d'Affaires", "Rentabilite (+140% CA)"]),
-        
-        ("Service de Prestige & Gestion Clienteles VIP", "2000 - 2009", "PALACES 5* (LHW), YACHTING DE LUXE & SOMMELLERIE ETOILEE | IRLANDE, ST-BARTH, ANGLETERRE", [
-            "1er Sommelier (2003-2004) : The Westbury (Palace 5*, Dublin, 1* Michelin). Sommelier privilegie de M. Bono (U2) lors de receptions privees. Management de 20 personnes.",
-            "Chef Barman (2001-2002) : Le Clos (1* Michelin, Bath, Angleterre). Creation de la carte des cocktails, management des barmans, gestion des stocks et de la clientele (CA : 6 M EUR).",
-            "Adjoint du Responsable Room Service (2000-2001) : The Guanahani (Palace 5*, St-Barth). Supervision de 20 personnes. Service pour le Nouvel An sur les yachts de luxe et personnalites VIP."
-        ], ["Standards Palaces (LHW)", "Clienteles VIP", "Sommellerie & Bar"])
-    ]
-    
-    for role, dates, company, bullets, tags in jobs:
-        # Job Role + Dates
-        pdf.set_xy(74, curr_y)
-        pdf.set_font('Helvetica', 'B', 8.2)
-        pdf.set_text_color(212, 175, 55)
-        pdf.cell(85, 4, clean_txt(role), align='L')
-        
-        pdf.set_font('Helvetica', 'B', 7.5)
-        pdf.set_text_color(148, 163, 184)
-        pdf.cell(41, 4, clean_txt(dates), align='R')
-        
-        # Company
-        curr_y += 4
-        pdf.set_xy(74, curr_y)
-        pdf.set_font('Helvetica', 'B', 7.2)
-        pdf.set_text_color(248, 250, 252)
-        pdf.cell(126, 3.6, clean_txt(company))
-        
-        # Bullets
-        curr_y += 3.8
-        pdf.set_font('Helvetica', '', 6.8)
-        pdf.set_text_color(203, 213, 225)
-        for bullet in bullets:
-            pdf.set_xy(74, curr_y)
-            pdf.cell(3, 3, "-", align='L')
-            pdf.set_xy(77, curr_y)
-            pdf.multi_cell(123, 3, clean_txt(bullet))
-            curr_y = pdf.get_y()
+            sec_y -= 5.5*mm
+            c.setFillColor(text_gray)
+            c.setFont("Helvetica", 7.2)
             
-        # Tags (Pill Badges)
-        curr_y += 0.8
-        pdf.set_xy(74, curr_y)
-        pdf.set_font('Helvetica', '', 6)
-        pdf.set_text_color(212, 175, 55)
-        pdf.set_draw_color(212, 175, 55)
-        pdf.set_fill_color(20, 24, 34)
-        
-        tag_x = 74
-        for tag in tags:
-            tag_txt = clean_txt(f"({tag})")
-            t_w = pdf.get_string_width(tag_txt) + 3.5
-            if tag_x + t_w > 200:
-                curr_y += 4
-                tag_x = 74
-            pdf.rect(tag_x, curr_y, t_w, 3.6, 'DF')
-            pdf.set_xy(tag_x, curr_y + 0.3)
-            pdf.cell(t_w, 2.8, tag_txt, align='C')
-            tag_x += t_w + 1.8
-            
-        curr_y += 5
+            for item in items:
+                c.setFillColor(gold_primary)
+                c.drawString(9*mm, sec_y, ">")
+                c.setFillColor(text_gray)
+                
+                # Wrapped text if long
+                if len(item) > 28:
+                    parts = [item[:28], item[28:]]
+                    c.drawString(12*mm, sec_y, parts[0])
+                    sec_y -= 3.2*mm
+                    c.drawString(12*mm, sec_y, parts[1])
+                else:
+                    c.drawString(12*mm, sec_y, item)
+                sec_y -= 4.2*mm
+                
+            sec_y -= 3*mm
 
-    pdf.output(out_path)
-    print(f"✅ PDF Réplique 100% Conforme Image + JOST Title généré : {out_path}")
+        # --------------------------------------------------------
+        # MAIN CONTENT (Right Column, x=74mm to 200mm)
+        # --------------------------------------------------------
+        
+        # Header Name
+        c.setFillColor(gold_primary)
+        c.setFont("Times-Bold", 24)
+        c.drawString(74*mm, 280*mm, "JULIEN FLORENCE")
+        
+        # Subtitle (Requested exact title)
+        c.setFillColor(text_white)
+        c.setFont("Helvetica-Bold", 9)
+        c.drawString(74*mm, 272*mm, "| DIRECTEUR D'HOTEL HYBRIDE - JOST BORDEAUX")
+        
+        # Profile Summary Paragraph
+        summary_text = "Directeur d'Hotel Hybride & Manager fort de 15 ans d'experience combinant la rigueur operationnelle et l'excellence du service de prestige (Palaces 5* & etoiles) au pilotage de centres de profit, Revenue Management (Doyield) et virage MICE B2B. Expert de l'evenementiel haut de gamme et du F&B, je suis immediatement mobile et operationnel pour piloter le site JOST Bordeaux Gare Saint-Jean."
+        
+        c.setFillColor(text_gray)
+        c.setFont("Helvetica", 7.5)
+        
+        # Draw summary wrapped lines
+        words = summary_text.split()
+        line = ""
+        summary_y = 265*mm
+        for w in words:
+            if c.stringWidth(line + " " + w, "Helvetica", 7.5) < 126*mm:
+                line += (" " if line else "") + w
+            else:
+                c.drawString(74*mm, summary_y, line)
+                summary_y -= 3.6*mm
+                line = w
+        if line:
+            c.drawString(74*mm, summary_y, line)
+            summary_y -= 3.6*mm
+            
+        # Section Title: EXPERIENCES PROFESSIONNELLES
+        exp_y = summary_y - 4*mm
+        c.setFillColor(gold_primary)
+        c.setFont("Times-Bold", 11)
+        c.drawString(74*mm, exp_y, "EXPERIENCES PROFESSIONNELLES")
+        
+        # Gold Line Extending Across
+        title_width = c.stringWidth("EXPERIENCES PROFESSIONNELLES", "Times-Bold", 11)
+        c.setStrokeColor(gold_primary)
+        c.setLineWidth(0.6)
+        c.line(74*mm + title_width + 3*mm, exp_y + 1.5*mm, 200*mm, exp_y + 1.5*mm)
+        
+        # Experiences List (Exact 5 jobs from attached image)
+        jobs = [
+            ("Directeur d'Hotel Hybride & Developpement Commercial", "2025 - PRESENT", "HAPPY HOUSE | ACQUISITION & RENTABILITE B2B - CIBLE JOST BORDEAUX", [
+                "Coaching et pilotage d'une equipe de 3 collaborateurs (objectifs de conquete MICE B2B, animation).",
+                "Integration de la solution Doyield pour le Yield Management hybride (dortoirs vs chambres Signature).",
+                "Definition de la strategie commerciale Go-To-Market et privatisation du Lieu Cheri et du Rooftop."
+            ], ["Management", "Doyield", "KPIs", "MICE B2B", "JOST Bordeaux"]),
+            
+            ("Responsable de Division HRE (Hotellerie, Restauration & Evenementiel)", "2022 - 2024", "RAS INTERIM | SERVICE & EVENEMENTIEL - CA DIVISION 2.6 M EUR", [
+                "Developpement B2B & Comptes Cles : Gestion de 20 clients corporate (hotels, traiteurs de prestige).",
+                "Management operationnel de 20 ETP par semaine (recrutement, plannings, formation personnel).",
+                "Garant de la conformite reglementaire, de la gestion du P&L divisionnaire et de la fidelisation client."
+            ], ["Hotellerie-Restauration", "Evenementiel B2B", "Management ETP"]),
+            
+            ("Negociateur Immobilier & Manager Leader", "2015 - 2021", "CENTURY 21 (Paris) & CABINET BEDIN (Toulouse)", [
+                "Negociation commerciale et pilotage d'un portefeuille de clients exigeants (120k EUR CA moyen personnel).",
+                "Recrutement, formation, animation et coaching de 5 negociateurs sur le terrain et en agence.",
+                "Animation d'actions commerciales de terrain et developpement de partenariats locaux."
+            ], ["Negociation Haut de Gamme", "Coaching Sales", "Reseau Local"]),
+            
+            ("Directeur de Restaurant & Partenaire Evenementiel", "2010 - 2015", "MA SALLE A MANGER | PARIS 1er (PLACE DAUPHINE)", [
+                "Duplication des standards de l'hotellerie de luxe pour piloter le restaurant (15 salaries, P&L) : croissance de +140% du CA en 5 ans (passage de 250 k EUR a 600 k EUR).",
+                "Evenementiel culturel & Corporate : Partenaire gastronomique exclusif de la Galerie Nabokof (Paris 1er) pour vernissages ; accueil de clubs d'affaires et EVG de prestige."
+            ], ["Evenementiel Culturel", "Clubs d'Affaires", "Rentabilite (+140% CA)"]),
+            
+            ("Service de Prestige & Gestion Clienteles VIP", "2000 - 2009", "PALACES 5* (LHW), YACHTING DE LUXE & SOMMELLERIE ETOILEE | IRLANDE, ST-BARTH, ANGLETERRE", [
+                "1er Sommelier (2003-2004) : The Westbury (Palace 5*, Dublin, 1* Michelin). Sommelier privilegie de M. Bono (U2) lors de receptions privees. Management de 20 personnes.",
+                "Chef Barman (2001-2002) : Le Clos (1* Michelin, Bath, Angleterre). Creation de la carte des cocktails, management des barmans, gestion des stocks et de la clientele (CA : 6 M EUR).",
+                "Adjoint du Responsable Room Service (2000-2001) : The Guanahani (Palace 5*, St-Barth). Supervision de 20 personnes. Service pour le Nouvel An sur les yachts de luxe et personnalites VIP."
+            ], ["Standards Palaces (LHW)", "Clienteles VIP", "Sommellerie & Bar"])
+        ]
+        
+        curr_y = exp_y - 7*mm
+        for role, dates, company, bullets, tags in jobs:
+            # Job Role
+            c.setFillColor(gold_primary)
+            c.setFont("Helvetica-Bold", 8.8)
+            c.drawString(74*mm, curr_y, role)
+            
+            # Dates (right aligned)
+            c.setFillColor(text_muted)
+            c.setFont("Helvetica-Bold", 7.8)
+            c.drawRightString(200*mm, curr_y, dates)
+            
+            # Company
+            curr_y -= 4.2*mm
+            c.setFillColor(text_white)
+            c.setFont("Helvetica-Bold", 7.5)
+            c.drawString(74*mm, curr_y, company)
+            
+            # Bullets
+            curr_y -= 3.8*mm
+            c.setFillColor(text_gray)
+            c.setFont("Helvetica", 7)
+            
+            for b in bullets:
+                b_words = b.split()
+                b_line = "-"
+                for bw in b_words:
+                    if c.stringWidth(b_line + " " + bw, "Helvetica", 7) < 123*mm:
+                        b_line += (" " if b_line != "-" else " ") + bw
+                    else:
+                        c.drawString(74*mm, curr_y, b_line)
+                        curr_y -= 3.2*mm
+                        b_line = "  " + bw
+                if b_line:
+                    c.drawString(74*mm, curr_y, b_line)
+                    curr_y -= 3.2*mm
+                    
+            # Tags (Rounded Pill Badges with roundRect)
+            curr_y -= 0.5*mm
+            c.setFillColor(colors.HexColor("#141822"))
+            c.setStrokeColor(gold_primary)
+            c.setLineWidth(0.5)
+            c.setFont("Helvetica", 6.2)
+            
+            tag_x = 74*mm
+            for tag in tags:
+                tag_str = f"({tag})"
+                tw = c.stringWidth(tag_str, "Helvetica", 6.2) + 4*mm
+                if tag_x + tw > 200*mm:
+                    curr_y -= 4.2*mm
+                    tag_x = 74*mm
+                c.roundRect(tag_x, curr_y, tw, 3.8*mm, radius=1.9*mm, fill=1, stroke=1)
+                c.setFillColor(gold_primary)
+                c.drawCentredString(tag_x + tw/2.0, curr_y + 1*mm, tag_str)
+                c.setFillColor(colors.HexColor("#141822"))
+                tag_x += tw + 2*mm
+                
+            curr_y -= 5*mm
+
+        c.save()
+        print(f"✅ PDF Réplique Exacte ReportLab (Photo + Boutons Arrondis + Pill Badges) généré : {self.filename}")
 
 if __name__ == "__main__":
     out_file = "Projets/prospection job/jost-hotel-bordeaux/04_Livrables/PDF/2026-07-31_CV_Julien_Florence_JOST_Bordeaux.pdf"
-    generate_pdf(out_file)
+    builder = ExactReplicaCVReportLab(out_file)
+    builder.draw_cv()
