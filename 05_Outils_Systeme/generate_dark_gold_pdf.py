@@ -534,6 +534,66 @@ def build_power_bi_pdf(out_path):
     pdf.output(out_path)
     print(f"✅ PDF généré : {out_path}")
 
+def build_linkedin_replies_pdf(out_path):
+    pdf = DarkGoldPDF("GUIDE RÉPONSES LINKEDIN STRATÉGIQUES", "DIRIGEANTS MELT GROUP (RUGGIERO & FERRIÈRES)")
+    pdf.add_page()
+    
+    # Sidebar
+    draw_sidebar_section(pdf, 32, "Profils LinkedIn", [
+        "Alban Ruggiero (CEO)",
+        "Damien Ferrieres (DG)",
+        "Page JOST Hotels",
+        "Page DOYIELD",
+        "Podcast Event Shake"
+    ])
+    
+    pdf.set_xy(68, 32)
+    pdf.set_font('Times', 'B', 10.5)
+    pdf.set_text_color(212, 175, 55)
+    pdf.cell(132, 5, clean_txt("1. REPONSE AU POST MICE B2B (DAMIEN FERRIERES)"))
+    pdf.set_draw_color(212, 175, 55)
+    pdf.line(68, 38, 200, 38)
+    pdf.set_xy(68, 40)
+    
+    p1 = [
+        "Texte a copier-coller :",
+        "Excellente analyse Damien ! Le MICE B2B cherche des lieux festifs mais professionnels sans renoncer a l'exigence.",
+        "Ancien Directeur a Paris (+140% CA en 5 ans via l'evenementiel) et ex-coach de handball, je constate que la reussite d'un evenement MICE repose sur l'agilite et la maitrise du timing F&B.",
+        "JOST Bordeaux Gare a toutes les cartes en main pour devenir le hub d'affaires de la zone !"
+    ]
+    
+    pdf.set_font('Helvetica', '', 7.5)
+    pdf.set_text_color(226, 232, 240)
+    for p in p1:
+        pdf.set_x(68)
+        pdf.multi_cell(132, 3.6, clean_txt(p))
+        pdf.ln(1.5)
+        
+    pdf.ln(3)
+    pdf.set_x(68)
+    pdf.set_font('Times', 'B', 10.5)
+    pdf.set_text_color(212, 175, 55)
+    pdf.cell(132, 5, clean_txt("2. REPONSE AU POST DOYIELD (ALBAN RUGGIERO)"))
+    pdf.line(68, pdf.get_y() + 5, 200, pdf.get_y() + 5)
+    pdf.set_xy(68, pdf.get_y() + 7)
+    
+    p2 = [
+        "Texte a copier-coller :",
+        "Felicitations Alban pour ce partenariat avec Doyield !",
+        "Piloter un hotel hybride exige un Revenue Management chirurgical pour maximiser le RevPAG (CA total par client incluant le F&B).",
+        "Ayant passe 1 an a conseiller des hoteliers apres un parcours en Palace 5* (Guanahani St-Barth, Au Clos Angleterre), la combinaison Doyield + controle terrain du Prime Cost (<60%) est la cle pour couper la dependance aux OTAs."
+    ]
+    
+    pdf.set_font('Helvetica', '', 7.5)
+    pdf.set_text_color(226, 232, 240)
+    for p in p2:
+        pdf.set_x(68)
+        pdf.multi_cell(132, 3.6, clean_txt(p))
+        pdf.ln(1.5)
+
+    pdf.output(out_path)
+    print(f"✅ PDF généré : {out_path}")
+
 if __name__ == "__main__":
     out_dir = "Projets/prospection job/jost-hotel-bordeaux/04_Livrables/PDF"
     bi_dir = "Projets/Outils-BI/Power-BI/04_Livrables/PDF"
@@ -546,5 +606,7 @@ if __name__ == "__main__":
     build_prices_pdf(os.path.join(out_dir, "2026-07-29_Grille_Tarifaire_Et_Prix_JOST_Bordeaux.pdf"))
     build_strategic_post_pdf(os.path.join(out_dir, "2026-07-31_Analyse_Post_Linkedin_Strategique_MELT_JOST.pdf"))
     build_power_bi_pdf(os.path.join(bi_dir, "2026-07-31_Synthese_Executive_Microsoft_Power_BI.pdf"))
+    build_linkedin_replies_pdf(os.path.join(out_dir, "2026-07-31_Guide_Reponses_Posts_Linkedin_MICE_Doyield.pdf"))
+
 
 
