@@ -21,5 +21,5 @@ Ce document récapitule le **message de présentation à envoyer immédiatement 
 >
 > Bien cordialement,  
 > **Julien FLORENCE**  
-> 📞 06 61 74 75 73 | ✉️ julien.florence@email.com  
+> 📞 06 61 74 75 73 | ✉️ julienflorence.florence@gmail.com  
 > 🔗 [Dossier Complet & Plan à 90 Jours PDF sur GitHub](https://github.com/julienflorenceflorence-oss/geminicli-backup/tree/main/Projets/prospection%20job/jost-hotel-bordeaux/04_Livrables/PDF)

@@ -59,7 +59,7 @@ class OnePageJostCVPDF:
         # 4 Interactive Pill Buttons with CLICKABLE LINKS + PICTOGRAMS
         buttons = [
             ("tel:0661747573", "06 61 74 75 73", False, False),
-            ("mailto:julien.florence@email.com", "EMAIL", False, False),
+            ("mailto:julienflorence.florence@gmail.com", "EMAIL", False, False),
             ("https://linkedin.com/in/alban-ruggiero/", "AGENDA", True, False),
             ("https://github.com/julienflorenceflorence-oss/geminicli-backup/tree/main/Projets/prospection%20job/jost-hotel-bordeaux/04_Livrables/PDF", "CV INTERACTIF & DIPLOMES", False, True)
         ]
