@@ -475,13 +475,76 @@ def build_strategic_post_pdf(out_path):
     pdf.output(out_path)
     print(f"✅ PDF généré : {out_path}")
 
+def build_power_bi_pdf(out_path):
+    pdf = DarkGoldPDF("GUIDE D'EXCELLENCE POWER BI", "ANALYSE STRATÉGIQUE, DAX & CAS D'USAGE MÉTIER")
+    pdf.add_page()
+    
+    # Sidebar
+    draw_sidebar_section(pdf, 32, "Composants BI", [
+        "Power BI Desktop",
+        "Power BI Service",
+        "Power BI Mobile",
+        "Power Query (M)",
+        "Langage DAX",
+        "Certif. PL-300"
+    ])
+    
+    pdf.set_xy(68, 32)
+    pdf.set_font('Times', 'B', 10.5)
+    pdf.set_text_color(212, 175, 55)
+    pdf.cell(132, 5, clean_txt("1. ARCHITECTURE & 3 MOTEURS TECHNIQUE"))
+    pdf.set_draw_color(212, 175, 55)
+    pdf.line(68, 38, 200, 38)
+    pdf.set_xy(68, 40)
+    
+    p1 = [
+        "1. Power Query & M Code : ETL d'extraction, nettoyage et depivotage des tables.",
+        "2. Modele en Etoile (Star Schema) : Tables de Faits (ventes/transactions) vs Tables de Dimensions (dates, clients, produits).",
+        "3. Langage DAX : Mesures dynamiques via CALCULATE, SAMEPERIODLASTYEAR, TOTALYTD et DIVIDE."
+    ]
+    
+    pdf.set_font('Helvetica', '', 7.5)
+    pdf.set_text_color(226, 232, 240)
+    for p in p1:
+        pdf.set_x(68)
+        pdf.multi_cell(132, 3.6, clean_txt(p))
+        pdf.ln(1.5)
+        
+    pdf.ln(3)
+    pdf.set_x(68)
+    pdf.set_font('Times', 'B', 10.5)
+    pdf.set_text_color(212, 175, 55)
+    pdf.cell(132, 5, clean_txt("2. CAS D'USAGE METIER (MANAGEMENT & CHR/VENTE)"))
+    pdf.line(68, pdf.get_y() + 5, 200, pdf.get_y() + 5)
+    pdf.set_xy(68, pdf.get_y() + 7)
+    
+    p2 = [
+        "Dashboard P&L Financier : Suivi du CA, Marge EBITDA %, Prime Cost % et waterfall des charges.",
+        "Dashboard Performance Ventes : Entonnoir de conversion CRM, panier moyen et KPIs vendeurs.",
+        "Dashboard Hotel Hybride & F&B : RevPAR, ADR, captage resto/rooftop et part de reservation directe vs OTAs."
+    ]
+    
+    pdf.set_font('Helvetica', '', 7.5)
+    pdf.set_text_color(226, 232, 240)
+    for p in p2:
+        pdf.set_x(68)
+        pdf.multi_cell(132, 3.6, clean_txt(p))
+        pdf.ln(1.5)
+
+    pdf.output(out_path)
+    print(f"✅ PDF généré : {out_path}")
+
 if __name__ == "__main__":
     out_dir = "Projets/prospection job/jost-hotel-bordeaux/04_Livrables/PDF"
+    bi_dir = "Projets/Outils-BI/Power-BI/04_Livrables/PDF"
     os.makedirs(out_dir, exist_ok=True)
+    os.makedirs(bi_dir, exist_ok=True)
     
     build_cover_letter_pdf(os.path.join(out_dir, "2026-07-29_Matrice_Correlation_Et_Lettre_Motivation_Julien_JOST.pdf"))
     build_pl_pdf(os.path.join(out_dir, "2026-07-29_PL_Simulation_Et_Formules_Gestion_JOST.pdf"))
     build_questions_pdf(os.path.join(out_dir, "2026-07-29_Guide_5_Questions_Pieges_Financieres_Ruggiero.pdf"))
     build_prices_pdf(os.path.join(out_dir, "2026-07-29_Grille_Tarifaire_Et_Prix_JOST_Bordeaux.pdf"))
     build_strategic_post_pdf(os.path.join(out_dir, "2026-07-31_Analyse_Post_Linkedin_Strategique_MELT_JOST.pdf"))
+    build_power_bi_pdf(os.path.join(bi_dir, "2026-07-31_Synthese_Executive_Microsoft_Power_BI.pdf"))
+
 
