@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Julien FLORENCE — Directeur d'Hôtel Hybride | JOST Bordeaux</title>
-    <meta name="description" content="CV Interactif & Application Stratégique de Julien Florence pour le poste de Directeur d'Hôtel Hybride au JOST Hôtel Bordeaux Gare Saint-Jean.">
+    <meta name="description" content="CV Interactif de Julien Florence pour le poste de Directeur d'Hôtel Hybride au JOST Hôtel Bordeaux Gare Saint-Jean.">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;700;800&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
@@ -320,33 +320,6 @@
             font-weight: 500;
         }
 
-        /* SIMULATOR ROI INTERACTIVE */
-        .sim-box {
-            background: rgba(212, 175, 55, 0.05);
-            border: 1px solid var(--border-gold);
-            border-radius: var(--radius-md);
-            padding: 18px;
-            margin-top: 15px;
-        }
-
-        .sim-controls {
-            display: flex;
-            gap: 15px;
-            margin-bottom: 12px;
-        }
-
-        .sim-slider {
-            flex: 1;
-        }
-
-        .sim-result {
-            font-size: 18px;
-            font-weight: 700;
-            color: var(--gold-bright);
-            text-align: center;
-            margin-top: 10px;
-        }
-
         /* FOOTER */
         footer {
             text-align: center;
@@ -434,26 +407,6 @@
                     <li><strong>Certifications Google Academy (HTML5/CSS3)</strong> : Maîtrise des outils web, intégration d'interfaces et tracking analytique.</li>
                     <li><strong>Outils CRM & Smarketing (Bitrix24 / Salesforce)</strong> : Pilotage de pipelines commerciaux, prospection multi-canal et suivi KPI.</li>
                 </ul>
-            </div>
-        </div>
-
-        <!-- INTERACTIVE SIMULATOR -->
-        <div class="card">
-            <div class="card-header">
-                <h2 class="card-title">⚡ Simulateur Interactif d'Impact Chiffre d'Affaires JOST</h2>
-            </div>
-            <p style="font-size: 12.5px; color: var(--text-gray); margin-bottom: 12px;">
-                Ajustez le curseur de souscription MICE B2B et d'optimisation Yield Doyield pour estimer la valeur ajoutée générée sur le site Bordeaux Gare :
-            </p>
-            <div class="sim-box">
-                <div class="sim-controls">
-                    <label style="font-size:12px;">Événements Corporate MICE / Mois :</label>
-                    <input type="range" id="miceRange" min="2" max="15" value="6" class="sim-slider" oninput="updateSim()">
-                    <span id="miceVal" style="font-weight:bold; color:var(--gold-primary);">6</span>
-                </div>
-                <div class="sim-result" id="simOut">
-                    Gain Estimé Annuel : +86,400 € de Marge Nette
-                </div>
             </div>
         </div>
     </section>
@@ -588,13 +541,6 @@
         
         event.target.classList.add('active');
         document.getElementById(tabId).classList.add('active');
-    }
-
-    function updateSim() {
-        const val = document.getElementById('miceRange').value;
-        document.getElementById('miceVal').innerText = val;
-        const gain = val * 12 * 1200; // 1,200 € marge par event
-        document.getElementById('simOut').innerText = `Gain Estimé Annuel : +${gain.toLocaleString('fr-FR')} € de Marge Nette`;
     }
 </script>
 
