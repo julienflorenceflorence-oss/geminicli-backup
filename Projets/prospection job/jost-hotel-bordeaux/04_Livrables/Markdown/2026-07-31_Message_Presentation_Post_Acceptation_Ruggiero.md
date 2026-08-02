@@ -1,11 +1,11 @@
 # ✉️ Message LinkedIn Post-Acceptation pour Alban Ruggiero (CEO JOST Hotels / MELT Group)
 
 > **Contextualisation** :  
-> Ce message intervient suite à l'acceptation par Alban Ruggiero de la note d'invitation sub-200 caractères (*« Bonjour Alban, votre virage MICE et Doyield chez JOST m'interpellent. Ex-Dir. Resto (+140% CA), Palace St-Barth & coach, j'ai conçu un Plan 90 Jours pour Bordeaux Gare. Échangeons 10 min ? Julien »*).
+> Message post-acceptation enrichi de la stratégie terrain explicite qui a généré la croissance de +140% du chiffre d'affaires (partenariats concierges d'hôtels de luxe, externalisation galeries d'art, refus des plateformes de livraison bas de gamme pour préserver le prestige).
 
 ---
 
-### 📩 Message Post-Acceptation Sans Plan 90 Jours (Positionnement Gagnant-Gagnant)
+### 📩 Message Post-Acceptation Enrichi (Positionnement Stratégique & Levée de CA)
 
 Bonjour Alban,
 
@@ -14,8 +14,11 @@ Merci d'avoir accepté mon invitation.
 Votre vision d'un écosystème hybride combinant dortoirs capsules, chambres Signature, privatisation du Lieu Chéri et le virage MICE B2B avec Doyield correspond exactement à ma culture du résultat et à mon parcours.
 
 Pour dépasser le simple cadre d'une candidature classique, je perçois notre échange comme une **opportunité réciproque** :
-- **Sur le terrain** : 15 ans d'expérience au croisement du P&L, de la rentabilité F&B (**+140% de CA** sur mon dernier établissement), et des exigences du luxe (**Guanahani 5* St-Barth**, Westbury 1* Dublin).
-- **Sur l'acquisition B2B & MICE** : Une maîtrise concrète du Yield Management hybride (Doyield) et du management d'équipes terrain (20 ETP / ancien coach de handball).
+
+- **Sur la stratégie B2B & la rentabilité (+140% de CA en 5 ans)** : Plutôt que d'altérer l'image de marque et les marges sur des plateformes de livraison peu qualitatives, j'ai activé des leviers de croissance externe haut de gamme :
+  1. *Partenariats Hôteliers sur mesure* : Prospection directe des concierges d'hôtels de luxe sans restaurant à proximité pour capter et servir leur clientèle VIP.
+  2. *Événementiel & MICE Extérieur* : Partenariats F&B exclusifs avec les galeries d'art du secteur (ex: Galerie Nabokof Paris 1er) pour la prise en charge globale des vernissages et réceptions d'affaires.
+- **Sur l'alignement JOST & le Management Terrain** : Maîtrise du Yield Management hybride (Doyield), management opérationnel de 20 ETP (ex-coach de handball) et rigueur issue des Palaces 5* (Guanahani St-Barth, Westbury 1* Dublin).
 
 J'ai conçu un **CV Interactif Spécifique JOST Bordeaux** pour vous présenter en détail mes réalisations et diplômes :  
 🌐 **[Consulter mon CV Interactif JOST Bordeaux (Lien Web Direct)](https://raw.githack.com/julienflorenceflorence-oss/geminicli-backup/main/Projets/prospection%20job/jost-hotel-bordeaux/04_Livrables/HTML/2026-07-31_CV_Julien_Florence_JOST_Bordeaux.html)**  
