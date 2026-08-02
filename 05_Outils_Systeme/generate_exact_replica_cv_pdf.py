@@ -8,11 +8,11 @@ from reportlab.lib import colors
 from reportlab.pdfgen import canvas
 from reportlab.lib.units import mm
 
-class PrecisionCleanCVPDF:
+class MasterCleanCVPDF:
     def __init__(self, filename):
         self.filename = filename
         self.c = canvas.Canvas(filename, pagesize=A4)
-        self.width, self.height = A4 # 210mm x 297mm (1 Page A4 Strict)
+        self.width, self.height = A4 # 210mm x 297mm (1 Page A4 Native)
 
     def draw_cv(self):
         c = self.c
@@ -148,12 +148,12 @@ class PrecisionCleanCVPDF:
         c.setFont("Times-Bold", 23)
         c.drawString(74*mm, 280*mm, "JULIEN FLORENCE")
         
-        # Subtitle (Exact Command)
+        # Subtitle
         c.setFillColor(text_white)
         c.setFont("Helvetica-Bold", 9.2)
         c.drawString(74*mm, 272*mm, "| DIRECTEUR D'HOTEL HYBRIDE")
         
-        # Presentation Text (Clean, Spaced)
+        # Presentation Text
         summary_text = "Directeur d'Hotel Hybride fort de 25 ans d'experience combinant la rigueur operationnelle et l'excellence du service de prestige (Palaces 5* & etoiles) au pilotage de centres de profit, Revenue Management et virage MICE B2B. Expert de l'evenementiel et du F&B, je suis immediatement operationnel sur Bordeaux pour piloter le site JOST Gare Saint-Jean."
         
         c.setFillColor(text_gray)
@@ -184,7 +184,7 @@ class PrecisionCleanCVPDF:
         c.setLineWidth(0.6)
         c.line(74*mm + title_width + 3*mm, exp_y + 1.2*mm, 200*mm, exp_y + 1.2*mm)
         
-        # 5 Jobs with Perfect Spacing between entries
+        # 5 Jobs with Strict Non-Overlapping Dynamic Math
         jobs = [
             ("Responsable Commercial & Acquisition Tech", "2025 - PRESENT", "HAPPY HOUSE | ACQUISITION & RENTABILITE B2B", [
                 "Coaching et pilotage d'une equipe de 3 collaborateurs (objectifs de conquete, animation).",
@@ -229,7 +229,7 @@ class PrecisionCleanCVPDF:
             c.drawRightString(200*mm, curr_y, dates)
             
             # Company
-            curr_y -= 3.5*mm
+            curr_y -= 3.4*mm
             c.setFillColor(text_white)
             c.setFont("Helvetica-Bold", 7)
             c.drawString(74*mm, curr_y, company)
@@ -243,18 +243,18 @@ class PrecisionCleanCVPDF:
                 b_words = b.split()
                 b_line = "•"
                 for bw in b_words:
-                    if c.stringWidth(b_line + " " + bw, "Helvetica", 6.5) < 124*mm:
+                    if c.stringWidth(b_line + " " + bw, "Helvetica", 6.5) < 123*mm:
                         b_line += (" " if b_line != "•" else " ") + bw
                     else:
                         c.drawString(74*mm, curr_y, b_line)
-                        curr_y -= 2.8*mm
+                        curr_y -= 2.7*mm
                         b_line = "  " + bw
                 if b_line:
                     c.drawString(74*mm, curr_y, b_line)
-                    curr_y -= 2.8*mm
+                    curr_y -= 2.7*mm
                     
-            # Tag Pills (Exact rounded pills with clear bottom margin)
-            curr_y -= 0.2*mm
+            # Tag Pills (Positioned strictly below the last bullet line with generous 3.6mm margin!)
+            curr_y -= 2.2*mm
             c.setFillColor(pill_bg)
             c.setStrokeColor(gold_primary)
             c.setLineWidth(0.4)
@@ -265,7 +265,7 @@ class PrecisionCleanCVPDF:
                 tag_str = f"({tag})"
                 tw = c.stringWidth(tag_str, "Helvetica", 5.8) + 3*mm
                 if tag_x + tw > 200*mm:
-                    curr_y -= 3.5*mm
+                    curr_y -= 3.6*mm
                     tag_x = 74*mm
                 c.roundRect(tag_x, curr_y, tw, 3.2*mm, radius=1.6*mm, fill=1, stroke=1)
                 c.setFillColor(gold_primary)
@@ -273,11 +273,11 @@ class PrecisionCleanCVPDF:
                 c.setFillColor(pill_bg)
                 tag_x += tw + 1.5*mm
                 
-            # Generous spacing between end of this job and start of next job
-            curr_y -= 4.2*mm
+            # Margin between job entries
+            curr_y -= 4.5*mm
 
         c.save()
-        print(f"✅ PDF Calibré avec Fins d'Expériences Nettes généré : {self.filename}")
+        print(f"✅ PDF Master sans aucun chevauchement généré : {self.filename}")
 
 def build_all_clean_pdfs():
     out_file = "Projets/prospection job/jost-hotel-bordeaux/04_Livrables/PDF/2026-07-31_CV_Julien_Florence_JOST_Bordeaux.pdf"
@@ -288,7 +288,7 @@ def build_all_clean_pdfs():
     os.makedirs(os.path.dirname(desktop_jost), exist_ok=True)
     
     for path in [out_file, desktop_jost, desktop_root]:
-        builder = PrecisionCleanCVPDF(path)
+        builder = MasterCleanCVPDF(path)
         builder.draw_cv()
 
 if __name__ == "__main__":
