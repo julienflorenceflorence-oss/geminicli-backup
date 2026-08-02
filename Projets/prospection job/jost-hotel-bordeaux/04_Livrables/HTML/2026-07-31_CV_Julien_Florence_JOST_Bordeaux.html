@@ -168,33 +168,59 @@
             color: #0B0C10;
         }
 
-        /* TABS NAVIGATION */
+        /* TABS NAVIGATION RESPONSIVE GRID */
         .tab-nav {
-            display: flex;
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
             gap: 10px;
-            margin-bottom: 20px;
-            border-bottom: 1px solid var(--border-subtle);
-            padding-bottom: 10px;
-            overflow-x: auto;
+            margin-bottom: 25px;
+            border-bottom: 2px solid var(--border-subtle);
+            padding-bottom: 14px;
         }
 
         .tab-btn {
-            background: transparent;
-            border: none;
-            color: var(--text-muted);
-            padding: 10px 18px;
-            font-size: 13.5px;
+            background: var(--bg-pill);
+            border: 1px solid var(--border-subtle);
+            color: var(--text-gray);
+            padding: 12px 14px;
+            font-size: 13px;
             font-weight: 600;
             cursor: pointer;
             border-radius: var(--radius-md);
-            transition: all 0.2s ease;
-            white-space: nowrap;
+            transition: all 0.25s ease;
+            text-align: center;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 6px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.3);
         }
 
-        .tab-btn.active, .tab-btn:hover {
+        .tab-btn:hover {
             background: var(--bg-card);
+            color: var(--gold-bright);
+            border-color: var(--gold-primary);
+            transform: translateY(-2px);
+        }
+
+        .tab-btn.active {
+            background: linear-gradient(135deg, #1B202D 0%, #2A3042 100%);
+            color: var(--gold-bright);
+            border: 1.5px solid var(--gold-bright);
+            box-shadow: 0 0 15px var(--gold-glow);
+        }
+
+        /* SPECIAL GOLD HIGHLIGHT FOR DIPLOMAS TAB */
+        .tab-btn-diplomes {
+            border: 1.5px solid var(--gold-primary);
             color: var(--gold-primary);
-            border: 1px solid var(--border-gold);
+            background: rgba(212, 175, 55, 0.08);
+        }
+
+        .tab-btn-diplomes.active {
+            background: var(--gold-bright);
+            color: #0B0C10;
+            font-weight: 700;
         }
 
         /* TAB CONTENT SECTIONS */
@@ -330,13 +356,22 @@
             font-size: 12px;
         }
 
-        @media (max-width: 768px) {
+        @media (max-width: 900px) {
+            .tab-nav {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (max-width: 600px) {
             .hero-card {
                 grid-template-columns: 1fr;
                 text-align: center;
             }
             .photo-frame {
                 margin: 0 auto;
+            }
+            .tab-nav {
+                grid-template-columns: 1fr;
             }
             .grid-2 {
                 grid-template-columns: 1fr;
@@ -376,12 +411,12 @@
         </div>
     </header>
 
-    <!-- TABS NAVIGATION -->
+    <!-- TABS NAVIGATION GRID (4 CLEAR EQUAL BUTTONS) -->
     <nav class="tab-nav">
-        <button class="tab-btn active" onclick="switchTab('overview')">📊 Alignement JOST & Direction Digitale</button>
-        <button class="tab-btn" onclick="switchTab('strategy')">💡 Stratégie Croissance F&B (+140% CA)</button>
-        <button class="tab-btn" onclick="switchTab('experiences')">💼 Parcours Détaillé par Établissement (8 Établissements)</button>
-        <button class="tab-btn" onclick="switchTab('diplomes')">🎓 Diplômes, Sommellerie & Certifications</button>
+        <button class="tab-btn active" onclick="switchTab('overview')">📊 1. Alignement & Digital</button>
+        <button class="tab-btn" onclick="switchTab('strategy')">💡 2. Stratégie F&B (+140%)</button>
+        <button class="tab-btn" onclick="switchTab('experiences')">💼 3. Parcours 8 Établissements</button>
+        <button class="tab-btn tab-btn-diplomes" onclick="switchTab('diplomes')">🎓 4. Diplômes & Certifications</button>
     </nav>
 
     <!-- TAB 1: OVERVIEW & DIRECTION DIGITALE -->
@@ -598,17 +633,17 @@
 
     </section>
 
-    <!-- TAB 4: DIPLOMES -->
+    <!-- TAB 4: DIPLOMES (HIGHLY VISIBLE SECTION) -->
     <section id="diplomes" class="tab-content">
-        <div class="card">
+        <div class="card" style="border: 1.5px solid var(--gold-bright); box-shadow: 0 0 20px rgba(250, 204, 21, 0.15);">
             <div class="card-header">
-                <h2 class="card-title">🎓 Diplômes & Qualifications Professionnelles</h2>
+                <h2 class="card-title" style="color: var(--gold-bright); font-size: 18px;">🎓 Diplômes, Sommellerie & Certifications Google</h2>
             </div>
-            <ul class="bullet-list">
-                <li><strong>Bachelor Marketing & Commerce (2025)</strong> : Spécialisation développement commercial, stratégie Go-To-Market, tunnels d'acquisition et gestion de projets.</li>
-                <li><strong>Certifications HTML5 & CSS3 — Google Academy</strong> : Maîtrise des outils digitaux, création d'interfaces web, suivi d'acquisition et CRM.</li>
-                <li><strong>Sommellerie de Prestige & Gastronomie (Palaces 5*)</strong> : Formation continue aux codes du luxe, gestion de caves d'exception et service VIP.</li>
-                <li><strong>Diplômes d'Entraîneur Handball & Leadership</strong> : Management participatif, gestion de la pression, cohésion d'équipe et esprit de compétition.</li>
+            <ul class="bullet-list" style="font-size: 14px;">
+                <li style="margin-bottom: 14px;"><strong>Bachelor Marketing & Commerce (2025)</strong> : Spécialisation développement commercial, stratégie Go-To-Market, tunnels d'acquisition B2B et gestion de projets.</li>
+                <li style="margin-bottom: 14px;"><strong>Certifications HTML5 & CSS3 — Google Academy</strong> : Maîtrise des outils digitaux, création d'interfaces web, suivi d'acquisition et CRM.</li>
+                <li style="margin-bottom: 14px;"><strong>Sommellerie de Prestige & Gastronomie (Palaces 5*)</strong> : Formation continue aux codes du luxe, gestion de caves d'exception, dégustations et service VIP (The Westbury Dublin 1*, La Table du Sommelier, Le Clos 1* Bath).</li>
+                <li style="margin-bottom: 14px;"><strong>Diplômes d'Entraîneur Handball & Leadership</strong> : Management participatif, gestion de la pression, cohésion d'équipe et esprit de compétition.</li>
             </ul>
         </div>
     </section>
