@@ -1,11 +1,11 @@
 # ✉️ Message LinkedIn Post-Acceptation pour Alban Ruggiero (CEO JOST Hotels / MELT Group)
 
 > **Contextualisation** :  
-> Message post-acceptation enrichi de la stratégie terrain explicite qui a généré la croissance de +140% du chiffre d'affaires (partenariats concierges d'hôtels de luxe, externalisation galeries d'art, refus des plateformes de livraison bas de gamme pour préserver le prestige).
+> Message post-acceptation explicite et percutant expliquant concrètement la méthode de croissance de +140% du CA (passage de 250k€ à 600k€) via les 2 leviers d'apport d'affaires externes (concierges d'hôtels haut de gamme et galeries d'art), sans dépendre des plateformes de livraison bas de gamme.
 
 ---
 
-### 📩 Message Post-Acceptation Enrichi (Positionnement Stratégique & Levée de CA)
+### 📩 Message Post-Acceptation Explicite (Positionnement Stratégique & Levée de CA)
 
 Bonjour Alban,
 
@@ -15,9 +15,10 @@ Votre vision d'un écosystème hybride combinant dortoirs capsules, chambres Sig
 
 Pour dépasser le simple cadre d'une candidature classique, je perçois notre échange comme une **opportunité réciproque** :
 
-- **Sur la stratégie B2B & la rentabilité (+140% de CA en 5 ans)** : Plutôt que d'altérer l'image de marque et les marges sur des plateformes de livraison peu qualitatives, j'ai activé des leviers de croissance externe haut de gamme :
-  1. *Partenariats Hôteliers sur mesure* : Prospection directe des concierges d'hôtels de luxe sans restaurant à proximité pour capter et servir leur clientèle VIP.
-  2. *Événementiel & MICE Extérieur* : Partenariats F&B exclusifs avec les galeries d'art du secteur (ex: Galerie Nabokof Paris 1er) pour la prise en charge globale des vernissages et réceptions d'affaires.
+- **Sur la stratégie de croissance F&B & B2B (+140% de CA en 5 ans)** :  
+  Pour faire passer mon établissement de **250 k€ à 600 k€ de CA**, j'ai refusé de brader les marges et l'image sur des plateformes de livraison génériques. J'ai créé **deux leviers d'apport d'affaires externes à haute valeur ajoutée** :
+  1. *Réseau Concierges Hôteliers* : Prospection directe des concierges d'hôtels de luxe voisins (sans restaurant) pour servir leur clientèle VIP en direct.
+  2. *MICE & Galeries d'Art* : Partenariats exclusifs avec les galeries d'art du secteur (ex: Galerie Nabokof Paris 1er) pour externaliser leurs réceptions d'affaires et vernissages.
 - **Sur l'alignement JOST & le Management Terrain** : Maîtrise du Yield Management hybride (Doyield), management opérationnel de 20 ETP (ex-coach de handball) et rigueur issue des Palaces 5* (Guanahani St-Barth, Westbury 1* Dublin).
 
 J'ai conçu un **CV Interactif Spécifique JOST Bordeaux** pour vous présenter en détail mes réalisations et diplômes :  
