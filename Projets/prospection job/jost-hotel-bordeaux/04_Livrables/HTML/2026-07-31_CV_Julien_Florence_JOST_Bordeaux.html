@@ -3,22 +3,28 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Julien FLORENCE — CV Directeur d'Hôtel Hybride JOST Bordeaux</title>
+    <title>Julien FLORENCE — Directeur d'Hôtel Hybride | JOST Bordeaux</title>
+    <meta name="description" content="CV Interactif & Plan d'Action à 90 Jours de Julien Florence pour le poste de Directeur d'Hôtel Hybride au JOST Hôtel Bordeaux Gare Saint-Jean.">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;700;800&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <style>
         :root {
             --bg-main: #0B0C10;
-            --bg-sidebar: #13161F;
+            --bg-card: #13161F;
+            --bg-pill: #1B202D;
             --gold-primary: #D4AF37;
-            --gold-button: #EAB308;
+            --gold-bright: #FACC15;
+            --gold-glow: rgba(212, 175, 55, 0.25);
             --text-white: #F8FAFC;
             --text-gray: #CBD5E1;
             --text-muted: #94A3B8;
             --border-gold: rgba(212, 175, 55, 0.4);
-            --border-button: rgba(212, 175, 55, 0.3);
-            --pill-bg: #141822;
+            --border-subtle: rgba(255, 255, 255, 0.08);
+            --radius-lg: 16px;
+            --radius-md: 10px;
+            --radius-pill: 20px;
+            --shadow-premium: 0 10px 30px rgba(0, 0, 0, 0.5);
         }
 
         * {
@@ -31,450 +37,556 @@
             background-color: var(--bg-main);
             color: var(--text-white);
             font-family: 'Inter', sans-serif;
-            display: flex;
-            justify-content: center;
+            line-height: 1.6;
             padding: 20px;
-            -webkit-print-color-adjust: exact;
+            min-height: 100vh;
         }
 
-        .cv-page {
-            width: 210mm;
-            min-height: 297mm;
-            background-color: var(--bg-main);
+        .container {
+            max-width: 1100px;
+            margin: 0 auto;
+        }
+
+        /* HEADER HERO */
+        .hero-card {
+            background: linear-gradient(135deg, #13161F 0%, #0F1118 100%);
+            border: 1px solid var(--border-gold);
+            border-radius: var(--radius-lg);
+            padding: 30px;
+            box-shadow: var(--shadow-premium);
             display: grid;
-            grid-template-columns: 68mm 1fr;
-            box-shadow: 0 0 30px rgba(0, 0, 0, 0.9);
-            position: relative;
-        }
-
-        /* LEFT SIDEBAR */
-        .sidebar {
-            background-color: var(--bg-sidebar);
-            padding: 24px 16px;
-            display: flex;
-            flex-direction: column;
-            gap: 20px;
-            border-right: 1px solid var(--border-gold);
-        }
-
-        .photo-wrapper {
-            display: flex;
-            justify-content: center;
-            margin-bottom: 5px;
-        }
-
-        .profile-img {
-            width: 140px;
-            height: 160px;
-            object-fit: cover;
-            border-radius: 8px;
-            border: 2px solid var(--gold-primary);
-            box-shadow: 0 6px 14px rgba(212, 175, 55, 0.2);
-            background-color: #1E2430;
-        }
-
-        /* Action Buttons */
-        .button-group {
-            display: flex;
-            flex-direction: column;
-            gap: 9px;
-        }
-
-        .btn-link {
-            display: flex;
+            grid-template-columns: 140px 1fr;
+            gap: 25px;
             align-items: center;
-            justify-content: center;
-            gap: 8px;
-            padding: 8px 12px;
-            border-radius: 20px;
-            font-size: 0.78rem;
-            font-weight: 600;
-            text-decoration: none;
-            cursor: pointer;
-            transition: all 0.2s ease;
-            border: 1px solid var(--border-button);
-            background-color: #161A25;
-            color: var(--text-white);
-            text-align: center;
+            margin-bottom: 25px;
+            position: relative;
+            overflow: hidden;
         }
 
-        .btn-link.btn-gold {
-            background: linear-gradient(135deg, #FACC15, #D4AF37);
-            color: #0B0C10;
-            border: none;
-            font-weight: 700;
-            box-shadow: 0 4px 10px rgba(234, 179, 8, 0.4);
+        .hero-card::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -20%;
+            width: 300px;
+            height: 300px;
+            background: radial-gradient(circle, var(--gold-glow) 0%, transparent 70%);
+            pointer-events: none;
         }
 
-        .btn-link.btn-outlined {
-            border: 1px solid var(--gold-primary);
-            color: var(--text-white);
+        .photo-frame {
+            width: 130px;
+            height: 150px;
+            border-radius: 14px;
+            border: 2px solid var(--gold-primary);
+            overflow: hidden;
+            box-shadow: 0 0 15px var(--gold-glow);
         }
 
-        .btn-link:hover {
-            opacity: 0.9;
-            transform: translateY(-1px);
+        .photo-frame img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
         }
 
-        /* Sidebar Sections */
-        .sidebar-block-title {
+        .hero-info h1 {
             font-family: 'Cinzel', serif;
+            font-size: 32px;
             color: var(--gold-primary);
-            font-size: 0.88rem;
-            font-weight: 700;
             letter-spacing: 1px;
-            margin-bottom: 8px;
-            border-bottom: 1px solid var(--gold-primary);
-            padding-bottom: 4px;
-            text-transform: uppercase;
+            margin-bottom: 4px;
         }
 
-        .sidebar-menu {
-            list-style: none;
-            display: flex;
-            flex-direction: column;
-            gap: 7px;
-        }
-
-        .sidebar-menu li {
-            font-size: 0.78rem;
-            color: var(--text-gray);
-            line-height: 1.35;
-            display: flex;
-            align-items: flex-start;
-            gap: 5px;
-        }
-
-        .sidebar-menu li span.chevron {
-            color: var(--gold-primary);
-            font-weight: bold;
-            font-size: 0.85rem;
-        }
-
-        /* RIGHT MAIN CONTENT */
-        .main-container {
-            padding: 28px 28px 28px 24px;
-            display: flex;
-            flex-direction: column;
-            gap: 18px;
-        }
-
-        .header-name {
-            font-family: 'Cinzel', serif;
-            font-size: 2.1rem;
-            color: var(--gold-primary);
+        .hero-info .subtitle {
+            font-size: 14px;
             font-weight: 700;
-            letter-spacing: 2px;
-            line-height: 1.1;
-        }
-
-        .header-tagline {
-            font-size: 0.92rem;
-            font-weight: 700;
-            letter-spacing: 1.5px;
             color: var(--text-white);
-            margin-top: 4px;
+            letter-spacing: 0.5px;
             margin-bottom: 12px;
             display: flex;
             align-items: center;
             gap: 8px;
         }
 
-        .header-tagline::before {
-            content: '|';
-            color: var(--gold-primary);
-            font-weight: bold;
-        }
-
-        .profile-desc {
-            font-size: 0.82rem;
-            color: var(--text-gray);
-            line-height: 1.55;
-            text-align: justify;
-        }
-
-        /* Experience Section Title with Rule */
-        .exp-section-title {
-            display: flex;
+        .status-badge {
+            display: inline-flex;
             align-items: center;
-            gap: 12px;
-            margin-top: 6px;
+            gap: 6px;
+            background: rgba(34, 197, 94, 0.15);
+            border: 1px solid rgba(34, 197, 94, 0.4);
+            color: #4ADE80;
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 12px;
+            font-weight: 600;
             margin-bottom: 14px;
         }
 
-        .exp-title-text {
-            font-family: 'Cinzel', serif;
-            color: var(--gold-primary);
-            font-size: 1.05rem;
-            font-weight: 700;
-            letter-spacing: 1px;
+        .hero-desc {
+            font-size: 13.5px;
+            color: var(--text-gray);
+            line-height: 1.5;
+            margin-bottom: 18px;
+        }
+
+        .action-buttons {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 8px 16px;
+            border-radius: var(--radius-pill);
+            font-size: 12.5px;
+            font-weight: 600;
+            text-decoration: none;
+            transition: all 0.25s ease;
+            cursor: pointer;
+            border: 1px solid var(--border-gold);
+            background: var(--bg-pill);
+            color: var(--text-white);
+        }
+
+        .btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px var(--gold-glow);
+            border-color: var(--gold-bright);
+        }
+
+        .btn-gold {
+            background: var(--gold-bright);
+            color: #0B0C10;
+            border-color: var(--gold-bright);
+        }
+
+        .btn-gold:hover {
+            background: #EAB308;
+            color: #0B0C10;
+        }
+
+        /* TABS NAVIGATION */
+        .tab-nav {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 20px;
+            border-bottom: 1px solid var(--border-subtle);
+            padding-bottom: 10px;
+            overflow-x: auto;
+        }
+
+        .tab-btn {
+            background: transparent;
+            border: none;
+            color: var(--text-muted);
+            padding: 10px 18px;
+            font-size: 13.5px;
+            font-weight: 600;
+            cursor: pointer;
+            border-radius: var(--radius-md);
+            transition: all 0.2s ease;
             white-space: nowrap;
         }
 
-        .exp-title-line {
-            flex-grow: 1;
-            height: 1px;
-            background: linear-gradient(90deg, var(--gold-primary), transparent);
+        .tab-btn.active, .tab-btn:hover {
+            background: var(--bg-card);
+            color: var(--gold-primary);
+            border: 1px solid var(--border-gold);
         }
 
-        /* Job Entry */
-        .job-card {
-            margin-bottom: 16px;
-            display: flex;
-            flex-direction: column;
-            gap: 4px;
+        /* TAB CONTENT SECTIONS */
+        .tab-content {
+            display: none;
+            animation: fadeIn 0.3s ease;
         }
 
-        .job-card-header {
+        .tab-content.active {
+            display: block;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(6px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* GRID LAYOUT FOR OVERVIEW */
+        .grid-2 {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+        }
+
+        .card {
+            background: var(--bg-card);
+            border: 1px solid var(--border-subtle);
+            border-radius: var(--radius-lg);
+            padding: 22px;
+            margin-bottom: 20px;
+        }
+
+        .card-header {
             display: flex;
+            align-items: center;
             justify-content: space-between;
-            align-items: baseline;
+            margin-bottom: 15px;
+            border-bottom: 1px solid var(--border-subtle);
+            padding-bottom: 8px;
         }
 
-        .job-title {
-            font-size: 0.98rem;
-            font-weight: 700;
+        .card-title {
+            font-family: 'Cinzel', serif;
+            font-size: 16px;
             color: var(--gold-primary);
         }
 
-        .job-dates {
-            font-size: 0.78rem;
-            color: var(--text-muted);
-            font-weight: 600;
-            letter-spacing: 0.5px;
-        }
-
-        .job-company {
-            font-size: 0.84rem;
-            font-weight: 700;
-            color: var(--text-white);
-            text-transform: uppercase;
-            letter-spacing: 0.5px;
-        }
-
-        .job-ul {
+        .bullet-list {
             list-style: none;
-            margin-top: 4px;
-            display: flex;
-            flex-direction: column;
-            gap: 3px;
         }
 
-        .job-ul li {
-            font-size: 0.79rem;
-            color: var(--text-gray);
-            padding-left: 12px;
+        .bullet-list li {
             position: relative;
-            line-height: 1.4;
+            padding-left: 20px;
+            margin-bottom: 10px;
+            font-size: 13px;
+            color: var(--text-gray);
         }
 
-        .job-ul li::before {
-            content: '•';
+        .bullet-list li::before {
+            content: '›';
             position: absolute;
             left: 0;
             color: var(--gold-primary);
+            font-weight: bold;
+            font-size: 16px;
         }
 
-        /* Pill Badges / Tags */
-        .job-tags {
+        /* EXPERIENCE ACCORDION */
+        .exp-item {
+            background: var(--bg-card);
+            border: 1px solid var(--border-subtle);
+            border-radius: var(--radius-md);
+            margin-bottom: 14px;
+            padding: 16px;
+            transition: border-color 0.2s ease;
+        }
+
+        .exp-item:hover {
+            border-color: var(--border-gold);
+        }
+
+        .exp-head {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-bottom: 6px;
+        }
+
+        .exp-role {
+            font-size: 14.5px;
+            font-weight: 700;
+            color: var(--gold-primary);
+        }
+
+        .exp-date {
+            font-size: 12px;
+            font-weight: 600;
+            color: var(--text-muted);
+        }
+
+        .exp-company {
+            font-size: 12.5px;
+            font-weight: 700;
+            color: var(--text-white);
+            margin-bottom: 10px;
+        }
+
+        .tags-container {
             display: flex;
             flex-wrap: wrap;
             gap: 6px;
-            margin-top: 6px;
+            margin-top: 10px;
         }
 
-        .job-tag {
-            font-size: 0.7rem;
-            color: var(--gold-primary);
+        .tag-pill {
+            background: var(--bg-pill);
             border: 1px solid var(--border-gold);
-            padding: 2px 9px;
+            color: var(--gold-primary);
+            padding: 2px 10px;
             border-radius: 12px;
-            background-color: var(--pill-bg);
+            font-size: 11px;
             font-weight: 500;
         }
 
-        @media print {
-            body {
-                padding: 0;
-                background-color: var(--bg-main);
+        /* PLAN 90 JOURS TIMELINE */
+        .timeline {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 15px;
+        }
+
+        .phase-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border-gold);
+            border-radius: var(--radius-md);
+            padding: 16px;
+            position: relative;
+        }
+
+        .phase-badge {
+            background: var(--gold-bright);
+            color: #0B0C10;
+            font-size: 11px;
+            font-weight: 700;
+            padding: 3px 8px;
+            border-radius: 4px;
+            display: inline-block;
+            margin-bottom: 8px;
+        }
+
+        .phase-title {
+            font-size: 14px;
+            font-weight: 700;
+            color: var(--text-white);
+            margin-bottom: 10px;
+        }
+
+        /* FOOTER */
+        footer {
+            text-align: center;
+            margin-top: 40px;
+            padding: 20px;
+            border-top: 1px solid var(--border-subtle);
+            color: var(--text-muted);
+            font-size: 12px;
+        }
+
+        @media (max-width: 768px) {
+            .hero-card {
+                grid-template-columns: 1fr;
+                text-align: center;
             }
-            .cv-page {
-                box-shadow: none;
+            .photo-frame {
+                margin: 0 auto;
+            }
+            .grid-2, .timeline {
+                grid-template-columns: 1fr;
+            }
+            .action-buttons {
+                justify-content: center;
             }
         }
     </style>
 </head>
 <body>
 
-<div class="cv-page">
-    <!-- SIDEBAR LEFT -->
-    <aside class="sidebar">
-        <div class="photo-wrapper">
-            <img class="profile-img" src="file:///Users/admin/.gemini/antigravity/brain/3b3f54ca-b09a-4ea4-9dc8-59a0af5a76aa/.user_uploaded/media__1785320733290.png" alt="Julien Florence" onerror="this.src='https://via.placeholder.com/140x160/1E2430/D4AF37?text=Julien+Florence';">
-        </div>
+<div class="container">
 
-        <div class="button-group">
-            <a href="tel:0661747573" class="btn-link">📞 06 61 74 75 73</a>
-            <a href="mailto:julienflorence.florence@gmail.com" class="btn-link">✉️ EMAIL</a>
-            <a href="https://linkedin.com/in/alban-ruggiero/" class="btn-link btn-gold" target="_blank">📅 AGENDA</a>
-            <a href="https://github.com/julienflorenceflorence-oss/geminicli-backup/tree/main/Projets/prospection%20job/jost-hotel-bordeaux/04_Livrables/PDF" class="btn-link btn-outlined" target="_blank">🌐 ACCÈS CV INTERACTIF</a>
+    <!-- HERO HEADER -->
+    <header class="hero-card">
+        <div class="photo-frame">
+            <img src="Images/julien_florence_photo.png" alt="Julien FLORENCE">
         </div>
-
-        <div>
-            <h3 class="sidebar-block-title">EXPERTISES MÉTSIER</h3>
-            <ul class="sidebar-menu">
-                <li><span class="chevron">›</span> Événementiel de Prestige & MICE</li>
-                <li><span class="chevron">›</span> Hospitalité & Codes du Luxe (LHW)</li>
-                <li><span class="chevron">›</span> Développement B2B & Acquisition</li>
-                <li><span class="chevron">›</span> Management d'équipes (3-20 ETP)</li>
-                <li><span class="chevron">›</span> Pilotage Commercial (CA, P&L, Marge)</li>
-                <li><span class="chevron">›</span> Sommellerie de Prestige & Gastronomie</li>
-                <li><span class="chevron">›</span> Revenue Management & Doyield JOST</li>
-            </ul>
-        </div>
-
-        <div>
-            <h3 class="sidebar-block-title">SOFT SKILLS</h3>
-            <ul class="sidebar-menu">
-                <li><span class="chevron">›</span> ENTJ-A | 94% Rationnel & Organisé</li>
-                <li><span class="chevron">›</span> Sens du service client d'exception</li>
-                <li><span class="chevron">›</span> Aisance relationnelle clientèles VIP</li>
-                <li><span class="chevron">›</span> Leadership fédérateur & Terrain</li>
-                <li><span class="chevron">›</span> Esprit d'entreprise & Résilience</li>
-            </ul>
-        </div>
-
-        <div>
-            <h3 class="sidebar-block-title">LANGUES</h3>
-            <ul class="sidebar-menu">
-                <li><span class="chevron">›</span> Anglais : Usage pro (C1, 2 ans UK/IRL)</li>
-                <li><span class="chevron">›</span> Néerlandais : B2</li>
-            </ul>
-        </div>
-
-        <div>
-            <h3 class="sidebar-block-title">FORMATION</h3>
-            <ul class="sidebar-menu">
-                <li><span class="chevron">›</span> <strong>Bachelor Marketing & Commerce</strong> (2025)</li>
-                <li><span class="chevron">›</span> HTML5 & CSS3 - Google Academy</li>
-            </ul>
-        </div>
-    </aside>
-
-    <!-- MAIN RIGHT CONTENT -->
-    <main class="main-container">
-        <div>
-            <h1 class="header-name">JULIEN FLORENCE</h1>
-            <div class="header-tagline">DIRECTEUR D'HÔTEL HYBRIDE</div>
-            <p class="profile-desc">
-                <strong>Directeur d'Hôtel Hybride & Manager</strong> fort de 15 ans d'expérience combinant la rigueur opérationnelle et l'excellence du service de prestige (Palaces 5* & étoilés) au pilotage de centres de profit, Revenue Management (Doyield) et virage MICE B2B. Expert de l'événementiel haut de gamme (yachting d'ultra-luxe, vernissages de galeries d'art, clubs d'affaires), je possède un sens aigu des relations publiques et une aisance démontrée avec les clientèles VIP. Profil entrepreneurial, fédérateur d'équipes et orienté objectifs ROI, <strong>immédiatement mobile et opérationnel sur Bordeaux pour piloter le site JOST Gare Saint-Jean</strong>.
+        <div class="hero-info">
+            <h1>JULIEN FLORENCE</h1>
+            <div class="subtitle">
+                <span>|</span> DIRECTEUR D'HÔTEL HYBRIDE — JOST BORDEAUX
+            </div>
+            <div class="status-badge">
+                🟢 Immédiatement Disponible | Alignement Stratégique JOST Bordeaux Gare Saint-Jean
+            </div>
+            <p class="hero-desc">
+                Directeur d'Hôtel Hybride & Manager fort de 25 ans d'expérience combinant la rigueur opérationnelle et l'excellence du service de prestige (Palaces 5* & étoilés) au pilotage de centres de profit, Revenue Management (Doyield) et virage MICE B2B. Expert de l'événementiel haut de gamme et du F&B, je suis immédiatement opérationnel sur Bordeaux.
             </p>
+            <div class="action-buttons">
+                <a href="tel:0661747573" class="btn">📞 06 61 74 75 73</a>
+                <a href="mailto:julienflorence.florence@gmail.com" class="btn">✉️ EMAIL Direct</a>
+                <a href="https://linkedin.com/in/alban-ruggiero/" target="_blank" class="btn btn-gold">📅 Prise de RDV 10 min</a>
+                <a href="../PDF/2026-07-31_CV_Julien_Florence_JOST_Bordeaux.pdf" target="_blank" class="btn">📄 Télécharger CV PDF 1 Page</a>
+            </div>
         </div>
+    </header>
 
-        <div>
-            <div class="exp-section-title">
-                <h2 class="exp-title-text">EXPÉRIENCES PROFESSIONNELLES</h2>
-                <div class="exp-title-line"></div>
+    <!-- TABS NAVIGATION -->
+    <nav class="tab-nav">
+        <button class="tab-btn active" onclick="switchTab('overview')">📊 Alignement JOST & Synthese</button>
+        <button class="tab-btn" onclick="switchTab('plan90')">🚀 Plan d'Action à 90 Jours</button>
+        <button class="tab-btn" onclick="switchTab('experiences')">💼 Expériences & Rentabilité (+140%)</button>
+        <button class="tab-btn" onclick="switchTab('diplomes')">🎓 Diplômes, Somellerie & Certifications</button>
+    </nav>
+
+    <!-- TAB 1: OVERVIEW -->
+    <section id="overview" class="tab-content active">
+        <div class="grid-2">
+            <div class="card">
+                <div class="card-header">
+                    <h2 class="card-title">🎯 3 Piliers d'Impact Immédiat pour JOST</h2>
+                </div>
+                <ul class="bullet-list">
+                    <li><strong>Maîtrise Doyield & Yield Hybride</strong> : Maximisation du RevPAR combiné entre dortoirs capsules et chambres Signature.</li>
+                    <li><strong>Accélération MICE B2B</strong> : Commercialisation proactive du Lieu Chéri et du Rooftop pour séminaires et privatisations corporate.</li>
+                    <li><strong>Excellence F&B & Culture Service</strong> : Culture Palace (Guanahani 5*, Westbury 1*) alliée à un bilan prouvé de +140% de CA.</li>
+                </ul>
             </div>
 
-            <!-- JOB 1 -->
-            <div class="job-card">
-                <div class="job-card-header">
-                    <span class="job-title">Directeur d'Hôtel Hybride & Développement Commercial</span>
-                    <span class="job-dates">2025 – PRÉSENT</span>
+            <div class="card">
+                <div class="card-header">
+                    <h2 class="card-title">🏆 Bilan de Performance Chiffré</h2>
                 </div>
-                <div class="job-company">HAPPY HOUSE | ACQUISITION & RENTABILITÉ B2B — CIBLE JOST BORDEAUX</div>
-                <ul class="job-ul">
-                    <li>Coaching et pilotage d'une équipe de 3 collaborateurs (objectifs de conquête MICE B2B, animation).</li>
-                    <li>Intégration de la solution <strong>Doyield</strong> pour le Yield Management hybride (dortoirs capsules vs chambres Signature) et suivi des KPIs.</li>
-                    <li>Définition de la stratégie commerciale Go-To-Market et privatisation du <em>Lieu Chéri</em> et du <em>Rooftop</em>.</li>
+                <ul class="bullet-list">
+                    <li><strong>+140% de CA en 5 ans</strong> : Ma Salle à Manger (Paris 1er), passage de 250k€ à 600k€.</li>
+                    <li><strong>2.6 M€ de CA Géré</strong> : Division HRE RAS Intérim (Hotellerie, Restauration, Evénementiel).</li>
+                    <li><strong>Management 20 ETP</strong> : Recrutement, formation, plannings et cohésion d'équipe.</li>
                 </ul>
-                <div class="job-tags">
-                    <span class="job-tag">Management</span>
-                    <span class="job-tag">Doyield</span>
-                    <span class="job-tag">KPIs</span>
-                    <span class="job-tag">MICE B2B</span>
-                    <span class="job-tag">JOST Bordeaux</span>
-                </div>
             </div>
+        </div>
+    </section>
 
-            <!-- JOB 2 -->
-            <div class="job-card">
-                <div class="job-card-header">
-                    <span class="job-title">Responsable de Division HRE (Hôtellerie, Restauration & Événementiel)</span>
-                    <span class="job-dates">2022 – 2024</span>
-                </div>
-                <div class="job-company">RAS INTÉRIM | SERVICE & ÉVÉNEMENTIEL — CA DIVISION 2.6 M€</div>
-                <ul class="job-ul">
-                    <li>Développement B2B & Comptes Clés : Gestion de 20 clients corporate (hôtels, traiteurs de prestige, agences événementielles).</li>
-                    <li>Management opérationnel de <strong>20 ETP par semaine</strong> (recrutement, plannings, formation de personnel de service/cuisine).</li>
-                    <li>Garant de la conformité réglementaire, de la gestion du P&L divisionnaire et de la fidélisation client.</li>
-                </ul>
-                <div class="job-tags">
-                    <span class="job-tag">Hôtellerie-Restauration</span>
-                    <span class="job-tag">Événementiel B2B</span>
-                    <span class="job-tag">Management ETP</span>
-                </div>
+    <!-- TAB 2: PLAN 90 JOURS -->
+    <section id="plan90" class="tab-content">
+        <div class="card">
+            <div class="card-header">
+                <h2 class="card-title">🚀 Feuil de Route à 90 Jours — JOST Bordeaux Gare</h2>
             </div>
-
-            <!-- JOB 3 -->
-            <div class="job-card">
-                <div class="job-card-header">
-                    <span class="job-title">Négociateur Immobilier & Manager Leader</span>
-                    <span class="job-dates">2015 – 2021</span>
+            <div class="timeline">
+                <div class="phase-card">
+                    <span class="phase-badge">Jours 1 à 30</span>
+                    <h3 class="phase-title">Diagnostic & Immersion</h3>
+                    <ul class="bullet-list">
+                        <li>Audit complet de l'expérience client Hybride et F&B.</li>
+                        <li>Prise en main opérationnelle de la solution Doyield.</li>
+                        <li>Rencontre des équipes et fixation des KPIs individuels.</li>
+                    </ul>
                 </div>
-                <div class="job-company">CENTURY 21 (Paris) & CABINET BEDIN (Toulouse)</div>
-                <ul class="job-ul">
-                    <li>Négociation commerciale et pilotage d'un portefeuille de clients exigeants (120k€ de CA moyen annuel personnel).</li>
-                    <li>Recrutement, formation, animation et coaching de 5 négociateurs sur le terrain et en agence.</li>
-                    <li>Animation d'actions commerciales de terrain et développement de partenariats locaux.</li>
-                </ul>
-                <div class="job-tags">
-                    <span class="job-tag">Négociation Haut de Gamme</span>
-                    <span class="job-tag">Coaching Sales</span>
-                    <span class="job-tag">Réseau Local</span>
+                <div class="phase-card">
+                    <span class="phase-badge">Jours 31 à 60</span>
+                    <h3 class="phase-title">Offensive Commerciale MICE</h3>
+                    <ul class="bullet-list">
+                        <li>Lancement de la campagne de prospection B2B locale (Toulouse/Bordeaux).</li>
+                        <li>Package privatisation du Rooftop & Lieu Chéri.</li>
+                        <li>Optimisation du mix tarifaire Doyield (Dortoirs vs Signature).</li>
+                    </ul>
                 </div>
-            </div>
-
-            <!-- JOB 4 -->
-            <div class="job-card">
-                <div class="job-card-header">
-                    <span class="job-title">Directeur de Restaurant & Partenaire Événementiel</span>
-                    <span class="job-dates">2010 – 2015</span>
-                </div>
-                <div class="job-company">MA SALLE À MANGER | PARIS 1er (PLACE DAUPHINE)</div>
-                <ul class="job-ul">
-                    <li>Duplication des standards de l'hôtellerie de luxe pour piloter le restaurant (15 salariés, P&L) : <strong>croissance de +140% du CA en 5 ans</strong> (passage de 250 k€ à 600 k€).</li>
-                    <li>Événementiel culturel & Corporate : Partenaire gastronomique exclusif de la prestigieuse <em>Galerie Nabokof</em> (Paris 1er) pour l'organisation de vernissages ; accueil de clubs d'affaires et conception d'EVG de prestige.</li>
-                </ul>
-                <div class="job-tags">
-                    <span class="job-tag">Événementiel Culturel</span>
-                    <span class="job-tag">Clubs d'Affaires</span>
-                    <span class="job-tag">Rentabilité (+140% CA)</span>
-                </div>
-            </div>
-
-            <!-- JOB 5 -->
-            <div class="job-card">
-                <div class="job-card-header">
-                    <span class="job-title">Service de Prestige & Gestion Clientèles VIP</span>
-                    <span class="job-dates">2000 – 2009</span>
-                </div>
-                <div class="job-company">PALACES 5* (LHW), YACHTING DE LUXE & SOMMELLERIE ÉTOILÉE | IRLANDE, ST-BARTH, ANGLETERRE</div>
-                <ul class="job-ul">
-                    <li>1er Sommelier (2003-2004) : The Westbury (Palace 5*, Dublin, 1* Michelin). <strong>Sommelier privilégié de M. Bono (U2)</strong> lors de réceptions privées. Management de 20 personnes et gestion de cave d'exception.</li>
-                    <li>Chef Barman (2001-2002) : Le Clos (1* Michelin, Bath, Angleterre). Création de la carte des cocktails, management des barmans, gestion des stocks et de la clientèle du bar de prestige, coordination du service (CA : 6 M€).</li>
-                    <li>Adjoint du Responsable Room Service (2000-2001) : The Guanahani (Palace 5*, St-Barth). Supervision de 20 personnes. Service d'excellence pour des événements prestigieux comme le <strong>Nouvel An sur les yachts de luxe</strong> et accueil de personnalités VIP (Mariah Carey, Jennifer Lopez, P. Diddy).</li>
-                </ul>
-                <div class="job-tags">
-                    <span class="job-tag">Standards Palaces (LHW)</span>
-                    <span class="job-tag">Clientèles VIP</span>
-                    <span class="job-tag">Sommellerie & Bar</span>
+                <div class="phase-card">
+                    <span class="phase-badge">Jours 61 à 90</span>
+                    <h3 class="phase-title">Consolidation & Rentabilité</h3>
+                    <ul class="bullet-list">
+                        <li>Analyse P&L et optimisation des coûts F&B / masse salariale.</li>
+                        <li>Fidélisation des comptes clés corporate MICE.</li>
+                        <li>Revue de rentabilité trimestrielle avec la direction.</li>
+                    </ul>
                 </div>
             </div>
         </div>
-    </main>
+    </section>
+
+    <!-- TAB 3: EXPERIENCES -->
+    <section id="experiences" class="tab-content">
+        <div class="exp-item">
+            <div class="exp-head">
+                <span class="exp-role">Responsable Commercial & Acquisition Tech</span>
+                <span class="exp-date">2025 – PRÉSENT</span>
+            </div>
+            <div class="exp-company">HAPPY HOUSE | ACQUISITION & RENTABILITÉ B2B</div>
+            <ul class="bullet-list">
+                <li>Coaching et pilotage d'une équipe de 3 collaborateurs (objectifs de conquête MICE B2B, animation).</li>
+                <li>Intégration d'outils d'acquisition digitaux (CRM, prospection multi-canal) et suivi des KPIs.</li>
+                <li>Définition de la stratégie commerciale Go-To-Market et privatisation de lieux.</li>
+            </ul>
+            <div class="tags-container">
+                <span class="tag-pill">Management</span>
+                <span class="tag-pill">Doyield</span>
+                <span class="tag-pill">KPIs</span>
+                <span class="tag-pill">MICE B2B</span>
+            </div>
+        </div>
+
+        <div class="exp-item">
+            <div class="exp-head">
+                <span class="exp-role">Responsable de Division HRE (Hôtellerie, Restauration & Événementiel)</span>
+                <span class="exp-date">2022 – 2024</span>
+            </div>
+            <div class="exp-company">RAS INTÉRIM | SERVICE & ÉVÉNEMENTIEL - CA DIVISION 2.6 M€</div>
+            <ul class="bullet-list">
+                <li>Développement B2B & Comptes Clés : Gestion de 20 clients corporate (hôtels, traiteurs de prestige).</li>
+                <li>Management opérationnel de 20 ETP par semaine (recrutement, plannings, formation personnel).</li>
+                <li>Garant de la conformité réglementaire, de la gestion du P&L divisionnaire et de la fidélisation client.</li>
+            </ul>
+            <div class="tags-container">
+                <span class="tag-pill">Hôtellerie-Restauration</span>
+                <span class="tag-pill">Événementiel B2B</span>
+                <span class="tag-pill">Management ETP</span>
+            </div>
+        </div>
+
+        <div class="exp-item">
+            <div class="exp-head">
+                <span class="exp-role">Directeur de Restaurant & Partenaire Événementiel</span>
+                <span class="exp-date">2010 – 2015</span>
+            </div>
+            <div class="exp-company">MA SALLE À MANGER | PARIS 1er (PLACE DAUPHINE)</div>
+            <ul class="bullet-list">
+                <li>Duplication des standards de l'hôtellerie de luxe pour piloter le restaurant (15 salariés, P&L) : <strong>croissance de +140% du CA en 5 ans</strong> (passage de 250 k€ à 600 k€).</li>
+                <li>Événementiel culturel & Corporate : Partenaire gastronomique exclusif de la Galerie Nabokof (Paris 1er) pour vernissages ; accueil de clubs d'affaires.</li>
+            </ul>
+            <div class="tags-container">
+                <span class="tag-pill">Événementiel Culturel</span>
+                <span class="tag-pill">Clubs d'Affaires</span>
+                <span class="tag-pill">Rentabilité (+140% CA)</span>
+            </div>
+        </div>
+
+        <div class="exp-item">
+            <div class="exp-head">
+                <span class="exp-role">Service de Prestige & Gestion Clientèles VIP</span>
+                <span class="exp-date">2000 – 2009</span>
+            </div>
+            <div class="exp-company">PALACES 5* (LHW), YACHTING DE LUXE & SOMMELLERIE ÉTOILÉE | IRLANDE, ST-BARTH, ANGLETERRE</div>
+            <ul class="bullet-list">
+                <li>1er Sommelier (2003-2004) : The Westbury (Palace 5*, Dublin, 1* Michelin). Sommelier privilégié de M. Bono (U2) lors de réceptions privées. Management de 20 personnes.</li>
+                <li>Chef Barman (2001-2002) : Le Clos (1* Michelin, Bath, Angleterre). Création de cartes cocktails (CA : 6 M€).</li>
+                <li>Adjoint Room Service (2000-2001) : The Guanahani (Palace 5*, St-Barth). Supervision de 20 personnes. Service Nouvel An yachts de luxe & VIPs.</li>
+            </ul>
+            <div class="tags-container">
+                <span class="tag-pill">Standards Palaces (LHW)</span>
+                <span class="tag-pill">Clientèles VIP</span>
+                <span class="tag-pill">Sommellerie & Bar</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- TAB 4: DIPLOMES -->
+    <section id="diplomes" class="tab-content">
+        <div class="card">
+            <div class="card-header">
+                <h2 class="card-title">🎓 Diplômes & Qualifications Professionnelles</h2>
+            </div>
+            <ul class="bullet-list">
+                <li><strong>Bachelor Marketing & Commerce (2025)</strong> : Spécialisation développement commercial, stratégie Go-To-Market et gestion de projets.</li>
+                <li><strong>Certifications HTML5 & CSS3 — Google Academy</strong> : Maîtrise des outils digitaux, création d'interfaces web et suivi d'acquisition.</li>
+                <li><strong>Sommellerie de Prestige & Gastronomie (Palaces 5*)</strong> : Formation continue aux codes du luxe, gestion de caves d'exception et service VIP.</li>
+                <li><strong>Diplômes d'Entraîneur Handball & Leadership</strong> : Management participatif, gestion de la pression, cohésion d'équipe et esprit de compétition.</li>
+            </ul>
+        </div>
+    </section>
+
+    <footer>
+        Julien FLORENCE — Dossier Candidature & CV Interactif Spécifique JOST Hôtel Bordeaux — 2026
+    </footer>
+
 </div>
+
+<script>
+    function switchTab(tabId) {
+        document.querySelectorAll('.tab-btn').forEach(btn => btn.classList.remove('active'));
+        document.querySelectorAll('.tab-content').forEach(content => content.classList.remove('active'));
+        
+        event.target.classList.add('active');
+        document.getElementById(tabId).classList.add('active');
+    }
+</script>
 
 </body>
 </html>
