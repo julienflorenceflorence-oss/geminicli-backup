@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Julien FLORENCE — Directeur d'Hôtel Hybride | JOST Bordeaux</title>
-    <meta name="description" content="CV Interactif & Plan d'Action à 90 Jours de Julien Florence pour le poste de Directeur d'Hôtel Hybride au JOST Hôtel Bordeaux Gare Saint-Jean.">
+    <meta name="description" content="CV Interactif de Julien Florence pour le poste de Directeur d'Hôtel Hybride au JOST Hôtel Bordeaux Gare Saint-Jean.">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;700;800&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
@@ -320,39 +320,6 @@
             font-weight: 500;
         }
 
-        /* PLAN 90 JOURS TIMELINE */
-        .timeline {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 15px;
-        }
-
-        .phase-card {
-            background: var(--bg-card);
-            border: 1px solid var(--border-gold);
-            border-radius: var(--radius-md);
-            padding: 16px;
-            position: relative;
-        }
-
-        .phase-badge {
-            background: var(--gold-bright);
-            color: #0B0C10;
-            font-size: 11px;
-            font-weight: 700;
-            padding: 3px 8px;
-            border-radius: 4px;
-            display: inline-block;
-            margin-bottom: 8px;
-        }
-
-        .phase-title {
-            font-size: 14px;
-            font-weight: 700;
-            color: var(--text-white);
-            margin-bottom: 10px;
-        }
-
         /* FOOTER */
         footer {
             text-align: center;
@@ -371,7 +338,7 @@
             .photo-frame {
                 margin: 0 auto;
             }
-            .grid-2, .timeline {
+            .grid-2 {
                 grid-template-columns: 1fr;
             }
             .action-buttons {
@@ -411,10 +378,9 @@
 
     <!-- TABS NAVIGATION -->
     <nav class="tab-nav">
-        <button class="tab-btn active" onclick="switchTab('overview')">📊 Alignement JOST & Synthese</button>
-        <button class="tab-btn" onclick="switchTab('plan90')">🚀 Plan d'Action à 90 Jours</button>
+        <button class="tab-btn active" onclick="switchTab('overview')">📊 Alignement JOST & Synthèse</button>
         <button class="tab-btn" onclick="switchTab('experiences')">💼 Expériences & Rentabilité (+140%)</button>
-        <button class="tab-btn" onclick="switchTab('diplomes')">🎓 Diplômes, Somellerie & Certifications</button>
+        <button class="tab-btn" onclick="switchTab('diplomes')">🎓 Diplômes, Sommellerie & Certifications</button>
     </nav>
 
     <!-- TAB 1: OVERVIEW -->
@@ -444,45 +410,7 @@
         </div>
     </section>
 
-    <!-- TAB 2: PLAN 90 JOURS -->
-    <section id="plan90" class="tab-content">
-        <div class="card">
-            <div class="card-header">
-                <h2 class="card-title">🚀 Feuil de Route à 90 Jours — JOST Bordeaux Gare</h2>
-            </div>
-            <div class="timeline">
-                <div class="phase-card">
-                    <span class="phase-badge">Jours 1 à 30</span>
-                    <h3 class="phase-title">Diagnostic & Immersion</h3>
-                    <ul class="bullet-list">
-                        <li>Audit complet de l'expérience client Hybride et F&B.</li>
-                        <li>Prise en main opérationnelle de la solution Doyield.</li>
-                        <li>Rencontre des équipes et fixation des KPIs individuels.</li>
-                    </ul>
-                </div>
-                <div class="phase-card">
-                    <span class="phase-badge">Jours 31 à 60</span>
-                    <h3 class="phase-title">Offensive Commerciale MICE</h3>
-                    <ul class="bullet-list">
-                        <li>Lancement de la campagne de prospection B2B locale (Toulouse/Bordeaux).</li>
-                        <li>Package privatisation du Rooftop & Lieu Chéri.</li>
-                        <li>Optimisation du mix tarifaire Doyield (Dortoirs vs Signature).</li>
-                    </ul>
-                </div>
-                <div class="phase-card">
-                    <span class="phase-badge">Jours 61 à 90</span>
-                    <h3 class="phase-title">Consolidation & Rentabilité</h3>
-                    <ul class="bullet-list">
-                        <li>Analyse P&L et optimisation des coûts F&B / masse salariale.</li>
-                        <li>Fidélisation des comptes clés corporate MICE.</li>
-                        <li>Revue de rentabilité trimestrielle avec la direction.</li>
-                    </ul>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- TAB 3: EXPERIENCES -->
+    <!-- TAB 2: EXPERIENCES -->
     <section id="experiences" class="tab-content">
         <div class="exp-item">
             <div class="exp-head">
@@ -557,7 +485,7 @@
         </div>
     </section>
 
-    <!-- TAB 4: DIPLOMES -->
+    <!-- TAB 3: DIPLOMES -->
     <section id="diplomes" class="tab-content">
         <div class="card">
             <div class="card-header">

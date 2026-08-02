@@ -89,7 +89,7 @@ class MasterCleanCVPDF:
             c.roundRect(14*mm, 238*mm, 40*mm, 46*mm, radius=3*mm, stroke=1, fill=0)
             
         # Direct Web Preview URL (No GitHub UI framing)
-        cv_interactive_url = "https://htmlpreview.github.io/?https://github.com/julienflorenceflorence-oss/geminicli-backup/blob/main/Projets/prospection%20job/jost-hotel-bordeaux/04_Livrables/HTML/2026-07-31_CV_Julien_Florence_JOST_Bordeaux.html"
+        cv_interactive_url = "https://raw.githack.com/julienflorenceflorence-oss/geminicli-backup/main/Projets/prospection%20job/jost-hotel-bordeaux/04_Livrables/HTML/2026-07-31_CV_Julien_Florence_JOST_Bordeaux.html"
         
         # 4 Action Buttons with Vector Pictograms & Direct Web Link
         buttons = [
