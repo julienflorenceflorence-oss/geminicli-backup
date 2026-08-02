@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Julien FLORENCE — Directeur d'Hôtel Hybride | JOST Bordeaux</title>
-    <meta name="description" content="CV Interactif de Julien Florence pour le poste de Directeur d'Hôtel Hybride au JOST Hôtel Bordeaux Gare Saint-Jean.">
+    <meta name="description" content="CV Interactif & Application Stratégique de Julien Florence pour le poste de Directeur d'Hôtel Hybride au JOST Hôtel Bordeaux Gare Saint-Jean.">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;700;800&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
@@ -320,6 +320,33 @@
             font-weight: 500;
         }
 
+        /* SIMULATOR ROI INTERACTIVE */
+        .sim-box {
+            background: rgba(212, 175, 55, 0.05);
+            border: 1px solid var(--border-gold);
+            border-radius: var(--radius-md);
+            padding: 18px;
+            margin-top: 15px;
+        }
+
+        .sim-controls {
+            display: flex;
+            gap: 15px;
+            margin-bottom: 12px;
+        }
+
+        .sim-slider {
+            flex: 1;
+        }
+
+        .sim-result {
+            font-size: 18px;
+            font-weight: 700;
+            color: var(--gold-bright);
+            text-align: center;
+            margin-top: 10px;
+        }
+
         /* FOOTER */
         footer {
             text-align: center;
@@ -365,25 +392,26 @@
                 🟢 Immédiatement Disponible | Alignement Stratégique JOST Bordeaux Gare Saint-Jean
             </div>
             <p class="hero-desc">
-                Directeur d'Hôtel Hybride & Manager fort de 25 ans d'expérience combinant la rigueur opérationnelle et l'excellence du service de prestige (Palaces 5* & étoilés) au pilotage de centres de profit, Revenue Management (Doyield) et virage MICE B2B. Expert de l'événementiel haut de gamme et du F&B, je suis immédiatement opérationnel sur Bordeaux.
+                Directeur d'Hôtel Hybride & Manager fort de 25 ans d'expérience combinant la rigueur opérationnelle et l'excellence du service de prestige (Palaces 5* & étoilés) au pilotage de centres de profit, Direction Marketing Digitale (Bachelor 2025, Certifications Google), Revenue Management (Doyield) et virage MICE B2B.
             </p>
             <div class="action-buttons">
                 <a href="tel:0661747573" class="btn">📞 06 61 74 75 73</a>
                 <a href="mailto:julienflorence.florence@gmail.com" class="btn">✉️ EMAIL Direct</a>
                 <a href="https://linkedin.com/in/alban-ruggiero/" target="_blank" class="btn btn-gold">📅 Prise de RDV 10 min</a>
-                <a href="../PDF/2026-07-31_CV_Julien_Florence_JOST_Bordeaux.pdf" target="_blank" class="btn">📄 Télécharger CV PDF 1 Page</a>
+                <a href="../PDF/2026-07-31_CV_Julien_Florence_JOST_Bordeaux.pdf" target="_blank" class="btn">📄 Télécharger CV PDF 1 Page A4</a>
             </div>
         </div>
     </header>
 
     <!-- TABS NAVIGATION -->
     <nav class="tab-nav">
-        <button class="tab-btn active" onclick="switchTab('overview')">📊 Alignement JOST & Stratégie B2B</button>
-        <button class="tab-btn" onclick="switchTab('experiences')">💼 Expériences & Stratégie Rentabilité (+140%)</button>
+        <button class="tab-btn active" onclick="switchTab('overview')">📊 Alignement JOST & Direction Digitale</button>
+        <button class="tab-btn" onclick="switchTab('strategy')">💡 Stratégie Croissance F&B (+140% CA)</button>
+        <button class="tab-btn" onclick="switchTab('experiences')">💼 Expériences & Réalisations</button>
         <button class="tab-btn" onclick="switchTab('diplomes')">🎓 Diplômes, Sommellerie & Certifications</button>
     </nav>
 
-    <!-- TAB 1: OVERVIEW -->
+    <!-- TAB 1: OVERVIEW & DIRECTION DIGITALE -->
     <section id="overview" class="tab-content active">
         <div class="grid-2">
             <div class="card">
@@ -399,18 +427,64 @@
 
             <div class="card">
                 <div class="card-header">
-                    <h2 class="card-title">🏆 Stratégie de Levée de CA (+140% en 5 ans)</h2>
+                    <h2 class="card-title">💻 Direction Marketing & Commerciale Digitale</h2>
                 </div>
                 <ul class="bullet-list">
-                    <li><strong>Partenariats Hôtels de Luxe</strong> : Prospection ciblée des concierges d'hôtels sans restaurant pour capter leur clientèle VIP.</li>
-                    <li><strong>Externalisation MICE & Art</strong> : Partenaire F&B exclusif des galeries d'art du secteur (Galerie Nabokof Paris 1er) pour vernissages.</li>
-                    <li><strong>Refus des plateformes bas de gamme</strong> : Protection des marges et du positionnement de prestige sans dépendre d'UberEats/Deliveroo.</li>
+                    <li><strong>Bachelor Marketing & Commerce (2025)</strong> : Stratégie Go-To-Market, tunnels d'acquisition B2B et pricing dynamique.</li>
+                    <li><strong>Certifications Google Academy (HTML5/CSS3)</strong> : Maîtrise des outils web, intégration d'interfaces et tracking analytique.</li>
+                    <li><strong>Outils CRM & Smarketing (Bitrix24 / Salesforce)</strong> : Pilotage de pipelines commerciaux, prospection multi-canal et suivi KPI.</li>
                 </ul>
+            </div>
+        </div>
+
+        <!-- INTERACTIVE SIMULATOR -->
+        <div class="card">
+            <div class="card-header">
+                <h2 class="card-title">⚡ Simulateur Interactif d'Impact Chiffre d'Affaires JOST</h2>
+            </div>
+            <p style="font-size: 12.5px; color: var(--text-gray); margin-bottom: 12px;">
+                Ajustez le curseur de souscription MICE B2B et d'optimisation Yield Doyield pour estimer la valeur ajoutée générée sur le site Bordeaux Gare :
+            </p>
+            <div class="sim-box">
+                <div class="sim-controls">
+                    <label style="font-size:12px;">Événements Corporate MICE / Mois :</label>
+                    <input type="range" id="miceRange" min="2" max="15" value="6" class="sim-slider" oninput="updateSim()">
+                    <span id="miceVal" style="font-weight:bold; color:var(--gold-primary);">6</span>
+                </div>
+                <div class="sim-result" id="simOut">
+                    Gain Estimé Annuel : +86,400 € de Marge Nette
+                </div>
             </div>
         </div>
     </section>
 
-    <!-- TAB 2: EXPERIENCES -->
+    <!-- TAB 2: STRATEGIE F&B 140% -->
+    <section id="strategy" class="tab-content">
+        <div class="card">
+            <div class="card-header">
+                <h2 class="card-title">🚀 Méthodologie Concrète de Levée de CA (+140% en 5 ans)</h2>
+            </div>
+            <p style="font-size: 13.5px; color: var(--text-gray); margin-bottom: 15px;">
+                Pour faire passer mon établissement de <strong>250 k€ à 600 k€ de CA</strong> à Paris 1er, j'ai refusé de brader les marges et l'image de marque sur des plateformes de livraison génériques (UberEats/Deliveroo). J'ai activé <strong>deux leviers d'apport d'affaires externes à haute valeur ajoutée</strong> :
+            </p>
+            <div class="grid-2">
+                <div class="exp-item">
+                    <div class="exp-role">1. Réseau Concierges Hôteliers Haut de Gamme</div>
+                    <p style="font-size:12.5px; color:var(--text-gray); margin-top:6px;">
+                        Prospection directe des concierges d'hôtels de luxe voisins dépourvus de restaurant. Création d'accords sur mesure pour servir leur clientèle VIP en direct, générant un flux régulier de clients à fort pouvoir d'achat.
+                    </p>
+                </div>
+                <div class="exp-item">
+                    <div class="exp-role">2. MICE & Galeries d'Art Extérieures</div>
+                    <p style="font-size:12.5px; color:var(--text-gray); margin-top:6px;">
+                        Partenariat F&B exclusif avec la prestigieuse *Galerie Nabokof* (Paris 1er). Externalisation complète des services de restauration pour leurs vernissages, réceptions privées et clubs d'affaires.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- TAB 3: EXPERIENCES -->
     <section id="experiences" class="tab-content">
         <div class="exp-item">
             <div class="exp-head">
@@ -457,9 +531,8 @@
             <div class="exp-company">MA SALLE À MANGER | PARIS 1er (PLACE DAUPHINE)</div>
             <ul class="bullet-list">
                 <li>Duplication des standards de l'hôtellerie de luxe pour piloter le restaurant (15 salariés, P&L) : <strong>croissance de +140% du CA en 5 ans</strong> (passage de 250 k€ à 600 k€).</li>
-                <li><strong>Méthode de prospection hôtelière</strong> : Partenariats sur mesure créés avec les concierges d'hôtels de luxe voisins sans restaurant pour capter leur clientèle VIP.</li>
-                <li><strong>Externalisation MICE & Culturelle</strong> : Partenaire F&B exclusif de la prestigieuse *Galerie Nabokof* (Paris 1er) pour vernissages et réceptions d'affaires.</li>
-                <li><strong>Refus de la livraison bas de gamme</strong> : Préservation stricte des marges et de l'image de prestige sans recours aux plateformes type UberEats/Deliveroo.</li>
+                <li><strong>Prospection hôtelière VIP</strong> : Accords créés avec les concierges d'hôtels de luxe voisins sans restaurant.</li>
+                <li><strong>Externalisation Galeries d'Art</strong> : Traiteur F&B exclusif de la Galerie Nabokof (vernissages, réceptions d'affaires).</li>
             </ul>
             <div class="tags-container">
                 <span class="tag-pill">Partenariats Concierges Hôtels</span>
@@ -487,15 +560,15 @@
         </div>
     </section>
 
-    <!-- TAB 3: DIPLOMES -->
+    <!-- TAB 4: DIPLOMES -->
     <section id="diplomes" class="tab-content">
         <div class="card">
             <div class="card-header">
                 <h2 class="card-title">🎓 Diplômes & Qualifications Professionnelles</h2>
             </div>
             <ul class="bullet-list">
-                <li><strong>Bachelor Marketing & Commerce (2025)</strong> : Spécialisation développement commercial, stratégie Go-To-Market et gestion de projets.</li>
-                <li><strong>Certifications HTML5 & CSS3 — Google Academy</strong> : Maîtrise des outils digitaux, création d'interfaces web et suivi d'acquisition.</li>
+                <li><strong>Bachelor Marketing & Commerce (2025)</strong> : Spécialisation développement commercial, stratégie Go-To-Market, tunnels d'acquisition et gestion de projets.</li>
+                <li><strong>Certifications HTML5 & CSS3 — Google Academy</strong> : Maîtrise des outils digitaux, création d'interfaces web, suivi d'acquisition et CRM.</li>
                 <li><strong>Sommellerie de Prestige & Gastronomie (Palaces 5*)</strong> : Formation continue aux codes du luxe, gestion de caves d'exception et service VIP.</li>
                 <li><strong>Diplômes d'Entraîneur Handball & Leadership</strong> : Management participatif, gestion de la pression, cohésion d'équipe et esprit de compétition.</li>
             </ul>
@@ -515,6 +588,13 @@
         
         event.target.classList.add('active');
         document.getElementById(tabId).classList.add('active');
+    }
+
+    function updateSim() {
+        const val = document.getElementById('miceRange').value;
+        document.getElementById('miceVal').innerText = val;
+        const gain = val * 12 * 1200; // 1,200 € marge par event
+        document.getElementById('simOut').innerText = `Gain Estimé Annuel : +${gain.toLocaleString('fr-FR')} € de Marge Nette`;
     }
 </script>
 
