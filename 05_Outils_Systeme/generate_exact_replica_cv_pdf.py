@@ -26,23 +26,19 @@ class MasterCleanCVPDF:
         c.setLineWidth(0.8)
         
         if icon_type == "phone":
-            # Receiver icon shape
             c.arc(x-2*mm, y-2*mm, x+2*mm, y+2*mm, 45, 180)
             c.rect(x-1.5*mm, y-1.5*mm, 1.2*mm, 2.5*mm, fill=1, stroke=0)
             c.rect(x+0.3*mm, y-0.8*mm, 1.2*mm, 2.5*mm, fill=1, stroke=0)
         elif icon_type == "email":
-            # Envelope icon
             c.rect(x-2.5*mm, y-1.8*mm, 5*mm, 3.6*mm, fill=0, stroke=1)
             c.line(x-2.5*mm, y+1.8*mm, x, y-0.2*mm)
             c.line(x+2.5*mm, y+1.8*mm, x, y-0.2*mm)
         elif icon_type == "calendar":
-            # Calendar box
             c.rect(x-2.2*mm, y-2*mm, 4.4*mm, 4*mm, fill=0, stroke=1)
             c.line(x-2.2*mm, y+1*mm, x+2.2*mm, y+1*mm)
             c.line(x-1*mm, y+2*mm, x-1*mm, y+1*mm)
             c.line(x+1*mm, y+2*mm, x+1*mm, y+1*mm)
         elif icon_type == "globe":
-            # Globe circle with grid
             c.circle(x, y, 2.2*mm, fill=0, stroke=1)
             c.line(x-2.2*mm, y, x+2.2*mm, y)
             c.line(x, y-2.2*mm, x, y+2.2*mm)
@@ -92,10 +88,10 @@ class MasterCleanCVPDF:
             c.setLineWidth(1.2)
             c.roundRect(14*mm, 238*mm, 40*mm, 46*mm, radius=3*mm, stroke=1, fill=0)
             
-        # Exact Interactive URLs
-        cv_interactive_url = "https://github.com/julienflorenceflorence-oss/geminicli-backup/blob/main/Projets/prospection%20job/jost-hotel-bordeaux/04_Livrables/HTML/2026-07-31_CV_Julien_Florence_JOST_Bordeaux.html"
+        # Direct Web Preview URL (No GitHub UI framing)
+        cv_interactive_url = "https://htmlpreview.github.io/?https://github.com/julienflorenceflorence-oss/geminicli-backup/blob/main/Projets/prospection%20job/jost-hotel-bordeaux/04_Livrables/HTML/2026-07-31_CV_Julien_Florence_JOST_Bordeaux.html"
         
-        # 4 Action Buttons with Vector Pictograms & exact links
+        # 4 Action Buttons with Vector Pictograms & Direct Web Link
         buttons = [
             ("tel:0661747573", "phone", "06 61 74 75 73", False, False),
             ("mailto:julienflorence.florence@gmail.com", "email", "EMAIL", False, False),
@@ -110,7 +106,6 @@ class MasterCleanCVPDF:
                 c.setStrokeColor(gold_bright)
                 c.roundRect(9*mm, btn_y, 50*mm, 7.5*mm, radius=3.75*mm, stroke=1, fill=1)
                 
-                # Draw Vector Pictogram
                 self.draw_icon(icon_type, 16*mm, btn_y + 3.75*mm, is_dark_bg=False)
                 
                 c.setFillColor(colors.HexColor("#0B0C10"))
@@ -122,7 +117,6 @@ class MasterCleanCVPDF:
                 c.setLineWidth(0.8)
                 c.roundRect(9*mm, btn_y, 50*mm, 7.5*mm, radius=3.75*mm, stroke=1, fill=1)
                 
-                # Draw Vector Pictogram
                 self.draw_icon(icon_type, 16*mm, btn_y + 3.75*mm, is_dark_bg=True)
                 
                 c.setFillColor(text_white)
@@ -320,7 +314,7 @@ class MasterCleanCVPDF:
             curr_y -= 4.5*mm
 
         c.save()
-        print(f"✅ PDF avec Pictogrammes Vectoriels et Lien CV Interactif Direct généré : {self.filename}")
+        print(f"✅ PDF avec Lien Direct Web Sans Cadre GitHub généré : {self.filename}")
 
 def build_all_clean_pdfs():
     out_file = "Projets/prospection job/jost-hotel-bordeaux/04_Livrables/PDF/2026-07-31_CV_Julien_Florence_JOST_Bordeaux.pdf"
