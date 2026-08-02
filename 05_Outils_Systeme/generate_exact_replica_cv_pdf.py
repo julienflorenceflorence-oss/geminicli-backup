@@ -8,11 +8,11 @@ from reportlab.lib import colors
 from reportlab.pdfgen import canvas
 from reportlab.lib.units import mm
 
-class MasterCleanCVPDF:
+class PrecisionCleanCVPDF:
     def __init__(self, filename):
         self.filename = filename
         self.c = canvas.Canvas(filename, pagesize=A4)
-        self.width, self.height = A4 # 210mm x 297mm (1 Page A4 Native)
+        self.width, self.height = A4 # 210mm x 297mm (1 Page A4 Strict)
 
     def draw_cv(self):
         c = self.c
@@ -23,7 +23,7 @@ class MasterCleanCVPDF:
         gold_primary = colors.HexColor("#D4AF37")
         gold_bright = colors.HexColor("#FACC15")
         text_white = colors.HexColor("#F8FAFC")
-        text_gray = colors.HexColor("#CBD5E1")
+        text_gray = colors.HexColor("#E2E8F0")
         text_muted = colors.HexColor("#94A3B8")
         btn_dark_bg = colors.HexColor("#161A25")
         btn_border_muted = colors.HexColor("#3C4150")
@@ -98,7 +98,7 @@ class MasterCleanCVPDF:
             ("SOFT SKILLS", [
                 "ENTJ-A | 94% Rationnel & Organise",
                 "Sens du service client d'exception",
-                "Aisance relationnelle clientVIP",
+                "Aisance relationnelle client VIP",
                 "Leadership federateur & Terrain",
                 "Esprit d'entreprise & Resilience"
             ]),
@@ -145,46 +145,46 @@ class MasterCleanCVPDF:
         
         # Header Name
         c.setFillColor(gold_primary)
-        c.setFont("Times-Bold", 24)
+        c.setFont("Times-Bold", 23)
         c.drawString(74*mm, 280*mm, "JULIEN FLORENCE")
         
-        # Subtitle (Clean White Bold)
+        # Subtitle (Exact Command)
         c.setFillColor(text_white)
-        c.setFont("Helvetica-Bold", 9.5)
-        c.drawString(74*mm, 271*mm, "| DIRECTEUR D'HOTEL HYBRIDE")
+        c.setFont("Helvetica-Bold", 9.2)
+        c.drawString(74*mm, 272*mm, "| DIRECTEUR D'HOTEL HYBRIDE")
         
-        # Presentation Paragraph (Crisp Legible Text, Generous Line Height)
+        # Presentation Text (Clean, Spaced)
         summary_text = "Directeur d'Hotel Hybride fort de 25 ans d'experience combinant la rigueur operationnelle et l'excellence du service de prestige (Palaces 5* & etoiles) au pilotage de centres de profit, Revenue Management et virage MICE B2B. Expert de l'evenementiel et du F&B, je suis immediatement operationnel sur Bordeaux pour piloter le site JOST Gare Saint-Jean."
         
         c.setFillColor(text_gray)
-        c.setFont("Helvetica", 7.8)
+        c.setFont("Helvetica", 7.6)
         
         words = summary_text.split()
         line = ""
-        summary_y = 263*mm
+        summary_y = 265*mm
         for w in words:
-            if c.stringWidth(line + " " + w, "Helvetica", 7.8) < 125*mm:
+            if c.stringWidth(line + " " + w, "Helvetica", 7.6) < 125*mm:
                 line += (" " if line else "") + w
             else:
                 c.drawString(74*mm, summary_y, line)
-                summary_y -= 3.8*mm
+                summary_y -= 3.6*mm
                 line = w
         if line:
             c.drawString(74*mm, summary_y, line)
-            summary_y -= 3.8*mm
+            summary_y -= 3.6*mm
             
         # Section Title: EXPERIENCES PROFESSIONNELLES
-        exp_y = summary_y - 3.5*mm
+        exp_y = summary_y - 3*mm
         c.setFillColor(gold_primary)
-        c.setFont("Times-Bold", 11)
+        c.setFont("Times-Bold", 10.5)
         c.drawString(74*mm, exp_y, "EXPERIENCES PROFESSIONNELLES")
         
-        title_width = c.stringWidth("EXPERIENCES PROFESSIONNELLES", "Times-Bold", 11)
+        title_width = c.stringWidth("EXPERIENCES PROFESSIONNELLES", "Times-Bold", 10.5)
         c.setStrokeColor(gold_primary)
         c.setLineWidth(0.6)
         c.line(74*mm + title_width + 3*mm, exp_y + 1.2*mm, 200*mm, exp_y + 1.2*mm)
         
-        # 5 Jobs (Exact Text & Format matching original target PDF)
+        # 5 Jobs with Perfect Spacing between entries
         jobs = [
             ("Responsable Commercial & Acquisition Tech", "2025 - PRESENT", "HAPPY HOUSE | ACQUISITION & RENTABILITE B2B", [
                 "Coaching et pilotage d'une equipe de 3 collaborateurs (objectifs de conquete, animation).",
@@ -216,62 +216,68 @@ class MasterCleanCVPDF:
             ], ["Standards Palaces (LHW)", "Clienteles VIP", "Sommellerie & Bar"])
         ]
         
-        curr_y = exp_y - 6.5*mm
+        curr_y = exp_y - 6*mm
         for role, dates, company, bullets, tags in jobs:
+            # Role Title
             c.setFillColor(gold_primary)
-            c.setFont("Helvetica-Bold", 8.5)
+            c.setFont("Helvetica-Bold", 8.2)
             c.drawString(74*mm, curr_y, role)
             
+            # Dates
             c.setFillColor(text_muted)
-            c.setFont("Helvetica-Bold", 7.5)
+            c.setFont("Helvetica-Bold", 7.2)
             c.drawRightString(200*mm, curr_y, dates)
             
-            curr_y -= 3.8*mm
+            # Company
+            curr_y -= 3.5*mm
             c.setFillColor(text_white)
-            c.setFont("Helvetica-Bold", 7.2)
+            c.setFont("Helvetica-Bold", 7)
             c.drawString(74*mm, curr_y, company)
             
-            curr_y -= 3.5*mm
+            # Bullets
+            curr_y -= 3.2*mm
             c.setFillColor(text_gray)
-            c.setFont("Helvetica", 6.8)
+            c.setFont("Helvetica", 6.5)
             
             for b in bullets:
                 b_words = b.split()
-                b_line = "-"
+                b_line = "•"
                 for bw in b_words:
-                    if c.stringWidth(b_line + " " + bw, "Helvetica", 6.8) < 125*mm:
-                        b_line += (" " if b_line != "-" else " ") + bw
+                    if c.stringWidth(b_line + " " + bw, "Helvetica", 6.5) < 124*mm:
+                        b_line += (" " if b_line != "•" else " ") + bw
                     else:
                         c.drawString(74*mm, curr_y, b_line)
-                        curr_y -= 3.1*mm
+                        curr_y -= 2.8*mm
                         b_line = "  " + bw
                 if b_line:
                     c.drawString(74*mm, curr_y, b_line)
-                    curr_y -= 3.1*mm
+                    curr_y -= 2.8*mm
                     
-            curr_y -= 0.4*mm
+            # Tag Pills (Exact rounded pills with clear bottom margin)
+            curr_y -= 0.2*mm
             c.setFillColor(pill_bg)
             c.setStrokeColor(gold_primary)
             c.setLineWidth(0.4)
-            c.setFont("Helvetica", 6)
+            c.setFont("Helvetica", 5.8)
             
             tag_x = 74*mm
             for tag in tags:
                 tag_str = f"({tag})"
-                tw = c.stringWidth(tag_str, "Helvetica", 6) + 3.2*mm
+                tw = c.stringWidth(tag_str, "Helvetica", 5.8) + 3*mm
                 if tag_x + tw > 200*mm:
-                    curr_y -= 3.8*mm
+                    curr_y -= 3.5*mm
                     tag_x = 74*mm
-                c.roundRect(tag_x, curr_y, tw, 3.6*mm, radius=1.8*mm, fill=1, stroke=1)
+                c.roundRect(tag_x, curr_y, tw, 3.2*mm, radius=1.6*mm, fill=1, stroke=1)
                 c.setFillColor(gold_primary)
-                c.drawCentredString(tag_x + tw/2.0, curr_y + 0.9*mm, tag_str)
+                c.drawCentredString(tag_x + tw/2.0, curr_y + 0.8*mm, tag_str)
                 c.setFillColor(pill_bg)
-                tag_x += tw + 1.8*mm
+                tag_x += tw + 1.5*mm
                 
-            curr_y -= 4.8*mm
+            # Generous spacing between end of this job and start of next job
+            curr_y -= 4.2*mm
 
         c.save()
-        print(f"✅ PDF 100% Natif, Propre et Professionnel généré : {self.filename}")
+        print(f"✅ PDF Calibré avec Fins d'Expériences Nettes généré : {self.filename}")
 
 def build_all_clean_pdfs():
     out_file = "Projets/prospection job/jost-hotel-bordeaux/04_Livrables/PDF/2026-07-31_CV_Julien_Florence_JOST_Bordeaux.pdf"
@@ -282,7 +288,7 @@ def build_all_clean_pdfs():
     os.makedirs(os.path.dirname(desktop_jost), exist_ok=True)
     
     for path in [out_file, desktop_jost, desktop_root]:
-        builder = MasterCleanCVPDF(path)
+        builder = PrecisionCleanCVPDF(path)
         builder.draw_cv()
 
 if __name__ == "__main__":
