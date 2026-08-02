@@ -14,6 +14,41 @@ class MasterCleanCVPDF:
         self.c = canvas.Canvas(filename, pagesize=A4)
         self.width, self.height = A4 # 210mm x 297mm (1 Page A4 Native)
 
+    def draw_icon(self, icon_type, x, y, is_dark_bg=True):
+        c = self.c
+        gold_primary = colors.HexColor("#D4AF37")
+        dark_fill = colors.HexColor("#0B0C10")
+        icon_color = dark_fill if not is_dark_bg else gold_primary
+        
+        c.saveState()
+        c.setStrokeColor(icon_color)
+        c.setFillColor(icon_color)
+        c.setLineWidth(0.8)
+        
+        if icon_type == "phone":
+            # Receiver icon shape
+            c.arc(x-2*mm, y-2*mm, x+2*mm, y+2*mm, 45, 180)
+            c.rect(x-1.5*mm, y-1.5*mm, 1.2*mm, 2.5*mm, fill=1, stroke=0)
+            c.rect(x+0.3*mm, y-0.8*mm, 1.2*mm, 2.5*mm, fill=1, stroke=0)
+        elif icon_type == "email":
+            # Envelope icon
+            c.rect(x-2.5*mm, y-1.8*mm, 5*mm, 3.6*mm, fill=0, stroke=1)
+            c.line(x-2.5*mm, y+1.8*mm, x, y-0.2*mm)
+            c.line(x+2.5*mm, y+1.8*mm, x, y-0.2*mm)
+        elif icon_type == "calendar":
+            # Calendar box
+            c.rect(x-2.2*mm, y-2*mm, 4.4*mm, 4*mm, fill=0, stroke=1)
+            c.line(x-2.2*mm, y+1*mm, x+2.2*mm, y+1*mm)
+            c.line(x-1*mm, y+2*mm, x-1*mm, y+1*mm)
+            c.line(x+1*mm, y+2*mm, x+1*mm, y+1*mm)
+        elif icon_type == "globe":
+            # Globe circle with grid
+            c.circle(x, y, 2.2*mm, fill=0, stroke=1)
+            c.line(x-2.2*mm, y, x+2.2*mm, y)
+            c.line(x, y-2.2*mm, x, y+2.2*mm)
+            
+        c.restoreState()
+
     def draw_cv(self):
         c = self.c
         
@@ -57,33 +92,51 @@ class MasterCleanCVPDF:
             c.setLineWidth(1.2)
             c.roundRect(14*mm, 238*mm, 40*mm, 46*mm, radius=3*mm, stroke=1, fill=0)
             
-        # 4 Action Buttons with Rounded Corners (roundRect) + PDF Hyperlinks
+        # Exact Interactive URLs
+        cv_interactive_url = "https://github.com/julienflorenceflorence-oss/geminicli-backup/blob/main/Projets/prospection%20job/jost-hotel-bordeaux/04_Livrables/HTML/2026-07-31_CV_Julien_Florence_JOST_Bordeaux.html"
+        
+        # 4 Action Buttons with Vector Pictograms & exact links
         buttons = [
-            ("tel:0661747573", "06 61 74 75 73", False, False),
-            ("mailto:julienflorence.florence@gmail.com", "EMAIL", False, False),
-            ("https://linkedin.com/in/alban-ruggiero/", "AGENDA", True, False),
-            ("https://github.com/julienflorenceflorence-oss/geminicli-backup/tree/main/Projets/prospection%20job/jost-hotel-bordeaux/04_Livrables/PDF", "ACCES CV INTERACTIF", False, True)
+            ("tel:0661747573", "phone", "06 61 74 75 73", False, False),
+            ("mailto:julienflorence.florence@gmail.com", "email", "EMAIL", False, False),
+            ("https://linkedin.com/in/alban-ruggiero/", "calendar", "AGENDA", True, False),
+            (cv_interactive_url, "globe", "ACCES CV INTERACTIF", False, True)
         ]
         
         btn_y = 224*mm
-        for url, text, is_gold_filled, is_gold_border in buttons:
+        for url, icon_type, text, is_gold_filled, is_gold_border in buttons:
             if is_gold_filled:
                 c.setFillColor(gold_bright)
                 c.setStrokeColor(gold_bright)
                 c.roundRect(9*mm, btn_y, 50*mm, 7.5*mm, radius=3.75*mm, stroke=1, fill=1)
+                
+                # Draw Vector Pictogram
+                self.draw_icon(icon_type, 16*mm, btn_y + 3.75*mm, is_dark_bg=False)
+                
                 c.setFillColor(colors.HexColor("#0B0C10"))
                 c.setFont("Helvetica-Bold", 7.8)
+                c.drawString(22*mm, btn_y + 2.4*mm, text)
             else:
                 c.setFillColor(btn_dark_bg)
                 c.setStrokeColor(gold_primary if is_gold_border else btn_border_muted)
                 c.setLineWidth(0.8)
                 c.roundRect(9*mm, btn_y, 50*mm, 7.5*mm, radius=3.75*mm, stroke=1, fill=1)
+                
+                # Draw Vector Pictogram
+                self.draw_icon(icon_type, 16*mm, btn_y + 3.75*mm, is_dark_bg=True)
+                
                 c.setFillColor(text_white)
                 c.setFont("Helvetica-Bold", 7.2)
+                c.drawString(22*mm, btn_y + 2.4*mm, text)
                 
-            c.drawCentredString(34*mm, btn_y + 2.4*mm, text)
             c.linkURL(url, (9*mm, btn_y, 59*mm, btn_y + 7.5*mm), relative=0)
             btn_y -= 9.2*mm
+
+        # Explicit Mention of Full CV Availability on Interactive CV
+        c.setFillColor(gold_primary)
+        c.setFont("Helvetica-Oblique", 6)
+        c.drawCentredString(34*mm, 185*mm, "Mon CV dans son entierete & mes diplomes")
+        c.drawCentredString(34*mm, 182*mm, "sont disponibles sur mon CV interactif")
 
         # Sidebar Sections
         sidebar_sections = [
@@ -112,7 +165,7 @@ class MasterCleanCVPDF:
             ])
         ]
         
-        sec_y = 182*mm
+        sec_y = 172*mm
         for title, items in sidebar_sections:
             c.setFillColor(gold_primary)
             c.setFont("Times-Bold", 9)
@@ -122,22 +175,18 @@ class MasterCleanCVPDF:
             c.setLineWidth(0.5)
             c.line(9*mm, sec_y - 1.5*mm, 59*mm, sec_y - 1.5*mm)
             
-            sec_y -= 5.5*mm
+            sec_y -= 5.2*mm
             c.setFillColor(text_gray)
-            c.setFont("Helvetica", 7)
+            c.setFont("Helvetica", 6.8)
             
             for item in items:
                 c.setFillColor(gold_primary)
                 c.drawString(9*mm, sec_y, ">")
                 c.setFillColor(text_gray)
                 c.drawString(12*mm, sec_y, item)
-                sec_y -= 4*mm
+                sec_y -= 3.8*mm
                 
             sec_y -= 2*mm
-
-        c.setFillColor(gold_primary)
-        c.setFont("Helvetica-Oblique", 6)
-        c.drawCentredString(34*mm, 7*mm, "CV complet & diplomes accessibles en 1 clic")
 
         # --------------------------------------------------------
         # MAIN CONTENT (Right Column, x=74mm to 200mm)
@@ -184,7 +233,7 @@ class MasterCleanCVPDF:
         c.setLineWidth(0.6)
         c.line(74*mm + title_width + 3*mm, exp_y + 1.2*mm, 200*mm, exp_y + 1.2*mm)
         
-        # 5 Jobs with Strict Non-Overlapping Dynamic Math
+        # 5 Jobs
         jobs = [
             ("Responsable Commercial & Acquisition Tech", "2025 - PRESENT", "HAPPY HOUSE | ACQUISITION & RENTABILITE B2B", [
                 "Coaching et pilotage d'une equipe de 3 collaborateurs (objectifs de conquete, animation).",
@@ -218,23 +267,19 @@ class MasterCleanCVPDF:
         
         curr_y = exp_y - 6*mm
         for role, dates, company, bullets, tags in jobs:
-            # Role Title
             c.setFillColor(gold_primary)
             c.setFont("Helvetica-Bold", 8.2)
             c.drawString(74*mm, curr_y, role)
             
-            # Dates
             c.setFillColor(text_muted)
             c.setFont("Helvetica-Bold", 7.2)
             c.drawRightString(200*mm, curr_y, dates)
             
-            # Company
             curr_y -= 3.4*mm
             c.setFillColor(text_white)
             c.setFont("Helvetica-Bold", 7)
             c.drawString(74*mm, curr_y, company)
             
-            # Bullets
             curr_y -= 3.2*mm
             c.setFillColor(text_gray)
             c.setFont("Helvetica", 6.5)
@@ -253,7 +298,6 @@ class MasterCleanCVPDF:
                     c.drawString(74*mm, curr_y, b_line)
                     curr_y -= 2.7*mm
                     
-            # Tag Pills (Positioned strictly below the last bullet line with generous 3.6mm margin!)
             curr_y -= 2.2*mm
             c.setFillColor(pill_bg)
             c.setStrokeColor(gold_primary)
@@ -273,11 +317,10 @@ class MasterCleanCVPDF:
                 c.setFillColor(pill_bg)
                 tag_x += tw + 1.5*mm
                 
-            # Margin between job entries
             curr_y -= 4.5*mm
 
         c.save()
-        print(f"✅ PDF Master sans aucun chevauchement généré : {self.filename}")
+        print(f"✅ PDF avec Pictogrammes Vectoriels et Lien CV Interactif Direct généré : {self.filename}")
 
 def build_all_clean_pdfs():
     out_file = "Projets/prospection job/jost-hotel-bordeaux/04_Livrables/PDF/2026-07-31_CV_Julien_Florence_JOST_Bordeaux.pdf"
