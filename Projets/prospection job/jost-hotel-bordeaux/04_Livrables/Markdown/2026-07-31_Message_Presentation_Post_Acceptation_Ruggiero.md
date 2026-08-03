@@ -24,7 +24,7 @@ Pour dépasser le simple cadre d'une candidature classique, je perçois notre é
 
 Je vous joins ci-joint mon **CV 1 Page A4** ciblé pour le poste de **Directeur d'Hôtel Hybride JOST Bordeaux**.
 
-Seriez-vous disponible pour un court échange téléphonique de **10 à 15 minutes cette semaine** afin d'évaluer cet alignement ?
+📅 **[Réserver un échange de 10-15 min sur mon Agenda Google](https://calendar.app.google/yyT5Ksmdi4tom4Zq5)**
 
 Bien cordialement,  
 **Julien FLORENCE**  
