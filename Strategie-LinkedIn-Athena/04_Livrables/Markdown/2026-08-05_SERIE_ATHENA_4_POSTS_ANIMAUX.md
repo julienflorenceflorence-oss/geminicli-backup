@@ -7,15 +7,14 @@
 ## 🦅 ÉPISODE 1 : UX (CLIENT) — L'AIGLE & LA FLUIDITÉ DU VOL
 *Vidéo recommandée : Aigle royal en vol plané au-dessus des sommets (Slow-motion 4K, 0% voix off).*
 
-### 📌 TEXTE LINKEDIN (Prêt à publier)
+### 📌 TEXTE LINKEDIN DEF (Prêt à publier)
 
-Observez cet aigle.
+90% des entreprises étouffent leurs clients sous prétexte de vouloir trop bien faire.
 
-Il ne bat pas des ailes 100 fois par minute pour rester en l'air.  
-Il ne s'agite pas.  
-Il se contente de glisser sur le vent en éliminant la moindre résistance.
+Observez ce vol. Ailes ouvertes, immobiles. Zéro effort superflu.  
+C'est la plus grande leçon d'expérience client (UX) que j'ai reçue.
 
-Pendant longtemps, j'ai commis la pire erreur avec l'Expérience Client (UX).
+Pendant longtemps, j'ai commis la même erreur que tout le monde.
 
 Je croyais que pour offrir un grand service, il fallait en faire toujours plus.
 

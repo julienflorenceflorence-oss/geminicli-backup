@@ -1,29 +1,23 @@
-# 🦅 CONCEPT POST 1 : STYLE ANIMAL (L'AIGLE & LA FLUIDITÉ DU VOL)
-**Projet Athena — Épisode 1/4 (Métaphore Animale & Soustraction UX)** | 05 Août 2026  
+# 🦅 ÉPISODE 1 : UX (CLIENT) — L'AIGLE & LA FLUIDITÉ DU VOL
+**Projet Athena — Épisode 1/4 (Post Validé & Ajusté)** | 05 Août 2026  
 
 ---
 
-## 🎥 1. LA VIDÉO (Aimant Visuel 100% Animal — Zéro Voix Off)
-
+### 🎥 LA VIDÉO (Aimant Visuel 100% Animal — Zéro Voix Off)
 * **Visuel en boucle (5 à 12 secondes)** :  
-  Une vidéo 4K en ralenti d'un **Aigle Royal en vol plané majestueux** au-dessus des sommets enneigés au coucher du soleil. Les ailes sont ouvertes, immobiles, le rapace glisse sans aucun effort apparent.
-* **Mots-clés de recherche sur Pexels / Mixkit** :  
-  - `Eagle soaring slow motion 4k`
-  - `Eagle flying mountains cinematic`
-  - `Majestic eagle sunset 4k`
-* **Musique** : Ambiance cinématographique calme et épique. **Aucune voix off, aucun texte sur l'image**.
+  Une vidéo 4K en ralenti d'un **Aigle Royal en vol plané majestueux** au-dessus des sommets enneigés au coucher du soleil. Ailes ouvertes, immobiles, le rapace glisse sans aucun effort apparent.
+* **Mots-clés Pexels** : `Eagle soaring slow motion 4k`
 
 ---
 
-## 📝 2. LE TEXTE ÉCRIT SUR LINKEDIN (Prêt à copier-coller)
+### 📌 TEXTE LINKEDIN DEF (Prêt à copier-coller)
 
-Observez cet aigle.
+90% des entreprises étouffent leurs clients sous prétexte de vouloir trop bien faire.
 
-Il ne bat pas des ailes 100 fois par minute pour rester en l'air.  
-Il ne s'agite pas.  
-Il se contente de glisser sur le vent en éliminant la moindre résistance.
+Observez ce vol. Ailes ouvertes, immobiles. Zéro effort superflu.  
+C'est la plus grande leçon d'expérience client (UX) que j'ai reçue.
 
-Pendant longtemps, j'ai commis la pire erreur avec l'Expérience Client (UX).
+Pendant longtemps, j'ai commis la même erreur que tout le monde.
 
 Je croyais que pour offrir un grand service, il fallait en faire toujours plus.
 
