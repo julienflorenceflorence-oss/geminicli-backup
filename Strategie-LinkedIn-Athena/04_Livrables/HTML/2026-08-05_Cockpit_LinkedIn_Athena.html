@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Cockpit Stratégie LinkedIn | Projet Athéna — Julien Florence</title>
+    <title>Cockpit Stratégie LinkedIn | Athéna — Julien Florence</title>
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -259,6 +259,61 @@
             box-shadow: 0 0 15px var(--purple-glow);
         }
 
+        /* LOCAL VIDEO DROP ZONE */
+        .video-drop-zone {
+            background: rgba(168, 85, 247, 0.05);
+            border: 2px dashed rgba(168, 85, 247, 0.35);
+            border-radius: 14px;
+            padding: 24px;
+            text-align: center;
+            margin-bottom: 20px;
+            cursor: pointer;
+            transition: var(--transition);
+        }
+
+        .video-drop-zone:hover {
+            background: rgba(168, 85, 247, 0.1);
+            border-color: var(--purple-light);
+            transform: translateY(-2px);
+        }
+
+        .drop-icon {
+            font-size: 2.2rem;
+            color: var(--purple-light);
+            margin-bottom: 8px;
+        }
+
+        .drop-text {
+            font-size: 0.9rem;
+            font-weight: 600;
+            color: var(--text-primary);
+        }
+
+        .drop-sub {
+            font-size: 0.78rem;
+            color: var(--text-secondary);
+            margin-top: 4px;
+        }
+
+        /* VIDEO PLAYER PREVIEW */
+        .video-player-container {
+            width: 100%;
+            border-radius: 12px;
+            overflow: hidden;
+            border: 1px solid var(--border-purple);
+            background: #000;
+            margin-bottom: 20px;
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.5);
+            display: none;
+        }
+
+        .video-player-container video {
+            width: 100%;
+            max-height: 420px;
+            display: block;
+            object-fit: contain;
+        }
+
         /* Planner Box */
         .planner-box {
             background: linear-gradient(145deg, rgba(107, 33, 168, 0.15) 0%, rgba(22, 16, 32, 0.9) 100%);
@@ -402,7 +457,7 @@
             </div>
         </div>
         <div class="badge-consultant">
-            <i class="fa-solid fa-paw"></i> Format Métaphore Animale & Hook Validé
+            <i class="fa-solid fa-folder-open"></i> Charger la vidéo depuis le Bureau Mac
         </div>
     </header>
 
@@ -414,7 +469,7 @@
                 <div class="stat-icon"><i class="fa-solid fa-eagle"></i></div>
                 <div class="stat-label">Épisode 1 (UX)</div>
                 <div class="stat-value">🦅 L'Aigle</div>
-                <div class="stat-sub"><i class="fa-solid fa-check"></i> Hook & Texte Validés</div>
+                <div class="stat-sub"><i class="fa-solid fa-check"></i> Hook Option 3 Validé</div>
             </div>
             <div class="stat-card gold">
                 <div class="stat-icon"><i class="fa-solid fa-shield-cat"></i></div>
@@ -439,12 +494,35 @@
         <!-- Main Grid -->
         <div class="main-grid">
             
-            <!-- Left Column: Episode Selector & Post Content -->
+            <!-- Left Column: Episode Selector & Post Content & Video Loader -->
             <div>
+                <!-- LOCAL VIDEO LOADER FROM DESKTOP -->
                 <div class="section-card">
                     <div class="section-header">
                         <div class="section-title">
-                            <i class="fa-solid fa-layer-group"></i> Sélectionner l'Épisode à Consulter & Copier
+                            <i class="fa-solid fa-desktop"></i> Chargeur Vidéo Direct depuis votre Bureau Mac
+                        </div>
+                        <span style="font-size: 0.8rem; color: var(--gold-accent);">Dossier : Desktop/Videos_Athena/</span>
+                    </div>
+
+                    <input type="file" id="localVideoInput" accept="video/*" style="display: none;" onchange="handleFileSelect(event)">
+                    
+                    <div class="video-drop-zone" onclick="document.getElementById('localVideoInput').click()" id="dropZone">
+                        <div class="drop-icon"><i class="fa-solid fa-cloud-arrow-up"></i></div>
+                        <div class="drop-text">📂 Cliquez ici pour charger une vidéo depuis votre Bureau Mac</div>
+                        <div class="drop-sub">Glissez-déposez n'importe quel fichier MP4 / MOV depuis votre Mac (ex: Videos_Athena/)</div>
+                    </div>
+
+                    <!-- PREVIEW PLAYER -->
+                    <div class="video-player-container" id="playerBox">
+                        <video id="videoPlayer" controls autoplay loop muted></video>
+                    </div>
+                </div>
+
+                <div class="section-card">
+                    <div class="section-header">
+                        <div class="section-title">
+                            <i class="fa-solid fa-layer-group"></i> Épisodes & Textes Validés
                         </div>
                     </div>
 
@@ -459,20 +537,19 @@
                     <!-- Post Content Box -->
                     <div class="planner-box" id="postBox">
                         <div class="planner-header">
-                            <span class="badge-week" id="postBadge">ÉPISODE 1 — UX (LA PROMESSE & L'AIGLE)</span>
+                            <span class="badge-week" id="postBadge">ÉPISODE 1 — UX (HOOK OPTION 3 VALIDÉ)</span>
                             <span style="font-size: 0.85rem; color: var(--gold-accent);" id="postVideoKw">Mots-clés Pexels: Eagle soaring slow motion 4k</span>
-                        </div>
-
-                        <div style="font-size: 0.82rem; color: var(--text-secondary); margin-bottom: 10px;">
-                            <strong>Ambiance Vidéo (0% Voix Off) :</strong> <span id="postVideoDesc">Vidéo 4K en ralenti d'un Aigle Royal en vol plané majestueux au-dessus des sommets ensoleillés. Ailes ouvertes et immobiles.</span>
                         </div>
 
                         <textarea id="postText" class="planner-input" rows="16" readonly style="font-family: inherit; font-size: 0.9rem; line-height: 1.6;"></textarea>
 
-                        <div style="display: flex; gap: 10px;">
+                        <div style="display: flex; gap: 10px; flex-wrap: wrap;">
                             <button class="btn-action" onclick="copyPostText()"><i class="fa-regular fa-copy"></i> Copier le Texte du Post</button>
+                            <button class="btn-action" onclick="document.getElementById('localVideoInput').click()" style="background: linear-gradient(135deg, #10B981 0%, #059669 100%);">
+                                <i class="fa-solid fa-folder-open"></i> Charger la Vidéo du Bureau
+                            </button>
                             <a id="videoSearchLink" href="https://www.pexels.com/search/videos/eagle%20soaring%20slow%20motion%204k/" target="_blank" class="btn-action" style="background: linear-gradient(135deg, #CA8A04 0%, #EAB308 100%); text-decoration: none;">
-                                <i class="fa-solid fa-video"></i> Chercher la Vidéo sur Pexels
+                                <i class="fa-solid fa-video"></i> Chercher sur Pexels
                             </a>
                         </div>
                     </div>
@@ -517,6 +594,21 @@
                 <div class="section-card">
                     <div class="section-header">
                         <div class="section-title">
+                            <i class="fa-solid fa-folder-open"></i> Emplacement Bureau Mac
+                        </div>
+                    </div>
+                    <div style="font-size: 0.85rem; color: var(--text-secondary); line-height: 1.7;">
+                        <p style="margin-bottom: 8px;">📁 <strong>Dossier Dédié créé sur votre Mac :</strong></p>
+                        <code style="background: rgba(255,255,255,0.06); padding: 6px 10px; border-radius: 6px; font-size: 0.8rem; display: block; word-break: break-all; color: var(--gold-accent);">
+                            Desktop/Videos_Athena/
+                        </code>
+                        <p style="margin-top: 10px; font-size: 0.78rem; color: var(--text-secondary);">Glissez vos fichiers vidéo MP4 directement dans ce dossier ou sélectionnez-les via le bouton vert.</p>
+                    </div>
+                </div>
+
+                <div class="section-card">
+                    <div class="section-header">
+                        <div class="section-title">
                             <i class="fa-solid fa-calendar-days"></i> Planning de Publication
                         </div>
                     </div>
@@ -529,32 +621,18 @@
                     </div>
                 </div>
 
-                <div class="section-card">
-                    <div class="section-header">
-                        <div class="section-title">
-                            <i class="fa-solid fa-bullseye"></i> Format & Formatage LinkedIn
-                        </div>
-                    </div>
-                    <div style="font-size: 0.82rem; color: var(--text-secondary); line-height: 1.6;">
-                        <p style="margin-bottom: 8px;">✔️ <strong>Vidéo 0% Voix Off</strong> : Ralenti 4K 6-10s en boucle.</p>
-                        <p style="margin-bottom: 8px;">✔️ <strong>Hook de Rupture (2 lignes)</strong> : Tension immédiate.</p>
-                        <p style="margin-bottom: 8px;">✔️ <strong>Triptyque de Verbes</strong> : Lignes courtes aérées.</p>
-                        <p>✔️ <strong>Zéro Jargon Technique</strong> : Langage viscéral et humain.</p>
-                    </div>
-                </div>
             </div>
 
         </div>
 
     </div>
 
-    <!-- JavaScript Data & Logic -->
+    <!-- JavaScript Data & Drag/Drop Logic -->
     <script>
         const episodesData = {
             1: {
-                badge: "ÉPISODE 1 — UX (LA PROMESSE & L'AIGLE ROYAL)",
+                badge: "ÉPISODE 1 — UX (HOOK OPTION 3 VALIDÉ & L'AIGLE ROYAL)",
                 kw: "Mots-clés Pexels: Eagle soaring slow motion 4k",
-                desc: "Vidéo 4K en ralenti d'un Aigle Royal en vol plané au-dessus des sommets enneigés. Ailes ouvertes, immobiles.",
                 pexelsUrl: "https://www.pexels.com/search/videos/eagle%20soaring%20slow%20motion%204k/",
                 text: `90% des entreprises étouffent leurs clients sous prétexte de vouloir trop bien faire.
 
@@ -591,7 +669,6 @@ Quelle est la friction que vous devriez éliminer aujourd'hui pour laisser voler
             2: {
                 badge: "ÉPISODE 2 — IX (INTERFACE & LE LION)",
                 kw: "Mots-clés Pexels: Lion watching slow motion 4k",
-                desc: "Vidéo 4K en ralenti d'un Lion majestueux assis sur un rocher en pleine savane. Regard calme et intense.",
                 pexelsUrl: "https://www.pexels.com/search/videos/lion%20watching%20slow%20motion%204k/",
                 text: `Le roi de la savane ne rugit pas toute la journée.
 
@@ -628,7 +705,6 @@ Vos points de contact dégagent-ils cette force tranquille ?
             3: {
                 badge: "ÉPISODE 3 — XP (SALARIÉ & LA MEUTE DE LOUPS)",
                 kw: "Mots-clés Pexels: Wolf pack running snow slow motion 4k",
-                desc: "Vidéo 4K en ralenti d'une meute de loups avançant d'un pas synchronisé dans la forêt enneigée.",
                 pexelsUrl: "https://www.pexels.com/search/videos/wolf%20pack%20running%20snow%20slow%20motion%204k/",
                 text: `Le loup solitaire est une légende. Dans la réalité, le loup ne gagne jamais seul.
 
@@ -662,20 +738,19 @@ Vos collaborateurs avancent-ils ensemble ou luttent-ils contre leurs outils ?
             4: {
                 badge: "ÉPISODE 4 — XE (EXECUTIVE & LA PANTHÈRE NOIRE)",
                 kw: "Mots-clés Pexels: Black panther stealth slow motion 4k",
-                desc: "Vidéo 4K en ralenti d'une Panthère Noire avançant avec furtivité et précision dans l'ombre de la jungle.",
                 pexelsUrl: "https://www.pexels.com/search/videos/black%20panther%20stealth%20slow%20motion%204k/",
                 text: `La panthère noire ne dépense jamais son énergie par hasard.
 
 Elle s'avance dans l'ombre.  
-Elle évalue les distances.  
-Elle frappe au moment exact avec une précision chirurgicale.
+Elle évalue les distances avec une précision millimétrée.  
+Elle frappe au moment exact avec un impact maximal.
 
 En comité de direction (ComEx), la question revient toujours :  
 "L'expérience client (UX), l'interaction (IX) et le bien-être des salariés (XP)... quel est le ROI réel ?"
 
 C'est l'Expérience Direction (XE / Executive Experience).
 
-L'XE, ce n'est pas gérer le quotidien.  
+L'XE, ce n'est pas se disperser.  
 C'est la capacité du dirigeant à agir avec la précision de la panthère pour relier les 3 piliers à la rentabilité globale.
 
 - Quand l'UX est fluide ➔ Le panier moyen et la rétention explosent.
@@ -686,7 +761,7 @@ Aligner l'humain et la technologie n'est pas un coût d'image.
 C'est le levier le plus puissant pour faire passer un établissement de 250 k€ à 600 k€ de chiffre d'affaires (+140%).
 
 Depuis, j'en suis convaincu :  
-Les meilleurs dirigeants ne se perdent pas dans l'agitation. Ils gardent la vision d'en haut pour transformer la simplicité en marge brute.
+Les meilleurs dirigeants ne se perdent pas dans l'agitation. Ils gardent la maîtrise de l'ombre pour transformer la simplicité en marge brute.
 
 Quelle est la vision globale que vous pilotez pour vos équipes aujourd'hui ?
 
@@ -701,7 +776,6 @@ Quelle est la vision globale que vous pilotez pour vos équipes aujourd'hui ?
             const ep = episodesData[epNum];
             document.getElementById('postBadge').innerText = ep.badge;
             document.getElementById('postVideoKw').innerText = ep.kw;
-            document.getElementById('postVideoDesc').innerText = ep.desc;
             document.getElementById('postText').value = ep.text;
             document.getElementById('videoSearchLink').href = ep.pexelsUrl;
         }
@@ -713,7 +787,47 @@ Quelle est la vision globale que vous pilotez pour vos équipes aujourd'hui ?
             });
         }
 
-        // Initialize with Episode 1
+        /* DRAG & DROP AND LOCAL FILE LOADING LOGIC */
+        function handleFileSelect(event) {
+            const file = event.target.files[0];
+            if (file) {
+                playVideoFile(file);
+            }
+        }
+
+        const dropZone = document.getElementById('dropZone');
+        
+        ['dragenter', 'dragover', 'dragleave', 'drop'].forEach(eventName => {
+            dropZone.addEventListener(eventName, preventDefaults, false);
+        });
+
+        function preventDefaults(e) {
+            e.preventDefault();
+            e.stopPropagation();
+        }
+
+        dropZone.addEventListener('drop', handleDrop, false);
+
+        function handleDrop(e) {
+            const dt = e.dataTransfer;
+            const files = dt.files;
+            if (files.length > 0) {
+                playVideoFile(files[0]);
+            }
+        }
+
+        function playVideoFile(file) {
+            const videoPlayer = document.getElementById('videoPlayer');
+            const playerBox = document.getElementById('playerBox');
+            
+            const fileURL = URL.createObjectURL(file);
+            videoPlayer.src = fileURL;
+            playerBox.style.display = 'block';
+            videoPlayer.play();
+            
+            document.querySelector('.drop-text').innerText = "✅ Vidéo chargée : " + file.name;
+        }
+
         window.onload = function() {
             document.getElementById('postText').value = episodesData[1].text;
         };
