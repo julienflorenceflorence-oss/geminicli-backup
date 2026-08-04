@@ -1,0 +1,768 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cockpit Stratégie LinkedIn | Projet Athéna — Julien Florence</title>
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <!-- FontAwesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --bg-body: #0C0A10;
+            --bg-card: rgba(22, 16, 32, 0.85);
+            --bg-card-hover: rgba(35, 26, 50, 0.95);
+            --purple-main: #6B21A8;
+            --purple-light: #A855F7;
+            --purple-glow: rgba(168, 85, 247, 0.25);
+            --gold-accent: #EAB308;
+            --gold-gradient: linear-gradient(135deg, #FACC15 0%, #CA8A04 100%);
+            --accent-green: #10B981;
+            --accent-blue: #3B82F6;
+            --text-primary: #F8FAFC;
+            --text-secondary: #94A3B8;
+            --border-purple: rgba(168, 85, 247, 0.2);
+            --border-subtle: rgba(255, 255, 255, 0.08);
+            --radius-main: 16px;
+            --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            background-color: var(--bg-body);
+            color: var(--text-primary);
+            min-height: 100vh;
+            background-image: 
+                radial-gradient(circle at 15% 15%, rgba(107, 33, 168, 0.18) 0%, transparent 40%),
+                radial-gradient(circle at 85% 85%, rgba(234, 179, 8, 0.12) 0%, transparent 40%);
+            padding-bottom: 60px;
+        }
+
+        /* Header */
+        header {
+            background: rgba(12, 10, 16, 0.9);
+            backdrop-filter: blur(16px);
+            border-bottom: 1px solid var(--border-purple);
+            padding: 24px 40px;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .header-brand {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+        }
+
+        .brand-logo {
+            width: 48px;
+            height: 48px;
+            border-radius: 12px;
+            background: linear-gradient(135deg, #581C87 0%, #A855F7 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.4rem;
+            color: #FFF;
+            box-shadow: 0 0 20px var(--purple-glow);
+        }
+
+        .header-title h1 {
+            font-family: 'Outfit', sans-serif;
+            font-size: 1.5rem;
+            font-weight: 700;
+            background: linear-gradient(135deg, #FFFFFF 0%, #CBD5E1 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .header-title p {
+            color: var(--text-secondary);
+            font-size: 0.85rem;
+            margin-top: 2px;
+        }
+
+        .badge-consultant {
+            background: rgba(234, 179, 8, 0.12);
+            border: 1px solid rgba(234, 179, 8, 0.3);
+            color: var(--gold-accent);
+            padding: 8px 16px;
+            border-radius: 30px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        /* Container */
+        .container {
+            max-width: 1400px;
+            margin: 30px auto;
+            padding: 0 24px;
+        }
+
+        /* Stats Grid */
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+            gap: 20px;
+            margin-bottom: 30px;
+        }
+
+        .stat-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border-purple);
+            border-radius: var(--radius-main);
+            padding: 22px;
+            transition: var(--transition);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .stat-card:hover {
+            transform: translateY(-4px);
+            border-color: var(--purple-light);
+            box-shadow: 0 10px 30px rgba(168, 85, 247, 0.15);
+        }
+
+        .stat-icon {
+            width: 42px;
+            height: 42px;
+            border-radius: 10px;
+            background: rgba(168, 85, 247, 0.1);
+            color: var(--purple-light);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.2rem;
+            margin-bottom: 14px;
+        }
+
+        .stat-card.gold .stat-icon {
+            background: rgba(234, 179, 8, 0.1);
+            color: var(--gold-accent);
+        }
+
+        .stat-label {
+            color: var(--text-secondary);
+            font-size: 0.85rem;
+            font-weight: 500;
+        }
+
+        .stat-value {
+            font-family: 'Outfit', sans-serif;
+            font-size: 1.8rem;
+            font-weight: 700;
+            margin: 6px 0;
+            color: var(--text-primary);
+        }
+
+        .stat-sub {
+            font-size: 0.78rem;
+            color: var(--accent-green);
+            display: flex;
+            align-items: center;
+            gap: 4px;
+        }
+
+        /* Main Grid */
+        .main-grid {
+            display: grid;
+            grid-template-columns: 2fr 1fr;
+            gap: 24px;
+        }
+
+        @media (max-width: 1024px) {
+            .main-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .section-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border-subtle);
+            border-radius: var(--radius-main);
+            padding: 26px;
+            margin-bottom: 24px;
+        }
+
+        .section-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+            padding-bottom: 14px;
+            border-bottom: 1px solid var(--border-subtle);
+        }
+
+        .section-title {
+            font-family: 'Outfit', sans-serif;
+            font-size: 1.2rem;
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            color: var(--text-primary);
+        }
+
+        .section-title i {
+            color: var(--purple-light);
+        }
+
+        /* TABS EPISODES SELECTOR */
+        .episode-tabs {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 20px;
+            flex-wrap: wrap;
+        }
+
+        .ep-btn {
+            background: rgba(255, 255, 255, 0.04);
+            border: 1px solid var(--border-subtle);
+            color: var(--text-secondary);
+            padding: 10px 18px;
+            border-radius: 10px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: var(--transition);
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .ep-btn:hover {
+            background: rgba(168, 85, 247, 0.15);
+            color: var(--purple-light);
+            border-color: var(--purple-light);
+        }
+
+        .ep-btn.active {
+            background: linear-gradient(135deg, #6B21A8 0%, #A855F7 100%);
+            color: #FFF;
+            border-color: var(--purple-light);
+            box-shadow: 0 0 15px var(--purple-glow);
+        }
+
+        /* Planner Box */
+        .planner-box {
+            background: linear-gradient(145deg, rgba(107, 33, 168, 0.15) 0%, rgba(22, 16, 32, 0.9) 100%);
+            border: 1px solid var(--border-purple);
+            border-radius: 14px;
+            padding: 20px;
+            margin-top: 10px;
+        }
+
+        .planner-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 14px;
+        }
+
+        .badge-week {
+            background: var(--purple-light);
+            color: #FFF;
+            padding: 4px 10px;
+            border-radius: 6px;
+            font-size: 0.75rem;
+            font-weight: 700;
+        }
+
+        .planner-input {
+            width: 100%;
+            background: rgba(12, 10, 16, 0.6);
+            border: 1px solid var(--border-subtle);
+            border-radius: 10px;
+            padding: 12px 16px;
+            color: var(--text-primary);
+            font-family: inherit;
+            font-size: 0.9rem;
+            margin-bottom: 12px;
+            outline: none;
+            line-height: 1.6;
+        }
+
+        .planner-input:focus {
+            border-color: var(--purple-light);
+        }
+
+        .btn-action {
+            background: linear-gradient(135deg, #9333EA 0%, #6B21A8 100%);
+            color: #FFF;
+            border: none;
+            padding: 10px 18px;
+            border-radius: 8px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            cursor: pointer;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            transition: var(--transition);
+        }
+
+        .btn-action:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px var(--purple-glow);
+        }
+
+        /* Reply Generator Box */
+        .reply-generator-box {
+            background: rgba(234, 179, 8, 0.04);
+            border: 1px solid rgba(234, 179, 8, 0.2);
+            border-radius: 14px;
+            padding: 22px;
+            margin-top: 24px;
+        }
+
+        .reply-options {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 14px;
+            flex-wrap: wrap;
+        }
+
+        .btn-opt {
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid var(--border-subtle);
+            color: var(--text-secondary);
+            padding: 8px 14px;
+            border-radius: 8px;
+            font-size: 0.8rem;
+            cursor: pointer;
+            transition: var(--transition);
+        }
+
+        .btn-opt.active, .btn-opt:hover {
+            background: rgba(234, 179, 8, 0.15);
+            color: var(--gold-accent);
+            border-color: rgba(234, 179, 8, 0.4);
+        }
+
+        .response-card {
+            background: rgba(12, 10, 16, 0.7);
+            border: 1px solid var(--border-purple);
+            border-radius: 10px;
+            padding: 16px;
+            margin-top: 14px;
+            position: relative;
+        }
+
+        .response-text {
+            font-size: 0.9rem;
+            color: var(--text-primary);
+            line-height: 1.5;
+            white-space: pre-line;
+        }
+
+        .copy-btn {
+            position: absolute;
+            top: 12px;
+            right: 12px;
+            background: rgba(168, 85, 247, 0.15);
+            border: 1px solid var(--border-purple);
+            color: var(--purple-light);
+            padding: 4px 10px;
+            border-radius: 6px;
+            font-size: 0.75rem;
+            cursor: pointer;
+        }
+
+        .copy-btn:hover {
+            background: var(--purple-light);
+            color: #FFF;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Header -->
+    <header>
+        <div class="header-brand">
+            <div class="brand-logo"><i class="fa-brands fa-linkedin-in"></i></div>
+            <div class="header-title">
+                <h1>Cockpit Stratégie LinkedIn | Athéna</h1>
+                <p>Série Animale en 4 Épisodes — Julien Florence</p>
+            </div>
+        </div>
+        <div class="badge-consultant">
+            <i class="fa-solid fa-paw"></i> Format Métaphore Animale & Hook Validé
+        </div>
+    </header>
+
+    <div class="container">
+
+        <!-- Metrics Grid -->
+        <div class="stats-grid">
+            <div class="stat-card">
+                <div class="stat-icon"><i class="fa-solid fa-eagle"></i></div>
+                <div class="stat-label">Épisode 1 (UX)</div>
+                <div class="stat-value">🦅 L'Aigle</div>
+                <div class="stat-sub"><i class="fa-solid fa-check"></i> Hook & Texte Validés</div>
+            </div>
+            <div class="stat-card gold">
+                <div class="stat-icon"><i class="fa-solid fa-shield-cat"></i></div>
+                <div class="stat-label">Épisode 2 (IX)</div>
+                <div class="stat-value">🦁 Le Lion</div>
+                <div class="stat-sub"><i class="fa-solid fa-bolt"></i> Force Tranquille & Précision</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-icon"><i class="fa-solid fa-dog"></i></div>
+                <div class="stat-label">Épisode 3 (XP)</div>
+                <div class="stat-value">🐺 Le Loup</div>
+                <div class="stat-sub"><i class="fa-solid fa-users"></i> La Meute & L'Esprit d'Équipe</div>
+            </div>
+            <div class="stat-card gold">
+                <div class="stat-icon"><i class="fa-solid fa-cat"></i></div>
+                <div class="stat-label">Épisode 4 (XE)</div>
+                <div class="stat-value">🐆 La Panthère</div>
+                <div class="stat-sub"><i class="fa-solid fa-chart-line"></i> Vision Furtive & ROI ComEx</div>
+            </div>
+        </div>
+
+        <!-- Main Grid -->
+        <div class="main-grid">
+            
+            <!-- Left Column: Episode Selector & Post Content -->
+            <div>
+                <div class="section-card">
+                    <div class="section-header">
+                        <div class="section-title">
+                            <i class="fa-solid fa-layer-group"></i> Sélectionner l'Épisode à Consulter & Copier
+                        </div>
+                    </div>
+
+                    <!-- EPISODE TABS -->
+                    <div class="episode-tabs">
+                        <button class="ep-btn active" onclick="loadEpisode(1, this)">🦅 Ép.1 : UX (L'Aigle)</button>
+                        <button class="ep-btn" onclick="loadEpisode(2, this)">🦁 Ép.2 : IX (Le Lion)</button>
+                        <button class="ep-btn" onclick="loadEpisode(3, this)">🐺 Ép.3 : XP (Le Loup)</button>
+                        <button class="ep-btn" onclick="loadEpisode(4, this)">🐆 Ép.4 : XE (La Panthère)</button>
+                    </div>
+
+                    <!-- Post Content Box -->
+                    <div class="planner-box" id="postBox">
+                        <div class="planner-header">
+                            <span class="badge-week" id="postBadge">ÉPISODE 1 — UX (LA PROMESSE & L'AIGLE)</span>
+                            <span style="font-size: 0.85rem; color: var(--gold-accent);" id="postVideoKw">Mots-clés Pexels: Eagle soaring slow motion 4k</span>
+                        </div>
+
+                        <div style="font-size: 0.82rem; color: var(--text-secondary); margin-bottom: 10px;">
+                            <strong>Ambiance Vidéo (0% Voix Off) :</strong> <span id="postVideoDesc">Vidéo 4K en ralenti d'un Aigle Royal en vol plané majestueux au-dessus des sommets ensoleillés. Ailes ouvertes et immobiles.</span>
+                        </div>
+
+                        <textarea id="postText" class="planner-input" rows="16" readonly style="font-family: inherit; font-size: 0.9rem; line-height: 1.6;"></textarea>
+
+                        <div style="display: flex; gap: 10px;">
+                            <button class="btn-action" onclick="copyPostText()"><i class="fa-regular fa-copy"></i> Copier le Texte du Post</button>
+                            <a id="videoSearchLink" href="https://www.pexels.com/search/videos/eagle%20soaring%20slow%20motion%204k/" target="_blank" class="btn-action" style="background: linear-gradient(135deg, #CA8A04 0%, #EAB308 100%); text-decoration: none;">
+                                <i class="fa-solid fa-video"></i> Chercher la Vidéo sur Pexels
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- INTERACTIVE COMMENT REPLY GENERATOR TOOL -->
+                <div class="section-card">
+                    <div class="section-header">
+                        <div class="section-title">
+                            <i class="fa-solid fa-comments-dollar"></i> Générateur Réponse Commentaires (Style Patrice Deal)
+                        </div>
+                        <span style="font-size: 0.8rem; color: var(--gold-accent);">Posture Adulte & Rigoureuse</span>
+                    </div>
+
+                    <div class="reply-generator-box">
+                        <p style="font-size: 0.85rem; color: var(--text-secondary); margin-bottom: 12px;">Collez le commentaire reçu sur LinkedIn :</p>
+                        
+                        <textarea id="inputComment" class="planner-input" rows="3" placeholder="Ex: C'est beau en théorie, mais sur le terrain c'est impossible de tout supprimer..."></textarea>
+
+                        <div style="margin-bottom: 10px;">
+                            <label style="font-size: 0.78rem; color: var(--text-secondary); display: block; margin-bottom: 6px;">1. Nature du commentaire :</label>
+                            <div class="reply-options" id="natureOptions">
+                                <button class="btn-opt active" onclick="setNature('bienveillant', this)"><i class="fa-solid fa-heart"></i> 😊 Constructif / Positif</button>
+                                <button class="btn-opt" onclick="setNature('sceptique', this)"><i class="fa-solid fa-circle-question"></i> 🧐 Sceptique / Objection</button>
+                                <button class="btn-opt" onclick="setNature('critique', this)"><i class="fa-solid fa-bolt-lightning"></i> ⚡ Attaque / Critique</button>
+                            </div>
+                        </div>
+
+                        <button class="btn-action" onclick="generateReply()"><i class="fa-solid fa-wand-magic-sparkles"></i> Générer la Réponse de Leadership</button>
+
+                        <div class="response-card" id="outputCard" style="display: none;">
+                            <button class="copy-btn" onclick="copyGeneratedReply()"><i class="fa-regular fa-copy"></i> Copier</button>
+                            <div class="response-text" id="outputText"></div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+            <!-- Right Column: Strategy & Schedule -->
+            <div>
+                <div class="section-card">
+                    <div class="section-header">
+                        <div class="section-title">
+                            <i class="fa-solid fa-calendar-days"></i> Planning de Publication
+                        </div>
+                    </div>
+
+                    <div style="font-size: 0.85rem; color: var(--text-secondary); line-height: 1.7;">
+                        <p style="margin-bottom: 10px;"><strong>🦅 Semaine 1 :</strong> Épisode 1 — UX (L'Aigle Royal)</p>
+                        <p style="margin-bottom: 10px;"><strong>🦁 Semaine 2 :</strong> Épisode 2 — IX (Le Lion)</p>
+                        <p style="margin-bottom: 10px;"><strong>🐺 Semaine 3 :</strong> Épisode 3 — XP (La Meute de Loups)</p>
+                        <p style="margin-bottom: 10px;"><strong>🐆 Semaine 4 :</strong> Épisode 4 — XE (La Panthère Noire)</p>
+                    </div>
+                </div>
+
+                <div class="section-card">
+                    <div class="section-header">
+                        <div class="section-title">
+                            <i class="fa-solid fa-bullseye"></i> Format & Formatage LinkedIn
+                        </div>
+                    </div>
+                    <div style="font-size: 0.82rem; color: var(--text-secondary); line-height: 1.6;">
+                        <p style="margin-bottom: 8px;">✔️ <strong>Vidéo 0% Voix Off</strong> : Ralenti 4K 6-10s en boucle.</p>
+                        <p style="margin-bottom: 8px;">✔️ <strong>Hook de Rupture (2 lignes)</strong> : Tension immédiate.</p>
+                        <p style="margin-bottom: 8px;">✔️ <strong>Triptyque de Verbes</strong> : Lignes courtes aérées.</p>
+                        <p>✔️ <strong>Zéro Jargon Technique</strong> : Langage viscéral et humain.</p>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+
+    <!-- JavaScript Data & Logic -->
+    <script>
+        const episodesData = {
+            1: {
+                badge: "ÉPISODE 1 — UX (LA PROMESSE & L'AIGLE ROYAL)",
+                kw: "Mots-clés Pexels: Eagle soaring slow motion 4k",
+                desc: "Vidéo 4K en ralenti d'un Aigle Royal en vol plané au-dessus des sommets enneigés. Ailes ouvertes, immobiles.",
+                pexelsUrl: "https://www.pexels.com/search/videos/eagle%20soaring%20slow%20motion%204k/",
+                text: `90% des entreprises étouffent leurs clients sous prétexte de vouloir trop bien faire.
+
+Observez ce vol. Ailes ouvertes, immobiles. Zéro effort superflu.  
+C'est la plus grande leçon d'expérience client (UX) que j'ai reçue.
+
+Pendant longtemps, j'ai commis la même erreur que tout le monde.
+
+Je croyais que pour offrir un grand service, il fallait en faire toujours plus.
+
+Multiplier les étapes.  
+Ajouter des options.  
+Surcharger le client et les équipes d'attentions et d'outils.
+
+Le résultat ?  
+Du bruit. De la fatigue. Et de la friction.
+
+Puis j'ai compris la leçon du rapace.
+
+La vraie valeur d'une expérience ne réside pas dans la force qu'on dépense pour avancer…  
+Elle réside dans tout ce qu'on réussit à éliminer pour ne laisser aucun frottement.
+
+Supprimer l'attente.  
+Éliminer la confusion.  
+Rendre le parcours tellement fluide qu'il en devient invisible.
+
+Dans la Tech B2B comme dans l'Hôtellerie-Restauration, la règle d'or est la même :  
+L'agitation n'est pas la performance. La vraie maîtrise, c'est l'art d'enlever le superflu.
+
+Quelle est la friction que vous devriez éliminer aujourd'hui pour laisser voler vos clients ?
+
+#Leadership #Management #UX #ExpérienceClient #Simplicité #Performance #ProductStrategy #Innovation`
+            },
+            2: {
+                badge: "ÉPISODE 2 — IX (INTERFACE & LE LION)",
+                kw: "Mots-clés Pexels: Lion watching slow motion 4k",
+                desc: "Vidéo 4K en ralenti d'un Lion majestueux assis sur un rocher en pleine savane. Regard calme et intense.",
+                pexelsUrl: "https://www.pexels.com/search/videos/lion%20watching%20slow%20motion%204k/",
+                text: `Le roi de la savane ne rugit pas toute la journée.
+
+Il observe.  
+Il reste immobile.  
+Mais dès qu'il fait un mouvement, tout le monde sait exactement ce qui se passe.
+
+Pendant des années, j'ai pensé que le design d'interaction (IX) consistait à mettre du bruit partout.
+
+Des boutons qui clignotent.  
+Des animations incessantes.  
+Des alertes qui sollicitent l'utilisateur à chaque seconde.
+
+Puis j'ai compris la force du calme.
+
+L'Interaction Design (IX), ce n'est pas de l'agitation. C'est l'instantanéité du geste juste.
+
+Une réponse immédiate sous le doigt.  
+Un retour visuel d'une clarté absolue.  
+Une réaction du système si précise qu'elle ne laisse aucune place au doute.
+
+Quand vous assommez une personne de signaux, vous ne créez pas de l'engagement. Vous créez de l'anxiété.
+
+Dans un restaurant de luxe comme sur une application B2B :  
+Le vrai pouvoir d'une interface, c'est de donner le contrôle en un éclair, sans élever le ton.
+
+Depuis, j'en suis convaincu :  
+Les meilleures interfaces ne sont pas celles qui font le plus d'esbroufe. Ce sont celles qui répondent avec la précision du lion.
+
+Vos points de contact dégagent-ils cette force tranquille ?
+
+#InteractionDesign #IX #UI #UX #Leadership #Reactivité #Performance #ProductDesign`
+            },
+            3: {
+                badge: "ÉPISODE 3 — XP (SALARIÉ & LA MEUTE DE LOUPS)",
+                kw: "Mots-clés Pexels: Wolf pack running snow slow motion 4k",
+                desc: "Vidéo 4K en ralenti d'une meute de loups avançant d'un pas synchronisé dans la forêt enneigée.",
+                pexelsUrl: "https://www.pexels.com/search/videos/wolf%20pack%20running%20snow%20slow%20motion%204k/",
+                text: `Le loup solitaire est une légende. Dans la réalité, le loup ne gagne jamais seul.
+
+C'est la meute qui traverse les hivers.  
+C'est la cohésion qui garantit la survie.  
+C'est l'alignement absolu du groupe qui fait la réussite.
+
+Pendant des années, j'ai vu des dirigeants exiger de leurs équipes des performances exceptionnelles… tout en leur donnant des outils et des processus qui les isolaient.
+
+Des logiciels de caisse lourds.  
+Des procédures rigides.  
+Une bureaucratie qui transforme chaque projet en combat individuel.
+
+C'est l'erreur tragique de l'Expérience Salarié (XP).
+
+Vous ne pouvez pas demander à votre meute de chasser comme des champions si vous leur mettez des boulets aux pieds.
+
+Donner de bons outils.  
+Supprimer la pénibilité.  
+Faire confiance au collectif.
+
+Le jour où vous libérez le quotidien de vos collaborateurs, l'impact sur l'expérience client (UX) est immédiat.
+
+Depuis, j'en suis convaincu :  
+Les grands managers ne gagnent pas en poussant leur équipe à bout. Ils gagnent en créant un environnement où la meute avance sans aucun obstacle.
+
+Vos collaborateurs avancent-ils ensemble ou luttent-ils contre leurs outils ?
+
+#EmployeeExperience #XP #Leadership #Management #EspritDéquipe #QVT #Performance #Collectif`
+            },
+            4: {
+                badge: "ÉPISODE 4 — XE (EXECUTIVE & LA PANTHÈRE NOIRE)",
+                kw: "Mots-clés Pexels: Black panther stealth slow motion 4k",
+                desc: "Vidéo 4K en ralenti d'une Panthère Noire avançant avec furtivité et précision dans l'ombre de la jungle.",
+                pexelsUrl: "https://www.pexels.com/search/videos/black%20panther%20stealth%20slow%20motion%204k/",
+                text: `La panthère noire ne dépense jamais son énergie par hasard.
+
+Elle s'avance dans l'ombre.  
+Elle évalue les distances.  
+Elle frappe au moment exact avec une précision chirurgicale.
+
+En comité de direction (ComEx), la question revient toujours :  
+"L'expérience client (UX), l'interaction (IX) et le bien-être des salariés (XP)... quel est le ROI réel ?"
+
+C'est l'Expérience Direction (XE / Executive Experience).
+
+L'XE, ce n'est pas gérer le quotidien.  
+C'est la capacité du dirigeant à agir avec la précision de la panthère pour relier les 3 piliers à la rentabilité globale.
+
+- Quand l'UX est fluide ➔ Le panier moyen et la rétention explosent.
+- Quand l'IX est réactive ➔ La vitesse de transaction s'accélère.
+- Quand l'XP est forte ➔ Le turnover s'effondre et la productivité grimpe.
+
+Aligner l'humain et la technologie n'est pas un coût d'image.  
+C'est le levier le plus puissant pour faire passer un établissement de 250 k€ à 600 k€ de chiffre d'affaires (+140%).
+
+Depuis, j'en suis convaincu :  
+Les meilleurs dirigeants ne se perdent pas dans l'agitation. Ils gardent la vision d'en haut pour transformer la simplicité en marge brute.
+
+Quelle est la vision globale que vous pilotez pour vos équipes aujourd'hui ?
+
+#ExecutiveExperience #XE #ROI #DirectionGénérale #Leadership #VisionStratégique #Croissance #Business`
+            }
+        };
+
+        function loadEpisode(epNum, btn) {
+            document.querySelectorAll('.ep-btn').forEach(b => b.classList.remove('active'));
+            btn.classList.add('active');
+
+            const ep = episodesData[epNum];
+            document.getElementById('postBadge').innerText = ep.badge;
+            document.getElementById('postVideoKw').innerText = ep.kw;
+            document.getElementById('postVideoDesc').innerText = ep.desc;
+            document.getElementById('postText').value = ep.text;
+            document.getElementById('videoSearchLink').href = ep.pexelsUrl;
+        }
+
+        function copyPostText() {
+            const text = document.getElementById('postText').value;
+            navigator.clipboard.writeText(text).then(() => {
+                alert("Texte de l'épisode copié dans le presse-papier ! Prêt à coller sur LinkedIn.");
+            });
+        }
+
+        // Initialize with Episode 1
+        window.onload = function() {
+            document.getElementById('postText').value = episodesData[1].text;
+        };
+
+        let currentNature = 'bienveillant';
+
+        function setNature(nat, btn) {
+            currentNature = nat;
+            document.querySelectorAll('#natureOptions .btn-opt').forEach(b => b.classList.remove('active'));
+            btn.classList.add('active');
+        }
+
+        function generateReply() {
+            const comment = document.getElementById('inputComment').value.trim();
+            const outputCard = document.getElementById('outputCard');
+            const outputText = document.getElementById('outputText');
+
+            if (!comment) {
+                alert("Veuillez saisir un commentaire.");
+                return;
+            }
+
+            let reply = "";
+            if (currentNature === 'bienveillant') {
+                reply = `Merci pour ce retour précieux !
+
+C'est exactement le sens du message : la simplicité n'est pas le point de départ, c'est le résultat d'un travail d'épuration constant.
+
+Au plaisir de lire votre prochaine réaction !`;
+            } else if (currentNature === 'sceptique') {
+                reply = `Bonjour et merci pour votre objection constructive.
+
+Il est vrai que la tentation d'ajouter des contrôles est naturelle en période de tension. Mais l'expérience montre que chaque contrainte ajoutée crée de la lourdeur opérationnelle. Supprimer le superflu exige du courage, mais c'est le seul moyen d'obtenir de la fluidité à terme.`;
+            } else {
+                reply = `Bonjour. Merci pour votre message.
+
+Chacun a sa vision de l'organisation. Pour ma part, les faits et les résultats terrain (croissance du CA et rétention d'équipe) démontrent que la clarté et l'élimination des frictions surpassent toujours la sur-réglementation.`;
+            }
+
+            outputText.innerText = reply;
+            outputCard.style.display = 'block';
+        }
+
+        function copyGeneratedReply() {
+            const text = document.getElementById('outputText').innerText;
+            navigator.clipboard.writeText(text).then(() => {
+                alert("Réponse copiée !");
+            });
+        }
+    </script>
+</body>
+</html>

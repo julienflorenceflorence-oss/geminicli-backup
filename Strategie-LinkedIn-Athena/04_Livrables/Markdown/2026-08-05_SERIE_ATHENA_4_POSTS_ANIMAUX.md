@@ -1,4 +1,4 @@
-# 🦅🦁🐺🦅 SÉRIE ATHENA : LA SÉRIE ANIMALIERRE EN 4 ÉPISODES (UX, IX, XP, XE)
+# 🦅🦁🐺🐆 SÉRIE ATHENA : LA SÉRIE ANIMALIERRE EN 4 ÉPISODES (UX, IX, XP, XE)
 **Julien FLORENCE** | 05 Août 2026  
 *Format Patrice Deal : Vidéo Animale 0% Voix Off + Texte Écrit de Révélation (Profil ENTJ-A)*
 
@@ -118,24 +118,24 @@ Vos collaborateurs avancent-ils ensemble ou luttent-ils contre leurs outils ?
 
 ---
 
-## 🦅 ÉPISODE 4 : XE (EXECUTIVE & DIRECTION) — LE FAUCON & LA VISION PERÇANTE
-*Vidéo recommandée : Faucon pèlerin perché au sommet d'une falaise, regard d'une netteté absolue portant à des kilomètres.*
+## 🐆 ÉPISODE 4 : XE (EXECUTIVE & DIRECTION) — LA PANTHÈRE NOIRE & LA PRÉCISION DE L'IMPACT
+*Vidéo recommandée : Panthère Noire s'avançant avec furtivité et précision dans l'ombre de la jungle (Slow-motion 4K).*
 
 ### 📌 TEXTE LINKEDIN (Prêt à publier)
 
-Le faucon ne regarde pas les détails du sol lorsqu'il s'élève.
+La panthère noire ne dépense jamais son énergie par hasard.
 
-Il voit la trajectoire globale.  
-Il anticipe les mouvements.  
-Il frappe au moment exact avec une précision chirurgicale.
+Elle s'avance dans l'ombre.  
+Elle évalue les distances avec une précision millimétrée.  
+Elle frappe au moment exact avec un impact maximal.
 
 En comité de direction (ComEx), la question revient toujours :  
 "L'expérience client (UX), l'interaction (IX) et le bien-être des salariés (XP)... quel est le ROI réel ?"
 
 C'est l'Expérience Direction (XE / Executive Experience).
 
-L'XE, ce n'est pas gérer le quotidien.  
-C'est la capacité du dirigeant à s'élever comme le faucon pour relier les 3 piliers à la rentabilité globale.
+L'XE, ce n'est pas se disperser.  
+C'est la capacité du dirigeant à agir avec la précision de la panthère pour relier les 3 piliers à la rentabilité globale.
 
 - Quand l'UX est fluide ➔ Le panier moyen et la rétention explosent.
 - Quand l'IX est réactive ➔ La vitesse de transaction s'accélère.
@@ -145,7 +145,7 @@ Aligner l'humain et la technologie n'est pas un coût d'image.
 C'est le levier le plus puissant pour faire passer un établissement de 250 k€ à 600 k€ de chiffre d'affaires (+140%).
 
 Depuis, j'en suis convaincu :  
-Les meilleurs dirigeants ne se perdent pas dans l'agitation. Ils gardent la vision d'en haut pour transformer la simplicité en marge brute.
+Les meilleurs dirigeants ne se perdent pas dans l'agitation. Ils gardent la maîtrise de l'ombre pour transformer la simplicité en marge brute.
 
 Quelle est la vision globale que vous pilotez pour vos équipes aujourd'hui ?
 
