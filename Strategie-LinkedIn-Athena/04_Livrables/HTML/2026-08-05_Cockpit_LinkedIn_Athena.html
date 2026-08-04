@@ -458,11 +458,11 @@
             <div class="brand-logo"><i class="fa-brands fa-linkedin-in"></i></div>
             <div class="header-title">
                 <h1>Cockpit Stratégie LinkedIn | Athéna</h1>
-                <p>Série Animale en 4 Épisodes — Julien Florence</p>
+                <p>4 Textes Ultra-Distincts & Vidéos Dédiées par Épisode — Julien Florence</p>
             </div>
         </div>
         <div class="badge-consultant">
-            <i class="fa-solid fa-folder-open"></i> Charger la vidéo 1:1 depuis le Bureau Mac
+            <i class="fa-solid fa-folder-open"></i> Vidéo Dédiée Indépendante par Épisode
         </div>
     </header>
 
@@ -472,27 +472,27 @@
         <div class="stats-grid">
             <div class="stat-card" onclick="loadEpisode(1)">
                 <div class="stat-icon"><i class="fa-solid fa-eagle"></i></div>
-                <div class="stat-label">Épisode 1 (UX)</div>
+                <div class="stat-label">Épisode 1 (UX Client)</div>
                 <div class="stat-value">🦅 L'Aigle</div>
-                <div class="stat-sub"><i class="fa-solid fa-check"></i> Hook Option 3 Validé</div>
+                <div class="stat-sub"><i class="fa-solid fa-check"></i> Fichier: Post_1_UX_Aigle_1x1.mp4</div>
             </div>
             <div class="stat-card gold" onclick="loadEpisode(2)">
                 <div class="stat-icon"><i class="fa-solid fa-shield-cat"></i></div>
-                <div class="stat-label">Épisode 2 (IX)</div>
+                <div class="stat-label">Épisode 2 (IX Interface)</div>
                 <div class="stat-value">🦁 Le Lion</div>
-                <div class="stat-sub"><i class="fa-solid fa-bolt"></i> Force Tranquille & Précision</div>
+                <div class="stat-sub"><i class="fa-solid fa-bolt"></i> Fichier: Post_2_IX_Lion_1x1.mp4</div>
             </div>
             <div class="stat-card" onclick="loadEpisode(3)">
                 <div class="stat-icon"><i class="fa-solid fa-dog"></i></div>
-                <div class="stat-label">Épisode 3 (XP)</div>
+                <div class="stat-label">Épisode 3 (XP Salarié)</div>
                 <div class="stat-value">🐺 Le Loup</div>
-                <div class="stat-sub"><i class="fa-solid fa-users"></i> La Meute & L'Esprit d'Équipe</div>
+                <div class="stat-sub"><i class="fa-solid fa-users"></i> Combat Bureaucratie</div>
             </div>
             <div class="stat-card gold" onclick="loadEpisode(4)">
                 <div class="stat-icon"><i class="fa-solid fa-cat"></i></div>
-                <div class="stat-label">Épisode 4 (XE)</div>
+                <div class="stat-label">Épisode 4 (XE Direction)</div>
                 <div class="stat-value">🐆 La Panthère</div>
-                <div class="stat-sub"><i class="fa-solid fa-chart-line"></i> Vision Furtive & ROI ComEx</div>
+                <div class="stat-sub"><i class="fa-solid fa-chart-line"></i> Rentabilité & Marge (+140%)</div>
             </div>
         </div>
 
@@ -501,21 +501,21 @@
             
             <!-- Left Column: Episode Selector & Post Content & Video Loader -->
             <div>
-                <!-- LOCAL VIDEO LOADER FROM DESKTOP -->
+                <!-- LOCAL VIDEO LOADER DEDICATED PER EPISODE -->
                 <div class="section-card">
                     <div class="section-header">
                         <div class="section-title">
-                            <i class="fa-solid fa-desktop"></i> Previsualiseur Vidéo Direct 1:1 depuis votre Bureau Mac
+                            <i class="fa-solid fa-desktop"></i> Chargeur Vidéo Dédié pour <span id="currentEpTitle" style="color: var(--purple-light);">Épisode 1 (UX)</span>
                         </div>
-                        <span style="font-size: 0.8rem; color: var(--gold-accent);">Dossier : Desktop/Videos_Athena/</span>
+                        <span style="font-size: 0.8rem; color: var(--gold-accent);">Dossier Mac : Desktop/Videos_Athena/</span>
                     </div>
 
                     <input type="file" id="localVideoInput" accept="video/*" style="display: none;" onchange="handleFileSelect(event)">
                     
                     <div class="video-drop-zone" onclick="document.getElementById('localVideoInput').click()" id="dropZone">
                         <div class="drop-icon"><i class="fa-solid fa-cloud-arrow-up"></i></div>
-                        <div class="drop-text" id="dropText">📂 Cliquez ici pour charger une vidéo 1:1 depuis votre Bureau Mac</div>
-                        <div class="drop-sub">Fichiers recommandés : Post_1_UX_Aigle_1x1.mp4 ou Post_2_IX_Lion_1x1.mp4</div>
+                        <div class="drop-text" id="dropText">📂 Charger la vidéo propre à cet Épisode depuis votre Bureau Mac</div>
+                        <div class="drop-sub" id="dropSub">Exemple recommandé : Post_1_UX_Aigle_1x1.mp4</div>
                     </div>
 
                     <!-- PREVIEW PLAYER -->
@@ -527,23 +527,23 @@
                 <div class="section-card">
                     <div class="section-header">
                         <div class="section-title">
-                            <i class="fa-solid fa-layer-group"></i> Sélectionner l'Épisode à Consulter
+                            <i class="fa-solid fa-layer-group"></i> Basculer d'Épisode (Textes 100% Inédits & Distincts)
                         </div>
                     </div>
 
                     <!-- EPISODE TABS -->
                     <div class="episode-tabs">
-                        <button class="ep-btn active" id="btnTab1" onclick="loadEpisode(1)">🦅 Ép.1 : UX (L'Aigle)</button>
-                        <button class="ep-btn" id="btnTab2" onclick="loadEpisode(2)">🦁 Ép.2 : IX (Le Lion)</button>
-                        <button class="ep-btn" id="btnTab3" onclick="loadEpisode(3)">🐺 Ép.3 : XP (Le Loup)</button>
-                        <button class="ep-btn" id="btnTab4" onclick="loadEpisode(4)">🐆 Ép.4 : XE (La Panthère)</button>
+                        <button class="ep-btn active" id="btnTab1" onclick="loadEpisode(1)">🦅 Ép.1 : UX (Aigle)</button>
+                        <button class="ep-btn" id="btnTab2" onclick="loadEpisode(2)">🦁 Ép.2 : IX (Lion)</button>
+                        <button class="ep-btn" id="btnTab3" onclick="loadEpisode(3)">🐺 Ép.3 : XP (Loup)</button>
+                        <button class="ep-btn" id="btnTab4" onclick="loadEpisode(4)">🐆 Ép.4 : XE (Panthère)</button>
                     </div>
 
                     <!-- Post Content Box -->
                     <div class="planner-box" id="postBox">
                         <div class="planner-header">
-                            <span class="badge-week" id="postBadge">ÉPISODE 1 — UX (HOOK OPTION 3 VALIDÉ)</span>
-                            <span style="font-size: 0.85rem; color: var(--gold-accent);" id="postVideoKw">Mots-clés Pexels: Eagle soaring slow motion 4k</span>
+                            <span class="badge-week" id="postBadge">ÉPISODE 1 — UX (LA PROMESSE CLIENT & L'AIGLE)</span>
+                            <span style="font-size: 0.85rem; color: var(--gold-accent);" id="postVideoKw">Recherche Vidéo: Eagle soaring slow motion 4k</span>
                         </div>
 
                         <textarea id="postText" class="planner-input" rows="18" style="font-family: inherit; font-size: 0.95rem; line-height: 1.65;"></textarea>
@@ -551,7 +551,7 @@
                         <div style="display: flex; gap: 10px; flex-wrap: wrap;">
                             <button class="btn-action" onclick="copyPostText()"><i class="fa-regular fa-copy"></i> Copier le Texte du Post</button>
                             <button class="btn-action" onclick="document.getElementById('localVideoInput').click()" style="background: linear-gradient(135deg, #10B981 0%, #059669 100%);">
-                                <i class="fa-solid fa-folder-open"></i> Charger la Vidéo du Bureau
+                                <i class="fa-solid fa-folder-open"></i> Charger la Vidéo de cet Épisode
                             </button>
                             <a id="videoSearchLink" href="https://www.pexels.com/search/videos/eagle%20soaring%20slow%20motion%204k/" target="_blank" class="btn-action" style="background: linear-gradient(135deg, #CA8A04 0%, #EAB308 100%); text-decoration: none;">
                                 <i class="fa-solid fa-video"></i> Chercher sur Pexels
@@ -607,22 +607,22 @@
                         <code style="background: rgba(255,255,255,0.06); padding: 6px 10px; border-radius: 6px; font-size: 0.8rem; display: block; word-break: break-all; color: var(--gold-accent);">
                             Desktop/Videos_Athena/
                         </code>
-                        <p style="margin-top: 10px; font-size: 0.78rem; color: var(--text-secondary);">Vos 2 vidéos 1:1 créées :<br>• <code>Post_1_UX_Aigle_1x1.mp4</code><br>• <code>Post_2_IX_Lion_1x1.mp4</code></p>
+                        <p style="margin-top: 10px; font-size: 0.78rem; color: var(--text-secondary);">Vos 2 vidéos 1:1 prêtes :<br>• <code>Post_1_UX_Aigle_1x1.mp4</code><br>• <code>Post_2_IX_Lion_1x1.mp4</code></p>
                     </div>
                 </div>
 
                 <div class="section-card">
                     <div class="section-header">
                         <div class="section-title">
-                            <i class="fa-solid fa-calendar-days"></i> Planning de Publication
+                            <i class="fa-solid fa-compass-drafting"></i> ADN Narratif des 4 Textes
                         </div>
                     </div>
 
                     <div style="font-size: 0.85rem; color: var(--text-secondary); line-height: 1.7;">
-                        <p style="margin-bottom: 10px;"><strong>🦅 Semaine 1 :</strong> Épisode 1 — UX (L'Aigle Royal)</p>
-                        <p style="margin-bottom: 10px;"><strong>🦁 Semaine 2 :</strong> Épisode 2 — IX (Le Lion)</p>
-                        <p style="margin-bottom: 10px;"><strong>🐺 Semaine 3 :</strong> Épisode 3 — XP (La Meute de Loups)</p>
-                        <p style="margin-bottom: 10px;"><strong>🐆 Semaine 4 :</strong> Épisode 4 — XE (La Panthère Noire)</p>
+                        <p style="margin-bottom: 10px;"><strong>🦅 Ép.1 UX :</strong> La Soustraction & L'Élimination des Frictions Clients.</p>
+                        <p style="margin-bottom: 10px;"><strong>🦁 Ép.2 IX :</strong> Le Silence de l'Interface & L'Instantanéité du Clic.</p>
+                        <p style="margin-bottom: 10px;"><strong>🐺 Ép.3 XP :</strong> La Chasse à la Bureaucratie & L'Épanouissement Équipe.</p>
+                        <p style="margin-bottom: 10px;"><strong>🐆 Ép.4 XE :</strong> La Marge Brute, le CA (+140%) & Le ROI ComEx.</p>
                     </div>
                 </div>
 
@@ -632,13 +632,19 @@
 
     </div>
 
-    <!-- JavaScript Data & Drag/Drop Logic -->
+    <!-- JavaScript Data & Independent Video State Logic -->
     <script>
+        let currentEpisodeId = 1;
+
         const episodesData = {
             1: {
-                badge: "ÉPISODE 1 — UX (HOOK OPTION 3 VALIDÉ & L'AIGLE ROYAL)",
+                title: "Épisode 1 (UX - L'Aigle)",
+                badge: "ÉPISODE 1 — UX (LA PROMESSE CLIENT & L'AIGLE ROYAL)",
                 kw: "Mots-clés Pexels: Eagle soaring slow motion 4k",
                 pexelsUrl: "https://www.pexels.com/search/videos/eagle%20soaring%20slow%20motion%204k/",
+                recFile: "Post_1_UX_Aigle_1x1.mp4",
+                videoUrl: null,
+                videoName: null,
                 text: `90% des entreprises étouffent leurs clients sous prétexte de vouloir trop bien faire.
 
 Observez ce vol. Ailes ouvertes, immobiles. Zéro effort superflu.  
@@ -672,109 +678,107 @@ Quelle est la friction que vous devriez éliminer aujourd'hui pour laisser voler
 #Leadership #Management #UX #ExpérienceClient #Simplicité #Performance #ProductStrategy #Innovation`
             },
             2: {
-                badge: "ÉPISODE 2 — IX (INTERFACE & LE LION)",
+                title: "Épisode 2 (IX - Le Lion)",
+                badge: "ÉPISODE 2 — IX (L'INTERFACE & LE LION)",
                 kw: "Mots-clés Pexels: Lion watching slow motion 4k",
                 pexelsUrl: "https://www.pexels.com/search/videos/lion%20watching%20slow%20motion%204k/",
-                text: `Le roi de la savane ne rugit pas toute la journée.
+                recFile: "Post_2_IX_Lion_1x1.mp4",
+                videoUrl: null,
+                videoName: null,
+                text: `Si votre interface a besoin d'un mode d'emploi, c'est que votre produit a déjà échoué.
 
-Il observe.  
-Il reste immobile.  
-Mais dès qu'il fait un mouvement, tout le monde sait exactement ce qui se passe.
+Le lion ne pousse aucun cri pour prouver sa présence. Il est là. Son autorité est immédiate.
 
-Pendant des années, j'ai pensé que le design d'interaction (IX) consistait à mettre du bruit partout.
+Pendant des années, j'ai vu des concepteurs remplir leurs écrans et leurs comptoirs de signaux parasites.
 
-Des boutons qui clignotent.  
-Des animations incessantes.  
-Des alertes qui sollicitent l'utilisateur à chaque seconde.
+Des boutons qui clignotent partout.  
+Des fenêtres pop-up qui surgissent sans prévenir.  
+Des formulaires à rallonge sous prétexte de "capturer de la donnée".
 
-Puis j'ai compris la force du calme.
+Résultat ? L'utilisateur s'énerve, hésite, et finit par abandonner.
 
-L'Interaction Design (IX), ce n'est pas de l'agitation. C'est l'instantanéité du geste juste.
+L'Interaction Design (IX), ce n'est pas décorer une interface. C'est rendre l'action tellement évidente que le cerveau n'a pas à réfléchir.
 
-Une réponse immédiate sous le doigt.  
-Un retour visuel d'une clarté absolue.  
-Une réaction du système si précise qu'elle ne laisse aucune place au doute.
+Un clic ➔ Une confirmation instantanée.  
+Un regard ➔ Une information limpide.  
+Zéro hésitation. Zéro charge mentale.
 
-Quand vous assommez une personne de signaux, vous ne créez pas de l'engagement. Vous créez de l'anxiété.
+Que ce soit sur l'écran d'une borne de commande ou lors de la prise en charge à la réception d'un hôtel :  
+La vraie beauté d'un point de contact, c'est le silence de son exécution.
 
-Dans un restaurant de luxe comme sur une application B2B :  
-Le vrai pouvoir d'une interface, c'est de donner le contrôle en un éclair, sans élever le ton.
+Quand avez-vous supprimé pour la dernière fois un bouton inutile de votre produit ?
 
-Depuis, j'en suis convaincu :  
-Les meilleures interfaces ne sont pas celles qui font le plus d'esbroufe. Ce sont celles qui répondent avec la précision du lion.
-
-Vos points de contact dégagent-ils cette force tranquille ?
-
-#InteractionDesign #IX #UI #UX #Leadership #Reactivité #Performance #ProductDesign`
+#InteractionDesign #IX #UI #ProductDesign #Interface #Reactivité #ExpérienceUtilisateur #Clarté`
             },
             3: {
-                badge: "ÉPISODE 3 — XP (SALARIÉ & LA MEUTE DE LOUPS)",
+                title: "Épisode 3 (XP - Le Loup)",
+                badge: "ÉPISODE 3 — XP (L'EXPÉRIENCE SALARIÉ & LE LOUP)",
                 kw: "Mots-clés Pexels: Wolf pack running snow slow motion 4k",
                 pexelsUrl: "https://www.pexels.com/search/videos/wolf%20pack%20running%20snow%20slow%20motion%204k/",
-                text: `Le loup solitaire est une légende. Dans la réalité, le loup ne gagne jamais seul.
+                recFile: "Post_3_XP_Loup_1x1.mp4",
+                videoUrl: null,
+                videoName: null,
+                text: `Vous ne pouvez pas demander l'excellence à votre meute si vous la forcez à chasser avec des boulets aux pieds.
 
-C'est la meute qui traverse les hivers.  
-C'est la cohésion qui garantit la survie.  
-C'est l'alignement absolu du groupe qui fait la réussite.
+Regardez cette meute de loups dans la neige.  
+Ils ne luttent pas entre eux. Ils s'alignent. Chaque foulée est synchronisée.
 
-Pendant des années, j'ai vu des dirigeants exiger de leurs équipes des performances exceptionnelles… tout en leur donnant des outils et des processus qui les isolaient.
+Pendant des années, j'ai vu des managers exiger un service client 5 étoiles... tout en imposant à leurs équipes des outils logiciels préhistoriques.
 
-Des logiciels de caisse lourds.  
-Des procédures rigides.  
-Une bureaucratie qui transforme chaque projet en combat individuel.
+Des systèmes de caisse qui plantent à 12h30.  
+Trois validations requises pour appliquer une remise de 5 euros.  
+Des rapports Excel manuels qui prennent 2 heures chaque soir.
 
-C'est l'erreur tragique de l'Expérience Salarié (XP).
+C'est le scandale silencieux de l'Expérience Salarié (XP).
 
-Vous ne pouvez pas demander à votre meute de chasser comme des champions si vous leur mettez des boulets aux pieds.
+Un collaborateur qui passe son temps à se battre contre son propre outil de travail est un collaborateur épuisé qui n'a plus d'énergie à offrir au client.
 
-Donner de bons outils.  
-Supprimer la pénibilité.  
-Faire confiance au collectif.
+Voulez-vous transformer l'expérience de vos clients ?  
+Commencez par nettoyer la vie opérationnelle de vos collaborateurs.
 
-Le jour où vous libérez le quotidien de vos collaborateurs, l'impact sur l'expérience client (UX) est immédiat.
+Donnez-leur des outils fluides.  
+Supprimez la paperasse inutile.  
+Faites confiance au collectif.
 
-Depuis, j'en suis convaincu :  
-Les grands managers ne gagnent pas en poussant leur équipe à bout. Ils gagnent en créant un environnement où la meute avance sans aucun obstacle.
+Comment vos équipes qualifient-elles leurs outils de travail au quotidien ?
 
-Vos collaborateurs avancent-ils ensemble ou luttent-ils contre leurs outils ?
-
-#EmployeeExperience #XP #Leadership #Management #EspritDéquipe #QVT #Performance #Collectif`
+#EmployeeExperience #XP #Management #QVT #CultureDentreprise #Leadership #Opérations #Collectif`
             },
             4: {
-                badge: "ÉPISODE 4 — XE (EXECUTIVE & LA PANTHÈRE NOIRE)",
+                title: "Épisode 4 (XE - La Panthère)",
+                badge: "ÉPISODE 4 — XE (EXECUTIVE DIRECTION & LA PANTHÈRE)",
                 kw: "Mots-clés Pexels: Black panther stealth slow motion 4k",
                 pexelsUrl: "https://www.pexels.com/search/videos/black%20panther%20stealth%20slow%20motion%204k/",
-                text: `La panthère noire ne dépense jamais son énergie par hasard.
+                recFile: "Post_4_XE_Panthere_1x1.mp4",
+                videoUrl: null,
+                videoName: null,
+                text: `Un ComEx qui parle d'expérience client sans parler de marge brute fait de la poésie, pas du business.
 
-Elle s'avance dans l'ombre.  
-Elle évalue les distances avec une précision millimétrée.  
-Elle frappe au moment exact avec un impact maximal.
+La panthère noire ne se déplace pas dans la jungle pour faire joli.  
+Chaque pas est mesuré. Chaque déplacement vise un résultat précis.
 
-En comité de direction (ComEx), la question revient toujours :  
-"L'expérience client (UX), l'interaction (IX) et le bien-être des salariés (XP)... quel est le ROI réel ?"
+En direction générale (XE / Executive Experience), la question n'est jamais "Est-ce que l'interface est jolie ?".  
+La seule question qui compte est : "Combien de marge supplémentaire ce parcours génère-t-il ?"
 
-C'est l'Expérience Direction (XE / Executive Experience).
+Voici la réalité chiffrée de l'alignement UX + IX + XP :
 
-L'XE, ce n'est pas se disperser.  
-C'est la capacité du dirigeant à agir avec la précision de la panthère pour relier les 3 piliers à la rentabilité globale.
+- Quand vous éliminez les frictions (UX) ➔ Le taux de rétention client bondit.
+- Quand l'interface réagit en 100 ms (IX) ➔ Le volume de transactions à l'heure augmente.
+- Quand vos équipes travaillent sans stress (XP) ➔ Le turnover s'effondre de 40%.
 
-- Quand l'UX est fluide ➔ Le panier moyen et la rétention explosent.
-- Quand l'IX est réactive ➔ La vitesse de transaction s'accélère.
-- Quand l'XP est forte ➔ Le turnover s'effondre et la productivité grimpe.
+Résultat direct sur le bilan : Un établissement qui passe de 250 k€ à 600 k€ de chiffre d'affaires (+140% de croissance).
 
-Aligner l'humain et la technologie n'est pas un coût d'image.  
-C'est le levier le plus puissant pour faire passer un établissement de 250 k€ à 600 k€ de chiffre d'affaires (+140%).
+L'expérience client et salarié n'est pas un centre de coût marketing.  
+C'est le moteur financier le plus rentable de votre entreprise.
 
-Depuis, j'en suis convaincu :  
-Les meilleurs dirigeants ne se perdent pas dans l'agitation. Ils gardent la maîtrise de l'ombre pour transformer la simplicité en marge brute.
+Pilotiez-vous l'expérience comme un coût... ou comme un levier de marge brute ?
 
-Quelle est la vision globale que vous pilotez pour vos équipes aujourd'hui ?
-
-#ExecutiveExperience #XE #ROI #DirectionGénérale #Leadership #VisionStratégique #Croissance #Business`
+#ExecutiveExperience #XE #ROI #ComEx #DirectionGénérale #MargeBrute #Croissance #BusinessStrategy`
             }
         };
 
         function loadEpisode(epNum) {
+            currentEpisodeId = epNum;
             console.log("Switching to Episode:", epNum);
             
             // Remove active class from all buttons
@@ -789,10 +793,28 @@ Quelle est la vision globale que vous pilotez pour vos équipes aujourd'hui ?
 
             const ep = episodesData[epNum];
             if (ep) {
+                document.getElementById('currentEpTitle').innerText = ep.title;
                 document.getElementById('postBadge').innerText = ep.badge;
                 document.getElementById('postVideoKw').innerText = ep.kw;
                 document.getElementById('postText').value = ep.text;
                 document.getElementById('videoSearchLink').href = ep.pexelsUrl;
+                document.getElementById('dropSub').innerText = "Fichier recommandé : " + ep.recFile;
+
+                // Handle episode-specific video player state!
+                const videoPlayer = document.getElementById('videoPlayer');
+                const playerBox = document.getElementById('playerBox');
+                const dropText = document.getElementById('dropText');
+
+                if (ep.videoUrl) {
+                    videoPlayer.src = ep.videoUrl;
+                    playerBox.style.display = 'block';
+                    videoPlayer.play();
+                    dropText.innerText = "✅ Vidéo chargée pour " + ep.title + " : " + ep.videoName;
+                } else {
+                    playerBox.style.display = 'none';
+                    videoPlayer.pause();
+                    dropText.innerText = "📂 Charger la vidéo propre à " + ep.title + " depuis votre Bureau Mac";
+                }
             }
         }
 
@@ -803,11 +825,11 @@ Quelle est la vision globale que vous pilotez pour vos équipes aujourd'hui ?
             });
         }
 
-        /* DRAG & DROP AND LOCAL FILE LOADING LOGIC */
+        /* DRAG & DROP AND EPISODE-SPECIFIC FILE LOADING LOGIC */
         function handleFileSelect(event) {
             const file = event.target.files[0];
             if (file) {
-                playVideoFile(file);
+                playVideoFileForCurrentEpisode(file);
             }
         }
 
@@ -828,20 +850,24 @@ Quelle est la vision globale que vous pilotez pour vos équipes aujourd'hui ?
             const dt = e.dataTransfer;
             const files = dt.files;
             if (files.length > 0) {
-                playVideoFile(files[0]);
+                playVideoFileForCurrentEpisode(files[0]);
             }
         }
 
-        function playVideoFile(file) {
+        function playVideoFileForCurrentEpisode(file) {
+            const fileURL = URL.createObjectURL(file);
+            const ep = episodesData[currentEpisodeId];
+            ep.videoUrl = fileURL;
+            ep.videoName = file.name;
+
             const videoPlayer = document.getElementById('videoPlayer');
             const playerBox = document.getElementById('playerBox');
             
-            const fileURL = URL.createObjectURL(file);
             videoPlayer.src = fileURL;
             playerBox.style.display = 'block';
             videoPlayer.play();
             
-            document.getElementById('dropText').innerText = "✅ Vidéo chargée : " + file.name;
+            document.getElementById('dropText').innerText = "✅ Vidéo chargée pour " + ep.title + " : " + file.name;
         }
 
         // Initialize default view (Episode 1)
