@@ -448,6 +448,24 @@
             background: var(--purple-light);
             color: #FFF;
         }
+
+        /* COMBO MONTAGE HELPER BOX */
+        .combo-box {
+            background: rgba(16, 185, 129, 0.05);
+            border: 1px solid rgba(16, 185, 129, 0.25);
+            border-radius: 14px;
+            padding: 20px;
+            margin-top: 20px;
+        }
+
+        .combo-step {
+            background: rgba(12, 10, 16, 0.6);
+            border: 1px solid var(--border-subtle);
+            border-radius: 10px;
+            padding: 12px 16px;
+            margin-bottom: 10px;
+            font-size: 0.85rem;
+        }
     </style>
 </head>
 <body>
@@ -458,11 +476,11 @@
             <div class="brand-logo"><i class="fa-brands fa-linkedin-in"></i></div>
             <div class="header-title">
                 <h1>Cockpit Stratégie LinkedIn | Athéna</h1>
-                <p>4 Textes Ultra-Distincts & Vidéos Dédiées par Épisode — Julien Florence</p>
+                <p>4 Textes Ultra-Distincts & Assistant Montage Combo Vidéo — Julien Florence</p>
             </div>
         </div>
         <div class="badge-consultant">
-            <i class="fa-solid fa-folder-open"></i> Vidéo Dédiée Indépendante par Épisode
+            <i class="fa-solid fa-clapperboard"></i> Assistant Montage Combo Lion + Fuite
         </div>
     </header>
 
@@ -480,7 +498,7 @@
                 <div class="stat-icon"><i class="fa-solid fa-shield-cat"></i></div>
                 <div class="stat-label">Épisode 2 (IX Interface)</div>
                 <div class="stat-value">🦁 Le Lion</div>
-                <div class="stat-sub"><i class="fa-solid fa-bolt"></i> Fichier: Post_2_IX_Lion_1x1.mp4</div>
+                <div class="stat-sub"><i class="fa-solid fa-bolt"></i> Combo Lion + Animaux Fuite</div>
             </div>
             <div class="stat-card" onclick="loadEpisode(3)">
                 <div class="stat-icon"><i class="fa-solid fa-dog"></i></div>
@@ -521,6 +539,54 @@
                     <!-- PREVIEW PLAYER -->
                     <div class="video-player-container" id="playerBox">
                         <video id="videoPlayer" controls autoplay loop muted></video>
+                    </div>
+                </div>
+
+                <!-- ASSISTANT MONTAGE COMBO LION & FUITE DES ANIMAUX -->
+                <div class="section-card">
+                    <div class="section-header">
+                        <div class="section-title">
+                            <i class="fa-solid fa-film"></i> Assistant Montage Combo Lion + Fuite (100% Gratuit)
+                        </div>
+                    </div>
+
+                    <div class="combo-box">
+                        <p style="font-size: 0.88rem; color: var(--text-primary); font-weight: 700; margin-bottom: 12px;">
+                            🎬 Les 3 Liens Directs à télécharger pour assembler la scène :
+                        </p>
+                        
+                        <div class="combo-step">
+                            <strong>1. Lion qui marche lentement :</strong> 
+                            <a href="https://pixabay.com/videos/search/lion%20walking%20video/" target="_blank" style="color: var(--accent-green); font-weight: 600; text-decoration: underline; margin-left: 6px;">
+                                Ouvrir Pixabay Lion Walking <i class="fa-solid fa-arrow-up-right-from-square" style="font-size: 11px;"></i>
+                            </a>
+                        </div>
+
+                        <div class="combo-step">
+                            <strong>2. Animaux immobiles en vigilance :</strong> 
+                            <a href="https://pixabay.com/videos/search/deer%20watching/" target="_blank" style="color: var(--accent-green); font-weight: 600; text-decoration: underline; margin-left: 6px;">
+                                Ouvrir Pixabay Deer/Gazelle Watching <i class="fa-solid fa-arrow-up-right-from-square" style="font-size: 11px;"></i>
+                            </a>
+                        </div>
+
+                        <div class="combo-step">
+                            <strong>3. Troupeau en fuite frénétique :</strong> 
+                            <a href="https://pixabay.com/videos/search/wild%20animals%20running/" target="_blank" style="color: var(--accent-green); font-weight: 600; text-decoration: underline; margin-left: 6px;">
+                                Ouvrir Pixabay Herd Running <i class="fa-solid fa-arrow-up-right-from-square" style="font-size: 11px;"></i>
+                            </a>
+                        </div>
+
+                        <div style="margin-top: 14px; background: rgba(12, 10, 16, 0.8); border: 1px solid var(--border-purple); border-radius: 10px; padding: 14px;">
+                            <p style="font-size: 0.82rem; color: var(--gold-accent); font-weight: 700; margin-bottom: 6px;">
+                                🤖 Prompt IA Vidéo Sur-Mesure (Runway Gen-2 / Luma / Kling) :
+                            </p>
+                            <code id="aiPromptText" style="font-size: 0.8rem; color: var(--text-primary); display: block; line-height: 1.5; background: rgba(0,0,0,0.5); padding: 8px 12px; border-radius: 6px; word-break: break-all;">
+                                A cinematic 4K ultra-realistic shot of a majestic male lion walking slowly and calmly through the golden African savannah grass. In the background, antelopes and zebras stand frozen in fear, then suddenly turn and run away. Slow motion, warm golden hour lighting, 8k resolution, no watermark.
+                            </code>
+                            <button class="btn-action" onclick="copyAiPrompt()" style="margin-top: 10px; font-size: 0.75rem; padding: 6px 12px;">
+                                <i class="fa-regular fa-copy"></i> Copier le Prompt IA Vidéo
+                            </button>
+                        </div>
                     </div>
                 </div>
 
@@ -680,8 +746,8 @@ Quelle est la friction que vous devriez éliminer aujourd'hui pour laisser voler
             2: {
                 title: "Épisode 2 (IX - Le Lion)",
                 badge: "ÉPISODE 2 — IX (L'INTERFACE & LE LION)",
-                kw: "Mots-clés Pexels: Lion watching slow motion 4k",
-                pexelsUrl: "https://www.pexels.com/search/videos/lion%20watching%20slow%20motion%204k/",
+                kw: "Mots-clés Pexels: Lion walking / Lion watching slow motion 4k",
+                pexelsUrl: "https://pixabay.com/videos/search/lion%20walking%20video/",
                 recFile: "Post_2_IX_Lion_1x1.mp4",
                 videoUrl: null,
                 videoName: null,
@@ -822,6 +888,13 @@ Pilotiez-vous l'expérience comme un coût... ou comme un levier de marge brute 
             const text = document.getElementById('postText').value;
             navigator.clipboard.writeText(text).then(() => {
                 alert("Texte de l'épisode copié dans le presse-papier ! Prêt à coller sur LinkedIn.");
+            });
+        }
+
+        function copyAiPrompt() {
+            const prompt = document.getElementById('aiPromptText').innerText;
+            navigator.clipboard.writeText(prompt).then(() => {
+                alert("Prompt IA Vidéo copié dans le presse-papier ! Prêt à coller dans Runway, Luma ou Kling.");
             });
         }
 
