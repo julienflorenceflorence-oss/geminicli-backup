@@ -1,6 +1,6 @@
 # 💬 RÉPONSES SUR-MESURE AUX COMMENTAIRES LINKEDIN (POST OFFBOARDING & HUMANITÉ)
 **Post de Julien FLORENCE :** *"Et si le plus grand échec d'une entreprise était d'oublier ceux qui l'ont construite ?"*  
-**Date :** 05 Août 2026 | **Posture :** Adulte (ENTJ-A), Cordiale, Factuelle & Valorisante
+**Date :** 06 Août 2026 | **Posture :** Adulte (ENTJ-A), Cordiale, Factuelle & Valorisante
 
 ---
 
@@ -65,3 +65,19 @@ Cette tradition à l'Icam — venir applaudir un collègue lors de son tout dern
 Tu as 100% raison : c'est la responsabilité directe du manager de veiller à orchestrer ces moments et d'éclairer la partie immergée de l'iceberg (tout ce travail humain invisible accumulé pendant des années).
 
 Merci pour ton éclairage et ton soutien engagé sur ce sujet !
+
+---
+
+## 5. 👤 Réponse à Jean-Marc Redon (France Travail / Basket Landes)
+
+### 📝 Le Commentaire de Jean-Marc :
+> *"Merci pour ce partage et ce témoignage d'y a 2 ans, aussi touchant que révoltant. Heureusement, toutes les entreprises ne fonctionnent pas ainsi. Mais le récit illustre malheureusement une réalité encore trop fréquente : votre papa n’était pas un chiffre. Je milite depuis longtemps pour que le R de “ressources humaines” devienne aussi celui de “relations humaines”. Au-delà de la sémantique, ce changement de regard pourrait transformer beaucoup de choses : la reconnaissance des parcours, l’attention portée aux personnes et, tout simplement, la manière de dire au revoir à celles et ceux qui ont tant donné. Une carrière de 38 années méritait mieux qu’un mail envoyé trois mois plus tard."*
+
+### 💬 La Réponse pour Julien (Prête à copier-coller) :
+Merci beaucoup Jean-Marc pour cette prise de hauteur particulièrement juste et engagée.
+
+Remplacer le "R" de Ressources par le "R" de Relations n'est pas un simple ajustement sémantique : c'est un changement de paradigme fondamental. Traiter l'humain comme une ressource consommable détruit l'engagement, alors que bâtir des relations authentiques crée une loyauté et une performance durables.
+
+Toi qui connais bien la force du collectif et du terrain sportif, tu sais qu'on ne fait jamais gagner une équipe en réduisant les personnes à des chiffres. 38 années d'engagement méritaient un hommage à la hauteur de la trace laissée.
+
+Merci pour ton plaidoyer et au plaisir de poursuivre nos échanges !
