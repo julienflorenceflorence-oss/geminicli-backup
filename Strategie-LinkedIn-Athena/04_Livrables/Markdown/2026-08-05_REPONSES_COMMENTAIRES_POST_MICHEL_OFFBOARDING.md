@@ -49,3 +49,19 @@ Cette génération d'hommes et de femmes a donné sa vie, ses nuits et sa santé
 Mettre en lumière leur parcours, c'est rappeler que derrière chaque bulletin de salaire ou chaque chiffre de bilan, il y a des sacrifices humains qu'aucune entreprise ne devrait jamais banaliser.
 
 Ravi que ce partage ait pu résonner avec vous !
+
+---
+
+## 4. 👤 Réponse à Jesús Villalobos, PhD (Icam Higher Education)
+
+### 📝 Le Commentaire de Jesús Villalobos :
+> *"Salut Julien FLORENCE, merci pour le tag ! À l’Icam, nous avons une tradition qui consiste à aller, à la fin du dernier cours d’un collègue enseignant, l’applaudir. C’est un moment très touchant, qui permet notamment à ceux qui sont sur le point de partir à la retraite de sentir la reconnaissance de leurs pairs. On organise également un pot de départ, mais c’est bien d'avoir un petit truc en plus. Bien évidemment, c’est au manager de veiller au bon déroulement de tout cela 🤓. C’est important de reconnaître le travail accompli, surtout qu’il y a, comme dans ton histoire, beaucoup de choses qu’on ne voit pas forcément, mais qui sont bien là et qui ont permis que le travail soit fait"*
+
+### 💬 La Réponse pour Julien (Prête à copier-coller) :
+Merci beaucoup Jesús pour cette illustration concrète et inspirante venue du monde académique.
+
+Cette tradition à l'Icam — venir applaudir un collègue lors de son tout dernier cours devant ses pairs — est d'une puissance symbolique rare. Elle montre qu'un départ réussi ne dépend pas du budget d'un pot de départ, mais de la sincérité du geste de reconnaissance.
+
+Tu as 100% raison : c'est la responsabilité directe du manager de veiller à orchestrer ces moments et d'éclairer la partie immergée de l'iceberg (tout ce travail humain invisible accumulé pendant des années).
+
+Merci pour ton éclairage et ton soutien engagé sur ce sujet !
