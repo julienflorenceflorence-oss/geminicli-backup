@@ -381,91 +381,6 @@
             transform: translateY(-2px);
             box-shadow: 0 6px 20px var(--purple-glow);
         }
-
-        /* Reply Generator Box */
-        .reply-generator-box {
-            background: rgba(234, 179, 8, 0.04);
-            border: 1px solid rgba(234, 179, 8, 0.2);
-            border-radius: 14px;
-            padding: 22px;
-            margin-top: 24px;
-        }
-
-        .reply-options {
-            display: flex;
-            gap: 10px;
-            margin-bottom: 14px;
-            flex-wrap: wrap;
-        }
-
-        .btn-opt {
-            background: rgba(255, 255, 255, 0.05);
-            border: 1px solid var(--border-subtle);
-            color: var(--text-secondary);
-            padding: 8px 14px;
-            border-radius: 8px;
-            font-size: 0.8rem;
-            cursor: pointer;
-            transition: var(--transition);
-        }
-
-        .btn-opt.active, .btn-opt:hover {
-            background: rgba(234, 179, 8, 0.15);
-            color: var(--gold-accent);
-            border-color: rgba(234, 179, 8, 0.4);
-        }
-
-        .response-card {
-            background: rgba(12, 10, 16, 0.7);
-            border: 1px solid var(--border-purple);
-            border-radius: 10px;
-            padding: 16px;
-            margin-top: 14px;
-            position: relative;
-        }
-
-        .response-text {
-            font-size: 0.9rem;
-            color: var(--text-primary);
-            line-height: 1.5;
-            white-space: pre-line;
-        }
-
-        .copy-btn {
-            position: absolute;
-            top: 12px;
-            right: 12px;
-            background: rgba(168, 85, 247, 0.15);
-            border: 1px solid var(--border-purple);
-            color: var(--purple-light);
-            padding: 4px 10px;
-            border-radius: 6px;
-            font-size: 0.75rem;
-            cursor: pointer;
-        }
-
-        .copy-btn:hover {
-            background: var(--purple-light);
-            color: #FFF;
-        }
-
-        /* COMBO MONTAGE HELPER BOX */
-        .combo-box {
-            background: rgba(16, 185, 129, 0.05);
-            border: 1px solid rgba(16, 185, 129, 0.25);
-            border-radius: 14px;
-            padding: 20px;
-            margin-top: 20px;
-        }
-
-        .combo-step {
-            background: rgba(12, 10, 16, 0.6);
-            border: 1px solid var(--border-subtle);
-            border-radius: 10px;
-            padding: 12px 16px;
-            margin-bottom: 10px;
-            font-size: 0.85rem;
-        }
     </style>
 </head>
 <body>
@@ -476,11 +391,11 @@
             <div class="brand-logo"><i class="fa-brands fa-linkedin-in"></i></div>
             <div class="header-title">
                 <h1>Cockpit Stratégie LinkedIn | Athéna</h1>
-                <p>4 Textes Ultra-Distincts & Assistant Montage Combo Vidéo — Julien Florence</p>
+                <p>Scène Animée Réaliste Sur-Mesure — Julien Florence</p>
             </div>
         </div>
         <div class="badge-consultant">
-            <i class="fa-solid fa-clapperboard"></i> Assistant Montage Combo Lion + Fuite
+            <i class="fa-solid fa-wand-magic-sparkles"></i> Scène Animée 1:1 Générée Sur-Mesure
         </div>
     </header>
 
@@ -498,7 +413,7 @@
                 <div class="stat-icon"><i class="fa-solid fa-shield-cat"></i></div>
                 <div class="stat-label">Épisode 2 (IX Interface)</div>
                 <div class="stat-value">🦁 Le Lion</div>
-                <div class="stat-sub"><i class="fa-solid fa-bolt"></i> Combo Lion + Animaux Fuite</div>
+                <div class="stat-sub"><i class="fa-solid fa-sparkles"></i> Scène Animée 1:1 Prête</div>
             </div>
             <div class="stat-card" onclick="loadEpisode(3)">
                 <div class="stat-icon"><i class="fa-solid fa-dog"></i></div>
@@ -523,7 +438,7 @@
                 <div class="section-card">
                     <div class="section-header">
                         <div class="section-title">
-                            <i class="fa-solid fa-desktop"></i> Chargeur Vidéo Dédié pour <span id="currentEpTitle" style="color: var(--purple-light);">Épisode 1 (UX)</span>
+                            <i class="fa-solid fa-desktop"></i> Previsualiseur Vidéo Animée 1:1 pour <span id="currentEpTitle" style="color: var(--purple-light);">Épisode 1 (UX)</span>
                         </div>
                         <span style="font-size: 0.8rem; color: var(--gold-accent);">Dossier Mac : Desktop/Videos_Athena/</span>
                     </div>
@@ -532,8 +447,8 @@
                     
                     <div class="video-drop-zone" onclick="document.getElementById('localVideoInput').click()" id="dropZone">
                         <div class="drop-icon"><i class="fa-solid fa-cloud-arrow-up"></i></div>
-                        <div class="drop-text" id="dropText">📂 Charger la vidéo propre à cet Épisode depuis votre Bureau Mac</div>
-                        <div class="drop-sub" id="dropSub">Exemple recommandé : Post_1_UX_Aigle_1x1.mp4</div>
+                        <div class="drop-text" id="dropText">📂 Charger la vidéo animée 1:1 propre à cet Épisode</div>
+                        <div class="drop-sub" id="dropSub">Fichier recommandé : Post_2_IX_Lion_SurMesure_1x1.mp4</div>
                     </div>
 
                     <!-- PREVIEW PLAYER -->
@@ -542,58 +457,10 @@
                     </div>
                 </div>
 
-                <!-- ASSISTANT MONTAGE COMBO LION & FUITE DES ANIMAUX -->
                 <div class="section-card">
                     <div class="section-header">
                         <div class="section-title">
-                            <i class="fa-solid fa-film"></i> Assistant Montage Combo Lion + Fuite (100% Gratuit)
-                        </div>
-                    </div>
-
-                    <div class="combo-box">
-                        <p style="font-size: 0.88rem; color: var(--text-primary); font-weight: 700; margin-bottom: 12px;">
-                            🎬 Les 3 Liens Directs à télécharger pour assembler la scène :
-                        </p>
-                        
-                        <div class="combo-step">
-                            <strong>1. Lion qui marche lentement :</strong> 
-                            <a href="https://pixabay.com/videos/search/lion%20walking%20video/" target="_blank" style="color: var(--accent-green); font-weight: 600; text-decoration: underline; margin-left: 6px;">
-                                Ouvrir Pixabay Lion Walking <i class="fa-solid fa-arrow-up-right-from-square" style="font-size: 11px;"></i>
-                            </a>
-                        </div>
-
-                        <div class="combo-step">
-                            <strong>2. Animaux immobiles en vigilance :</strong> 
-                            <a href="https://pixabay.com/videos/search/deer%20watching/" target="_blank" style="color: var(--accent-green); font-weight: 600; text-decoration: underline; margin-left: 6px;">
-                                Ouvrir Pixabay Deer/Gazelle Watching <i class="fa-solid fa-arrow-up-right-from-square" style="font-size: 11px;"></i>
-                            </a>
-                        </div>
-
-                        <div class="combo-step">
-                            <strong>3. Troupeau en fuite frénétique :</strong> 
-                            <a href="https://pixabay.com/videos/search/wild%20animals%20running/" target="_blank" style="color: var(--accent-green); font-weight: 600; text-decoration: underline; margin-left: 6px;">
-                                Ouvrir Pixabay Herd Running <i class="fa-solid fa-arrow-up-right-from-square" style="font-size: 11px;"></i>
-                            </a>
-                        </div>
-
-                        <div style="margin-top: 14px; background: rgba(12, 10, 16, 0.8); border: 1px solid var(--border-purple); border-radius: 10px; padding: 14px;">
-                            <p style="font-size: 0.82rem; color: var(--gold-accent); font-weight: 700; margin-bottom: 6px;">
-                                🤖 Prompt IA Vidéo Sur-Mesure (Runway Gen-2 / Luma / Kling) :
-                            </p>
-                            <code id="aiPromptText" style="font-size: 0.8rem; color: var(--text-primary); display: block; line-height: 1.5; background: rgba(0,0,0,0.5); padding: 8px 12px; border-radius: 6px; word-break: break-all;">
-                                A cinematic 4K ultra-realistic shot of a majestic male lion walking slowly and calmly through the golden African savannah grass. In the background, antelopes and zebras stand frozen in fear, then suddenly turn and run away. Slow motion, warm golden hour lighting, 8k resolution, no watermark.
-                            </code>
-                            <button class="btn-action" onclick="copyAiPrompt()" style="margin-top: 10px; font-size: 0.75rem; padding: 6px 12px;">
-                                <i class="fa-regular fa-copy"></i> Copier le Prompt IA Vidéo
-                            </button>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="section-card">
-                    <div class="section-header">
-                        <div class="section-title">
-                            <i class="fa-solid fa-layer-group"></i> Basculer d'Épisode (Textes 100% Inédits & Distincts)
+                            <i class="fa-solid fa-layer-group"></i> Basculer d'Épisode
                         </div>
                     </div>
 
@@ -617,43 +484,8 @@
                         <div style="display: flex; gap: 10px; flex-wrap: wrap;">
                             <button class="btn-action" onclick="copyPostText()"><i class="fa-regular fa-copy"></i> Copier le Texte du Post</button>
                             <button class="btn-action" onclick="document.getElementById('localVideoInput').click()" style="background: linear-gradient(135deg, #10B981 0%, #059669 100%);">
-                                <i class="fa-solid fa-folder-open"></i> Charger la Vidéo de cet Épisode
+                                <i class="fa-solid fa-folder-open"></i> Charger la Vidéo Animée du Bureau
                             </button>
-                            <a id="videoSearchLink" href="https://www.pexels.com/search/videos/eagle%20soaring%20slow%20motion%204k/" target="_blank" class="btn-action" style="background: linear-gradient(135deg, #CA8A04 0%, #EAB308 100%); text-decoration: none;">
-                                <i class="fa-solid fa-video"></i> Chercher sur Pexels
-                            </a>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- INTERACTIVE COMMENT REPLY GENERATOR TOOL -->
-                <div class="section-card">
-                    <div class="section-header">
-                        <div class="section-title">
-                            <i class="fa-solid fa-comments-dollar"></i> Générateur Réponse Commentaires (Style Patrice Deal)
-                        </div>
-                        <span style="font-size: 0.8rem; color: var(--gold-accent);">Posture Adulte & Rigoureuse</span>
-                    </div>
-
-                    <div class="reply-generator-box">
-                        <p style="font-size: 0.85rem; color: var(--text-secondary); margin-bottom: 12px;">Collez le commentaire reçu sur LinkedIn :</p>
-                        
-                        <textarea id="inputComment" class="planner-input" rows="3" placeholder="Ex: C'est beau en théorie, mais sur le terrain c'est impossible de tout supprimer..."></textarea>
-
-                        <div style="margin-bottom: 10px;">
-                            <label style="font-size: 0.78rem; color: var(--text-secondary); display: block; margin-bottom: 6px;">1. Nature du commentaire :</label>
-                            <div class="reply-options" id="natureOptions">
-                                <button class="btn-opt active" onclick="setNature('bienveillant', this)"><i class="fa-solid fa-heart"></i> 😊 Constructif / Positif</button>
-                                <button class="btn-opt" onclick="setNature('sceptique', this)"><i class="fa-solid fa-circle-question"></i> 🧐 Sceptique / Objection</button>
-                                <button class="btn-opt" onclick="setNature('critique', this)"><i class="fa-solid fa-bolt-lightning"></i> ⚡ Attaque / Critique</button>
-                            </div>
-                        </div>
-
-                        <button class="btn-action" onclick="generateReply()"><i class="fa-solid fa-wand-magic-sparkles"></i> Générer la Réponse de Leadership</button>
-
-                        <div class="response-card" id="outputCard" style="display: none;">
-                            <button class="copy-btn" onclick="copyGeneratedReply()"><i class="fa-regular fa-copy"></i> Copier</button>
-                            <div class="response-text" id="outputText"></div>
                         </div>
                     </div>
                 </div>
@@ -673,22 +505,10 @@
                         <code style="background: rgba(255,255,255,0.06); padding: 6px 10px; border-radius: 6px; font-size: 0.8rem; display: block; word-break: break-all; color: var(--gold-accent);">
                             Desktop/Videos_Athena/
                         </code>
-                        <p style="margin-top: 10px; font-size: 0.78rem; color: var(--text-secondary);">Vos 2 vidéos 1:1 prêtes :<br>• <code>Post_1_UX_Aigle_1x1.mp4</code><br>• <code>Post_2_IX_Lion_1x1.mp4</code></p>
-                    </div>
-                </div>
-
-                <div class="section-card">
-                    <div class="section-header">
-                        <div class="section-title">
-                            <i class="fa-solid fa-compass-drafting"></i> ADN Narratif des 4 Textes
-                        </div>
-                    </div>
-
-                    <div style="font-size: 0.85rem; color: var(--text-secondary); line-height: 1.7;">
-                        <p style="margin-bottom: 10px;"><strong>🦅 Ép.1 UX :</strong> La Soustraction & L'Élimination des Frictions Clients.</p>
-                        <p style="margin-bottom: 10px;"><strong>🦁 Ép.2 IX :</strong> Le Silence de l'Interface & L'Instantanéité du Clic.</p>
-                        <p style="margin-bottom: 10px;"><strong>🐺 Ép.3 XP :</strong> La Chasse à la Bureaucratie & L'Épanouissement Équipe.</p>
-                        <p style="margin-bottom: 10px;"><strong>🐆 Ép.4 XE :</strong> La Marge Brute, le CA (+140%) & Le ROI ComEx.</p>
+                        <p style="margin-top: 10px; font-size: 0.78rem; color: var(--text-secondary);">
+                            • <code>Post_1_UX_Aigle_1x1.mp4</code><br>
+                            • <code>Post_2_IX_Lion_SurMesure_1x1.mp4</code> (Scène Animée Réaliste 1:1)
+                        </p>
                     </div>
                 </div>
 
@@ -698,7 +518,7 @@
 
     </div>
 
-    <!-- JavaScript Data & Independent Video State Logic -->
+    <!-- JavaScript Data & Video Logic -->
     <script>
         let currentEpisodeId = 1;
 
@@ -706,8 +526,7 @@
             1: {
                 title: "Épisode 1 (UX - L'Aigle)",
                 badge: "ÉPISODE 1 — UX (LA PROMESSE CLIENT & L'AIGLE ROYAL)",
-                kw: "Mots-clés Pexels: Eagle soaring slow motion 4k",
-                pexelsUrl: "https://www.pexels.com/search/videos/eagle%20soaring%20slow%20motion%204k/",
+                kw: "Mots-clés: Eagle soaring slow motion 4k",
                 recFile: "Post_1_UX_Aigle_1x1.mp4",
                 videoUrl: null,
                 videoName: null,
@@ -746,9 +565,8 @@ Quelle est la friction que vous devriez éliminer aujourd'hui pour laisser voler
             2: {
                 title: "Épisode 2 (IX - Le Lion)",
                 badge: "ÉPISODE 2 — IX (L'INTERFACE & LE LION)",
-                kw: "Mots-clés Pexels: Lion walking / Lion watching slow motion 4k",
-                pexelsUrl: "https://pixabay.com/videos/search/lion%20walking%20video/",
-                recFile: "Post_2_IX_Lion_1x1.mp4",
+                kw: "Vidéo Animée Réaliste 1:1 Générée Sur-Mesure",
+                recFile: "Post_2_IX_Lion_SurMesure_1x1.mp4",
                 videoUrl: null,
                 videoName: null,
                 text: `Si votre interface a besoin d'un mode d'emploi, c'est que votre produit a déjà échoué.
@@ -779,8 +597,7 @@ Quand avez-vous supprimé pour la dernière fois un bouton inutile de votre prod
             3: {
                 title: "Épisode 3 (XP - Le Loup)",
                 badge: "ÉPISODE 3 — XP (L'EXPÉRIENCE SALARIÉ & LE LOUP)",
-                kw: "Mots-clés Pexels: Wolf pack running snow slow motion 4k",
-                pexelsUrl: "https://www.pexels.com/search/videos/wolf%20pack%20running%20snow%20slow%20motion%204k/",
+                kw: "Recherche Vidéo: Wolf pack running snow slow motion 4k",
                 recFile: "Post_3_XP_Loup_1x1.mp4",
                 videoUrl: null,
                 videoName: null,
@@ -813,8 +630,7 @@ Comment vos équipes qualifient-elles leurs outils de travail au quotidien ?
             4: {
                 title: "Épisode 4 (XE - La Panthère)",
                 badge: "ÉPISODE 4 — XE (EXECUTIVE DIRECTION & LA PANTHÈRE)",
-                kw: "Mots-clés Pexels: Black panther stealth slow motion 4k",
-                pexelsUrl: "https://www.pexels.com/search/videos/black%20panther%20stealth%20slow%20motion%204k/",
+                kw: "Recherche Vidéo: Black panther stealth slow motion 4k",
                 recFile: "Post_4_XE_Panthere_1x1.mp4",
                 videoUrl: null,
                 videoName: null,
@@ -845,15 +661,10 @@ Pilotiez-vous l'expérience comme un coût... ou comme un levier de marge brute 
 
         function loadEpisode(epNum) {
             currentEpisodeId = epNum;
-            console.log("Switching to Episode:", epNum);
-            
-            // Remove active class from all buttons
             for (let i = 1; i <= 4; i++) {
                 const b = document.getElementById('btnTab' + i);
                 if (b) b.classList.remove('active');
             }
-            
-            // Add active class to target button
             const activeBtn = document.getElementById('btnTab' + epNum);
             if (activeBtn) activeBtn.classList.add('active');
 
@@ -863,10 +674,8 @@ Pilotiez-vous l'expérience comme un coût... ou comme un levier de marge brute 
                 document.getElementById('postBadge').innerText = ep.badge;
                 document.getElementById('postVideoKw').innerText = ep.kw;
                 document.getElementById('postText').value = ep.text;
-                document.getElementById('videoSearchLink').href = ep.pexelsUrl;
                 document.getElementById('dropSub').innerText = "Fichier recommandé : " + ep.recFile;
 
-                // Handle episode-specific video player state!
                 const videoPlayer = document.getElementById('videoPlayer');
                 const playerBox = document.getElementById('playerBox');
                 const dropText = document.getElementById('dropText');
@@ -879,7 +688,7 @@ Pilotiez-vous l'expérience comme un coût... ou comme un levier de marge brute 
                 } else {
                     playerBox.style.display = 'none';
                     videoPlayer.pause();
-                    dropText.innerText = "📂 Charger la vidéo propre à " + ep.title + " depuis votre Bureau Mac";
+                    dropText.innerText = "📂 Charger la vidéo animée propre à " + ep.title + " depuis votre Bureau Mac";
                 }
             }
         }
@@ -891,14 +700,6 @@ Pilotiez-vous l'expérience comme un coût... ou comme un levier de marge brute 
             });
         }
 
-        function copyAiPrompt() {
-            const prompt = document.getElementById('aiPromptText').innerText;
-            navigator.clipboard.writeText(prompt).then(() => {
-                alert("Prompt IA Vidéo copié dans le presse-papier ! Prêt à coller dans Runway, Luma ou Kling.");
-            });
-        }
-
-        /* DRAG & DROP AND EPISODE-SPECIFIC FILE LOADING LOGIC */
         function handleFileSelect(event) {
             const file = event.target.files[0];
             if (file) {
@@ -907,25 +708,14 @@ Pilotiez-vous l'expérience comme un coût... ou comme un levier de marge brute 
         }
 
         const dropZone = document.getElementById('dropZone');
-        
         ['dragenter', 'dragover', 'dragleave', 'drop'].forEach(eventName => {
-            dropZone.addEventListener(eventName, preventDefaults, false);
+            dropZone.addEventListener(eventName, e => { e.preventDefault(); e.stopPropagation(); }, false);
         });
 
-        function preventDefaults(e) {
-            e.preventDefault();
-            e.stopPropagation();
-        }
-
-        dropZone.addEventListener('drop', handleDrop, false);
-
-        function handleDrop(e) {
-            const dt = e.dataTransfer;
-            const files = dt.files;
-            if (files.length > 0) {
-                playVideoFileForCurrentEpisode(files[0]);
-            }
-        }
+        dropZone.addEventListener('drop', e => {
+            const files = e.dataTransfer.files;
+            if (files.length > 0) playVideoFileForCurrentEpisode(files[0]);
+        }, false);
 
         function playVideoFileForCurrentEpisode(file) {
             const fileURL = URL.createObjectURL(file);
@@ -943,56 +733,9 @@ Pilotiez-vous l'expérience comme un coût... ou comme un levier de marge brute 
             document.getElementById('dropText').innerText = "✅ Vidéo chargée pour " + ep.title + " : " + file.name;
         }
 
-        // Initialize default view (Episode 1)
         window.addEventListener('DOMContentLoaded', () => {
             loadEpisode(1);
         });
-
-        let currentNature = 'bienveillant';
-
-        function setNature(nat, btn) {
-            currentNature = nat;
-            document.querySelectorAll('#natureOptions .btn-opt').forEach(b => b.classList.remove('active'));
-            btn.classList.add('active');
-        }
-
-        function generateReply() {
-            const comment = document.getElementById('inputComment').value.trim();
-            const outputCard = document.getElementById('outputCard');
-            const outputText = document.getElementById('outputText');
-
-            if (!comment) {
-                alert("Veuillez saisir un commentaire.");
-                return;
-            }
-
-            let reply = "";
-            if (currentNature === 'bienveillant') {
-                reply = `Merci pour ce retour précieux !
-
-C'est exactement le sens du message : la simplicité n'est pas le point de départ, c'est le résultat d'un travail d'épuration constant.
-
-Au plaisir de lire votre prochaine réaction !`;
-            } else if (currentNature === 'sceptique') {
-                reply = `Bonjour et merci pour votre objection constructive.
-
-Il est vrai que la tentation d'ajouter des contrôles est naturelle en période de tension. Mais l'expérience montre que chaque contrainte ajoutée crée de la lourdeur opérationnelle. Supprimer le superflu exige du courage, mais c'est le seul moyen d'obtenir de la fluidité à terme.`;
-            } else {
-                reply = `Bonjour. Merci pour votre message.
-
-Chacun a sa vision de l'organisation. Pour ma part, les faits et les résultats terrain (croissance du CA et rétention d'équipe) démontrent que la clarté et l'élimination des frictions surpassent toujours la sur-réglementation.`;
-            }
-
-            outputText.innerText = reply;
-            outputCard.style.display = 'block';
-        }
-
-        function copyGeneratedReply() {
-            const text = document.getElementById('outputText').innerText;
-            navigator.clipboard.writeText(text).then(() => {
-                alert("Réponse copiée !");
-            });
-        }
     </script>
 </body>
 </html>
