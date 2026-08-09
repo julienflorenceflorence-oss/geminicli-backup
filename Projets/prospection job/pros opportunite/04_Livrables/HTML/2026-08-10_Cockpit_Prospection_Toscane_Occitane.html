@@ -83,6 +83,16 @@
         /* Container Layout */
         .container { max-width: 1440px; margin: 24px auto; padding: 0 24px; }
 
+        /* Toast notification */
+        #toast {
+            position: fixed; bottom: 30px; right: 30px; z-index: 1000;
+            background: rgba(16, 185, 129, 0.95); color: #FFF; padding: 12px 20px;
+            border-radius: 10px; font-weight: 700; font-size: 0.88rem;
+            box-shadow: 0 8px 25px rgba(0,0,0,0.5); opacity: 0; transform: translateY(20px);
+            transition: all 0.3s ease; pointer-events: none;
+        }
+        #toast.show { opacity: 1; transform: translateY(0); }
+
         /* KPI Metrics Grid */
         .kpi-grid {
             display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
@@ -143,7 +153,7 @@
 
         /* Grid View Layout */
         .cards-grid {
-            display: grid; grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
+            display: grid; grid-template-columns: repeat(auto-fill, minmax(360px, 1fr));
             gap: 20px;
         }
 
@@ -196,17 +206,29 @@
 
         .status-select-card {
             width: 100%; background: rgba(12, 10, 16, 0.9); color: var(--gold-accent);
-            border: 1px solid var(--border-purple); padding: 8px 12px; border-radius: 8px;
-            font-family: inherit; font-size: 0.82rem; font-weight: 600; outline: none; margin-bottom: 12px;
+            border: 1px solid var(--border-purple); padding: 9px 12px; border-radius: 8px;
+            font-family: inherit; font-size: 0.85rem; font-weight: 700; outline: none; margin-bottom: 14px;
+        }
+
+        .notes-section {
+            background: rgba(12, 10, 16, 0.7); border: 1px solid var(--border-purple);
+            border-radius: 10px; padding: 12px; margin-top: 8px;
+        }
+
+        .notes-header {
+            font-size: 0.78rem; font-weight: 700; text-transform: uppercase;
+            color: var(--gold-accent); margin-bottom: 6px; display: flex; justify-content: space-between; align-items: center;
         }
 
         .notes-box {
-            width: 100%; background: rgba(12, 10, 16, 0.6); border: 1px solid var(--border-subtle);
+            width: 100%; background: rgba(0, 0, 0, 0.4); border: 1px solid var(--border-subtle);
             border-radius: 8px; padding: 10px; color: var(--text-primary); font-family: inherit;
-            font-size: 0.8rem; resize: vertical; outline: none;
+            font-size: 0.85rem; leading-height: 1.5; resize: vertical; outline: none; min-height: 70px;
         }
 
-        /* Table View Layout (Hidden by default) */
+        .notes-box:focus { border-color: var(--purple-light); box-shadow: 0 0 10px var(--purple-glow); }
+
+        /* Table View Layout */
         .table-view-container {
             background: var(--bg-card); border: 1px solid var(--border-purple);
             border-radius: var(--radius-main); padding: 20px; overflow-x: auto; display: none;
@@ -217,7 +239,7 @@
             background: rgba(107, 33, 168, 0.3); color: #FFF; text-align: left; padding: 14px;
             font-family: 'Outfit', sans-serif; font-size: 0.9rem; border-bottom: 2px solid var(--border-purple);
         }
-        td { padding: 14px; border-bottom: 1px solid var(--border-subtle); font-size: 0.88rem; vertical-align: middle; }
+        td { padding: 14px; border-bottom: 1px solid var(--border-subtle); font-size: 0.88rem; vertical-align: top; }
         tr:hover { background: rgba(168, 85, 247, 0.05); }
 
     </style>
@@ -229,8 +251,8 @@
         <div class="header-brand">
             <div class="brand-logo"><i class="fa-solid fa-chart-pie"></i></div>
             <div class="header-title">
-                <h1>Dashboard CRM Prospection Hébergement & Prestige</h1>
-                <p>Julien FLORENCE — Matrice Opérationnelle Multi-Régions (11 Établissements)</p>
+                <h1>Dashboard CRM Prospection avec Champ Note Persistant</h1>
+                <p>Julien FLORENCE — Pilotage & Notes Sauvegardées en Mémoire (11 Établissements)</p>
             </div>
         </div>
         <div class="header-actions">
@@ -301,13 +323,12 @@
             <table>
                 <thead>
                     <tr>
-                        <th>Établissement & Type</th>
-                        <th>Région / Localisation</th>
-                        <th>Contact Sur Place</th>
-                        <th>Téléphone</th>
-                        <th>Email & Site Web</th>
-                        <th>Statut Prospection</th>
-                        <th>Notes</th>
+                        <th style="width: 22%;">Établissement & Type</th>
+                        <th style="width: 15%;">Région / Ville</th>
+                        <th style="width: 15%;">Contact Sur Place</th>
+                        <th style="width: 14%;">Téléphone & Mail</th>
+                        <th style="width: 14%;">Statut Prospection</th>
+                        <th style="width: 20%;">Champ Note Persistant</th>
                     </tr>
                 </thead>
                 <tbody id="tableBody">
@@ -317,6 +338,8 @@
         </div>
 
     </div>
+
+    <div id="toast">💾 Note enregistrée en mémoire !</div>
 
     <!-- JavaScript Application Data & Interactivity -->
     <script>
@@ -333,7 +356,7 @@
                 email: "reservations@durantie.com",
                 web: "https://www.la-toscane-occitane.com/hebergement-groupe/domaine-de-la-durantie/",
                 status: "a_contacter",
-                notes: "Domaine de charme d'exception pour groupes."
+                defaultNotes: "Domaine de prestige pour groupes. Proposer audit UX/IX parcours hébergement."
             },
             {
                 id: "2",
@@ -347,7 +370,7 @@
                 email: "contact@chateaudetauzies.com",
                 web: "https://www.la-toscane-occitane.com/location/chateau-tauzies/",
                 status: "a_contacter",
-                notes: "Vignoble et hébergements de prestige."
+                defaultNotes: "Vignoble et hébergements de prestige. Cible séminaires d'entreprise."
             },
             {
                 id: "3",
@@ -361,7 +384,7 @@
                 email: "baptistempage@gmail.com",
                 web: "https://www.la-toscane-occitane.com/chambre-hote/moulin-de-trusse/",
                 status: "a_contacter",
-                notes: "Moulin restauré avec charme au bord de l'eau."
+                defaultNotes: "Moulin restauré au bord de l'eau. Prise de contact directe Baptiste."
             },
             {
                 id: "4",
@@ -375,7 +398,7 @@
                 email: "reservation@gites-tarn.com",
                 web: "https://www.la-toscane-occitane.com/location/la-maison-de-clement/",
                 status: "a_contacter",
-                notes: "Gîte pittoresque."
+                defaultNotes: "Gîte de charme pittoresque."
             },
             {
                 id: "5",
@@ -389,7 +412,7 @@
                 email: "reservation@gites-tarn.com",
                 web: "https://www.la-toscane-occitane.com/location/la-maison-de-romain/",
                 status: "a_contacter",
-                notes: "Maison de village haut de gamme."
+                defaultNotes: "Maison de village haut de gamme."
             },
             {
                 id: "6",
@@ -403,7 +426,7 @@
                 email: "reservation@gites-tarn.com",
                 web: "https://www.la-toscane-occitane.com/location/ma-vie-la-au-bord-de-leau/",
                 status: "a_contacter",
-                notes: "Gîte en bord de rivière."
+                defaultNotes: "Cadre naturel rivière."
             },
             {
                 id: "7",
@@ -417,7 +440,7 @@
                 email: "hoteldelga@gmail.com",
                 web: "https://www.la-toscane-occitane.com/chambre-hote/hotel-particulier-delga/",
                 status: "a_contacter",
-                notes: "Hôtel particulier historique au centre-ville."
+                defaultNotes: "Demeure historique centre-ville. Étoiles & avis très positifs."
             },
             {
                 id: "8",
@@ -431,7 +454,7 @@
                 email: "reception@chateaulecusse.fr",
                 web: "https://www.la-toscane-occitane.com/hotel/hotel-la-grande-roche/",
                 status: "a_contacter",
-                notes: "Domaine hôtelier de caractère."
+                defaultNotes: "Domaine hôtelier de caractère."
             },
             {
                 id: "9",
@@ -445,7 +468,7 @@
                 email: "salettes@chateaudesalettes.com",
                 web: "https://www.la-toscane-occitane.com/hotel/hotel-du-chateau-de-salettes/",
                 status: "a_contacter",
-                notes: "Château 4* luxe & gastronomie."
+                defaultNotes: "Château 4* luxe & restaurant gastronomique au cœur des vignes."
             },
             {
                 id: "10",
@@ -459,7 +482,7 @@
                 email: "contact@location-sete.site",
                 web: "https://location-sete.site",
                 status: "a_contacter",
-                notes: "Contact direct : Gisène. Appartement bord de mer."
+                defaultNotes: "Contact direct : Gisène. Appartement vue mer à Sète."
             },
             {
                 id: "11",
@@ -473,13 +496,31 @@
                 email: "contact@terrassedumontblanc.com",
                 web: "https://www.terrassedumontblanc.com",
                 status: "a_contacter",
-                notes: "Contact sur place : David. Chalet d'exception & séminaires."
+                defaultNotes: "Contact sur place : David. Chalet d'exception & mariages / séminaires."
             }
         ];
 
         let selectedRegion = 'all';
         let selectedStatus = 'all';
         let currentView = 'grid';
+
+        // Load saved state from LocalStorage
+        function loadSavedState() {
+            venuesData.forEach(v => {
+                const savedStatus = localStorage.getItem('status_' + v.id);
+                if (savedStatus) v.status = savedStatus;
+
+                const savedNote = localStorage.getItem('note_' + v.id);
+                if (savedNote !== null) v.notes = savedNote;
+                else v.notes = v.defaultNotes;
+            });
+        }
+
+        function showToast() {
+            const t = document.getElementById('toast');
+            t.classList.add('show');
+            setTimeout(() => t.classList.remove('show'), 2000);
+        }
 
         function renderVenues() {
             const query = document.getElementById('searchInput').value.toLowerCase();
@@ -495,7 +536,8 @@
                 const matchSearch = v.name.toLowerCase().includes(query) || 
                                     v.loc.toLowerCase().includes(query) || 
                                     v.contact.toLowerCase().includes(query) ||
-                                    v.type.toLowerCase().includes(query);
+                                    v.type.toLowerCase().includes(query) ||
+                                    v.notes.toLowerCase().includes(query);
                 return matchRegion && matchStatus && matchSearch;
             });
 
@@ -540,7 +582,14 @@
                             <option value="rdv_fixe" ${v.status === 'rdv_fixe' ? 'selected' : ''}>🟡 RDV Fixé</option>
                             <option value="gagne" ${v.status === 'gagne' ? 'selected' : ''}>🟢 Gagné / Contrat Signé</option>
                         </select>
-                        <textarea class="notes-box" rows="2" placeholder="Saisir des notes..." onchange="updateNotes('${v.id}', this.value)">${v.notes}</textarea>
+
+                        <div class="notes-section">
+                            <div class="notes-header">
+                                <span><i class="fa-solid fa-pen-to-square"></i> Champ Note</span>
+                                <span style="font-size: 0.7rem; color: var(--accent-green);"><i class="fa-solid fa-floppy-disk"></i> Auto-Save</span>
+                            </div>
+                            <textarea class="notes-box" placeholder="Saisir des notes stratégiques..." oninput="updateNotes('${v.id}', this.value)">${v.notes}</textarea>
+                        </div>
                     </div>
                 `;
                 gridContainer.appendChild(card);
@@ -551,10 +600,9 @@
                     <td><b>${v.name}</b><br/><font color='#64748B' size='2'>${v.type}</font></td>
                     <td>${v.regionLabel}<br/><font color='#94A3B8' size='2'>${v.loc}</font></td>
                     <td><b style="color: var(--purple-light);">${v.contact}</b></td>
-                    <td>${v.phones.map(p => `<a href="tel:${p.replace(/\s+/g, '')}" class="btn-call">📞 ${p}</a>`).join('<br/>')}</td>
                     <td>
-                        <a href="mailto:${v.email}" class="btn-mail">${v.email}</a><br/>
-                        <a href="${v.web}" target="_blank" style="color: var(--gold-accent); font-size: 0.78rem;">Site web ↗</a>
+                        ${v.phones.map(p => `<a href="tel:${p.replace(/\s+/g, '')}" class="btn-call">📞 ${p}</a>`).join('<br/>')}<br/>
+                        <a href="mailto:${v.email}" class="btn-mail" style="display:inline-block; margin-top:4px;">${v.email}</a>
                     </td>
                     <td>
                         <select class="status-select-card" style="margin-bottom:0;" onchange="updateStatus('${v.id}', this.value)">
@@ -564,7 +612,9 @@
                             <option value="gagne" ${v.status === 'gagne' ? 'selected' : ''}>🟢 Gagné</option>
                         </select>
                     </td>
-                    <td><input type="text" class="notes-box" style="padding:6px;" value="${v.notes}" onchange="updateNotes('${v.id}', this.value)"></td>
+                    <td>
+                        <textarea class="notes-box" style="min-height:50px; font-size:0.8rem;" placeholder="Saisir une note..." oninput="updateNotes('${v.id}', this.value)">${v.notes}</textarea>
+                    </td>
                 `;
                 tableBody.appendChild(row);
             });
@@ -594,13 +644,20 @@
 
         function updateStatus(id, val) {
             const v = venuesData.find(x => x.id === id);
-            if (v) v.status = val;
+            if (v) {
+                v.status = val;
+                localStorage.setItem('status_' + id, val);
+                showToast();
+            }
             updateKpiCounts();
         }
 
         function updateNotes(id, val) {
             const v = venuesData.find(x => x.id === id);
-            if (v) v.notes = val;
+            if (v) {
+                v.notes = val;
+                localStorage.setItem('note_' + id, val);
+            }
         }
 
         function switchView(mode) {
@@ -612,6 +669,7 @@
         }
 
         window.addEventListener('DOMContentLoaded', () => {
+            loadSavedState();
             renderVenues();
         });
     </script>
