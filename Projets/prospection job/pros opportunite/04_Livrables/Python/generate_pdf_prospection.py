@@ -3,7 +3,7 @@ import os
 import json
 from reportlab.lib.pagesizes import A4, landscape
 from reportlab.lib import colors
-from reportlab.platypus import SimpleDocTemplate, Paragraph, Spacer, Table, TableStyle, PageBreak, KeepTogether
+from reportlab.platypus import SimpleDocTemplate, Paragraph, Spacer, Table, TableStyle
 from reportlab.lib.styles import getSampleStyleSheet, ParagraphStyle
 from reportlab.lib.units import cm
 
@@ -13,135 +13,120 @@ def generate_pdf():
     
     os.makedirs(os.path.dirname(pdf_path), exist_ok=True)
 
-    # Document Setup - Landscape A4 for wide table fit
     doc = SimpleDocTemplate(
         pdf_path,
         pagesize=landscape(A4),
-        rightMargin=1.2*cm,
-        leftMargin=1.2*cm,
-        topMargin=1.2*cm,
-        bottomMargin=1.2*cm
+        rightMargin=1.0*cm,
+        leftMargin=1.0*cm,
+        topMargin=1.0*cm,
+        bottomMargin=1.0*cm
     )
 
     story = []
     styles = getSampleStyleSheet()
 
-    # Custom Color Palette (Luxury Dark & Emerald Gold)
-    COLOR_PRIMARY = colors.HexColor("#0C0A10")
-    COLOR_PURPLE = colors.HexColor("#6B21A8")
-    COLOR_GOLD = colors.HexColor("#CA8A04")
     COLOR_BG_HEADER = colors.HexColor("#1E1B2E")
+    COLOR_PURPLE = colors.HexColor("#6B21A8")
     COLOR_ALT_ROW = colors.HexColor("#F8FAFC")
-    COLOR_BORDER = colors.HexColor("#E2E8F0")
+    COLOR_BORDER = colors.HexColor("#CBD5E1")
 
-    # Typography Styles
     title_style = ParagraphStyle(
         'DocTitle',
         parent=styles['Heading1'],
         fontName='Helvetica-Bold',
-        fontSize=18,
-        leading=22,
-        textColor=colors.white,
-        spaceAfter=4
+        fontSize=16,
+        leading=20,
+        textColor=colors.white
     )
 
     subtitle_style = ParagraphStyle(
         'DocSubtitle',
         parent=styles['Normal'],
         fontName='Helvetica',
-        fontSize=10,
-        leading=13,
+        fontSize=9,
+        leading=12,
         textColor=colors.HexColor("#CBD5E1")
     )
 
     cell_name = ParagraphStyle(
         'CellName',
         fontName='Helvetica-Bold',
-        fontSize=9,
-        leading=11,
+        fontSize=8.5,
+        leading=10.5,
         textColor=colors.HexColor("#0F172A")
-    )
-
-    cell_sub = ParagraphStyle(
-        'CellSub',
-        fontName='Helvetica-Oblique',
-        fontSize=8,
-        leading=10,
-        textColor=colors.HexColor("#64748B")
     )
 
     cell_phone = ParagraphStyle(
         'CellPhone',
         fontName='Helvetica-Bold',
-        fontSize=9,
-        leading=11,
+        fontSize=8.5,
+        leading=10.5,
         textColor=colors.HexColor("#2563EB")
     )
 
     cell_email = ParagraphStyle(
         'CellEmail',
         fontName='Helvetica',
-        fontSize=8.5,
-        leading=10.5,
+        fontSize=8,
+        leading=10,
         textColor=colors.HexColor("#0F172A")
     )
 
     cell_status = ParagraphStyle(
         'CellStatus',
         fontName='Helvetica-Bold',
-        fontSize=8,
-        leading=10,
-        alignment=1, # Center
+        fontSize=7.5,
+        leading=9.5,
+        alignment=1,
         textColor=colors.HexColor("#CA8A04")
     )
 
     cell_notes = ParagraphStyle(
         'CellNotes',
         fontName='Helvetica',
-        fontSize=8,
-        leading=10,
-        textColor=colors.HexColor("#94A3B8")
+        fontSize=7.5,
+        leading=9.5,
+        textColor=colors.HexColor("#475569")
     )
 
     header_cell = ParagraphStyle(
         'HeaderCell',
         fontName='Helvetica-Bold',
-        fontSize=9,
-        leading=11,
+        fontSize=8.5,
+        leading=10.5,
         textColor=colors.white
     )
 
     # 1. Header Banner
     header_data = [
         [
-            Paragraph("<b>📊 MATRICE DE PROSPECTION — TOSCANE OCCITANE</b>", title_style),
-            Paragraph("<b>Julien FLORENCE</b><br/>Prospection Direction & Opportunités", ParagraphStyle('RightH', parent=subtitle_style, alignment=2))
+            Paragraph("<b>📊 DASHBOARD & MATRICE DE PROSPECTION HÉBERGEMENT & PRESTIGE</b>", title_style),
+            Paragraph("<b>Julien FLORENCE</b><br/>Prospection Direction", ParagraphStyle('RightH', parent=subtitle_style, alignment=2))
         ],
         [
-            Paragraph("Établissements & Hébergements de Prestige (Gaillac, Castelnau-de-Montmiral, Cahuzac-sur-Vère)", subtitle_style),
-            Paragraph("Date: 10/08/2026", ParagraphStyle('RightH2', parent=subtitle_style, alignment=2))
+            Paragraph("11 Établissements Cibles (Toscane Occitane, Sète, Haute-Savoie Cordon)", subtitle_style),
+            Paragraph("Mise à jour: 10/08/2026", ParagraphStyle('RightH2', parent=subtitle_style, alignment=2))
         ]
     ]
 
-    header_table = Table(header_data, colWidths=[20*cm, 7.3*cm])
+    header_table = Table(header_data, colWidths=[20.5*cm, 7.2*cm])
     header_table.setStyle(TableStyle([
         ('BACKGROUND', (0,0), (-1,-1), COLOR_BG_HEADER),
-        ('PADDING', (0,0), (-1,-1), 10),
+        ('PADDING', (0,0), (-1,-1), 8),
         ('VALIGN', (0,0), (-1,-1), 'MIDDLE'),
-        ('BOTTOMPADDING', (0,1), (-1,1), 10),
     ]))
 
     story.append(header_table)
-    story.append(Spacer(1, 0.4*cm))
+    story.append(Spacer(1, 0.3*cm))
 
-    # 2. Main Prospection Table Data
+    # 2. Table Data (11 Establishments)
     data = [
         [
             Paragraph("Établissement & Type", header_cell),
-            Paragraph("Téléphone", header_cell),
-            Paragraph("Email Contact", header_cell),
+            Paragraph("Téléphone Contact", header_cell),
+            Paragraph("Email & Web", header_cell),
             Paragraph("Statut Prospection", header_cell),
-            Paragraph("Espace Commentaires & Prise de Notes", header_cell)
+            Paragraph("Contact Sur Place & Notes", header_cell)
         ]
     ]
 
@@ -149,29 +134,29 @@ def generate_pdf():
         {
             "name": "Domaine de la Durantie",
             "type": "Hébergement Groupe & Prestige",
-            "loc": "Castelnau-de-Montmiral",
+            "loc": "Castelnau-de-Montmiral (Tarn)",
             "phone": "06 43 02 79 64\n05 63 33 21 00",
-            "email": "reservations@durantie.com",
-            "status": "[  ] À contacter\n[  ] Premier appel\n[  ] RDV fixé",
-            "notes": "• Responsable / Gérant :\n• Notes :"
+            "email": "reservations@durantie.com\nla-toscane-occitane.com",
+            "status": "[  ] À contacter\n[  ] 1er Appel\n[  ] RDV Fixé",
+            "notes": "• Contact : Gérance Durantie\n• Domaine luxe groupe"
         },
         {
             "name": "Château Tauziès",
             "type": "Château Viticole & Séminaires",
-            "loc": "Gaillac",
+            "loc": "Gaillac (Tarn)",
             "phone": "05 63 41 26 80",
             "email": "contact@chateaudetauzies.com",
-            "status": "[  ] À contacter\n[  ] Premier appel\n[  ] RDV fixé",
-            "notes": "• Responsable / Gérant :\n• Notes :"
+            "status": "[  ] À contacter\n[  ] 1er Appel\n[  ] RDV Fixé",
+            "notes": "• Contact : Direction Tauziès\n• Séminaires & gîtes"
         },
         {
             "name": "Moulin de Trusse",
             "type": "Chambre d'Hôtes & Moulin",
-            "loc": "Gaillac",
+            "loc": "Gaillac (Tarn)",
             "phone": "06 37 93 99 42",
             "email": "baptistempage@gmail.com",
-            "status": "[  ] À contacter\n[  ] Premier appel\n[  ] RDV fixé",
-            "notes": "• Responsable / Gérant :\n• Notes :"
+            "status": "[  ] À contacter\n[  ] 1er Appel\n[  ] RDV Fixé",
+            "notes": "• Contact : Baptiste M.\n• Moulin de charme"
         },
         {
             "name": "La Maison de Clément",
@@ -179,8 +164,8 @@ def generate_pdf():
             "loc": "Castelnau-de-Montmiral",
             "phone": "05 63 48 83 01",
             "email": "reservation@gites-tarn.com",
-            "status": "[  ] À contacter\n[  ] Premier appel\n[  ] RDV fixé",
-            "notes": "• Propriétaire en direct :\n• Notes :"
+            "status": "[  ] À contacter\n[  ] 1er Appel\n[  ] RDV Fixé",
+            "notes": "• Contact : Gîtes de France Tarn\n• Hébergement pittoresque"
         },
         {
             "name": "La Maison de Romain",
@@ -188,26 +173,26 @@ def generate_pdf():
             "loc": "Puycelsi / Castelnau",
             "phone": "05 63 48 83 01",
             "email": "reservation@gites-tarn.com",
-            "status": "[  ] À contacter\n[  ] Premier appel\n[  ] RDV fixé",
-            "notes": "• Propriétaire en direct :\n• Notes :"
+            "status": "[  ] À contacter\n[  ] 1er Appel\n[  ] RDV Fixé",
+            "notes": "• Contact : Gîtes de France Tarn\n• Maison de village d'exception"
         },
         {
             "name": "Ma vie là ! Au bord de l'eau",
-            "type": "Gîte de Charme au Bord de l'Eau",
+            "type": "Gîte au Bord de l'Eau",
             "loc": "Lisle-sur-Tarn / Gaillac",
             "phone": "05 63 48 83 01",
             "email": "reservation@gites-tarn.com",
-            "status": "[  ] À contacter\n[  ] Premier appel\n[  ] RDV fixé",
-            "notes": "• Propriétaire en direct :\n• Notes :"
+            "status": "[  ] À contacter\n[  ] 1er Appel\n[  ] RDV Fixé",
+            "notes": "• Contact : Gîtes de France Tarn\n• Cadre naturel bord de rivière"
         },
         {
             "name": "Hôtel Particulier Delga",
             "type": "Hôtel Particulier & Maison d'Hôtes",
-            "loc": "Gaillac",
+            "loc": "Gaillac (Tarn)",
             "phone": "06 36 80 01 01",
             "email": "hoteldelga@gmail.com",
-            "status": "[  ] À contacter\n[  ] Premier appel\n[  ] RDV fixé",
-            "notes": "• Direction / Propriétaire :\n• Notes :"
+            "status": "[  ] À contacter\n[  ] 1er Appel\n[  ] RDV Fixé",
+            "notes": "• Contact : Propriétaires Delga\n• Demeure historique centre"
         },
         {
             "name": "Hôtel La Grande Roche",
@@ -215,8 +200,8 @@ def generate_pdf():
             "loc": "Gaillac / Messac",
             "phone": "06 79 82 80 87",
             "email": "reception@chateaulecusse.fr",
-            "status": "[  ] À contacter\n[  ] Premier appel\n[  ] RDV fixé",
-            "notes": "• Direction Hôtel :\n• Notes :"
+            "status": "[  ] À contacter\n[  ] 1er Appel\n[  ] RDV Fixé",
+            "notes": "• Contact : Réception Lécusse\n• Domaine hôtelier"
         },
         {
             "name": "Hôtel du Château de Salettes",
@@ -224,34 +209,50 @@ def generate_pdf():
             "loc": "Cahuzac-sur-Vère",
             "phone": "05 63 33 60 60",
             "email": "salettes@chateaudesalettes.com",
-            "status": "[  ] À contacter\n[  ] Premier appel\n[  ] RDV fixé",
-            "notes": "• Direction Général / Restauration :\n• Notes :"
+            "status": "[  ] À contacter\n[  ] 1er Appel\n[  ] RDV Fixé",
+            "notes": "• Contact : Direction Générale\n• Château 4* vignoble"
+        },
+        {
+            "name": "Appartement L'Étoile de Mer",
+            "type": "Location de Vacances Bord de Mer",
+            "loc": "Sète (Hérault 34)",
+            "phone": "06 15 41 84 20",
+            "email": "contact@location-sete.site\nlocation-sete.site",
+            "status": "[  ] À contacter\n[  ] 1er Appel\n[  ] RDV Fixé",
+            "notes": "<b>• Contact Direct sur place : GISÈNE</b>\n• Appartement Sète plage"
+        },
+        {
+            "name": "La Terrasse du Mont-Blanc",
+            "type": "Chalet Prestige & Événementiel",
+            "loc": "Cordon (Haute-Savoie 74)",
+            "phone": "04 65 84 56 02 (Fixe)\n06 35 86 92 97 (Mobile)",
+            "email": "contact@terrassedumontblanc.com\nterrassedumontblanc.com",
+            "status": "[  ] À contacter\n[  ] 1er Appel\n[  ] RDV Fixé",
+            "notes": "<b>• Contact Direct sur place : DAVID</b>\n• Chalet d'exception & séminaires"
         }
     ]
 
     for v in venues:
-        name_cell = Paragraph(f"<b>{v['name']}</b><br/><font color='#64748B'>{v['type']} ({v['loc']})</font>", cell_name)
+        name_cell = Paragraph(f"<b>{v['name']}</b><br/><font color='#64748B'>{v['type']}<br/>{v['loc']}</font>", cell_name)
         phone_cell = Paragraph(v['phone'].replace('\n', '<br/>'), cell_phone)
-        email_cell = Paragraph(f"<a href='mailto:{v['email']}'>{v['email']}</a>", cell_email)
+        email_cell = Paragraph(v['email'].replace('\n', '<br/>'), cell_email)
         status_cell = Paragraph(v['status'].replace('\n', '<br/>'), cell_status)
         notes_cell = Paragraph(v['notes'].replace('\n', '<br/>'), cell_notes)
 
         data.append([name_cell, phone_cell, email_cell, status_cell, notes_cell])
 
-    # Table Column Widths (Total ~27.3 cm to fit Landscape A4)
-    col_widths = [6.5*cm, 3.8*cm, 5.5*cm, 3.5*cm, 8.0*cm]
+    col_widths = [6.2*cm, 3.8*cm, 5.5*cm, 3.5*cm, 8.7*cm]
     
     t = Table(data, colWidths=col_widths, repeatRows=1)
     
     t_style = [
         ('BACKGROUND', (0,0), (-1,0), COLOR_PURPLE),
         ('ALIGN', (0,0), (-1,0), 'LEFT'),
-        ('VALIGN', (0,0), (-1,-1), 'TOP'),
+        ('VALIGN', (0,0), (-1,-1), 'MIDDLE'),
         ('GRID', (0,0), (-1,-1), 0.5, COLOR_BORDER),
-        ('PADDING', (0,0), (-1,-1), 6),
+        ('PADDING', (0,0), (-1,-1), 4),
     ]
 
-    # Alternating row colors
     for i in range(1, len(data)):
         if i % 2 == 0:
             t_style.append(('BACKGROUND', (0,i), (-1,i), COLOR_ALT_ROW))
@@ -259,13 +260,11 @@ def generate_pdf():
     t.setStyle(TableStyle(t_style))
     story.append(t)
 
-    # Build Document
     doc.build(story)
     
-    # Copy to Desktop
     import shutil
     shutil.copyfile(pdf_path, desktop_pdf)
-    print(f"✅ PDF Prospection généré avec succès : {pdf_path}")
+    print(f"✅ PDF Prospection 11 Établissements généré avec succès : {pdf_path}")
     print(f"✅ Copie Desktop disponible : {desktop_pdf}")
 
 if __name__ == "__main__":

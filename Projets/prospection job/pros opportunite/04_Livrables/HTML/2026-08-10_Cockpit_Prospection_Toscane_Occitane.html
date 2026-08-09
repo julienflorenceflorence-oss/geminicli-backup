@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Matrice Prospection Toscane Occitane | Julien Florence</title>
+    <title>Dashboard CRM Prospection Hébergement & Prestige | Julien Florence</title>
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -13,7 +13,8 @@
     <style>
         :root {
             --bg-body: #0C0A10;
-            --bg-card: rgba(22, 16, 32, 0.85);
+            --bg-card: rgba(22, 16, 32, 0.88);
+            --bg-card-hover: rgba(35, 26, 50, 0.98);
             --purple-main: #6B21A8;
             --purple-light: #A855F7;
             --purple-glow: rgba(168, 85, 247, 0.25);
@@ -22,9 +23,10 @@
             --accent-blue: #3B82F6;
             --text-primary: #F8FAFC;
             --text-secondary: #94A3B8;
-            --border-purple: rgba(168, 85, 247, 0.2);
+            --border-purple: rgba(168, 85, 247, 0.25);
             --border-subtle: rgba(255, 255, 255, 0.08);
             --radius-main: 16px;
+            --transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
         }
 
         * { box-sizing: border-box; margin: 0; padding: 0; }
@@ -34,17 +36,20 @@
             background-color: var(--bg-body);
             color: var(--text-primary);
             min-height: 100vh;
+            background-image: 
+                radial-gradient(circle at 15% 15%, rgba(107, 33, 168, 0.2) 0%, transparent 45%),
+                radial-gradient(circle at 85% 85%, rgba(234, 179, 8, 0.12) 0%, transparent 45%);
             padding-bottom: 60px;
         }
 
+        /* Top Header Navigation */
         header {
-            background: rgba(12, 10, 16, 0.9);
+            background: rgba(12, 10, 16, 0.92);
             backdrop-filter: blur(16px);
             border-bottom: 1px solid var(--border-purple);
-            padding: 24px 40px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
+            padding: 20px 40px;
+            position: sticky; top: 0; z-index: 100;
+            display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 16px;
         }
 
         .header-brand { display: flex; align-items: center; gap: 16px; }
@@ -57,257 +62,558 @@
         }
 
         .header-title h1 {
-            font-family: 'Outfit', sans-serif; font-size: 1.5rem; font-weight: 700;
+            font-family: 'Outfit', sans-serif; font-size: 1.45rem; font-weight: 700;
             background: linear-gradient(135deg, #FFFFFF 0%, #CBD5E1 100%);
             -webkit-background-clip: text; -webkit-text-fill-color: transparent;
         }
 
-        .container { max-width: 1400px; margin: 30px auto; padding: 0 24px; }
+        .header-title p { color: var(--text-secondary); font-size: 0.85rem; margin-top: 2px; }
 
-        .card-table {
-            background: var(--bg-card);
-            border: 1px solid var(--border-purple);
-            border-radius: var(--radius-main);
-            padding: 24px;
-            overflow-x: auto;
-        }
-
-        table {
-            width: 100%; border-collapse: collapse; margin-top: 10px;
-        }
-
-        th {
-            background: rgba(107, 33, 168, 0.3);
-            color: #FFF; text-align: left; padding: 14px;
-            font-family: 'Outfit', sans-serif; font-size: 0.9rem;
-            border-bottom: 2px solid var(--border-purple);
-        }
-
-        td {
-            padding: 14px; border-bottom: 1px solid var(--border-subtle);
-            font-size: 0.88rem; vertical-align: top;
-        }
-
-        tr:hover { background: rgba(168, 85, 247, 0.05); }
-
-        .venue-name { font-weight: 700; color: #FFF; font-size: 0.95rem; }
-        .venue-loc { font-size: 0.78rem; color: var(--text-secondary); margin-top: 2px; }
-
-        .phone-badge {
-            display: inline-block; background: rgba(59, 130, 246, 0.12);
-            color: var(--accent-blue); padding: 4px 10px; border-radius: 6px;
-            font-weight: 600; text-decoration: none; margin-bottom: 4px;
-        }
-
-        .email-link { color: var(--purple-light); text-decoration: none; word-break: break-all; }
-        .email-link:hover { text-decoration: underline; }
-
-        .status-select {
-            background: rgba(12, 10, 16, 0.8); color: var(--gold-accent);
-            border: 1px solid var(--border-purple); padding: 6px 10px;
-            border-radius: 6px; font-family: inherit; font-size: 0.8rem; outline: none;
-        }
-
-        .notes-input {
-            width: 100%; background: rgba(12, 10, 16, 0.6); border: 1px solid var(--border-subtle);
-            border-radius: 6px; padding: 8px; color: var(--text-primary); font-family: inherit; font-size: 0.8rem;
-        }
+        .header-actions { display: flex; gap: 12px; align-items: center; }
 
         .btn-pdf {
             background: linear-gradient(135deg, #10B981 0%, #059669 100%);
-            color: #FFF; border: none; padding: 10px 18px; border-radius: 8px;
+            color: #FFF; border: none; padding: 10px 18px; border-radius: 10px;
             font-size: 0.85rem; font-weight: 700; cursor: pointer; text-decoration: none;
-            display: inline-flex; align-items: center; gap: 8px;
+            display: inline-flex; align-items: center; gap: 8px; transition: var(--transition);
         }
+
+        .btn-pdf:hover { transform: translateY(-2px); box-shadow: 0 6px 20px rgba(16, 185, 129, 0.3); }
+
+        /* Container Layout */
+        .container { max-width: 1440px; margin: 24px auto; padding: 0 24px; }
+
+        /* KPI Metrics Grid */
+        .kpi-grid {
+            display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 16px; margin-bottom: 24px;
+        }
+
+        .kpi-card {
+            background: var(--bg-card); border: 1px solid var(--border-purple);
+            border-radius: var(--radius-main); padding: 18px 22px; cursor: pointer;
+            transition: var(--transition); position: relative; overflow: hidden;
+        }
+
+        .kpi-card:hover, .kpi-card.active {
+            transform: translateY(-3px); border-color: var(--purple-light);
+            box-shadow: 0 8px 25px rgba(168, 85, 247, 0.18);
+        }
+
+        .kpi-label { color: var(--text-secondary); font-size: 0.8rem; font-weight: 600; text-transform: uppercase; }
+        .kpi-val { font-family: 'Outfit', sans-serif; font-size: 2rem; font-weight: 800; color: #FFF; margin: 4px 0; }
+        .kpi-sub { font-size: 0.78rem; color: var(--gold-accent); }
+
+        /* Search & Filter Toolbar */
+        .toolbar {
+            background: var(--bg-card); border: 1px solid var(--border-subtle);
+            border-radius: var(--radius-main); padding: 16px 22px; margin-bottom: 24px;
+            display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 16px;
+        }
+
+        .search-box {
+            display: flex; align-items: center; background: rgba(12, 10, 16, 0.75);
+            border: 1px solid var(--border-purple); border-radius: 10px; padding: 8px 14px; width: 320px;
+        }
+
+        .search-box i { color: var(--purple-light); margin-right: 10px; }
+        .search-box input {
+            background: transparent; border: none; outline: none; color: #FFF;
+            font-family: inherit; font-size: 0.9rem; width: 100%;
+        }
+
+        .filter-tags { display: flex; gap: 8px; flex-wrap: wrap; }
+
+        .tag-btn {
+            background: rgba(255, 255, 255, 0.05); border: 1px solid var(--border-subtle);
+            color: var(--text-secondary); padding: 8px 14px; border-radius: 8px;
+            font-size: 0.82rem; font-weight: 600; cursor: pointer; transition: var(--transition);
+        }
+
+        .tag-btn:hover, .tag-btn.active {
+            background: var(--purple-main); color: #FFF; border-color: var(--purple-light);
+        }
+
+        .view-toggle { display: flex; gap: 4px; background: rgba(0,0,0,0.4); padding: 4px; border-radius: 8px; }
+        .toggle-btn {
+            background: transparent; border: none; color: var(--text-secondary);
+            padding: 6px 12px; border-radius: 6px; cursor: pointer; font-size: 0.9rem;
+        }
+        .toggle-btn.active { background: var(--purple-light); color: #FFF; }
+
+        /* Grid View Layout */
+        .cards-grid {
+            display: grid; grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
+            gap: 20px;
+        }
+
+        .venue-card {
+            background: var(--bg-card); border: 1px solid var(--border-subtle);
+            border-radius: var(--radius-main); padding: 22px; transition: var(--transition);
+            display: flex; flex-direction: column; justify-content: space-between; position: relative;
+        }
+
+        .venue-card:hover {
+            transform: translateY(-4px); border-color: var(--purple-light);
+            box-shadow: 0 12px 30px rgba(168, 85, 247, 0.15);
+        }
+
+        .card-top { margin-bottom: 14px; }
+        .badge-region {
+            font-size: 0.72rem; font-weight: 700; text-transform: uppercase;
+            padding: 4px 10px; border-radius: 20px; background: rgba(234, 179, 8, 0.12);
+            color: var(--gold-accent); border: 1px solid rgba(234, 179, 8, 0.25);
+            display: inline-block; margin-bottom: 10px;
+        }
+
+        .card-title { font-family: 'Outfit', sans-serif; font-size: 1.15rem; font-weight: 700; color: #FFF; }
+        .card-sub { font-size: 0.82rem; color: var(--text-secondary); margin-top: 3px; }
+
+        .contact-person {
+            background: rgba(168, 85, 247, 0.1); border-left: 3px solid var(--purple-light);
+            padding: 8px 12px; border-radius: 0 8px 8px 0; margin: 12px 0;
+            font-size: 0.85rem; font-weight: 700; color: var(--text-primary);
+            display: flex; align-items: center; gap: 8px;
+        }
+
+        .card-info { margin-bottom: 16px; font-size: 0.85rem; }
+        .info-row { display: flex; align-items: center; gap: 10px; margin-bottom: 8px; color: var(--text-primary); }
+        .info-row i { color: var(--purple-light); width: 16px; text-align: center; }
+
+        .btn-call {
+            background: rgba(59, 130, 246, 0.12); border: 1px solid rgba(59, 130, 246, 0.3);
+            color: var(--accent-blue); padding: 6px 12px; border-radius: 6px;
+            text-decoration: none; font-weight: 600; font-size: 0.82rem; transition: var(--transition);
+        }
+        .btn-call:hover { background: var(--accent-blue); color: #FFF; }
+
+        .btn-mail {
+            background: rgba(168, 85, 247, 0.12); border: 1px solid rgba(168, 85, 247, 0.3);
+            color: var(--purple-light); padding: 6px 12px; border-radius: 6px;
+            text-decoration: none; font-weight: 600; font-size: 0.82rem; word-break: break-all;
+        }
+        .btn-mail:hover { background: var(--purple-light); color: #FFF; }
+
+        .status-select-card {
+            width: 100%; background: rgba(12, 10, 16, 0.9); color: var(--gold-accent);
+            border: 1px solid var(--border-purple); padding: 8px 12px; border-radius: 8px;
+            font-family: inherit; font-size: 0.82rem; font-weight: 600; outline: none; margin-bottom: 12px;
+        }
+
+        .notes-box {
+            width: 100%; background: rgba(12, 10, 16, 0.6); border: 1px solid var(--border-subtle);
+            border-radius: 8px; padding: 10px; color: var(--text-primary); font-family: inherit;
+            font-size: 0.8rem; resize: vertical; outline: none;
+        }
+
+        /* Table View Layout (Hidden by default) */
+        .table-view-container {
+            background: var(--bg-card); border: 1px solid var(--border-purple);
+            border-radius: var(--radius-main); padding: 20px; overflow-x: auto; display: none;
+        }
+
+        table { width: 100%; border-collapse: collapse; }
+        th {
+            background: rgba(107, 33, 168, 0.3); color: #FFF; text-align: left; padding: 14px;
+            font-family: 'Outfit', sans-serif; font-size: 0.9rem; border-bottom: 2px solid var(--border-purple);
+        }
+        td { padding: 14px; border-bottom: 1px solid var(--border-subtle); font-size: 0.88rem; vertical-align: middle; }
+        tr:hover { background: rgba(168, 85, 247, 0.05); }
+
     </style>
 </head>
 <body>
 
+    <!-- Header Navigation -->
     <header>
         <div class="header-brand">
-            <div class="brand-logo"><i class="fa-solid fa-hotel"></i></div>
+            <div class="brand-logo"><i class="fa-solid fa-chart-pie"></i></div>
             <div class="header-title">
-                <h1>Prospection Établissements & Hébergements | Toscane Occitane</h1>
-                <p>Julien Florence — 9 Établissements Cibles (Tarn / Gaillac / Castelnau)</p>
+                <h1>Dashboard CRM Prospection Hébergement & Prestige</h1>
+                <p>Julien FLORENCE — Matrice Opérationnelle Multi-Régions (11 Établissements)</p>
             </div>
         </div>
-        <a href="file:///Users/admin/Desktop/2026-08-10_LISTE_PROSPECTION_TOSCANE_OCCITANE.pdf" class="btn-pdf">
-            <i class="fa-solid fa-file-pdf"></i> Ouvrir la Fiche PDF
-        </a>
+        <div class="header-actions">
+            <a href="file:///Users/admin/Desktop/2026-08-10_LISTE_PROSPECTION_TOSCANE_OCCITANE.pdf" class="btn-pdf" target="_blank">
+                <i class="fa-solid fa-file-pdf"></i> Imprimer / Fiche PDF (Desktop)
+            </a>
+        </div>
     </header>
 
     <div class="container">
-        <div class="card-table">
+
+        <!-- KPI Metrics Grid -->
+        <div class="kpi-grid">
+            <div class="kpi-card active" onclick="filterByStatus('all')">
+                <div class="kpi-label">Total Cibles</div>
+                <div class="kpi-val" id="countAll">11</div>
+                <div class="kpi-sub"><i class="fa-solid fa-location-dot"></i> 3 Régions Cibles</div>
+            </div>
+            <div class="kpi-card" onclick="filterByStatus('a_contacter')">
+                <div class="kpi-label">À Contacter</div>
+                <div class="kpi-val" id="countToContact" style="color: var(--text-secondary);">11</div>
+                <div class="kpi-sub">Premier contact à initier</div>
+            </div>
+            <div class="kpi-card" onclick="filterByStatus('appel_fait')">
+                <div class="kpi-label">1er Appel Fait</div>
+                <div class="kpi-val" id="countCalled" style="color: var(--accent-blue);">0</div>
+                <div class="kpi-sub">Échanges en cours</div>
+            </div>
+            <div class="kpi-card" onclick="filterByStatus('rdv_fixe')">
+                <div class="kpi-label">RDV Fixés</div>
+                <div class="kpi-val" id="countRdv" style="color: var(--gold-accent);">0</div>
+                <div class="kpi-sub">Rendez-vous programmés</div>
+            </div>
+            <div class="kpi-card" onclick="filterByStatus('gagne')">
+                <div class="kpi-label">Gagnés / Contrats</div>
+                <div class="kpi-val" id="countWon" style="color: var(--accent-green);">0</div>
+                <div class="kpi-sub">Opportunités concrétisées</div>
+            </div>
+        </div>
+
+        <!-- Search & Filter Bar -->
+        <div class="toolbar">
+            <div class="search-box">
+                <i class="fa-solid fa-magnifying-glass"></i>
+                <input type="text" id="searchInput" placeholder="Rechercher un établissement, contact..." onkeyup="renderVenues()">
+            </div>
+
+            <div class="filter-tags">
+                <button class="tag-btn active" onclick="filterRegion('all', this)">Toutes les régions (11)</button>
+                <button class="tag-btn" onclick="filterRegion('toscane', this)">Toscane Occitane (9)</button>
+                <button class="tag-btn" onclick="filterRegion('sete', this)">Sète / Hérault (1)</button>
+                <button class="tag-btn" onclick="filterRegion('savoie', this)">Haute-Savoie / Cordon (1)</button>
+            </div>
+
+            <div class="view-toggle">
+                <button class="toggle-btn active" id="btnGrid" onclick="switchView('grid')"><i class="fa-solid fa-grip"></i> Grid</button>
+                <button class="toggle-btn" id="btnTable" onclick="switchView('table')"><i class="fa-solid fa-list"></i> Table</button>
+            </div>
+        </div>
+
+        <!-- CARDS GRID VIEW -->
+        <div class="cards-grid" id="cardsGrid">
+            <!-- Dynamic Injection via JavaScript -->
+        </div>
+
+        <!-- TABLE VIEW -->
+        <div class="table-view-container" id="tableView">
             <table>
                 <thead>
                     <tr>
                         <th>Établissement & Type</th>
-                        <th>Téléphone Contact</th>
-                        <th>Email Contact</th>
+                        <th>Région / Localisation</th>
+                        <th>Contact Sur Place</th>
+                        <th>Téléphone</th>
+                        <th>Email & Site Web</th>
                         <th>Statut Prospection</th>
-                        <th>Commentaires & Notes</th>
+                        <th>Notes</th>
                     </tr>
                 </thead>
-                <tbody>
-                    <tr>
-                        <td>
-                            <div class="venue-name">Domaine de la Durantie</div>
-                            <div class="venue-loc">Hébergement Groupe & Prestige • Castelnau-de-Montmiral</div>
-                        </td>
-                        <td>
-                            <a href="tel:0643027964" class="phone-badge">📞 06 43 02 79 64</a><br/>
-                            <a href="tel:0563332100" class="phone-badge">📞 05 63 33 21 00</a>
-                        </td>
-                        <td><a href="mailto:reservations@durantie.com" class="email-link">reservations@durantie.com</a></td>
-                        <td>
-                            <select class="status-select">
-                                <option>⚪ À contacter</option>
-                                <option>🔵 Premier appel fait</option>
-                                <option>🟡 RDV Fixé</option>
-                                <option>🟢 Gagné / Partenariat</option>
-                            </select>
-                        </td>
-                        <td><input type="text" class="notes-input" placeholder="Ajouter une note sur la Durantie..."></td>
-                    </tr>
-                    <tr>
-                        <td>
-                            <div class="venue-name">Château Tauziès</div>
-                            <div class="venue-loc">Château Viticole & Séminaires • Gaillac</div>
-                        </td>
-                        <td><a href="tel:0563412680" class="phone-badge">📞 05 63 41 26 80</a></td>
-                        <td><a href="mailto:contact@chateaudetauzies.com" class="email-link">contact@chateaudetauzies.com</a></td>
-                        <td>
-                            <select class="status-select">
-                                <option>⚪ À contacter</option>
-                                <option>🔵 Premier appel fait</option>
-                                <option>🟡 RDV Fixé</option>
-                                <option>🟢 Gagné / Partenariat</option>
-                            </select>
-                        </td>
-                        <td><input type="text" class="notes-input" placeholder="Ajouter une note sur Tauziès..."></td>
-                    </tr>
-                    <tr>
-                        <td>
-                            <div class="venue-name">Moulin de Trusse</div>
-                            <div class="venue-loc">Chambre d'Hôtes & Moulin • Gaillac</div>
-                        </td>
-                        <td><a href="tel:0637939942" class="phone-badge">📞 06 37 93 99 42</a></td>
-                        <td><a href="mailto:baptistempage@gmail.com" class="email-link">baptistempage@gmail.com</a></td>
-                        <td>
-                            <select class="status-select">
-                                <option>⚪ À contacter</option>
-                                <option>🔵 Premier appel fait</option>
-                                <option>🟡 RDV Fixé</option>
-                                <option>🟢 Gagné / Partenariat</option>
-                            </select>
-                        </td>
-                        <td><input type="text" class="notes-input" placeholder="Ajouter une note sur Moulin de Trusse..."></td>
-                    </tr>
-                    <tr>
-                        <td>
-                            <div class="venue-name">La Maison de Clément</div>
-                            <div class="venue-loc">Gîte de Charme • Castelnau-de-Montmiral</div>
-                        </td>
-                        <td><a href="tel:0563488301" class="phone-badge">📞 05 63 48 83 01</a></td>
-                        <td><a href="mailto:reservation@gites-tarn.com" class="email-link">reservation@gites-tarn.com</a></td>
-                        <td>
-                            <select class="status-select">
-                                <option>⚪ À contacter</option>
-                                <option>🔵 Premier appel fait</option>
-                                <option>🟡 RDV Fixé</option>
-                                <option>🟢 Gagné / Partenariat</option>
-                            </select>
-                        </td>
-                        <td><input type="text" class="notes-input" placeholder="Ajouter une note..."></td>
-                    </tr>
-                    <tr>
-                        <td>
-                            <div class="venue-name">La Maison de Romain</div>
-                            <div class="venue-loc">Gîte d'Exception • Puycelsi / Castelnau</div>
-                        </td>
-                        <td><a href="tel:0563488301" class="phone-badge">📞 05 63 48 83 01</a></td>
-                        <td><a href="mailto:reservation@gites-tarn.com" class="email-link">reservation@gites-tarn.com</a></td>
-                        <td>
-                            <select class="status-select">
-                                <option>⚪ À contacter</option>
-                                <option>🔵 Premier appel fait</option>
-                                <option>🟡 RDV Fixé</option>
-                                <option>🟢 Gagné / Partenariat</option>
-                            </select>
-                        </td>
-                        <td><input type="text" class="notes-input" placeholder="Ajouter une note..."></td>
-                    </tr>
-                    <tr>
-                        <td>
-                            <div class="venue-name">Ma vie là ! Au bord de l'eau</div>
-                            <div class="venue-loc">Gîte au Bord de l'Eau • Lisle-sur-Tarn / Gaillac</div>
-                        </td>
-                        <td><a href="tel:0563488301" class="phone-badge">📞 05 63 48 83 01</a></td>
-                        <td><a href="mailto:reservation@gites-tarn.com" class="email-link">reservation@gites-tarn.com</a></td>
-                        <td>
-                            <select class="status-select">
-                                <option>⚪ À contacter</option>
-                                <option>🔵 Premier appel fait</option>
-                                <option>🟡 RDV Fixé</option>
-                                <option>🟢 Gagné / Partenariat</option>
-                            </select>
-                        </td>
-                        <td><input type="text" class="notes-input" placeholder="Ajouter une note..."></td>
-                    </tr>
-                    <tr>
-                        <td>
-                            <div class="venue-name">Hôtel Particulier Delga</div>
-                            <div class="venue-loc">Hôtel Particulier & Maison d'Hôtes • Gaillac</div>
-                        </td>
-                        <td><a href="tel:0636800101" class="phone-badge">📞 06 36 80 01 01</a></td>
-                        <td><a href="mailto:hoteldelga@gmail.com" class="email-link">hoteldelga@gmail.com</a></td>
-                        <td>
-                            <select class="status-select">
-                                <option>⚪ À contacter</option>
-                                <option>🔵 Premier appel fait</option>
-                                <option>🟡 RDV Fixé</option>
-                                <option>🟢 Gagné / Partenariat</option>
-                            </select>
-                        </td>
-                        <td><input type="text" class="notes-input" placeholder="Ajouter une note sur Delga..."></td>
-                    </tr>
-                    <tr>
-                        <td>
-                            <div class="venue-name">Hôtel La Grande Roche</div>
-                            <div class="venue-loc">Hôtel & Domaine Lécusse • Gaillac / Messac</div>
-                        </td>
-                        <td><a href="tel:0679828087" class="phone-badge">📞 06 79 82 80 87</a></td>
-                        <td><a href="mailto:reception@chateaulecusse.fr" class="email-link">reception@chateaulecusse.fr</a></td>
-                        <td>
-                            <select class="status-select">
-                                <option>⚪ À contacter</option>
-                                <option>🔵 Premier appel fait</option>
-                                <option>🟡 RDV Fixé</option>
-                                <option>🟢 Gagné / Partenariat</option>
-                            </select>
-                        </td>
-                        <td><input type="text" class="notes-input" placeholder="Ajouter une note..."></td>
-                    </tr>
-                    <tr>
-                        <td>
-                            <div class="venue-name">Hôtel du Château de Salettes</div>
-                            <div class="venue-loc">Hôtel 4* & Resto Gastronomique • Cahuzac-sur-Vère</div>
-                        </td>
-                        <td><a href="tel:0563336060" class="phone-badge">📞 05 63 33 60 60</a></td>
-                        <td><a href="mailto:salettes@chateaudesalettes.com" class="email-link">salettes@chateaudesalettes.com</a></td>
-                        <td>
-                            <select class="status-select">
-                                <option>⚪ À contacter</option>
-                                <option>🔵 Premier appel fait</option>
-                                <option>🟡 RDV Fixé</option>
-                                <option>🟢 Gagné / Partenariat</option>
-                            </select>
-                        </td>
-                        <td><input type="text" class="notes-input" placeholder="Ajouter une note sur Salettes..."></td>
-                    </tr>
+                <tbody id="tableBody">
+                    <!-- Dynamic Injection via JavaScript -->
                 </tbody>
             </table>
         </div>
+
     </div>
+
+    <!-- JavaScript Application Data & Interactivity -->
+    <script>
+        const venuesData = [
+            {
+                id: "1",
+                name: "Domaine de la Durantie",
+                type: "Hébergement Groupe & Domaine de Prestige",
+                region: "toscane",
+                regionLabel: "Toscane Occitane (Tarn)",
+                loc: "Castelnau-de-Montmiral",
+                contact: "Gérance Durantie",
+                phones: ["06 43 02 79 64", "05 63 33 21 00"],
+                email: "reservations@durantie.com",
+                web: "https://www.la-toscane-occitane.com/hebergement-groupe/domaine-de-la-durantie/",
+                status: "a_contacter",
+                notes: "Domaine de charme d'exception pour groupes."
+            },
+            {
+                id: "2",
+                name: "Château Tauziès",
+                type: "Château Viticole & Séminaires",
+                region: "toscane",
+                regionLabel: "Toscane Occitane (Tarn)",
+                loc: "Gaillac",
+                contact: "Direction Tauziès",
+                phones: ["05 63 41 26 80"],
+                email: "contact@chateaudetauzies.com",
+                web: "https://www.la-toscane-occitane.com/location/chateau-tauzies/",
+                status: "a_contacter",
+                notes: "Vignoble et hébergements de prestige."
+            },
+            {
+                id: "3",
+                name: "Moulin de Trusse",
+                type: "Chambre d'Hôtes & Moulin",
+                region: "toscane",
+                regionLabel: "Toscane Occitane (Tarn)",
+                loc: "Gaillac",
+                contact: "Baptiste M.",
+                phones: ["06 37 93 99 42"],
+                email: "baptistempage@gmail.com",
+                web: "https://www.la-toscane-occitane.com/chambre-hote/moulin-de-trusse/",
+                status: "a_contacter",
+                notes: "Moulin restauré avec charme au bord de l'eau."
+            },
+            {
+                id: "4",
+                name: "La Maison de Clément",
+                type: "Gîte de Charme",
+                region: "toscane",
+                regionLabel: "Toscane Occitane (Tarn)",
+                loc: "Castelnau-de-Montmiral",
+                contact: "Gîtes de France Tarn",
+                phones: ["05 63 48 83 01"],
+                email: "reservation@gites-tarn.com",
+                web: "https://www.la-toscane-occitane.com/location/la-maison-de-clement/",
+                status: "a_contacter",
+                notes: "Gîte pittoresque."
+            },
+            {
+                id: "5",
+                name: "La Maison de Romain",
+                type: "Gîte d'Exception",
+                region: "toscane",
+                regionLabel: "Toscane Occitane (Tarn)",
+                loc: "Puycelsi / Castelnau",
+                contact: "Gîtes de France Tarn",
+                phones: ["05 63 48 83 01"],
+                email: "reservation@gites-tarn.com",
+                web: "https://www.la-toscane-occitane.com/location/la-maison-de-romain/",
+                status: "a_contacter",
+                notes: "Maison de village haut de gamme."
+            },
+            {
+                id: "6",
+                name: "Ma vie là ! Au bord de l'eau",
+                type: "Gîte de Charme au Bord de l'Eau",
+                region: "toscane",
+                regionLabel: "Toscane Occitane (Tarn)",
+                loc: "Lisle-sur-Tarn / Gaillac",
+                contact: "Gîtes de France Tarn",
+                phones: ["05 63 48 83 01"],
+                email: "reservation@gites-tarn.com",
+                web: "https://www.la-toscane-occitane.com/location/ma-vie-la-au-bord-de-leau/",
+                status: "a_contacter",
+                notes: "Gîte en bord de rivière."
+            },
+            {
+                id: "7",
+                name: "Hôtel Particulier Delga",
+                type: "Hôtel Particulier & Maison d'Hôtes",
+                region: "toscane",
+                regionLabel: "Toscane Occitane (Tarn)",
+                loc: "Gaillac",
+                contact: "Propriétaires Delga",
+                phones: ["06 36 80 01 01"],
+                email: "hoteldelga@gmail.com",
+                web: "https://www.la-toscane-occitane.com/chambre-hote/hotel-particulier-delga/",
+                status: "a_contacter",
+                notes: "Hôtel particulier historique au centre-ville."
+            },
+            {
+                id: "8",
+                name: "Hôtel La Grande Roche",
+                type: "Hôtel & Domaine Lécusse",
+                region: "toscane",
+                regionLabel: "Toscane Occitane (Tarn)",
+                loc: "Gaillac / Messac",
+                contact: "Réception Lécusse",
+                phones: ["06 79 82 80 87"],
+                email: "reception@chateaulecusse.fr",
+                web: "https://www.la-toscane-occitane.com/hotel/hotel-la-grande-roche/",
+                status: "a_contacter",
+                notes: "Domaine hôtelier de caractère."
+            },
+            {
+                id: "9",
+                name: "Hôtel du Château de Salettes",
+                type: "Hôtel 4* & Resto Gastronomique",
+                region: "toscane",
+                regionLabel: "Toscane Occitane (Tarn)",
+                loc: "Cahuzac-sur-Vère",
+                contact: "Direction Générale",
+                phones: ["05 63 33 60 60"],
+                email: "salettes@chateaudesalettes.com",
+                web: "https://www.la-toscane-occitane.com/hotel/hotel-du-chateau-de-salettes/",
+                status: "a_contacter",
+                notes: "Château 4* luxe & gastronomie."
+            },
+            {
+                id: "10",
+                name: "Appartement L'Étoile de Mer",
+                type: "Location de Vacances Bord de Mer",
+                region: "sete",
+                regionLabel: "Sète / Hérault (34)",
+                loc: "Sète",
+                contact: "GISÈNE (Contact Direct)",
+                phones: ["06 15 41 84 20"],
+                email: "contact@location-sete.site",
+                web: "https://location-sete.site",
+                status: "a_contacter",
+                notes: "Contact direct : Gisène. Appartement bord de mer."
+            },
+            {
+                id: "11",
+                name: "La Terrasse du Mont-Blanc",
+                type: "Chalet Prestige & Événementiel",
+                region: "savoie",
+                regionLabel: "Cordon / Haute-Savoie (74)",
+                loc: "Cordon (Face au Mont-Blanc)",
+                contact: "DAVID (Contact sur place)",
+                phones: ["04 65 84 56 02", "06 35 86 92 97"],
+                email: "contact@terrassedumontblanc.com",
+                web: "https://www.terrassedumontblanc.com",
+                status: "a_contacter",
+                notes: "Contact sur place : David. Chalet d'exception & séminaires."
+            }
+        ];
+
+        let selectedRegion = 'all';
+        let selectedStatus = 'all';
+        let currentView = 'grid';
+
+        function renderVenues() {
+            const query = document.getElementById('searchInput').value.toLowerCase();
+            const gridContainer = document.getElementById('cardsGrid');
+            const tableBody = document.getElementById('tableBody');
+
+            gridContainer.innerHTML = '';
+            tableBody.innerHTML = '';
+
+            let filtered = venuesData.filter(v => {
+                const matchRegion = (selectedRegion === 'all' || v.region === selectedRegion);
+                const matchStatus = (selectedStatus === 'all' || v.status === selectedStatus);
+                const matchSearch = v.name.toLowerCase().includes(query) || 
+                                    v.loc.toLowerCase().includes(query) || 
+                                    v.contact.toLowerCase().includes(query) ||
+                                    v.type.toLowerCase().includes(query);
+                return matchRegion && matchStatus && matchSearch;
+            });
+
+            filtered.forEach(v => {
+                // Render Card
+                const card = document.createElement('div');
+                card.className = 'venue-card';
+                card.innerHTML = `
+                    <div>
+                        <div class="card-top">
+                            <span class="badge-region">${v.regionLabel}</span>
+                            <div class="card-title">${v.name}</div>
+                            <div class="card-sub">${v.type} • ${v.loc}</div>
+                        </div>
+
+                        <div class="contact-person">
+                            <i class="fa-solid fa-user-tie"></i> ${v.contact}
+                        </div>
+
+                        <div class="card-info">
+                            <div class="info-row">
+                                <i class="fa-solid fa-phone"></i>
+                                <div>
+                                    ${v.phones.map(p => `<a href="tel:${p.replace(/\s+/g, '')}" class="btn-call">📞 ${p}</a>`).join(' ')}
+                                </div>
+                            </div>
+                            <div class="info-row" style="margin-top: 8px;">
+                                <i class="fa-solid fa-envelope"></i>
+                                <a href="mailto:${v.email}" class="btn-mail">${v.email}</a>
+                            </div>
+                            <div class="info-row" style="margin-top: 8px;">
+                                <i class="fa-solid fa-globe"></i>
+                                <a href="${v.web}" target="_blank" style="color: var(--gold-accent); text-decoration: none; font-size: 0.8rem;">Consulter le site web ↗</a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div>
+                        <select class="status-select-card" onchange="updateStatus('${v.id}', this.value)">
+                            <option value="a_contacter" ${v.status === 'a_contacter' ? 'selected' : ''}>⚪ À contacter</option>
+                            <option value="appel_fait" ${v.status === 'appel_fait' ? 'selected' : ''}>🔵 Premier appel fait</option>
+                            <option value="rdv_fixe" ${v.status === 'rdv_fixe' ? 'selected' : ''}>🟡 RDV Fixé</option>
+                            <option value="gagne" ${v.status === 'gagne' ? 'selected' : ''}>🟢 Gagné / Contrat Signé</option>
+                        </select>
+                        <textarea class="notes-box" rows="2" placeholder="Saisir des notes..." onchange="updateNotes('${v.id}', this.value)">${v.notes}</textarea>
+                    </div>
+                `;
+                gridContainer.appendChild(card);
+
+                // Render Table Row
+                const row = document.createElement('tr');
+                row.innerHTML = `
+                    <td><b>${v.name}</b><br/><font color='#64748B' size='2'>${v.type}</font></td>
+                    <td>${v.regionLabel}<br/><font color='#94A3B8' size='2'>${v.loc}</font></td>
+                    <td><b style="color: var(--purple-light);">${v.contact}</b></td>
+                    <td>${v.phones.map(p => `<a href="tel:${p.replace(/\s+/g, '')}" class="btn-call">📞 ${p}</a>`).join('<br/>')}</td>
+                    <td>
+                        <a href="mailto:${v.email}" class="btn-mail">${v.email}</a><br/>
+                        <a href="${v.web}" target="_blank" style="color: var(--gold-accent); font-size: 0.78rem;">Site web ↗</a>
+                    </td>
+                    <td>
+                        <select class="status-select-card" style="margin-bottom:0;" onchange="updateStatus('${v.id}', this.value)">
+                            <option value="a_contacter" ${v.status === 'a_contacter' ? 'selected' : ''}>⚪ À contacter</option>
+                            <option value="appel_fait" ${v.status === 'appel_fait' ? 'selected' : ''}>🔵 1er appel fait</option>
+                            <option value="rdv_fixe" ${v.status === 'rdv_fixe' ? 'selected' : ''}>🟡 RDV Fixé</option>
+                            <option value="gagne" ${v.status === 'gagne' ? 'selected' : ''}>🟢 Gagné</option>
+                        </select>
+                    </td>
+                    <td><input type="text" class="notes-box" style="padding:6px;" value="${v.notes}" onchange="updateNotes('${v.id}', this.value)"></td>
+                `;
+                tableBody.appendChild(row);
+            });
+
+            updateKpiCounts();
+        }
+
+        function updateKpiCounts() {
+            document.getElementById('countAll').innerText = venuesData.length;
+            document.getElementById('countToContact').innerText = venuesData.filter(v => v.status === 'a_contacter').length;
+            document.getElementById('countCalled').innerText = venuesData.filter(v => v.status === 'appel_fait').length;
+            document.getElementById('countRdv').innerText = venuesData.filter(v => v.status === 'rdv_fixe').length;
+            document.getElementById('countWon').innerText = venuesData.filter(v => v.status === 'gagne').length;
+        }
+
+        function filterRegion(reg, btn) {
+            selectedRegion = reg;
+            document.querySelectorAll('.tag-btn').forEach(b => b.classList.remove('active'));
+            btn.classList.add('active');
+            renderVenues();
+        }
+
+        function filterByStatus(st) {
+            selectedStatus = st;
+            renderVenues();
+        }
+
+        function updateStatus(id, val) {
+            const v = venuesData.find(x => x.id === id);
+            if (v) v.status = val;
+            updateKpiCounts();
+        }
+
+        function updateNotes(id, val) {
+            const v = venuesData.find(x => x.id === id);
+            if (v) v.notes = val;
+        }
+
+        function switchView(mode) {
+            currentView = mode;
+            document.getElementById('btnGrid').classList.toggle('active', mode === 'grid');
+            document.getElementById('btnTable').classList.toggle('active', mode === 'table');
+            document.getElementById('cardsGrid').style.display = mode === 'grid' ? 'grid' : 'none';
+            document.getElementById('tableView').style.display = mode === 'table' ? 'block' : 'none';
+        }
+
+        window.addEventListener('DOMContentLoaded', () => {
+            renderVenues();
+        });
+    </script>
 </body>
 </html>
