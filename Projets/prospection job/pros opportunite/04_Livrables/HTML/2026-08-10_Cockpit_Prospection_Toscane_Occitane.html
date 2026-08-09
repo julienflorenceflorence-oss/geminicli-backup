@@ -1,0 +1,313 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Matrice Prospection Toscane Occitane | Julien Florence</title>
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <!-- FontAwesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --bg-body: #0C0A10;
+            --bg-card: rgba(22, 16, 32, 0.85);
+            --purple-main: #6B21A8;
+            --purple-light: #A855F7;
+            --purple-glow: rgba(168, 85, 247, 0.25);
+            --gold-accent: #EAB308;
+            --accent-green: #10B981;
+            --accent-blue: #3B82F6;
+            --text-primary: #F8FAFC;
+            --text-secondary: #94A3B8;
+            --border-purple: rgba(168, 85, 247, 0.2);
+            --border-subtle: rgba(255, 255, 255, 0.08);
+            --radius-main: 16px;
+        }
+
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+
+        body {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            background-color: var(--bg-body);
+            color: var(--text-primary);
+            min-height: 100vh;
+            padding-bottom: 60px;
+        }
+
+        header {
+            background: rgba(12, 10, 16, 0.9);
+            backdrop-filter: blur(16px);
+            border-bottom: 1px solid var(--border-purple);
+            padding: 24px 40px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .header-brand { display: flex; align-items: center; gap: 16px; }
+
+        .brand-logo {
+            width: 48px; height: 48px; border-radius: 12px;
+            background: linear-gradient(135deg, #581C87 0%, #A855F7 100%);
+            display: flex; align-items: center; justify-content: center;
+            font-size: 1.4rem; color: #FFF; box-shadow: 0 0 20px var(--purple-glow);
+        }
+
+        .header-title h1 {
+            font-family: 'Outfit', sans-serif; font-size: 1.5rem; font-weight: 700;
+            background: linear-gradient(135deg, #FFFFFF 0%, #CBD5E1 100%);
+            -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+        }
+
+        .container { max-width: 1400px; margin: 30px auto; padding: 0 24px; }
+
+        .card-table {
+            background: var(--bg-card);
+            border: 1px solid var(--border-purple);
+            border-radius: var(--radius-main);
+            padding: 24px;
+            overflow-x: auto;
+        }
+
+        table {
+            width: 100%; border-collapse: collapse; margin-top: 10px;
+        }
+
+        th {
+            background: rgba(107, 33, 168, 0.3);
+            color: #FFF; text-align: left; padding: 14px;
+            font-family: 'Outfit', sans-serif; font-size: 0.9rem;
+            border-bottom: 2px solid var(--border-purple);
+        }
+
+        td {
+            padding: 14px; border-bottom: 1px solid var(--border-subtle);
+            font-size: 0.88rem; vertical-align: top;
+        }
+
+        tr:hover { background: rgba(168, 85, 247, 0.05); }
+
+        .venue-name { font-weight: 700; color: #FFF; font-size: 0.95rem; }
+        .venue-loc { font-size: 0.78rem; color: var(--text-secondary); margin-top: 2px; }
+
+        .phone-badge {
+            display: inline-block; background: rgba(59, 130, 246, 0.12);
+            color: var(--accent-blue); padding: 4px 10px; border-radius: 6px;
+            font-weight: 600; text-decoration: none; margin-bottom: 4px;
+        }
+
+        .email-link { color: var(--purple-light); text-decoration: none; word-break: break-all; }
+        .email-link:hover { text-decoration: underline; }
+
+        .status-select {
+            background: rgba(12, 10, 16, 0.8); color: var(--gold-accent);
+            border: 1px solid var(--border-purple); padding: 6px 10px;
+            border-radius: 6px; font-family: inherit; font-size: 0.8rem; outline: none;
+        }
+
+        .notes-input {
+            width: 100%; background: rgba(12, 10, 16, 0.6); border: 1px solid var(--border-subtle);
+            border-radius: 6px; padding: 8px; color: var(--text-primary); font-family: inherit; font-size: 0.8rem;
+        }
+
+        .btn-pdf {
+            background: linear-gradient(135deg, #10B981 0%, #059669 100%);
+            color: #FFF; border: none; padding: 10px 18px; border-radius: 8px;
+            font-size: 0.85rem; font-weight: 700; cursor: pointer; text-decoration: none;
+            display: inline-flex; align-items: center; gap: 8px;
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="header-brand">
+            <div class="brand-logo"><i class="fa-solid fa-hotel"></i></div>
+            <div class="header-title">
+                <h1>Prospection Établissements & Hébergements | Toscane Occitane</h1>
+                <p>Julien Florence — 9 Établissements Cibles (Tarn / Gaillac / Castelnau)</p>
+            </div>
+        </div>
+        <a href="file:///Users/admin/Desktop/2026-08-10_LISTE_PROSPECTION_TOSCANE_OCCITANE.pdf" class="btn-pdf">
+            <i class="fa-solid fa-file-pdf"></i> Ouvrir la Fiche PDF
+        </a>
+    </header>
+
+    <div class="container">
+        <div class="card-table">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Établissement & Type</th>
+                        <th>Téléphone Contact</th>
+                        <th>Email Contact</th>
+                        <th>Statut Prospection</th>
+                        <th>Commentaires & Notes</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>
+                            <div class="venue-name">Domaine de la Durantie</div>
+                            <div class="venue-loc">Hébergement Groupe & Prestige • Castelnau-de-Montmiral</div>
+                        </td>
+                        <td>
+                            <a href="tel:0643027964" class="phone-badge">📞 06 43 02 79 64</a><br/>
+                            <a href="tel:0563332100" class="phone-badge">📞 05 63 33 21 00</a>
+                        </td>
+                        <td><a href="mailto:reservations@durantie.com" class="email-link">reservations@durantie.com</a></td>
+                        <td>
+                            <select class="status-select">
+                                <option>⚪ À contacter</option>
+                                <option>🔵 Premier appel fait</option>
+                                <option>🟡 RDV Fixé</option>
+                                <option>🟢 Gagné / Partenariat</option>
+                            </select>
+                        </td>
+                        <td><input type="text" class="notes-input" placeholder="Ajouter une note sur la Durantie..."></td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <div class="venue-name">Château Tauziès</div>
+                            <div class="venue-loc">Château Viticole & Séminaires • Gaillac</div>
+                        </td>
+                        <td><a href="tel:0563412680" class="phone-badge">📞 05 63 41 26 80</a></td>
+                        <td><a href="mailto:contact@chateaudetauzies.com" class="email-link">contact@chateaudetauzies.com</a></td>
+                        <td>
+                            <select class="status-select">
+                                <option>⚪ À contacter</option>
+                                <option>🔵 Premier appel fait</option>
+                                <option>🟡 RDV Fixé</option>
+                                <option>🟢 Gagné / Partenariat</option>
+                            </select>
+                        </td>
+                        <td><input type="text" class="notes-input" placeholder="Ajouter une note sur Tauziès..."></td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <div class="venue-name">Moulin de Trusse</div>
+                            <div class="venue-loc">Chambre d'Hôtes & Moulin • Gaillac</div>
+                        </td>
+                        <td><a href="tel:0637939942" class="phone-badge">📞 06 37 93 99 42</a></td>
+                        <td><a href="mailto:baptistempage@gmail.com" class="email-link">baptistempage@gmail.com</a></td>
+                        <td>
+                            <select class="status-select">
+                                <option>⚪ À contacter</option>
+                                <option>🔵 Premier appel fait</option>
+                                <option>🟡 RDV Fixé</option>
+                                <option>🟢 Gagné / Partenariat</option>
+                            </select>
+                        </td>
+                        <td><input type="text" class="notes-input" placeholder="Ajouter une note sur Moulin de Trusse..."></td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <div class="venue-name">La Maison de Clément</div>
+                            <div class="venue-loc">Gîte de Charme • Castelnau-de-Montmiral</div>
+                        </td>
+                        <td><a href="tel:0563488301" class="phone-badge">📞 05 63 48 83 01</a></td>
+                        <td><a href="mailto:reservation@gites-tarn.com" class="email-link">reservation@gites-tarn.com</a></td>
+                        <td>
+                            <select class="status-select">
+                                <option>⚪ À contacter</option>
+                                <option>🔵 Premier appel fait</option>
+                                <option>🟡 RDV Fixé</option>
+                                <option>🟢 Gagné / Partenariat</option>
+                            </select>
+                        </td>
+                        <td><input type="text" class="notes-input" placeholder="Ajouter une note..."></td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <div class="venue-name">La Maison de Romain</div>
+                            <div class="venue-loc">Gîte d'Exception • Puycelsi / Castelnau</div>
+                        </td>
+                        <td><a href="tel:0563488301" class="phone-badge">📞 05 63 48 83 01</a></td>
+                        <td><a href="mailto:reservation@gites-tarn.com" class="email-link">reservation@gites-tarn.com</a></td>
+                        <td>
+                            <select class="status-select">
+                                <option>⚪ À contacter</option>
+                                <option>🔵 Premier appel fait</option>
+                                <option>🟡 RDV Fixé</option>
+                                <option>🟢 Gagné / Partenariat</option>
+                            </select>
+                        </td>
+                        <td><input type="text" class="notes-input" placeholder="Ajouter une note..."></td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <div class="venue-name">Ma vie là ! Au bord de l'eau</div>
+                            <div class="venue-loc">Gîte au Bord de l'Eau • Lisle-sur-Tarn / Gaillac</div>
+                        </td>
+                        <td><a href="tel:0563488301" class="phone-badge">📞 05 63 48 83 01</a></td>
+                        <td><a href="mailto:reservation@gites-tarn.com" class="email-link">reservation@gites-tarn.com</a></td>
+                        <td>
+                            <select class="status-select">
+                                <option>⚪ À contacter</option>
+                                <option>🔵 Premier appel fait</option>
+                                <option>🟡 RDV Fixé</option>
+                                <option>🟢 Gagné / Partenariat</option>
+                            </select>
+                        </td>
+                        <td><input type="text" class="notes-input" placeholder="Ajouter une note..."></td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <div class="venue-name">Hôtel Particulier Delga</div>
+                            <div class="venue-loc">Hôtel Particulier & Maison d'Hôtes • Gaillac</div>
+                        </td>
+                        <td><a href="tel:0636800101" class="phone-badge">📞 06 36 80 01 01</a></td>
+                        <td><a href="mailto:hoteldelga@gmail.com" class="email-link">hoteldelga@gmail.com</a></td>
+                        <td>
+                            <select class="status-select">
+                                <option>⚪ À contacter</option>
+                                <option>🔵 Premier appel fait</option>
+                                <option>🟡 RDV Fixé</option>
+                                <option>🟢 Gagné / Partenariat</option>
+                            </select>
+                        </td>
+                        <td><input type="text" class="notes-input" placeholder="Ajouter une note sur Delga..."></td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <div class="venue-name">Hôtel La Grande Roche</div>
+                            <div class="venue-loc">Hôtel & Domaine Lécusse • Gaillac / Messac</div>
+                        </td>
+                        <td><a href="tel:0679828087" class="phone-badge">📞 06 79 82 80 87</a></td>
+                        <td><a href="mailto:reception@chateaulecusse.fr" class="email-link">reception@chateaulecusse.fr</a></td>
+                        <td>
+                            <select class="status-select">
+                                <option>⚪ À contacter</option>
+                                <option>🔵 Premier appel fait</option>
+                                <option>🟡 RDV Fixé</option>
+                                <option>🟢 Gagné / Partenariat</option>
+                            </select>
+                        </td>
+                        <td><input type="text" class="notes-input" placeholder="Ajouter une note..."></td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <div class="venue-name">Hôtel du Château de Salettes</div>
+                            <div class="venue-loc">Hôtel 4* & Resto Gastronomique • Cahuzac-sur-Vère</div>
+                        </td>
+                        <td><a href="tel:0563336060" class="phone-badge">📞 05 63 33 60 60</a></td>
+                        <td><a href="mailto:salettes@chateaudesalettes.com" class="email-link">salettes@chateaudesalettes.com</a></td>
+                        <td>
+                            <select class="status-select">
+                                <option>⚪ À contacter</option>
+                                <option>🔵 Premier appel fait</option>
+                                <option>🟡 RDV Fixé</option>
+                                <option>🟢 Gagné / Partenariat</option>
+                            </select>
+                        </td>
+                        <td><input type="text" class="notes-input" placeholder="Ajouter une note sur Salettes..."></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</body>
+</html>
