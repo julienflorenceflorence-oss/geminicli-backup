@@ -13,13 +13,14 @@ def generate_pdf():
     
     os.makedirs(os.path.dirname(pdf_path), exist_ok=True)
 
+    # Document Setup - Landscape A4 with optimized margins
     doc = SimpleDocTemplate(
         pdf_path,
         pagesize=landscape(A4),
-        rightMargin=1.0*cm,
-        leftMargin=1.0*cm,
-        topMargin=1.0*cm,
-        bottomMargin=1.0*cm
+        rightMargin=0.8*cm,
+        leftMargin=0.8*cm,
+        topMargin=0.8*cm,
+        bottomMargin=0.8*cm
     )
 
     story = []
@@ -34,8 +35,8 @@ def generate_pdf():
         'DocTitle',
         parent=styles['Heading1'],
         fontName='Helvetica-Bold',
-        fontSize=16,
-        leading=20,
+        fontSize=15,
+        leading=18,
         textColor=colors.white
     )
 
@@ -43,32 +44,40 @@ def generate_pdf():
         'DocSubtitle',
         parent=styles['Normal'],
         fontName='Helvetica',
-        fontSize=9,
-        leading=12,
+        fontSize=8.5,
+        leading=11,
         textColor=colors.HexColor("#CBD5E1")
     )
 
     cell_name = ParagraphStyle(
         'CellName',
         fontName='Helvetica-Bold',
-        fontSize=8.5,
-        leading=10.5,
+        fontSize=8,
+        leading=10,
         textColor=colors.HexColor("#0F172A")
+    )
+
+    cell_addr = ParagraphStyle(
+        'CellAddr',
+        fontName='Helvetica',
+        fontSize=7.5,
+        leading=9.5,
+        textColor=colors.HexColor("#334155")
     )
 
     cell_phone = ParagraphStyle(
         'CellPhone',
         fontName='Helvetica-Bold',
-        fontSize=8.5,
-        leading=10.5,
+        fontSize=8,
+        leading=10,
         textColor=colors.HexColor("#2563EB")
     )
 
     cell_email = ParagraphStyle(
         'CellEmail',
         fontName='Helvetica',
-        fontSize=8,
-        leading=10,
+        fontSize=7.5,
+        leading=9.5,
         textColor=colors.HexColor("#0F172A")
     )
 
@@ -100,16 +109,16 @@ def generate_pdf():
     # 1. Header Banner
     header_data = [
         [
-            Paragraph("<b>📊 DASHBOARD & MATRICE DE PROSPECTION HÉBERGEMENT & PRESTIGE</b>", title_style),
+            Paragraph("<b>📊 MATRICE D'ACQUISITION & PROSPECTION HÉBERGEMENT & PRESTIGE</b>", title_style),
             Paragraph("<b>Julien FLORENCE</b><br/>Prospection Direction", ParagraphStyle('RightH', parent=subtitle_style, alignment=2))
         ],
         [
-            Paragraph("11 Établissements Cibles (Toscane Occitane, Sète, Haute-Savoie Cordon)", subtitle_style),
+            Paragraph("11 Établissements avec Téléphones, Emails, Adresses Postales & Notes Persistantes", subtitle_style),
             Paragraph("Mise à jour: 10/08/2026", ParagraphStyle('RightH2', parent=subtitle_style, alignment=2))
         ]
     ]
 
-    header_table = Table(header_data, colWidths=[20.5*cm, 7.2*cm])
+    header_table = Table(header_data, colWidths=[21.0*cm, 7.1*cm])
     header_table.setStyle(TableStyle([
         ('BACKGROUND', (0,0), (-1,-1), COLOR_BG_HEADER),
         ('PADDING', (0,0), (-1,-1), 8),
@@ -117,131 +126,145 @@ def generate_pdf():
     ]))
 
     story.append(header_table)
-    story.append(Spacer(1, 0.3*cm))
+    story.append(Spacer(1, 0.2*cm))
 
-    # 2. Table Data (11 Establishments)
+    # 2. Complete 11 Establishments Data Table
     data = [
         [
-            Paragraph("Établissement & Type", header_cell),
-            Paragraph("Téléphone Contact", header_cell),
-            Paragraph("Email & Web", header_cell),
+            Paragraph("Établissement & Contact", header_cell),
+            Paragraph("Adresse Postale Complète", header_cell),
+            Paragraph("Téléphones Directs", header_cell),
+            Paragraph("Email & Site Web", header_cell),
             Paragraph("Statut Prospection", header_cell),
-            Paragraph("Contact Sur Place & Notes", header_cell)
+            Paragraph("Champ Notes Saisies", header_cell)
         ]
     ]
 
     venues = [
         {
             "name": "Domaine de la Durantie",
-            "type": "Hébergement Groupe & Prestige",
-            "loc": "Castelnau-de-Montmiral (Tarn)",
+            "type": "Hébergement Groupe & Domaine Luxe",
+            "contact": "Gérance Durantie",
+            "addr": "La Durantie, 401-405 Grande Route de Grésigne, 81140 Castelnau-de-Montmiral",
             "phone": "06 43 02 79 64\n05 63 33 21 00",
-            "email": "reservations@durantie.com\nla-toscane-occitane.com",
+            "email": "reservations@durantie.com",
             "status": "[  ] À contacter\n[  ] 1er Appel\n[  ] RDV Fixé",
-            "notes": "• Contact : Gérance Durantie\n• Domaine luxe groupe"
+            "notes": "Domaine de luxe groupe. Audit parcours hébergement."
         },
         {
             "name": "Château Tauziès",
             "type": "Château Viticole & Séminaires",
-            "loc": "Gaillac (Tarn)",
+            "contact": "Direction Tauziès",
+            "addr": "1850 Route de Cordes, 81600 Gaillac",
             "phone": "05 63 41 26 80",
             "email": "contact@chateaudetauzies.com",
             "status": "[  ] À contacter\n[  ] 1er Appel\n[  ] RDV Fixé",
-            "notes": "• Contact : Direction Tauziès\n• Séminaires & gîtes"
+            "notes": "Vignoble et séminaires de prestige."
         },
         {
             "name": "Moulin de Trusse",
             "type": "Chambre d'Hôtes & Moulin",
-            "loc": "Gaillac (Tarn)",
+            "contact": "Baptiste M.",
+            "addr": "1485 Route du Moulin de Trusse, 81630 La Sauzière-Saint-Jean",
             "phone": "06 37 93 99 42",
             "email": "baptistempage@gmail.com",
             "status": "[  ] À contacter\n[  ] 1er Appel\n[  ] RDV Fixé",
-            "notes": "• Contact : Baptiste M.\n• Moulin de charme"
+            "notes": "Moulin restauré au bord de l'eau. Contact direct Baptiste."
         },
         {
             "name": "La Maison de Clément",
             "type": "Gîte de Charme",
-            "loc": "Castelnau-de-Montmiral",
+            "contact": "Gîtes de France Tarn",
+            "addr": "302 Chemin Toulze – Les Fortis, 81310 Lisle-sur-Tarn",
             "phone": "05 63 48 83 01",
             "email": "reservation@gites-tarn.com",
             "status": "[  ] À contacter\n[  ] 1er Appel\n[  ] RDV Fixé",
-            "notes": "• Contact : Gîtes de France Tarn\n• Hébergement pittoresque"
+            "notes": "Gîte pittoresque."
         },
         {
             "name": "La Maison de Romain",
             "type": "Gîte d'Exception",
-            "loc": "Puycelsi / Castelnau",
+            "contact": "Gîtes de France Tarn",
+            "addr": "Lieu-dit Lourate, 81140 Puycelsi",
             "phone": "05 63 48 83 01",
             "email": "reservation@gites-tarn.com",
             "status": "[  ] À contacter\n[  ] 1er Appel\n[  ] RDV Fixé",
-            "notes": "• Contact : Gîtes de France Tarn\n• Maison de village d'exception"
+            "notes": "Maison de village haut de gamme."
         },
         {
             "name": "Ma vie là ! Au bord de l'eau",
-            "type": "Gîte au Bord de l'Eau",
-            "loc": "Lisle-sur-Tarn / Gaillac",
+            "type": "Gîte de Charme au Bord de l'Eau",
+            "contact": "Gîtes de France Tarn",
+            "addr": "22 Rue du Quai, 81600 Gaillac",
             "phone": "05 63 48 83 01",
             "email": "reservation@gites-tarn.com",
             "status": "[  ] À contacter\n[  ] 1er Appel\n[  ] RDV Fixé",
-            "notes": "• Contact : Gîtes de France Tarn\n• Cadre naturel bord de rivière"
+            "notes": "Cadre naturel rivière."
         },
         {
             "name": "Hôtel Particulier Delga",
             "type": "Hôtel Particulier & Maison d'Hôtes",
-            "loc": "Gaillac (Tarn)",
+            "contact": "Propriétaires Delga",
+            "addr": "28 Rue des Frères Delga, 81600 Gaillac",
             "phone": "06 36 80 01 01",
             "email": "hoteldelga@gmail.com",
             "status": "[  ] À contacter\n[  ] 1er Appel\n[  ] RDV Fixé",
-            "notes": "• Contact : Propriétaires Delga\n• Demeure historique centre"
+            "notes": "Hôtel particulier historique au centre-ville."
         },
         {
             "name": "Hôtel La Grande Roche",
             "type": "Hôtel & Domaine Lécusse",
-            "loc": "Gaillac / Messac",
+            "contact": "Réception Lécusse",
+            "addr": "105 Impasse Puech Aymond D 922, 81600 Broze",
             "phone": "06 79 82 80 87",
             "email": "reception@chateaulecusse.fr",
             "status": "[  ] À contacter\n[  ] 1er Appel\n[  ] RDV Fixé",
-            "notes": "• Contact : Réception Lécusse\n• Domaine hôtelier"
+            "notes": "Domaine hôtelier de caractère."
         },
         {
             "name": "Hôtel du Château de Salettes",
             "type": "Hôtel 4* & Resto Gastronomique",
-            "loc": "Cahuzac-sur-Vère",
+            "contact": "Direction Générale",
+            "addr": "Lieu-dit Salettes, 81140 Cahuzac-sur-Vère",
             "phone": "05 63 33 60 60",
             "email": "salettes@chateaudesalettes.com",
             "status": "[  ] À contacter\n[  ] 1er Appel\n[  ] RDV Fixé",
-            "notes": "• Contact : Direction Générale\n• Château 4* vignoble"
+            "notes": "Château 4* luxe & gastronomie."
         },
         {
             "name": "Appartement L'Étoile de Mer",
             "type": "Location de Vacances Bord de Mer",
-            "loc": "Sète (Hérault 34)",
+            "contact": "GISÈNE (Contact Direct)",
+            "addr": "Quai de la Résistance, 34200 Sète",
             "phone": "06 15 41 84 20",
-            "email": "contact@location-sete.site\nlocation-sete.site",
+            "email": "contact@location-sete.site",
             "status": "[  ] À contacter\n[  ] 1er Appel\n[  ] RDV Fixé",
-            "notes": "<b>• Contact Direct sur place : GISÈNE</b>\n• Appartement Sète plage"
+            "notes": "Contact direct : Gisène. Appartement vue mer à Sète."
         },
         {
             "name": "La Terrasse du Mont-Blanc",
             "type": "Chalet Prestige & Événementiel",
-            "loc": "Cordon (Haute-Savoie 74)",
+            "contact": "DAVID (Contact sur place)",
+            "addr": "1250 Route de la Combe, 74700 Cordon",
             "phone": "04 65 84 56 02 (Fixe)\n06 35 86 92 97 (Mobile)",
-            "email": "contact@terrassedumontblanc.com\nterrassedumontblanc.com",
+            "email": "contact@terrassedumontblanc.com",
             "status": "[  ] À contacter\n[  ] 1er Appel\n[  ] RDV Fixé",
-            "notes": "<b>• Contact Direct sur place : DAVID</b>\n• Chalet d'exception & séminaires"
+            "notes": "Contact sur place : David. Chalet prestige séminaires."
         }
     ]
 
     for v in venues:
-        name_cell = Paragraph(f"<b>{v['name']}</b><br/><font color='#64748B'>{v['type']}<br/>{v['loc']}</font>", cell_name)
+        name_cell = Paragraph(f"<b>{v['name']}</b><br/><font color='#6B21A8'><b>Contact: {v['contact']}</b></font><br/><font color='#64748B'>{v['type']}</font>", cell_name)
+        addr_cell = Paragraph(v['addr'], cell_addr)
         phone_cell = Paragraph(v['phone'].replace('\n', '<br/>'), cell_phone)
         email_cell = Paragraph(v['email'].replace('\n', '<br/>'), cell_email)
         status_cell = Paragraph(v['status'].replace('\n', '<br/>'), cell_status)
         notes_cell = Paragraph(v['notes'].replace('\n', '<br/>'), cell_notes)
 
-        data.append([name_cell, phone_cell, email_cell, status_cell, notes_cell])
+        data.append([name_cell, addr_cell, phone_cell, email_cell, status_cell, notes_cell])
 
-    col_widths = [6.2*cm, 3.8*cm, 5.5*cm, 3.5*cm, 8.7*cm]
+    # Table Column Widths (Total 28.1 cm to fit Landscape A4 perfectly)
+    col_widths = [5.5*cm, 5.8*cm, 3.5*cm, 4.5*cm, 3.0*cm, 5.8*cm]
     
     t = Table(data, colWidths=col_widths, repeatRows=1)
     

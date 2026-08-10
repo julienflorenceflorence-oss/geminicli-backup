@@ -187,19 +187,19 @@
         }
 
         .card-info { margin-bottom: 16px; font-size: 0.85rem; }
-        .info-row { display: flex; align-items: center; gap: 10px; margin-bottom: 8px; color: var(--text-primary); }
-        .info-row i { color: var(--purple-light); width: 16px; text-align: center; }
+        .info-row { display: flex; align-items: flex-start; gap: 10px; margin-bottom: 8px; color: var(--text-primary); }
+        .info-row i { color: var(--purple-light); width: 16px; text-align: center; margin-top: 2px; }
 
         .btn-call {
             background: rgba(59, 130, 246, 0.12); border: 1px solid rgba(59, 130, 246, 0.3);
-            color: var(--accent-blue); padding: 6px 12px; border-radius: 6px;
+            color: var(--accent-blue); padding: 5px 10px; border-radius: 6px;
             text-decoration: none; font-weight: 600; font-size: 0.82rem; transition: var(--transition);
         }
         .btn-call:hover { background: var(--accent-blue); color: #FFF; }
 
         .btn-mail {
             background: rgba(168, 85, 247, 0.12); border: 1px solid rgba(168, 85, 247, 0.3);
-            color: var(--purple-light); padding: 6px 12px; border-radius: 6px;
+            color: var(--purple-light); padding: 5px 10px; border-radius: 6px;
             text-decoration: none; font-weight: 600; font-size: 0.82rem; word-break: break-all;
         }
         .btn-mail:hover { background: var(--purple-light); color: #FFF; }
@@ -251,13 +251,13 @@
         <div class="header-brand">
             <div class="brand-logo"><i class="fa-solid fa-chart-pie"></i></div>
             <div class="header-title">
-                <h1>Dashboard CRM Prospection avec Champ Note Persistant</h1>
-                <p>Julien FLORENCE — Pilotage & Notes Sauvegardées en Mémoire (11 Établissements)</p>
+                <h1>Dashboard CRM Prospection avec Adresses Postales & Champ Note</h1>
+                <p>Julien FLORENCE — Matrice Complète 11 Établissements (Toscane Occitane, Sète, Cordon)</p>
             </div>
         </div>
         <div class="header-actions">
             <a href="file:///Users/admin/Desktop/2026-08-10_LISTE_PROSPECTION_TOSCANE_OCCITANE.pdf" class="btn-pdf" target="_blank">
-                <i class="fa-solid fa-file-pdf"></i> Imprimer / Fiche PDF (Desktop)
+                <i class="fa-solid fa-file-pdf"></i> Ouvrir / Imprimer PDF (Bureau Mac)
             </a>
         </div>
     </header>
@@ -297,7 +297,7 @@
         <div class="toolbar">
             <div class="search-box">
                 <i class="fa-solid fa-magnifying-glass"></i>
-                <input type="text" id="searchInput" placeholder="Rechercher un établissement, contact..." onkeyup="renderVenues()">
+                <input type="text" id="searchInput" placeholder="Rechercher un établissement, ville, rue, contact..." onkeyup="renderVenues()">
             </div>
 
             <div class="filter-tags">
@@ -323,12 +323,12 @@
             <table>
                 <thead>
                     <tr>
-                        <th style="width: 22%;">Établissement & Type</th>
-                        <th style="width: 15%;">Région / Ville</th>
-                        <th style="width: 15%;">Contact Sur Place</th>
+                        <th style="width: 18%;">Établissement & Type</th>
+                        <th style="width: 22%;">Adresse Postale Complète</th>
+                        <th style="width: 14%;">Contact Sur Place</th>
                         <th style="width: 14%;">Téléphone & Mail</th>
                         <th style="width: 14%;">Statut Prospection</th>
-                        <th style="width: 20%;">Champ Note Persistant</th>
+                        <th style="width: 18%;">Champ Note Persistant</th>
                     </tr>
                 </thead>
                 <tbody id="tableBody">
@@ -339,7 +339,7 @@
 
     </div>
 
-    <div id="toast">💾 Note enregistrée en mémoire !</div>
+    <div id="toast">💾 Saisie enregistrée automatiquement !</div>
 
     <!-- JavaScript Application Data & Interactivity -->
     <script>
@@ -347,16 +347,17 @@
             {
                 id: "1",
                 name: "Domaine de la Durantie",
-                type: "Hébergement Groupe & Domaine de Prestige",
+                type: "Hébergement Groupe & Domaine Luxe",
                 region: "toscane",
                 regionLabel: "Toscane Occitane (Tarn)",
                 loc: "Castelnau-de-Montmiral",
+                addr: "La Durantie, 401-405 Grande Route de Grésigne, 81140 Castelnau-de-Montmiral",
                 contact: "Gérance Durantie",
                 phones: ["06 43 02 79 64", "05 63 33 21 00"],
                 email: "reservations@durantie.com",
                 web: "https://www.la-toscane-occitane.com/hebergement-groupe/domaine-de-la-durantie/",
                 status: "a_contacter",
-                defaultNotes: "Domaine de prestige pour groupes. Proposer audit UX/IX parcours hébergement."
+                defaultNotes: "Domaine de luxe groupe. Audit parcours hébergement."
             },
             {
                 id: "2",
@@ -365,12 +366,13 @@
                 region: "toscane",
                 regionLabel: "Toscane Occitane (Tarn)",
                 loc: "Gaillac",
+                addr: "1850 Route de Cordes, 81600 Gaillac",
                 contact: "Direction Tauziès",
                 phones: ["05 63 41 26 80"],
                 email: "contact@chateaudetauzies.com",
                 web: "https://www.la-toscane-occitane.com/location/chateau-tauzies/",
                 status: "a_contacter",
-                defaultNotes: "Vignoble et hébergements de prestige. Cible séminaires d'entreprise."
+                defaultNotes: "Vignoble et séminaires de prestige."
             },
             {
                 id: "3",
@@ -378,13 +380,14 @@
                 type: "Chambre d'Hôtes & Moulin",
                 region: "toscane",
                 regionLabel: "Toscane Occitane (Tarn)",
-                loc: "Gaillac",
+                loc: "Gaillac / La Sauzière",
+                addr: "1485 Route du Moulin de Trusse, 81630 La Sauzière-Saint-Jean",
                 contact: "Baptiste M.",
                 phones: ["06 37 93 99 42"],
                 email: "baptistempage@gmail.com",
                 web: "https://www.la-toscane-occitane.com/chambre-hote/moulin-de-trusse/",
                 status: "a_contacter",
-                defaultNotes: "Moulin restauré au bord de l'eau. Prise de contact directe Baptiste."
+                defaultNotes: "Moulin restauré au bord de l'eau. Contact direct Baptiste."
             },
             {
                 id: "4",
@@ -392,13 +395,14 @@
                 type: "Gîte de Charme",
                 region: "toscane",
                 regionLabel: "Toscane Occitane (Tarn)",
-                loc: "Castelnau-de-Montmiral",
+                loc: "Lisle-sur-Tarn",
+                addr: "302 Chemin Toulze – Les Fortis, 81310 Lisle-sur-Tarn",
                 contact: "Gîtes de France Tarn",
                 phones: ["05 63 48 83 01"],
                 email: "reservation@gites-tarn.com",
                 web: "https://www.la-toscane-occitane.com/location/la-maison-de-clement/",
                 status: "a_contacter",
-                defaultNotes: "Gîte de charme pittoresque."
+                defaultNotes: "Gîte pittoresque."
             },
             {
                 id: "5",
@@ -406,7 +410,8 @@
                 type: "Gîte d'Exception",
                 region: "toscane",
                 regionLabel: "Toscane Occitane (Tarn)",
-                loc: "Puycelsi / Castelnau",
+                loc: "Puycelsi",
+                addr: "Lieu-dit Lourate, 81140 Puycelsi",
                 contact: "Gîtes de France Tarn",
                 phones: ["05 63 48 83 01"],
                 email: "reservation@gites-tarn.com",
@@ -420,7 +425,8 @@
                 type: "Gîte de Charme au Bord de l'Eau",
                 region: "toscane",
                 regionLabel: "Toscane Occitane (Tarn)",
-                loc: "Lisle-sur-Tarn / Gaillac",
+                loc: "Gaillac",
+                addr: "22 Rue du Quai, 81600 Gaillac",
                 contact: "Gîtes de France Tarn",
                 phones: ["05 63 48 83 01"],
                 email: "reservation@gites-tarn.com",
@@ -435,12 +441,13 @@
                 region: "toscane",
                 regionLabel: "Toscane Occitane (Tarn)",
                 loc: "Gaillac",
+                addr: "28 Rue des Frères Delga, 81600 Gaillac",
                 contact: "Propriétaires Delga",
                 phones: ["06 36 80 01 01"],
                 email: "hoteldelga@gmail.com",
                 web: "https://www.la-toscane-occitane.com/chambre-hote/hotel-particulier-delga/",
                 status: "a_contacter",
-                defaultNotes: "Demeure historique centre-ville. Étoiles & avis très positifs."
+                defaultNotes: "Demeure historique centre-ville."
             },
             {
                 id: "8",
@@ -448,7 +455,8 @@
                 type: "Hôtel & Domaine Lécusse",
                 region: "toscane",
                 regionLabel: "Toscane Occitane (Tarn)",
-                loc: "Gaillac / Messac",
+                loc: "Broze / Gaillac",
+                addr: "105 Impasse Puech Aymond D 922, 81600 Broze",
                 contact: "Réception Lécusse",
                 phones: ["06 79 82 80 87"],
                 email: "reception@chateaulecusse.fr",
@@ -463,6 +471,7 @@
                 region: "toscane",
                 regionLabel: "Toscane Occitane (Tarn)",
                 loc: "Cahuzac-sur-Vère",
+                addr: "Lieu-dit Salettes, 81140 Cahuzac-sur-Vère",
                 contact: "Direction Générale",
                 phones: ["05 63 33 60 60"],
                 email: "salettes@chateaudesalettes.com",
@@ -477,6 +486,7 @@
                 region: "sete",
                 regionLabel: "Sète / Hérault (34)",
                 loc: "Sète",
+                addr: "Quai de la Résistance, 34200 Sète",
                 contact: "GISÈNE (Contact Direct)",
                 phones: ["06 15 41 84 20"],
                 email: "contact@location-sete.site",
@@ -490,13 +500,14 @@
                 type: "Chalet Prestige & Événementiel",
                 region: "savoie",
                 regionLabel: "Cordon / Haute-Savoie (74)",
-                loc: "Cordon (Face au Mont-Blanc)",
+                loc: "Cordon",
+                addr: "1250 Route de la Combe, 74700 Cordon",
                 contact: "DAVID (Contact sur place)",
                 phones: ["04 65 84 56 02", "06 35 86 92 97"],
                 email: "contact@terrassedumontblanc.com",
                 web: "https://www.terrassedumontblanc.com",
                 status: "a_contacter",
-                defaultNotes: "Contact sur place : David. Chalet d'exception & mariages / séminaires."
+                defaultNotes: "Contact sur place : David. Chalet d'exception face au Mont-Blanc."
             }
         ];
 
@@ -504,7 +515,6 @@
         let selectedStatus = 'all';
         let currentView = 'grid';
 
-        // Load saved state from LocalStorage
         function loadSavedState() {
             venuesData.forEach(v => {
                 const savedStatus = localStorage.getItem('status_' + v.id);
@@ -535,6 +545,7 @@
                 const matchStatus = (selectedStatus === 'all' || v.status === selectedStatus);
                 const matchSearch = v.name.toLowerCase().includes(query) || 
                                     v.loc.toLowerCase().includes(query) || 
+                                    v.addr.toLowerCase().includes(query) ||
                                     v.contact.toLowerCase().includes(query) ||
                                     v.type.toLowerCase().includes(query) ||
                                     v.notes.toLowerCase().includes(query);
@@ -550,7 +561,7 @@
                         <div class="card-top">
                             <span class="badge-region">${v.regionLabel}</span>
                             <div class="card-title">${v.name}</div>
-                            <div class="card-sub">${v.type} • ${v.loc}</div>
+                            <div class="card-sub">${v.type}</div>
                         </div>
 
                         <div class="contact-person">
@@ -559,6 +570,10 @@
 
                         <div class="card-info">
                             <div class="info-row">
+                                <i class="fa-solid fa-map-location-dot"></i>
+                                <div style="font-size: 0.82rem; color: #CBD5E1;">${v.addr}</div>
+                            </div>
+                            <div class="info-row" style="margin-top: 8px;">
                                 <i class="fa-solid fa-phone"></i>
                                 <div>
                                     ${v.phones.map(p => `<a href="tel:${p.replace(/\s+/g, '')}" class="btn-call">📞 ${p}</a>`).join(' ')}
@@ -588,7 +603,7 @@
                                 <span><i class="fa-solid fa-pen-to-square"></i> Champ Note</span>
                                 <span style="font-size: 0.7rem; color: var(--accent-green);"><i class="fa-solid fa-floppy-disk"></i> Auto-Save</span>
                             </div>
-                            <textarea class="notes-box" placeholder="Saisir des notes stratégiques..." oninput="updateNotes('${v.id}', this.value)">${v.notes}</textarea>
+                            <textarea class="notes-box" placeholder="Saisir des notes..." oninput="updateNotes('${v.id}', this.value)">${v.notes}</textarea>
                         </div>
                     </div>
                 `;
@@ -598,7 +613,7 @@
                 const row = document.createElement('tr');
                 row.innerHTML = `
                     <td><b>${v.name}</b><br/><font color='#64748B' size='2'>${v.type}</font></td>
-                    <td>${v.regionLabel}<br/><font color='#94A3B8' size='2'>${v.loc}</font></td>
+                    <td><font color='#CBD5E1' size='2'>${v.addr}</font><br/><span class="badge-region" style="margin-top:4px; font-size:0.68rem;">${v.regionLabel}</span></td>
                     <td><b style="color: var(--purple-light);">${v.contact}</b></td>
                     <td>
                         ${v.phones.map(p => `<a href="tel:${p.replace(/\s+/g, '')}" class="btn-call">📞 ${p}</a>`).join('<br/>')}<br/>
@@ -613,7 +628,7 @@
                         </select>
                     </td>
                     <td>
-                        <textarea class="notes-box" style="min-height:50px; font-size:0.8rem;" placeholder="Saisir une note..." oninput="updateNotes('${v.id}', this.value)">${v.notes}</textarea>
+                        <textarea class="notes-box" style="min-height:55px; font-size:0.8rem;" placeholder="Saisir une note..." oninput="updateNotes('${v.id}', this.value)">${v.notes}</textarea>
                     </td>
                 `;
                 tableBody.appendChild(row);
