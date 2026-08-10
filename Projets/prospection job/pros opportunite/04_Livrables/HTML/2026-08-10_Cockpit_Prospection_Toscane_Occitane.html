@@ -223,7 +223,7 @@
         .notes-box {
             width: 100%; background: rgba(0, 0, 0, 0.4); border: 1px solid var(--border-subtle);
             border-radius: 8px; padding: 10px; color: var(--text-primary); font-family: inherit;
-            font-size: 0.85rem; leading-height: 1.5; resize: vertical; outline: none; min-height: 70px;
+            font-size: 0.85rem; line-height: 1.5; resize: vertical; outline: none; min-height: 70px;
         }
 
         .notes-box:focus { border-color: var(--purple-light); box-shadow: 0 0 10px var(--purple-glow); }
@@ -273,12 +273,12 @@
             </div>
             <div class="kpi-card" onclick="filterByStatus('a_contacter')">
                 <div class="kpi-label">À Contacter</div>
-                <div class="kpi-val" id="countToContact" style="color: var(--text-secondary);">11</div>
+                <div class="kpi-val" id="countToContact" style="color: var(--text-secondary);">10</div>
                 <div class="kpi-sub">Premier contact à initier</div>
             </div>
             <div class="kpi-card" onclick="filterByStatus('appel_fait')">
-                <div class="kpi-label">1er Appel Fait</div>
-                <div class="kpi-val" id="countCalled" style="color: var(--accent-blue);">0</div>
+                <div class="kpi-label">1er Appel Fait / Relance</div>
+                <div class="kpi-val" id="countCalled" style="color: var(--accent-blue);">1</div>
                 <div class="kpi-sub">Échanges en cours</div>
             </div>
             <div class="kpi-card" onclick="filterByStatus('rdv_fixe')">
@@ -372,7 +372,7 @@
                 email: "contact@chateaudetauzies.com",
                 web: "https://www.la-toscane-occitane.com/location/chateau-tauzies/",
                 status: "a_contacter",
-                defaultNotes: "Vignoble et séminaires de prestige."
+                defaultNotes: "Vignoble et séminaires d'entreprise de prestige."
             },
             {
                 id: "3",
@@ -506,8 +506,8 @@
                 phones: ["04 65 84 56 02", "06 35 86 92 97"],
                 email: "contact@terrassedumontblanc.com",
                 web: "https://www.terrassedumontblanc.com",
-                status: "a_contacter",
-                defaultNotes: "Contact sur place : David. Chalet d'exception face au Mont-Blanc."
+                status: "appel_fait",
+                defaultNotes: "Contact sur place : David. Chalet d'exception & mariages / séminaires. A dit oui mais sans nouvelle."
             }
         ];
 
@@ -593,7 +593,7 @@
                     <div>
                         <select class="status-select-card" onchange="updateStatus('${v.id}', this.value)">
                             <option value="a_contacter" ${v.status === 'a_contacter' ? 'selected' : ''}>⚪ À contacter</option>
-                            <option value="appel_fait" ${v.status === 'appel_fait' ? 'selected' : ''}>🔵 Premier appel fait</option>
+                            <option value="appel_fait" ${v.status === 'appel_fait' ? 'selected' : ''}>🔵 Premier appel fait / Relance</option>
                             <option value="rdv_fixe" ${v.status === 'rdv_fixe' ? 'selected' : ''}>🟡 RDV Fixé</option>
                             <option value="gagne" ${v.status === 'gagne' ? 'selected' : ''}>🟢 Gagné / Contrat Signé</option>
                         </select>
@@ -622,7 +622,7 @@
                     <td>
                         <select class="status-select-card" style="margin-bottom:0;" onchange="updateStatus('${v.id}', this.value)">
                             <option value="a_contacter" ${v.status === 'a_contacter' ? 'selected' : ''}>⚪ À contacter</option>
-                            <option value="appel_fait" ${v.status === 'appel_fait' ? 'selected' : ''}>🔵 1er appel fait</option>
+                            <option value="appel_fait" ${v.status === 'appel_fait' ? 'selected' : ''}>🔵 1er appel / Relance</option>
                             <option value="rdv_fixe" ${v.status === 'rdv_fixe' ? 'selected' : ''}>🟡 RDV Fixé</option>
                             <option value="gagne" ${v.status === 'gagne' ? 'selected' : ''}>🟢 Gagné</option>
                         </select>

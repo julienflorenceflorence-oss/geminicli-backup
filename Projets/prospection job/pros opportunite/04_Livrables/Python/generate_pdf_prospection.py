@@ -13,7 +13,6 @@ def generate_pdf():
     
     os.makedirs(os.path.dirname(pdf_path), exist_ok=True)
 
-    # Document Setup - Landscape A4 with optimized margins
     doc = SimpleDocTemplate(
         pdf_path,
         pagesize=landscape(A4),
@@ -92,10 +91,10 @@ def generate_pdf():
 
     cell_notes = ParagraphStyle(
         'CellNotes',
-        fontName='Helvetica',
-        fontSize=7.5,
-        leading=9.5,
-        textColor=colors.HexColor("#475569")
+        fontName='Helvetica-Bold',
+        fontSize=8,
+        leading=10,
+        textColor=colors.HexColor("#1E293B")
     )
 
     header_cell = ParagraphStyle(
@@ -106,14 +105,14 @@ def generate_pdf():
         textColor=colors.white
     )
 
-    # 1. Header Banner
+    # Header Banner
     header_data = [
         [
-            Paragraph("<b>📊 MATRICE D'ACQUISITION & PROSPECTION HÉBERGEMENT & PRESTIGE</b>", title_style),
+            Paragraph("<b>📊 MATRICE OPÉRATIONNELLE DE PROSPECTION & NOTES DE SUIVI</b>", title_style),
             Paragraph("<b>Julien FLORENCE</b><br/>Prospection Direction", ParagraphStyle('RightH', parent=subtitle_style, alignment=2))
         ],
         [
-            Paragraph("11 Établissements avec Téléphones, Emails, Adresses Postales & Notes Persistantes", subtitle_style),
+            Paragraph("11 Établissements avec Téléphones, Emails, Adresses Postales & Notes Réelles de Terrain", subtitle_style),
             Paragraph("Mise à jour: 10/08/2026", ParagraphStyle('RightH2', parent=subtitle_style, alignment=2))
         ]
     ]
@@ -128,7 +127,6 @@ def generate_pdf():
     story.append(header_table)
     story.append(Spacer(1, 0.2*cm))
 
-    # 2. Complete 11 Establishments Data Table
     data = [
         [
             Paragraph("Établissement & Contact", header_cell),
@@ -136,7 +134,7 @@ def generate_pdf():
             Paragraph("Téléphones Directs", header_cell),
             Paragraph("Email & Site Web", header_cell),
             Paragraph("Statut Prospection", header_cell),
-            Paragraph("Champ Notes Saisies", header_cell)
+            Paragraph("Notes Réelles de Suivi & Commentaires", header_cell)
         ]
     ]
 
@@ -148,8 +146,8 @@ def generate_pdf():
             "addr": "La Durantie, 401-405 Grande Route de Grésigne, 81140 Castelnau-de-Montmiral",
             "phone": "06 43 02 79 64\n05 63 33 21 00",
             "email": "reservations@durantie.com",
-            "status": "[  ] À contacter\n[  ] 1er Appel\n[  ] RDV Fixé",
-            "notes": "Domaine de luxe groupe. Audit parcours hébergement."
+            "status": "[  ] À contacter",
+            "notes": "Domaine de luxe groupe. Proposer audit parcours hébergement."
         },
         {
             "name": "Château Tauziès",
@@ -158,8 +156,8 @@ def generate_pdf():
             "addr": "1850 Route de Cordes, 81600 Gaillac",
             "phone": "05 63 41 26 80",
             "email": "contact@chateaudetauzies.com",
-            "status": "[  ] À contacter\n[  ] 1er Appel\n[  ] RDV Fixé",
-            "notes": "Vignoble et séminaires de prestige."
+            "status": "[  ] À contacter",
+            "notes": "Vignoble et séminaires d'entreprise de prestige."
         },
         {
             "name": "Moulin de Trusse",
@@ -168,7 +166,7 @@ def generate_pdf():
             "addr": "1485 Route du Moulin de Trusse, 81630 La Sauzière-Saint-Jean",
             "phone": "06 37 93 99 42",
             "email": "baptistempage@gmail.com",
-            "status": "[  ] À contacter\n[  ] 1er Appel\n[  ] RDV Fixé",
+            "status": "[  ] À contacter",
             "notes": "Moulin restauré au bord de l'eau. Contact direct Baptiste."
         },
         {
@@ -178,7 +176,7 @@ def generate_pdf():
             "addr": "302 Chemin Toulze – Les Fortis, 81310 Lisle-sur-Tarn",
             "phone": "05 63 48 83 01",
             "email": "reservation@gites-tarn.com",
-            "status": "[  ] À contacter\n[  ] 1er Appel\n[  ] RDV Fixé",
+            "status": "[  ] À contacter",
             "notes": "Gîte pittoresque."
         },
         {
@@ -188,7 +186,7 @@ def generate_pdf():
             "addr": "Lieu-dit Lourate, 81140 Puycelsi",
             "phone": "05 63 48 83 01",
             "email": "reservation@gites-tarn.com",
-            "status": "[  ] À contacter\n[  ] 1er Appel\n[  ] RDV Fixé",
+            "status": "[  ] À contacter",
             "notes": "Maison de village haut de gamme."
         },
         {
@@ -198,7 +196,7 @@ def generate_pdf():
             "addr": "22 Rue du Quai, 81600 Gaillac",
             "phone": "05 63 48 83 01",
             "email": "reservation@gites-tarn.com",
-            "status": "[  ] À contacter\n[  ] 1er Appel\n[  ] RDV Fixé",
+            "status": "[  ] À contacter",
             "notes": "Cadre naturel rivière."
         },
         {
@@ -208,8 +206,8 @@ def generate_pdf():
             "addr": "28 Rue des Frères Delga, 81600 Gaillac",
             "phone": "06 36 80 01 01",
             "email": "hoteldelga@gmail.com",
-            "status": "[  ] À contacter\n[  ] 1er Appel\n[  ] RDV Fixé",
-            "notes": "Hôtel particulier historique au centre-ville."
+            "status": "[  ] À contacter",
+            "notes": "Demeure historique centre-ville."
         },
         {
             "name": "Hôtel La Grande Roche",
@@ -218,7 +216,7 @@ def generate_pdf():
             "addr": "105 Impasse Puech Aymond D 922, 81600 Broze",
             "phone": "06 79 82 80 87",
             "email": "reception@chateaulecusse.fr",
-            "status": "[  ] À contacter\n[  ] 1er Appel\n[  ] RDV Fixé",
+            "status": "[  ] À contacter",
             "notes": "Domaine hôtelier de caractère."
         },
         {
@@ -228,8 +226,8 @@ def generate_pdf():
             "addr": "Lieu-dit Salettes, 81140 Cahuzac-sur-Vère",
             "phone": "05 63 33 60 60",
             "email": "salettes@chateaudesalettes.com",
-            "status": "[  ] À contacter\n[  ] 1er Appel\n[  ] RDV Fixé",
-            "notes": "Château 4* luxe & gastronomie."
+            "status": "[  ] À contacter",
+            "notes": "Château 4* luxe & restaurant gastronomique au cœur des vignes."
         },
         {
             "name": "Appartement L'Étoile de Mer",
@@ -238,7 +236,7 @@ def generate_pdf():
             "addr": "Quai de la Résistance, 34200 Sète",
             "phone": "06 15 41 84 20",
             "email": "contact@location-sete.site",
-            "status": "[  ] À contacter\n[  ] 1er Appel\n[  ] RDV Fixé",
+            "status": "[  ] À contacter",
             "notes": "Contact direct : Gisène. Appartement vue mer à Sète."
         },
         {
@@ -248,8 +246,8 @@ def generate_pdf():
             "addr": "1250 Route de la Combe, 74700 Cordon",
             "phone": "04 65 84 56 02 (Fixe)\n06 35 86 92 97 (Mobile)",
             "email": "contact@terrassedumontblanc.com",
-            "status": "[  ] À contacter\n[  ] 1er Appel\n[  ] RDV Fixé",
-            "notes": "Contact sur place : David. Chalet prestige séminaires."
+            "status": "[X] 1er Appel fait / Relance",
+            "notes": "Contact sur place : David. Chalet d'exception & mariages / séminaires. A dit oui mais sans nouvelle."
         }
     ]
 
@@ -259,11 +257,10 @@ def generate_pdf():
         phone_cell = Paragraph(v['phone'].replace('\n', '<br/>'), cell_phone)
         email_cell = Paragraph(v['email'].replace('\n', '<br/>'), cell_email)
         status_cell = Paragraph(v['status'].replace('\n', '<br/>'), cell_status)
-        notes_cell = Paragraph(v['notes'].replace('\n', '<br/>'), cell_notes)
+        notes_cell = Paragraph(f"<font color='#0F172A'><b>{v['notes']}</b></font>", cell_notes)
 
         data.append([name_cell, addr_cell, phone_cell, email_cell, status_cell, notes_cell])
 
-    # Table Column Widths (Total 28.1 cm to fit Landscape A4 perfectly)
     col_widths = [5.5*cm, 5.8*cm, 3.5*cm, 4.5*cm, 3.0*cm, 5.8*cm]
     
     t = Table(data, colWidths=col_widths, repeatRows=1)
@@ -287,7 +284,7 @@ def generate_pdf():
     
     import shutil
     shutil.copyfile(pdf_path, desktop_pdf)
-    print(f"✅ PDF Prospection 11 Établissements généré avec succès : {pdf_path}")
+    print(f"✅ PDF Prospection généré avec succès : {pdf_path}")
     print(f"✅ Copie Desktop disponible : {desktop_pdf}")
 
 if __name__ == "__main__":
