@@ -1,0 +1,313 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cockpit Contentieux & Recours Salarial | Happy House — Julien Florence</title>
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <!-- FontAwesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --bg-body: #0C0A10;
+            --bg-card: rgba(22, 16, 32, 0.88);
+            --purple-main: #6B21A8;
+            --purple-light: #A855F7;
+            --purple-glow: rgba(168, 85, 247, 0.25);
+            --red-accent: #EF4444;
+            --gold-accent: #EAB308;
+            --accent-green: #10B981;
+            --accent-blue: #3B82F6;
+            --text-primary: #F8FAFC;
+            --text-secondary: #94A3B8;
+            --border-purple: rgba(168, 85, 247, 0.25);
+            --border-subtle: rgba(255, 255, 255, 0.08);
+            --radius-main: 16px;
+        }
+
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+
+        body {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            background-color: var(--bg-body);
+            color: var(--text-primary);
+            min-height: 100vh;
+            background-image: 
+                radial-gradient(circle at 15% 15%, rgba(107, 33, 168, 0.2) 0%, transparent 45%),
+                radial-gradient(circle at 85% 85%, rgba(239, 68, 68, 0.12) 0%, transparent 45%);
+            padding-bottom: 60px;
+        }
+
+        header {
+            background: rgba(12, 10, 16, 0.92);
+            backdrop-filter: blur(16px);
+            border-bottom: 1px solid var(--border-purple);
+            padding: 20px 40px;
+            position: sticky; top: 0; z-index: 100;
+            display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 16px;
+        }
+
+        .header-brand { display: flex; align-items: center; gap: 16px; }
+
+        .brand-logo {
+            width: 48px; height: 48px; border-radius: 12px;
+            background: linear-gradient(135deg, #7C2D12 0%, #EF4444 100%);
+            display: flex; align-items: center; justify-content: center;
+            font-size: 1.4rem; color: #FFF; box-shadow: 0 0 20px rgba(239, 68, 68, 0.3);
+        }
+
+        .header-title h1 {
+            font-family: 'Outfit', sans-serif; font-size: 1.45rem; font-weight: 700;
+            background: linear-gradient(135deg, #FFFFFF 0%, #CBD5E1 100%);
+            -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+        }
+
+        .header-title p { color: var(--text-secondary); font-size: 0.85rem; margin-top: 2px; }
+
+        .btn-pdf {
+            background: linear-gradient(135deg, #10B981 0%, #059669 100%);
+            color: #FFF; border: none; padding: 10px 18px; border-radius: 10px;
+            font-size: 0.85rem; font-weight: 700; cursor: pointer; text-decoration: none;
+            display: inline-flex; align-items: center; gap: 8px;
+        }
+
+        .container { max-width: 1440px; margin: 24px auto; padding: 0 24px; }
+
+        .kpi-grid {
+            display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+            gap: 16px; margin-bottom: 24px;
+        }
+
+        .kpi-card {
+            background: var(--bg-card); border: 1px solid var(--border-purple);
+            border-radius: var(--radius-main); padding: 20px;
+        }
+
+        .kpi-label { color: var(--text-secondary); font-size: 0.8rem; font-weight: 600; text-transform: uppercase; }
+        .kpi-val { font-family: 'Outfit', sans-serif; font-size: 2rem; font-weight: 800; color: #FFF; margin: 4px 0; }
+        .kpi-sub { font-size: 0.8rem; color: var(--accent-green); }
+
+        .main-grid { display: grid; grid-template-columns: 2fr 1fr; gap: 24px; }
+
+        @media (max-width: 1024px) { .main-grid { grid-template-columns: 1fr; } }
+
+        .section-card {
+            background: var(--bg-card); border: 1px solid var(--border-subtle);
+            border-radius: var(--radius-main); padding: 24px; margin-bottom: 24px;
+        }
+
+        .section-title {
+            font-family: 'Outfit', sans-serif; font-size: 1.2rem; font-weight: 700;
+            color: #FFF; margin-bottom: 16px; display: flex; align-items: center; gap: 10px;
+        }
+
+        .section-title i { color: var(--purple-light); }
+
+        .claim-row {
+            display: flex; justify-content: space-between; align-items: center;
+            padding: 14px; background: rgba(12, 10, 16, 0.6); border-radius: 10px;
+            margin-bottom: 10px; border: 1px solid var(--border-subtle);
+        }
+
+        .claim-title { font-weight: 700; color: #FFF; font-size: 0.95rem; }
+        .claim-sub { font-size: 0.78rem; color: var(--text-secondary); margin-top: 2px; }
+        .claim-amount { font-family: 'Outfit', sans-serif; font-size: 1.2rem; font-weight: 700; color: var(--accent-green); }
+
+        .action-step {
+            background: rgba(168, 85, 247, 0.08); border-left: 4px solid var(--purple-light);
+            padding: 14px 18px; border-radius: 0 10px 10px 0; margin-bottom: 12px;
+        }
+
+        .step-num { font-size: 0.78rem; font-weight: 800; color: var(--gold-accent); text-transform: uppercase; }
+        .step-head { font-weight: 700; color: #FFF; font-size: 0.95rem; margin: 2px 0; }
+        .step-desc { font-size: 0.85rem; color: var(--text-secondary); line-height: 1.5; }
+
+        .btn-action {
+            background: linear-gradient(135deg, #6B21A8 0%, #A855F7 100%);
+            color: #FFF; border: none; padding: 10px 16px; border-radius: 8px;
+            font-weight: 700; font-size: 0.85rem; cursor: pointer; display: inline-flex; align-items: center; gap: 8px;
+        }
+
+        .model-text {
+            width: 100%; background: rgba(12, 10, 16, 0.9); border: 1px solid var(--border-purple);
+            border-radius: 10px; padding: 14px; color: var(--text-primary); font-family: monospace;
+            font-size: 0.85rem; line-height: 1.5; margin-bottom: 12px; outline: none; resize: vertical;
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="header-brand">
+            <div class="brand-logo"><i class="fa-solid fa-gavel"></i></div>
+            <div class="header-title">
+                <h1>Cockpit Contentieux Salarial | Happy House</h1>
+                <p>Julien FLORENCE — IDCC 1527 (Immobilier) & Art. L3251-1 Code du Travail</p>
+            </div>
+        </div>
+        <div>
+            <a href="file:///Users/admin/Desktop/2026-08-11_DOSSIER_RECOURS_HAPPY_HOUSE.pdf" class="btn-pdf" target="_blank">
+                <i class="fa-solid fa-file-pdf"></i> Ouvrir le Rapport PDF (Bureau Mac)
+            </a>
+        </div>
+    </header>
+
+    <div class="container">
+
+        <!-- KPI Metrics Grid -->
+        <div class="kpi-grid">
+            <div class="kpi-card">
+                <div class="kpi-label">Total Créances Estimées</div>
+                <div class="kpi-val" style="color: var(--accent-green);">5 372,30 €</div>
+                <div class="kpi-sub"><i class="fa-solid fa-calculator"></i> Simulation 12 Mois SMIC</div>
+            </div>
+            <div class="kpi-card">
+                <div class="kpi-label">13e Mois Conventionnel</div>
+                <div class="kpi-val">1 872,14 €</div>
+                <div class="kpi-sub">Art. 38 IDCC 1527</div>
+            </div>
+            <div class="kpi-card">
+                <div class="kpi-label">Ajustement Grille Branche</div>
+                <div class="kpi-val">1 157,76 €</div>
+                <div class="kpi-sub">Art. 37 Minimum Annuel</div>
+            </div>
+            <div class="kpi-card">
+                <div class="kpi-label">Frais Télétravail & Domicile</div>
+                <div class="kpi-val" style="color: var(--gold-accent);">2 342,40 €</div>
+                <div class="kpi-sub">URSSAF & Cass. soc. 2025</div>
+            </div>
+        </div>
+
+        <!-- Main Grid Layout -->
+        <div class="main-grid">
+            
+            <!-- Left Column: Claims & Plan -->
+            <div>
+                
+                <div class="section-card">
+                    <div class="section-title"><i class="fa-solid fa-scale-balanced"></i> Audit des Créances Salariales Chiffrables</div>
+                    
+                    <div class="claim-row">
+                        <div>
+                            <div class="claim-title">13e Mois Conventionnel Obligatoire</div>
+                            <div class="claim-sub">Art. 38 IDCC 1527 • Acquis au prorata du temps de présence</div>
+                        </div>
+                        <div class="claim-amount">1 872,14 €</div>
+                    </div>
+
+                    <div class="claim-row">
+                        <div>
+                            <div class="claim-title">Ajustement au Salaire Minimum Annuel de Branche</div>
+                            <div class="claim-sub">Art. 37 • Minimum annuel calculé sur 13 mois (Niveau E1 = 23 424 €)</div>
+                        </div>
+                        <div class="claim-amount">1 157,76 €</div>
+                    </div>
+
+                    <div class="claim-row">
+                        <div>
+                            <div class="claim-title">Indemnité & Matériel de Télétravail (URSSAF)</div>
+                            <div class="claim-sub">Allocation 55 €/mois + Matériel informatique personnel 55,20 €/mois</div>
+                        </div>
+                        <div class="claim-amount">1 322,40 €</div>
+                    </div>
+
+                    <div class="claim-row">
+                        <div>
+                            <div class="claim-title">Indemnité d'Occupation du Domicile à des fins pro</div>
+                            <div class="claim-sub">Cass. soc., 19 mars 2025 n° 22-17.315 • Immixtion vie privée (~85 €/mois)</div>
+                        </div>
+                        <div class="claim-amount">1 020,00 €</div>
+                    </div>
+                </div>
+
+                <div class="section-card">
+                    <div class="section-title"><i class="fa-solid fa-list-check"></i> Plan d'Action Opérationnel en 4 Étapes</div>
+
+                    <div class="action-step">
+                        <div class="step-num">Étape 1 • Immédiat</div>
+                        <div class="step-head">Sécurisation des Preuves & Inscription France Travail</div>
+                        <div class="step-desc">S'inscrire en ligne sans attendre l'attestation. Exporter tous les échanges (mails, WhatsApp, Slack) avec horodatage. Ne rien signer sous pression.</div>
+                    </div>
+
+                    <div class="action-step">
+                        <div class="step-num">Étape 2 • Semaine 1</div>
+                        <div class="step-head">Mail 1 de Demande Amiable & Proposition d'Échéancier</div>
+                        <div class="step-desc">Envoyer uniquement les rappels chiffrables incontestables. Proposer un règlement en 2 fois pour retirer l'excuse de trésorerie.</div>
+                    </div>
+
+                    <div class="action-step">
+                        <div class="step-num">Étape 3 • J+15</div>
+                        <div class="step-head">Mise en Demeure par LRAR & Signalement DREETS</div>
+                        <div class="step-desc">Lettre recommandée avec accusé de réception valant mise en demeure formelle (intérêts au taux légal). Signalement gratuit à l'Inspection du Travail.</div>
+                    </div>
+
+                    <div class="action-step">
+                        <div class="step-num">Étape 4 • J+30</div>
+                        <div class="step-head">Saisine de la Formation de Référé du Conseil de Prud'hommes</div>
+                        <div class="step-desc">Procédure d'urgence gratuite. Ordonnance de paiement provisionnel et remise des documents sous astreinte journalière (R1455-6/7).</div>
+                    </div>
+                </div>
+
+            </div>
+
+            <!-- Right Column: Text Templates -->
+            <div>
+                
+                <div class="section-card">
+                    <div class="section-title"><i class="fa-solid fa-envelope"></i> Modèle 1 : Mail Amiable</div>
+                    <textarea class="model-text" rows="12" id="mail1Text">Objet : Demande de régularisation — Rappels de rémunération conventionnelle (IDCC 1527)
+
+Bonjour,
+
+En faisant le point sur mes bulletins de paie au sein de Happy House, je constate que les régularisations conventionnelles obligatoires (IDCC 1527, Immobilier) n'ont pas été appliquées :
+
+1. 13e mois conventionnel (Art. 38 IDCC 1527) : 1 872,14 € bruts.
+2. Écart minimum annuel de branche (Art. 37 IDCC 1527) : 1 157,76 € bruts.
+3. Indemnités de télétravail et matériel personnel (URSSAF 2026) : 2 342,40 €.
+
+Total rappels chiffrables : 5 372,30 €.
+
+Si la trésorerie de l'entreprise le nécessite, je propose un règlement en 2 versements mensuels.
+
+Merci de me confirmer la prise en compte.
+
+Cordialement,
+Julien FLORENCE</textarea>
+                    <button class="btn-action" onclick="copyText('mail1Text')"><i class="fa-regular fa-copy"></i> Copier le Mail 1</button>
+                </div>
+
+                <div class="section-card">
+                    <div class="section-title"><i class="fa-solid fa-file-contract"></i> Modèle 2 : Mise en Demeure LRAR</div>
+                    <textarea class="model-text" rows="14" id="lrarText">Objet : MISE EN DEMEURE — Rappel de salaires, indemnités et documents de fin de contrat
+
+Madame, Monsieur,
+
+Je vous mets formellement en demeure de procéder au versement de la somme totale de 5 372,30 € (13e mois, ajustement grille conventionnelle, frais et indemnité d'occupation du domicile) et à la délivrance de mes documents de fin de contrat, dans un délai strict de 8 (huit) jours.
+
+Je rappelle qu'en vertu de l'article L3251-1 du Code du travail, aucune retenue sur salaire ne peut être opérée ni subordonnée à une contrepartie.
+
+À défaut, je saisirai la Formation de Référé du Conseil de Prud'hommes sous les articles R1455-6 et R1455-7 pour ordonnance sous astreinte et intérêts légaux.
+
+Julien FLORENCE</textarea>
+                    <button class="btn-action" onclick="copyText('lrarText')"><i class="fa-regular fa-copy"></i> Copier la LRAR</button>
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+    <script>
+        function copyText(id) {
+            const text = document.getElementById(id).value;
+            navigator.clipboard.writeText(text).then(() => {
+                alert("✅ Modèle copié dans le presse-papier !");
+            });
+        }
+    </script>
+</body>
+</html>
