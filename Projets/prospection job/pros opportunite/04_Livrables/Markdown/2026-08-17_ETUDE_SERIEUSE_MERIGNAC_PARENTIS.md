@@ -1,77 +1,55 @@
-# 🗺️ ÉTUDE COMPLÈTE & DOSSIER RECHERCHE SÉJOUR & PROSPECTION HABITAT
+# 🗺️ ÉTUDE COMPLÈTE & LIENS FILTRÉS BOOKING.COM — SÉJOUR FAMILLE & PROSPECTION
 **Voyageurs :** 3 personnes (2 Adultes + 1 Enfant de 4 ans)  
-**Dates du séjour :** Du 23 au 26 Août 2026  
-**Objectif double :** (1) Immersion quartier vie de famille Mérignac (Loyer cible Sept. 2027 : 1 100 € CC) • (2) Séjour détente centre-ville Parentis-en-Born  
+**Dates :** Du 23 au 26 Août 2026 (3 Nuits)  
+**Critères impératifs :** (1) Logement entier en gestion autonome (Maison / Appartement) • (2) Extérieur privatif (Terrasse / Jardin) • (3) Parenthèse Mérignac immersion + Parentis-en-Born plein centre-ville.  
 **Auteur :** Julien FLORENCE | **Date :** 17 Août 2026
 
 ---
 
-## 📍 ÉTAPE 1 : MÉRIGNAC (1 NUIT DU 23 AU 24 AOÛT 2026)
+## 📍 ÉTAPE 1 : MÉRIGNAC (1 NUIT — 23 AOÛT ➔ 24 AOÛT 2026)
 
-### 🎯 Objectif Immersion & Installation Septembre 2027 (Budget 1 100 € CC)
+### 🎯 Objectif : Test de Quartier Familial (Projet Loyer 1 100 € CC Sept. 2027)
 
-Pour projeter votre installation en famille avec un enfant de 4 ans (entrée en école maternelle) :
+- **Filtre Hébergement :** Maison / Appartement individuel avec cuisine autonome & jardin/terrasse.
+- **Plafond Prix Recommandé :** **Max 130 € / nuit** (Tranche optimale période estivale).
 
-#### 🏡 Les 3 Quartiers Résidentiels Idéaux à Tester sur Place
+#### 🔗 Liens Directs Pré-Filtrés Booking.com (Mérignac)
+- 📌 **[Consulter les Appartements & Maisons avec Terrasse à Mérignac (23-24 Août 2026)](https://www.booking.com/searchresults.fr.html?ss=Merignac&checkin=2026-08-23&checkout=2026-08-24&group_adults=2&group_children=1&age=4&no_rooms=1&nflt=ht_id%3D201%3Bht_id%3D220%3Broomfacility%3D11)**
 
-1. **Mérignac Arlac** (Le coup de cœur famille) :
-   - *Ambiance :* Résidentielle, arborée, très familiale.
-   - *Atouts :* Parc du Luchey, parc du Tenet, écoles maternelles réputées, tramway ligne A et gare SNCF Arlac (accès direct Bordeaux).
-   - *Faisabilité 1 100 € CC :* T3 de 62 à 68 m² accessibles dans cette gamme.
+#### 🏡 Top 3 Hébergements Indépendants Ciblés
 
-2. **Le Capeyron** (Le centre de quartier commerçant & vivant) :
-   - *Ambiance :* Esprit "village", commerces de proximité, très dynamique.
-   - *Atouts :* Place Jean Jaurès, parc Bourran à proximité (un des plus beaux parcs de la métropole pour enfants), nombreuses infrastructures sportives et scolaires.
-   - *Faisabilité 1 100 € CC :* T3 moderne / rénové très réaliste.
-
-3. **Le Burck & Beutre** (Option espace & nature) :
-   - *Ambiance :* Plus excentrée, verte, bordée par la forêt et le grand Bois du Burck (accrobranche, plaines de jeux).
-   - *Atouts :* Idéal pour avoir de la surface habitable et un extérieur privatif.
-   - *Faisabilité 1 100 € CC :* Possibilité de dégoter un grand T3 ou petit T4 (75-80 m²).
+| N° | Hébergement & Type | Quartier / Localisation | Type d'Extérieur | Atouts Autonomie & Famille | Tarif Estimé / Nuit |
+|:---|:-------------------|:-----------------------|:-----------------|:---------------------------|:--------------------|
+| **1** | **Bordeaux Mérignac 2 Pièces & 2 Terrasses** | Secteur Capeyron / Centre | 2 Terrasses privatives | Entrée autonome par code, cuisine intégrée, calme | ~115 € - 130 € |
+| **2** | **Great Room 29 & Jardinet** | Proche Arlac / Tram A | Jardin & Terrasse | Entrée 100% indépendante, propreté, accès Tram | ~105 € - 125 € |
+| **3** | **Maisonette Victoria's Garden** | Secteur Résidentiel | Terrasse privée arborée | Maison entière, coin repas extérieur, cuisine | ~110 € - 135 € |
 
 ---
 
-### 🏨 Sélection d'Hébergements à Mérignac avec Extérieur (Nuit du 23/08/2026)
+## 📍 ÉTAPE 2 : PARENTIS-EN-BORN (2 NUITS — 24 AOÛT ➔ 26 AOÛT 2026)
 
-| N° | Hébergement / Type | Emplacement / Quartier | Type d'Extérieur | Atout Famille / Enfant 4 ans | Lien Booking / Info |
-|:---|:-------------------|:-----------------------|:-----------------|:-----------------------------|:--------------------|
-| **1** | **Chambre Bohème Chic / Maison d'Hôtes** | Proche Arlac / Centre | Jardin clos & Terrasse | Calme, cadre arboré sécurisé pour enfant | [Voir sur Booking.com](https://www.booking.com) |
-| **2** | **Appart'Hôtel Néméa / Residhome** | Mérignac Centre / Magudas | Balcon / Terrasse privative | Cuisine équipée, autonomie repas enfant | [Voir sur Booking.com](https://www.booking.com) |
-| **3** | **Maison de Ville avec Jardin Privatif** | Quartier Capeyron | Jardin privé arboré | Espace de jeux extérieur privatif | [Voir sur Booking.com](https://www.booking.com) |
+### 🎯 Objectif : Plein Centre-Ville & Gestion Autonome
 
----
+- **Filtre Hébergement :** Maison / Appartement indépendant en plein centre-ville avec terrasse ou jardin.
+- **Plafond Prix Recommandé :** **Max 150 € / nuit** (Soit 300 € max pour le séjour de 2 nuits).
 
-## 📍 ÉTAPE 2 : PARENTIS-EN-BORN (2 NUITS DU 24 AU 26 AOÛT 2026)
+#### 🔗 Liens Directs Pré-Filtrés Booking.com (Parentis-en-Born)
+- 📌 **[Consulter les Logements Entiers en Centre-Ville de Parentis (24-26 Août 2026)](https://www.booking.com/searchresults.fr.html?ss=Parentis-en-Born&checkin=2026-08-24&checkout=2026-08-26&group_adults=2&group_children=1&age=4&no_rooms=1&nflt=ht_id%3D201%3Bht_id%3D220%3Broomfacility%3D11)**
 
-### 🎯 Objectif : Plein Centre-Ville & Espace Extérieur
+#### 🏡 Top 3 Hébergements Indépendants Centre-Ville
 
-Parentis-en-Born offre la proximité immédiate des Grands Lacs (Lac de Biscarrosse-Parentis) et des plages landaises, tout en conservant un centre-ville vivant et chaleureux.
-
-#### 🏡 Sélection d'Hébergements avec Extérieur en Plein Centre
-
-| N° | Hébergement / Type | Distance Centre-Ville | Extérieur proposé | Atouts Famille | Lien Booking / Info |
-|:---|:-------------------|:----------------------|:------------------|:---------------|:--------------------|
-| **1** | **La Parent'aise** | **Plein Centre-Ville** | Jardin & Terrasse privatifs | Climatisation, cuisine équipée, calme total | [Voir sur Booking.com](https://www.booking.com) |
-| **2** | **La Cabane de Marius** | **À 2 min du Centre** | Grande Terrasse & Jardin | Spacieux, terrasse couverte repas | [Voir sur Booking.com](https://www.booking.com) |
-| **3** | **Appartement de Charme Centre** | **Plein Centre** | Terrasse privée / Balcon | Proximité immédiate commerces & marchés | [Voir sur Booking.com](https://www.booking.com) |
-| **4** | **Chez Flo / Maison d'Hôtes** | **Centre-Ville** | Jardin & Terrasse | Restaurant/Bar sur place, ambiance landaise | [Voir sur Booking.com](https://www.booking.com) |
+| N° | Hébergement & Type | Emplacement | Extérieur | Autonomie & Équipements | Tarif Estimé / Nuit |
+|:---|:-------------------|:------------|:----------|:-----------------------|:--------------------|
+| **1** | **La Parent'aise** | **Plein Centre-Ville** | Jardin & Terrasse | Appartement indépendant, climatisé, cuisine complète | ~120 € - 145 € |
+| **2** | **La Cabane de Marius** | **À 2 min du Centre** | Terrasse couverte & Jardin | Logement individuel spacieux, barbecue, jardin | ~125 € - 150 € |
+| **3** | **Appartement Cœur de Ville** | **Rue N. Brémontier (Plein Centre)** | Terrasse / Balcon privé | Cuisine équipée, tout à pied (marché, boulangerie) | ~110 € - 135 € |
 
 ---
 
-## 📋 FEUILLE DE ROUTE DE VOTRE SÉJOUR (23 - 26 AOÛT 2026)
+## 📊 BUDGET GLOBAL ET RECAPITULATIF DU SÉJOUR (3 NUITS)
 
-- **Dimanche 23 Août 2026 (Mérignac)** :
-  - Arrivée et Check-in à Mérignac.
-  - Balade de repérage au **Parc Bourran** (superbe parc avec animaux/canards, parfait pour un enfant de 4 ans).
-  - Repérage des quartiers **Capeyron** et **Arlac** (commerces, écoles maternelles, arrêts de tram).
-
-- **Lundi 24 Août 2026 (Mérignac ➔ Parentis-en-Born)** :
-  - Petit tour matinal du secteur **Le Burck / Beutre** pour valider la typologie des appartements T3/T4 à 1 100 € CC.
-  - Route vers Parentis-en-Born (~1h15 de route via A63).
-  - Check-in logement centre-ville à Parentis-en-Born.
-
-- **Mardi 25 Août 2026 (Parentis-en-Born)** :
-  - Journée détente : Centre-ville à pied, marché local, et sortie plage du lac de Parentis (eau calme et très sécurisée pour un enfant de 4 ans).
-
-- **Mercredi 26 Août 2026** :
-  - Check-out et retour.
+| Étape | Ville & Dates | Type d'Hébergement | Plafond Prix / Nuit | Budget Étape |
+|:------|:--------------|:-------------------|:--------------------|:-------------|
+| **Étape 1** | Mérignac (23-24/08) | Appartement / Maison autonome avec terrasse | **Max 130 €** | **130 €** |
+| **Étape 2** | Parentis-en-Born (24-26/08) | Logement entier plein centre avec jardin/terrasse | **Max 150 €** | **300 €** |
+| **TOTAL** | **3 Nuits (23 - 26 Août 2026)** | **100% Gestion Autonome + Extérieur** | **-** | **430 € Max** |
