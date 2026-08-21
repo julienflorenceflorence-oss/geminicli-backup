@@ -17,7 +17,7 @@
         }
 
         .container {
-            max-width: 680px;
+            max-width: 700px;
             width: 100%;
             text-align: center;
         }
@@ -36,12 +36,10 @@
             margin-bottom: 24px;
         }
 
-        .preview-card {
-            background: #000000;
-            border: 1px solid #D4AF37;
-            border-radius: 8px;
-            padding: 20px;
-            box-shadow: 0 12px 32px rgba(0, 0, 0, 0.6);
+        /* LA CARTE DE PRÉVISUALISATION EST TOTALEMENT TRANSPARENTE SANS FOND NOIR AUTOUR POUR NE PAS POLLUER LE COPIER-COLLER */
+        .preview-card-wrapper {
+            background: transparent;
+            padding: 0;
             display: inline-block;
             margin-bottom: 24px;
         }
@@ -50,8 +48,8 @@
             background-color: #D4AF37;
             color: #000000;
             border: none;
-            padding: 14px 28px;
-            font-size: 0.95rem;
+            padding: 16px 32px;
+            font-size: 1rem;
             font-weight: 700;
             border-radius: 6px;
             cursor: pointer;
@@ -67,11 +65,11 @@
         }
 
         .status-msg {
-            margin-top: 12px;
+            margin-top: 14px;
             color: #3fb950;
             font-weight: 600;
-            font-size: 0.85rem;
-            height: 20px;
+            font-size: 0.9rem;
+            height: 24px;
         }
 
         .guide-box {
@@ -101,13 +99,13 @@
 
 <div class="container">
     <h1>Template Email & Signature Prestige</h1>
-    <p class="subtitle">Thème Sombre Homogène (Fond #0F1115 & Texte Blanc/Or) pour Apple Mail</p>
+    <p class="subtitle">Zone de texte blanche exploitable + Pied de signature Noir & Or (Optimisé Apple Mail)</p>
 
-    <!-- ZONE DE RENDU COPIABLE -->
-    <div class="preview-card" id="email-template-container">
+    <!-- PRÉVISUALISATION SANS WRAPPER NOIR PARASITE -->
+    <div class="preview-card-wrapper">
         
-        <!-- TABLEAU COMPLET EMAIL + SIGNATURE (UNIFORMISÉ SUR FOND SOMBRE #0F1115) -->
-        <table cellpadding="0" cellspacing="0" border="0" width="650" style="width: 650px; max-width: 650px; background-color: #0F1115; font-family: -apple-system, BlinkMacSystemFont, 'Helvetica Neue', Helvetica, Arial, sans-serif; border: 1px solid #D4AF37; border-collapse: collapse; -webkit-text-size-adjust: none;">
+        <!-- TABLEAU STRICTEMENT ISOLÉ POUR LE COPIER-COLLER DANS APPLE MAIL -->
+        <table id="pure-email-table" cellpadding="0" cellspacing="0" border="0" width="650" style="width: 650px; max-width: 650px; background-color: #ffffff; font-family: -apple-system, BlinkMacSystemFont, 'Helvetica Neue', Helvetica, Arial, sans-serif; border: 1px solid #D4AF37; border-collapse: collapse; -webkit-text-size-adjust: none;">
             
             <!-- 1. EN-TÊTE CERVEAU ANIMÉ (HAUT) -->
             <tr>
@@ -121,9 +119,9 @@
                 <td height="4" style="background-color: #D4AF37; line-height: 4px; font-size: 4px;">&nbsp;</td>
             </tr>
 
-            <!-- 2. ESPACE DE TEXTE (ZONE DE RÉDACTION UNIFORMISÉE SUR FOND SOMBRE #0F1115 & TEXTE BLANC #FFFFFF) -->
+            <!-- 2. ESPACE DE TEXTE (ZONE DE RÉDACTION CLAIRE ET PARFAITEMENT EXPLOITABLE : FOND BLANC #FFFFFF & TEXTE NOIR #000000) -->
             <tr>
-                <td style="background-color: #0F1115; padding: 45px 35px; color: #ffffff; font-size: 15px; font-family: -apple-system, BlinkMacSystemFont, 'Helvetica Neue', Helvetica, Arial, sans-serif; line-height: 1.6;">
+                <td style="background-color: #ffffff; padding: 50px 40px; color: #000000; font-size: 16px; font-family: -apple-system, BlinkMacSystemFont, 'Helvetica Neue', Helvetica, Arial, sans-serif; line-height: 1.6;">
                     Bonjour,<br><br>
                     [Tapez votre message ici...]<br><br><br>
                 </td>
@@ -134,9 +132,9 @@
                 <td height="4" style="background-color: #D4AF37; line-height: 4px; font-size: 4px;">&nbsp;</td>
             </tr>
 
-            <!-- 3. PIED DE SIGNATURE (FOND SOMBRE #0F1115) -->
+            <!-- 3. PIED DE SIGNATURE PRESTIGE (FOND NOIR #0F1115 & TEXTES OR/BLANC) -->
             <tr>
-                <td style="padding: 30px 20px; background-color: #0F1115;" valign="middle">
+                <td style="padding: 35px 24px; background-color: #0F1115;" valign="middle">
                     <table cellpadding="0" cellspacing="0" border="0" width="100%">
                         <tr>
                             <!-- PHOTO DE PROFIL -->
@@ -148,21 +146,21 @@
 
                             <!-- TEXTE & COORDONNÉES -->
                             <td valign="middle" style="font-family: -apple-system, BlinkMacSystemFont, 'Helvetica Neue', Helvetica, Arial, sans-serif;">
-                                <div style="color: #D4AF37; font-size: 20px; font-weight: 700; text-transform: uppercase; letter-spacing: 2px; line-height: 24px; margin-bottom: 2px;">JULIEN FLORENCE</div>
+                                <div style="color: #D4AF37; font-size: 22px; font-weight: 700; text-transform: uppercase; letter-spacing: 2px; line-height: 26px; margin-bottom: 2px;">JULIEN FLORENCE</div>
                                 <div style="color: #ffffff; font-size: 11px; font-weight: 400; text-transform: uppercase; letter-spacing: 1.2px; opacity: 0.9; line-height: 16px; margin-bottom: 14px;">EXPERT EN STRATÉGIE, DÉVELOPPEMENT & COACHING</div>
                                 
                                 <!-- TELEPHONE ET EMAIL -->
-                                <table cellpadding="0" cellspacing="0" border="0" style="margin-bottom: 16px;">
+                                <table cellpadding="0" cellspacing="0" border="0" style="margin-bottom: 18px;">
                                     <tr>
                                         <td valign="middle" style="padding-right: 6px; line-height: 0;">
-                                            <img src="https://img.icons8.com/ios-filled/50/D4AF37/phone.png" width="12" height="12" style="display: block; width: 12px; height: 12px; border: 0;">
+                                            <img src="https://img.icons8.com/ios-filled/50/D4AF37/phone.png" width="13" height="13" style="display: block; width: 13px; height: 13px; border: 0;">
                                         </td>
                                         <td valign="middle" style="font-size: 12px; font-weight: 600; white-space: nowrap;">
                                             <a href="tel:0661747573" style="color: #D4AF37 !important; text-decoration: none !important; font-weight: bold;"><span style="color: #D4AF37 !important;">06 61 74 75 73</span></a>
                                         </td>
                                         <td valign="middle" style="padding: 0 8px; color: #D4AF37; opacity: 0.4;">|</td>
                                         <td valign="middle" style="padding-right: 6px; line-height: 0;">
-                                            <img src="https://img.icons8.com/ios-filled/50/D4AF37/new-post.png" width="12" height="12" style="display: block; width: 12px; height: 12px; border: 0;">
+                                            <img src="https://img.icons8.com/ios-filled/50/D4AF37/new-post.png" width="13" height="13" style="display: block; width: 13px; height: 13px; border: 0;">
                                         </td>
                                         <td valign="middle" style="font-size: 12px; white-space: nowrap;">
                                             <a href="mailto:julienflorence.florence@gmail.com" style="color: #ffffff !important; text-decoration: none !important;"><span style="color: #ffffff !important; opacity: 0.9;">julienflorence.florence@gmail.com</span></a>
@@ -174,10 +172,10 @@
                                 <table cellpadding="0" cellspacing="0" border="0">
                                     <tr>
                                         <td style="padding-right: 8px;">
-                                            <a href="https://julienflorenceflorence-oss.github.io/cv-prestige/" target="_blank" style="background-color: #D4AF37; color: #000000 !important; text-decoration: none !important; font-size: 10px; font-weight: 700; padding: 8px 14px; border-radius: 4px; display: inline-block; text-transform: uppercase; letter-spacing: 1px; border: 1px solid #D4AF37;"><span style="color: #000000 !important;">CV INTERACTIF</span></a>
+                                            <a href="https://julienflorenceflorence-oss.github.io/cv-prestige/" target="_blank" style="background-color: #D4AF37; color: #000000 !important; text-decoration: none !important; font-size: 10px; font-weight: 700; padding: 9px 16px; border-radius: 4px; display: inline-block; text-transform: uppercase; letter-spacing: 1px; border: 1px solid #D4AF37;"><span style="color: #000000 !important;">CV INTERACTIF</span></a>
                                         </td>
                                         <td>
-                                            <a href="https://www.linkedin.com/in/julien-florence-2536a083/" target="_blank" style="background-color: #0F1115; color: #D4AF37 !important; text-decoration: none !important; font-size: 10px; font-weight: 700; padding: 8px 14px; border-radius: 4px; display: inline-block; text-transform: uppercase; letter-spacing: 1px; border: 1px solid #D4AF37;"><span style="color: #D4AF37 !important;">LINKEDIN</span></a>
+                                            <a href="https://www.linkedin.com/in/julien-florence-2536a083/" target="_blank" style="background-color: #0F1115; color: #D4AF37 !important; text-decoration: none !important; font-size: 10px; font-weight: 700; padding: 9px 16px; border-radius: 4px; display: inline-block; text-transform: uppercase; letter-spacing: 1px; border: 1px solid #D4AF37;"><span style="color: #D4AF37 !important;">LINKEDIN</span></a>
                                         </td>
                                     </tr>
                                 </table>
@@ -192,7 +190,7 @@
     </div>
 
     <div>
-        <button class="btn-action" onclick="copyEmailTemplate()">Copier le Template pour Apple Mail (macOS)</button>
+        <button class="btn-action" onclick="copyCleanEmailTable()">Copier le Template (Mode Pro Apple Mail)</button>
         <div class="status-msg" id="status-msg"></div>
     </div>
 
@@ -200,7 +198,7 @@
     <div class="guide-box">
         <h3>🍎 Mode d'Emploi pour Installer sur Mac (Apple Mail) :</h3>
         <ol>
-            <li>Cliquez sur le bouton ci-dessus <strong>"Copier le Template pour Apple Mail (macOS)"</strong>.</li>
+            <li>Cliquez sur le bouton ci-dessus <strong>"Copier le Template (Mode Pro Apple Mail)"</strong>.</li>
             <li>Ouvrez l'application <strong>Mail</strong> sur votre Mac.</li>
             <li>Allez dans <strong>Mail > Réglages...</strong> > <strong>Signatures</strong>.</li>
             <li>Créez une nouvelle signature (<code>+</code>), décochez <em>"Toujours utiliser la même police..."</em>, puis faites <strong><code>Cmd + V</code> (Coller)</strong>.</li>
@@ -209,17 +207,19 @@
 </div>
 
 <script>
-    function copyEmailTemplate() {
-        const container = document.getElementById('email-template-container');
+    async function copyCleanEmailTable() {
+        const tableElement = document.getElementById('pure-email-table');
+        
+        // Copie ultra-propre isolant uniquement le tableau sans conteneur externe
         const range = document.createRange();
-        range.selectNode(container);
+        range.selectNode(tableElement);
         window.getSelection().removeAllRanges();
         window.getSelection().addRange(range);
         
         try {
             document.execCommand('copy');
             const status = document.getElementById('status-msg');
-            status.innerText = "✓ TEMPLATE EMAIL COPIÉ ! COLLEZ DANS APPLE MAIL (CMD + V).";
+            status.innerText = "✓ TEMPLATE EMAIL COPIÉ PARFAITEMENT ! COLLEZ DANS APPLE MAIL (CMD + V).";
             setTimeout(() => status.innerText = "", 5000);
         } catch (err) {
             alert("Erreur lors de la copie.");
