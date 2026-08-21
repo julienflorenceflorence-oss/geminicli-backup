@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Signature Gmail Prestige — Julien FLORENCE</title>
+    <title>Template Email Prestige avec Zone de Texte Éditable — Julien FLORENCE</title>
     <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@700&family=Montserrat:wght@300;400;700&display=swap" rel="stylesheet">
     <style>
         :root {
@@ -101,16 +101,35 @@
 <body>
 
 <div class="container">
-    <h1>Signature Gmail Prestige</h1>
-    <p style="color: #8b949e; font-size: 0.9rem; margin-bottom: 25px;">Pour taper vos messages librement dans Gmail, collez cette signature bas de page dans vos Paramètres Gmail.</p>
+    <h1>Template Email Prestige (Zone de Texte 100% Éditable)</h1>
+    <p style="color: #8b949e; font-size: 0.9rem; margin-bottom: 25px;">Bannière Cerveau IA + Zone de Texte 100% Éditable au centre + Pied de Signature Prestige</p>
 
-    <!-- OPTION A : SIGNATURE SEULE BAS DE PAGE (RECOMMANDÉE POUR GMAIL SETTINGS) -->
+    <!-- TEMPLATE COMPLET AVEC ZONE DE TEXTE 100% ÉDITABLE ET EXPLOITABLE -->
     <div class="preview-box" id="signature-container">
         <table cellpadding="0" cellspacing="0" border="0" width="650" style="background-color: #0F1115; width: 650px; font-family: 'Montserrat', Arial, sans-serif; border: 1px solid #D4AF37; border-collapse: collapse;">
-            <!-- LIGNE D'ACCENT -->
+            
+            <!-- 1. BANNIÈRE CERVEAU (HAUT) -->
+            <tr>
+                <td style="padding: 0; line-height: 0; background-color: #000; width: 650px;">
+                    <img src="https://raw.githubusercontent.com/julienflorenceflorence-oss/geminicli-backup/main/Projets/iCloud-Email-Studio/HTML/cerveau_42.gif" width="650" style="display: block; width: 650px; height: auto; border: 0;">
+                </td>
+            </tr>
+
+            <!-- LIGNE D'ACCENT SUPERIEURE -->
+            <tr><td height="4" style="background-color: #D4AF37; line-height: 4px; font-size: 4px;">&nbsp;</td></tr>
+            
+            <!-- 2. ZONE DE TEXTE 100% ÉDITABLE & EXPLOITABLE (FOND BLANC #FFFFFF & TEXTE NOIR #000000) -->
+            <tr>
+                <td contenteditable="true" style="background-color: #ffffff !important; padding: 50px 40px; color: #000000 !important; font-size: 16px; font-family: -apple-system, BlinkMacSystemFont, Arial, sans-serif; line-height: 1.6;">
+                    Bonjour,<br><br>
+                    [Tapez votre message ici...]<br><br><br>
+                </td>
+            </tr>
+
+            <!-- LIGNE D'ACCENT INFERIEURE -->
             <tr><td height="4" style="background-color: #D4AF37; line-height: 4px; font-size: 4px;">&nbsp;</td></tr>
 
-            <!-- PIED DE SIGNATURE (BAS DE PAGE) -->
+            <!-- 3. PIED DE SIGNATURE (BAS DE PAGE) -->
             <tr>
                 <td style="padding: 35px 20px; background-color: #0F1115;">
                     <table cellpadding="0" cellspacing="0" border="0" width="100%">
@@ -148,19 +167,17 @@
                     </table>
                 </td>
             </tr>
-
-            <!-- LIGNE D'ACCENT BASSE -->
-            <tr><td height="4" style="background-color: #D4AF37; line-height: 4px; font-size: 4px;">&nbsp;</td></tr>
         </table>
     </div>
 
-    <button class="btn-copy" onclick="copySignature()">Copier la Signature Bas de Page pour Gmail</button>
+    <button class="btn-copy" onclick="copySignature()">Copier le Template avec Zone de Texte Éditable</button>
     <div id="status"></div>
 
     <div class="instructions">
-        <strong>Pourquoi utiliser cette version dans les Paramètres Gmail ?</strong><br>
-        1. Collez ce bloc dans vos <strong>Paramètres Gmail (⚙️) > Signature</strong>.<br>
-        2. Quand vous cliquerez sur <strong>"Nouveau Message"</strong> dans Gmail, vous pourrez taper votre texte <strong>librement au-dessus de la signature</strong> sans aucun blocage !
+        <strong>Comment l'utiliser facilement dans votre messagerie :</strong><br>
+        1. Cliquez sur le bouton <strong>"Copier le Template avec Zone de Texte Éditable"</strong>.<br>
+        2. Dans Gmail ou Apple Mail : Ouvrez une fenêtre de <strong>Nouveau Message</strong>, puis faites <strong><code>Cmd + V</code> (Coller)</strong>.<br>
+        3. Cliquez directement sur le texte <code>[Tapez votre message ici...]</code> : la zone de texte est <strong>100% éditable et exploitable</strong>, vous pouvez taper et modifier votre message librement !
     </div>
 </div>
 
@@ -175,7 +192,7 @@
         try {
             document.execCommand('copy');
             const s = document.getElementById('status');
-            s.innerText = "✓ SIGNATURE COPIÉE ! COLLEZ DANS VOS PARAMÈTRES GMAIL (CMD + V).";
+            s.innerText = "✓ TEMPLATE COPIÉ ! COLLEZ DANS UN NOUVEAU MESSAGE POUR ÉCRIRE LIBREMENT.";
             setTimeout(() => s.innerText = "", 4000);
         } catch (err) {
             alert("Erreur lors de la copie.");
