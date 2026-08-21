@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>iCloud Email Studio — GitHub Design System</title>
+    <meta name="description" content="Générateur de templates d'emails professionnels au design GitHub pour la messagerie iCloud et Apple Mail.">
+    <!-- Google Fonts & Font Awesome Icons -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Fira+Code:wght@400;500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body class="github-dark-theme">
+
+    <!-- TOP NAVIGATION HEADER -->
+    <header class="app-header">
+        <div class="header-left">
+            <div class="github-logo">
+                <i class="fa-brands fa-github"></i>
+            </div>
+            <div class="header-titles">
+                <h1>iCloud Email Studio</h1>
+                <span class="version-badge"><i class="fa-solid fa-cloud"></i> iCloud Mail Ready</span>
+            </div>
+        </div>
+        <div class="header-actions">
+            <button id="btn-icloud-guide" class="btn btn-secondary">
+                <i class="fa-solid fa-book"></i> Guide Configuration iCloud
+            </button>
+            <button id="btn-copy-rich" class="btn btn-primary">
+                <i class="fa-solid fa-copy"></i> Copier dans Apple Mail
+            </button>
+            <button id="btn-download-html" class="btn btn-secondary">
+                <i class="fa-solid fa-download"></i> Exporter .HTML
+            </button>
+        </div>
+    </header>
+
+    <!-- MAIN APP CONTAINER -->
+    <main class="app-container">
+        
+        <!-- SIDEBAR 1: TEMPLATES & COMPONENTS -->
+        <aside class="sidebar-panel">
+            <div class="panel-section">
+                <h3><i class="fa-solid fa-layer-group"></i> Modèles Prédéfinis</h3>
+                <div class="template-selector-wrapper">
+                    <select id="select-template" class="form-select">
+                        <!-- Populated by JS -->
+                    </select>
+                </div>
+            </div>
+
+            <div class="panel-section">
+                <h3><i class="fa-solid fa-cubes"></i> Composants GitHub</h3>
+                <div class="components-grid">
+                    <button class="component-btn" data-action="alert-note">
+                        <i class="fa-solid fa-circle-info note-color"></i>
+                        <span>Alert Note</span>
+                    </button>
+                    <button class="component-btn" data-action="alert-tip">
+                        <i class="fa-solid fa-lightbulb tip-color"></i>
+                        <span>Alert Tip</span>
+                    </button>
+                    <button class="component-btn" data-action="alert-important">
+                        <i class="fa-solid fa-exclamation-triangle important-color"></i>
+                        <span>Alert Important</span>
+                    </button>
+                    <button class="component-btn" data-action="alert-warning">
+                        <i class="fa-solid fa-bell warning-color"></i>
+                        <span>Alert Warning</span>
+                    </button>
+                    <button class="component-btn" data-action="badge">
+                        <i class="fa-solid fa-tag"></i>
+                        <span>Badge Statut</span>
+                    </button>
+                    <button class="component-btn" data-action="table">
+                        <i class="fa-solid fa-table"></i>
+                        <span>Tableau Data</span>
+                    </button>
+                    <button class="component-btn" data-action="cta-button">
+                        <i class="fa-solid fa-square-check"></i>
+                        <span>Bouton CTA</span>
+                    </button>
+                    <button class="component-btn" data-action="code-block">
+                        <i class="fa-solid fa-code"></i>
+                        <span>Bloc Code</span>
+                    </button>
+                </div>
+            </div>
+
+            <div class="panel-section">
+                <h3><i class="fa-solid fa-sliders"></i> Thème d'Aperçu</h3>
+                <div class="theme-toggle-group">
+                    <button class="theme-btn active" data-theme="dark">
+                        <i class="fa-solid fa-moon"></i> Dark
+                    </button>
+                    <button class="theme-btn" data-theme="light">
+                        <i class="fa-solid fa-sun"></i> Light
+                    </button>
+                    <button class="theme-btn" data-theme="email-client">
+                        <i class="fa-solid fa-envelope"></i> Apple Mail
+                    </button>
+                </div>
+            </div>
+
+            <div class="panel-section icloud-info-box">
+                <i class="fa-solid fa-shield-halved"></i>
+                <div>
+                    <strong>Sécurité iCloud</strong>
+                    <p>Formatage automatique avec CSS inline pour une compatibilité à 100% sur Mac, iOS et Webmail.</p>
+                </div>
+            </div>
+        </aside>
+
+        <!-- PANEL 2: MARKDOWN & HTML EDITOR -->
+        <section class="editor-panel">
+            <div class="editor-header">
+                <div class="editor-tabs">
+                    <button class="tab-btn active" data-tab="markdown"><i class="fa-solid fa-pen-to-square"></i> Éditeur Markdown</button>
+                    <button class="tab-btn" data-tab="meta"><i class="fa-solid fa-paper-plane"></i> En-tête Email</button>
+                </div>
+                <div class="editor-status">
+                    <span id="char-count">0 caractères</span>
+                </div>
+            </div>
+
+            <div class="editor-body">
+                <!-- Tab Markdown -->
+                <div id="tab-content-markdown" class="tab-content active">
+                    <div class="email-meta-inputs">
+                        <div class="input-group">
+                            <label for="email-subject"><i class="fa-solid fa-heading"></i> Sujet de l'Email :</label>
+                            <input type="text" id="email-subject" value="🚀 Compte-Rendu Stratégique — Suivi & Actions T3" placeholder="Objet de votre e-mail...">
+                        </div>
+                    </div>
+                    <textarea id="markdown-input" spellcheck="false" placeholder="Saisissez votre contenu au format GitHub Markdown..."></textarea>
+                </div>
+
+                <!-- Tab Meta & iCloud SMTP -->
+                <div id="tab-content-meta" class="tab-content">
+                    <div class="smtp-config-card">
+                        <h3><i class="fa-solid fa-server"></i> Configuration Envoi SMTP iCloud</h3>
+                        <p class="section-desc">Permet d'envoyer l'email généré directement via le script Python SMTP d'iCloud.</p>
+                        
+                        <div class="form-grid">
+                            <div class="input-group">
+                                <label for="smtp-sender">Votre adresse iCloud :</label>
+                                <input type="email" id="smtp-sender" placeholder="votre-nom@icloud.com">
+                            </div>
+                            <div class="input-group">
+                                <label for="smtp-recipient">Destinataire :</label>
+                                <input type="email" id="smtp-recipient" placeholder="destinataire@exemple.com">
+                            </div>
+                        </div>
+
+                        <div class="code-preview-box">
+                            <label>Commande d'envoi rapide en terminal :</label>
+                            <pre><code id="cli-command-preview">python3 ../Python/send_icloud_email.py --to destinataire@exemple.com --subject "Objet"</code></pre>
+                            <button id="btn-copy-cli" class="btn btn-secondary btn-sm"><i class="fa-solid fa-copy"></i> Copier la commande</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- PANEL 3: LIVE RENDER PREVIEW -->
+        <section class="preview-panel">
+            <div class="preview-header">
+                <h2><i class="fa-solid fa-eye"></i> Prévisualisation Rendu Email</h2>
+                <div class="preview-actions">
+                    <button id="btn-copy-raw-html" class="btn btn-secondary btn-sm" title="Copier le code HTML brut">
+                        <i class="fa-solid fa-code"></i> HTML Brut
+                    </button>
+                </div>
+            </div>
+
+            <div class="preview-body" id="preview-wrapper">
+                <div class="email-mockup-frame">
+                    <div class="email-mockup-header">
+                        <div class="email-mockup-dots">
+                            <span></span><span></span><span></span>
+                        </div>
+                        <div class="email-mockup-title" id="mockup-subject-display">
+                            🚀 Compte-Rendu Stratégique — Suivi & Actions T3
+                        </div>
+                    </div>
+                    <div id="email-rendered-output" class="rendered-content github-dark-preview">
+                        <!-- RENDERED HTML INSERTED HERE -->
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- NOTIFICATION TOAST -->
+    <div id="toast-notification" class="toast">
+        <i class="fa-solid fa-circle-check"></i>
+        <span id="toast-message">Contenu copié dans le presse-papier !</span>
+    </div>
+
+    <!-- MODAL GUIDE ICLOUD -->
+    <div id="modal-icloud" class="modal-overlay">
+        <div class="modal-card">
+            <div class="modal-header">
+                <h2><i class="fa-solid fa-cloud"></i> Configuration Messagerie iCloud</h2>
+                <button class="modal-close" id="btn-close-modal"><i class="fa-solid fa-xmark"></i></button>
+            </div>
+            <div class="modal-body">
+                <h3>1. Utiliser le mode "Copier-Coller" direct (Recommandé sur Mac)</h3>
+                <p>Le moyen le plus simple sur Mac :</p>
+                <ol>
+                    <li>Cliquez sur le bouton vert <strong>"Copier dans Apple Mail"</strong> dans le Studio.</li>
+                    <li>Ouvrez l'application <strong>Mail sur Mac</strong> (ou le Webmail iCloud.com).</li>
+                    <li>Créez un nouveau message et faites simplement <code>Cmd + V</code> (Coller). Tout le design GitHub (couleurs, tables, alertes) est conservé !</li>
+                </ol>
+
+                <h3>2. Activer l'envoi SMTP avec le script Python</h3>
+                <p>Pour envoyer des emails automatiquement sans passer par l'application Mail :</p>
+                <ol>
+                    <li>Rendez-vous sur <a href="https://appleid.apple.com" target="_blank" rel="noopener">appleid.apple.com</a>.</li>
+                    <li>Dans la section <strong>Connexion et sécurité</strong>, sélectionnez <strong>Mots de passe spécifiques à une application</strong>.</li>
+                    <li>Générez un mot de passe (ex: <code>abcd-efgh-ijkl-mnop</code>).</li>
+                    <li>Utilisez le script <code>send_icloud_email.py</code> disponible dans le dossier <code>/Python</code>.</li>
+                </ol>
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-primary" id="btn-close-modal-footer">J'ai compris</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Marked.js parser library CDN & Fallback parser -->
+    <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+    <script src="app.js"></script>
+</body>
+</html>

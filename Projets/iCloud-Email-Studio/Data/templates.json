@@ -1,0 +1,30 @@
+[
+  {
+    "id": "signature-julien",
+    "title": "Signature Prestige — Julien FLORENCE",
+    "category": "Signature",
+    "description": "Signature officielle d'expert en stratégie, développement & coaching avec photo et liens.",
+    "markdown": "# Julien FLORENCE\n**EXPERT EN STRATÉGIE, DÉVELOPPEMENT & COACHING**\n\n---\n\n📞 **Téléphone :** 06 61 74 75 73  \n✉️ **E-mail :** julien.florence@gmail.com  \n\n> [!NOTE]\n> **Disponibilités & Rendez-vous** : Réservation directe de créneau via l'agenda en ligne.\n\n[Prendre RDV (Google Calendar)](https://calendar.app.google/iCzfE1GQrjxM3ZQ56) | [Consulter le CV Interactif](https://julienflorenceflorence-oss.github.io/cv-prestige/) | [Profil LinkedIn](https://www.linkedin.com/in/julien-florence-2536a083/)\n"
+  },
+  {
+    "id": "meeting-summary",
+    "title": "Compte-Rendu de Réunion Stratégique",
+    "category": "Management",
+    "description": "Format propre avec ordre du jour, décisions actées, bloc d'alerte et tableau des actions.",
+    "markdown": "# 🚀 Compte-Rendu de Réunion — Cadre Stratégique\n\n**Date :** 21 Août 2026  \n**Participants :** Équipe de Direction & Gestion de Projet  \n**Projet :** Optimisation & Croissance  \n\n---\n\n> [!NOTE]\n> **Décision Clé Actée** : Validation du plan d'action T3. Priorité absolue aux initiatives à fort impact et faible effort.\n\n### 📊 Synthèse des Échanges\n\nLors de cette session, nous avons analysé les performances actuelles et validé les jalons prioritaires pour le trimestre à venir.\n\n* **Performances T2 :** Objectifs atteints à +15% sur les indicateurs de marge.\n* **Ressources :** Restructuration des flux de communication internes.\n* **Conformité & RSE :** Intégration de la matrice de matérialité.\n\n---\n\n### 📋 Matrice des Actions Prioritaires\n\n| Action | Responsable | Échéance | Statut |\n| :--- | :--- | :--- | :--- |\n| **Finalisation du Dashboard KPI** | Julien F. | 28/08/2026 | `EN COURS` |\n| **Audit de Conformité Réglementaire** | Équipe Legal | 05/09/2026 | `À FAIRE` |\n| **Revue de Performance Hebdomadaire** | Management | Récurrent | `VALIDÉ` |\n\n---\n\n> [!IMPORTANT]\n> Prochaine réunion de suivi fixée au **Lundi à 09h00**.\n\n[Consulter l'Espace Projet](https://github.com)"
+  },
+  {
+    "id": "project-status",
+    "title": "Rapport d'Avancement de Projet & KPI",
+    "category": "Projets",
+    "description": "Rapport visuel type GitHub Release / Progress Update avec badges et métriques.",
+    "markdown": "# 📦 Release Status v2.4 — Rapport d'Avancement\n\n**Statut Général du Projet :** `STABLE` | **Sprint :** 14 | **Complétion :** 85%\n\n---\n\n> [!TIP]\n> **Livrables majeurs finalisés** : L'infrastructure de données et l'interface utilisateur sont opérationnelles.\n\n### 🎯 Métriques Clés de Performance\n\n* 🟢 **Taux de Satisfaction :** 94%\n* 🔵 **Temps de Réponse Moyen :** < 120ms\n* 🟡 **Risques Identifiés :** 2 (sous contrôle)\n\n---\n\n### 🛠️ Modifications & Corrections\n\n- ✨ **Nouvelle Fonctionnalité** : Intégration du système de notification dynamique.\n- ⚡ **Optimisation** : Réduction de 40% du temps de chargement des rapports.\n- 🔒 **Sécurité** : Mise à jour des protocoles d'authentification SSL/TLS.\n\n> [!WARNING]\n> Une interruption de service planifiée aura lieu ce dimanche à 02h00 pour maintenance serveur.\n\n[Télécharger le Rapport Complet (PDF)](https://github.com)"
+  },
+  {
+    "id": "executive-pitch",
+    "title": "Pitch / Proposition Commerciale Premium",
+    "category": "Business",
+    "description": "Présentation d'offre haut de gamme style GitHub Readme récapitulatif.",
+    "markdown": "# 🤝 Proposition de Partenariat Stratégique\n\n**À l'attention de :** Direction Générale  \n**Proposé par :** Julien FLORENCE — Conseil & Management  \n\n---\n\n> [!NOTE]\n> **Objectif** : Déployer une stratégie d'excellence opérationnelle et maximiser la rentabilité des actifs.\n\n### 🏆 Notre Proposition de Valeur\n\nNous vous proposons un accompagnement sur-mesure structuré autour de 3 piliers d'intervention :\n\n1. **Diagnostic Systémique (360°)** : Cartographie des opportunités et réduction des coûts de structure.\n2. **Digitalisation & Automatisation** : Déploiement d'outils décisionnels à haute valeur ajoutée.\n3. **Management Hybride & Performance** : Accompagnement des équipes vers l'autonomie.\n\n---\n\n### 📈 Plan d'Action & Calendrier\n\n| Phase | Description | Durée | Impact |\n| :--- | :--- | :--- | :--- |\n| **Phase 1** | Audit & Recommandations | 2 semaines | Élevé |\n| **Phase 2** | Déploiement des Outils | 3 semaines | Majeur |\n| **Phase 3** | Formation & Optimisation | 1 semaine | Pérenne |\n\n[Valider la Proposition Comercialle](https://github.com)"
+  }
+]
