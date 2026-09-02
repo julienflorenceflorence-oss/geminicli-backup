@@ -41,7 +41,6 @@
             margin: 0 auto;
         }
 
-        /* HEADER QUESTIA DESIGN */
         .header-card {
             background: linear-gradient(135deg, #111827 0%, #0B1120 100%);
             border: 1px solid var(--border-cyan);
@@ -110,7 +109,6 @@
             letter-spacing: 1px;
         }
 
-        /* SECTION TITLES */
         .section-header {
             display: flex;
             align-items: center;
@@ -128,7 +126,6 @@
             letter-spacing: 1px;
         }
 
-        /* CARDS */
         .card {
             background: var(--bg-card);
             border: 1px solid var(--border-subtle);
@@ -189,12 +186,10 @@
             font-size: 12px;
         }
 
-        /* PERSONAS GRID */
         .persona-grid {
             display: grid;
             grid-template-columns: repeat(2, 1fr);
             gap: 20px;
-
         }
 
         .persona-card {
@@ -202,7 +197,6 @@
             border: 1px solid var(--border-subtle);
             border-radius: 16px;
             padding: 24px;
-            transition: transform 0.2s;
             page-break-inside: avoid;
         }
 
@@ -230,7 +224,6 @@
             font-weight: 700;
         }
 
-        /* TABLE DESIGN */
         table {
             width: 100%;
             border-collapse: collapse;
@@ -266,41 +259,21 @@
             font-size: 12px;
             color: var(--text-sub);
         }
-
-        /* IMPRESSION PDF SOIGNÉE */
-        @page {
-            margin: 15mm;
-            size: A4 portrait;
-        }
-
-        @media print {
-            body {
-                background: #0A0E17 !important;
-                color: #ffffff !important;
-                -webkit-print-color-adjust: exact !important;
-                print-color-adjust: exact !important;
-            }
-            .header-card, .card, .persona-card, table {
-                page-break-inside: avoid;
-            }
-        }
     </style>
 </head>
 <body>
 
 <div class="container">
 
-    <!-- HEADER QUESTIA -->
     <header class="header-card">
         <div class="logo-title">
             <div class="logo-badge">questIA</div>
             <h1 class="main-title">Dossier de Stratégie Commerciale</h1>
         </div>
-        <div class="header-subtitle">Copywriting High-Ticket | ICP & Cartographie des 4 Personas</div>
+        <div class="header-subtitle">Copywriting High-Ticket | Vision Coach Personnalisé | ICP & 4 Personas</div>
         <div class="badge-tag">💎 Offre Lancement Fondateur — 50 Accès Privilégiés à 2 000 €</div>
     </header>
 
-    <!-- SECTION 1 : COPYWRITING OFFRE -->
     <div class="section-header">
         <h2>🔥 1. Proposition de Texte d'Offre (Copywriting High-Ticket)</h2>
     </div>
@@ -316,9 +289,18 @@
             Dans les ventes à haut niveau et le business international, ce n'est jamais votre produit qui fait échouer un deal. <strong>C'est votre incapacité à décoder instantanément la psychologie et les codes culturels de votre interlocuteur.</strong>
         </p>
 
+        <!-- NOOUVEAU BLOC : VISION COACH PERSONNALISÉ AVANT TEST -->
+        <div style="background: linear-gradient(135deg, rgba(245, 158, 11, 0.15) 0%, rgba(0, 242, 254, 0.1) 100%); border: 1.5px solid var(--gold-accent); border-radius: 12px; padding: 20px; margin-bottom: 20px;">
+            <h4 style="color: var(--gold-accent); font-size: 15px; margin-bottom: 8px; font-family: 'Cinzel', serif;">👑 ÉTAPE 0 : LA VISION COACH PERSONNALISÉ 1-SUR-1 (AVANT TOUT TEST)</h4>
+            <p style="font-size: 13.5px; color: #F3F4F6; line-height: 1.6;">
+                Avant de démarrer les modules immersifs, vous bénéficiez d'un <strong>Coaching d'Alignement Personnalisé en 1-sur-1 avec un Expert</strong>. Nous réalisons votre diagnostic comportemental complet (PCM / DiSC), cartographions vos biais spécifiques en négociation et construisons votre <strong>feuille de route sur-mesure</strong> adaptée à vos vrais deals en cours.
+            </p>
+        </div>
+
         <div style="background: rgba(0, 242, 254, 0.1); border: 1px solid var(--border-cyan); border-radius: 12px; padding: 20px; margin-bottom: 20px;">
             <h4 style="color: var(--cyan-glow); font-size: 15px; margin-bottom: 12px; font-family: 'Cinzel', serif;">🚀 L'ACCÉLÉRATEUR questIA : 3 MOIS POUR DEVENIR UN DÉCODEUR DE DÉCISIONNAIRES</h4>
             <ul class="bullet-list">
+                <li><strong>Cadrage & Vision Coach Personnalisé (Diagnostic 1-sur-1)</strong> : Cartographie sur-mesure de vos forces, axes de progression et objectifs de closing avant de débuter.</li>
                 <li><strong>6 Blocs de Niveau Immersifs</strong> : Mises en situation réelles et tests d'immersion pour valider votre montée en compétence terrain.</li>
                 <li><strong>Mastery Psychologique & Comportementale</strong> : Actionnez les vrais leviers de décision, anticipez les freins cachés et dominez les dynamiques de pouvoir.</li>
                 <li><strong>Business English & Diplomatie d'Affaires</strong> : Affinez la subtilité de votre anglais négociation pour ne plus jamais laisser planer l'ombre d'un doute.</li>
@@ -328,7 +310,7 @@
         <div style="display: flex; justify-content: space-between; align-items: center; background: rgba(245, 158, 11, 0.1); border: 1px solid rgba(245, 158, 11, 0.4); padding: 16px 24px; border-radius: 12px;">
             <div>
                 <strong style="color: var(--gold-accent); font-size: 15px;">🎁 OFFRE FONDATEUR EXCLUSIVE</strong><br>
-                <span style="font-size: 13px; color: #D1D5DB;">Réservée aux 50 premiers leaders inscrits</span>
+                <span style="font-size: 13px; color: #D1D5DB;">Réservée aux 50 premiers leaders inscrits (Vision Coach 1-sur-1 Inclus)</span>
             </div>
             <div style="font-size: 22px; font-weight: 800; color: var(--gold-accent); font-family: 'Cinzel', serif;">
                 2 000 € HT <span style="font-size: 12px; text-decoration: line-through; color: #9CA3AF;">(au lieu de 4 500 €)</span>
@@ -344,7 +326,7 @@
     <div class="card">
         <div class="card-title">🏆 Le Profil Client Idéal questIA</div>
         <p style="font-size: 14px; color: #D1D5DB; margin-bottom: 15px;">
-            Pour maximiser le ROI de questIA, nous ciblons les <strong>décisionnaires et négociateurs à très forts enjeux financiers</strong> pour qui le coût d'une erreur comportementale ou linguistique se chiffre en centaines de milliers d'euros de pertes.
+            Pour maximiser le ROI de questIA, nous ciblons les <strong>décisionnaires et négociateurs à très forts enjeux financiers</strong> qui exigent un accompagnement personnalisé par un Coach avant de valider leur progression par des tests d'immersion.
         </p>
         <ul class="bullet-list">
             <li><strong>Intitulés ciblés</strong> : VPs Sales, Founders Tech, Directeurs Grands Comptes, Partners M&A & Consultants Exécutifs.</li>
@@ -360,20 +342,18 @@
     </div>
 
     <div class="persona-grid">
-        <!-- PERSONA 1 -->
         <div class="persona-card">
             <div class="persona-header">
                 <div class="persona-name">Thomas (42 ans)</div>
                 <div class="persona-tag">VP Sales Scale-up</div>
             </div>
             <ul class="bullet-list">
-                <li><strong>Contexte</strong> : Pilote des équipes B2B sur des deals de 250 k€/an en Europe et aux US.</li>
-                <li><strong>Douleur</strong> : Deals internationaux perdus face aux Anglo-Saxons à cause de biais culturels mal gérés.</li>
-                <li><strong>Déclencheur</strong> : <em>« Je veux que mes équipes soient intouchables lors de nos closing à New York et Londres. »</em></li>
+                <li><strong>Contexte</strong> : Deals B2B à 250 k€/an en Europe et US.</li>
+                <li><strong>Douleur</strong> : Deals perdus par manque de maîtrise des nuances culturelles.</li>
+                <li><strong>Attente</strong> : <em>« Coaching 1-sur-1 puis immersion pour dominer nos closing à New York et Londres. »</em></li>
             </ul>
         </div>
 
-        <!-- PERSONA 2 -->
         <div class="persona-card">
             <div class="persona-header">
                 <div class="persona-name">Alexandre (35 ans)</div>
@@ -381,12 +361,11 @@
             </div>
             <ul class="bullet-list">
                 <li><strong>Contexte</strong> : CEO en levée de fonds Series A/B (5M€) auprès de VCs US/UK.</li>
-                <li><strong>Douleur</strong> : Excellent technique, mais stressé par la négociation psychologique et le pitch en anglais sous pression.</li>
-                <li><strong>Déclencheur</strong> : <em>« Je dois sécuriser ma levée sans me faire déstabiliser par les fonds américains. »</em></li>
+                <li><strong>Douleur</strong> : Stressé par la négociation psychologique et le pitch en anglais sous pression.</li>
+                <li><strong>Attente</strong> : <em>« Diagnostic initial avec le Coach pour cadrer mon pitch d'investisseur. »</em></li>
             </ul>
         </div>
 
-        <!-- PERSONA 3 -->
         <div class="persona-card">
             <div class="persona-header">
                 <div class="persona-name">Valérie (48 ans)</div>
@@ -395,11 +374,10 @@
             <ul class="bullet-list">
                 <li><strong>Contexte</strong> : Gère un portefeuille de 15M€ de CA devant des Comex internationaux.</li>
                 <li><strong>Douleur</strong> : Pression d'acheteurs chevronnés appliquant une guerre psychologique en négociation.</li>
-                <li><strong>Déclencheur</strong> : <em>« Je veux anticiper les coups d'avance des acheteurs et verrouiller mes comptes. »</em></li>
+                <li><strong>Attente</strong> : <em>« Bilan comportemental 1-sur-1 avant d'affronter les tests d'immersion. »</em></li>
             </ul>
         </div>
 
-        <!-- PERSONA 4 -->
         <div class="persona-card">
             <div class="persona-header">
                 <div class="persona-name">Marc (50 ans)</div>
@@ -407,8 +385,8 @@
             </div>
             <ul class="bullet-list">
                 <li><strong>Contexte</strong> : Négocie des fusions-acquisitions et partenariats stratégiques mondiaux.</li>
-                <li><strong>Douleur</strong> : Sait que 80% du succès d'un rachat dépend de la diplomatie et du feeling humain.</li>
-                <li><strong>Déclencheur</strong> : <em>« Les 2 000 € seront rentabilisés dès le premier comité d'acquisition. »</em></li>
+                <li><strong>Douleur</strong> : Bloqué par le manque d'alignement psychologique entre dirigeants.</li>
+                <li><strong>Attente</strong> : <em>« Coaching exécutif sur-mesure directement appliqué à mon rachat en cours. »</em></li>
             </ul>
         </div>
     </div>
@@ -422,7 +400,7 @@
                     <th>Fonction</th>
                     <th>Douleur Clé</th>
                     <th>Attente questIA</th>
-                    <th>Budget Accepté</th>
+                    <th>Budget</th>
                 </tr>
             </thead>
             <tbody>
@@ -430,29 +408,29 @@
                     <td><strong>Thomas</strong></td>
                     <td>VP Sales Scale-up</td>
                     <td>Deals internationaux perdus</td>
-                    <td>Closing accéléré & English</td>
-                    <td>2 000 € (Budget Sales)</td>
+                    <td>Coach 1-sur-1 & Immersion English</td>
+                    <td>2 000 € HT</td>
                 </tr>
                 <tr>
                     <td><strong>Alexandre</strong></td>
                     <td>CEO Founder Tech</td>
                     <td>Pression négociation VCs</td>
-                    <td>Confiance & Maîtrise IA</td>
-                    <td>2 000 € (Budget Levée)</td>
+                    <td>Vision Coach & Pitch VCs</td>
+                    <td>2 000 € HT</td>
                 </tr>
                 <tr>
                     <td><strong>Valérie</strong></td>
                     <td>Dir. Grands Comptes</td>
-                    <td>Tactiques d'acheteurs CAC40</td>
-                    <td>Lecture comportementale</td>
-                    <td>2 000 € (Formation Exécutive)</td>
+                    <td>Tactiques acheteurs CAC40</td>
+                    <td>Diagnostic initial & PCM/DiSC</td>
+                    <td>2 000 € HT</td>
                 </tr>
                 <tr>
                     <td><strong>Marc</strong></td>
                     <td>Partner M&A / Conseil</td>
                     <td>Blocages humains fusions</td>
-                    <td>Négociation stratégique</td>
-                    <td>2 000 € (Frais Conseil)</td>
+                    <td>Coaching exécutif & Diplomatie</td>
+                    <td>2 000 € HT</td>
                 </tr>
             </tbody>
         </table>
