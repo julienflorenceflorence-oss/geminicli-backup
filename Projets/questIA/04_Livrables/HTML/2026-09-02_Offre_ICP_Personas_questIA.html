@@ -9,16 +9,14 @@
     <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;700;800&family=Montserrat:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
     <style>
         :root {
-            --bg-dark: #0A0E17;
-            --bg-card: #111827;
-            --bg-pill: #1F2937;
-            --cyan-glow: #00F2FE;
-            --blue-gradient: linear-gradient(135deg, #00F2FE 0%, #4FACFE 100%);
-            --gold-accent: #F59E0B;
-            --text-main: #F9FAFB;
-            --text-sub: #9CA3AF;
-            --border-cyan: rgba(0, 242, 254, 0.3);
-            --border-subtle: rgba(255, 255, 255, 0.1);
+            --bg-body: #FFFFFF;
+            --bg-card: #F8FAFC;
+            --bg-pill: #F1F5F9;
+            --blue-accent: #0284C7;
+            --gold-accent: #B8860B;
+            --text-dark: #0F172A;
+            --text-muted: #475569;
+            --border-color: #E2E8F0;
         }
 
         * {
@@ -28,142 +26,111 @@
         }
 
         body {
-            background-color: var(--bg-dark);
-            color: var(--text-main);
-            font-family: 'Montserrat', sans-serif;
+            background-color: var(--bg-body);
+            color: var(--text-dark);
+            font-family: 'Montserrat', Arial, sans-serif;
             line-height: 1.6;
             padding: 30px;
-            min-height: 100vh;
         }
 
         .container {
-            max-width: 1000px;
+            max-width: 950px;
             margin: 0 auto;
         }
 
+        /* HEADER CARD */
         .header-card {
-            background: linear-gradient(135deg, #111827 0%, #0B1120 100%);
-            border: 1px solid var(--border-cyan);
-            border-radius: 20px;
-            padding: 40px;
-            margin-bottom: 35px;
-            box-shadow: 0 20px 40px rgba(0, 242, 254, 0.12);
-            position: relative;
-            overflow: hidden;
-        }
-
-        .header-card::before {
-            content: '';
-            position: absolute;
-            top: -40%;
-            right: -10%;
-            width: 350px;
-            height: 350px;
-            background: radial-gradient(circle, rgba(0, 242, 254, 0.2) 0%, transparent 70%);
-            pointer-events: none;
-        }
-
-        .logo-title {
-            display: flex;
-            align-items: center;
-            gap: 15px;
-            margin-bottom: 10px;
+            background: linear-gradient(135deg, #0F172A 0%, #1E293B 100%);
+            color: #FFFFFF;
+            border-radius: 16px;
+            padding: 35px;
+            margin-bottom: 30px;
+            box-shadow: 0 10px 25px rgba(15, 23, 42, 0.15);
         }
 
         .logo-badge {
-            background: var(--blue-gradient);
-            color: #000;
+            display: inline-block;
+            background: var(--blue-accent);
+            color: #FFFFFF;
             font-family: 'Cinzel', serif;
             font-weight: 800;
-            font-size: 18px;
-            padding: 8px 16px;
-            border-radius: 8px;
+            font-size: 16px;
+            padding: 6px 14px;
+            border-radius: 6px;
             letter-spacing: 2px;
+            margin-bottom: 10px;
         }
 
         .main-title {
             font-family: 'Cinzel', serif;
-            font-size: 32px;
-            color: #ffffff;
-            letter-spacing: 1px;
+            font-size: 28px;
+            color: #FFFFFF;
+            margin-bottom: 6px;
         }
 
         .header-subtitle {
-            font-size: 14px;
-            color: var(--cyan-glow);
-            font-weight: 600;
+            font-size: 13px;
+            color: #38BDF8;
+            font-weight: 700;
             letter-spacing: 1.5px;
             text-transform: uppercase;
-            margin-bottom: 20px;
+            margin-bottom: 15px;
         }
 
         .badge-tag {
             display: inline-block;
-            background: rgba(245, 158, 11, 0.15);
-            border: 1px solid rgba(245, 158, 11, 0.4);
-            color: var(--gold-accent);
-            padding: 6px 16px;
+            background: rgba(245, 158, 11, 0.2);
+            border: 1px solid #F59E0B;
+            color: #FBBF24;
+            padding: 6px 14px;
             border-radius: 20px;
             font-size: 12px;
             font-weight: 700;
-            letter-spacing: 1px;
         }
 
         .section-header {
-            display: flex;
-            align-items: center;
-            gap: 12px;
-            margin-top: 40px;
-            margin-bottom: 20px;
-            border-bottom: 2px solid var(--border-cyan);
-            padding-bottom: 10px;
+            margin-top: 35px;
+            margin-bottom: 15px;
+            border-bottom: 3px solid var(--blue-accent);
+            padding-bottom: 8px;
         }
 
         .section-header h2 {
             font-family: 'Cinzel', serif;
-            font-size: 22px;
-            color: var(--cyan-glow);
-            letter-spacing: 1px;
+            font-size: 20px;
+            color: var(--blue-accent);
         }
 
         .card {
             background: var(--bg-card);
-            border: 1px solid var(--border-subtle);
-            border-radius: 16px;
-            padding: 30px;
-            margin-bottom: 25px;
-            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.4);
+            border: 1px solid var(--border-color);
+            border-radius: 12px;
+            padding: 25px;
+            margin-bottom: 20px;
         }
 
         .card-gold {
-            border-color: rgba(245, 158, 11, 0.4);
-            background: linear-gradient(135deg, #111827 0%, #18150E 100%);
+            border-left: 5px solid var(--gold-accent);
+            background: #FFFDF5;
         }
 
         .card-title {
-            font-size: 18px;
+            font-size: 17px;
             font-weight: 700;
-            color: #ffffff;
-            margin-bottom: 15px;
-            display: flex;
-            align-items: center;
-            gap: 10px;
-        }
-
-        .card-title-gold {
-            color: var(--gold-accent);
+            color: var(--text-dark);
+            margin-bottom: 12px;
         }
 
         .quote-box {
-            background: rgba(0, 242, 254, 0.05);
-            border-left: 4px solid var(--cyan-glow);
-            padding: 20px;
-            border-radius: 8px;
+            background: #F0F9FF;
+            border-left: 4px solid var(--blue-accent);
+            padding: 16px;
+            border-radius: 6px;
             font-style: italic;
             font-size: 15px;
-            color: #E5E7EB;
-            margin-bottom: 20px;
-            line-height: 1.7;
+            color: #0369A1;
+            margin-bottom: 15px;
+            font-weight: 600;
         }
 
         .bullet-list {
@@ -172,92 +139,68 @@
 
         .bullet-list li {
             position: relative;
-            padding-left: 24px;
-            margin-bottom: 12px;
+            padding-left: 22px;
+            margin-bottom: 10px;
             font-size: 14px;
-            color: #D1D5DB;
+            color: var(--text-dark);
         }
 
         .bullet-list li::before {
-            content: '✦';
+            content: '▪';
             position: absolute;
             left: 0;
-            color: var(--cyan-glow);
-            font-size: 12px;
+            color: var(--blue-accent);
+            font-size: 14px;
         }
 
         .persona-grid {
             display: grid;
             grid-template-columns: repeat(2, 1fr);
-            gap: 20px;
+            gap: 15px;
         }
 
         .persona-card {
             background: var(--bg-card);
-            border: 1px solid var(--border-subtle);
-            border-radius: 16px;
-            padding: 24px;
-            page-break-inside: avoid;
-        }
-
-        .persona-header {
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            margin-bottom: 12px;
-            border-bottom: 1px solid var(--border-subtle);
-            padding-bottom: 8px;
+            border: 1px solid var(--border-color);
+            border-radius: 12px;
+            padding: 20px;
         }
 
         .persona-name {
-            font-size: 16px;
+            font-size: 15px;
             font-weight: 700;
-            color: var(--cyan-glow);
-        }
-
-        .persona-tag {
-            background: var(--bg-pill);
-            color: var(--gold-accent);
-            padding: 4px 10px;
-            border-radius: 12px;
-            font-size: 11px;
-            font-weight: 700;
+            color: var(--blue-accent);
+            margin-bottom: 8px;
         }
 
         table {
             width: 100%;
             border-collapse: collapse;
             margin-top: 15px;
-            border-radius: 12px;
-            overflow: hidden;
-            border: 1px solid var(--border-subtle);
+            border: 1px solid var(--border-color);
         }
 
         th {
-            background: #1F2937;
-            color: var(--cyan-glow);
+            background: #0F172A;
+            color: #FFFFFF;
             font-family: 'Cinzel', serif;
-            font-size: 13px;
+            font-size: 12px;
             text-align: left;
-            padding: 14px;
-            border-bottom: 1px solid var(--border-cyan);
+            padding: 12px;
         }
 
         td {
-            padding: 14px;
+            padding: 12px;
             font-size: 13px;
-            color: #D1D5DB;
-            border-bottom: 1px solid var(--border-subtle);
-            background: var(--bg-card);
+            color: var(--text-dark);
+            border-bottom: 1px solid var(--border-color);
         }
 
         footer {
             text-align: center;
-            margin-top: 50px;
-            padding-top: 20px;
-            border-top: 1px solid var(--border-subtle);
+            margin-top: 40px;
             font-size: 12px;
-            color: var(--text-sub);
+            color: var(--text-muted);
         }
     </style>
 </head>
@@ -266,12 +209,10 @@
 <div class="container">
 
     <header class="header-card">
-        <div class="logo-title">
-            <div class="logo-badge">questIA</div>
-            <h1 class="main-title">Dossier de Stratégie Commerciale</h1>
-        </div>
+        <div class="logo-badge">questIA</div>
+        <h1 class="main-title">Dossier de Stratégie Commerciale</h1>
         <div class="header-subtitle">Copywriting High-Ticket | Vision Coach Personnalisé | ICP & 4 Personas</div>
-        <div class="badge-tag">💎 Offre Lancement Fondateur — 50 Accès Privilégiés à 2 000 €</div>
+        <div class="badge-tag">💎 Offre Lancement Fondateur — 50 Accès Privilégiés à 2 000 € HT</div>
     </header>
 
     <div class="section-header">
@@ -279,41 +220,41 @@
     </div>
 
     <div class="card card-gold">
-        <div class="card-title card-title-gold">💥 Accroche Provocatrice & Offre Exécutive</div>
+        <div class="card-title" style="color: var(--gold-accent);">💥 Accroche Provocatrice & Offre Exécutive</div>
         
         <div class="quote-box">
             « Combien de millions d'euros de chiffre d'affaires avez-vous DÉJÀ perdus à cause d'une mauvaise lecture psychologique, d'un biais culturel ou d'un quiproquo en négociation ? »
         </div>
 
-        <p style="font-size: 14px; color: #E5E7EB; margin-bottom: 20px; line-height: 1.7;">
+        <p style="font-size: 14px; color: var(--text-dark); margin-bottom: 15px;">
             Dans les ventes à haut niveau et le business international, ce n'est jamais votre produit qui fait échouer un deal. <strong>C'est votre incapacité à décoder instantanément la psychologie et les codes culturels de votre interlocuteur.</strong>
         </p>
 
-        <!-- NOOUVEAU BLOC : VISION COACH PERSONNALISÉ AVANT TEST -->
-        <div style="background: linear-gradient(135deg, rgba(245, 158, 11, 0.15) 0%, rgba(0, 242, 254, 0.1) 100%); border: 1.5px solid var(--gold-accent); border-radius: 12px; padding: 20px; margin-bottom: 20px;">
-            <h4 style="color: var(--gold-accent); font-size: 15px; margin-bottom: 8px; font-family: 'Cinzel', serif;">👑 ÉTAPE 0 : LA VISION COACH PERSONNALISÉ 1-SUR-1 (AVANT TOUT TEST)</h4>
-            <p style="font-size: 13.5px; color: #F3F4F6; line-height: 1.6;">
+        <!-- ÉTAPE 0 COACH -->
+        <div style="background: #FFFBEB; border: 1.5px solid var(--gold-accent); border-radius: 10px; padding: 18px; margin-bottom: 15px;">
+            <h4 style="color: var(--gold-accent); font-size: 15px; margin-bottom: 6px; font-family: 'Cinzel', serif;">👑 ÉTAPE 0 : LA VISION COACH PERSONNALISÉ 1-SUR-1 (AVANT TOUT TEST)</h4>
+            <p style="font-size: 13.5px; color: #78350F; line-height: 1.6;">
                 Avant de démarrer les modules immersifs, vous bénéficiez d'un <strong>Coaching d'Alignement Personnalisé en 1-sur-1 avec un Expert</strong>. Nous réalisons votre diagnostic comportemental complet (PCM / DiSC), cartographions vos biais spécifiques en négociation et construisons votre <strong>feuille de route sur-mesure</strong> adaptée à vos vrais deals en cours.
             </p>
         </div>
 
-        <div style="background: rgba(0, 242, 254, 0.1); border: 1px solid var(--border-cyan); border-radius: 12px; padding: 20px; margin-bottom: 20px;">
-            <h4 style="color: var(--cyan-glow); font-size: 15px; margin-bottom: 12px; font-family: 'Cinzel', serif;">🚀 L'ACCÉLÉRATEUR questIA : 3 MOIS POUR DEVENIR UN DÉCODEUR DE DÉCISIONNAIRES</h4>
+        <div style="background: #F0F9FF; border: 1px solid var(--blue-accent); border-radius: 10px; padding: 18px; margin-bottom: 15px;">
+            <h4 style="color: var(--blue-accent); font-size: 15px; margin-bottom: 10px; font-family: 'Cinzel', serif;">🚀 L'ACCÉLÉRATEUR questIA : 3 MOIS POUR DEVENIR UN DÉCODEUR DE DÉCISIONNAIRES</h4>
             <ul class="bullet-list">
-                <li><strong>Cadrage & Vision Coach Personnalisé (Diagnostic 1-sur-1)</strong> : Cartographie sur-mesure de vos forces, axes de progression et objectifs de closing avant de débuter.</li>
+                <li><strong>Cadrage & Vision Coach Personnalisé (Diagnostic 1-sur-1)</strong> : Cartographie sur-mesure de vos forces et objectifs avant de débuter.</li>
                 <li><strong>6 Blocs de Niveau Immersifs</strong> : Mises en situation réelles et tests d'immersion pour valider votre montée en compétence terrain.</li>
                 <li><strong>Mastery Psychologique & Comportementale</strong> : Actionnez les vrais leviers de décision, anticipez les freins cachés et dominez les dynamiques de pouvoir.</li>
                 <li><strong>Business English & Diplomatie d'Affaires</strong> : Affinez la subtilité de votre anglais négociation pour ne plus jamais laisser planer l'ombre d'un doute.</li>
             </ul>
         </div>
 
-        <div style="display: flex; justify-content: space-between; align-items: center; background: rgba(245, 158, 11, 0.1); border: 1px solid rgba(245, 158, 11, 0.4); padding: 16px 24px; border-radius: 12px;">
+        <div style="display: flex; justify-content: space-between; align-items: center; background: #FEF3C7; border: 1px solid var(--gold-accent); padding: 14px 20px; border-radius: 10px;">
             <div>
-                <strong style="color: var(--gold-accent); font-size: 15px;">🎁 OFFRE FONDATEUR EXCLUSIVE</strong><br>
-                <span style="font-size: 13px; color: #D1D5DB;">Réservée aux 50 premiers leaders inscrits (Vision Coach 1-sur-1 Inclus)</span>
+                <strong style="color: #92400E; font-size: 14px;">🎁 OFFRE FONDATEUR EXCLUSIVE</strong><br>
+                <span style="font-size: 12px; color: #78350F;">Réservée aux 50 premiers leaders inscrits (Vision Coach 1-sur-1 Inclus)</span>
             </div>
-            <div style="font-size: 22px; font-weight: 800; color: var(--gold-accent); font-family: 'Cinzel', serif;">
-                2 000 € HT <span style="font-size: 12px; text-decoration: line-through; color: #9CA3AF;">(au lieu de 4 500 €)</span>
+            <div style="font-size: 20px; font-weight: 800; color: #92400E; font-family: 'Cinzel', serif;">
+                2 000 € HT <span style="font-size: 12px; text-decoration: line-through; color: #B45309;">(au lieu de 4 500 €)</span>
             </div>
         </div>
     </div>
@@ -325,7 +266,7 @@
 
     <div class="card">
         <div class="card-title">🏆 Le Profil Client Idéal questIA</div>
-        <p style="font-size: 14px; color: #D1D5DB; margin-bottom: 15px;">
+        <p style="font-size: 14px; color: var(--text-dark); margin-bottom: 12px;">
             Pour maximiser le ROI de questIA, nous ciblons les <strong>décisionnaires et négociateurs à très forts enjeux financiers</strong> qui exigent un accompagnement personnalisé par un Coach avant de valider leur progression par des tests d'immersion.
         </p>
         <ul class="bullet-list">
@@ -343,56 +284,44 @@
 
     <div class="persona-grid">
         <div class="persona-card">
-            <div class="persona-header">
-                <div class="persona-name">Thomas (42 ans)</div>
-                <div class="persona-tag">VP Sales Scale-up</div>
-            </div>
+            <div class="persona-name">Thomas (42 ans) — VP Sales Scale-up</div>
             <ul class="bullet-list">
                 <li><strong>Contexte</strong> : Deals B2B à 250 k€/an en Europe et US.</li>
                 <li><strong>Douleur</strong> : Deals perdus par manque de maîtrise des nuances culturelles.</li>
-                <li><strong>Attente</strong> : <em>« Coaching 1-sur-1 puis immersion pour dominer nos closing à New York et Londres. »</em></li>
+                <li><strong>Attente</strong> : <em>« Coach 1-sur-1 puis immersion pour dominer nos closing. »</em></li>
             </ul>
         </div>
 
         <div class="persona-card">
-            <div class="persona-header">
-                <div class="persona-name">Alexandre (35 ans)</div>
-                <div class="persona-tag">Tech Founder</div>
-            </div>
+            <div class="persona-name">Alexandre (35 ans) — Tech Founder</div>
             <ul class="bullet-list">
-                <li><strong>Contexte</strong> : CEO en levée de fonds Series A/B (5M€) auprès de VCs US/UK.</li>
-                <li><strong>Douleur</strong> : Stressé par la négociation psychologique et le pitch en anglais sous pression.</li>
-                <li><strong>Attente</strong> : <em>« Diagnostic initial avec le Coach pour cadrer mon pitch d'investisseur. »</em></li>
+                <li><strong>Contexte</strong> : CEO en levée de fonds Series A/B (5M€) auprès de VCs.</li>
+                <li><strong>Douleur</strong> : Stressé par la négociation psychologique et le pitch VCs.</li>
+                <li><strong>Attente</strong> : <em>« Diagnostic initial Coach pour cadrer mon pitch VCs. »</em></li>
             </ul>
         </div>
 
         <div class="persona-card">
-            <div class="persona-header">
-                <div class="persona-name">Valérie (48 ans)</div>
-                <div class="persona-tag">Dir. Grands Comptes</div>
-            </div>
+            <div class="persona-name">Valérie (48 ans) — Dir. Grands Comptes</div>
             <ul class="bullet-list">
-                <li><strong>Contexte</strong> : Gère un portefeuille de 15M€ de CA devant des Comex internationaux.</li>
-                <li><strong>Douleur</strong> : Pression d'acheteurs chevronnés appliquant une guerre psychologique en négociation.</li>
-                <li><strong>Attente</strong> : <em>« Bilan comportemental 1-sur-1 avant d'affronter les tests d'immersion. »</em></li>
+                <li><strong>Contexte</strong> : Portefeuille de 15M€ de CA devant Comex internationaux.</li>
+                <li><strong>Douleur</strong> : Tactiques de pression d'acheteurs de CAC40.</li>
+                <li><strong>Attente</strong> : <em>« Bilan comportemental 1-sur-1 avant les tests. »</em></li>
             </ul>
         </div>
 
         <div class="persona-card">
-            <div class="persona-header">
-                <div class="persona-name">Marc (50 ans)</div>
-                <div class="persona-tag">Partner M&A</div>
-            </div>
+            <div class="persona-name">Marc (50 ans) — Partner M&A</div>
             <ul class="bullet-list">
-                <li><strong>Contexte</strong> : Négocie des fusions-acquisitions et partenariats stratégiques mondiaux.</li>
-                <li><strong>Douleur</strong> : Bloqué par le manque d'alignement psychologique entre dirigeants.</li>
-                <li><strong>Attente</strong> : <em>« Coaching exécutif sur-mesure directement appliqué à mon rachat en cours. »</em></li>
+                <li><strong>Contexte</strong> : Fusions-acquisitions et partenariats stratégiques mondiaux.</li>
+                <li><strong>Douleur</strong> : Bloqué par le manque d'alignement entre dirigeants.</li>
+                <li><strong>Attente</strong> : <em>« Coaching exécutif sur-mesure appliqué à mon rachat. »</em></li>
             </ul>
         </div>
     </div>
 
     <!-- TABLE SYNTHÈSE -->
-    <div style="margin-top: 30px;">
+    <div style="margin-top: 25px;">
         <table>
             <thead>
                 <tr>
