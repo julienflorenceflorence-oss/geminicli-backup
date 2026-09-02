@@ -46,6 +46,11 @@
             padding: 35px;
             margin-bottom: 30px;
             box-shadow: 0 10px 25px rgba(15, 23, 42, 0.15);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 20px;
         }
 
         .logo-badge {
@@ -86,6 +91,28 @@
             border-radius: 20px;
             font-size: 12px;
             font-weight: 700;
+        }
+
+        .btn-download {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: #F59E0B;
+            color: #000000;
+            font-family: 'Cinzel', serif;
+            font-weight: 700;
+            font-size: 13px;
+            padding: 14px 24px;
+            border-radius: 30px;
+            text-decoration: none;
+            box-shadow: 0 4px 15px rgba(245, 158, 11, 0.4);
+            transition: all 0.2s ease;
+        }
+
+        .btn-download:hover {
+            background: #FFFFFF;
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(255, 255, 255, 0.5);
         }
 
         .section-header {
@@ -209,10 +236,17 @@
 <div class="container">
 
     <header class="header-card">
-        <div class="logo-badge">questIA</div>
-        <h1 class="main-title">Dossier de Stratégie Commerciale</h1>
-        <div class="header-subtitle">Copywriting High-Ticket | Vision Coach Personnalisé | ICP & 4 Personas</div>
-        <div class="badge-tag">💎 Offre Lancement Fondateur — 50 Accès Privilégiés à 2 000 € HT</div>
+        <div>
+            <div class="logo-badge">questIA</div>
+            <h1 class="main-title">Dossier de Stratégie Commerciale</h1>
+            <div class="header-subtitle">Copywriting High-Ticket | Vision Coach Personnalisé | ICP & 4 Personas</div>
+            <div class="badge-tag">💎 Offre Lancement Fondateur — 50 Accès Privilégiés à 2 000 € HT</div>
+        </div>
+        <div>
+            <a href="https://raw.githubusercontent.com/julienflorenceflorence-oss/geminicli-backup/main/Projets/questIA/04_Livrables/PDF/2026-09-02_Offre_ICP_Personas_questIA.pdf" download="2026-09-02_Offre_ICP_Personas_questIA.pdf" class="btn-download">
+                📥 Télécharger le PDF
+            </a>
+        </div>
     </header>
 
     <div class="section-header">
