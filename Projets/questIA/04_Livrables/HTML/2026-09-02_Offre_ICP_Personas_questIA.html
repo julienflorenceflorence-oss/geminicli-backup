@@ -1,0 +1,468 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>questIA — Document de Stratégie Commerciale, ICP & Personas</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;700;800&family=Montserrat:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-dark: #0A0E17;
+            --bg-card: #111827;
+            --bg-pill: #1F2937;
+            --cyan-glow: #00F2FE;
+            --blue-gradient: linear-gradient(135deg, #00F2FE 0%, #4FACFE 100%);
+            --gold-accent: #F59E0B;
+            --text-main: #F9FAFB;
+            --text-sub: #9CA3AF;
+            --border-cyan: rgba(0, 242, 254, 0.3);
+            --border-subtle: rgba(255, 255, 255, 0.1);
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            background-color: var(--bg-dark);
+            color: var(--text-main);
+            font-family: 'Montserrat', sans-serif;
+            line-height: 1.6;
+            padding: 30px;
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        /* HEADER QUESTIA DESIGN */
+        .header-card {
+            background: linear-gradient(135deg, #111827 0%, #0B1120 100%);
+            border: 1px solid var(--border-cyan);
+            border-radius: 20px;
+            padding: 40px;
+            margin-bottom: 35px;
+            box-shadow: 0 20px 40px rgba(0, 242, 254, 0.12);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .header-card::before {
+            content: '';
+            position: absolute;
+            top: -40%;
+            right: -10%;
+            width: 350px;
+            height: 350px;
+            background: radial-gradient(circle, rgba(0, 242, 254, 0.2) 0%, transparent 70%);
+            pointer-events: none;
+        }
+
+        .logo-title {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            margin-bottom: 10px;
+        }
+
+        .logo-badge {
+            background: var(--blue-gradient);
+            color: #000;
+            font-family: 'Cinzel', serif;
+            font-weight: 800;
+            font-size: 18px;
+            padding: 8px 16px;
+            border-radius: 8px;
+            letter-spacing: 2px;
+        }
+
+        .main-title {
+            font-family: 'Cinzel', serif;
+            font-size: 32px;
+            color: #ffffff;
+            letter-spacing: 1px;
+        }
+
+        .header-subtitle {
+            font-size: 14px;
+            color: var(--cyan-glow);
+            font-weight: 600;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+            margin-bottom: 20px;
+        }
+
+        .badge-tag {
+            display: inline-block;
+            background: rgba(245, 158, 11, 0.15);
+            border: 1px solid rgba(245, 158, 11, 0.4);
+            color: var(--gold-accent);
+            padding: 6px 16px;
+            border-radius: 20px;
+            font-size: 12px;
+            font-weight: 700;
+            letter-spacing: 1px;
+        }
+
+        /* SECTION TITLES */
+        .section-header {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-top: 40px;
+            margin-bottom: 20px;
+            border-bottom: 2px solid var(--border-cyan);
+            padding-bottom: 10px;
+        }
+
+        .section-header h2 {
+            font-family: 'Cinzel', serif;
+            font-size: 22px;
+            color: var(--cyan-glow);
+            letter-spacing: 1px;
+        }
+
+        /* CARDS */
+        .card {
+            background: var(--bg-card);
+            border: 1px solid var(--border-subtle);
+            border-radius: 16px;
+            padding: 30px;
+            margin-bottom: 25px;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.4);
+        }
+
+        .card-gold {
+            border-color: rgba(245, 158, 11, 0.4);
+            background: linear-gradient(135deg, #111827 0%, #18150E 100%);
+        }
+
+        .card-title {
+            font-size: 18px;
+            font-weight: 700;
+            color: #ffffff;
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .card-title-gold {
+            color: var(--gold-accent);
+        }
+
+        .quote-box {
+            background: rgba(0, 242, 254, 0.05);
+            border-left: 4px solid var(--cyan-glow);
+            padding: 20px;
+            border-radius: 8px;
+            font-style: italic;
+            font-size: 15px;
+            color: #E5E7EB;
+            margin-bottom: 20px;
+            line-height: 1.7;
+        }
+
+        .bullet-list {
+            list-style: none;
+        }
+
+        .bullet-list li {
+            position: relative;
+            padding-left: 24px;
+            margin-bottom: 12px;
+            font-size: 14px;
+            color: #D1D5DB;
+        }
+
+        .bullet-list li::before {
+            content: '✦';
+            position: absolute;
+            left: 0;
+            color: var(--cyan-glow);
+            font-size: 12px;
+        }
+
+        /* PERSONAS GRID */
+        .persona-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 20px;
+
+        }
+
+        .persona-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border-subtle);
+            border-radius: 16px;
+            padding: 24px;
+            transition: transform 0.2s;
+            page-break-inside: avoid;
+        }
+
+        .persona-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 12px;
+            border-bottom: 1px solid var(--border-subtle);
+            padding-bottom: 8px;
+        }
+
+        .persona-name {
+            font-size: 16px;
+            font-weight: 700;
+            color: var(--cyan-glow);
+        }
+
+        .persona-tag {
+            background: var(--bg-pill);
+            color: var(--gold-accent);
+            padding: 4px 10px;
+            border-radius: 12px;
+            font-size: 11px;
+            font-weight: 700;
+        }
+
+        /* TABLE DESIGN */
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 15px;
+            border-radius: 12px;
+            overflow: hidden;
+            border: 1px solid var(--border-subtle);
+        }
+
+        th {
+            background: #1F2937;
+            color: var(--cyan-glow);
+            font-family: 'Cinzel', serif;
+            font-size: 13px;
+            text-align: left;
+            padding: 14px;
+            border-bottom: 1px solid var(--border-cyan);
+        }
+
+        td {
+            padding: 14px;
+            font-size: 13px;
+            color: #D1D5DB;
+            border-bottom: 1px solid var(--border-subtle);
+            background: var(--bg-card);
+        }
+
+        footer {
+            text-align: center;
+            margin-top: 50px;
+            padding-top: 20px;
+            border-top: 1px solid var(--border-subtle);
+            font-size: 12px;
+            color: var(--text-sub);
+        }
+
+        /* IMPRESSION PDF SOIGNÉE */
+        @page {
+            margin: 15mm;
+            size: A4 portrait;
+        }
+
+        @media print {
+            body {
+                background: #0A0E17 !important;
+                color: #ffffff !important;
+                -webkit-print-color-adjust: exact !important;
+                print-color-adjust: exact !important;
+            }
+            .header-card, .card, .persona-card, table {
+                page-break-inside: avoid;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+
+    <!-- HEADER QUESTIA -->
+    <header class="header-card">
+        <div class="logo-title">
+            <div class="logo-badge">questIA</div>
+            <h1 class="main-title">Dossier de Stratégie Commerciale</h1>
+        </div>
+        <div class="header-subtitle">Copywriting High-Ticket | ICP & Cartographie des 4 Personas</div>
+        <div class="badge-tag">💎 Offre Lancement Fondateur — 50 Accès Privilégiés à 2 000 €</div>
+    </header>
+
+    <!-- SECTION 1 : COPYWRITING OFFRE -->
+    <div class="section-header">
+        <h2>🔥 1. Proposition de Texte d'Offre (Copywriting High-Ticket)</h2>
+    </div>
+
+    <div class="card card-gold">
+        <div class="card-title card-title-gold">💥 Accroche Provocatrice & Offre Exécutive</div>
+        
+        <div class="quote-box">
+            « Combien de millions d'euros de chiffre d'affaires avez-vous DÉJÀ perdus à cause d'une mauvaise lecture psychologique, d'un biais culturel ou d'un quiproquo en négociation ? »
+        </div>
+
+        <p style="font-size: 14px; color: #E5E7EB; margin-bottom: 20px; line-height: 1.7;">
+            Dans les ventes à haut niveau et le business international, ce n'est jamais votre produit qui fait échouer un deal. <strong>C'est votre incapacité à décoder instantanément la psychologie et les codes culturels de votre interlocuteur.</strong>
+        </p>
+
+        <div style="background: rgba(0, 242, 254, 0.1); border: 1px solid var(--border-cyan); border-radius: 12px; padding: 20px; margin-bottom: 20px;">
+            <h4 style="color: var(--cyan-glow); font-size: 15px; margin-bottom: 12px; font-family: 'Cinzel', serif;">🚀 L'ACCÉLÉRATEUR questIA : 3 MOIS POUR DEVENIR UN DÉCODEUR DE DÉCISIONNAIRES</h4>
+            <ul class="bullet-list">
+                <li><strong>6 Blocs de Niveau Immersifs</strong> : Mises en situation réelles et tests d'immersion pour valider votre montée en compétence terrain.</li>
+                <li><strong>Mastery Psychologique & Comportementale</strong> : Actionnez les vrais leviers de décision, anticipez les freins cachés et dominez les dynamiques de pouvoir.</li>
+                <li><strong>Business English & Diplomatie d'Affaires</strong> : Affinez la subtilité de votre anglais négociation pour ne plus jamais laisser planer l'ombre d'un doute.</li>
+            </ul>
+        </div>
+
+        <div style="display: flex; justify-content: space-between; align-items: center; background: rgba(245, 158, 11, 0.1); border: 1px solid rgba(245, 158, 11, 0.4); padding: 16px 24px; border-radius: 12px;">
+            <div>
+                <strong style="color: var(--gold-accent); font-size: 15px;">🎁 OFFRE FONDATEUR EXCLUSIVE</strong><br>
+                <span style="font-size: 13px; color: #D1D5DB;">Réservée aux 50 premiers leaders inscrits</span>
+            </div>
+            <div style="font-size: 22px; font-weight: 800; color: var(--gold-accent); font-family: 'Cinzel', serif;">
+                2 000 € HT <span style="font-size: 12px; text-decoration: line-through; color: #9CA3AF;">(au lieu de 4 500 €)</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- SECTION 2 : ICP -->
+    <div class="section-header">
+        <h2>🎯 2. Sélection de l'ICP (Ideal Customer Profile)</h2>
+    </div>
+
+    <div class="card">
+        <div class="card-title">🏆 Le Profil Client Idéal questIA</div>
+        <p style="font-size: 14px; color: #D1D5DB; margin-bottom: 15px;">
+            Pour maximiser le ROI de questIA, nous ciblons les <strong>décisionnaires et négociateurs à très forts enjeux financiers</strong> pour qui le coût d'une erreur comportementale ou linguistique se chiffre en centaines de milliers d'euros de pertes.
+        </p>
+        <ul class="bullet-list">
+            <li><strong>Intitulés ciblés</strong> : VPs Sales, Founders Tech, Directeurs Grands Comptes, Partners M&A & Consultants Exécutifs.</li>
+            <li><strong>Taille d'Entreprise</strong> : Scale-ups, PME de croissance, Entreprises ETI / Multinationales & Cabinets de Conseil d'Élite.</li>
+            <li><strong>Panier Moyen des Deals</strong> : De 100 k€ à plusieurs millions d'euros par transaction.</li>
+            <li><strong>Complexité</strong> : Négociations B2B internationales (US, UK, Moyen-Orient, Asie), ventes complexes multi-décisionnaires.</li>
+        </ul>
+    </div>
+
+    <!-- SECTION 3 : PERSONAS -->
+    <div class="section-header">
+        <h2>👤 3. Cartographie des 4 Personas Détaillés</h2>
+    </div>
+
+    <div class="persona-grid">
+        <!-- PERSONA 1 -->
+        <div class="persona-card">
+            <div class="persona-header">
+                <div class="persona-name">Thomas (42 ans)</div>
+                <div class="persona-tag">VP Sales Scale-up</div>
+            </div>
+            <ul class="bullet-list">
+                <li><strong>Contexte</strong> : Pilote des équipes B2B sur des deals de 250 k€/an en Europe et aux US.</li>
+                <li><strong>Douleur</strong> : Deals internationaux perdus face aux Anglo-Saxons à cause de biais culturels mal gérés.</li>
+                <li><strong>Déclencheur</strong> : <em>« Je veux que mes équipes soient intouchables lors de nos closing à New York et Londres. »</em></li>
+            </ul>
+        </div>
+
+        <!-- PERSONA 2 -->
+        <div class="persona-card">
+            <div class="persona-header">
+                <div class="persona-name">Alexandre (35 ans)</div>
+                <div class="persona-tag">Tech Founder</div>
+            </div>
+            <ul class="bullet-list">
+                <li><strong>Contexte</strong> : CEO en levée de fonds Series A/B (5M€) auprès de VCs US/UK.</li>
+                <li><strong>Douleur</strong> : Excellent technique, mais stressé par la négociation psychologique et le pitch en anglais sous pression.</li>
+                <li><strong>Déclencheur</strong> : <em>« Je dois sécuriser ma levée sans me faire déstabiliser par les fonds américains. »</em></li>
+            </ul>
+        </div>
+
+        <!-- PERSONA 3 -->
+        <div class="persona-card">
+            <div class="persona-header">
+                <div class="persona-name">Valérie (48 ans)</div>
+                <div class="persona-tag">Dir. Grands Comptes</div>
+            </div>
+            <ul class="bullet-list">
+                <li><strong>Contexte</strong> : Gère un portefeuille de 15M€ de CA devant des Comex internationaux.</li>
+                <li><strong>Douleur</strong> : Pression d'acheteurs chevronnés appliquant une guerre psychologique en négociation.</li>
+                <li><strong>Déclencheur</strong> : <em>« Je veux anticiper les coups d'avance des acheteurs et verrouiller mes comptes. »</em></li>
+            </ul>
+        </div>
+
+        <!-- PERSONA 4 -->
+        <div class="persona-card">
+            <div class="persona-header">
+                <div class="persona-name">Marc (50 ans)</div>
+                <div class="persona-tag">Partner M&A</div>
+            </div>
+            <ul class="bullet-list">
+                <li><strong>Contexte</strong> : Négocie des fusions-acquisitions et partenariats stratégiques mondiaux.</li>
+                <li><strong>Douleur</strong> : Sait que 80% du succès d'un rachat dépend de la diplomatie et du feeling humain.</li>
+                <li><strong>Déclencheur</strong> : <em>« Les 2 000 € seront rentabilisés dès le premier comité d'acquisition. »</em></li>
+            </ul>
+        </div>
+    </div>
+
+    <!-- TABLE SYNTHÈSE -->
+    <div style="margin-top: 30px;">
+        <table>
+            <thead>
+                <tr>
+                    <th>Persona</th>
+                    <th>Fonction</th>
+                    <th>Douleur Clé</th>
+                    <th>Attente questIA</th>
+                    <th>Budget Accepté</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><strong>Thomas</strong></td>
+                    <td>VP Sales Scale-up</td>
+                    <td>Deals internationaux perdus</td>
+                    <td>Closing accéléré & English</td>
+                    <td>2 000 € (Budget Sales)</td>
+                </tr>
+                <tr>
+                    <td><strong>Alexandre</strong></td>
+                    <td>CEO Founder Tech</td>
+                    <td>Pression négociation VCs</td>
+                    <td>Confiance & Maîtrise IA</td>
+                    <td>2 000 € (Budget Levée)</td>
+                </tr>
+                <tr>
+                    <td><strong>Valérie</strong></td>
+                    <td>Dir. Grands Comptes</td>
+                    <td>Tactiques d'acheteurs CAC40</td>
+                    <td>Lecture comportementale</td>
+                    <td>2 000 € (Formation Exécutive)</td>
+                </tr>
+                <tr>
+                    <td><strong>Marc</strong></td>
+                    <td>Partner M&A / Conseil</td>
+                    <td>Blocages humains fusions</td>
+                    <td>Négociation stratégique</td>
+                    <td>2 000 € (Frais Conseil)</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <footer>
+        <p>questIA — Document de Stratégie Commerciale & Profilage d'Élite | Confidentiel 2026</p>
+    </footer>
+
+</div>
+
+</body>
+</html>
