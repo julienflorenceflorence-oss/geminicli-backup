@@ -17,19 +17,19 @@
 ### 👑 ÉTAPE 0 : LA VISION COACH PERSONNALISÉ 1-SUR-1 (AVANT TOUT TEST)
 
 > Avant de démarrer les modules immersifs, chaque participant bénéficie d'un **Coaching d'Alignement Personnalisé en 1-sur-1 avec un Expert**.  
-> Nous réalisons votre diagnostic comportemental complet (PCM / DiSC), cartographions vos biais spécifiques en négociation et construisons votre **feuille de route sur-mesure** adaptée à vos vrais deals et enjeux en cours.
+> Nous réalisons son diagnostic comportemental complet (PCM / DiSC), cartographions ses biais spécifiques en négociation et construisons sa **feuille de route sur-mesure** adaptée à ses vrais deals et enjeux en cours.
 
 ---
 
 ### 🚀 L'ACCÉLÉRATEUR questIA : 3 MOIS POUR DEVENIR UN DÉCODEUR DE DÉCISIONNAIRES
 
-> 🔹 **Cadrage & Vision Coach Personnalisé (Diagnostic 1-sur-1)** : Cartographie sur-mesure de vos forces, axes de progression et objectifs de closing avant de débuter.  
-> 🔹 **6 Blocs de Niveau Immersifs** : Mises en situation réelles et tests d'immersion pour valider votre montée en compétence terrain.  
+> 🔹 **Cadrage & Vision Coach Personnalisé (Diagnostic 1-sur-1)** : Cartographie sur-mesure des forces, axes de progression et objectifs de closing de l'apprenant avant de débuter.  
+> 🔹 **6 Blocs de Niveau Immersifs** : Mises en situation réelles et tests d'immersion pour valider la montée en compétence terrain.  
 > 🔹 **Mastery Psychologique & Comportementale** : Actionnez les vrais leviers de décision, anticipez les freins cachés et dominez les dynamiques de pouvoir.  
 > 🔹 **Business English & Diplomatie d'Affaires** : Affinez la subtilité de votre anglais négociation pour ne plus jamais laisser planer l'ombre d'un doute.  
 >
 > 🎁 **OFFRE FONDATEUR EXCLUSIVE** :  
-> Réservée aux **50 premiers leaders** inscrits (Vision Coach 1-sur-1 Inclus) : **2 000 € HT** (au lieu de 4 500 €).  
+> Réservée aux **50 premiers leaders** inscrits (Vision Coach 1-sur-1 Inclus) : **2 000 € HT / apprenant** (au lieu de 4 500 €).  
 >
 > *Arrêtez de laisser du CA sur la table. Prenez le contrôle de vos négociations.*
 
@@ -37,12 +37,13 @@
 
 # 🎯 PARTIE 2 : SÉLECTION DE L'ICP (IDEAL CUSTOMER PROFILE)
 
-Pour maximiser le ROI de questIA, nous ciblons **les profils à très forts enjeux financiers** qui exigent un accompagnement personnalisé par un Coach avant de valider leur progression par des tests d'immersion.
+Pour maximiser le ROI de questIA, nous ciblons **les profils à très forts enjeux financiers** qui exigent un accompagnement personnalisé par un Coach avant de valider leur progression par des tests d'immersion (Tarif : 2 000 € HT par apprenant).
 
 ### 🏆 L'ICP Principal (Profil Client Idéal)
 * **Intitulé / Rôle** : Dirigeants, Directeurs Commerciaux / VP Sales, Founders Tech, Key Account Managers Grands Comptes & M&A Dealmakers.
 * **Taille d'Entreprise** : Scale-ups, PME de croissance, Entreprises ETI / Multationales, Cabinets de Conseil d'Élite.
 * **Panier Moyen des Deals Gérés** : De 100 k€ à plusieurs millions d'euros par transaction.
+* **Tarif de la Formation** : **2 000 € HT par apprenant** (Offre Fondateur).
 * **Complexité Commerciale** : Négociations B2B complexes, interlocuteurs internationaux (US, UK, Moyen-Orient, Asie, Europe du Nord), ventes multi-décisionnaires (C-Level, Comex).
 * **Frustration Majeure** : Sensation d'avoir le meilleur produit/service mais de perdre des contrats face à des concurrents maîtrisant mieux le réseau, la diplomatie d'affaires et la finesse psychologique.
 
@@ -86,9 +87,9 @@ Pour maximiser le ROI de questIA, nous ciblons **les profils à très forts enje
 
 # 📊 RECAPITULATIF SYNTHÉTIQUE DE L'ALBUM PERSONAS
 
-| Persona | Fonction | Douleur Clé | Attente questIA | Tarif Accepté |
+| Persona | Fonction | Douleur Clé | Attente questIA | Tarif / Apprenant |
 | :--- | :--- | :--- | :--- | :--- |
-| **Thomas** | VP Sales Scale-up | Deals internationaux perdus | Coach 1-sur-1 & Immersion English | 2 000 € HT |
-| **Alexandre** | CEO Founder Tech | Pression négociation VCs | Vision Coach & Pitch VCs | 2 000 € HT |
-| **Valérie** | Dir. Grands Comptes | Tactiques acheteurs CAC40 | Diagnostic initial & PCM/DiSC | 2 000 € HT |
-| **Marc** | Partner M&A / Conseil | Blocages humains fusions | Coaching exécutif & Diplomatie | 2 000 € HT |
+| **Thomas** | VP Sales Scale-up | Deals internationaux perdus | Coach 1-sur-1 & Immersion English | 2 000 € HT / apprenant |
+| **Alexandre** | CEO Founder Tech | Pression négociation VCs | Vision Coach & Pitch VCs | 2 000 € HT / apprenant |
+| **Valérie** | Dir. Grands Comptes | Tactiques acheteurs CAC40 | Diagnostic initial & PCM/DiSC | 2 000 € HT / apprenant |
+| **Marc** | Partner M&A / Conseil | Blocages humains fusions | Coaching exécutif & Diplomatie | 2 000 € HT / apprenant |
