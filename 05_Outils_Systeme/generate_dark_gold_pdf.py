@@ -10,10 +10,12 @@ sys.path.insert(0, '/Users/admin/Library/Python/3.9/lib/python/site-packages')
 from fpdf import FPDF
 
 class DarkGoldPDF(FPDF):
-    def __init__(self, title_text="DOCUMENT EXECUTION", subtitle_text="JULIEN FLORENCE"):
+    def __init__(self, title_text="DOCUMENT EXECUTION", subtitle_text="JULIEN FLORENCE", sidebar_subtitle="DIRECTEUR HOTELLERIE & F&B", show_photo=False):
         super().__init__(orientation='P', unit='mm', format='A4')
         self.title_text = title_text
         self.subtitle_text = subtitle_text
+        self.sidebar_subtitle = sidebar_subtitle
+        self.show_photo = show_photo
         self.set_auto_page_break(auto=True, margin=15)
         
     def header(self):
@@ -30,20 +32,43 @@ class DarkGoldPDF(FPDF):
         self.set_line_width(0.4)
         self.line(60, 0, 60, 297)
 
-        # En-tête Sidebar
-        self.set_xy(5, 12)
-        self.set_font('Helvetica', 'B', 11)
-        self.set_text_color(212, 175, 55) # Gold
-        self.cell(50, 6, "JULIEN FLORENCE", align='C')
-        
-        self.set_xy(5, 18)
-        self.set_font('Helvetica', 'B', 7)
-        self.set_text_color(148, 163, 184) # Muted
-        self.cell(50, 4, "DIRECTEUR HOTELLERIE & F&B", align='C')
-        
-        self.set_xy(5, 23)
-        self.set_draw_color(212, 175, 55)
-        self.line(10, 25, 50, 25)
+        photo_path = "04_Livrables/Images/julien_florence_photo.jpg"
+        if not os.path.exists(photo_path):
+            photo_path = "04_Livrables/julien_florence_photo.jpg"
+        if self.show_photo and os.path.exists(photo_path):
+            # Render Photo in Sidebar (centered: 26mm wide, 26mm high, x=17, y=6)
+            self.image(photo_path, x=17, y=6, w=26, h=26)
+            self.set_draw_color(212, 175, 55)
+            self.set_line_width(0.5)
+            self.rect(17, 6, 26, 26)
+
+            # En-tête Sidebar
+            self.set_xy(5, 33.5)
+            self.set_font('Helvetica', 'B', 10)
+            self.set_text_color(212, 175, 55) # Gold
+            self.cell(50, 4.5, "JULIEN FLORENCE", align='C')
+            
+            self.set_xy(5, 38.5)
+            self.set_font('Helvetica', 'B', 6.5)
+            self.set_text_color(148, 163, 184) # Muted
+            self.cell(50, 3.5, clean_txt(self.sidebar_subtitle), align='C')
+            
+            self.set_draw_color(212, 175, 55)
+            self.line(10, 43.5, 50, 43.5)
+        else:
+            # En-tête Sidebar sans photo
+            self.set_xy(5, 12)
+            self.set_font('Helvetica', 'B', 11)
+            self.set_text_color(212, 175, 55) # Gold
+            self.cell(50, 6, "JULIEN FLORENCE", align='C')
+            
+            self.set_xy(5, 18)
+            self.set_font('Helvetica', 'B', 7)
+            self.set_text_color(148, 163, 184) # Muted
+            self.cell(50, 4, clean_txt(self.sidebar_subtitle), align='C')
+            
+            self.set_draw_color(212, 175, 55)
+            self.line(10, 25, 50, 25)
 
         # En-tête Main Content
         self.set_xy(68, 12)
@@ -635,87 +660,232 @@ def build_ui_ux_comment_pdf(out_path):
     pdf.output(out_path)
     print(f"✅ PDF généré : {out_path}")
 
-def build_tailored_cv_pdf(out_path):
-    pdf = DarkGoldPDF("JULIEN FLORENCE", "CANDIDAT DIRECTEUR D'HOTELE HYBRIDE & F&B - JOST BORDEAUX")
+def draw_cv_pill(pdf, x, y, text):
+    pdf.set_font('Helvetica', 'B', 5.8)
+    txt = clean_txt(text)
+    w = pdf.get_string_width(txt) + 4
+    pdf.set_fill_color(20, 24, 34)
+    pdf.set_draw_color(212, 175, 55)
+    pdf.set_line_width(0.15)
+    pdf.rect(x, y, w, 3.5, 'DF')
+    pdf.set_xy(x, y + 0.2)
+    pdf.set_text_color(212, 175, 55)
+    pdf.cell(w, 3.2, txt, align='C')
+    return w + 1.5
+
+def build_business_manager_cv_pdf(out_path):
+    pdf = FPDF(orientation='P', unit='mm', format='A4')
+    pdf.set_auto_page_break(auto=False)
     pdf.add_page()
     
-    # Sidebar
-    draw_sidebar_section(pdf, 32, "Contacts", [
-        "📞 06 61 74 75 73",
-        "✉️ julien.florence@email.com",
-        "📍 Bordeaux & Gironde",
-        "🔗 LinkedIn : Julien Florence"
-    ])
+    # 1. Page Background (#0A0B0E)
+    pdf.set_fill_color(10, 11, 14)
+    pdf.rect(0, 0, 210, 297, 'F')
     
-    draw_sidebar_section(pdf, 75, "Expertises Métier", [
-        "Pilotage P&L & Ratios F&B",
-        "Revenue Mgt (Doyield)",
-        "Virage MICE & B2B Gare",
-        "Management 30 ETP",
-        "Excellence Client & EX/UX"
-    ])
+    # 2. Sidebar Left (#111418, 60mm)
+    pdf.set_fill_color(17, 20, 24)
+    pdf.rect(0, 0, 60, 297, 'F')
     
-    draw_sidebar_section(pdf, 135, "Soft Skills & Profil", [
-        "Posture ENTJ-A (94% Org.)",
-        "Coach de Handball",
-        "Rigueur & Sang-froid",
-        "Bachelor Mktg & Digital",
-        "Anglais : B2 / Néerlandais"
-    ])
-    
-    # Main Content
-    pdf.set_xy(68, 32)
-    pdf.set_font('Helvetica', 'B', 8.5)
-    pdf.set_text_color(248, 250, 252)
-    pdf.multi_cell(132, 3.8, clean_txt("Manager commercial et operationnel avec 15 ans d'experience en CHR, Luxe et Management Digital. Specialiste du pilotage P&L, de la rentabilite F&B et de l'animation d'equipes. Operationnel sur Bordeaux pour faire du site JOST Gare Saint-Jean le hub leader."))
-    
-    pdf.ln(3)
-    pdf.set_x(68)
-    pdf.set_font('Times', 'B', 10.5)
-    pdf.set_text_color(212, 175, 55)
-    pdf.cell(132, 5, clean_txt("EXPÉRIENCES PROFESSIONNELLES SUR-MESURE JOST"))
+    # Vertical Separation Line Gold
     pdf.set_draw_color(212, 175, 55)
-    pdf.line(68, pdf.get_y() + 5, 200, pdf.get_y() + 5)
-    pdf.set_xy(68, pdf.get_y() + 7)
-    
-    exps = [
-        ("Directeur de Restaurant & Centre de Profit (2010 - 2015)", "MA SALLE A MANGER | Paris 1er", [
-            "+140% de hausse du Chiffre d'Affaires en 5 ans via etude d'environnement.",
-            "Developpement commercial B2B : galeries d'art, EVG/EVJF, mariages, Tour Operateurs.",
-            "Gestion stricte du P&L, fiches techniques F&B et controle de la masse salariale."
-        ]),
-        ("Consultant & Formateur Hôtellerie 360o (2024 - 2025)", "CONSEIL B2B HÔTELLERIE & CHR", [
-            "Accompagnement de chateaux, hotels independants, gites et chambres d'hotes.",
-            "Optimisation du Revenue Management et baisse des commissions OTAs (Booking/Airbnb)."
-        ]),
-        ("Management Hôtelier & Service d'Excellence (2000 - 2009)", "PALACES 5* & RELAIS & CHÂTEAUX | St-Barth, Angleterre, Dublin", [
-            "Management du Room Service au Guanahani (Palace 5* Saint-Barth LHW).",
-            "Service gastronomique Au Clos (Angleterre) et organisation de soirees Fooding/Oenologie."
-        ]),
-        ("Gestionnaire de Centre de Profit & Manager (2022 - 2024)", "RAS INTÉRIM | Logistique & Services - CA 2.6 M EUR", [
-            "Management quotidien de 20 ETP/semaine (plannings Flextime, rituels d'equipe).",
-            "Pilotage des indicateurs cles et suivi de 25 comptes B2B strategiques."
-        ])
+    pdf.set_line_width(0.3)
+    pdf.line(60, 0, 60, 297)
+
+    # 3. Sidebar Profile Photo
+    photo_path = "04_Livrables/julien_florence_photo.jpg"
+    if os.path.exists(photo_path):
+        pdf.image(photo_path, x=17, y=6, w=26, h=26)
+        pdf.set_draw_color(212, 175, 55)
+        pdf.set_line_width(0.5)
+        pdf.rect(17, 6, 26, 26)
+
+    # 4. Action Buttons (Sidebar x=5, w=50mm)
+    buttons = [
+        ("TEL : 06 61 74 75 73", "tel:0661747573", False),
+        ("EMAIL : ME CONTACTER", "mailto:julienflorence.florence@gmail.com", False),
+        ("AGENDA : PRENDRE RDV", "https://calendar.app.google/iCzfE1GQrjxM3ZQ56", True),
+        ("CV INTERACTIF : ACCEDER", "https://julienflorenceflorence-oss.github.io/cv-prestige/", False)
     ]
     
-    for title, sub, bullets in exps:
-        pdf.set_x(68)
-        pdf.set_font('Helvetica', 'B', 8.5)
+    btn_y = 35
+    for btn_txt, link, is_gold in buttons:
+        pdf.set_xy(5, btn_y)
+        pdf.set_font('Helvetica', 'B', 6.2)
+        if is_gold:
+            pdf.set_fill_color(212, 175, 55)
+            pdf.set_draw_color(212, 175, 55)
+            pdf.set_text_color(10, 11, 14)
+            pdf.rect(5, btn_y, 50, 4.8, 'F')
+        else:
+            pdf.set_fill_color(17, 20, 24)
+            pdf.set_draw_color(212, 175, 55)
+            pdf.set_line_width(0.2)
+            pdf.set_text_color(212, 175, 55)
+            pdf.rect(5, btn_y, 50, 4.8, 'D')
+        pdf.cell(50, 4.8, clean_txt(btn_txt), align='C', link=link)
+        btn_y += 6
+
+    # 5. Sidebar Sections
+    side_sections = [
+        (60, "Expertises Metier", [
+            "Management Commercial (3-20 ETP)",
+            "Pilotage KPIs & Rentabilite (P&L)",
+            "Gestion Centre de Profit (2.6M EUR)",
+            "Negociation B2B & Grands Comptes",
+            "CRM (Salesforce, HubSpot)"
+        ]),
+        (112, "Competences Cles", [
+            "Negociation & Closing B2B",
+            "Growth Automation & Prospection",
+            "Suivi Operationnel & KPIs Vente",
+            "Resolution Conflits (Posture Adulte)",
+            "Gestion Financiere & P&L"
+        ]),
+        (164, "Langues", [
+            "Anglais : Courant (B2)",
+            "Neerlandais : B2"
+        ]),
+        (195, "Formation", [
+            "Bachelor Mktg & Commerce (2025)",
+            "HTML5 & CSS3 - Google Academy"
+        ])
+    ]
+
+    for y_sec, sec_title, sec_items in side_sections:
+        pdf.set_xy(5, y_sec)
+        pdf.set_font('Times', 'B', 8.5)
         pdf.set_text_color(212, 175, 55)
-        pdf.cell(132, 4.5, clean_txt(title))
-        pdf.set_xy(68, pdf.get_y() + 4.5)
+        pdf.cell(50, 4, clean_txt(sec_title.upper()), align='L')
+        pdf.set_draw_color(212, 175, 55)
+        pdf.set_line_width(0.2)
+        pdf.line(5, y_sec + 4.5, 55, y_sec + 4.5)
         
-        pdf.set_font('Helvetica', 'I', 7.5)
-        pdf.set_text_color(148, 163, 184)
-        pdf.cell(132, 4, clean_txt(sub))
-        pdf.set_xy(68, pdf.get_y() + 4)
+        pdf.set_font('Helvetica', '', 6.8)
+        pdf.set_text_color(160, 164, 176)
+        item_y = y_sec + 6
+        for item in sec_items:
+            pdf.set_xy(5, item_y)
+            pdf.cell(50, 3.5, clean_txt(f"> {item}"), align='L')
+            item_y += 4
+
+    # 6. Main Content Header (x=68mm)
+    pdf.set_xy(68, 6)
+    pdf.set_font('Times', 'B', 18)
+    pdf.set_text_color(212, 175, 55)
+    pdf.cell(132, 7, "JULIEN FLORENCE", align='L')
+    
+    # Tagline with Accent Bar
+    pdf.set_draw_color(212, 175, 55)
+    pdf.set_line_width(0.8)
+    pdf.line(68, 15, 68, 21)
+    
+    pdf.set_xy(71, 15.5)
+    pdf.set_font('Helvetica', 'B', 8)
+    pdf.set_text_color(248, 250, 252)
+    pdf.cell(130, 5, "BUSINESS MANAGER - EXPERT EN STRATEGIE, DEVELOPPEMENT & COACHING", align='L')
+    
+    # ATS Summary
+    pdf.set_xy(68, 23)
+    pdf.set_font('Helvetica', '', 7.2)
+    pdf.set_text_color(160, 164, 176)
+    summary_text = "Business Manager et Gestionnaire de centres de profit avec 15 ans d'experience dans le developpement commercial B2B, le management d'equipes (3 a 20 ETP) et le pilotage de P&L (jusqu'a 2.6 M EUR CA). Double expertise : rigueur operationnelle issue de l'hotellerie de luxe (Palaces 5* & Etoiles) et ingenierie de l'acquisition commerciale (Bachelor Rocket School, CRM Salesforce/HubSpot, Lead Automation). Base a Toulouse (Quint-Fonsegrives) - Disponible immediatement."
+    pdf.multi_cell(132, 3.4, clean_txt(summary_text), align='J')
+    
+    # Section Title: Experiences Professionnelles
+    pdf.set_xy(68, 42)
+    pdf.set_font('Times', 'B', 10)
+    pdf.set_text_color(212, 175, 55)
+    pdf.cell(132, 4.5, "EXPERIENCES PROFESSIONNELLES")
+    pdf.set_draw_color(212, 175, 55)
+    pdf.set_line_width(0.3)
+    pdf.line(68, 47, 200, 47)
+    
+    # 7. Experience Cards
+    exps = [
+        ("Responsable Developpement Commercial", "2025 - PRESENT", "HAPPY HOUSE | SOLUTIONS B2B & RENTABILITE", [
+            "Management d'une equipe de 3 collaborateurs commerciaux : definition des objectifs et suivi KPIs.",
+            "Deploiement d'outils d'acquisition B2B (Growth & Lead Automation) et pilotage du pipeline CRM.",
+            "Optimisation des processus commerciaux pour accroître la rentabilite et la retention client."
+        ], ["Management", "Acquisition B2B", "Growth Automation", "KPIs"]),
         
-        pdf.set_font('Helvetica', '', 7)
-        pdf.set_text_color(226, 232, 240)
+        ("Gestionnaire de Centre de Profit & Manager", "2022 - 2024", "RAS INTERIM | LOGISTIQUE & SERVICES - CA 2.6 M EUR", [
+            "Management operationnel : plannings, recrutement et montee en competences de 20 ETP / semaine.",
+            "Pilotage commercial B2B : gestion et fidelisation de 25 comptes sedentaires strategiques (2.6 M EUR CA).",
+            "Application des reglementations legales et respect des procedures d'audit internes."
+        ], ["P&L (2.6 M EUR)", "Grands Comptes", "Gestion Operationnelle", "Recrutement"]),
+        
+        ("Negociateur Immobilier & Manager Leader", "2015 - 2021", "CENTURY 21 (Paris) & CABINET BEDIN (Toulouse)", [
+            "Negociation immobiliere B2C/B2B (generation de 120 k EUR de CA individuel).",
+            "Prospection commerciale terrain et constitution d'un portefeuille clients locaux.",
+            "Encadrement operationnel et formation de 5 negociateurs immobiliers."
+        ], ["Closing B2B/B2C", "Prospection Terrain", "Coaching (5 ETP)"]),
+        
+        ("Directeur de Restaurant / Centre de Profit", "2010 - 2015", "MA SALLE A MANGER | PARIS 1er", [
+            "Direction et management de 15 collaborateurs en salle et cuisine.",
+            "Pilotage financier (P&L, comptes d'exploitation) : croissance du CA de +140% (de 250k EUR a 600k EUR).",
+            "Gestion des stocks, negociation fournisseurs et controle de conformite hygiene/securite."
+        ], ["Croissance P&L (+140%)", "Negociation Fournisseurs", "Management (15 ETP)"]),
+        
+        ("Management & Service d'Excellence", "2000 - 2009", "PALACES 5* & RESTAURANTS ETOILES | Dublin, St-Barth, Angleterre", [
+            "Management d'equipes (7 a 20 collaborateurs) dans des structures de luxe (Michelin & LHW).",
+            "Service client VIP et fidelisation d'une clientele internationale.",
+            "Resolution de reclamations et gestion operationnelle des flux de clientele."
+        ], ["Standards Luxe (LHW)", "Leadership (20 ETP)", "Gestion des Conflits"])
+    ]
+    
+    cur_y = 49
+    for role, date_str, company, bullets, pills in exps:
+        # Role + Date
+        pdf.set_xy(68, cur_y)
+        pdf.set_font('Helvetica', 'B', 8.2)
+        pdf.set_text_color(212, 175, 55)
+        pdf.cell(95, 3.8, clean_txt(role), align='L')
+        
+        pdf.set_font('Helvetica', 'B', 7)
+        pdf.set_text_color(160, 164, 176)
+        pdf.cell(37, 3.8, clean_txt(date_str), align='R')
+        
+        # Company
+        cur_y += 4
+        pdf.set_xy(68, cur_y)
+        pdf.set_font('Helvetica', 'I', 7.2)
+        pdf.set_text_color(248, 250, 252)
+        pdf.cell(132, 3.5, clean_txt(company), align='L')
+        
+        # Bullets
+        cur_y += 3.8
+        pdf.set_font('Helvetica', '', 6.6)
+        pdf.set_text_color(200, 205, 215)
         for b in bullets:
-            pdf.set_x(68)
-            pdf.multi_cell(132, 3.4, clean_txt(f"- {b}"))
-        pdf.ln(2)
+            pdf.set_xy(68, cur_y)
+            pdf.multi_cell(132, 3.0, clean_txt(f"- {b}"), align='L')
+            cur_y += 3.1
+        
+        # Keyword Pills
+        cur_y += 0.8
+        pill_x = 68
+        for p in pills:
+            pill_x += draw_cv_pill(pdf, pill_x, cur_y, p)
+        cur_y += 5.5
+
+    # Banner link to Interactive CV
+    cur_y += 2
+    pdf.set_fill_color(20, 24, 34)
+    pdf.set_draw_color(212, 175, 55)
+    pdf.set_line_width(0.3)
+    pdf.rect(68, cur_y, 132, 8, 'DF')
+    
+    pdf.set_xy(68, cur_y + 1.2)
+    pdf.set_font('Helvetica', 'B', 7)
+    pdf.set_text_color(212, 175, 55)
+    banner_txt = clean_txt("Retrouvez l'integralite de mon parcours sur mon CV interactif :")
+    pdf.cell(132, 3, banner_txt, align='C')
+    
+    pdf.set_xy(68, cur_y + 4.2)
+    pdf.set_font('Helvetica', 'U', 6.5)
+    pdf.set_text_color(248, 250, 252)
+    cv_url = "https://julienflorenceflorence-oss.github.io/cv-prestige/"
+    pdf.cell(132, 2.5, cv_url, align='C', link=cv_url)
 
     pdf.output(out_path)
     print(f"✅ PDF généré : {out_path}")
@@ -723,8 +893,10 @@ def build_tailored_cv_pdf(out_path):
 if __name__ == "__main__":
     out_dir = "Projets/prospection job/jost-hotel-bordeaux/04_Livrables/PDF"
     bi_dir = "Projets/Outils-BI/Power-BI/04_Livrables/PDF"
+    cv_dir = "04_Livrables/04_Livrables/PDF"
     os.makedirs(out_dir, exist_ok=True)
     os.makedirs(bi_dir, exist_ok=True)
+    os.makedirs(cv_dir, exist_ok=True)
     
     build_cover_letter_pdf(os.path.join(out_dir, "2026-07-29_Matrice_Correlation_Et_Lettre_Motivation_Julien_JOST.pdf"))
     build_pl_pdf(os.path.join(out_dir, "2026-07-29_PL_Simulation_Et_Formules_Gestion_JOST.pdf"))
@@ -734,7 +906,9 @@ if __name__ == "__main__":
     build_power_bi_pdf(os.path.join(bi_dir, "2026-07-31_Synthese_Executive_Microsoft_Power_BI.pdf"))
     build_linkedin_replies_pdf(os.path.join(out_dir, "2026-07-31_Guide_Reponses_Posts_Linkedin_MICE_Doyield.pdf"))
     build_ui_ux_comment_pdf(os.path.join(out_dir, "2026-07-31_Commentaires_Linkedin_UI_UX_LTV_Lightspeed_JOST.pdf"))
-    build_tailored_cv_pdf(os.path.join(out_dir, "2026-07-31_CV_Julien_Florence_JOST_Bordeaux.pdf"))
+    build_business_manager_cv_pdf(os.path.join(cv_dir, "2026-09-09_CV_Julien_Florence_Business_Manager.pdf"))
+    build_business_manager_cv_pdf("04_Livrables/CV_Julien_Florence_Business_Manager.pdf")
+
 
 
 

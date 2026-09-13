@@ -1,0 +1,862 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>QuestIA LAB - Audit Diagnostic Visio (26 Questions & Sélection Prospect CRM)</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&family=Outfit:wght@400;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <style>
+    :root {
+      --bg-dark: #05070D;
+      --bg-card: #0B0F19;
+      --bg-card-hover: #121827;
+      --cyan-neon: #00E5FF;
+      --violet-neon: #7B5CFF;
+      --gold-accent: #D4AF37;
+      --text-white: #F8FAFC;
+      --text-muted: #94A3B8;
+      --border-cyan: rgba(0, 229, 255, 0.3);
+      --border-violet: rgba(123, 92, 255, 0.3);
+      --shadow-cyan: 0 0 25px rgba(0, 229, 255, 0.2);
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      background-color: var(--bg-dark);
+      color: var(--text-white);
+      font-family: 'Inter', sans-serif;
+      line-height: 1.5;
+      padding: 24px;
+    }
+
+    /* Top Ecosystem Nav */
+    .ecosystem-nav {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background: rgba(11, 15, 25, 0.8);
+      border: 1px solid var(--border-violet);
+      border-radius: 12px;
+      padding: 10px 20px;
+      margin-bottom: 20px;
+      font-size: 12px;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 16px;
+    }
+
+    .nav-link {
+      color: var(--text-muted);
+      text-decoration: none;
+      font-weight: 600;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      transition: color 0.2s ease;
+    }
+
+    .nav-link.active, .nav-link:hover {
+      color: var(--cyan-neon);
+    }
+
+    header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 20px 30px;
+      background: var(--bg-card);
+      border: 1px solid var(--border-cyan);
+      border-radius: 16px;
+      box-shadow: var(--shadow-cyan);
+      margin-bottom: 24px;
+    }
+
+    .brand-header {
+      display: flex;
+      align-items: center;
+      gap: 20px;
+    }
+
+    .questia-logo-img {
+      height: 48px;
+      width: auto;
+      object-fit: contain;
+      filter: drop-shadow(0 0 10px rgba(0,229,255,0.4));
+    }
+
+    .brand-title h1 {
+      font-family: 'Outfit', sans-serif;
+      font-size: 24px;
+      font-weight: 800;
+    }
+
+    .brand-title h1 span { color: var(--cyan-neon); }
+    .brand-title p {
+      font-size: 11px;
+      color: var(--violet-neon);
+      font-weight: 700;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+    }
+
+    .header-actions {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .timer-badge {
+      background: rgba(0, 229, 255, 0.1);
+      border: 1px solid var(--cyan-neon);
+      padding: 8px 16px;
+      border-radius: 30px;
+      color: var(--cyan-neon);
+      font-family: 'Outfit', sans-serif;
+      font-weight: 700;
+      font-size: 14px;
+    }
+
+    .btn-action {
+      background: linear-gradient(135deg, var(--cyan-neon), var(--violet-neon));
+      color: #000;
+      font-weight: 700;
+      padding: 10px 18px;
+      border-radius: 10px;
+      border: none;
+      cursor: pointer;
+      font-size: 12.5px;
+      text-transform: uppercase;
+    }
+
+    .icp-bar {
+      display: grid;
+      grid-template-columns: repeat(5, 1fr);
+      gap: 10px;
+      margin-bottom: 24px;
+    }
+
+    .icp-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border-violet);
+      padding: 12px;
+      border-radius: 12px;
+      cursor: pointer;
+      color: var(--text-muted);
+      font-size: 12px;
+      transition: all 0.2s ease;
+    }
+
+    .icp-card.active, .icp-card:hover {
+      border-color: var(--cyan-neon);
+      color: var(--text-white);
+      background: var(--bg-card-hover);
+    }
+
+    .icp-card strong {
+      display: block;
+      color: var(--cyan-neon);
+      font-size: 12px;
+      margin-bottom: 2px;
+    }
+
+    .main-grid {
+      display: grid;
+      grid-template-columns: 2.2fr 1fr;
+      gap: 24px;
+    }
+
+    .pillar-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border-cyan);
+      border-radius: 16px;
+      padding: 24px;
+      margin-bottom: 24px;
+    }
+
+    .pillar-card h2 {
+      font-family: 'Outfit', sans-serif;
+      font-size: 17px;
+      color: var(--cyan-neon);
+      margin-bottom: 16px;
+      border-bottom: 1px solid rgba(0, 229, 255, 0.2);
+      padding-bottom: 8px;
+    }
+
+    .q-item {
+      background: rgba(255, 255, 255, 0.02);
+      border-left: 3px solid var(--violet-neon);
+      padding: 12px 16px;
+      border-radius: 0 8px 8px 0;
+      margin-bottom: 12px;
+    }
+
+    .q-label {
+      font-weight: 600;
+      font-size: 13px;
+      margin-bottom: 8px;
+      color: var(--text-white);
+    }
+
+    .q-options {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+      gap: 8px;
+    }
+
+    .opt-btn {
+      background: #121827;
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      color: var(--text-muted);
+      padding: 8px 10px;
+      border-radius: 6px;
+      font-size: 11px;
+      cursor: pointer;
+      text-align: left;
+      transition: all 0.2s ease;
+    }
+
+    .opt-btn.selected {
+      background: var(--violet-neon);
+      color: #FFF;
+      border-color: var(--cyan-neon);
+      font-weight: 700;
+    }
+
+    .sidebar-panel {
+      position: sticky;
+      top: 24px;
+    }
+
+    .summary-box {
+      background: var(--bg-card);
+      border: 1px solid var(--border-violet);
+      border-radius: 16px;
+      padding: 20px;
+      margin-bottom: 20px;
+    }
+
+    .summary-box h3 {
+      font-size: 14px;
+      color: var(--violet-neon);
+      margin-bottom: 12px;
+      text-transform: uppercase;
+    }
+
+    .metric-row {
+      display: flex;
+      justify-content: space-between;
+      margin-bottom: 10px;
+      font-size: 12.5px;
+    }
+
+    .metric-val {
+      font-weight: 800;
+      color: var(--cyan-neon);
+    }
+
+    .progress-bar-bg {
+      height: 8px;
+      background: #1A2234;
+      border-radius: 4px;
+      overflow: hidden;
+      margin-bottom: 16px;
+    }
+
+    .progress-bar-fill {
+      height: 100%;
+      background: linear-gradient(90deg, var(--cyan-neon), var(--violet-neon));
+      width: 0%;
+      transition: width 0.3s ease;
+    }
+
+    .form-group-sm {
+      margin-bottom: 10px;
+    }
+    .form-group-sm label { font-size: 11px; color: var(--cyan-neon); font-weight:700; display: block; margin-bottom: 4px; }
+    .form-group-sm input, .form-group-sm select { 
+      width: 100%; 
+      background: #121827; 
+      border: 1px solid var(--cyan-neon); 
+      color: #FFF; 
+      padding: 8px; 
+      border-radius: 6px; 
+      font-size: 12px; 
+      font-weight: 600;
+    }
+
+    footer {
+      text-align: center;
+      margin-top: 30px;
+      font-size: 12px;
+      color: var(--text-muted);
+      border-top: 1px solid var(--border-violet);
+      padding-top: 16px;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Ecosystem Nav Bar -->
+  <div class="ecosystem-nav">
+    <div style="font-weight:700; color:var(--cyan-neon);"><i class="fa-solid fa-network-wired"></i> ÉCOSYSTÈME CONNECTÉ QUESTIA LAB</div>
+    <div class="nav-links">
+      <a href="2026-09-11_QUESTIA_Trame_Diagnostic_Visio_DISC_PCM.html" class="nav-link active"><i class="fa-solid fa-list-check"></i> Questionnaire Audit (26Q)</a>
+      <a href="2026-09-11_QUESTIA_CRM_Intelligence_Commerciale_Et_Psychometrique.html" class="nav-link"><i class="fa-solid fa-users-gear"></i> CRM Intelligence</a>
+      <a href="2026-09-11_QUESTIA_Studio_Personnalisation_PDF.html" class="nav-link"><i class="fa-solid fa-file-pdf"></i> Studio PDF Personnalisé</a>
+    </div>
+  </div>
+
+  <header>
+    <div class="brand-header">
+      <img src="../../Images/QuestIA LAB_Logo.png" alt="QuestIA LAB Logo" class="questia-logo-img" onerror="this.style.display='none'" />
+      <div class="brand-title">
+        <h1>Quest<span>IA</span></h1>
+        <p>Audit Visio (26 Questions Intégrales & Sélection Prospect CRM)</p>
+      </div>
+    </div>
+    <div class="header-actions">
+      <div style="display:flex; align-items:center; gap:6px; background:#121827; border:1px solid var(--violet-neon); padding:6px 12px; border-radius:20px; font-size:12px; font-weight:bold;">
+        <i class="fa-solid fa-headset" style="color:var(--cyan-neon);"></i> Appelant :
+        <select id="activeCallerSelect" onchange="setActiveCaller(this.value)" style="background:transparent; border:none; color:var(--cyan-neon); font-weight:bold; cursor:pointer;">
+          <option value="Priscille">👤 Priscille</option>
+          <option value="Myriam">👤 Myriam</option>
+          <option value="Lorraine">👤 Lorraine</option>
+          <option value="Julien" selected>👤 Julien</option>
+        </select>
+      </div>
+      <div class="timer-badge">⏱️ <span id="timerDisplay">30:00</span></div>
+      <button class="btn-action" onclick="saveToCRM()"><i class="fa-solid fa-floppy-disk"></i> Enregistrer dans le CRM</button>
+      <button class="btn-action" style="background:var(--bg-card); color:var(--cyan-neon); border:1px solid var(--cyan-neon);" onclick="window.print()">Imprimer</button>
+    </div>
+  </header>
+
+  <!-- 5 ICP Selector -->
+  <div class="icp-bar">
+    <div class="icp-card active" id="icp-aero" onclick="setICP('aero', this)">
+      <strong>ICP 1 - Aéronautique</strong>
+      <span>Toulouse/Bordeaux</span>
+    </div>
+    <div class="icp-card" id="icp-agro" onclick="setICP('agro', this)">
+      <strong>ICP 2 - Agro / Luxe</strong>
+      <span>Vins & Gastronomie</span>
+    </div>
+    <div class="icp-card" id="icp-saas" onclick="setICP('saas', this)">
+      <strong>ICP 3 - SaaS DeepTech</strong>
+      <span>Scale-ups B2B</span>
+    </div>
+    <div class="icp-card" id="icp-indu" onclick="setICP('indu', this)">
+      <strong>ICP 4 - Équipements Indu</strong>
+      <span>Machines Spéciales</span>
+    </div>
+    <div class="icp-card" id="icp-medtech" onclick="setICP('medtech', this)">
+      <strong>ICP 5 - MedTech Export</strong>
+      <span>FDA & CE Régulé</span>
+    </div>
+  </div>
+
+  <div class="main-grid">
+    <!-- Left Column: All 26 Questions -->
+    <div class="questions-container">
+
+      <!-- PILIER 1 -->
+      <div class="pillar-card">
+        <h2>1. Négociation & Fermeté Tarifaire (Questions 1 à 6)</h2>
+
+        <div class="q-item">
+          <div class="q-label">Q1. Votre entreprise vend-elle en B2B à des interlocuteurs internationaux ?</div>
+          <div class="q-options">
+            <button class="opt-btn" onclick="selectQ(this, 1, 'yes')">Oui (Marché International)</button>
+            <button class="opt-btn" onclick="selectQ(this, 1, 'no')">Non (France Uniquement)</button>
+          </div>
+        </div>
+
+        <div class="q-item">
+          <div class="q-label">Q2. Quel est le volume de votre force de vente négociant en langue seconde (Anglais) ?</div>
+          <div class="q-options">
+            <button class="opt-btn" onclick="selectQ(this, 2, 'small')">1 à 5 commerciaux</button>
+            <button class="opt-btn" onclick="selectQ(this, 2, 'med')">6 à 20 commerciaux</button>
+            <button class="opt-btn" onclick="selectQ(this, 2, 'large')">Plus de 20 commerciaux</button>
+          </div>
+        </div>
+
+        <div class="q-item">
+          <div class="q-label">Q3. Quelle est la réaction type de vos équipes lors d'une demande de remise de 5% sous pression ?</div>
+          <div class="q-options">
+            <button class="opt-btn" onclick="selectQ(this, 3, 'firm')">Défense ferme (0% cédé)</button>
+            <button class="opt-btn" onclick="selectQ(this, 3, 'low')">Concession partielle (-1.5%)</button>
+            <button class="opt-btn" onclick="selectQ(this, 3, 'high')">Alignement direct (-5%)</button>
+          </div>
+        </div>
+
+        <div class="q-item">
+          <div class="q-label">Q4. Face à un diktat tarifaire d'un acheteur anglo-saxon, vos commerciaux négocient-ils la valeur ?</div>
+          <div class="q-options">
+            <button class="opt-btn" onclick="selectQ(this, 4, 'firm')">Recadrage factuel sur le ROI</button>
+            <button class="opt-btn" onclick="selectQ(this, 4, 'hesit')">Argumentation hésitante</button>
+            <button class="opt-btn" onclick="selectQ(this, 4, 'yield')">Acceptation des conditions</button>
+          </div>
+        </div>
+
+        <div class="q-item">
+          <div class="q-label">Q5. Vos commerciaux incluent-ils des garanties ou services gratuits en fin de négociation ?</div>
+          <div class="q-options">
+            <button class="opt-btn" onclick="selectQ(this, 5, 'never')">Jamais (Chaque option est payante)</button>
+            <button class="opt-btn" onclick="selectQ(this, 5, 'sometimes')">Parfois sous la pression</button>
+            <button class="opt-btn" onclick="selectQ(this, 5, 'always')">Systématiquement pour clore</button>
+          </div>
+        </div>
+
+        <div class="q-item">
+          <div class="q-label">Q6. Quel est le taux estimé de fuite de marge nette sur vos contrats internationaux ?</div>
+          <div class="q-options">
+            <button class="opt-btn" onclick="selectQ(this, 6, '0')">0 % à 1 % (Maîtrisé)</button>
+            <button class="opt-btn" onclick="selectQ(this, 6, '3')">3 % (Moyenne McKinsey)</button>
+            <button class="opt-btn" onclick="selectQ(this, 6, '5')">5.4 % (Critique)</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- PILIER 2 -->
+      <div class="pillar-card">
+        <h2>2. Nuance Linguistique & Foreign-Language Effect (Questions 7 à 12)</h2>
+
+        <div class="q-item">
+          <div class="q-label">Q7. Vos commerciaux subissent-ils le "Foreign-Language Effect" (-30% d'impact persuasif) ?</div>
+          <div class="q-options">
+            <button class="opt-btn" onclick="selectQ(this, 7, 'no')">Non (Bilingue parfait)</button>
+            <button class="opt-btn" onclick="selectQ(this, 7, 'mod')">Légère perte de repartie</button>
+            <button class="opt-btn" onclick="selectQ(this, 7, 'high')">Perte d'autorité nette</button>
+          </div>
+        </div>
+
+        <div class="q-item">
+          <div class="q-label">Q8. La précision des termes juridiques et contractuels est-elle fluide sous stress oral ?</div>
+          <div class="q-options">
+            <button class="opt-btn" onclick="selectQ(this, 8, 'high')">Excellente maîtrise</button>
+            <button class="opt-btn" onclick="selectQ(this, 8, 'med')">Approximations fréquentes</button>
+          </div>
+        </div>
+
+        <div class="q-item">
+          <div class="q-label">Q9. Vos équipes décodent-elles l'humour à froid et la subtilité des acheteurs US/UK ?</div>
+          <div class="q-options">
+            <button class="opt-btn" onclick="selectQ(this, 9, 'yes')">Oui, parfaitement intégrés</button>
+            <button class="opt-btn" onclick="selectQ(this, 9, 'no')">Non, incompréhension fréquente</button>
+          </div>
+        </div>
+
+        <div class="q-item">
+          <div class="q-label">Q10. Observez-vous des silences gênés lorsque l'acheteur étranger feint le désintérêt ?</div>
+          <div class="q-options">
+            <button class="opt-btn" onclick="selectQ(this, 10, 'no')">Non, relance immédiate</button>
+            <button class="opt-btn" onclick="selectQ(this, 10, 'yes')">Oui, malaise constaté</button>
+          </div>
+        </div>
+
+        <div class="q-item">
+          <div class="q-label">Q11. Le closing de fin de rendez-vous est-il aussi percutant en anglais qu'en français ?</div>
+          <div class="q-options">
+            <button class="opt-btn" onclick="selectQ(this, 11, 'yes')">Impact identique</button>
+            <button class="opt-btn" onclick="selectQ(this, 11, 'no')">Perte de fermeté en anglais</button>
+          </div>
+        </div>
+
+        <div class="q-item">
+          <div class="q-label">Q12. Quel est le niveau d'appréhension perçu avant un rendez-vous avec un C-Level US/UK ?</div>
+          <div class="q-options">
+            <button class="opt-btn" onclick="selectQ(this, 12, 'low')">Faible (Confiance totale)</button>
+            <button class="opt-btn" onclick="selectQ(this, 12, 'med')">Modéré</button>
+            <button class="opt-btn" onclick="selectQ(this, 12, 'high')">Élevé (Stress perçu)</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- PILIER 3 -->
+      <div class="pillar-card">
+        <h2>3. Décodage Psychométrique DISC / PCM (Questions 13 à 20)</h2>
+
+        <div class="q-item">
+          <div class="q-label">Q13. Quel est le rôle principal du décisionnaire interlocuteur ?</div>
+          <div class="q-options">
+            <button class="opt-btn" onclick="selectQ(this, 13, 'vp')">VP Sales / Dir. Commercial</button>
+            <button class="opt-btn" onclick="selectQ(this, 13, 'dg')">Directeur Général / CEO</button>
+            <button class="opt-btn" onclick="selectQ(this, 13, 'rh')">DRH / Responsable Formation</button>
+          </div>
+        </div>
+
+        <div class="q-item">
+          <div class="q-label">Q14. Profil DISC prédominant de l'acheteur cible :</div>
+          <div class="q-options">
+            <button class="opt-btn" onclick="selectDISC('🔴 Dominant (D)', this)">🔴 Dominant (D)</button>
+            <button class="opt-btn" onclick="selectDISC('🟡 Influent (I)', this)">🟡 Influent (I)</button>
+            <button class="opt-btn" onclick="selectDISC('🟢 Stable (S)', this)">🟢 Stable (S)</button>
+            <button class="opt-btn" onclick="selectDISC('🔵 Consciencieux (C)', this)">🔵 Consciencieux (C)</button>
+          </div>
+        </div>
+
+        <div class="q-item">
+          <div class="q-label">Q15. Base Process Com (PCM) prédominante de l'interlocuteur :</div>
+          <div class="q-options">
+            <button class="opt-btn" onclick="selectPCM('💼 Travaillomane', this)">💼 Travaillomane</button>
+            <button class="opt-btn" onclick="selectPCM('🏛️ Persévérant', this)">🏛️ Persévérant</button>
+            <button class="opt-btn" onclick="selectPCM('⚡ Promoteur', this)">⚡ Promoteur</button>
+            <button class="opt-btn" onclick="selectPCM('🤝 Empatique', this)">🤝 Empatique</button>
+          </div>
+        </div>
+
+        <div class="q-item">
+          <div class="q-label">Q16. Canal de communication préférentiel attendu par l'acheteur :</div>
+          <div class="q-options">
+            <button class="opt-btn" onclick="selectQ(this, 16, 'data')">Factuel & Données Chiffrées</button>
+            <button class="opt-btn" onclick="selectQ(this, 16, 'rel')">Relationnel & Vision Stratégique</button>
+          </div>
+        </div>
+
+        <div class="q-item">
+          <div class="q-label">Q17. Comportement de l'acheteur sous pression de négociation :</div>
+          <div class="q-options">
+            <button class="opt-btn" onclick="selectQ(this, 17, 'att')">Attaque directe / Pression</button>
+            <button class="opt-btn" onclick="selectQ(this, 17, 'ret')">Retrait analytique silencieux</button>
+          </div>
+        </div>
+
+        <div class="q-item">
+          <div class="q-label">Q18. Sensibilité de l'interlocuteur aux études et preuves d'impact (McKinsey, HBR) :</div>
+          <div class="q-options">
+            <button class="opt-btn" onclick="selectQ(this, 18, 'high')">Très sensible aux preuves</button>
+            <button class="opt-btn" onclick="selectQ(this, 18, 'low')">Focalisé uniquement sur le prix</button>
+          </div>
+        </div>
+
+        <div class="q-item">
+          <div class="q-label">Q19. Réaction face à la démonstration du manque à gagner financier :</div>
+          <div class="q-options">
+            <button class="opt-btn" onclick="selectQ(this, 19, 'alert')">Prise de conscience immédiate</button>
+            <button class="opt-btn" onclick="selectQ(this, 19, 'skept')">Scepticisme initial</button>
+          </div>
+        </div>
+
+        <div class="q-item">
+          <div class="q-label">Q20. Niveau de maturité de l'entreprise sur l'entraînement psychométrique :</div>
+          <div class="q-options">
+            <button class="opt-btn" onclick="selectQ(this, 20, 'high')">Déjà formé au DISC/PCM</button>
+            <button class="opt-btn" onclick="selectQ(this, 20, 'new')">Découverte complète</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- PILIER 4 -->
+      <div class="pillar-card">
+        <h2>4. Alignement & Exécution Tactique (Questions 21 à 26)</h2>
+
+        <div class="q-item">
+          <div class="q-label">Q21. Une consultation du CSE (Comité Social et Économique) est-elle nécessaire ?</div>
+          <div class="q-options">
+            <button class="opt-btn" onclick="selectQ(this, 21, 'yes')">Oui, consultation requise</button>
+            <button class="opt-btn" onclick="selectQ(this, 21, 'no')">Non, décision de direction</button>
+          </div>
+        </div>
+
+        <div class="q-item">
+          <div class="q-label">Q22. Préférence entre entraînement confidentiel vs reporting RH agrégé :</div>
+          <div class="q-options">
+            <button class="opt-btn" onclick="selectQ(this, 22, 'conf')">Module vocal confidentiel</button>
+            <button class="opt-btn" onclick="selectQ(this, 22, 'rh')">Dashboard RH agrégé</button>
+          </div>
+        </div>
+
+        <div class="q-item">
+          <div class="q-label">Q23. Format d'accompagnement privilégié :</div>
+          <div class="q-options">
+            <button class="opt-btn" onclick="selectQ(this, 23, 'ticket')">High-Ticket Coach 1-sur-1 (2 000 € HT)</button>
+            <button class="opt-btn" onclick="selectQ(this, 23, 'saas')">Abonnement SaaS mensuel</button>
+          </div>
+        </div>
+
+        <div class="q-item">
+          <div class="q-label">Q24. Délai souhaité pour le lancement de l'entraînement des équipes :</div>
+          <div class="q-options">
+            <button class="opt-btn" onclick="selectQ(this, 24, 'now')">Immédiat (Sous 15 jours)</button>
+            <button class="opt-btn" onclick="selectQ(this, 24, 'next')">Prochain trimestre</button>
+          </div>
+        </div>
+
+        <div class="q-item">
+          <div class="q-label">Q25. Accord pour évaluation post-audit avec étude de cas et témoignage :</div>
+          <div class="q-options">
+            <button class="opt-btn" onclick="selectQ(this, 25, 'yes')">Oui (Accès prioritaire Bêta)</button>
+            <button class="opt-btn" onclick="selectQ(this, 25, 'no')">Non</button>
+          </div>
+        </div>
+
+        <div class="q-item">
+          <div class="q-label">Q26. Validation de la réservation de l'Étape 0 (Diagnostic Coach 1-sur-1 15 min) :</div>
+          <div class="q-options">
+            <button class="opt-btn" onclick="selectQ(this, 26, 'valid')">Validé (Réservation Immédiate)</button>
+            <button class="opt-btn" onclick="selectQ(this, 26, 'pending')">En attente de confirmation</button>
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+
+    <!-- Right Sidebar: Live Progress & Prospect Selection Box -->
+    <div class="sidebar-panel">
+      
+      <!-- FICHE PROSPECT EN AUDIT WITH DROPDOWN -->
+      <div class="summary-box" style="border-color:var(--cyan-neon); background:var(--bg-card-hover);">
+        <h3>📍 Fiche Prospect en Audit</h3>
+
+        <div class="form-group-sm">
+          <label><i class="fa-solid fa-users"></i> Choisir le Prospect dans le CRM :</label>
+          <select id="auditProspectDropdown" onchange="loadProspectForAudit(this.value)">
+            <option value="">-- Sélectionner un Prospect CRM --</option>
+          </select>
+        </div>
+
+        <div class="form-group-sm" style="margin-top:10px;">
+          <label>Entreprise Cible :</label>
+          <input type="text" id="targetCompany" value="Airbus Subcontracting SAS">
+        </div>
+        <div class="form-group-sm">
+          <label>Décisionnaire (Nom & Titre) :</label>
+          <input type="text" id="targetContact" value="Jean-Claude VASSEUR (VP Sales)">
+        </div>
+        <div class="form-group-sm">
+          <label>CA Export Estime (€) :</label>
+          <input type="number" id="targetRev" value="15000000">
+        </div>
+      </div>
+
+      <div class="summary-box">
+        <h3>📊 Synthèse Diagnostic 26Q</h3>
+
+        <div class="metric-row">
+          <span>Complétion Audit :</span>
+          <span class="metric-val" id="compPct">0 / 26 (0%)</span>
+        </div>
+        <div class="progress-bar-bg">
+          <div class="progress-bar-fill" id="compBar"></div>
+        </div>
+
+        <div class="metric-row">
+          <span>Fuite Marge Calculée :</span>
+          <span class="metric-val" id="leakEst">0.0 %</span>
+        </div>
+
+        <div class="metric-row">
+          <span>Vecteur DISC Client :</span>
+          <span class="metric-val" id="discRes">🔴 Dominant (D)</span>
+        </div>
+
+        <div class="metric-row">
+          <span>Base PCM Client :</span>
+          <span class="metric-val" id="pcmRes">💼 Travaillomane</span>
+        </div>
+      </div>
+
+      <div class="summary-box">
+        <button class="btn-action" style="width:100%; margin-bottom:10px;" onclick="saveToCRM()">
+          <i class="fa-solid fa-floppy-disk"></i> Enregistrer dans le CRM
+        </button>
+        <button class="btn-action" style="width:100%; background:var(--bg-card); color:var(--cyan-neon); border:1px solid var(--cyan-neon);" onclick="openStudioWithData()">
+          <i class="fa-solid fa-file-pdf"></i> Générer PDF Personnalisé
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <footer>
+    <p>QuestIA LAB © 2026 - Plateforme de Décodage Comportemental & Audit de Négociation Internationale | Julien FLORENCE</p>
+  </footer>
+
+  <script>
+    let answeredCount = 0;
+    const answersMap = {};
+    let selectedICPName = "ICP 1 - Aéronautique";
+    let crmLeadsList = [];
+    let activeCaller = localStorage.getItem('QUESTIA_ACTIVE_CALLER') || 'Julien';
+
+    function setActiveCaller(val) {
+      activeCaller = val;
+      localStorage.setItem('QUESTIA_ACTIVE_CALLER', val);
+      populateAuditCRMDropdown();
+    }
+
+    function populateAuditCRMDropdown() {
+      crmLeadsList = JSON.parse(localStorage.getItem('QUESTIA LAB_CRM_LEADS') || '[]');
+      const select = document.getElementById('auditProspectDropdown');
+      select.innerHTML = '<option value="">-- Sélectionner un Prospect CRM --</option>';
+
+      const activeLeadId = localStorage.getItem('QUESTIA_ACTIVE_LEAD_ID');
+      let targetIdx = -1;
+
+      crmLeadsList.forEach((lead, idx) => {
+        const callerTag = lead.assignedCaller ? ` [👤 ${lead.assignedCaller}]` : '';
+        const opt = document.createElement('option');
+        opt.value = idx;
+        opt.innerText = `🏢 ${lead.company} (${lead.contact})${callerTag}`;
+        if (activeLeadId && lead.id === activeLeadId) targetIdx = idx;
+        select.appendChild(opt);
+      });
+
+      // Set active caller dropdown value if set
+      if (document.getElementById('activeCallerSelect')) {
+        document.getElementById('activeCallerSelect').value = activeCaller;
+      }
+
+      // Auto load lead if set from CRM
+      if (targetIdx >= 0) {
+        select.value = targetIdx;
+        loadProspectForAudit(targetIdx.toString());
+      }
+    }
+
+    function loadProspectForAudit(idxStr) {
+      if (idxStr === "") return;
+      const idx = parseInt(idxStr, 10);
+      const lead = crmLeadsList[idx];
+      if (!lead) return;
+
+      document.getElementById('targetCompany').value = lead.company;
+      document.getElementById('targetContact').value = `${lead.contact} (${lead.title || 'Décisionnaire'})`;
+      document.getElementById('targetRev').value = lead.revenue || 15000000;
+
+      if (lead.assignedCaller) {
+        activeCaller = lead.assignedCaller;
+        if (document.getElementById('activeCallerSelect')) {
+          document.getElementById('activeCallerSelect').value = activeCaller;
+        }
+      }
+
+      if (lead.disc) document.getElementById('discRes').innerText = lead.disc;
+      if (lead.pcm) document.getElementById('pcmRes').innerText = lead.pcm;
+
+      // Select ICP Card
+      if (lead.icp) {
+        if (lead.icp.includes("Aéronautique")) setICP('aero', document.getElementById('icp-aero'));
+        else if (lead.icp.includes("Agro")) setICP('agro', document.getElementById('icp-agro'));
+        else if (lead.icp.includes("SaaS")) setICP('saas', document.getElementById('icp-saas'));
+        else if (lead.icp.includes("Équipements")) setICP('indu', document.getElementById('icp-indu'));
+        else if (lead.icp.includes("MedTech")) setICP('medtech', document.getElementById('icp-medtech'));
+      }
+    }
+
+    function setICP(icp, el) {
+      document.querySelectorAll('.icp-card').forEach(c => c.classList.remove('active'));
+      if (el) el.classList.add('active');
+      if (icp === 'aero') selectedICPName = "ICP 1 - Aéronautique";
+      if (icp === 'agro') selectedICPName = "ICP 2 - Agro Export";
+      if (icp === 'saas') selectedICPName = "ICP 3 - SaaS DeepTech";
+      if (icp === 'indu') selectedICPName = "ICP 4 - Équipements Indu";
+      if (icp === 'medtech') selectedICPName = "ICP 5 - MedTech Export";
+    }
+
+    function selectQ(btn, qNum, val) {
+      const parent = btn.parentElement;
+      parent.querySelectorAll('.opt-btn').forEach(b => b.classList.remove('selected'));
+      btn.classList.add('selected');
+      answersMap[qNum] = val;
+      recalc();
+    }
+
+    function selectDISC(val, btn) {
+      btn.parentElement.querySelectorAll('.opt-btn').forEach(b => b.classList.remove('selected'));
+      btn.classList.add('selected');
+      document.getElementById('discRes').innerText = val;
+      answersMap['14'] = val;
+      recalc();
+    }
+
+    function selectPCM(val, btn) {
+      btn.parentElement.querySelectorAll('.opt-btn').forEach(b => b.classList.remove('selected'));
+      btn.classList.add('selected');
+      document.getElementById('pcmRes').innerText = val;
+      answersMap['15'] = val;
+      recalc();
+    }
+
+    function recalc() {
+      answeredCount = Object.keys(answersMap).length;
+      let pct = Math.round((answeredCount / 26) * 100);
+      document.getElementById('compPct').innerText = answeredCount + " / 26 (" + pct + "%)";
+      document.getElementById('compBar').style.width = pct + "%";
+
+      let leak = 1.2;
+      if (answersMap['3'] === 'high') leak += 2.0;
+      if (answersMap['6'] === '5') leak += 1.8;
+      if (answersMap['7'] === 'high') leak += 0.8;
+
+      document.getElementById('leakEst').innerText = leak.toFixed(1) + " %";
+    }
+
+    function saveToCRM() {
+      const company = document.getElementById('targetCompany').value || "Airbus Subcontracting SAS";
+      const contact = document.getElementById('targetContact').value || "Jean-Claude VASSEUR";
+      const rev = parseFloat(document.getElementById('targetRev').value) || 15000000;
+      const leak = parseFloat(document.getElementById('leakEst').innerText) || 4.2;
+      const disc = document.getElementById('discRes').innerText || "Dominant (D)";
+      const pcm = document.getElementById('pcmRes').innerText || "Travaillomane";
+
+      let crmData = JSON.parse(localStorage.getItem('QUESTIA LAB_CRM_LEADS') || '[]');
+
+      let existingIdx = crmData.findIndex(l => l.company.toLowerCase() === company.toLowerCase());
+      let caller = activeCaller || (existingIdx >= 0 ? crmData[existingIdx].assignedCaller : 'Julien');
+
+      let leadObj = {
+        id: existingIdx >= 0 ? crmData[existingIdx].id : "QUESTIA LAB-" + (crmData.length + 1),
+        company: company,
+        contact: contact,
+        title: "VP Commercial / DG",
+        phone: "+33 6 61 74 75 73",
+        email: "contact@" + company.toLowerCase().replace(/[^a-z0-9]/g, '') + ".com",
+        icp: selectedICPName,
+        revenue: rev,
+        leak: leak,
+        disc: disc,
+        pcm: pcm,
+        stress: "Pression de prix sous stress L2",
+        cse: "Non Concerné",
+        status: "Visio Audit 26Q Réalisé (par " + caller + ")",
+        nextAction: "Envoi PDF Personnalisé & Prise RDV Étape 0",
+        assignedCaller: caller,
+        answers: answersMap
+      };
+
+      if (existingIdx >= 0) {
+        crmData[existingIdx] = leadObj;
+      } else {
+        crmData.push(leadObj);
+      }
+
+      localStorage.setItem('QUESTIA LAB_CRM_LEADS', JSON.stringify(crmData));
+      alert("✅ Audit 26Q enregistré avec succès dans le CRM QuestIA LAB !\n\nProspect : " + company + "\nAppelant Référent : " + caller + "\nFuite de marge : " + leak + "%\nDISC : " + disc);
+    }
+
+    function openStudioWithData() {
+      saveToCRM();
+      window.location.href = "2026-09-11_QUESTIA_Studio_Personnalisation_PDF.html";
+    }
+
+    populateAuditCRMDropdown();
+
+    // Countdown 30 min
+    let sec = 1800;
+    setInterval(() => {
+      if (sec > 0) {
+        sec--;
+        let m = Math.floor(sec / 60);
+        let s = sec % 60;
+        document.getElementById('timerDisplay').innerText = 
+          (m < 10 ? '0' + m : m) + ':' + (s < 10 ? '0' + s : s);
+      }
+    }, 1000);
+  </script>
+</body>
+</html>

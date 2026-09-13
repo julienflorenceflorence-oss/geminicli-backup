@@ -1,0 +1,633 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>QuestIA LAB - Studio de Personnalisation PDF Prospection & Audit (Connecté CRM)</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&family=Outfit:wght@400;600;700;800&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <style>
+    :root {
+      --bg-dark: #05070D;
+      --bg-card: #0B0F19;
+      --bg-card-hover: #121827;
+      --cyan-neon: #00E5FF;
+      --violet-neon: #7B5CFF;
+      --gold-accent: #D4AF37;
+      --text-white: #F8FAFC;
+      --text-muted: #94A3B8;
+      --border-cyan: rgba(0, 229, 255, 0.3);
+      --border-violet: rgba(123, 92, 255, 0.3);
+      --shadow-cyan: 0 0 25px rgba(0, 229, 255, 0.2);
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      background-color: var(--bg-dark);
+      color: var(--text-white);
+      font-family: 'Inter', sans-serif;
+      padding: 24px;
+    }
+
+    /* Top Ecosystem Nav */
+    .ecosystem-nav {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background: rgba(11, 15, 25, 0.8);
+      border: 1px solid var(--border-violet);
+      border-radius: 12px;
+      padding: 10px 20px;
+      margin-bottom: 20px;
+      font-size: 12px;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 16px;
+    }
+
+    .nav-link {
+      color: var(--text-muted);
+      text-decoration: none;
+      font-weight: 600;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      transition: color 0.2s ease;
+    }
+
+    .nav-link.active, .nav-link:hover {
+      color: var(--cyan-neon);
+    }
+
+    header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 20px 30px;
+      background: var(--bg-card);
+      border: 1px solid var(--border-cyan);
+      border-radius: 16px;
+      box-shadow: var(--shadow-cyan);
+      margin-bottom: 24px;
+    }
+
+    .brand-header {
+      display: flex;
+      align-items: center;
+      gap: 20px;
+    }
+
+    .questia-logo-img {
+      height: 48px;
+      width: auto;
+      object-fit: contain;
+      filter: drop-shadow(0 0 10px rgba(0,229,255,0.4));
+    }
+
+    .brand-title h1 {
+      font-family: 'Outfit', sans-serif;
+      font-size: 24px;
+      font-weight: 800;
+    }
+
+    .brand-title h1 span { color: var(--cyan-neon); }
+    .brand-title p {
+      font-size: 11px;
+      color: var(--violet-neon);
+      font-weight: 700;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+    }
+
+    .btn-gen {
+      background: linear-gradient(135deg, var(--cyan-neon), var(--violet-neon));
+      color: #000;
+      font-weight: 800;
+      padding: 12px 24px;
+      border-radius: 10px;
+      border: none;
+      cursor: pointer;
+      font-size: 13.5px;
+      text-transform: uppercase;
+      transition: all 0.2s ease;
+      box-shadow: var(--shadow-cyan);
+    }
+
+    .btn-gen:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 0 30px rgba(0, 229, 255, 0.4);
+    }
+
+    .studio-grid {
+      display: grid;
+      grid-template-columns: 1fr 1.2fr;
+      gap: 24px;
+    }
+
+    .form-panel {
+      background: var(--bg-card);
+      border: 1px solid var(--border-cyan);
+      border-radius: 16px;
+      padding: 24px;
+    }
+
+    .form-panel h2 {
+      font-family: 'Outfit', sans-serif;
+      font-size: 18px;
+      color: var(--cyan-neon);
+      margin-bottom: 20px;
+      border-bottom: 1px solid var(--border-cyan);
+      padding-bottom: 8px;
+    }
+
+    .form-group {
+      margin-bottom: 16px;
+    }
+
+    .form-group label {
+      display: block;
+      font-size: 12.5px;
+      font-weight: 600;
+      color: var(--text-white);
+      margin-bottom: 6px;
+    }
+
+    .form-control {
+      width: 100%;
+      background: #121827;
+      border: 1px solid rgba(255, 255, 255, 0.15);
+      color: var(--text-white);
+      padding: 10px 14px;
+      border-radius: 8px;
+      font-size: 13px;
+      font-family: 'Inter', sans-serif;
+    }
+
+    .form-control:focus {
+      outline: none;
+      border-color: var(--cyan-neon);
+      box-shadow: 0 0 10px rgba(0, 229, 255, 0.2);
+    }
+
+    textarea.form-control {
+      resize: vertical;
+      min-height: 80px;
+    }
+
+    .form-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 12px;
+    }
+
+    /* Live Preview Panel */
+    .preview-panel {
+      background: #05070D;
+      border: 1px solid var(--border-violet);
+      border-radius: 16px;
+      padding: 20px;
+      box-shadow: 0 0 30px rgba(123, 92, 255, 0.15);
+    }
+
+    .preview-panel h2 {
+      font-size: 14px;
+      color: var(--violet-neon);
+      margin-bottom: 14px;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
+
+    .pdf-page-mock {
+      background: #05070D;
+      border: 1px solid rgba(0, 229, 255, 0.3);
+      border-radius: 8px;
+      min-height: 560px;
+      display: grid;
+      grid-template-columns: 160px 1fr;
+      box-shadow: 0 10px 40px rgba(0,0,0,0.8);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .pdf-sidebar {
+      background: #0B0F19;
+      border-right: 1px solid var(--cyan-neon);
+      padding: 16px 12px;
+    }
+
+    .pdf-sidebar img {
+      width: 100%;
+      margin-bottom: 12px;
+    }
+
+    .pdf-sidebar-title {
+      font-size: 8px;
+      color: var(--violet-neon);
+      font-weight: 800;
+      text-align: center;
+      margin-bottom: 14px;
+    }
+
+    .pdf-sources-box {
+      font-size: 8px;
+      color: var(--text-muted);
+      border-top: 1px solid var(--cyan-neon);
+      padding-top: 10px;
+    }
+
+    .pdf-sources-box strong {
+      color: var(--cyan-neon);
+      display: block;
+      margin-bottom: 6px;
+    }
+
+    .pdf-main {
+      padding: 18px 20px;
+    }
+
+    .pdf-doc-type {
+      font-size: 9px;
+      font-weight: 800;
+      color: var(--cyan-neon);
+      text-transform: uppercase;
+      margin-bottom: 2px;
+    }
+
+    .pdf-doc-title {
+      font-family: 'Outfit', sans-serif;
+      font-size: 13.5px;
+      font-weight: 800;
+      color: #FFF;
+      margin-bottom: 10px;
+      border-bottom: 1px solid var(--cyan-neon);
+      padding-bottom: 6px;
+    }
+
+    .pdf-target-badge {
+      background: rgba(0, 229, 255, 0.1);
+      border-left: 3px solid var(--cyan-neon);
+      padding: 6px 10px;
+      font-size: 9.5px;
+      color: var(--cyan-neon);
+      font-weight: 700;
+      margin-bottom: 12px;
+    }
+
+    .pdf-intro-text {
+      font-size: 9.5px;
+      color: #CBD5E1;
+      line-height: 1.4;
+      margin-bottom: 12px;
+    }
+
+    .pdf-body-section {
+      font-size: 9px;
+      color: #94A3B8;
+      margin-bottom: 12px;
+    }
+
+    .pdf-body-section h4 {
+      color: var(--cyan-neon);
+      font-size: 10px;
+      margin-bottom: 4px;
+      border-bottom: 1px solid rgba(0, 229, 255, 0.2);
+    }
+
+    .pdf-sim-card {
+      background: #121827;
+      border: 1px solid var(--cyan-neon);
+      border-radius: 6px;
+      padding: 10px;
+      margin-bottom: 12px;
+    }
+
+    .pdf-sim-card h4 {
+      font-size: 9.5px;
+      color: var(--cyan-neon);
+      margin-bottom: 4px;
+    }
+
+    .pdf-sim-row {
+      display: flex;
+      justify-content: space-between;
+      font-size: 9px;
+      margin-bottom: 3px;
+    }
+
+    .pdf-loss-highlight {
+      font-weight: 800;
+      color: var(--violet-neon);
+      font-size: 10.5px;
+    }
+
+    .pdf-note-box {
+      background: rgba(123, 92, 255, 0.1);
+      border-left: 3px solid var(--violet-neon);
+      padding: 6px 8px;
+      font-size: 9px;
+      color: #E2E8F0;
+      margin-bottom: 12px;
+      font-style: italic;
+    }
+
+    @media print {
+      body { background: #FFF; color: #000; padding: 0; }
+      header, .ecosystem-nav, .form-panel, .preview-panel h2 { display: none; }
+      .studio-grid { grid-template-columns: 1fr; }
+      .pdf-page-mock { border: none; box-shadow: none; width: 100%; min-height: 100vh; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Ecosystem Nav Bar -->
+  <div class="ecosystem-nav">
+    <div style="font-weight:700; color:var(--cyan-neon);"><i class="fa-solid fa-network-wired"></i> ÉCOSYSTÈME CONNECTÉ QUESTIA LAB</div>
+    <div class="nav-links">
+      <a href="2026-09-11_QUESTIA_Trame_Diagnostic_Visio_DISC_PCM.html" class="nav-link"><i class="fa-solid fa-list-check"></i> Questionnaire Audit (26Q)</a>
+      <a href="2026-09-11_QUESTIA_CRM_Intelligence_Commerciale_Et_Psychometrique.html" class="nav-link"><i class="fa-solid fa-users-gear"></i> CRM Intelligence</a>
+      <a href="2026-09-11_QUESTIA_Studio_Personnalisation_PDF.html" class="nav-link active"><i class="fa-solid fa-file-pdf"></i> Studio PDF Personnalisé</a>
+    </div>
+  </div>
+
+  <header>
+    <div class="brand-header">
+      <img src="../../Images/QuestIA LAB_Logo.png" alt="QuestIA LAB Logo" class="questia-logo-img" onerror="this.style.display='none'" />
+      <div class="brand-title">
+        <h1>Quest<span>IA</span> Studio PDF</h1>
+        <p>Générateur Connecté au CRM avec Textes Pré-Enregistrés</p>
+      </div>
+    </div>
+    <div class="header-actions">
+      <button class="btn-gen" onclick="window.print()"><i class="fa-solid fa-file-pdf"></i> Générer & Télécharger PDF</button>
+    </div>
+  </header>
+
+  <div class="studio-grid">
+    <!-- Form Customization Panel -->
+    <div class="form-panel">
+      <h2>⚙️ Paramètres & Connexion CRM</h2>
+
+      <div class="form-group" style="background:rgba(0,229,255,0.08); border:1px solid var(--border-cyan); padding:12px; border-radius:8px;">
+        <label style="color:var(--cyan-neon);"><i class="fa-solid fa-sync"></i> Charger un Prospect depuis le CRM :</label>
+        <select class="form-control" id="crmLeadSelect" onchange="loadLeadFromCRM()">
+          <option value="">-- Sélectionner un prospect enregistré dans le CRM --</option>
+        </select>
+      </div>
+
+      <div class="form-group">
+        <label>Modèle de PDF Pré-Enregistré :</label>
+        <select class="form-control" id="pdfTypeSelect" onchange="updatePreview()">
+          <option value="choc_refus">PDF #2 - Note Choc Perte de CA (Relance Refus)</option>
+          <option value="confirmatif">PDF #1 - Confirmation & Préparation RDV (Post-Call)</option>
+          <option value="passe_barrage">PDF #3 - Note Exécutive EA (Passe-Barrage Secrétariat)</option>
+          <option value="script_icp">PDF #4 - Script & Diagnostic Adapté par ICP</option>
+        </select>
+      </div>
+
+      <div class="form-row">
+        <div class="form-group">
+          <label>Nom de l'Entreprise Cible :</label>
+          <input type="text" class="form-control" id="companyInput" value="Airbus Subcontracting SAS" oninput="updatePreview()">
+        </div>
+        <div class="form-group">
+          <label>Secteur d'Activité / ICP :</label>
+          <select class="form-control" id="sectorInput" onchange="updatePreview()">
+            <option value="Aéronautique & Spatial">ICP 1 - Aéronautique & Spatial</option>
+            <option value="Agroalimentaire & Luxe Export">ICP 2 - Agro / Vins & Luxe Export</option>
+            <option value="SaaS B2B Enterprise">ICP 3 - SaaS DeepTech B2B</option>
+            <option value="Équipements Industriels">ICP 4 - Machines Spéciales</option>
+            <option value="MedTech & Dispositifs Médicaux">ICP 5 - MedTech Régulé</option>
+          </select>
+        </div>
+      </div>
+
+      <div class="form-row">
+        <div class="form-group">
+          <label>Nom du Décisionnaire :</label>
+          <input type="text" class="form-control" id="prospectInput" value="M. Jean-Claude VASSEUR" oninput="updatePreview()">
+        </div>
+        <div class="form-group">
+          <label>Titre / Fonction :</label>
+          <input type="text" class="form-control" id="titleInput" value="VP Commercial & Business Dev" oninput="updatePreview()">
+        </div>
+      </div>
+
+      <div class="form-row">
+        <div class="form-group">
+          <label>Chiffre d'Affaires Export Estime (€) :</label>
+          <input type="text" class="form-control" id="revenueInput" value="15 000 000 €" oninput="updatePreview()">
+        </div>
+        <div class="form-group">
+          <label>Taux de Fuite de Marge Estime (%) :</label>
+          <select class="form-control" id="leakInput" onchange="updatePreview()">
+            <option value="3.0">3.0 % (Moyenne Basse)</option>
+            <option value="4.2" selected>4.2 % (Moyenne Constatée Aero)</option>
+            <option value="5.4">5.4 % (Impact Critique Maximum)</option>
+          </select>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label>Remarque Spécifique / Argument Sur-Mesure :</label>
+        <textarea class="form-control" id="noteInput" placeholder="Insérer une note personnelle pour le prospect..." oninput="updatePreview()"></textarea>
+      </div>
+
+      <div class="form-group">
+        <button class="btn-gen" style="width:100%; background:var(--bg-card); color:var(--cyan-neon); border:1px solid var(--cyan-neon);" onclick="copyCLICommand()">
+          <i class="fa-solid fa-terminal"></i> Copier la Commande CLI Python
+        </button>
+      </div>
+    </div>
+
+    <!-- Live Preview Panel -->
+    <div class="preview-panel">
+      <h2>👁️ Prévisualisation Rendu PDF (Texte Intégral & Logo PNG)</h2>
+
+      <div class="pdf-page-mock" id="pdfMock">
+        <div class="pdf-sidebar">
+          <img src="../../Images/QuestIA LAB_Logo.png" alt="Logo QuestIA LAB" onerror="this.style.display='none'" />
+          <div class="pdf-sidebar-title">DECISION & BEHAVIOR ACCELERATOR</div>
+          
+          <div class="pdf-sources-box">
+            <strong>DOSSIER DE PREUVES</strong>
+            • McKinsey & Co. (Fuite 3-5% marge)<br/>
+            • HBR (-30% autorité L2)<br/>
+            • INSEAD (Décodage DISC/PCM)<br/>
+            • KPMG (72% blocages humains)<br/>
+            • Business France (68% remises)
+          </div>
+        </div>
+
+        <div class="pdf-main">
+          <div class="pdf-doc-type" id="prevDocType">NOTE D'IMPACT STRATEGIQUE FINANCIER</div>
+          <div class="pdf-doc-title" id="prevDocTitle">CHOC FINANCIER : LE COUT DE L'INACTION POUR AIRBUS SUBCONTRACTING</div>
+
+          <div class="pdf-target-badge" id="prevTarget">
+            À L'ATTENTION DE : M. JEAN-CLAUDE VASSEUR (VP Commercial & Business Dev)
+          </div>
+
+          <div class="pdf-intro-text" id="prevIntro">
+            Chaque négociation internationale menée sans décodage psychologique de l'acheteur étranger est une fuite directe de profit net. Penser que vos commerciaux 'maîtrisent l'anglais' masque une réalité financière critique : la perte d'impact sous pression.
+          </div>
+
+          <div class="pdf-sim-card" id="prevSimCard">
+            <h4>SIMULATION FINANCIÈRE PERSONNALISÉE</h4>
+            <div class="pdf-sim-row">
+              <span>Chiffre d'Affaires Export Estime :</span>
+              <strong id="prevRevenue">15 000 000 €</strong>
+            </div>
+            <div class="pdf-sim-row">
+              <span>Taux de Fuite de Marge Estime :</span>
+              <strong id="prevLeak">4.2 %</strong>
+            </div>
+            <div class="pdf-sim-row" style="margin-top:4px;">
+              <span>Perte Net Annuelle Estimee :</span>
+              <strong class="pdf-loss-highlight" id="prevLoss">630 000 € / an</strong>
+            </div>
+          </div>
+
+          <div class="pdf-body-section" id="prevBodyText">
+            <h4>LES 3 ILLUSIONS DANGEREUSES QUI COÛTENT DE LA MARGE</h4>
+            • <b>Illusion #1 : "Nos commerciaux parlent anglais"</b> — L'INSEAD prouve qu'un cadre perd 30% d'impact persuasif en L2.<br/>
+            • <b>Illusion #2 : "Les cours de langues suffisent"</b> — Les cours apprennent le vocabulaire, pas la posture sous stress.<br/>
+            • <b>Illusion #3 : "Le problème vient du prix"</b> — KPMG démontre que 72% des blocages sont d'origine comportementale.
+          </div>
+
+          <div class="pdf-note-box" id="prevNoteBox" style="display:none;">
+            <strong>Note de l'Auditeur :</strong> <span id="prevNote"></span>
+          </div>
+
+          <div style="margin-top:14px; font-size:8.5px; color:var(--cyan-neon); text-align:center; border:1px solid var(--cyan-neon); padding:6px; border-radius:4px;">
+            Demandez votre Audit de Performance Commerciale (30 min Visio) avec Julien FLORENCE (06 61 74 75 73)
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <script>
+    const PRESETS = {
+      choc_refus: {
+        type: "NOTE D'IMPACT STRATEGIQUE FINANCIER",
+        titlePrefix: "CHOC FINANCIER : LE COÛT DE L'INACTION POUR ",
+        intro: "Chaque négociation internationale menée sans décodage psychologique de l'acheteur étranger est une fuite directe de profit net. Penser que vos commerciaux 'maîtrisent l'anglais' masque une réalité financière critique : la perte d'impact et de fermeté sous pression.",
+        body: "<h4>LES 3 ILLUSIONS DANGEREUSES QUI COÛTENT DE LA MARGE</h4>• <b>Illusion #1 : 'Nos commerciaux parlent anglais'</b> — L'INSEAD prouve qu'un cadre perd 30% d'impact persuasif en L2 face à un acheteur agressif.<br/>• <b>Illusion #2 : 'Les cours de langues suffisent'</b> — Les cours apprennent le vocabulaire, pas le décodage comportemental (DISC/PCM).<br/>• <b>Illusion #3 : 'Le problème vient du prix'</b> — KPMG démontre que 72% des blocages sont dus à une mauvaise lecture du profil du décisionnaire."
+      },
+      confirmatif: {
+        type: "CONFIRMATION & PRÉPARATION AUDIT",
+        titlePrefix: "AUDIT DE PERFORMANCE COMMERCIALE - ",
+        intro: "Nous vous confirmons la tenue de votre session d'Audit de Performance Commerciale & Décodage Comportemental en Visio (30 min). Cet entretien permettra d'évaluer la fermeté tactique et l'impact de vos forces de vente lorsqu'elles négocient avec des acheteurs et partenaires étrangers.",
+        body: "<h4>DEROULÉ ET ORDRE DU JOUR (30 MIN VISIO)</h4>• <b>Étape 1 (10 min) :</b> Évaluation des 5 Frictions d'Impact face aux acheteurs étrangers.<br/>• <b>Étape 2 (10 min) :</b> Passation du Diagnostic Psychométrique (PCM/DISC).<br/>• <b>Étape 3 (10 min) :</b> Restitution & Démonstration du Simulateur d'Immersion IA QuestIA LAB (Offre 2 000 € HT)."
+      },
+      passe_barrage: {
+        type: "NOTE D'INFORMATION EXÉCUTIVE",
+        titlePrefix: "NOTE EXÉCUTIVE MARGES EXPORT - À L'ATTENTION DE ",
+        intro: "Ce document de synthèse contient les données d'audit de marge sur les négociations internationales. Merci de le remettre en main propre à Monsieur/Madame le Directeur Général ou VP Sales.",
+        body: "<h4>SYNTHÈSE DES ENJEUX POUR LA DIRECTION</h4>• <b>Protection des Marges Nettes :</b> Les études McKinsey et Business France démontrent une fuite d'au moins 3% due au manque de fermeté sous pression.<br/>• <b>Décodage Psychologique (DISC/PCM) :</b> 72% des blocages ne viennent pas du produit mais d'erreurs de posture.<br/>• <b>Entretien d'Audit 30 Min :</b> Diagnostic individuel en Visio réservé à la Direction."
+      },
+      script_icp: {
+        type: "GUIDE SECTORIEL & SCRIPTS D'AUDIT",
+        titlePrefix: "DIAGNOSTIC SUR-MESURE SECTEUR : ",
+        intro: "Guide d'audit sectoriel sur-mesure intégrant le pitch de qualification cold call (10 min), la réfutation d'objection sectorielle et le dossier de preuves avec sources officielles cliquables.",
+        body: "<h4>SCRIPTS TELEPHONIQUES & PROFILAGE SECTORIEL</h4>• <b>Pitch Cold Call :</b> Négociation sous pression face aux acheteurs internationaux.<br/>• <b>Réfutation d'Objection :</b> Démontrer la perte de 30% d'impact persuasif en L2 (HBR Data).<br/>• <b>Sources Officielles :</b> McKinsey, HBR, INSEAD, KPMG, Business France."
+      }
+    };
+
+    let crmLeads = [];
+
+    function populateCRMDropdown() {
+      crmLeads = JSON.parse(localStorage.getItem('QUESTIA LAB_CRM_LEADS') || '[]');
+      const select = document.getElementById('crmLeadSelect');
+      select.innerHTML = '<option value="">-- Sélectionner un prospect enregistré dans le CRM --</option>';
+
+      const activeLeadId = localStorage.getItem('QUESTIA_ACTIVE_LEAD_ID');
+      let targetIdx = -1;
+
+      crmLeads.forEach((lead, i) => {
+        const callerTag = lead.assignedCaller ? ` [👤 ${lead.assignedCaller}]` : '';
+        const opt = document.createElement('option');
+        opt.value = i;
+        opt.innerText = `${lead.company} — ${lead.contact}${callerTag} (${(lead.revenue/1000000).toFixed(1)}M€)`;
+        if (activeLeadId && lead.id === activeLeadId) targetIdx = i;
+        select.appendChild(opt);
+      });
+
+      if (targetIdx >= 0) {
+        select.value = targetIdx;
+        loadLeadFromCRM();
+      }
+    }
+
+    function loadLeadFromCRM() {
+      const idx = document.getElementById('crmLeadSelect').value;
+      if (idx === "") return;
+      const lead = crmLeads[idx];
+      if (!lead) return;
+
+      document.getElementById('companyInput').value = lead.company;
+      document.getElementById('prospectInput').value = lead.contact;
+      document.getElementById('titleInput').value = lead.title || "VP Sales / DG";
+      document.getElementById('revenueInput').value = (lead.revenue || 15000000).toLocaleString('fr-FR') + " €";
+      document.getElementById('leakInput').value = (lead.leak || 4.2).toString();
+
+      updatePreview();
+    }
+
+    function updatePreview() {
+      const company = document.getElementById('companyInput').value || 'ENTREPRISE CIBLE';
+      const prospect = document.getElementById('prospectInput').value || 'Monsieur le Directeur';
+      const title = document.getElementById('titleInput').value || 'VP Sales';
+      const sector = document.getElementById('sectorInput').value;
+      const revenue = document.getElementById('revenueInput').value || '10 000 000 €';
+      const leak = parseFloat(document.getElementById('leakInput').value || 4.2);
+      const typeKey = document.getElementById('pdfTypeSelect').value;
+      const note = document.getElementById('noteInput').value;
+
+      const preset = PRESETS[typeKey] || PRESETS.choc_refus;
+
+      let revNum = parseFloat(revenue.replace(/[^0-9.]/g, '')) || 10000000;
+      let loss = Math.round(revNum * (leak / 100));
+
+      document.getElementById('prevDocType').innerText = preset.type;
+      document.getElementById('prevDocTitle').innerText = preset.titlePrefix + company.toUpperCase();
+      document.getElementById('prevTarget').innerText = `À L'ATTENTION DE : ${prospect.toUpperCase()} (${title.toUpperCase()})`;
+      document.getElementById('prevIntro').innerText = preset.intro;
+      document.getElementById('prevBodyText').innerHTML = preset.body;
+
+      document.getElementById('prevRevenue').innerText = revenue;
+      document.getElementById('prevLeak').innerText = leak.toFixed(1) + " %";
+      document.getElementById('prevLoss').innerText = loss.toLocaleString('fr-FR') + " € / an";
+
+      if (note.trim()) {
+        document.getElementById('prevNoteBox').style.display = 'block';
+        document.getElementById('prevNote').innerText = note;
+      } else {
+        document.getElementById('prevNoteBox').style.display = 'none';
+      }
+    }
+
+    function copyCLICommand() {
+      const company = document.getElementById('companyInput').value;
+      const prospect = document.getElementById('prospectInput').value;
+      const title = document.getElementById('titleInput').value;
+      const sector = document.getElementById('sectorInput').value;
+      const revenue = document.getElementById('revenueInput').value;
+      const leak = document.getElementById('leakInput').value;
+      const type = document.getElementById('pdfTypeSelect').value;
+
+      const cmd = `python3 05_Outils_Systeme/generate_custom_questia_pdf.py --company "${company}" --prospect "${prospect}" --title "${title}" --sector "${sector}" --revenue "${revenue}" --leak ${leak} --type ${type}`;
+      navigator.clipboard.writeText(cmd);
+      alert("Commande CLI Python copié dans le presse-papier !\n\n" + cmd);
+    }
+
+    populateCRMDropdown();
+    updatePreview();
+  </script>
+</body>
+</html>

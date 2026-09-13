@@ -1,0 +1,1568 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>QuestIA LAB - CRM Intelligence Commerciale & Cockpit Phoning Appelants</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&family=Outfit:wght@400;600;700;800&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <style>
+    :root {
+      --bg-dark: #05070D;
+      --bg-card: #0B0F19;
+      --bg-card-hover: #121827;
+      --cyan-neon: #00E5FF;
+      --violet-neon: #7B5CFF;
+      --gold-accent: #D4AF37;
+      --lime-accent: #B8FF3D;
+      --coral-accent: #FF5A6A;
+      --text-white: #F8FAFC;
+      --text-muted: #94A3B8;
+      --border-cyan: rgba(0, 229, 255, 0.3);
+      --border-violet: rgba(123, 92, 255, 0.3);
+      --shadow-cyan: 0 0 25px rgba(0, 229, 255, 0.2);
+
+      /* Caller Colors */
+      --caller-priscille: #FF2E93;
+      --caller-myriam: #00E676;
+      --caller-lorraine: #FFD600;
+      --caller-julien: #00E5FF;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      background-color: var(--bg-dark);
+      color: var(--text-white);
+      font-family: 'Inter', sans-serif;
+      padding: 24px;
+    }
+
+    /* Top Ecosystem Nav */
+    .ecosystem-nav {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background: rgba(11, 15, 25, 0.85);
+      border: 1px solid var(--border-violet);
+      border-radius: 12px;
+      padding: 10px 20px;
+      margin-bottom: 16px;
+      font-size: 12px;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 16px;
+    }
+
+    .nav-link {
+      color: var(--text-muted);
+      text-decoration: none;
+      font-weight: 600;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      transition: color 0.2s ease;
+    }
+
+    .nav-link.active, .nav-link:hover {
+      color: var(--cyan-neon);
+    }
+
+    /* CALLER WORKSPACE TABS BAR */
+    .workspace-nav-bar {
+      display: flex;
+      gap: 10px;
+      margin-bottom: 20px;
+      background: var(--bg-card);
+      border: 1px solid var(--border-cyan);
+      border-radius: 16px;
+      padding: 10px;
+      box-shadow: var(--shadow-cyan);
+      overflow-x: auto;
+    }
+
+    .ws-tab {
+      flex: 1;
+      min-width: 170px;
+      background: #121827;
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      border-radius: 12px;
+      padding: 12px 16px;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      transition: all 0.25s ease;
+    }
+
+    .ws-tab:hover {
+      transform: translateY(-2px);
+      border-color: rgba(255, 255, 255, 0.3);
+    }
+
+    .ws-tab.active {
+      background: rgba(0, 229, 255, 0.12);
+      border-color: var(--cyan-neon);
+      box-shadow: 0 0 15px rgba(0, 229, 255, 0.2);
+    }
+
+    .ws-tab.active.priscille { background: rgba(255, 46, 147, 0.15); border-color: var(--caller-priscille); box-shadow: 0 0 15px rgba(255, 46, 147, 0.3); }
+    .ws-tab.active.myriam { background: rgba(0, 230, 118, 0.15); border-color: var(--caller-myriam); box-shadow: 0 0 15px rgba(0, 230, 118, 0.3); }
+    .ws-tab.active.lorraine { background: rgba(255, 214, 0, 0.15); border-color: var(--caller-lorraine); box-shadow: 0 0 15px rgba(255, 214, 0, 0.3); }
+    .ws-tab.active.julien { background: rgba(0, 229, 255, 0.15); border-color: var(--caller-julien); box-shadow: 0 0 15px rgba(0, 229, 255, 0.3); }
+
+    .ws-tab-info {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .ws-tab-title {
+      font-family: 'Outfit', sans-serif;
+      font-weight: 800;
+      font-size: 13.5px;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .ws-tab-sub {
+      font-size: 10.5px;
+      color: var(--text-muted);
+      margin-top: 2px;
+    }
+
+    .ws-tab-count {
+      font-family: 'Outfit', sans-serif;
+      font-size: 16px;
+      font-weight: 800;
+      padding: 4px 10px;
+      border-radius: 20px;
+      background: rgba(255, 255, 255, 0.08);
+    }
+
+    header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 18px 24px;
+      background: var(--bg-card);
+      border: 1px solid var(--border-cyan);
+      border-radius: 16px;
+      box-shadow: var(--shadow-cyan);
+      margin-bottom: 24px;
+    }
+
+    .brand-header {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+    }
+
+    .questia-logo-img {
+      height: 44px;
+      width: auto;
+      object-fit: contain;
+      filter: drop-shadow(0 0 10px rgba(0,229,255,0.4));
+    }
+
+    .brand-title h1 {
+      font-family: 'Outfit', sans-serif;
+      font-size: 22px;
+      font-weight: 800;
+    }
+
+    .brand-title h1 span { color: var(--cyan-neon); }
+    .brand-title p {
+      font-size: 11px;
+      color: var(--violet-neon);
+      font-weight: 700;
+      letter-spacing: 0.5px;
+      text-transform: uppercase;
+    }
+
+    .header-actions {
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+    }
+
+    .btn-crm {
+      background: linear-gradient(135deg, var(--cyan-neon), var(--violet-neon));
+      color: #000;
+      font-weight: 800;
+      padding: 10px 16px;
+      border-radius: 8px;
+      border: none;
+      cursor: pointer;
+      font-size: 12px;
+      text-transform: uppercase;
+      transition: all 0.2s ease;
+    }
+
+    .btn-crm:hover {
+      transform: translateY(-2px);
+      box-shadow: var(--shadow-cyan);
+    }
+
+    .btn-sec {
+      background: var(--bg-card);
+      border: 1px solid var(--border-violet);
+      color: var(--cyan-neon);
+      font-weight: 700;
+      padding: 10px 14px;
+      border-radius: 8px;
+      cursor: pointer;
+      font-size: 12px;
+      transition: all 0.2s ease;
+    }
+
+    .btn-sec:hover { background: rgba(123, 92, 255, 0.2); }
+
+    .btn-excel {
+      background: rgba(184, 255, 61, 0.15);
+      border: 1px solid var(--lime-accent);
+      color: var(--lime-accent);
+      font-weight: 700;
+      padding: 10px 14px;
+      border-radius: 8px;
+      cursor: pointer;
+      font-size: 12px;
+    }
+
+    .btn-shuffle {
+      background: rgba(255, 46, 147, 0.15);
+      border: 1px solid var(--caller-priscille);
+      color: var(--caller-priscille);
+      font-weight: 700;
+      padding: 10px 14px;
+      border-radius: 8px;
+      cursor: pointer;
+      font-size: 12px;
+    }
+
+    /* ACTIVE WORKSPACE COCKPIT HEADER */
+    .cockpit-banner {
+      background: linear-gradient(135deg, rgba(11, 15, 25, 0.95), rgba(18, 24, 39, 0.95));
+      border: 1px solid var(--cyan-neon);
+      border-radius: 16px;
+      padding: 16px 24px;
+      margin-bottom: 24px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      box-shadow: var(--shadow-cyan);
+    }
+
+    .cockpit-user {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+    }
+
+    .user-avatar {
+      width: 48px;
+      height: 48px;
+      border-radius: 50%;
+      background: rgba(0, 229, 255, 0.15);
+      border: 2px solid var(--cyan-neon);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 20px;
+      color: var(--cyan-neon);
+    }
+
+    .user-avatar.priscille { background: rgba(255, 46, 147, 0.2); border-color: var(--caller-priscille); color: var(--caller-priscille); }
+    .user-avatar.myriam { background: rgba(0, 230, 118, 0.2); border-color: var(--caller-myriam); color: var(--caller-myriam); }
+    .user-avatar.lorraine { background: rgba(255, 214, 0, 0.2); border-color: var(--caller-lorraine); color: var(--caller-lorraine); }
+    .user-avatar.julien { background: rgba(0, 229, 255, 0.2); border-color: var(--caller-julien); color: var(--caller-julien); }
+
+    .user-details h2 {
+      font-family: 'Outfit', sans-serif;
+      font-size: 18px;
+      font-weight: 800;
+    }
+
+    .user-details p {
+      font-size: 11.5px;
+      color: var(--text-muted);
+    }
+
+    .phoning-session-actions {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .btn-session {
+      background: linear-gradient(135deg, var(--lime-accent), #88CC00);
+      color: #000;
+      font-weight: 800;
+      padding: 10px 20px;
+      border-radius: 10px;
+      border: none;
+      cursor: pointer;
+      font-size: 13px;
+      text-transform: uppercase;
+      box-shadow: 0 0 15px rgba(184, 255, 61, 0.3);
+      transition: all 0.2s ease;
+    }
+
+    .btn-session:hover { transform: scale(1.03); }
+
+    .btn-next {
+      background: #121827;
+      border: 1px solid var(--cyan-neon);
+      color: var(--cyan-neon);
+      font-weight: 700;
+      padding: 10px 16px;
+      border-radius: 10px;
+      cursor: pointer;
+      font-size: 12.5px;
+    }
+
+    /* KPI Row */
+    .kpi-row {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 16px;
+      margin-bottom: 24px;
+    }
+
+    .kpi-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border-violet);
+      border-radius: 12px;
+      padding: 16px 20px;
+    }
+
+    .kpi-card h3 {
+      font-size: 10.5px;
+      color: var(--text-muted);
+      text-transform: uppercase;
+      margin-bottom: 4px;
+    }
+
+    .kpi-card .val {
+      font-family: 'Outfit', sans-serif;
+      font-size: 20px;
+      font-weight: 800;
+      color: var(--cyan-neon);
+    }
+
+    .crm-layout {
+      display: grid;
+      grid-template-columns: 340px 1fr;
+      gap: 24px;
+    }
+
+    .leads-panel {
+      background: var(--bg-card);
+      border: 1px solid var(--border-cyan);
+      border-radius: 16px;
+      padding: 20px;
+    }
+
+    .panel-title {
+      font-family: 'Outfit', sans-serif;
+      font-size: 15px;
+      color: var(--cyan-neon);
+      margin-bottom: 14px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .lead-item {
+      background: #121827;
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      border-radius: 10px;
+      padding: 14px;
+      margin-bottom: 10px;
+      cursor: pointer;
+      transition: all 0.2s ease;
+    }
+
+    .lead-item.active, .lead-item:hover {
+      border-color: var(--cyan-neon);
+      background: var(--bg-card-hover);
+      box-shadow: 0 0 15px rgba(0, 229, 255, 0.15);
+    }
+
+    .lead-company {
+      font-weight: 700;
+      font-size: 13.5px;
+      color: var(--text-white);
+    }
+
+    .lead-contact {
+      font-size: 11.5px;
+      color: var(--text-muted);
+      margin-bottom: 6px;
+    }
+
+    .badge-group {
+      display: flex;
+      gap: 6px;
+      flex-wrap: wrap;
+    }
+
+    .badge {
+      font-size: 9.5px;
+      font-weight: 700;
+      padding: 3px 8px;
+      border-radius: 12px;
+      text-transform: uppercase;
+    }
+
+    .badge-caller-priscille { background: rgba(255, 46, 147, 0.15); color: var(--caller-priscille); border: 1px solid var(--caller-priscille); }
+    .badge-caller-myriam { background: rgba(0, 230, 118, 0.15); color: var(--caller-myriam); border: 1px solid var(--caller-myriam); }
+    .badge-caller-lorraine { background: rgba(255, 214, 0, 0.15); color: var(--caller-lorraine); border: 1px solid var(--caller-lorraine); }
+    .badge-caller-julien { background: rgba(0, 229, 255, 0.15); color: var(--caller-julien); border: 1px solid var(--caller-julien); }
+
+    .badge-disc { background: rgba(0, 229, 255, 0.15); color: var(--cyan-neon); border: 1px solid var(--cyan-neon); }
+    .badge-pcm { background: rgba(123, 92, 255, 0.15); color: var(--violet-neon); border: 1px solid var(--violet-neon); }
+    .badge-loss { background: rgba(255, 90, 106, 0.15); color: var(--coral-accent); border: 1px solid var(--coral-accent); }
+    .badge-callback { background: rgba(255, 214, 0, 0.2); color: var(--gold-accent); border: 1px solid var(--gold-accent); }
+
+    .detail-panel {
+      background: var(--bg-card);
+      border: 1px solid var(--border-cyan);
+      border-radius: 16px;
+      padding: 24px;
+    }
+
+    .detail-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      border-bottom: 1px solid rgba(0, 229, 255, 0.2);
+      padding-bottom: 16px;
+      margin-bottom: 20px;
+    }
+
+    .detail-title h2 {
+      font-family: 'Outfit', sans-serif;
+      font-size: 22px;
+      color: var(--text-white);
+    }
+
+    .detail-title p {
+      font-size: 13px;
+      color: var(--cyan-neon);
+    }
+
+    /* CLICK-TO-ACTION LINKS */
+    .action-link-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 6px 12px;
+      border-radius: 8px;
+      text-decoration: none;
+      font-weight: 700;
+      font-size: 12px;
+      transition: all 0.2s ease;
+    }
+
+    .link-phone {
+      background: rgba(0, 230, 118, 0.15);
+      border: 1px solid var(--caller-myriam);
+      color: var(--caller-myriam);
+    }
+
+    .link-phone:hover {
+      background: rgba(0, 230, 118, 0.3);
+      box-shadow: 0 0 10px rgba(0, 230, 118, 0.4);
+    }
+
+    .link-email {
+      background: rgba(0, 229, 255, 0.15);
+      border: 1px solid var(--cyan-neon);
+      color: var(--cyan-neon);
+    }
+
+    .link-email:hover {
+      background: rgba(0, 229, 255, 0.3);
+      box-shadow: 0 0 10px rgba(0, 229, 255, 0.4);
+    }
+
+    .data-sections-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 20px;
+      margin-bottom: 20px;
+    }
+
+    .data-box {
+      background: #121827;
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      border-radius: 12px;
+      padding: 18px;
+    }
+
+    .data-box h4 {
+      font-size: 13px;
+      color: var(--cyan-neon);
+      margin-bottom: 12px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+
+    .data-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 12px;
+      margin-bottom: 8px;
+      border-bottom: 1px dashed rgba(255,255,255,0.05);
+      padding-bottom: 6px;
+    }
+
+    .data-row span { color: var(--text-muted); }
+    .data-row strong { color: var(--text-white); }
+
+    /* CALL OUTCOMES & NOTES PANEL */
+    .phoning-notes-panel {
+      background: #121827;
+      border: 1px solid var(--border-violet);
+      border-radius: 14px;
+      padding: 20px;
+      margin-top: 20px;
+    }
+
+    .phoning-notes-panel h3 {
+      font-family: 'Outfit', sans-serif;
+      font-size: 15px;
+      color: var(--cyan-neon);
+      margin-bottom: 14px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .outcome-btns-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 10px;
+      margin-bottom: 16px;
+    }
+
+    .btn-outcome {
+      padding: 10px 8px;
+      border-radius: 8px;
+      border: 1px solid rgba(255,255,255,0.1);
+      background: var(--bg-card);
+      color: var(--text-white);
+      font-size: 11px;
+      font-weight: 700;
+      cursor: pointer;
+      text-align: center;
+      transition: all 0.2s ease;
+    }
+
+    .btn-outcome.visio { border-color: var(--caller-myriam); color: var(--caller-myriam); }
+    .btn-outcome.choc { border-color: var(--gold-accent); color: var(--gold-accent); }
+    .btn-outcome.barrage { border-color: var(--cyan-neon); color: var(--cyan-neon); }
+    .btn-outcome.archive { border-color: var(--coral-accent); color: var(--coral-accent); }
+
+    .btn-outcome:hover { transform: translateY(-2px); filter: brightness(1.2); }
+
+    .note-input-row {
+      display: grid;
+      grid-template-columns: 1fr 220px;
+      gap: 12px;
+      margin-bottom: 14px;
+    }
+
+    .note-textarea {
+      width: 100%;
+      background: #0B0F19;
+      border: 1px solid rgba(255,255,255,0.2);
+      border-radius: 8px;
+      color: #FFF;
+      padding: 10px;
+      font-family: 'Inter', sans-serif;
+      font-size: 12.5px;
+      resize: vertical;
+      min-height: 70px;
+    }
+
+    .datetime-picker-box {
+      background: #0B0F19;
+      border: 1px solid var(--border-violet);
+      border-radius: 8px;
+      padding: 10px;
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+    }
+
+    .datetime-picker-box label {
+      font-size: 10.5px;
+      font-weight: 700;
+      color: var(--gold-accent);
+    }
+
+    .datetime-input {
+      background: #121827;
+      border: 1px solid rgba(255,255,255,0.2);
+      color: #FFF;
+      padding: 6px;
+      border-radius: 6px;
+      font-size: 11.5px;
+    }
+
+    /* NOTES HISTORY FEED */
+    .notes-history-feed {
+      max-height: 180px;
+      overflow-y: auto;
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      margin-top: 10px;
+    }
+
+    .note-entry {
+      background: #0B0F19;
+      border-left: 3px solid var(--cyan-neon);
+      border-radius: 6px;
+      padding: 8px 12px;
+      font-size: 11.5px;
+    }
+
+    .note-entry-meta {
+      display: flex;
+      justify-content: space-between;
+      color: var(--text-muted);
+      font-size: 10px;
+      margin-bottom: 4px;
+    }
+
+    /* Modal Overlay */
+    .modal-overlay {
+      display: none;
+      position: fixed;
+      top: 0; left: 0; right: 0; bottom: 0;
+      background: rgba(5, 7, 13, 0.85);
+      backdrop-filter: blur(8px);
+      z-index: 999;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .modal-content {
+      background: var(--bg-card);
+      border: 1px solid var(--cyan-neon);
+      border-radius: 16px;
+      padding: 30px;
+      width: 100%;
+      max-width: 600px;
+      box-shadow: var(--shadow-cyan);
+    }
+
+    .modal-content h3 {
+      font-family: 'Outfit', sans-serif;
+      color: var(--cyan-neon);
+      margin-bottom: 18px;
+    }
+
+    .form-group { margin-bottom: 14px; }
+    .form-group label { display: block; font-size: 12px; margin-bottom: 4px; color: var(--text-white); }
+    .form-control { width: 100%; background: #121827; border: 1px solid rgba(255,255,255,0.2); color: #FFF; padding: 8px 12px; border-radius: 6px; }
+
+    /* Notification Alert Box */
+    .alert-toast {
+      display: none;
+      position: fixed;
+      top: 20px;
+      right: 20px;
+      background: var(--bg-card);
+      border: 2px solid var(--gold-accent);
+      border-radius: 12px;
+      padding: 16px 20px;
+      z-index: 9999;
+      box-shadow: 0 0 25px rgba(255, 214, 0, 0.4);
+      max-width: 380px;
+      animation: slideIn 0.3s ease;
+    }
+
+    @keyframes slideIn {
+      from { transform: translateX(100%); }
+      to { transform: translateX(0); }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Ecosystem Nav Bar -->
+  <div class="ecosystem-nav">
+    <div style="font-weight:700; color:var(--cyan-neon);"><i class="fa-solid fa-network-wired"></i> ÉCOSYSTÈME CONNECTÉ QUESTIA LAB</div>
+    <div class="nav-links">
+      <a href="2026-09-11_QUESTIA_Trame_Diagnostic_Visio_DISC_PCM.html" class="nav-link"><i class="fa-solid fa-list-check"></i> Questionnaire Audit (26Q)</a>
+      <a href="2026-09-11_QUESTIA_CRM_Intelligence_Commerciale_Et_Psychometrique.html" class="nav-link active"><i class="fa-solid fa-users-gear"></i> CRM Intelligence</a>
+      <a href="2026-09-11_QUESTIA_Studio_Personnalisation_PDF.html" class="nav-link"><i class="fa-solid fa-file-pdf"></i> Studio PDF Personnalisé</a>
+    </div>
+  </div>
+
+  <!-- WORKSPACE SELECTION TABS (ESPACES D'APPELANTS) -->
+  <div class="workspace-nav-bar">
+    <div class="ws-tab active" id="ws-tab-All" onclick="selectWorkspace('All')">
+      <div class="ws-tab-info">
+        <div class="ws-tab-title"><i class="fa-solid fa-globe"></i> VUE GLOBALE CRM</div>
+        <div class="ws-tab-sub">Toute l'équipe</div>
+      </div>
+      <div class="ws-tab-count" id="tab-count-All">0</div>
+    </div>
+    <div class="ws-tab priscille" id="ws-tab-Priscille" onclick="selectWorkspace('Priscille')">
+      <div class="ws-tab-info">
+        <div class="ws-tab-title priscille" style="color:var(--caller-priscille);"><i class="fa-solid fa-headset"></i> PRISCILLE</div>
+        <div class="ws-tab-sub">Espace Phoning</div>
+      </div>
+      <div class="ws-tab-count" id="tab-count-Priscille">0</div>
+    </div>
+    <div class="ws-tab myriam" id="ws-tab-Myriam" onclick="selectWorkspace('Myriam')">
+      <div class="ws-tab-info">
+        <div class="ws-tab-title myriam" style="color:var(--caller-myriam);"><i class="fa-solid fa-headset"></i> MYRIAM</div>
+        <div class="ws-tab-sub">Espace Phoning</div>
+      </div>
+      <div class="ws-tab-count" id="tab-count-Myriam">0</div>
+    </div>
+    <div class="ws-tab lorraine" id="ws-tab-Lorraine" onclick="selectWorkspace('Lorraine')">
+      <div class="ws-tab-info">
+        <div class="ws-tab-title lorraine" style="color:var(--caller-lorraine);"><i class="fa-solid fa-headset"></i> LORRAINE</div>
+        <div class="ws-tab-sub">Espace Phoning</div>
+      </div>
+      <div class="ws-tab-count" id="tab-count-Lorraine">0</div>
+    </div>
+    <div class="ws-tab julien" id="ws-tab-Julien" onclick="selectWorkspace('Julien')">
+      <div class="ws-tab-info">
+        <div class="ws-tab-title julien" style="color:var(--caller-julien);"><i class="fa-solid fa-headset"></i> JULIEN</div>
+        <div class="ws-tab-sub">Espace Phoning</div>
+      </div>
+      <div class="ws-tab-count" id="tab-count-Julien">0</div>
+    </div>
+  </div>
+
+  <header>
+    <div class="brand-header">
+      <img src="../../Images/QuestIA LAB_Logo.png" alt="QuestIA LAB Logo" class="questia-logo-img" onerror="this.style.display='none'" />
+      <div class="brand-title">
+        <h1>Quest<span>IA</span> CRM</h1>
+        <p>Cockpit Phoning & Espaces de Travail Individuels (Priscille, Myriam, Lorraine, Julien)</p>
+      </div>
+    </div>
+    <div class="header-actions">
+      <input type="file" id="csvFileInput" accept=".csv" style="display:none;" onchange="importCSV(event)">
+      <button class="btn-sec" style="color:var(--gold-accent); border-color:var(--gold-accent);" onclick="testAudioChime()"><i class="fa-solid fa-bell"></i> Test Signal Sonore</button>
+      <button class="btn-sec" onclick="document.getElementById('csvFileInput').click()"><i class="fa-solid fa-file-import"></i> Importer CSV (Dispatch 4 Auto)</button>
+      <button class="btn-shuffle" onclick="redispatchLeadsEqually()"><i class="fa-solid fa-shuffle"></i> Répartir Également (4 Appelants)</button>
+      <button class="btn-excel" onclick="exportCSV()"><i class="fa-solid fa-file-excel"></i> Exporter CSV (Excel)</button>
+      <button class="btn-crm" onclick="openModal()"><i class="fa-solid fa-plus"></i> Nouveau Prospect</button>
+    </div>
+  </header>
+
+  <!-- DYNAMIC ACTIVE COCKPIT BANNER -->
+  <div class="cockpit-banner" id="cockpitBanner">
+    <div class="cockpit-user">
+      <div class="user-avatar" id="cockpitAvatar"><i class="fa-solid fa-user-gear"></i></div>
+      <div class="user-details">
+        <h2 id="cockpitTitle">VUE GLOBALE ÉQUIPE QUESTIA LAB</h2>
+        <p id="cockpitSubtitle">Suivi global de la prospection et des audits de marge export</p>
+      </div>
+    </div>
+    <div class="phoning-session-actions">
+      <button class="btn-session" onclick="startPhoningSession()"><i class="fa-solid fa-play"></i> Lancer la Session Phoning</button>
+      <button class="btn-next" onclick="nextLeadInSession()"><i class="fa-solid fa-forward"></i> Suivant ⏭️</button>
+    </div>
+  </div>
+
+  <!-- KPI Row -->
+  <div class="kpi-row">
+    <div class="kpi-card">
+      <h3>Prospects Attribués</h3>
+      <div class="val" id="kpiCount">0</div>
+    </div>
+    <div class="kpi-card">
+      <h3>CA Export Géré</h3>
+      <div class="val" id="kpiRevenue">0 M€</div>
+    </div>
+    <div class="kpi-card">
+      <h3>Manque à Gagner Traqué</h3>
+      <div class="val" style="color:var(--coral-accent);" id="kpiLoss">0 k€ / an</div>
+    </div>
+    <div class="kpi-card">
+      <h3>Rappels Fixés</h3>
+      <div class="val" style="color:var(--gold-accent);" id="kpiCallbacks">0</div>
+    </div>
+  </div>
+
+  <div class="crm-layout">
+    <!-- Left Sidebar: Leads List & Status Filter -->
+    <div class="leads-panel">
+      <div class="panel-title" style="flex-direction:column; align-items:flex-start; gap:8px;">
+        <div style="display:flex; justify-content:space-between; width:100%; align-items:center;">
+          <span id="leadsPanelHeader">Prospects Qualifiés</span>
+          <i class="fa-solid fa-sync" style="font-size:12px; cursor:pointer;" title="Recharger" onclick="loadLeadsFromStorage()"></i>
+        </div>
+        <div style="width:100%;">
+          <select id="statusFilterSelect" onchange="filterByStatus(this.value)" class="form-control" style="font-size:11.5px; padding:4px 8px; font-weight:600;">
+            <option value="All">📌 Tous les Statuts</option>
+            <option value="RDV Visio Audit Confirmé">🟢 RDV Visio Confirmé</option>
+            <option value="Refus / Note Choc à Envoyer">🟡 Refus / Note Choc</option>
+            <option value="Barrage Secrétariat">🔵 Barrage Secrétariat</option>
+            <option value="HasCallback">🟠 Relance Fixée (À Rappeler)</option>
+            <option value="Prospection Initiale">⚪ Prospection Initiale</option>
+          </select>
+        </div>
+      </div>
+
+      <div id="leadsListContainer">
+        <!-- Dynamically rendered leads -->
+      </div>
+    </div>
+
+    <!-- Right Detailed Prospect View & Phoning Cockpit -->
+    <div class="detail-panel" id="detailPanel">
+      <!-- Dynamically filled prospect details -->
+    </div>
+  </div>
+
+  <!-- Modal Nouveau Prospect -->
+  <div class="modal-overlay" id="addModal">
+    <div class="modal-content">
+      <h3>➕ Ajouter un Nouveau Prospect CRM</h3>
+      
+      <div class="form-group">
+        <label>Nom de l'Entreprise :</label>
+        <input type="text" class="form-control" id="mCompany" placeholder="Ex: Dassault Systemes Subcontracting">
+      </div>
+      <div class="form-group">
+        <label>Nom & Titre du Décisionnaire :</label>
+        <input type="text" class="form-control" id="mContact" placeholder="Ex: Pierre MARTIN (VP Global Sales)">
+      </div>
+      <div class="form-group">
+        <label>Attribué à l'Appelant :</label>
+        <select class="form-control" id="mCaller">
+          <option value="Priscille">👤 Priscille</option>
+          <option value="Myriam">👤 Myriam</option>
+          <option value="Lorraine">👤 Lorraine</option>
+          <option value="Julien">👤 Julien</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label>Secteur ICP :</label>
+        <select class="form-control" id="mICP">
+          <option value="ICP 1 - Aéronautique">ICP 1 - Aéronautique & Spatial</option>
+          <option value="ICP 2 - Agro Export">ICP 2 - Agro & Produits de Luxe</option>
+          <option value="ICP 3 - SaaS DeepTech">ICP 3 - SaaS DeepTech B2B</option>
+          <option value="ICP 4 - Équipements Indu">ICP 4 - Équipements Industriels</option>
+          <option value="ICP 5 - MedTech Export">ICP 5 - MedTech & Santé</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label>CA Export Estime (€) :</label>
+        <input type="number" class="form-control" id="mRev" value="15000000">
+      </div>
+      <div class="form-group">
+        <label>Taux de Fuite Marge (%) :</label>
+        <input type="number" step="0.1" class="form-control" id="mLeak" value="4.2">
+      </div>
+      <div class="form-group">
+        <label>Profil DISC :</label>
+        <select class="form-control" id="mDISC">
+          <option value="Dominant (D)">🔴 Dominant (D)</option>
+          <option value="Influent (I)">🟡 Influent (I)</option>
+          <option value="Stable (S)">🟢 Stable (S)</option>
+          <option value="Consciencieux (C)">🔵 Consciencieux (C)</option>
+        </select>
+      </div>
+
+      <div style="display:flex; justify-content:flex-end; gap:10px; margin-top:20px;">
+        <button class="btn-sec" onclick="closeModal()">Annuler</button>
+        <button class="btn-crm" onclick="saveNewLead()">Enregistrer Prospect</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Notification Toast Modal -->
+  <div class="alert-toast" id="alertToast">
+    <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:8px;">
+      <span style="font-family:'Outfit',sans-serif; font-weight:800; color:var(--gold-accent); font-size:14px;"><i class="fa-solid fa-bell"></i> RAPPEL PROSPECT EN DIRECT</span>
+      <i class="fa-solid fa-times" style="cursor:pointer;" onclick="closeToast()"></i>
+    </div>
+    <div id="toastContent" style="font-size:12px; color:#FFF; margin-bottom:12px;"></div>
+    <button class="btn-crm" style="width:100%; font-size:11px;" onclick="goToToastLead()">📱 Ouvrir Fiche & Appeler</button>
+  </div>
+
+  <script>
+    const CALLERS = ['Priscille', 'Myriam', 'Lorraine', 'Julien'];
+    const CALLER_COLORS = { 'Priscille': '#FF2E93', 'Myriam': '#00E676', 'Lorraine': '#FFD600', 'Julien': '#00E5FF' };
+
+    let defaultLeads = [
+      {
+        id: "QUESTIA LAB-001",
+        company: "Airbus Subcontracting SAS",
+        contact: "Jean-Claude VASSEUR",
+        title: "VP Commercial & Business Dev",
+        phone: "+33 6 61 74 75 73",
+        email: "jc.vasseur@airbus-sub.com",
+        icp: "ICP 1 - Aéronautique",
+        revenue: 15000000,
+        leak: 4.2,
+        disc: "Dominant (D)",
+        pcm: "Travaillomane",
+        stress: "Attaque directe / Pression tarifaire",
+        cse: "Non Concerné",
+        status: "Visio Audit 26Q Réalisé",
+        nextAction: "Envoi PDF #2 Note Choc & Prise RDV Étape 0",
+        assignedCaller: "Priscille",
+        nextCallTime: "",
+        notesHistory: [
+          { date: "2026-09-10 14:30", caller: "Priscille", note: "Accord pour la Visio Audit de 30 min jeudi 10h." }
+        ]
+      },
+      {
+        id: "QUESTIA LAB-002",
+        company: "Château Prestige Export",
+        contact: "Élisabeth DE SAINT-GERMAIN",
+        title: "Directrice Export US & Asie",
+        phone: "+33 6 12 34 56 78",
+        email: "e.stgermain@chateau-prestige.fr",
+        icp: "ICP 2 - Agro Export",
+        revenue: 8000000,
+        leak: 5.4,
+        disc: "Influent (I)",
+        pcm: "Persévérant",
+        stress: "Manipulation / Négociation de remises",
+        cse: "Non",
+        status: "Diagnostic Signé",
+        nextAction: "Lancement Bêta-Testeur (Offre 2 000 € HT)",
+        assignedCaller: "Myriam",
+        nextCallTime: "",
+        notesHistory: [
+          { date: "2026-09-11 11:15", caller: "Myriam", note: "Intéressée par le décodage DISC des acheteurs asiatiques." }
+        ]
+      },
+      {
+        id: "QUESTIA LAB-003",
+        company: "DeepTech Software SaaS",
+        contact: "Alexandre CHEN",
+        title: "Head of Global Sales",
+        phone: "+33 7 89 01 23 45",
+        email: "a.chen@deeptech.io",
+        icp: "ICP 3 - SaaS DeepTech",
+        revenue: 25000000,
+        leak: 3.0,
+        disc: "Consciencieux (C)",
+        pcm: "Promoteur",
+        stress: "Retrait analytique",
+        cse: "Non",
+        status: "Cold Call Validé",
+        nextAction: "Visio Audit 30 min programmé",
+        assignedCaller: "Lorraine",
+        nextCallTime: "",
+        notesHistory: []
+      },
+      {
+        id: "QUESTIA LAB-004",
+        company: "Safran Aircraft Engines",
+        contact: "Marc DUBOIS",
+        title: "VP Supply Chain & Export",
+        phone: "+33 6 55 44 33 22",
+        email: "m.dubois@safran-group.com",
+        icp: "ICP 1 - Aéronautique",
+        revenue: 30000000,
+        leak: 4.2,
+        disc: "Dominant (D)",
+        pcm: "Travaillomane",
+        stress: "Pression sur les délais et révisions",
+        cse: "Oui",
+        status: "Filtre Phoning Validé",
+        nextAction: "Visio Audit 26Q à programmer",
+        assignedCaller: "Julien",
+        nextCallTime: "",
+        notesHistory: []
+      },
+      {
+        id: "QUESTIA LAB-005",
+        company: "MedTech Surgical International",
+        contact: "Dr. Chantal BERNARD",
+        title: "VP Global Commercialisation",
+        phone: "+33 6 99 88 77 66",
+        email: "c.bernard@medtech-surg.com",
+        icp: "ICP 5 - MedTech Export",
+        revenue: 12000000,
+        leak: 5.4,
+        disc: "Stable (S)",
+        pcm: "Empatique",
+        stress: "Concessions lors des audits FDA",
+        cse: "Non Concerné",
+        status: "Prospect Qualifié",
+        nextAction: "Envoi PDF #3 Passe-Barrage",
+        assignedCaller: "Priscille",
+        nextCallTime: "",
+        notesHistory: []
+      }
+    ];
+
+    let currentWorkspaceCaller = 'All'; // 'All', 'Priscille', 'Myriam', 'Lorraine', 'Julien'
+    let currentStatusFilter = 'All';
+    let activeToastLead = null;
+
+    function filterByStatus(statusVal) {
+      currentStatusFilter = statusVal;
+      const filtered = getFilteredLeads();
+      if (filtered.length > 0) {
+        selectedIndex = leadsData.indexOf(filtered[0]);
+      } else {
+        selectedIndex = -1;
+      }
+      renderWorkspaceUI();
+    }
+
+    function getFilteredLeads() {
+      let list = leadsData;
+      if (currentWorkspaceCaller !== 'All') {
+        list = list.filter(l => l.assignedCaller === currentWorkspaceCaller);
+      }
+      if (currentStatusFilter !== 'All') {
+        if (currentStatusFilter === 'HasCallback') {
+          list = list.filter(l => !!l.nextCallTime);
+        } else {
+          list = list.filter(l => l.status && l.status.toLowerCase().includes(currentStatusFilter.toLowerCase()));
+        }
+      }
+      return list;
+    }
+
+    function renderWorkspaceUI() {
+      const filtered = getFilteredLeads();
+
+      // Update Cockpit Banner Header
+      const banner = document.getElementById('cockpitBanner');
+      const avatar = document.getElementById('cockpitAvatar');
+      const title = document.getElementById('cockpitTitle');
+      const sub = document.getElementById('cockpitSubtitle');
+
+      avatar.className = 'user-avatar ' + currentWorkspaceCaller.toLowerCase();
+
+      if (currentWorkspaceCaller === 'All') {
+        avatar.innerHTML = '<i class="fa-solid fa-users"></i>';
+        title.innerText = 'VUE GLOBALE CRM — TOUTE L\'ÉQUIPE (4 APPELANTS)';
+        sub.innerText = 'Pilotage général des prospects et supervision des opportunités';
+      } else {
+        avatar.innerHTML = '<i class="fa-solid fa-headset"></i>';
+        title.innerText = `ESPACE DE TRAVAIL : ${currentWorkspaceCaller.toUpperCase()}`;
+        sub.innerText = `Session phoning active & portefeuilles dédiés (${filtered.length} prospects attribués)`;
+      }
+
+      // Update KPIs
+      let totalRev = 0;
+      let totalLoss = 0;
+      let callbacksCount = 0;
+
+      filtered.forEach(l => {
+        totalRev += (l.revenue || 0);
+        totalLoss += Math.round((l.revenue || 0) * ((l.leak || 0) / 100));
+        if (l.nextCallTime) callbacksCount++;
+      });
+
+      document.getElementById('kpiCount').innerText = filtered.length;
+      document.getElementById('kpiRevenue').innerText = (totalRev / 1000000).toFixed(1) + " M€";
+      document.getElementById('kpiLoss').innerText = (totalLoss / 1000).toFixed(0) + " k€ / an";
+      document.getElementById('kpiCallbacks').innerText = callbacksCount;
+
+      renderLeadsList();
+      renderDetail();
+    }
+
+    function renderLeadsList() {
+      const container = document.getElementById('leadsListContainer');
+      container.innerHTML = '';
+      const filtered = getFilteredLeads();
+
+      document.getElementById('leadsPanelHeader').innerText = currentWorkspaceCaller === 'All' ? 'Prospects Qualifiés' : `Portefeuille (${currentWorkspaceCaller})`;
+
+      if (filtered.length === 0) {
+        container.innerHTML = '<div style="color:var(--text-muted); font-size:12px; text-align:center; padding:20px;">Aucun prospect attribué à cet espace.</div>';
+        return;
+      }
+
+      filtered.forEach((lead) => {
+        const globalIdx = leadsData.indexOf(lead);
+        let loss = Math.round((lead.revenue || 0) * ((lead.leak || 0) / 100));
+        const callerClass = (lead.assignedCaller || 'julien').toLowerCase();
+
+        const div = document.createElement('div');
+        div.className = `lead-item ${globalIdx === selectedIndex ? 'active' : ''}`;
+        div.onclick = () => { 
+          selectedIndex = globalIdx; 
+          renderLeadsList(); 
+          renderDetail();
+        };
+
+        let callbackBadge = lead.nextCallTime ? `<span class="badge badge-callback"><i class="fa-regular fa-clock"></i> Relance: ${lead.nextCallTime.replace('T', ' ')}</span>` : '';
+
+        div.innerHTML = `
+          <div style="display:flex; justify-content:space-between; align-items:center;">
+            <div class="lead-company">${lead.company}</div>
+            <span class="badge badge-caller badge-caller-${callerClass}"><i class="fa-solid fa-user"></i> ${lead.assignedCaller}</span>
+          </div>
+          <div class="lead-contact">${lead.contact} (${lead.icp})</div>
+          <div class="badge-group">
+            <span class="badge badge-disc">${lead.disc}</span>
+            <span class="badge badge-pcm">${lead.pcm}</span>
+            <span class="badge badge-loss">-${(loss/1000).toFixed(0)}k€/an</span>
+            ${callbackBadge}
+          </div>
+        `;
+        container.appendChild(div);
+      });
+    }
+
+    function renderDetail() {
+      const panel = document.getElementById('detailPanel');
+      const lead = leadsData[selectedIndex];
+      if (!lead) {
+        panel.innerHTML = '<div style="color:var(--text-muted); padding:40px; text-align:center;">Veuillez sélectionner un prospect.</div>';
+        return;
+      }
+
+      let loss = Math.round((lead.revenue || 0) * ((lead.leak || 0) / 100));
+      const callerClass = (lead.assignedCaller || 'julien').toLowerCase();
+
+      // Render Notes Feed HTML
+      let notesHtml = '';
+      if (lead.notesHistory && lead.notesHistory.length > 0) {
+        notesHtml = lead.notesHistory.map(n => `
+          <div class="note-entry">
+            <div class="note-entry-meta">
+              <span>📅 ${n.date} par <strong>${n.caller}</strong></span>
+            </div>
+            <div>${n.note}</div>
+          </div>
+        `).reverse().join('');
+      } else {
+        notesHtml = '<div style="color:var(--text-muted); font-size:11px;">Aucune note enregistrée pour le moment.</div>';
+      }
+
+      panel.innerHTML = `
+        <div class="detail-header">
+          <div class="detail-title">
+            <div style="display:flex; align-items:center; gap:10px; margin-bottom:4px;">
+              <h2>${lead.company}</h2>
+              <span class="badge badge-caller badge-caller-${callerClass}" style="font-size:11px; padding:4px 10px;"><i class="fa-solid fa-user-gear"></i> Espace : ${lead.assignedCaller}</span>
+            </div>
+            <p>${lead.contact} — ${lead.title || 'Décisionnaire'}</p>
+          </div>
+          <div style="display:flex; gap:8px;">
+            <button class="btn-sec" onclick="launchAudit26Q()"><i class="fa-solid fa-list-check"></i> Audit 26Q</button>
+            <button class="btn-crm" onclick="openStudio()"><i class="fa-solid fa-file-pdf"></i> Générer PDF</button>
+          </div>
+        </div>
+
+        <!-- CLICK TO CALL & CLICK TO EMAIL ACTIONS -->
+        <div style="display:flex; gap:12px; margin-bottom:20px;">
+          <a href="tel:${lead.phone || ''}" class="action-link-btn link-phone" onclick="logCallStart('${lead.company}')">
+            <i class="fa-solid fa-phone-volume"></i> Appeler le Prospect (${lead.phone || 'N/C'})
+          </a>
+          <a href="mailto:${lead.email || ''}?subject=Audit%20Performance%20Commerciale%20-%20QuestIA%20LAB" class="action-link-btn link-email">
+            <i class="fa-solid fa-envelope"></i> Rédiger Email (${lead.email || 'N/C'})
+          </a>
+        </div>
+
+        <div class="data-sections-grid">
+          <!-- Commercial Data -->
+          <div class="data-box">
+            <h4>📊 Datas Commerciales & Attributions</h4>
+            <div class="data-row">
+              <span>Appelant Référent :</span>
+              <select class="form-control" style="width:auto; padding:4px 8px; font-weight:700;" onchange="changeLeadCaller(this.value)">
+                <option value="Priscille" ${lead.assignedCaller === 'Priscille' ? 'selected' : ''}>👤 Priscille</option>
+                <option value="Myriam" ${lead.assignedCaller === 'Myriam' ? 'selected' : ''}>👤 Myriam</option>
+                <option value="Lorraine" ${lead.assignedCaller === 'Lorraine' ? 'selected' : ''}>👤 Lorraine</option>
+                <option value="Julien" ${lead.assignedCaller === 'Julien' ? 'selected' : ''}>👤 Julien</option>
+              </select>
+            </div>
+            <div class="data-row"><span>Secteur ICP :</span><strong>${lead.icp}</strong></div>
+            <div class="data-row"><span>Chiffre d'Affaires Export :</span><strong>${(lead.revenue || 0).toLocaleString('fr-FR')} €</strong></div>
+            <div class="data-row"><span>Taux de Fuite de Marge :</span><strong>${lead.leak} %</strong></div>
+            <div class="data-row"><span>Perte Nette Annuelle :</span><strong style="color:var(--coral-accent);">${loss.toLocaleString('fr-FR')} € / an</strong></div>
+          </div>
+
+          <!-- Psychometric Data -->
+          <div class="data-box">
+            <h4>🧠 Intelligence Psychométrique (DISC/PCM)</h4>
+            <div class="data-row"><span>Profil DISC Acheteur :</span><strong style="color:var(--cyan-neon);">${lead.disc}</strong></div>
+            <div class="data-row"><span>Base Process Com (PCM) :</span><strong style="color:var(--violet-neon);">${lead.pcm}</strong></div>
+            <div class="data-row"><span>Statut Prospect :</span><strong>${lead.status || 'Prospection'}</strong></div>
+            <div class="data-row"><span>Prochaine Action :</span><strong style="color:var(--lime-accent);">${lead.nextAction || 'Relance Visio'}</strong></div>
+          </div>
+        </div>
+
+        <!-- PHONING NOTES & ONE-CLICK QUALIFICATIONS PANEL -->
+        <div class="phoning-notes-panel">
+          <h3><i class="fa-solid fa-headset"></i> COCKPIT DE QUALIFICATION & PRISE DE NOTES</h3>
+          
+          <div class="outcome-btns-grid">
+            <button class="btn-outcome visio" onclick="setCallOutcome('Visio')">🟢 RDV Visio Confirmé</button>
+            <button class="btn-outcome choc" onclick="setCallOutcome('Choc')">🟡 Refus / Hésitation</button>
+            <button class="btn-outcome barrage" onclick="setCallOutcome('Barrage')">🔵 Barrage Secrétariat</button>
+            <button class="btn-outcome archive" onclick="setCallOutcome('Archive')">🔴 Ne Pas Rappeler</button>
+          </div>
+
+          <div class="note-input-row">
+            <textarea class="note-textarea" id="liveNoteInput" placeholder="Saisissez vos notes d'appel ici... (enregistrement horodaté automatique)"></textarea>
+
+            <div class="datetime-picker-box">
+              <label><i class="fa-regular fa-calendar-check"></i> Date & Heure de Relance :</label>
+              <input type="datetime-local" class="datetime-input" id="nextCallInput" value="${lead.nextCallTime || ''}">
+              <button class="btn-crm" style="font-size:11px; padding:6px;" onclick="saveNoteAndFollowup()"><i class="fa-solid fa-floppy-disk"></i> Enregistrer Note</button>
+            </div>
+          </div>
+
+          <div style="font-size:11px; font-weight:700; color:var(--cyan-neon); margin-top:12px; margin-bottom:6px;">
+            <i class="fa-solid fa-history"></i> Historique Chronologique des Échanges :
+          </div>
+          <div class="notes-history-feed">
+            ${notesHtml}
+          </div>
+        </div>
+      `;
+    }
+
+    function setCallOutcome(type) {
+      const lead = leadsData[selectedIndex];
+      if (!lead) return;
+
+      const currentCaller = currentWorkspaceCaller === 'All' ? (lead.assignedCaller || 'Julien') : currentWorkspaceCaller;
+      const nowStr = new Date().toISOString().slice(0, 16).replace('T', ' ');
+
+      if (type === 'Visio') {
+        lead.status = "RDV Visio Audit Confirmé";
+        lead.nextAction = "Visio 30 min & Envoi Confirmation";
+        lead.notesHistory.push({ date: nowStr, caller: currentCaller, note: "🟢 RDV Visio Audit de 30 min accepté par le prospect." });
+        alert("🟢 Qualification enregistrée : RDV Visio Confirmé !");
+      } else if (type === 'Choc') {
+        lead.status = "Refus / Note Choc à Envoyer";
+        lead.nextAction = "Envoi Note Choc Perte CA par Email";
+        lead.notesHistory.push({ date: nowStr, caller: currentCaller, note: "🟡 Hésitation ou refus initial. Envoi de l'étude chiffrée de fuite de marge." });
+        alert("🟡 Qualification enregistrée : Envoi Note Choc Perte CA !");
+      } else if (type === 'Barrage') {
+        lead.status = "Barrage Secrétariat";
+        lead.nextAction = "Envoi Note Exécutive au Secrétariat";
+        lead.notesHistory.push({ date: nowStr, caller: currentCaller, note: "🔵 Barrage secrétariat. Transmission de la note exécutive à l'attention de la Direction." });
+        alert("🔵 Qualification enregistrée : Transmettre Note Exécutive au Secrétariat !");
+      } else if (type === 'Archive') {
+        lead.status = "Non Éligible / Archivé";
+        lead.nextAction = "Aucune relance";
+        lead.notesHistory.push({ date: nowStr, caller: currentCaller, note: "🔴 Prospect non intéressé ou hors cible." });
+        alert("🔴 Prospect classé Ne Pas Rappeler.");
+      }
+
+      localStorage.setItem('QUESTIA LAB_CRM_LEADS', JSON.stringify(leadsData));
+      renderWorkspaceUI();
+    }
+
+    function saveNoteAndFollowup() {
+      const lead = leadsData[selectedIndex];
+      if (!lead) return;
+
+      const noteText = document.getElementById('liveNoteInput').value;
+      const nextTime = document.getElementById('nextCallInput').value;
+      const currentCaller = currentWorkspaceCaller === 'All' ? (lead.assignedCaller || 'Julien') : currentWorkspaceCaller;
+      const nowStr = new Date().toISOString().slice(0, 16).replace('T', ' ');
+
+      if (noteText.trim()) {
+        lead.notesHistory.push({
+          date: nowStr,
+          caller: currentCaller,
+          note: noteText.trim()
+        });
+      }
+
+      if (nextTime) {
+        lead.nextCallTime = nextTime;
+      }
+
+      localStorage.setItem('QUESTIA LAB_CRM_LEADS', JSON.stringify(leadsData));
+      alert("✅ Note et date de relance enregistrées avec succès !");
+      renderWorkspaceUI();
+    }
+
+    function changeLeadCaller(newCaller) {
+      if (!leadsData[selectedIndex]) return;
+      leadsData[selectedIndex].assignedCaller = newCaller;
+      localStorage.setItem('QUESTIA LAB_CRM_LEADS', JSON.stringify(leadsData));
+      updateWorkspaceTabsCount();
+      renderWorkspaceUI();
+    }
+
+    function logCallStart(company) {
+      const lead = leadsData[selectedIndex];
+      if (lead) {
+        const currentCaller = currentWorkspaceCaller === 'All' ? (lead.assignedCaller || 'Julien') : currentWorkspaceCaller;
+        const nowStr = new Date().toISOString().slice(0, 16).replace('T', ' ');
+        lead.notesHistory.push({ date: nowStr, caller: currentCaller, note: "📞 Appel téléphonique initié." });
+        localStorage.setItem('QUESTIA LAB_CRM_LEADS', JSON.stringify(leadsData));
+      }
+    }
+
+    function startPhoningSession() {
+      const filtered = getFilteredLeads();
+      if (filtered.length === 0) return alert("Aucun prospect dans cet espace pour démarrer la session.");
+      selectedIndex = leadsData.indexOf(filtered[0]);
+      renderLeadsList();
+      renderDetail();
+      alert(`▶️ Session Phoning lancée pour l'espace ${currentWorkspaceCaller} !\n\nProspect 1/` + filtered.length + ` : ${filtered[0].company}`);
+    }
+
+    function nextLeadInSession() {
+      const filtered = getFilteredLeads();
+      if (filtered.length === 0) return;
+      let currentFilteredIdx = filtered.findIndex(l => leadsData.indexOf(l) === selectedIndex);
+      let nextFilteredIdx = (currentFilteredIdx + 1) % filtered.length;
+      selectedIndex = leadsData.indexOf(filtered[nextFilteredIdx]);
+      renderLeadsList();
+      renderDetail();
+    }
+
+    function openModal() { document.getElementById('addModal').style.display = 'flex'; }
+    function closeModal() { document.getElementById('addModal').style.display = 'none'; }
+
+    function saveNewLead() {
+      const comp = document.getElementById('mCompany').value;
+      const cont = document.getElementById('mContact').value;
+      const caller = document.getElementById('mCaller').value || 'Julien';
+      const icp = document.getElementById('mICP').value;
+      const rev = parseFloat(document.getElementById('mRev').value) || 10000000;
+      const leak = parseFloat(document.getElementById('mLeak').value) || 4.2;
+      const disc = document.getElementById('mDISC').value;
+
+      if (!comp) return alert("Veuillez saisir le nom de l'entreprise.");
+
+      leadsData.push({
+        id: "QUESTIA LAB-" + (leadsData.length + 1),
+        company: comp,
+        contact: cont || "Direction Commerciale",
+        title: "VP Sales / DG",
+        phone: "+33 6 00 00 00 00",
+        email: "contact@" + comp.toLowerCase().replace(/[^a-z0-9]/g, '') + ".com",
+        icp: icp,
+        revenue: rev,
+        leak: leak,
+        disc: disc,
+        pcm: "Travaillomane",
+        stress: "Pression de prix sous stress L2",
+        cse: "Non Concerné",
+        status: "Prospection Initiale",
+        nextAction: "Planification Visio Audit 30 min",
+        assignedCaller: caller,
+        nextCallTime: "",
+        notesHistory: []
+      });
+
+      localStorage.setItem('QUESTIA LAB_CRM_LEADS', JSON.stringify(leadsData));
+      closeModal();
+      selectedIndex = leadsData.length - 1;
+      updateWorkspaceTabsCount();
+      renderWorkspaceUI();
+    }
+
+    function launchAudit26Q() {
+      const lead = leadsData[selectedIndex];
+      if (lead) {
+        localStorage.setItem('QUESTIA_ACTIVE_LEAD_ID', lead.id);
+      }
+      window.location.href = "2026-09-11_QUESTIA_Trame_Diagnostic_Visio_DISC_PCM.html";
+    }
+
+    function openStudio() {
+      const lead = leadsData[selectedIndex];
+      if (lead) {
+        localStorage.setItem('QUESTIA_ACTIVE_LEAD_ID', lead.id);
+      }
+      window.location.href = "2026-09-11_QUESTIA_Studio_Personnalisation_PDF.html";
+    }
+
+    /* EXPORT CSV COMPATIBLE EXCEL */
+    function exportCSV() {
+      if (!leadsData || leadsData.length === 0) return alert("Aucun prospect à exporter.");
+
+      let headers = [
+        "ID_Prospect", "Entreprise", "Contact_Nom", "Titre_Fonction", "Appelant_Attribue", "Telephone", "Email",
+        "Secteur_ICP", "CA_Export_EUR", "Taux_Fuite_Marge_PCT", "Perte_Nette_Annuelle_EUR",
+        "Profil_DISC", "Base_PCM", "Statut_Prospect", "Date_Relance_Fixee"
+      ];
+
+      let csvRows = [];
+      csvRows.push(headers.join(";"));
+
+      leadsData.forEach(l => {
+        let loss = Math.round((l.revenue || 0) * ((l.leak || 0) / 100));
+        let row = [
+          `"${l.id || ''}"`,
+          `"${l.company || ''}"`,
+          `"${l.contact || ''}"`,
+          `"${l.title || ''}"`,
+          `"${l.assignedCaller || 'Julien'}"`,
+          `"${l.phone || ''}"`,
+          `"${l.email || ''}"`,
+          `"${l.icp || ''}"`,
+          `${l.revenue || 0}`,
+          `${l.leak || 0}`,
+          `${loss}`,
+          `"${l.disc || ''}"`,
+          `"${l.pcm || ''}"`,
+          `"${l.status || ''}"`,
+          `"${l.nextCallTime || ''}"`
+        ];
+        csvRows.push(row.join(";"));
+      });
+
+      let csvContent = "\uFEFF" + csvRows.join("\n");
+      let blob = new Blob([csvContent], { type: 'text/csv;charset=utf-8;' });
+      let url = URL.createObjectURL(blob);
+      let a = document.createElement('a');
+      a.setAttribute('href', url);
+      a.setAttribute('download', `QUESTIA_CRM_Export_${new Date().toISOString().slice(0,10)}.csv`);
+      a.click();
+    }
+
+    /* IMPORT CSV WITH EQUAL DISPATCH */
+    function importCSV(event) {
+      const file = event.target.files[0];
+      if (!file) return;
+
+      const reader = new FileReader();
+      reader.onload = function(e) {
+        const text = e.target.result;
+        const lines = text.split(/\r\n|\n/);
+        if (lines.length < 2) return alert("Fichier CSV vide ou invalide.");
+
+        let newLeads = [];
+        for (let i = 1; i < lines.length; i++) {
+          if (!lines[i].trim()) continue;
+          let cols = lines[i].split(";").map(c => c.replace(/^"|"$/g, '').trim());
+
+          if (cols.length >= 2 && cols[1]) {
+            let csvCaller = cols[4] && CALLERS.includes(cols[4]) ? cols[4] : null;
+
+            newLeads.push({
+              id: cols[0] || ("QUESTIA LAB-" + (leadsData.length + newLeads.length + 1)),
+              company: cols[1],
+              contact: cols[2] || "Direction Commerciale",
+              title: cols[3] || "VP Sales",
+              assignedCaller: csvCaller,
+              phone: cols[5] || cols[4] || "",
+              email: cols[6] || cols[5] || "",
+              icp: cols[7] || cols[6] || "ICP 1 - Aéronautique",
+              revenue: parseFloat(cols[8] || cols[7]) || 10000000,
+              leak: parseFloat(cols[9] || cols[8]) || 4.2,
+              disc: cols[11] || cols[10] || "Dominant (D)",
+              pcm: cols[12] || cols[11] || "Travaillomane",
+              status: cols[13] || "Importé CSV",
+              nextCallTime: cols[14] || "",
+              notesHistory: []
+            });
+          }
+        }
+
+        if (newLeads.length === 0) return alert("Aucune donnée valide trouvée dans le CSV.");
+
+        let unassigned = newLeads.filter(l => !l.assignedCaller);
+        if (unassigned.length > 0) {
+          unassigned = autoAssignEqualCallers(unassigned);
+        }
+
+        leadsData = leadsData.concat(newLeads);
+        localStorage.setItem('QUESTIA LAB_CRM_LEADS', JSON.stringify(leadsData));
+        alert(`✅ ${newLeads.length} prospects importés et répartis équitablement !`);
+        updateWorkspaceTabsCount();
+        renderWorkspaceUI();
+      };
+      reader.readAsText(file);
+    }
+
+    /* REAL-TIME CALLBACK CHECKER & AUDIO CHIME NOTIFICATION */
+    function playAudioChime() {
+      try {
+        const audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+        if (audioCtx.state === 'suspended') audioCtx.resume();
+        const osc = audioCtx.createOscillator();
+        const gain = audioCtx.createGain();
+        osc.type = 'sine';
+        osc.frequency.setValueAtTime(587.33, audioCtx.currentTime); // D5
+        osc.frequency.exponentialRampToValueAtTime(880, audioCtx.currentTime + 0.3); // A5
+        gain.gain.setValueAtTime(0.35, audioCtx.currentTime);
+        gain.gain.exponentialRampToValueAtTime(0.01, audioCtx.currentTime + 0.8);
+        osc.connect(gain);
+        gain.connect(audioCtx.destination);
+        osc.start();
+        osc.stop(audioCtx.currentTime + 0.8);
+      } catch (e) {}
+    }
+
+    function testAudioChime() {
+      playAudioChime();
+      const testLead = {
+        company: "Airbus Subcontracting SAS (TEST AUDIO ET ALERTE)",
+        contact: "Jean-Claude VASSEUR",
+        assignedCaller: (currentWorkspaceCaller === 'All' ? 'Priscille' : currentWorkspaceCaller),
+        phone: "+33 6 61 74 75 73"
+      };
+      showToastNotification(testLead);
+    }
+
+    function checkScheduledCallbacks() {
+      const nowStr = new Date().toISOString().slice(0, 16);
+      leadsData.forEach(lead => {
+        if (lead.nextCallTime && lead.nextCallTime.slice(0, 16) === nowStr) {
+          if (!lead._notified) {
+            lead._notified = true;
+            playAudioChime();
+            showToastNotification(lead);
+          }
+        }
+      });
+    }
+
+    function showToastNotification(lead) {
+      activeToastLead = lead;
+      document.getElementById('toastContent').innerHTML = `
+        <strong>${lead.company}</strong><br/>
+        Contact : ${lead.contact}<br/>
+        Appelant Référent : <strong>${lead.assignedCaller}</strong><br/>
+        📞 Tél: ${lead.phone || 'N/C'}
+      `;
+      document.getElementById('alertToast').style.display = 'block';
+    }
+
+    function closeToast() {
+      document.getElementById('alertToast').style.display = 'none';
+    }
+
+    function goToToastLead() {
+      if (activeToastLead) {
+        selectedIndex = leadsData.indexOf(activeToastLead);
+        if (currentWorkspaceCaller !== 'All' && activeToastLead.assignedCaller !== currentWorkspaceCaller) {
+          selectWorkspace(activeToastLead.assignedCaller);
+        } else {
+          renderWorkspaceUI();
+        }
+        closeToast();
+      }
+    }
+
+    setInterval(checkScheduledCallbacks, 20000); // Check every 20 seconds
+    loadLeadsFromStorage();
+  </script>
+</body>
+</html>
