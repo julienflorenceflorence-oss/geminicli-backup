@@ -386,6 +386,120 @@
       box-shadow: var(--shadow-cyan);
     }
 
+    /* BRIQUE METHODOLOGIQUE DEDIEE */
+    .methodology-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border-violet);
+      border-radius: 16px;
+      padding: 24px;
+      box-shadow: 0 0 20px rgba(123, 92, 255, 0.15);
+      margin-top: 24px;
+    }
+
+    .methodology-card-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      cursor: pointer;
+    }
+
+    .methodology-card-header h2 {
+      font-family: 'Outfit', sans-serif;
+      font-size: 16px;
+      color: var(--violet-neon);
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin-bottom: 0;
+    }
+
+    .btn-toggle-methodo {
+      font-size: 11px;
+      font-weight: 700;
+      color: var(--cyan-neon);
+      background: rgba(0, 229, 255, 0.1);
+      border: 1px solid var(--border-cyan);
+      padding: 6px 12px;
+      border-radius: 20px;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .methodo-intro {
+      font-size: 12px;
+      color: var(--text-muted);
+      margin: 16px 0 20px 0;
+      line-height: 1.5;
+    }
+
+    .methodo-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 16px;
+      margin-bottom: 20px;
+    }
+
+    @media (max-width: 900px) {
+      .methodo-grid { grid-template-columns: 1fr; }
+    }
+
+    .methodo-item {
+      background: #121827;
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      border-radius: 12px;
+      padding: 16px;
+    }
+
+    .methodo-item-title {
+      font-family: 'Outfit', sans-serif;
+      font-size: 13.5px;
+      font-weight: 700;
+      margin-bottom: 8px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .methodo-item p {
+      font-size: 11.5px;
+      color: var(--text-white);
+      line-height: 1.4;
+      margin-bottom: 8px;
+    }
+
+    .methodo-item ul {
+      list-style: none;
+      padding-left: 0;
+      font-size: 11px;
+    }
+
+    .methodo-item li {
+      margin-bottom: 4px;
+      color: var(--text-muted);
+    }
+
+    .methodo-formula-box {
+      background: #05070D;
+      border: 1px dashed var(--border-cyan);
+      border-radius: 10px;
+      padding: 14px;
+      text-align: center;
+    }
+
+    .methodo-formula-box h4 {
+      font-size: 12px;
+      color: var(--cyan-neon);
+      margin-bottom: 8px;
+    }
+
+    .methodo-formula-box code {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 12px;
+      color: var(--lime-accent);
+      line-height: 1.6;
+    }
+
     .cockpit-card h3 {
       font-family: 'Outfit', sans-serif;
       font-size: 13px;
@@ -552,6 +666,7 @@
     </div>
     <div class="header-actions">
       <div class="timer-badge">⏱️ <span id="timerDisplay">30:00</span></div>
+      <button class="btn-action" style="background:rgba(123,92,255,0.15); color:var(--violet-neon); border:1px solid var(--border-violet);" onclick="scrollToMethodology()"><i class="fa-solid fa-graduation-cap"></i> Brique Méthodologique</button>
       <button class="btn-action" onclick="saveAuditToCRM()"><i class="fa-solid fa-floppy-disk"></i> Enregistrer dans le CRM</button>
       <button class="btn-action" style="background:var(--bg-card); color:var(--cyan-neon); border:1px solid var(--cyan-neon);" onclick="window.print()">Imprimer</button>
     </div>
@@ -617,6 +732,91 @@
 
       <div id="surveyQuestionsContainer">
         <!-- Dynamically generated 26 questions with options and per-question note input -->
+      </div>
+
+      <!-- BRIQUE DÉDIÉE : MÉTHODOLOGIE & SOURCES SCIENTIFIQUES (DISC & PCM) -->
+      <div class="methodology-card" id="brique-methodologie">
+        <div class="methodology-card-header" onclick="toggleMethodologyDetails()">
+          <h2>
+            <i class="fa-solid fa-graduation-cap"></i> Brique Méthodologique & Cadre Scientifique (DISC, PCM & Harvard PON)
+          </h2>
+          <span class="btn-toggle-methodo"><i class="fa-solid fa-chevron-down" id="methodoChevron"></i> Explication Algorithme</span>
+        </div>
+
+        <div class="methodology-card-body" id="methodologyBody">
+          <p class="methodo-intro">
+            Cette brique d'évaluation psychométrique s'appuie sur la modélisation croisée des deux frameworks comportementaux mondiaux de référence et sur les études empiriques de négociation internationale B2B.
+          </p>
+
+          <div class="methodo-grid">
+            <!-- SOURCE 1 : DISC MARSTON -->
+            <div class="methodo-item">
+              <div class="methodo-item-title" style="color: var(--disc-red);">
+                <i class="fa-solid fa-palette"></i> Modèle DISC (4 Couleurs)
+              </div>
+              <p>
+                <strong>Dr. William Moulton Marston</strong> (Harvard, 1928) & <strong>Dr. John G. Geier</strong> (Univ. Minnesota). 
+                Mesure des 4 orientations comportementales primaires :
+              </p>
+              <ul>
+                <li><strong style="color:var(--disc-red);">🔴 Dominant (D)</strong> : Tâche & Urgence (ROI, pouvoir, directif).</li>
+                <li><strong style="color:var(--disc-yellow);">🟡 Influent (I)</strong> : Humain & Prestige (Vision, réseau, enthousiasme).</li>
+                <li><strong style="color:var(--disc-green);">🟢 Stable (S)</strong> : Humain & Sécurité (Méthode, accompagnement, écoute).</li>
+                <li><strong style="color:var(--disc-blue);">🔵 Consciencieux (C)</strong> : Tâche & Précision (Data, faits, conformité).</li>
+              </ul>
+            </div>
+
+            <!-- SOURCE 2 : PCM KAHLER -->
+            <div class="methodo-item">
+              <div class="methodo-item-title" style="color: var(--violet-neon);">
+                <i class="fa-solid fa-building-user"></i> Modèle PCM (6 Profils Process Com)
+              </div>
+              <p>
+                <strong>Dr. Taibi Kahler</strong> (Prix Eric Berne 1977 / Partenariat NASA). 
+                Décodage des 6 structures de personnalité et besoins sous stress :
+              </p>
+              <ul>
+                <li><strong style="color:var(--pcm-thinker);">💼 Travaillomane</strong> : Logique, organisation & faits.</li>
+                <li><strong style="color:var(--pcm-persister);">🏛️ Persévérant</strong> : Valeurs, convictions & éthique.</li>
+                <li><strong style="color:var(--pcm-promoter);">⚡ Promoteur</strong> : Action, challenge & adaptabilité.</li>
+                <li><strong style="color:var(--pcm-harmonizer);">🤝 Empathique</strong> : Émotions, compassion & harmonie.</li>
+                <li><strong style="color:var(--pcm-rebel);">🎨 Rebelle</strong> : Spontanéité, créativité & ludique.</li>
+                <li><strong style="color:var(--pcm-imaginer);">🌌 Imaginatif</strong> : Calme, réflexion & imagination.</li>
+              </ul>
+            </div>
+
+            <!-- SOURCE 3 : FOREIGN LANGUAGE EFFECT -->
+            <div class="methodo-item">
+              <div class="methodo-item-title" style="color: var(--cyan-neon);">
+                <i class="fa-solid fa-language"></i> Foreign-Language Effect
+              </div>
+              <p>
+                <strong>Univ. of Chicago (Keysar, Hayakawa et al.)</strong> : 
+                Démontre empiriquement qu'une négociation à haut enjeu conduite en langue seconde (Anglais B2B) subit une perte moyenne de <strong>30% de fermeté et d'impact persuasif</strong>.
+              </p>
+            </div>
+
+            <!-- SOURCE 4 : MCKINSEY & HARVARD PON -->
+            <div class="methodo-item">
+              <div class="methodo-item-title" style="color: var(--gold-accent);">
+                <i class="fa-solid fa-chart-line"></i> Fuite de Marge Export (McKinsey / Harvard)
+              </div>
+              <p>
+                <strong>McKinsey Global Pricing Study & Harvard Program on Negotiation (PON)</strong> : 
+                Modélisation de l'érosion de marge nette (3% à 5,4%) liée aux concessions d'objection tarifaire non recadrées psychométriquement.
+              </p>
+            </div>
+          </div>
+
+          <!-- FORMULE ALGORITHMIQUE -->
+          <div class="methodo-formula-box">
+            <h4><i class="fa-solid fa-calculator"></i> Formule de Normalisation Vectorielle Temps Réel</h4>
+            <code>
+              Score DISC_k (%) = (∑ Poids_DISC_k / Total_DISC) × 100 <br>
+              Score PCM_j (%) = (∑ Poids_PCM_j / Total_PCM) × 100
+            </code>
+          </div>
+        </div>
       </div>
     </div>
 
@@ -1029,6 +1229,30 @@
       const target = document.getElementById(`pillar-block-${pillarNum}`);
       if (target) {
         target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      }
+    }
+
+    function scrollToMethodology() {
+      const mDiv = document.getElementById('brique-methodologie');
+      if (mDiv) {
+        const body = document.getElementById('methodologyBody');
+        if (body && body.style.display === 'none') {
+          body.style.display = 'block';
+          document.getElementById('methodoChevron').className = 'fa-solid fa-chevron-up';
+        }
+        mDiv.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      }
+    }
+
+    function toggleMethodologyDetails() {
+      const body = document.getElementById('methodologyBody');
+      const chev = document.getElementById('methodoChevron');
+      if (body.style.display === 'none') {
+        body.style.display = 'block';
+        chev.className = 'fa-solid fa-chevron-up';
+      } else {
+        body.style.display = 'none';
+        chev.className = 'fa-solid fa-chevron-down';
       }
     }
 
