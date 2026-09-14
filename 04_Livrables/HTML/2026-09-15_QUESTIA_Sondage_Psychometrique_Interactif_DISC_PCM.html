@@ -239,25 +239,33 @@
     /* RIGHT STICKY PSYCHOMETRIC COCKPIT */
     .cockpit-sticky-column {
       position: sticky;
-      top: 24px;
+      top: 16px;
+      max-height: calc(100vh - 32px);
+      overflow-y: auto;
+      overflow-x: hidden;
       display: flex;
       flex-direction: column;
-      gap: 16px;
+      gap: 12px;
+      padding-right: 6px;
     }
+
+    .cockpit-sticky-column::-webkit-scrollbar { width: 5px; }
+    .cockpit-sticky-column::-webkit-scrollbar-track { background: rgba(11, 15, 25, 0.6); border-radius: 4px; }
+    .cockpit-sticky-column::-webkit-scrollbar-thumb { background: var(--cyan-neon); border-radius: 4px; }
 
     .cockpit-card {
       background: var(--bg-card);
       border: 1px solid var(--border-cyan);
-      border-radius: 16px;
-      padding: 20px;
+      border-radius: 14px;
+      padding: 14px;
       box-shadow: var(--shadow-cyan);
     }
 
     .cockpit-card h3 {
       font-family: 'Outfit', sans-serif;
-      font-size: 14px;
+      font-size: 13px;
       color: var(--cyan-neon);
-      margin-bottom: 14px;
+      margin-bottom: 10px;
       display: flex;
       align-items: center;
       justify-content: space-between;
@@ -269,26 +277,26 @@
     .disc-gauges-grid {
       display: flex;
       flex-direction: column;
-      gap: 10px;
+      gap: 8px;
     }
 
     .disc-gauge-item {
       display: flex;
       flex-direction: column;
-      gap: 4px;
+      gap: 3px;
     }
 
     .disc-gauge-header {
       display: flex;
       justify-content: space-between;
-      font-size: 11.5px;
+      font-size: 11px;
       font-weight: 700;
     }
 
     .disc-bar-bg {
-      height: 10px;
+      height: 8px;
       background: #121827;
-      border-radius: 6px;
+      border-radius: 4px;
       overflow: hidden;
       border: 1px solid rgba(255,255,255,0.08);
     }
@@ -296,7 +304,7 @@
     .disc-bar-fill {
       height: 100%;
       width: 0%;
-      border-radius: 6px;
+      border-radius: 4px;
       transition: width 0.4s ease-out;
     }
 
@@ -309,7 +317,7 @@
     .pcm-building-stack {
       display: flex;
       flex-direction: column;
-      gap: 8px;
+      gap: 6px;
     }
 
     .pcm-floor-item {
@@ -318,54 +326,54 @@
       justify-content: space-between;
       background: #121827;
       border: 1px solid rgba(255, 255, 255, 0.12);
-      border-radius: 10px;
-      padding: 10px 14px;
-      font-size: 12.5px;
+      border-radius: 8px;
+      padding: 7px 10px;
+      font-size: 11.5px;
       transition: all 0.3s ease;
     }
 
     .pcm-floor-item.dominant {
       border-color: var(--cyan-neon);
       background: rgba(0, 229, 255, 0.15);
-      box-shadow: 0 0 16px rgba(0, 229, 255, 0.25);
+      box-shadow: 0 0 14px rgba(0, 229, 255, 0.25);
     }
 
     .pcm-floor-label {
       font-weight: 700;
-      font-size: 12.5px;
+      font-size: 11.5px;
       display: flex;
       align-items: center;
-      gap: 8px;
+      gap: 6px;
       white-space: nowrap;
     }
 
     .pcm-score-wrapper {
       display: flex;
       align-items: center;
-      gap: 10px;
+      gap: 8px;
     }
 
     .pcm-score-val {
       font-family: 'JetBrains Mono', monospace;
-      font-size: 13px;
+      font-size: 12px;
       font-weight: 800;
-      min-width: 44px;
+      min-width: 38px;
       text-align: right;
     }
 
     .pcm-mini-bar-bg {
-      width: 110px;
-      height: 10px;
+      width: 90px;
+      height: 8px;
       background: #05070D;
       border: 1px solid rgba(255, 255, 255, 0.15);
-      border-radius: 5px;
+      border-radius: 4px;
       overflow: hidden;
     }
 
     .pcm-mini-bar-fill {
       height: 100%;
       width: 0%;
-      border-radius: 5px;
+      border-radius: 4px;
       transition: width 0.4s ease-out;
     }
 
