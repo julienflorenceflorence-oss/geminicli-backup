@@ -1153,6 +1153,28 @@
         notesHtml = '<div style="color:var(--text-muted); font-size:11px;">Aucune note enregistrée pour le moment.</div>';
       }
 
+      // Render Sondage Question Notes HTML
+      let qNotesHtml = '';
+      if (lead.answers) {
+        let notesArr = [];
+        for (let i = 1; i <= 26; i++) {
+          if (lead.answers['q' + i + '_note']) {
+            notesArr.push(`
+              <div style="background:#0B0F19; border-left:3px solid var(--cyan-neon); padding:6px 10px; border-radius:6px; font-size:11px; margin-bottom:6px;">
+                <strong style="color:var(--cyan-neon);">Question ${i} :</strong> ${lead.answers['q' + i + '_note']}
+              </div>
+            `);
+          }
+        }
+        if (notesArr.length > 0) {
+          qNotesHtml = notesArr.join('');
+        } else {
+          qNotesHtml = '<div style="color:var(--text-muted); font-size:11px;">Aucune note par question rédigée lors du sondage.</div>';
+        }
+      } else {
+        qNotesHtml = '<div style="color:var(--text-muted); font-size:11px;">Le sondage 26Q n\'a pas encore été réalisé pour ce prospect.</div>';
+      }
+
       panel.innerHTML = `
         <div class="detail-header">
           <div class="detail-title">
@@ -1204,6 +1226,14 @@
             <div class="data-row"><span>Base Process Com (PCM) :</span><strong style="color:var(--violet-neon);">${lead.pcm}</strong></div>
             <div class="data-row"><span>Statut Prospect :</span><strong>${lead.status || 'Prospection'}</strong></div>
             <div class="data-row"><span>Prochaine Action :</span><strong style="color:var(--lime-accent);">${lead.nextAction || 'Relance Visio'}</strong></div>
+          </div>
+
+          <!-- Sondage Question Notes Section -->
+          <div class="data-box" style="grid-column:1 / -1;">
+            <h4><i class="fa-solid fa-comments"></i> Notes & Verbatims du Sondage 26Q (Par Question Q1 à Q26)</h4>
+            <div style="max-height:140px; overflow-y:auto; margin-top:8px;">
+              ${qNotesHtml}
+            </div>
           </div>
         </div>
 
