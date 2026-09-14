@@ -32,9 +32,9 @@
 
       /* PCM Colors */
       --pcm-thinker: #00E5FF;
-      --pcm-persister: #7B5CFF;
+      --pcm-persister: #A78BFA;
       --pcm-promoter: #FF5A6A;
-      --pcm-harmonizer: #FF2E93;
+      --pcm-harmonizer: #FF66C4;
       --pcm-rebel: #FFD600;
       --pcm-imaginer: #B8FF3D;
     }
@@ -309,7 +309,7 @@
     .pcm-building-stack {
       display: flex;
       flex-direction: column;
-      gap: 6px;
+      gap: 8px;
     }
 
     .pcm-floor-item {
@@ -317,38 +317,55 @@
       align-items: center;
       justify-content: space-between;
       background: #121827;
-      border: 1px solid rgba(255,255,255,0.1);
-      border-radius: 8px;
-      padding: 8px 12px;
-      font-size: 11.5px;
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      border-radius: 10px;
+      padding: 10px 14px;
+      font-size: 12.5px;
       transition: all 0.3s ease;
     }
 
     .pcm-floor-item.dominant {
       border-color: var(--cyan-neon);
-      background: rgba(0, 229, 255, 0.12);
-      box-shadow: 0 0 12px rgba(0, 229, 255, 0.2);
+      background: rgba(0, 229, 255, 0.15);
+      box-shadow: 0 0 16px rgba(0, 229, 255, 0.25);
     }
 
     .pcm-floor-label {
       font-weight: 700;
+      font-size: 12.5px;
       display: flex;
       align-items: center;
-      gap: 6px;
+      gap: 8px;
+      white-space: nowrap;
+    }
+
+    .pcm-score-wrapper {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .pcm-score-val {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 13px;
+      font-weight: 800;
+      min-width: 44px;
+      text-align: right;
     }
 
     .pcm-mini-bar-bg {
-      width: 100px;
-      height: 8px;
-      background: #0B0F19;
-      border-radius: 4px;
+      width: 110px;
+      height: 10px;
+      background: #05070D;
+      border: 1px solid rgba(255, 255, 255, 0.15);
+      border-radius: 5px;
       overflow: hidden;
     }
 
     .pcm-mini-bar-fill {
       height: 100%;
       width: 0%;
-      border-radius: 4px;
+      border-radius: 5px;
       transition: width 0.4s ease-out;
     }
 
@@ -418,26 +435,19 @@
     <!-- RIGHT STICKY COCKPIT: LIVE GAUGES & SCRIPT RECOMMENDATION -->
     <div class="cockpit-sticky-column">
 
-      <!-- PROSPECT SELECTOR BOX -->
+      <!-- CLIENT TARGET INFO BOX -->
       <div class="cockpit-card">
-        <h3><span>📍 Prospect CRM en Audit</span></h3>
         <div class="form-group-sm">
-          <label><i class="fa-solid fa-users"></i> Choisir dans le CRM :</label>
-          <select id="prospectSelect" onchange="onSelectProspect(this.value)">
-            <option value="">-- Sélectionner un Prospect CRM --</option>
-          </select>
+          <label style="font-weight:700; color:var(--cyan-neon); font-size:12px;"><i class="fa-solid fa-building"></i> Entreprise Cible :</label>
+          <input type="text" id="cCompany" value="Airbus Subcontracting SAS" style="font-weight:700; color:#FFF; font-size:13px;">
         </div>
         <div class="form-group-sm">
-          <label>Entreprise Cible :</label>
-          <input type="text" id="cCompany" value="Airbus Subcontracting SAS">
+          <label style="font-weight:700; color:var(--text-white); font-size:11.5px;"><i class="fa-solid fa-user-tie"></i> Décisionnaire (Nom & Titre) :</label>
+          <input type="text" id="cContact" value="Jean-Claude VASSEUR (VP Sales)" style="font-weight:600; color:#F8FAFC; font-size:12px;">
         </div>
-        <div class="form-group-sm">
-          <label>Décisionnaire (Nom & Titre) :</label>
-          <input type="text" id="cContact" value="Jean-Claude VASSEUR (VP Sales)">
-        </div>
-        <div class="form-group-sm">
-          <label>CA Export Estime (€) :</label>
-          <input type="number" id="cRevenue" value="15000000">
+        <div class="form-group-sm" style="margin-bottom:0;">
+          <label style="font-weight:700; color:var(--gold-accent); font-size:11.5px;"><i class="fa-solid fa-coins"></i> CA Export Estimé (€) :</label>
+          <input type="number" id="cRevenue" value="15000000" style="font-weight:700; color:var(--gold-accent); font-size:13px;">
         </div>
       </div>
 
@@ -480,52 +490,52 @@
       </div>
 
       <!-- CAPTEURS PCM (IMMEUBLE 6 ÉTAGES LIVE) -->
-      <div class="cockpit-card">
-        <h3>
-          <span>💼 Immeuble PCM (6 Profils)</span>
-          <span style="font-size:10px; color:var(--text-muted);" id="pcmDominantBadge">Calcul...</span>
+      <div class="cockpit-card" style="border-color: var(--border-violet);">
+        <h3 style="color: var(--violet-neon); border-bottom: 1px solid var(--border-violet); padding-bottom: 8px; margin-bottom: 12px;">
+          <span>💼 Immeuble PCM (6 Profils Process Com)</span>
+          <span style="font-size:11px; font-weight:800; color:var(--cyan-neon); background:rgba(0,229,255,0.1); padding:2px 8px; border-radius:10px; border:1px solid var(--border-cyan);" id="pcmDominantBadge">Base: Calcul...</span>
         </h3>
         <div class="pcm-building-stack">
           <div class="pcm-floor-item" id="floor-pcm-thinker">
-            <span class="pcm-floor-label" style="color:var(--pcm-thinker);">💼 Travaillomane</span>
-            <div style="display:flex; align-items:center; gap:8px;">
-              <div class="pcm-mini-bar-bg"><div class="pcm-mini-bar-fill" id="bar-pcm-thinker" style="background:var(--pcm-thinker);"></div></div>
-              <span id="score-pcm-thinker" style="font-weight:700;">0%</span>
+            <span class="pcm-floor-label" style="color:var(--pcm-thinker);"><i class="fa-solid fa-briefcase"></i> Travaillomane (Thinker)</span>
+            <div class="pcm-score-wrapper">
+              <div class="pcm-mini-bar-bg"><div class="pcm-mini-bar-fill" id="bar-pcm-thinker" style="background:var(--pcm-thinker); box-shadow:0 0 8px var(--pcm-thinker);"></div></div>
+              <span id="score-pcm-thinker" class="pcm-score-val" style="color:var(--pcm-thinker);">0%</span>
             </div>
           </div>
           <div class="pcm-floor-item" id="floor-pcm-persister">
-            <span class="pcm-floor-label" style="color:var(--pcm-persister);">🏛️ Persévérant</span>
-            <div style="display:flex; align-items:center; gap:8px;">
-              <div class="pcm-mini-bar-bg"><div class="pcm-mini-bar-fill" id="bar-pcm-persister" style="background:var(--pcm-persister);"></div></div>
-              <span id="score-pcm-persister" style="font-weight:700;">0%</span>
+            <span class="pcm-floor-label" style="color:var(--pcm-persister);"><i class="fa-solid fa-landmark"></i> Persévérant (Persister)</span>
+            <div class="pcm-score-wrapper">
+              <div class="pcm-mini-bar-bg"><div class="pcm-mini-bar-fill" id="bar-pcm-persister" style="background:var(--pcm-persister); box-shadow:0 0 8px var(--pcm-persister);"></div></div>
+              <span id="score-pcm-persister" class="pcm-score-val" style="color:var(--pcm-persister);">0%</span>
             </div>
           </div>
           <div class="pcm-floor-item" id="floor-pcm-promoter">
-            <span class="pcm-floor-label" style="color:var(--pcm-promoter);">⚡ Promoteur</span>
-            <div style="display:flex; align-items:center; gap:8px;">
-              <div class="pcm-mini-bar-bg"><div class="pcm-mini-bar-fill" id="bar-pcm-promoter" style="background:var(--pcm-promoter);"></div></div>
-              <span id="score-pcm-promoter" style="font-weight:700;">0%</span>
+            <span class="pcm-floor-label" style="color:var(--pcm-promoter);"><i class="fa-solid fa-bolt"></i> Promoteur (Promoter)</span>
+            <div class="pcm-score-wrapper">
+              <div class="pcm-mini-bar-bg"><div class="pcm-mini-bar-fill" id="bar-pcm-promoter" style="background:var(--pcm-promoter); box-shadow:0 0 8px var(--pcm-promoter);"></div></div>
+              <span id="score-pcm-promoter" class="pcm-score-val" style="color:var(--pcm-promoter);">0%</span>
             </div>
           </div>
           <div class="pcm-floor-item" id="floor-pcm-harmonizer">
-            <span class="pcm-floor-label" style="color:var(--pcm-harmonizer);">🤝 Empathique</span>
-            <div style="display:flex; align-items:center; gap:8px;">
-              <div class="pcm-mini-bar-bg"><div class="pcm-mini-bar-fill" id="bar-pcm-harmonizer" style="background:var(--pcm-harmonizer);"></div></div>
-              <span id="score-pcm-harmonizer" style="font-weight:700;">0%</span>
+            <span class="pcm-floor-label" style="color:var(--pcm-harmonizer);"><i class="fa-solid fa-handshake"></i> Empathique (Harmonizer)</span>
+            <div class="pcm-score-wrapper">
+              <div class="pcm-mini-bar-bg"><div class="pcm-mini-bar-fill" id="bar-pcm-harmonizer" style="background:var(--pcm-harmonizer); box-shadow:0 0 8px var(--pcm-harmonizer);"></div></div>
+              <span id="score-pcm-harmonizer" class="pcm-score-val" style="color:var(--pcm-harmonizer);">0%</span>
             </div>
           </div>
           <div class="pcm-floor-item" id="floor-pcm-rebel">
-            <span class="pcm-floor-label" style="color:var(--pcm-rebel);">🎨 Rebelle</span>
-            <div style="display:flex; align-items:center; gap:8px;">
-              <div class="pcm-mini-bar-bg"><div class="pcm-mini-bar-fill" id="bar-pcm-rebel" style="background:var(--pcm-rebel);"></div></div>
-              <span id="score-pcm-rebel" style="font-weight:700;">0%</span>
+            <span class="pcm-floor-label" style="color:var(--pcm-rebel);"><i class="fa-solid fa-palette"></i> Rebelle (Rebel)</span>
+            <div class="pcm-score-wrapper">
+              <div class="pcm-mini-bar-bg"><div class="pcm-mini-bar-fill" id="bar-pcm-rebel" style="background:var(--pcm-rebel); box-shadow:0 0 8px var(--pcm-rebel);"></div></div>
+              <span id="score-pcm-rebel" class="pcm-score-val" style="color:var(--pcm-rebel);">0%</span>
             </div>
           </div>
           <div class="pcm-floor-item" id="floor-pcm-imaginer">
-            <span class="pcm-floor-label" style="color:var(--pcm-imaginer);">🌌 Rêveur</span>
-            <div style="display:flex; align-items:center; gap:8px;">
-              <div class="pcm-mini-bar-bg"><div class="pcm-mini-bar-fill" id="bar-pcm-imaginer" style="background:var(--pcm-imaginer);"></div></div>
-              <span id="score-pcm-imaginer" style="font-weight:700;">0%</span>
+            <span class="pcm-floor-label" style="color:var(--pcm-imaginer);"><i class="fa-solid fa-shield-cat"></i> Imaginatif (Imaginer)</span>
+            <div class="pcm-score-wrapper">
+              <div class="pcm-mini-bar-bg"><div class="pcm-mini-bar-fill" id="bar-pcm-imaginer" style="background:var(--pcm-imaginer); box-shadow:0 0 8px var(--pcm-imaginer);"></div></div>
+              <span id="score-pcm-imaginer" class="pcm-score-val" style="color:var(--pcm-imaginer);">0%</span>
             </div>
           </div>
         </div>
@@ -955,6 +965,7 @@
     function populateCRMProspects() {
       crmLeads = JSON.parse(localStorage.getItem('QUESTIA LAB_CRM_LEADS') || '[]');
       const select = document.getElementById('prospectSelect');
+      if (!select) return;
       select.innerHTML = '<option value="">-- Sélectionner un Prospect CRM --</option>';
 
       const activeLeadId = localStorage.getItem('QUESTIA_ACTIVE_LEAD_ID');
