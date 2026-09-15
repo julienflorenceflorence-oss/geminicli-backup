@@ -1,0 +1,1514 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>QuestIA LAB - Sondage & Capteurs Psychométriques Interactifs (DISC & PCM Live)</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&family=Outfit:wght@400;600;700;800&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <style>
+    :root {
+      --bg-dark: #05070D;
+      --bg-card: #0B0F19;
+      --bg-card-hover: #121827;
+      --cyan-neon: #00E5FF;
+      --violet-neon: #7B5CFF;
+      --gold-accent: #D4AF37;
+      --lime-accent: #B8FF3D;
+      --coral-accent: #FF5A6A;
+      --text-white: #F8FAFC;
+      --text-muted: #94A3B8;
+      --border-cyan: rgba(0, 229, 255, 0.3);
+      --border-violet: rgba(123, 92, 255, 0.3);
+      --shadow-cyan: 0 0 25px rgba(0, 229, 255, 0.2);
+
+      /* DISC Colors */
+      --disc-red: #FF2E55;
+      --disc-yellow: #FFD600;
+      --disc-green: #00E676;
+      --disc-blue: #00E5FF;
+
+      /* PCM Colors */
+      --pcm-thinker: #00E5FF;
+      --pcm-persister: #A78BFA;
+      --pcm-promoter: #FF5A6A;
+      --pcm-harmonizer: #FF66C4;
+      --pcm-rebel: #FFD600;
+      --pcm-imaginer: #B8FF3D;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      background-color: var(--bg-dark);
+      color: var(--text-white);
+      font-family: 'Inter', sans-serif;
+      line-height: 1.5;
+      padding: 24px;
+    }
+
+    /* Ecosystem Nav */
+    .ecosystem-nav {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background: rgba(11, 15, 25, 0.85);
+      border: 1px solid var(--border-violet);
+      border-radius: 12px;
+      padding: 10px 20px;
+      margin-bottom: 20px;
+      font-size: 12px;
+    }
+
+    .nav-links { display: flex; gap: 16px; }
+    .nav-link {
+      color: var(--text-muted);
+      text-decoration: none;
+      font-weight: 600;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      transition: color 0.2s ease;
+    }
+    .nav-link.active, .nav-link:hover { color: var(--cyan-neon); }
+
+    header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 18px 24px;
+      background: var(--bg-card);
+      border: 1px solid var(--border-cyan);
+      border-radius: 16px;
+      box-shadow: var(--shadow-cyan);
+      margin-bottom: 24px;
+    }
+
+    .brand-header { display: flex; align-items: center; gap: 16px; }
+    .questia-logo-img { height: 44px; width: auto; object-fit: contain; filter: drop-shadow(0 0 10px rgba(0,229,255,0.4)); }
+    .brand-title h1 { font-family: 'Outfit', sans-serif; font-size: 22px; font-weight: 800; }
+    .brand-title h1 span { color: var(--cyan-neon); }
+    .brand-title p { font-size: 11px; color: var(--violet-neon); font-weight: 700; letter-spacing: 0.5px; text-transform: uppercase; }
+
+    .header-actions { display: flex; align-items: center; gap: 12px; }
+    .timer-badge { background: rgba(0, 229, 255, 0.1); border: 1px solid var(--cyan-neon); padding: 8px 16px; border-radius: 30px; color: var(--cyan-neon); font-family: 'Outfit', sans-serif; font-weight: 700; font-size: 14px; }
+
+    .btn-action {
+      background: linear-gradient(135deg, var(--cyan-neon), var(--violet-neon));
+      color: #000;
+      font-weight: 700;
+      padding: 10px 18px;
+      border-radius: 10px;
+      border: none;
+      cursor: pointer;
+      font-size: 12px;
+      text-transform: uppercase;
+      transition: all 0.2s ease;
+    }
+    .btn-action:hover { transform: translateY(-2px); box-shadow: var(--shadow-cyan); }
+
+    /* SPLIT SCREEN LAYOUT */
+    .split-layout {
+      display: grid;
+      grid-template-columns: 1fr 420px;
+      gap: 24px;
+      align-items: start;
+    }
+
+    /* LEFT SURVEY COLUMN */
+    .survey-column {
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+    }
+
+    /* RECAPITULATIF BLOCS / PILIERS EN DEBUT DE PAGE */
+    .pillar-summary-container {
+      background: var(--bg-card);
+      border: 1px solid var(--border-cyan);
+      border-radius: 16px;
+      padding: 20px;
+      box-shadow: var(--shadow-cyan);
+    }
+
+    .pillar-summary-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 16px;
+      padding-bottom: 10px;
+      border-bottom: 1px solid rgba(0, 229, 255, 0.2);
+    }
+
+    .pillar-summary-header h3 {
+      font-family: 'Outfit', sans-serif;
+      font-size: 15px;
+      color: var(--cyan-neon);
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin-bottom: 0;
+    }
+
+    .pillar-summary-badge {
+      font-size: 11px;
+      font-weight: 800;
+      color: var(--lime-accent);
+      background: rgba(184, 255, 61, 0.1);
+      border: 1px solid var(--lime-accent);
+      padding: 4px 10px;
+      border-radius: 20px;
+    }
+
+    .pillar-summary-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 12px;
+    }
+
+    @media (max-width: 900px) {
+      .pillar-summary-grid { grid-template-columns: 1fr; }
+    }
+
+    .pillar-summary-card {
+      background: #121827;
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      border-radius: 12px;
+      padding: 14px;
+      cursor: pointer;
+      transition: all 0.25s ease;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+
+    .pillar-summary-card:hover {
+      border-color: var(--cyan-neon);
+      transform: translateY(-2px);
+      box-shadow: 0 4px 15px rgba(0, 229, 255, 0.15);
+      background: rgba(0, 229, 255, 0.04);
+    }
+
+    .pillar-summary-card-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 6px;
+    }
+
+    .pillar-tag {
+      font-size: 10px;
+      font-weight: 800;
+      text-transform: uppercase;
+      padding: 2px 8px;
+      border-radius: 6px;
+      letter-spacing: 0.5px;
+    }
+
+    .pillar-tag.p1 { background: rgba(0, 229, 255, 0.15); color: var(--cyan-neon); border: 1px solid var(--border-cyan); }
+    .pillar-tag.p2 { background: rgba(123, 92, 255, 0.15); color: var(--violet-neon); border: 1px solid var(--border-violet); }
+    .pillar-tag.p3 { background: rgba(255, 214, 0, 0.15); color: var(--disc-yellow); border: 1px solid rgba(255, 214, 0, 0.3); }
+    .pillar-tag.p4 { background: rgba(184, 255, 61, 0.15); color: var(--lime-accent); border: 1px solid rgba(184, 255, 61, 0.3); }
+
+    .pillar-qcount {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 11px;
+      font-weight: 700;
+      color: var(--text-muted);
+    }
+
+    .pillar-summary-card h4 {
+      font-size: 12.5px;
+      font-weight: 700;
+      color: var(--text-white);
+      margin-bottom: 4px;
+    }
+
+    .pillar-summary-card p {
+      font-size: 11px;
+      color: var(--text-muted);
+      margin-bottom: 8px;
+      line-height: 1.3;
+    }
+
+    .pillar-progress-bar {
+      height: 6px;
+      background: #0B0F19;
+      border-radius: 3px;
+      overflow: hidden;
+      border: 1px solid rgba(255, 255, 255, 0.08);
+    }
+
+    .pillar-progress-fill {
+      height: 100%;
+      width: 0%;
+      background: linear-gradient(90deg, var(--cyan-neon), var(--lime-accent));
+      border-radius: 3px;
+      transition: width 0.3s ease;
+    }
+
+    .pillar-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border-cyan);
+      border-radius: 16px;
+      padding: 24px;
+    }
+
+    .pillar-card h2 {
+      font-family: 'Outfit', sans-serif;
+      font-size: 16px;
+      color: var(--cyan-neon);
+      margin-bottom: 16px;
+      padding-bottom: 8px;
+      border-bottom: 1px solid rgba(0, 229, 255, 0.2);
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .q-item {
+      background: #121827;
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      border-radius: 12px;
+      padding: 16px;
+      margin-bottom: 14px;
+      transition: border-color 0.2s ease;
+    }
+
+    .q-item.answered {
+      border-color: var(--cyan-neon);
+      background: rgba(0, 229, 255, 0.03);
+    }
+
+    .q-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      margin-bottom: 10px;
+    }
+
+    .q-label {
+      font-weight: 700;
+      font-size: 13px;
+      color: var(--text-white);
+      line-height: 1.4;
+    }
+
+    .q-badge-weight {
+      font-size: 9.5px;
+      font-weight: 800;
+      padding: 2px 8px;
+      border-radius: 10px;
+      background: rgba(123, 92, 255, 0.2);
+      color: var(--violet-neon);
+      border: 1px solid var(--border-violet);
+    }
+
+    .q-options {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      margin-bottom: 10px;
+    }
+
+    .opt-btn {
+      background: #0B0F19;
+      border: 1px solid rgba(255, 255, 255, 0.15);
+      color: var(--text-muted);
+      padding: 10px 14px;
+      border-radius: 8px;
+      font-size: 12px;
+      font-weight: 600;
+      cursor: pointer;
+      text-align: left;
+      transition: all 0.2s ease;
+    }
+
+    .opt-btn:hover {
+      background: rgba(0, 229, 255, 0.1);
+      color: var(--text-white);
+      border-color: var(--cyan-neon);
+    }
+
+    .opt-btn.selected {
+      background: linear-gradient(135deg, rgba(0, 229, 255, 0.2), rgba(123, 92, 255, 0.2));
+      border-color: var(--cyan-neon);
+      color: var(--cyan-neon);
+      font-weight: 700;
+      box-shadow: 0 0 12px rgba(0, 229, 255, 0.2);
+    }
+
+    .q-note-box {
+      margin-top: 8px;
+    }
+
+    .q-note-input {
+      width: 100%;
+      background: #0B0F19;
+      border: 1px solid rgba(0, 229, 255, 0.25);
+      color: #FFF;
+      padding: 8px 12px;
+      border-radius: 8px;
+      font-size: 11.5px;
+      font-family: 'Inter', sans-serif;
+      transition: border-color 0.2s ease;
+    }
+
+    .q-note-input:focus {
+      outline: none;
+      border-color: var(--cyan-neon);
+      box-shadow: 0 0 10px rgba(0, 229, 255, 0.2);
+    }
+
+    /* RIGHT STICKY PSYCHOMETRIC COCKPIT */
+    .cockpit-sticky-column {
+      position: sticky;
+      top: 16px;
+      max-height: calc(100vh - 32px);
+      overflow-y: auto;
+      overflow-x: hidden;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      padding-right: 6px;
+    }
+
+    .cockpit-sticky-column::-webkit-scrollbar { width: 5px; }
+    .cockpit-sticky-column::-webkit-scrollbar-track { background: rgba(11, 15, 25, 0.6); border-radius: 4px; }
+    .cockpit-sticky-column::-webkit-scrollbar-thumb { background: var(--cyan-neon); border-radius: 4px; }
+
+    .cockpit-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border-cyan);
+      border-radius: 14px;
+      padding: 14px;
+      box-shadow: var(--shadow-cyan);
+    }
+
+    /* BRIQUE METHODOLOGIQUE DEDIEE */
+    .methodology-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border-violet);
+      border-radius: 16px;
+      padding: 24px;
+      box-shadow: 0 0 20px rgba(123, 92, 255, 0.15);
+      margin-top: 24px;
+    }
+
+    .methodology-card-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      cursor: pointer;
+    }
+
+    .methodology-card-header h2 {
+      font-family: 'Outfit', sans-serif;
+      font-size: 16px;
+      color: var(--violet-neon);
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin-bottom: 0;
+    }
+
+    .btn-toggle-methodo {
+      font-size: 11px;
+      font-weight: 700;
+      color: var(--cyan-neon);
+      background: rgba(0, 229, 255, 0.1);
+      border: 1px solid var(--border-cyan);
+      padding: 6px 12px;
+      border-radius: 20px;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .methodo-intro {
+      font-size: 12px;
+      color: var(--text-muted);
+      margin: 16px 0 20px 0;
+      line-height: 1.5;
+    }
+
+    .methodo-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 16px;
+      margin-bottom: 20px;
+    }
+
+    @media (max-width: 900px) {
+      .methodo-grid { grid-template-columns: 1fr; }
+    }
+
+    .methodo-item {
+      background: #121827;
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      border-radius: 12px;
+      padding: 16px;
+    }
+
+    .methodo-item-title {
+      font-family: 'Outfit', sans-serif;
+      font-size: 13.5px;
+      font-weight: 700;
+      margin-bottom: 8px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .methodo-item p {
+      font-size: 11.5px;
+      color: var(--text-white);
+      line-height: 1.4;
+      margin-bottom: 8px;
+    }
+
+    .methodo-item ul {
+      list-style: none;
+      padding-left: 0;
+      font-size: 11px;
+    }
+
+    .methodo-item li {
+      margin-bottom: 4px;
+      color: var(--text-muted);
+    }
+
+    .methodo-formula-box {
+      background: #05070D;
+      border: 1px dashed var(--border-cyan);
+      border-radius: 10px;
+      padding: 14px;
+      text-align: center;
+    }
+
+    .methodo-formula-box h4 {
+      font-size: 12px;
+      color: var(--cyan-neon);
+      margin-bottom: 8px;
+    }
+
+    .methodo-formula-box code {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 12px;
+      color: var(--lime-accent);
+      line-height: 1.6;
+    }
+
+    .cockpit-card h3 {
+      font-family: 'Outfit', sans-serif;
+      font-size: 13px;
+      color: var(--cyan-neon);
+      margin-bottom: 10px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+
+    /* DISC GAUGES BARS */
+    .disc-gauges-grid {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+
+    .disc-gauge-item {
+      display: flex;
+      flex-direction: column;
+      gap: 3px;
+    }
+
+    .disc-gauge-header {
+      display: flex;
+      justify-content: space-between;
+      font-size: 11px;
+      font-weight: 700;
+    }
+
+    .disc-bar-bg {
+      height: 8px;
+      background: #121827;
+      border-radius: 4px;
+      overflow: hidden;
+      border: 1px solid rgba(255,255,255,0.08);
+    }
+
+    .disc-bar-fill {
+      height: 100%;
+      width: 0%;
+      border-radius: 4px;
+      transition: width 0.4s ease-out;
+    }
+
+    .disc-bar-fill.red { background: var(--disc-red); box-shadow: 0 0 10px var(--disc-red); }
+    .disc-bar-fill.yellow { background: var(--disc-yellow); box-shadow: 0 0 10px var(--disc-yellow); }
+    .disc-bar-fill.green { background: var(--disc-green); box-shadow: 0 0 10px var(--disc-green); }
+    .disc-bar-fill.blue { background: var(--disc-blue); box-shadow: 0 0 10px var(--disc-blue); }
+
+    /* PCM STACK (IMMEUBLE 6 ÉTAGES) */
+    .pcm-building-stack {
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+    }
+
+    .pcm-floor-item {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      background: #121827;
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      border-radius: 8px;
+      padding: 7px 10px;
+      font-size: 11.5px;
+      transition: all 0.3s ease;
+    }
+
+    .pcm-floor-item.dominant {
+      border-color: var(--cyan-neon);
+      background: rgba(0, 229, 255, 0.15);
+      box-shadow: 0 0 14px rgba(0, 229, 255, 0.25);
+    }
+
+    .pcm-floor-label {
+      font-weight: 700;
+      font-size: 11.5px;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      white-space: nowrap;
+    }
+
+    .pcm-score-wrapper {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .pcm-score-val {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 12px;
+      font-weight: 800;
+      min-width: 38px;
+      text-align: right;
+    }
+
+    .pcm-mini-bar-bg {
+      width: 90px;
+      height: 8px;
+      background: #05070D;
+      border: 1px solid rgba(255, 255, 255, 0.15);
+      border-radius: 4px;
+      overflow: hidden;
+    }
+
+    .pcm-mini-bar-fill {
+      height: 100%;
+      width: 0%;
+      border-radius: 4px;
+      transition: width 0.4s ease-out;
+    }
+
+    /* SCRIPT RECOMMENDATION BOX */
+    .ai-script-box {
+      background: #121827;
+      border: 1px solid var(--violet-neon);
+      border-radius: 12px;
+      padding: 14px;
+      font-size: 11.5px;
+      line-height: 1.4;
+    }
+
+    .ai-script-box h4 {
+      font-size: 12px;
+      color: var(--violet-neon);
+      margin-bottom: 8px;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    /* Form prospect selection box */
+    .form-group-sm { margin-bottom: 10px; }
+    .form-group-sm label { display: block; font-size: 11px; margin-bottom: 4px; color: var(--text-muted); }
+    .form-group-sm input, .form-group-sm select {
+      width: 100%; background: #121827; border: 1px solid rgba(255,255,255,0.2); color: #FFF; padding: 6px 10px; border-radius: 6px; font-size: 12px;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Ecosystem Nav Bar -->
+  <div class="ecosystem-nav">
+    <div style="font-weight:700; color:var(--cyan-neon);"><i class="fa-solid fa-network-wired"></i> ÉCOSYSTÈME CONNECTÉ QUESTIA LAB</div>
+    <div class="nav-links">
+      <a href="2026-09-15_QUESTIA_Sondage_Live_DISC_PCM.html" class="nav-link active"><i class="fa-solid fa-chart-pie"></i> Sondage Live DISC/PCM</a>
+      <a href="2026-09-11_QUESTIA_Trame_Diagnostic_Visio_DISC_PCM.html" class="nav-link"><i class="fa-solid fa-list-check"></i> Questionnaire Audit (26Q)</a>
+      <a href="2026-09-11_QUESTIA_CRM_Intelligence_Commerciale_Et_Psychometrique.html" class="nav-link"><i class="fa-solid fa-users-gear"></i> CRM Intelligence</a>
+      <a href="2026-09-11_QUESTIA_Studio_Personnalisation_PDF.html" class="nav-link"><i class="fa-solid fa-file-pdf"></i> Studio PDF</a>
+    </div>
+  </div>
+
+  <header>
+    <div class="brand-header">
+      <img src="../../Images/QuestIA LAB_Logo.png" alt="QuestIA LAB Logo" class="questia-logo-img" onerror="this.style.display='none'" />
+      <div class="brand-title">
+        <h1>Quest<span>IA</span> Live Sondage</h1>
+        <p>Capteurs Psychométriques Temps Réel (DISC 4 Couleurs & PCM 6 Profils)</p>
+      </div>
+    </div>
+    <div class="header-actions">
+      <div class="timer-badge">⏱️ <span id="timerDisplay">30:00</span></div>
+      <button class="btn-action" style="background:rgba(123,92,255,0.15); color:var(--violet-neon); border:1px solid var(--border-violet);" onclick="scrollToMethodology()"><i class="fa-solid fa-graduation-cap"></i> Brique Méthodologique</button>
+      <button class="btn-action" onclick="saveAuditToCRM()"><i class="fa-solid fa-floppy-disk"></i> Enregistrer dans le CRM</button>
+      <button class="btn-action" style="background:var(--bg-card); color:var(--cyan-neon); border:1px solid var(--cyan-neon);" onclick="window.print()">Imprimer</button>
+    </div>
+  </header>
+
+  <div class="split-layout">
+    <!-- LEFT COLUMN: 26 QUESTIONS WITH NOTES -->
+    <div class="survey-column">
+      
+      <!-- RECAPITULATIF DES 4 BLOCS DU QUESTIONNAIRE EN DEBUT DE PAGE -->
+      <div class="pillar-summary-container">
+        <div class="pillar-summary-header">
+          <h3><i class="fa-solid fa-list-check"></i> Récapitulatif des 4 Piliers du Diagnostic (26 Questions)</h3>
+          <span class="pillar-summary-badge" id="overallCompletionBadge">0 / 26 Questions Répondues (0%)</span>
+        </div>
+        
+        <div class="pillar-summary-grid">
+          <!-- PILIER 1 -->
+          <div class="pillar-summary-card" onclick="scrollToPillar(1)">
+            <div class="pillar-summary-card-header">
+              <span class="pillar-tag p1">Pilier 1</span>
+              <span class="pillar-qcount" id="badge-p1">0/6 Q</span>
+            </div>
+            <h4>1. Négociation & Fermeté Tarifaire</h4>
+            <p>Marge export, concessions & fuites de marge (Q1 à Q6)</p>
+            <div class="pillar-progress-bar"><div class="pillar-progress-fill" id="pbar-p1"></div></div>
+          </div>
+
+          <!-- PILIER 2 -->
+          <div class="pillar-summary-card" onclick="scrollToPillar(2)">
+            <div class="pillar-summary-card-header">
+              <span class="pillar-tag p2">Pilier 2</span>
+              <span class="pillar-qcount" id="badge-p2">0/6 Q</span>
+            </div>
+            <h4>2. Nuance Linguistique & L2 Effect</h4>
+            <p>Perte d'autorité en anglais & décodage US/UK (Q7 à Q12)</p>
+            <div class="pillar-progress-bar"><div class="pillar-progress-fill" id="pbar-p2"></div></div>
+          </div>
+
+          <!-- PILIER 3 -->
+          <div class="pillar-summary-card" onclick="scrollToPillar(3)">
+            <div class="pillar-summary-card-header">
+              <span class="pillar-tag p3">Pilier 3</span>
+              <span class="pillar-qcount" id="badge-p3">0/8 Q</span>
+            </div>
+            <h4>3. Décodage Psychométrique DISC/PCM</h4>
+            <p>Détection profils DISC, base PCM & canal cible (Q13 à Q20)</p>
+            <div class="pillar-progress-bar"><div class="pillar-progress-fill" id="pbar-p3"></div></div>
+          </div>
+
+          <!-- PILIER 4 -->
+          <div class="pillar-summary-card" onclick="scrollToPillar(4)">
+            <div class="pillar-summary-card-header">
+              <span class="pillar-tag p4">Pilier 4</span>
+              <span class="pillar-qcount" id="badge-p4">0/6 Q</span>
+            </div>
+            <h4>4. Alignement & Exécution Tactique</h4>
+            <p>CSE, budget, abonnement & réservation Étape 0 (Q21 à Q26)</p>
+            <div class="pillar-progress-bar"><div class="pillar-progress-fill" id="pbar-p4"></div></div>
+          </div>
+        </div>
+      </div>
+
+      <div id="surveyQuestionsContainer">
+        <!-- Dynamically generated 26 questions with options and per-question note input -->
+      </div>
+
+      <!-- BRIQUE DÉDIÉE : MÉTHODOLOGIE & SOURCES SCIENTIFIQUES (DISC & PCM) -->
+      <div class="methodology-card" id="brique-methodologie">
+        <div class="methodology-card-header" onclick="toggleMethodologyDetails()">
+          <h2>
+            <i class="fa-solid fa-graduation-cap"></i> Brique Méthodologique & Cadre Scientifique (DISC, PCM & Harvard PON)
+          </h2>
+          <span class="btn-toggle-methodo"><i class="fa-solid fa-chevron-down" id="methodoChevron"></i> Explication Algorithme</span>
+        </div>
+
+        <div class="methodology-card-body" id="methodologyBody">
+          <p class="methodo-intro">
+            Cette brique d'évaluation psychométrique s'appuie sur la modélisation croisée des deux frameworks comportementaux mondiaux de référence et sur les études empiriques de négociation internationale B2B.
+          </p>
+
+          <div class="methodo-grid">
+            <!-- SOURCE 1 : DISC MARSTON -->
+            <div class="methodo-item">
+              <div class="methodo-item-title" style="color: var(--disc-red);">
+                <i class="fa-solid fa-palette"></i> Modèle DISC (4 Couleurs)
+              </div>
+              <p>
+                <strong>Dr. William Moulton Marston</strong> (Harvard, 1928) & <strong>Dr. John G. Geier</strong> (Univ. Minnesota). 
+                Mesure des 4 orientations comportementales primaires :
+              </p>
+              <ul>
+                <li><strong style="color:var(--disc-red);">🔴 Dominant (D)</strong> : Tâche & Urgence (ROI, pouvoir, directif).</li>
+                <li><strong style="color:var(--disc-yellow);">🟡 Influent (I)</strong> : Humain & Prestige (Vision, réseau, enthousiasme).</li>
+                <li><strong style="color:var(--disc-green);">🟢 Stable (S)</strong> : Humain & Sécurité (Méthode, accompagnement, écoute).</li>
+                <li><strong style="color:var(--disc-blue);">🔵 Consciencieux (C)</strong> : Tâche & Précision (Data, faits, conformité).</li>
+              </ul>
+            </div>
+
+            <!-- SOURCE 2 : PCM KAHLER -->
+            <div class="methodo-item">
+              <div class="methodo-item-title" style="color: var(--violet-neon);">
+                <i class="fa-solid fa-building-user"></i> Modèle PCM (6 Profils Process Com)
+              </div>
+              <p>
+                <strong>Dr. Taibi Kahler</strong> (Prix Eric Berne 1977 / Partenariat NASA). 
+                Décodage des 6 structures de personnalité et besoins sous stress :
+              </p>
+              <ul>
+                <li><strong style="color:var(--pcm-thinker);">💼 Travaillomane</strong> : Logique, organisation & faits.</li>
+                <li><strong style="color:var(--pcm-persister);">🏛️ Persévérant</strong> : Valeurs, convictions & éthique.</li>
+                <li><strong style="color:var(--pcm-promoter);">⚡ Promoteur</strong> : Action, challenge & adaptabilité.</li>
+                <li><strong style="color:var(--pcm-harmonizer);">🤝 Empathique</strong> : Émotions, compassion & harmonie.</li>
+                <li><strong style="color:var(--pcm-rebel);">🎨 Rebelle</strong> : Spontanéité, créativité & ludique.</li>
+                <li><strong style="color:var(--pcm-imaginer);">🌌 Imaginatif</strong> : Calme, réflexion & imagination.</li>
+              </ul>
+            </div>
+
+            <!-- SOURCE 3 : FOREIGN LANGUAGE EFFECT -->
+            <div class="methodo-item">
+              <div class="methodo-item-title" style="color: var(--cyan-neon);">
+                <i class="fa-solid fa-language"></i> Foreign-Language Effect
+              </div>
+              <p>
+                <strong>Univ. of Chicago (Keysar, Hayakawa et al.)</strong> : 
+                Démontre empiriquement qu'une négociation à haut enjeu conduite en langue seconde (Anglais B2B) subit une perte moyenne de <strong>30% de fermeté et d'impact persuasif</strong>.
+              </p>
+            </div>
+
+            <!-- SOURCE 4 : MCKINSEY & HARVARD PON -->
+            <div class="methodo-item">
+              <div class="methodo-item-title" style="color: var(--gold-accent);">
+                <i class="fa-solid fa-chart-line"></i> Fuite de Marge Export (McKinsey / Harvard)
+              </div>
+              <p>
+                <strong>McKinsey Global Pricing Study & Harvard Program on Negotiation (PON)</strong> : 
+                Modélisation de l'érosion de marge nette (3% à 5,4%) liée aux concessions d'objection tarifaire non recadrées psychométriquement.
+              </p>
+            </div>
+          </div>
+
+          <!-- FORMULE ALGORITHMIQUE -->
+          <div class="methodo-formula-box">
+            <h4><i class="fa-solid fa-calculator"></i> Formule de Normalisation Vectorielle Temps Réel</h4>
+            <code>
+              Score DISC_k (%) = (∑ Poids_DISC_k / Total_DISC) × 100 <br>
+              Score PCM_j (%) = (∑ Poids_PCM_j / Total_PCM) × 100
+            </code>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- RIGHT STICKY COCKPIT: LIVE GAUGES & SCRIPT RECOMMENDATION -->
+    <div class="cockpit-sticky-column">
+
+      <!-- CLIENT TARGET INFO BOX -->
+      <div class="cockpit-card">
+        <div class="form-group-sm">
+          <label style="font-weight:700; color:var(--cyan-neon); font-size:12px;"><i class="fa-solid fa-building"></i> Entreprise Cible :</label>
+          <input type="text" id="cCompany" value="Airbus Subcontracting SAS" style="font-weight:700; color:#FFF; font-size:13px;">
+        </div>
+        <div class="form-group-sm">
+          <label style="font-weight:700; color:var(--text-white); font-size:11.5px;"><i class="fa-solid fa-user-tie"></i> Décisionnaire (Nom & Titre) :</label>
+          <input type="text" id="cContact" value="Jean-Claude VASSEUR (VP Sales)" style="font-weight:600; color:#F8FAFC; font-size:12px;">
+        </div>
+        <div class="form-group-sm" style="margin-bottom:0;">
+          <label style="font-weight:700; color:var(--gold-accent); font-size:11.5px;"><i class="fa-solid fa-coins"></i> CA Export Estimé (€) :</label>
+          <input type="number" id="cRevenue" value="15000000" style="font-weight:700; color:var(--gold-accent); font-size:13px;">
+        </div>
+      </div>
+
+      <!-- CAPTEURS DISC (4 COULEURS LIVE) -->
+      <div class="cockpit-card">
+        <h3>
+          <span>🔴🟡🟢🔵 Capteur DISC (4 Couleurs)</span>
+          <span style="font-size:10px; color:var(--text-muted);" id="discDominantBadge">Calcul...</span>
+        </h3>
+        <div class="disc-gauges-grid">
+          <div class="disc-gauge-item">
+            <div class="disc-gauge-header">
+              <span style="color:var(--disc-red);">🔴 Dominant (Rouge)</span>
+              <span id="score-disc-red">0%</span>
+            </div>
+            <div class="disc-bar-bg"><div class="disc-bar-fill red" id="bar-disc-red"></div></div>
+          </div>
+          <div class="disc-gauge-item">
+            <div class="disc-gauge-header">
+              <span style="color:var(--disc-yellow);">🟡 Influent (Jaune)</span>
+              <span id="score-disc-yellow">0%</span>
+            </div>
+            <div class="disc-bar-bg"><div class="disc-bar-fill yellow" id="bar-disc-yellow"></div></div>
+          </div>
+          <div class="disc-gauge-item">
+            <div class="disc-gauge-header">
+              <span style="color:var(--disc-green);">🟢 Stable (Vert)</span>
+              <span id="score-disc-green">0%</span>
+            </div>
+            <div class="disc-bar-bg"><div class="disc-bar-fill green" id="bar-disc-green"></div></div>
+          </div>
+          <div class="disc-gauge-item">
+            <div class="disc-gauge-header">
+              <span style="color:var(--disc-blue);">🔵 Consciencieux (Bleu)</span>
+              <span id="score-disc-blue">0%</span>
+            </div>
+            <div class="disc-bar-bg"><div class="disc-bar-fill blue" id="bar-disc-blue"></div></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- CAPTEURS PCM (IMMEUBLE 6 ÉTAGES LIVE) -->
+      <div class="cockpit-card" style="border-color: var(--border-violet);">
+        <h3 style="color: var(--violet-neon); border-bottom: 1px solid var(--border-violet); padding-bottom: 8px; margin-bottom: 12px;">
+          <span>💼 Immeuble PCM (6 Profils Process Com)</span>
+          <span style="font-size:11px; font-weight:800; color:var(--cyan-neon); background:rgba(0,229,255,0.1); padding:2px 8px; border-radius:10px; border:1px solid var(--border-cyan);" id="pcmDominantBadge">Base: Calcul...</span>
+        </h3>
+        <div class="pcm-building-stack">
+          <div class="pcm-floor-item" id="floor-pcm-thinker">
+            <span class="pcm-floor-label" style="color:var(--pcm-thinker);"><i class="fa-solid fa-briefcase"></i> Travaillomane (Thinker)</span>
+            <div class="pcm-score-wrapper">
+              <div class="pcm-mini-bar-bg"><div class="pcm-mini-bar-fill" id="bar-pcm-thinker" style="background:var(--pcm-thinker); box-shadow:0 0 8px var(--pcm-thinker);"></div></div>
+              <span id="score-pcm-thinker" class="pcm-score-val" style="color:var(--pcm-thinker);">0%</span>
+            </div>
+          </div>
+          <div class="pcm-floor-item" id="floor-pcm-persister">
+            <span class="pcm-floor-label" style="color:var(--pcm-persister);"><i class="fa-solid fa-landmark"></i> Persévérant (Persister)</span>
+            <div class="pcm-score-wrapper">
+              <div class="pcm-mini-bar-bg"><div class="pcm-mini-bar-fill" id="bar-pcm-persister" style="background:var(--pcm-persister); box-shadow:0 0 8px var(--pcm-persister);"></div></div>
+              <span id="score-pcm-persister" class="pcm-score-val" style="color:var(--pcm-persister);">0%</span>
+            </div>
+          </div>
+          <div class="pcm-floor-item" id="floor-pcm-promoter">
+            <span class="pcm-floor-label" style="color:var(--pcm-promoter);"><i class="fa-solid fa-bolt"></i> Promoteur (Promoter)</span>
+            <div class="pcm-score-wrapper">
+              <div class="pcm-mini-bar-bg"><div class="pcm-mini-bar-fill" id="bar-pcm-promoter" style="background:var(--pcm-promoter); box-shadow:0 0 8px var(--pcm-promoter);"></div></div>
+              <span id="score-pcm-promoter" class="pcm-score-val" style="color:var(--pcm-promoter);">0%</span>
+            </div>
+          </div>
+          <div class="pcm-floor-item" id="floor-pcm-harmonizer">
+            <span class="pcm-floor-label" style="color:var(--pcm-harmonizer);"><i class="fa-solid fa-handshake"></i> Empathique (Harmonizer)</span>
+            <div class="pcm-score-wrapper">
+              <div class="pcm-mini-bar-bg"><div class="pcm-mini-bar-fill" id="bar-pcm-harmonizer" style="background:var(--pcm-harmonizer); box-shadow:0 0 8px var(--pcm-harmonizer);"></div></div>
+              <span id="score-pcm-harmonizer" class="pcm-score-val" style="color:var(--pcm-harmonizer);">0%</span>
+            </div>
+          </div>
+          <div class="pcm-floor-item" id="floor-pcm-rebel">
+            <span class="pcm-floor-label" style="color:var(--pcm-rebel);"><i class="fa-solid fa-palette"></i> Rebelle (Rebel)</span>
+            <div class="pcm-score-wrapper">
+              <div class="pcm-mini-bar-bg"><div class="pcm-mini-bar-fill" id="bar-pcm-rebel" style="background:var(--pcm-rebel); box-shadow:0 0 8px var(--pcm-rebel);"></div></div>
+              <span id="score-pcm-rebel" class="pcm-score-val" style="color:var(--pcm-rebel);">0%</span>
+            </div>
+          </div>
+          <div class="pcm-floor-item" id="floor-pcm-imaginer">
+            <span class="pcm-floor-label" style="color:var(--pcm-imaginer);"><i class="fa-solid fa-shield-cat"></i> Imaginatif (Imaginer)</span>
+            <div class="pcm-score-wrapper">
+              <div class="pcm-mini-bar-bg"><div class="pcm-mini-bar-fill" id="bar-pcm-imaginer" style="background:var(--pcm-imaginer); box-shadow:0 0 8px var(--pcm-imaginer);"></div></div>
+              <span id="score-pcm-imaginer" class="pcm-score-val" style="color:var(--pcm-imaginer);">0%</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- SCRIPT & POSTURE CONSEILLÉE IA -->
+      <div class="ai-script-box">
+        <h4><i class="fa-solid fa-brain"></i> Recommandation de Posture & Closing</h4>
+        <div id="aiScriptContent">
+          Sélectionnez les réponses au sondage pour générer la stratégie de négociation sur-mesure.
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <script>
+    // 26 QUESTIONS DATA WITH PSYCHOMETRIC WEIGHT MATRIX
+    const QUESTIONS_DATA = [
+      // PILIER 1 : FERMETÉ TARIFATION
+      {
+        id: 1, pillar: "1. Négociation & Fermeté Tarifaire",
+        text: "Q1. Votre entreprise vend-elle en B2B à des interlocuteurs internationaux ?",
+        options: [
+          { label: "Oui (Marché International Export)", weights: { disc: { blue: 15, red: 10 }, pcm: { thinker: 20, promoter: 10 } } },
+          { label: "Non (France Uniquement)", weights: { disc: { green: 15 }, pcm: { harmonizer: 15 } } }
+        ]
+      },
+      {
+        id: 2, pillar: "1. Négociation & Fermeté Tarifaire",
+        text: "Q2. Quel est le volume de votre force de vente négociant en langue seconde (Anglais) ?",
+        options: [
+          { label: "1 à 5 commerciaux", weights: { disc: { green: 10 }, pcm: { harmonizer: 10 } } },
+          { label: "6 à 20 commerciaux", weights: { disc: { yellow: 15 }, pcm: { thinker: 15 } } },
+          { label: "Plus de 20 commerciaux", weights: { disc: { red: 20 }, pcm: { promoter: 20 } } }
+        ]
+      },
+      {
+        id: 3, pillar: "1. Négociation & Fermeté Tarifaire",
+        text: "Q3. Quelle est la réaction type de vos équipes lors d'une demande de remise de 5% sous pression ?",
+        options: [
+          { label: "Défense ferme (0% cédé - Marge préservée)", weights: { disc: { red: 25 }, pcm: { persister: 25 } } },
+          { label: "Concession partielle (-1.5%)", weights: { disc: { blue: 15 }, pcm: { thinker: 15 } } },
+          { label: "Alignement direct (-5% concédé)", weights: { disc: { green: 20 }, pcm: { harmonizer: 20 } } }
+        ]
+      },
+      {
+        id: 4, pillar: "1. Négociation & Fermeté Tarifaire",
+        text: "Q4. Face à un diktat tarifaire d'un acheteur anglo-saxon, vos commerciaux négocient-ils la valeur ?",
+        options: [
+          { label: "Recadrage factuel sur le ROI", weights: { disc: { red: 20, blue: 15 }, pcm: { thinker: 25 } } },
+          { label: "Argumentation hésitante", weights: { disc: { green: 15 }, pcm: { harmonizer: 15 } } },
+          { label: "Acceptation des conditions imposées", weights: { disc: { yellow: 10 }, pcm: { rebel: 10 } } }
+        ]
+      },
+      {
+        id: 5, pillar: "1. Négociation & Fermeté Tarifaire",
+        text: "Q5. Vos commerciaux incluent-ils des garanties ou services gratuits en fin de négociation ?",
+        options: [
+          { label: "Jamais (Chaque option est facturée)", weights: { disc: { red: 20 }, pcm: { persister: 20 } } },
+          { label: "Parfois sous la pression de l'acheteur", weights: { disc: { yellow: 15 }, pcm: { promoter: 15 } } },
+          { label: "Systématiquement pour clore le contrat", weights: { disc: { green: 20 }, pcm: { harmonizer: 20 } } }
+        ]
+      },
+      {
+        id: 6, pillar: "1. Négociation & Fermeté Tarifaire",
+        text: "Q6. Quel est le taux estimé de fuite de marge nette sur vos contrats internationaux ?",
+        options: [
+          { label: "0 % à 1 % (Marge parfaitement maîtrisée)", weights: { disc: { blue: 25 }, pcm: { thinker: 25 } } },
+          { label: "3 % (Moyenne sectorielle McKinsey)", weights: { disc: { yellow: 15 }, pcm: { promoter: 15 } } },
+          { label: "5.4 % (Fuite de marge critique)", weights: { disc: { red: 25 }, pcm: { persister: 20 } } }
+        ]
+      },
+
+      // PILIER 2 : NUANCE LINGUISTIQUE
+      {
+        id: 7, pillar: "2. Nuance Linguistique & Foreign-Language Effect",
+        text: "Q7. Vos commerciaux subissent-ils le 'Foreign-Language Effect' (-30% d'impact persuasif en L2) ?",
+        options: [
+          { label: "Non (Bilinguisme parfait & fermeté absolue)", weights: { disc: { red: 20 }, pcm: { promoter: 20 } } },
+          { label: "Légère perte de repartie sous tension", weights: { disc: { blue: 15 }, pcm: { thinker: 15 } } },
+          { label: "Perte d'autorité nette face aux natifs US/UK", weights: { disc: { green: 25 }, pcm: { harmonizer: 20 } } }
+        ]
+      },
+      {
+        id: 8, pillar: "2. Nuance Linguistique & Foreign-Language Effect",
+        text: "Q8. La précision des termes juridiques et contractuels est-elle fluide sous stress oral ?",
+        options: [
+          { label: "Excellente maîtrise contractuelle en anglais", weights: { disc: { blue: 25 }, pcm: { thinker: 25 } } },
+          { label: "Approximations fréquentes sur les pénalités", weights: { disc: { yellow: 15 }, pcm: { rebel: 15 } } }
+        ]
+      },
+      {
+        id: 9, pillar: "2. Nuance Linguistique & Foreign-Language Effect",
+        text: "Q9. Vos équipes décodent-elles l'humour à froid et la subtilité des acheteurs US/UK ?",
+        options: [
+          { label: "Oui, décodage culturel parfait", weights: { disc: { yellow: 20 }, pcm: { promoter: 20 } } },
+          { label: "Non, incompréhension et malaise fréquents", weights: { disc: { green: 15 }, pcm: { imaginer: 15 } } }
+        ]
+      },
+      {
+        id: 10, pillar: "2. Nuance Linguistique & Foreign-Language Effect",
+        text: "Q10. Observez-vous des silences gênés lorsque l'acheteur étranger feint le désintérêt ?",
+        options: [
+          { label: "Non, relance immédiate avec assurance", weights: { disc: { red: 20 }, pcm: { promoter: 20 } } },
+          { label: "Oui, malaise constaté et concession prématurée", weights: { disc: { green: 20 }, pcm: { harmonizer: 20 } } }
+        ]
+      },
+      {
+        id: 11, pillar: "2. Nuance Linguistique & Foreign-Language Effect",
+        text: "Q11. Le closing de fin de rendez-vous est-il aussi percutant en anglais qu'en français ?",
+        options: [
+          { label: "Impact et fermeté identiques", weights: { disc: { red: 25 }, pcm: { persister: 20 } } },
+          { label: "Perte nette de fermeté en langue seconde", weights: { disc: { blue: 15 }, pcm: { thinker: 15 } } }
+        ]
+      },
+      {
+        id: 12, pillar: "2. Nuance Linguistique & Foreign-Language Effect",
+        text: "Q12. Quel est le niveau d'appréhension perçu avant un rendez-vous avec un C-Level US/UK ?",
+        options: [
+          { label: "Faible (Confiance totale des équipes)", weights: { disc: { red: 20 }, pcm: { promoter: 20 } } },
+          { label: "Modéré", weights: { disc: { yellow: 10 }, pcm: { thinker: 10 } } },
+          { label: "Élevé (Stress et réticence constatés)", weights: { disc: { green: 25 }, pcm: { harmonizer: 20 } } }
+        ]
+      },
+
+      // PILIER 3 : DÉCODAGE PSYCHOMÉTRIQUE
+      {
+        id: 13, pillar: "3. Décodage Psychométrique DISC / PCM",
+        text: "Q13. Quel est le rôle principal du décisionnaire interlocuteur ?",
+        options: [
+          { label: "VP Sales / Directeur Commercial", weights: { disc: { red: 20 }, pcm: { promoter: 20 } } },
+          { label: "Directeur Général / CEO", weights: { disc: { red: 25 }, pcm: { persister: 20 } } },
+          { label: "DRH / Responsable Formation", weights: { disc: { green: 20 }, pcm: { harmonizer: 20 } } }
+        ]
+      },
+      {
+        id: 14, pillar: "3. Décodage Psychométrique DISC / PCM",
+        text: "Q14. Profil DISC prédominant perçu chez l'acheteur cible :",
+        options: [
+          { label: "🔴 Dominant (D) — Directif, axé ROI et rapidité", weights: { disc: { red: 35 }, pcm: { promoter: 15 } } },
+          { label: "🟡 Influent (I) — Enthousiaste, axé vision & prestige", weights: { disc: { yellow: 35 }, pcm: { rebel: 15 } } },
+          { label: "🟢 Stable (S) — Méthodique, axé sécurité & écoute", weights: { disc: { green: 35 }, pcm: { harmonizer: 15 } } },
+          { label: "🔵 Consciencieux (C) — Précis, axé données & conformité", weights: { disc: { blue: 35 }, pcm: { thinker: 15 } } }
+        ]
+      },
+      {
+        id: 15, pillar: "3. Décodage Psychométrique DISC / PCM",
+        text: "Q15. Base Process Com (PCM) prédominante de l'interlocuteur :",
+        options: [
+          { label: "💼 Travaillomane — Logique, faits et organisation", weights: { disc: { blue: 15 }, pcm: { thinker: 35 } } },
+          { label: "🏛️ Persévérant — Valeurs, opinions et convictions", weights: { disc: { red: 15 }, pcm: { persister: 35 } } },
+          { label: "⚡ Promoteur — Challenge, action et adaptabilité", weights: { disc: { red: 15 }, pcm: { promoter: 35 } } },
+          { label: "🤝 Empathique — Compassion, harmonie et bien-être", weights: { disc: { green: 15 }, pcm: { harmonizer: 35 } } },
+          { label: "🎨 Rebelle — Spontanéité, créativité et ludique", weights: { disc: { yellow: 15 }, pcm: { rebel: 35 } } },
+          { label: "🌌 Rêveur — Calme, imagination et réflexion", weights: { disc: { green: 15 }, pcm: { imaginer: 35 } } }
+        ]
+      },
+      {
+        id: 16, pillar: "3. Décodage Psychométrique DISC / PCM",
+        text: "Q16. Canal de communication préférentiel attendu par l'acheteur :",
+        options: [
+          { label: "Factuel & Données Chiffrées (Data-Driven)", weights: { disc: { blue: 25 }, pcm: { thinker: 25 } } },
+          { label: "Relationnel & Vision Stratégique", weights: { disc: { yellow: 20 }, pcm: { persister: 20 } } }
+        ]
+      },
+      {
+        id: 17, pillar: "3. Décodage Psychométrique DISC / PCM",
+        text: "Q17. Comportement de l'acheteur sous pression de négociation :",
+        options: [
+          { label: "Attaque directe / Pression sur les prix", weights: { disc: { red: 30 }, pcm: { promoter: 25 } } },
+          { label: "Retrait analytique silencieux", weights: { disc: { blue: 25 }, pcm: { thinker: 25 } } }
+        ]
+      },
+      {
+        id: 18, pillar: "3. Décodage Psychométrique DISC / PCM",
+        text: "Q18. Sensibilité de l'interlocuteur aux preuves d'impact (McKinsey, HBR) :",
+        options: [
+          { label: "Très sensible aux études officielles", weights: { disc: { blue: 20 }, pcm: { persister: 20 } } },
+          { label: "Focalisé uniquement sur le prix net", weights: { disc: { red: 20 }, pcm: { promoter: 20 } } }
+        ]
+      },
+      {
+        id: 19, pillar: "3. Décodage Psychométrique DISC / PCM",
+        text: "Q19. Réaction face à la démonstration du manque à gagner financier :",
+        options: [
+          { label: "Prise de conscience immédiate et urgence d'action", weights: { disc: { red: 25 }, pcm: { promoter: 25 } } },
+          { label: "Scepticisme initial et besoin de preuves complémentaires", weights: { disc: { blue: 20 }, pcm: { thinker: 20 } } }
+        ]
+      },
+      {
+        id: 20, pillar: "3. Décodage Psychométrique DISC / PCM",
+        text: "Q20. Niveau de maturité de l'entreprise sur l'entraînement psychométrique :",
+        options: [
+          { label: "Déjà formé au DISC/PCM par le passé", weights: { disc: { blue: 15 }, pcm: { thinker: 15 } } },
+          { label: "Découverte complète du décodage comportemental", weights: { disc: { yellow: 20 }, pcm: { rebel: 20 } } }
+        ]
+      },
+
+      // PILIER 4 : ALIGNEMENT TACTIQUE
+      {
+        id: 21, pillar: "4. Alignement & Exécution Tactique",
+        text: "Q21. Une consultation du CSE (Comité Social et Économique) est-elle nécessaire ?",
+        options: [
+          { label: "Oui, consultation requise", weights: { disc: { green: 20 }, pcm: { harmonizer: 20 } } },
+          { label: "Non, décision directe de direction", weights: { disc: { red: 20 }, pcm: { promoter: 20 } } }
+        ]
+      },
+      {
+        id: 22, pillar: "4. Alignement & Exécution Tactique",
+        text: "Q22. Préférence entre entraînement confidentiel vs reporting RH agrégé :",
+        options: [
+          { label: "Module vocal IA 100% confidentiel", weights: { disc: { green: 15 }, pcm: { harmonizer: 15 } } },
+          { label: "Dashboard de suivi RH agrégé", weights: { disc: { blue: 20 }, pcm: { thinker: 20 } } }
+        ]
+      },
+      {
+        id: 23, pillar: "4. Alignement & Exécution Tactique",
+        text: "Q23. Format d'accompagnement privilégié :",
+        options: [
+          { label: "High-Ticket Coach 1-sur-1 (2 000 € HT)", weights: { disc: { red: 25 }, pcm: { promoter: 25 } } },
+          { label: "Abonnement SaaS mensuel d'équipe", weights: { disc: { yellow: 20 }, pcm: { thinker: 20 } } }
+        ]
+      },
+      {
+        id: 24, pillar: "4. Alignement & Exécution Tactique",
+        text: "Q24. Délai souhaité pour le lancement de l'entraînement des équipes :",
+        options: [
+          { label: "Immédiat (Sous 15 jours)", weights: { disc: { red: 25 }, pcm: { promoter: 25 } } },
+          { label: "Prochain trimestre", weights: { disc: { green: 15 }, pcm: { thinker: 15 } } }
+        ]
+      },
+      {
+        id: 25, pillar: "4. Alignement & Exécution Tactique",
+        text: "Q25. Accord pour évaluation post-audit avec étude de cas et témoignage :",
+        options: [
+          { label: "Oui (Accès prioritaire Programme Bêta)", weights: { disc: { yellow: 25 }, pcm: { promoter: 20 } } },
+          { label: "Non", weights: { disc: { blue: 15 }, pcm: { thinker: 15 } } }
+        ]
+      },
+      {
+        id: 26, pillar: "4. Alignement & Exécution Tactique",
+        text: "Q26. Validation de la réservation de l'Étape 0 (Diagnostic Coach 15 min) :",
+        options: [
+          { label: "Validé (Réservation Immédiate en Visio)", weights: { disc: { red: 30 }, pcm: { promoter: 30 } } },
+          { label: "En attente de confirmation interne", weights: { disc: { green: 15 }, pcm: { persister: 15 } } }
+        ]
+      }
+    ];
+
+    let userSelections = {}; // qId -> optIndex
+    let userNotes = {};      // qId -> noteString
+    let crmLeads = [];
+
+    // Render 26 questions
+    function renderQuestions() {
+      const container = document.getElementById('surveyQuestionsContainer');
+      container.innerHTML = '';
+
+      let currentPillar = '';
+      let pillarCard = null;
+      let pillarCount = 0;
+
+      QUESTIONS_DATA.forEach(q => {
+        if (q.pillar !== currentPillar) {
+          currentPillar = q.pillar;
+          pillarCount++;
+          pillarCard = document.createElement('div');
+          pillarCard.className = 'pillar-card';
+          pillarCard.id = `pillar-block-${pillarCount}`;
+          pillarCard.innerHTML = `<h2><i class="fa-solid fa-layer-group"></i> ${currentPillar}</h2>`;
+          container.appendChild(pillarCard);
+        }
+
+        const isAnswered = userSelections[q.id] !== undefined;
+        const qDiv = document.createElement('div');
+        qDiv.className = `q-item ${isAnswered ? 'answered' : ''}`;
+        qDiv.id = `qitem-${q.id}`;
+
+        let optsHtml = q.options.map((opt, idx) => {
+          const isSel = userSelections[q.id] === idx;
+          return `<button class="opt-btn ${isSel ? 'selected' : ''}" onclick="selectOption(${q.id}, ${idx})">${opt.label}</button>`;
+        }).join('');
+
+        const savedNote = userNotes[q.id] || '';
+
+        qDiv.innerHTML = `
+          <div class="q-header">
+            <div class="q-label">${q.text}</div>
+            <span class="q-badge-weight">Q${q.id}</span>
+          </div>
+          <div class="q-options">${optsHtml}</div>
+          <div class="q-note-box">
+            <input type="text" class="q-note-input" placeholder="💬 Notes & verbatims prospect sur la Q${q.id}..." 
+                   value="${savedNote}" oninput="saveQuestionNote(${q.id}, this.value)">
+          </div>
+        `;
+        pillarCard.appendChild(qDiv);
+      });
+    }
+
+    function scrollToPillar(pillarNum) {
+      const target = document.getElementById(`pillar-block-${pillarNum}`);
+      if (target) {
+        target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      }
+    }
+
+    function scrollToMethodology() {
+      const mDiv = document.getElementById('brique-methodologie');
+      if (mDiv) {
+        const body = document.getElementById('methodologyBody');
+        if (body && body.style.display === 'none') {
+          body.style.display = 'block';
+          document.getElementById('methodoChevron').className = 'fa-solid fa-chevron-up';
+        }
+        mDiv.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      }
+    }
+
+    function toggleMethodologyDetails() {
+      const body = document.getElementById('methodologyBody');
+      const chev = document.getElementById('methodoChevron');
+      if (body.style.display === 'none') {
+        body.style.display = 'block';
+        chev.className = 'fa-solid fa-chevron-up';
+      } else {
+        body.style.display = 'none';
+        chev.className = 'fa-solid fa-chevron-down';
+      }
+    }
+
+    function selectOption(qId, optIdx) {
+      if (userSelections[qId] === optIdx) {
+        delete userSelections[qId]; // Toggle off if clicked twice
+      } else {
+        userSelections[qId] = optIdx;
+      }
+      renderQuestions();
+      recalculatePsychometrics();
+    }
+
+    function saveQuestionNote(qId, noteText) {
+      userNotes[qId] = noteText;
+    }
+
+    // DYNAMIC PSYCHOMETRIC SENSOR ENGINE
+    function recalculatePsychometrics() {
+      const discScores = { red: 0, yellow: 0, green: 0, blue: 0 };
+      const pcmScores = { thinker: 0, persister: 0, promoter: 0, harmonizer: 0, rebel: 0, imaginer: 0 };
+
+      Object.keys(userSelections).forEach(qIdStr => {
+        const qId = parseInt(qIdStr, 10);
+        const optIdx = userSelections[qId];
+        const qData = QUESTIONS_DATA.find(q => q.id === qId);
+        if (qData && qData.options[optIdx]) {
+          const w = qData.options[optIdx].weights;
+          if (w.disc) {
+            Object.keys(w.disc).forEach(k => { discScores[k] += w.disc[k]; });
+          }
+          if (w.pcm) {
+            Object.keys(w.pcm).forEach(k => { pcmScores[k] += w.pcm[k]; });
+          }
+        }
+      });
+
+      // Update Summary Header Progress Badges
+      const p1Count = [1,2,3,4,5,6].filter(id => userSelections[id] !== undefined).length;
+      const p2Count = [7,8,9,10,11,12].filter(id => userSelections[id] !== undefined).length;
+      const p3Count = [13,14,15,16,17,18,19,20].filter(id => userSelections[id] !== undefined).length;
+      const p4Count = [21,22,23,24,25,26].filter(id => userSelections[id] !== undefined).length;
+      const totalAns = p1Count + p2Count + p3Count + p4Count;
+
+      if (document.getElementById('badge-p1')) {
+        document.getElementById('badge-p1').innerText = `${p1Count}/6 Q`;
+        document.getElementById('pbar-p1').style.width = `${(p1Count / 6) * 100}%`;
+        document.getElementById('badge-p2').innerText = `${p2Count}/6 Q`;
+        document.getElementById('pbar-p2').style.width = `${(p2Count / 6) * 100}%`;
+        document.getElementById('badge-p3').innerText = `${p3Count}/8 Q`;
+        document.getElementById('pbar-p3').style.width = `${(p3Count / 8) * 100}%`;
+        document.getElementById('badge-p4').innerText = `${p4Count}/6 Q`;
+        document.getElementById('pbar-p4').style.width = `${(p4Count / 6) * 100}%`;
+        document.getElementById('overallCompletionBadge').innerText = `${totalAns} / 26 Questions Répondues (${Math.round((totalAns / 26) * 100)}%)`;
+      }
+
+      // Normalize DISC %
+      const discTotal = Object.values(discScores).reduce((a, b) => a + b, 0) || 1;
+      const discPct = {
+        red: Math.round((discScores.red / discTotal) * 100),
+        yellow: Math.round((discScores.yellow / discTotal) * 100),
+        green: Math.round((discScores.green / discTotal) * 100),
+        blue: Math.round((discScores.blue / discTotal) * 100)
+      };
+
+      // Normalize PCM %
+      const pcmTotal = Object.values(pcmScores).reduce((a, b) => a + b, 0) || 1;
+      const pcmPct = {
+        thinker: Math.round((pcmScores.thinker / pcmTotal) * 100),
+        persister: Math.round((pcmScores.persister / pcmTotal) * 100),
+        promoter: Math.round((pcmScores.promoter / pcmTotal) * 100),
+        harmonizer: Math.round((pcmScores.harmonizer / pcmTotal) * 100),
+        rebel: Math.round((pcmScores.rebel / pcmTotal) * 100),
+        imaginer: Math.round((pcmScores.imaginer / pcmTotal) * 100)
+      };
+
+      // Update DISC Gauges DOM
+      Object.keys(discPct).forEach(k => {
+        const bar = document.getElementById(`bar-disc-${k}`);
+        const score = document.getElementById(`score-disc-${k}`);
+        if (bar) bar.style.width = `${discPct[k]}%`;
+        if (score) score.innerText = `${discPct[k]}%`;
+      });
+
+      // Update PCM Stack DOM
+      Object.keys(pcmPct).forEach(k => {
+        const bar = document.getElementById(`bar-pcm-${k}`);
+        const score = document.getElementById(`score-pcm-${k}`);
+        if (bar) bar.style.width = `${pcmPct[k]}%`;
+        if (score) score.innerText = `${pcmPct[k]}%`;
+      });
+
+      // Find Dominant DISC
+      const topDISCKey = Object.keys(discPct).reduce((a, b) => discPct[a] > discPct[b] ? a : b);
+      const discLabels = { red: "🔴 Dominant (D)", yellow: "🟡 Influent (I)", green: "🟢 Stable (S)", blue: "🔵 Consciencieux (C)" };
+      document.getElementById('discDominantBadge').innerText = `Dominant: ${discLabels[topDISCKey]}`;
+
+      // Find Dominant PCM
+      const topPCMKey = Object.keys(pcmPct).reduce((a, b) => pcmPct[a] > pcmPct[b] ? a : b);
+      const pcmLabels = { thinker: "💼 Travaillomane", persister: "🏛️ Persévérant", promoter: "⚡ Promoteur", harmonizer: "🤝 Empathique", rebel: "🎨 Rebelle", imaginer: "🌌 Rêveur" };
+      document.getElementById('pcmDominantBadge').innerText = `Base: ${pcmLabels[topPCMKey]}`;
+
+      // Highlight dominant PCM floor in stack
+      document.querySelectorAll('.pcm-floor-item').forEach(el => el.classList.remove('dominant'));
+      const domFloor = document.getElementById(`floor-pcm-${topPCMKey}`);
+      if (domFloor) domFloor.classList.add('dominant');
+
+      // Update AI Script Recommendation Content
+      updateAIScriptRecommendation(topDISCKey, topPCMKey);
+    }
+
+    function updateAIScriptRecommendation(discKey, pcmKey) {
+      const scriptBox = document.getElementById('aiScriptContent');
+      let recs = {
+        red: {
+          title: "POSTURE DIRECTE & ROI NORMÉ (Profil Dominant)",
+          vocab: "EBITDA, ROI net, Chiffres bruts, Marge préservée",
+          avoid: "Ne pas faire de longs préambules ou d'hésitations",
+          closing: "Proposer 2 créneaux d'arbitrage fermes (Ex: Mardi 10h ou Jeudi 14h)."
+        },
+        yellow: {
+          title: "POSTURE VISION & PRESTIGE (Profil Influent)",
+          vocab: "Exclusivité, Prestige, Avantage concurrentiel, Réseau",
+          avoid: "Ne pas assommer de détails techniques secondaires",
+          closing: "Insister sur la valeur de la marque et la visibilité."
+        },
+        green: {
+          title: "POSTURE SÉCURITÉ & MÉTHODE (Profil Stable)",
+          vocab: "Garanties, Méthodologie éprouvée, Accompagnement",
+          avoid: "Ne pas mettre de pression temporelle agressive",
+          closing: "Rassurer sur le déroulé étape par étape sans risque."
+        },
+        blue: {
+          title: "POSTURE DATA & PREUVES (Profil Consciencieux)",
+          vocab: "Sources McKinsey, HBR, Benchmarks, Calcul exact",
+          avoid: "Ne pas avancer d'affirmations sans sources cliquables",
+          closing: "Fournir l'étude chiffrée complète et la méthodologie."
+        }
+      };
+
+      const cur = recs[discKey] || recs.red;
+      scriptBox.innerHTML = `
+        <h4><i class="fa-solid fa-bullseye"></i> ${cur.title}</h4>
+        <div style="margin-bottom:6px;">💬 <strong>Vocabulaire Clé :</strong> ${cur.vocab}</div>
+        <div style="margin-bottom:6px; color:var(--coral-accent);">❌ <strong>Piège à Éviter :</strong> ${cur.avoid}</div>
+        <div style="color:var(--lime-accent);">🎯 <strong>Closing Conseillé :</strong> ${cur.closing}</div>
+      `;
+    }
+
+    // CRM PERSISTENCE & LOAD
+    function populateCRMProspects() {
+      crmLeads = JSON.parse(localStorage.getItem('QUESTIA LAB_CRM_LEADS') || '[]');
+      const select = document.getElementById('prospectSelect');
+      if (!select) return;
+      select.innerHTML = '<option value="">-- Sélectionner un Prospect CRM --</option>';
+
+      const activeLeadId = localStorage.getItem('QUESTIA_ACTIVE_LEAD_ID');
+      let targetIdx = -1;
+
+      crmLeads.forEach((lead, i) => {
+        const opt = document.createElement('option');
+        opt.value = i;
+        opt.innerText = `🏢 ${lead.company} (${lead.contact}) [👤 ${lead.assignedCaller || 'Julien'}]`;
+        if (activeLeadId && lead.id === activeLeadId) targetIdx = i;
+        select.appendChild(opt);
+      });
+
+      if (targetIdx >= 0) {
+        select.value = targetIdx;
+        onSelectProspect(targetIdx.toString());
+      }
+    }
+
+    function onSelectProspect(idxStr) {
+      if (idxStr === "") return;
+      const idx = parseInt(idxStr, 10);
+      const lead = crmLeads[idx];
+      if (!lead) return;
+
+      document.getElementById('cCompany').value = lead.company;
+      document.getElementById('cContact').value = `${lead.contact} (${lead.title || 'VP Sales'})`;
+      document.getElementById('cRevenue').value = lead.revenue || 15000000;
+
+      // Restore selections and notes if available
+      if (lead.answers) {
+        userSelections = {};
+        userNotes = {};
+        Object.keys(lead.answers).forEach(k => {
+          if (k.endsWith('_note')) {
+            const qId = parseInt(k.replace('q', '').replace('_note', ''), 10);
+            userNotes[qId] = lead.answers[k];
+          } else if (!isNaN(k)) {
+            userSelections[parseInt(k, 10)] = lead.answers[k];
+          }
+        });
+        renderQuestions();
+        recalculatePsychometrics();
+      }
+    }
+
+    function saveAuditToCRM() {
+      const company = document.getElementById('cCompany').value || "Airbus Subcontracting SAS";
+      const contact = document.getElementById('cContact').value || "Jean-Claude VASSEUR";
+      const rev = parseFloat(document.getElementById('cRevenue').value) || 15000000;
+
+      let answersPayload = { ...userSelections };
+      Object.keys(userNotes).forEach(qId => {
+        if (userNotes[qId]) {
+          answersPayload['q' + qId + '_note'] = userNotes[qId];
+        }
+      });
+
+      let existingIdx = crmLeads.findIndex(l => l.company.toLowerCase() === company.toLowerCase());
+      let caller = existingIdx >= 0 ? crmLeads[existingIdx].assignedCaller : 'Julien';
+
+      let leadObj = {
+        id: existingIdx >= 0 ? crmLeads[existingIdx].id : "QUESTIA LAB-" + (crmLeads.length + 1),
+        company: company,
+        contact: contact,
+        title: "VP Commercial / DG",
+        revenue: rev,
+        leak: 4.2,
+        disc: document.getElementById('discDominantBadge').innerText.replace('Dominant: ', ''),
+        pcm: document.getElementById('pcmDominantBadge').innerText.replace('Base: ', ''),
+        status: "Sondage Psychométrique Réalisé (Live)",
+        nextAction: "Transmission Note Personnalisée & RDV Visio",
+        assignedCaller: caller,
+        answers: answersPayload
+      };
+
+      if (existingIdx >= 0) {
+        crmLeads[existingIdx] = leadObj;
+      } else {
+        crmLeads.push(leadObj);
+      }
+
+      localStorage.setItem('QUESTIA LAB_CRM_LEADS', JSON.stringify(crmLeads));
+      alert(`✅ Sondage Psychométrique Temps Réel sauvegardé dans le CRM QuestIA LAB !\n\nProspect : ${company}\nProfil DISC : ${leadObj.disc}\nBase PCM : ${leadObj.pcm}`);
+    }
+
+    // INITIALIZATION
+    renderQuestions();
+    recalculatePsychometrics();
+    populateCRMProspects();
+
+    // 30 min timer
+    let sec = 1800;
+    setInterval(() => {
+      if (sec > 0) {
+        sec--;
+        let m = Math.floor(sec / 60);
+        let s = sec % 60;
+        document.getElementById('timerDisplay').innerText = 
+          (m < 10 ? '0' + m : m) + ':' + (s < 10 ? '0' + s : s);
+      }
+    }, 1000);
+  </script>
+</body>
+</html>
