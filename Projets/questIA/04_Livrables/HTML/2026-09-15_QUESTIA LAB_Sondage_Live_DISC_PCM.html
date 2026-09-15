@@ -210,6 +210,21 @@
     .pillar-tag.p2 { background: rgba(123, 92, 255, 0.15); color: var(--violet-neon); border: 1px solid var(--border-violet); }
     .pillar-tag.p3 { background: rgba(255, 214, 0, 0.15); color: var(--disc-yellow); border: 1px solid rgba(255, 214, 0, 0.3); }
     .pillar-tag.p4 { background: rgba(184, 255, 61, 0.15); color: var(--lime-accent); border: 1px solid rgba(184, 255, 61, 0.3); }
+    .pillar-tag.p5 { background: rgba(255, 90, 106, 0.15); color: var(--coral-accent); border: 1px solid rgba(255, 90, 106, 0.3); }
+
+    .legal-warning-box {
+      background: rgba(255, 90, 106, 0.12);
+      border: 1px solid var(--coral-accent);
+      border-radius: 8px;
+      padding: 8px 12px;
+      margin-bottom: 10px;
+      font-size: 11.5px;
+      color: #FF5A6A;
+      font-weight: 600;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
 
     .pillar-qcount {
       font-family: 'JetBrains Mono', monospace;
@@ -666,56 +681,67 @@
     <!-- LEFT COLUMN: 26 QUESTIONS WITH NOTES -->
     <div class="survey-column">
       
-      <!-- RECAPITULATIF DES 4 BLOCS DU QUESTIONNAIRE EN DEBUT DE PAGE -->
+      <!-- RECAPITULATIF DES SECTIONS DU QUESTIONNAIRE VOLET RH (25 QUESTIONS & FILTRES) -->
       <div class="pillar-summary-container">
         <div class="pillar-summary-header">
-          <h3><i class="fa-solid fa-list-check"></i> Récapitulatif des 4 Piliers du Diagnostic (26 Questions)</h3>
-          <span class="pillar-summary-badge" id="overallCompletionBadge">0 / 26 Questions Répondues (0%)</span>
+          <h3><i class="fa-solid fa-list-check"></i> Récapitulatif Volet RH / Prescripteur (25 Questions & Filtres)</h3>
+          <span class="pillar-summary-badge" id="overallCompletionBadge">0 / 25 Évaluations Répondues (0%)</span>
         </div>
         
         <div class="pillar-summary-grid">
-          <!-- PILIER 1 -->
+          <!-- SECTION A -->
           <div class="pillar-summary-card" onclick="scrollToPillar(1)">
             <div class="pillar-summary-card-header">
-              <span class="pillar-tag p1">Pilier 1</span>
-              <span class="pillar-qcount" id="badge-p1">0/6 Q</span>
+              <span class="pillar-tag p1">Section A</span>
+              <span class="pillar-qcount" id="badge-p1">0/5 Q</span>
             </div>
-            <h4>1. Négociation & Fermeté Tarifaire</h4>
-            <p>Marge export, concessions & fuites de marge (Q1 à Q6)</p>
+            <h4>1. Entreprise, Rôle & Qualification</h4>
+            <p>Filtres B2B, effectif anglophone, rôle & outils actuels (F1-F2, Q1 à Q5)</p>
             <div class="pillar-progress-bar"><div class="pillar-progress-fill" id="pbar-p1"></div></div>
           </div>
 
-          <!-- PILIER 2 -->
+          <!-- SECTION B -->
           <div class="pillar-summary-card" onclick="scrollToPillar(2)">
             <div class="pillar-summary-card-header">
-              <span class="pillar-tag p2">Pilier 2</span>
-              <span class="pillar-qcount" id="badge-p2">0/6 Q</span>
+              <span class="pillar-tag p2">Section B</span>
+              <span class="pillar-qcount" id="badge-p2">0/4 Q</span>
             </div>
-            <h4>2. Nuance Linguistique & L2 Effect</h4>
-            <p>Perte d'autorité en anglais & décodage US/UK (Q7 à Q12)</p>
+            <h4>2. Gouvernance, CSE & Vigilance AI Act</h4>
+            <p>Initiation d'achat, consultation CSE (L2312-38) & risques AI Act (Q6 à Q10)</p>
             <div class="pillar-progress-bar"><div class="pillar-progress-fill" id="pbar-p2"></div></div>
           </div>
 
-          <!-- PILIER 3 -->
+          <!-- SECTION C & D -->
           <div class="pillar-summary-card" onclick="scrollToPillar(3)">
             <div class="pillar-summary-card-header">
-              <span class="pillar-tag p3">Pilier 3</span>
-              <span class="pillar-qcount" id="badge-p3">0/8 Q</span>
+              <span class="pillar-tag p3">Section C & D</span>
+              <span class="pillar-qcount" id="badge-p3">0/7 Q</span>
             </div>
-            <h4>3. Décodage Psychométrique DISC/PCM</h4>
-            <p>Détection profils DISC, base PCM & canal cible (Q13 à Q20)</p>
+            <h4>3. Besoins Linguistiques & Fonctionnalités</h4>
+            <p>Freins oral/technique, coach IA, avatar & conformité émotionnelle (Q11 à Q20)</p>
             <div class="pillar-progress-bar"><div class="pillar-progress-fill" id="pbar-p3"></div></div>
           </div>
 
-          <!-- PILIER 4 -->
+          <!-- SECTION E -->
           <div class="pillar-summary-card" onclick="scrollToPillar(4)">
             <div class="pillar-summary-card-header">
-              <span class="pillar-tag p4">Pilier 4</span>
-              <span class="pillar-qcount" id="badge-p4">0/6 Q</span>
+              <span class="pillar-tag p4">Section E</span>
+              <span class="pillar-qcount" id="badge-p4">0/4 Q</span>
             </div>
-            <h4>4. Alignement & Exécution Tactique</h4>
-            <p>CSE, budget, abonnement & réservation Étape 0 (Q21 à Q26)</p>
+            <h4>4. Pricing, Budget & Étape 0</h4>
+            <p>Modèle High-Ticket vs SaaS, plafonds & conversion Étape 0 (Q21 à Q26)</p>
             <div class="pillar-progress-bar"><div class="pillar-progress-fill" id="pbar-p4"></div></div>
+          </div>
+
+          <!-- SECTION S -->
+          <div class="pillar-summary-card" onclick="scrollToPillar(5)" style="grid-column: span 2;">
+            <div class="pillar-summary-card-header">
+              <span class="pillar-tag p5">Section S</span>
+              <span class="pillar-qcount" id="badge-p5">0/5 Q</span>
+            </div>
+            <h4>5. Éléments Supplémentaires RH, SIRH & RQTH (Nouveautés 14/09)</h4>
+            <p>LMS existant (ICP Rang A), accessibilité handicap RQTH (L5213-6), identifiants SSO / SIRH, comptes partagés & conservation RGPD (S1, S2, S3.1 à S3.3)</p>
+            <div class="pillar-progress-bar"><div class="pillar-progress-fill" id="pbar-p5"></div></div>
           </div>
         </div>
       </div>
@@ -931,235 +957,232 @@
   </div>
 
   <script>
-    // 26 QUESTIONS DATA WITH PSYCHOMETRIC WEIGHT MATRIX
+    // 25 QUESTIONS & FILTRES DATA (VOLET RH / PRESCRIPTEUR & DISC/PCM)
     const QUESTIONS_DATA = [
-      // PILIER 1 : FERMETÉ TARIFATION
+      // 1. FILTRES & SECTION A : ENTREPRISE ET RÔLE (Q1 à Q5 + F1/F2)
       {
-        id: 1, pillar: "1. Négociation & Fermeté Tarifaire",
-        text: "Q1. Votre entreprise vend-elle en B2B à des interlocuteurs internationaux ?",
+        id: "F1", pillar: "1. Entreprise, Rôle & Qualification (Section A)",
+        text: "Filtres d'entrée F1 & F2. Cible B2B International & Volume de l'effectif anglophone :",
         options: [
-          { label: "Oui (Marché International Export)", weights: { disc: { blue: 15, red: 10 }, pcm: { thinker: 20, promoter: 10 } } },
-          { label: "Non (France Uniquement)", weights: { disc: { green: 15 }, pcm: { harmonizer: 15 } } }
+          { label: "B2B International (Plus de 20 commerciaux anglophones)", weights: { disc: { red: 20 }, pcm: { promoter: 20 } } },
+          { label: "B2B International (6 à 20 commerciaux anglophones)", weights: { disc: { yellow: 15 }, pcm: { thinker: 15 } } },
+          { label: "B2B International (1 à 5 commerciaux anglophones)", weights: { disc: { green: 10 }, pcm: { harmonizer: 10 } } },
+          { label: "France Uniquement (0 commercial anglophone)", weights: { disc: { blue: 10 }, pcm: { persister: 10 } } }
         ]
       },
       {
-        id: 2, pillar: "1. Négociation & Fermeté Tarifaire",
-        text: "Q2. Quel est le volume de votre force de vente négociant en langue seconde (Anglais) ?",
+        id: 1, pillar: "1. Entreprise, Rôle & Qualification (Section A)",
+        text: "Q1 & Q2. Secteur d'activité & Taille de l'entreprise (effectif total) :",
         options: [
-          { label: "1 à 5 commerciaux", weights: { disc: { green: 10 }, pcm: { harmonizer: 10 } } },
-          { label: "6 à 20 commerciaux", weights: { disc: { yellow: 15 }, pcm: { thinker: 15 } } },
-          { label: "Plus de 20 commerciaux", weights: { disc: { red: 20 }, pcm: { promoter: 20 } } }
+          { label: "ETI / Groupe International (800 à 2 000+ salariés — ICP Rang A)", weights: { disc: { blue: 25 }, pcm: { thinker: 25 } } },
+          { label: "PME (100 à 799 salariés)", weights: { disc: { yellow: 15 }, pcm: { promoter: 15 } } },
+          { label: "TPE / Startup (< 100 salariés)", weights: { disc: { red: 15 }, pcm: { rebel: 15 } } }
         ]
       },
       {
-        id: 3, pillar: "1. Négociation & Fermeté Tarifaire",
-        text: "Q3. Quelle est la réaction type de vos équipes lors d'une demande de remise de 5% sous pression ?",
+        id: 3, pillar: "1. Entreprise, Rôle & Qualification (Section A)",
+        text: "Q3. Sur quels pôles économiques (Londres, NY, Dublin…) vos équipes opèrent-elles ?",
         options: [
-          { label: "Défense ferme (0% cédé - Marge préservée)", weights: { disc: { red: 25 }, pcm: { persister: 25 } } },
-          { label: "Concession partielle (-1.5%)", weights: { disc: { blue: 15 }, pcm: { thinker: 15 } } },
-          { label: "Alignement direct (-5% concédé)", weights: { disc: { green: 20 }, pcm: { harmonizer: 20 } } }
+          { label: "Pôles Majeurs US / UK / Dublin (Exposition directe aux acheteurs natifs)", weights: { disc: { red: 25 }, pcm: { promoter: 25 } } },
+          { label: "Europe Continentale & APAC", weights: { disc: { blue: 15 }, pcm: { thinker: 15 } } },
+          { label: "Marché local prioritaire", weights: { disc: { green: 15 }, pcm: { harmonizer: 15 } } }
         ]
       },
       {
-        id: 4, pillar: "1. Négociation & Fermeté Tarifaire",
-        text: "Q4. Face à un diktat tarifaire d'un acheteur anglo-saxon, vos commerciaux négocient-ils la valeur ?",
+        id: 4, pillar: "1. Entreprise, Rôle & Qualification (Section A)",
+        text: "Q4. Quel est votre rôle au sein de l'organisation ?",
         options: [
-          { label: "Recadrage factuel sur le ROI", weights: { disc: { red: 20, blue: 15 }, pcm: { thinker: 25 } } },
-          { label: "Argumentation hésitante", weights: { disc: { green: 15 }, pcm: { harmonizer: 15 } } },
-          { label: "Acceptation des conditions imposées", weights: { disc: { yellow: 10 }, pcm: { rebel: 10 } } }
+          { label: "RH / L&D (Ressources Humaines & Formation) — Profil Conforme (C) / Travaillomane", weights: { disc: { blue: 25 }, pcm: { thinker: 25 } } },
+          { label: "Prescripteur (VP Sales / Direction Commerciale / Founder) — Profil Dominant (D) / Promoteur", weights: { disc: { red: 25 }, pcm: { promoter: 25 } } },
+          { label: "Sales / CSM / Account Executive (Utilisateur Final) — Profil Influent (I) / Rebelle", weights: { disc: { yellow: 20 }, pcm: { rebel: 20 } } }
         ]
       },
       {
-        id: 5, pillar: "1. Négociation & Fermeté Tarifaire",
-        text: "Q5. Vos commerciaux incluent-ils des garanties ou services gratuits en fin de négociation ?",
+        id: 5, pillar: "1. Entreprise, Rôle & Qualification (Section A)",
+        text: "Q5. Utilisez-vous déjà un outil de formation linguistique ? Lequel ?",
         options: [
-          { label: "Jamais (Chaque option est facturée)", weights: { disc: { red: 20 }, pcm: { persister: 20 } } },
-          { label: "Parfois sous la pression de l'acheteur", weights: { disc: { yellow: 15 }, pcm: { promoter: 15 } } },
-          { label: "Systématiquement pour clore le contrat", weights: { disc: { green: 20 }, pcm: { harmonizer: 20 } } }
-        ]
-      },
-      {
-        id: 6, pillar: "1. Négociation & Fermeté Tarifaire",
-        text: "Q6. Quel est le taux estimé de fuite de marge nette sur vos contrats internationaux ?",
-        options: [
-          { label: "0 % à 1 % (Marge parfaitement maîtrisée)", weights: { disc: { blue: 25 }, pcm: { thinker: 25 } } },
-          { label: "3 % (Moyenne sectorielle McKinsey)", weights: { disc: { yellow: 15 }, pcm: { promoter: 15 } } },
-          { label: "5.4 % (Fuite de marge critique)", weights: { disc: { red: 25 }, pcm: { persister: 20 } } }
+          { label: "Outil standard / Babbel / Duolingo (Orientation Process & Standardisation)", weights: { disc: { blue: 20 }, pcm: { thinker: 20 } } },
+          { label: "Rien / Approche empirique (Orientation Action / Impulsif)", weights: { disc: { red: 20 }, pcm: { promoter: 20 } } },
+          { label: "Coaching individuel 1-sur-1 (Exigence Qualité High-Ticket)", weights: { disc: { red: 25 }, pcm: { persister: 25 } } }
         ]
       },
 
-      // PILIER 2 : NUANCE LINGUISTIQUE
+      // 2. SECTION B : GOUVERNANCE, CSE & APPRÉHENSION DE L'EGO (Q6 à Q10)
       {
-        id: 7, pillar: "2. Nuance Linguistique & Foreign-Language Effect",
-        text: "Q7. Vos commerciaux subissent-ils le 'Foreign-Language Effect' (-30% d'impact persuasif en L2) ?",
+        id: 6, pillar: "2. Gouvernance, CSE & Vigilance AI Act (Section B)",
+        text: "Q6. Qui initie l'achat d’un outil linguistique chez vous ?",
         options: [
-          { label: "Non (Bilinguisme parfait & fermeté absolue)", weights: { disc: { red: 20 }, pcm: { promoter: 20 } } },
-          { label: "Légère perte de repartie sous tension", weights: { disc: { blue: 15 }, pcm: { thinker: 15 } } },
-          { label: "Perte d'autorité nette face aux natifs US/UK", weights: { disc: { green: 25 }, pcm: { harmonizer: 20 } } }
+          { label: "RH / L&D (Orientation Processus & Conformité Légale)", weights: { disc: { blue: 25 }, pcm: { thinker: 20 } } },
+          { label: "Direction Commerciale / VP Sales (Orientation Résultats & ROI)", weights: { disc: { red: 25 }, pcm: { promoter: 25 } } },
+          { label: "Managers de proximité (Orientation Équipe & Stabilité)", weights: { disc: { green: 20 }, pcm: { harmonizer: 20 } } }
         ]
       },
       {
-        id: 8, pillar: "2. Nuance Linguistique & Foreign-Language Effect",
-        text: "Q8. La précision des termes juridiques et contractuels est-elle fluide sous stress oral ?",
+        id: 7, pillar: "2. Gouvernance, CSE & Vigilance AI Act (Section B)",
+        text: "Q7. Suivi individuel : Nécessité d’une consultation du CSE (Comité Social et Économique) ?",
+        legalBadge: "⚖️ Cadre Légal : Art. L2312-38 du Code du travail (Consultation préalable du CSE obligatoire avant tout moyen de contrôle de l'activité des salariés).",
         options: [
-          { label: "Excellente maîtrise contractuelle en anglais", weights: { disc: { blue: 25 }, pcm: { thinker: 25 } } },
-          { label: "Approximations fréquentes sur les pénalités", weights: { disc: { yellow: 15 }, pcm: { rebel: 15 } } }
+          { label: "Oui (Analyse légale des risques obligatoire / Profil Conforme C)", weights: { disc: { blue: 25 }, pcm: { thinker: 20 } } },
+          { label: "Non (Vitesse d'exécution sans frein / Profil Dominant D)", weights: { disc: { red: 25 }, pcm: { promoter: 20 } } },
+          { label: "Je ne sais pas (Besoin de cadrage juridique préalable)", weights: { disc: { green: 15 }, pcm: { harmonizer: 15 } } }
         ]
       },
       {
-        id: 9, pillar: "2. Nuance Linguistique & Foreign-Language Effect",
-        text: "Q9. Vos équipes décodent-elles l'humour à froid et la subtilité des acheteurs US/UK ?",
+        id: 8, pillar: "2. Gouvernance, CSE & Vigilance AI Act (Section B)",
+        text: "Q8. Scénario d'achat prioritaire :",
+        legalBadge: "⚠️ AI Act Annexe III pt 4 b : Un dashboard RH qui suit et évalue les performances individuelles est classé Système à Haut Risque.",
         options: [
-          { label: "Oui, décodage culturel parfait", weights: { disc: { yellow: 20 }, pcm: { promoter: 20 } } },
-          { label: "Non, incompréhension et malaise fréquents", weights: { disc: { green: 15 }, pcm: { imaginer: 15 } } }
+          { label: "(a) Outil vocal 100% sans reporting hiérarchique (Peur du contrôle / Profil Influent I / Rebelle)", weights: { disc: { yellow: 25 }, pcm: { rebel: 25 } } },
+          { label: "(b) Dashboard RH de pilotage sans module vocal (Orienté Data / Profil Conforme C / Travaillomane)", weights: { disc: { blue: 25 }, pcm: { thinker: 25 } } }
         ]
       },
       {
-        id: 10, pillar: "2. Nuance Linguistique & Foreign-Language Effect",
-        text: "Q10. Observez-vous des silences gênés lorsque l'acheteur étranger feint le désintérêt ?",
+        id: 9, pillar: "2. Gouvernance, CSE & Vigilance AI Act (Section B)",
+        text: "Q9 & Q10. Réticence sur la visibilité de la progression par la hiérarchie & partage manager avant RDV :",
         options: [
-          { label: "Non, relance immédiate avec assurance", weights: { disc: { red: 20 }, pcm: { promoter: 20 } } },
-          { label: "Oui, malaise constaté et concession prématurée", weights: { disc: { green: 20 }, pcm: { harmonizer: 20 } } }
-        ]
-      },
-      {
-        id: 11, pillar: "2. Nuance Linguistique & Foreign-Language Effect",
-        text: "Q11. Le closing de fin de rendez-vous est-il aussi percutant en anglais qu'en français ?",
-        options: [
-          { label: "Impact et fermeté identiques", weights: { disc: { red: 25 }, pcm: { persister: 20 } } },
-          { label: "Perte nette de fermeté en langue seconde", weights: { disc: { blue: 15 }, pcm: { thinker: 15 } } }
-        ]
-      },
-      {
-        id: 12, pillar: "2. Nuance Linguistique & Foreign-Language Effect",
-        text: "Q12. Quel est le niveau d'appréhension perçu avant un rendez-vous avec un C-Level US/UK ?",
-        options: [
-          { label: "Faible (Confiance totale des équipes)", weights: { disc: { red: 20 }, pcm: { promoter: 20 } } },
-          { label: "Modéré", weights: { disc: { yellow: 10 }, pcm: { thinker: 10 } } },
-          { label: "Élevé (Stress et réticence constatés)", weights: { disc: { green: 25 }, pcm: { harmonizer: 20 } } }
+          { label: "Réticent / Résultats isolés (Besoin de sécurité / Empathique / Rebelle)", weights: { disc: { green: 20 }, pcm: { harmonizer: 20 } } },
+          { label: "Transparent / Partage manager (Travaillomane / Persévérant)", weights: { disc: { blue: 25 }, pcm: { thinker: 25 } } }
         ]
       },
 
-      // PILIER 3 : DÉCODAGE PSYCHOMÉTRIQUE
+      // 3. SECTION C & D : BESOINS LINGUISTIQUES & FONCTIONNALITÉS (Q11 à Q20)
       {
-        id: 13, pillar: "3. Décodage Psychométrique DISC / PCM",
-        text: "Q13. Quel est le rôle principal du décisionnaire interlocuteur ?",
+        id: 11, pillar: "3. Besoins Linguistiques & Fonctionnalités (Section C & D)",
+        text: "Q11. Principal frein linguistique de vos équipes ?",
         options: [
-          { label: "VP Sales / Directeur Commercial", weights: { disc: { red: 20 }, pcm: { promoter: 20 } } },
-          { label: "Directeur Général / CEO", weights: { disc: { red: 25 }, pcm: { persister: 20 } } },
-          { label: "DRH / Responsable Formation", weights: { disc: { green: 20 }, pcm: { harmonizer: 20 } } }
+          { label: "Vocabulaire technique & contractuel (Travaillomane / Conforme C)", weights: { disc: { blue: 25 }, pcm: { thinker: 25 } } },
+          { label: "Aisance à l'oral & spontanéité (Rebelle / Influent I)", weights: { disc: { yellow: 20 }, pcm: { rebel: 20 } } },
+          { label: "Codes culturels d'affaires & fermeté (Promoteur / Dominant D)", weights: { disc: { red: 25 }, pcm: { promoter: 25 } } }
         ]
       },
       {
-        id: 14, pillar: "3. Décodage Psychométrique DISC / PCM",
-        text: "Q14. Profil DISC prédominant perçu chez l'acheteur cible :",
+        id: 12, pillar: "3. Besoins Linguistiques & Fonctionnalités (Section C & D)",
+        text: "Q12 & Q13. Importance de l'anglais d’affaires (1-5) & temps hebdomadaire consacré :",
         options: [
-          { label: "🔴 Dominant (D) — Directif, axé ROI et rapidité", weights: { disc: { red: 35 }, pcm: { promoter: 15 } } },
-          { label: "🟡 Influent (I) — Enthousiaste, axé vision & prestige", weights: { disc: { yellow: 35 }, pcm: { rebel: 15 } } },
-          { label: "🟢 Stable (S) — Méthodique, axé sécurité & écoute", weights: { disc: { green: 35 }, pcm: { harmonizer: 15 } } },
-          { label: "🔵 Consciencieux (C) — Précis, axé données & conformité", weights: { disc: { blue: 35 }, pcm: { thinker: 15 } } }
+          { label: "Score Élevé (4-5) & <30 min/semaine (Recherche d'efficacité immédiate / Dominant D)", weights: { disc: { red: 25 }, pcm: { promoter: 20 } } },
+          { label: "Score Moyen (3) & 1h-2h/semaine (Pratique régulière)", weights: { disc: { blue: 15 }, pcm: { thinker: 15 } } },
+          { label: "Score Faible & >2h/semaine (Formation longue)", weights: { disc: { green: 15 }, pcm: { harmonizer: 15 } } }
         ]
       },
       {
-        id: 15, pillar: "3. Décodage Psychométrique DISC / PCM",
-        text: "Q15. Base Process Com (PCM) prédominante de l'interlocuteur :",
+        id: 14, pillar: "3. Besoins Linguistiques & Fonctionnalités (Section C & D)",
+        text: "Q14. Format préférentiel d'entraînement :",
         options: [
-          { label: "💼 Travaillomane — Logique, faits et organisation", weights: { disc: { blue: 15 }, pcm: { thinker: 35 } } },
-          { label: "🏛️ Persévérant — Valeurs, opinions et convictions", weights: { disc: { red: 15 }, pcm: { persister: 35 } } },
-          { label: "⚡ Promoteur — Challenge, action et adaptabilité", weights: { disc: { red: 15 }, pcm: { promoter: 35 } } },
-          { label: "🤝 Empathique — Compassion, harmonie et bien-être", weights: { disc: { green: 15 }, pcm: { harmonizer: 35 } } },
-          { label: "🎨 Rebelle — Spontanéité, créativité et ludique", weights: { disc: { yellow: 15 }, pcm: { rebel: 35 } } },
-          { label: "🌌 Rêveur — Calme, imagination et réflexion", weights: { disc: { green: 15 }, pcm: { imaginer: 35 } } }
+          { label: "Individuel 1-sur-1 (Travaillomane / Persévérant)", weights: { disc: { blue: 20 }, pcm: { thinker: 20 } } },
+          { label: "En groupe / Ateliers collectifs (Empathique / Influent I)", weights: { disc: { yellow: 20 }, pcm: { harmonizer: 20 } } }
         ]
       },
       {
-        id: 16, pillar: "3. Décodage Psychométrique DISC / PCM",
-        text: "Q16. Canal de communication préférentiel attendu par l'acheteur :",
+        id: 15, pillar: "3. Besoins Linguistiques & Fonctionnalités (Section C & D)",
+        text: "Q15. Utilité des fonctionnalités clés (1 à 5) :",
         options: [
-          { label: "Factuel & Données Chiffrées (Data-Driven)", weights: { disc: { blue: 25 }, pcm: { thinker: 25 } } },
-          { label: "Relationnel & Vision Stratégique", weights: { disc: { yellow: 20 }, pcm: { persister: 20 } } }
+          { label: "Scénarios commerciaux de négociation (Dominant D / Promoteur)", weights: { disc: { red: 25 }, pcm: { promoter: 25 } } },
+          { label: "Coach vocal IA & correction de syntaxe (Travaillomane / Analyste)", weights: { disc: { blue: 25 }, pcm: { thinker: 25 } } },
+          { label: "Jeux de rôle de groupe (Empathique / Stable S)", weights: { disc: { green: 20 }, pcm: { harmonizer: 20 } } },
+          { label: "Gamification & badges (Rebelle / Influent I)", weights: { disc: { yellow: 20 }, pcm: { rebel: 20 } } }
         ]
       },
       {
-        id: 17, pillar: "3. Décodage Psychométrique DISC / PCM",
-        text: "Q17. Comportement de l'acheteur sous pression de négociation :",
+        id: 16, pillar: "3. Besoins Linguistiques & Fonctionnalités (Section C & D)",
+        text: "Q16 & Q17. Avatar visuel animé & suivi de performance :",
+        legalBadge: "🚨 AI Act Art. 5 § 1 f (2024/1689) : Inférer un état affectif ou émotionnel sur le lieu de travail est une PRATIQUE INTERDITE. Seule la mesure comportementale et vocale est licite.",
         options: [
-          { label: "Attaque directe / Pression sur les prix", weights: { disc: { red: 30 }, pcm: { promoter: 25 } } },
-          { label: "Retrait analytique silencieux", weights: { disc: { blue: 25 }, pcm: { thinker: 25 } } }
+          { label: "Avatar & Suivi Émotionnel (⚠️ Requiert recadrage strict sur le comportemental / Empathique)", weights: { disc: { yellow: 15 }, pcm: { harmonizer: 15 } } },
+          { label: "Avatar Neutre & Suivi Comportemental / Factuel (Travaillomane / Conforme C)", weights: { disc: { blue: 25 }, pcm: { thinker: 25 } } }
         ]
       },
       {
-        id: 18, pillar: "3. Décodage Psychométrique DISC / PCM",
-        text: "Q18. Sensibilité de l'interlocuteur aux preuves d'impact (McKinsey, HBR) :",
+        id: 18, pillar: "3. Besoins Linguistiques & Fonctionnalités (Section C & D)",
+        text: "Q18 & Q19. Interface (Web vs CRM/Teams) & scénarios ciblés par pôle (Londres, NY) :",
         options: [
-          { label: "Très sensible aux études officielles", weights: { disc: { blue: 20 }, pcm: { persister: 20 } } },
-          { label: "Focalisé uniquement sur le prix net", weights: { disc: { red: 20 }, pcm: { promoter: 20 } } }
+          { label: "Intégration CRM & Hubs ciblés (High-Ticket / Promoteur / Dominant D)", weights: { disc: { red: 25 }, pcm: { promoter: 25 } } },
+          { label: "Interface Web générique", weights: { disc: { blue: 15 }, pcm: { thinker: 15 } } }
         ]
       },
       {
-        id: 19, pillar: "3. Décodage Psychométrique DISC / PCM",
-        text: "Q19. Réaction face à la démonstration du manque à gagner financier :",
+        id: 20, pillar: "3. Besoins Linguistiques & Fonctionnalités (Section C & D)",
+        text: "Q20. Fonctionnalité manquante éliminatoire (Champ ouvert d'évaluation ultime) :",
         options: [
-          { label: "Prise de conscience immédiate et urgence d'action", weights: { disc: { red: 25 }, pcm: { promoter: 25 } } },
-          { label: "Scepticisme initial et besoin de preuves complémentaires", weights: { disc: { blue: 20 }, pcm: { thinker: 20 } } }
-        ]
-      },
-      {
-        id: 20, pillar: "3. Décodage Psychométrique DISC / PCM",
-        text: "Q20. Niveau de maturité de l'entreprise sur l'entraînement psychométrique :",
-        options: [
-          { label: "Déjà formé au DISC/PCM par le passé", weights: { disc: { blue: 15 }, pcm: { thinker: 15 } } },
-          { label: "Découverte complète du décodage comportemental", weights: { disc: { yellow: 20 }, pcm: { rebel: 20 } } }
+          { label: "Simulation d'objections agressives à chaud (Urgence / Dominant D)", weights: { disc: { red: 25 }, pcm: { promoter: 20 } } },
+          { label: "Certification officielle RNS / CPF (Conformité / Conforme C)", weights: { disc: { blue: 25 }, pcm: { persister: 20 } } }
         ]
       },
 
-      // PILIER 4 : ALIGNEMENT TACTIQUE
+      // 4. SECTION E : PRICING & PROCHAINE ÉTAPE (Q21 à Q26)
       {
-        id: 21, pillar: "4. Alignement & Exécution Tactique",
-        text: "Q21. Une consultation du CSE (Comité Social et Économique) est-elle nécessaire ?",
+        id: 21, pillar: "4. Pricing, Budget & Étape 0 (Section E)",
+        text: "Q21 & Q22. Budget actuel par collaborateur & modèle tarifaire préféré :",
         options: [
-          { label: "Oui, consultation requise", weights: { disc: { green: 20 }, pcm: { harmonizer: 20 } } },
-          { label: "Non, décision directe de direction", weights: { disc: { red: 20 }, pcm: { promoter: 20 } } }
+          { label: "Modèle High-Ticket / Forfait global annuel (Dominant D / Promoteur)", weights: { disc: { red: 30 }, pcm: { promoter: 30 } } },
+          { label: "Modèle SaaS classique par utilisateur/mois (Conforme C / Travaillomane)", weights: { disc: { blue: 20 }, pcm: { thinker: 20 } } }
         ]
       },
       {
-        id: 22, pillar: "4. Alignement & Exécution Tactique",
-        text: "Q22. Préférence entre entraînement confidentiel vs reporting RH agrégé :",
+        id: 23, pillar: "4. Pricing, Budget & Étape 0 (Section E)",
+        text: "Q23 & Q24. Seuil de prix trop cher & seuil sous lequel vous doutez de la qualité :",
         options: [
-          { label: "Module vocal IA 100% confidentiel", weights: { disc: { green: 15 }, pcm: { harmonizer: 15 } } },
-          { label: "Dashboard de suivi RH agrégé", weights: { disc: { blue: 20 }, pcm: { thinker: 20 } } }
+          { label: "Prix perçu > 2 000 € HT / apprenant (Valeur d'excellence / Persévérant)", weights: { disc: { red: 25 }, pcm: { persister: 25 } } },
+          { label: "Doute sur la qualité si < 500 € (Sensibilité à la crédibilité)", weights: { disc: { blue: 20 }, pcm: { thinker: 20 } } }
         ]
       },
       {
-        id: 23, pillar: "4. Alignement & Exécution Tactique",
-        text: "Q23. Format d'accompagnement privilégié :",
+        id: 25, pillar: "4. Pricing, Budget & Étape 0 (Section E)",
+        text: "Q25. Avez-vous évalué d'autres outils concurrents (Speexx, Babbel, Coaching 1-1) ?",
         options: [
-          { label: "High-Ticket Coach 1-sur-1 (2 000 € HT)", weights: { disc: { red: 25 }, pcm: { promoter: 25 } } },
-          { label: "Abonnement SaaS mensuel d'équipe", weights: { disc: { yellow: 20 }, pcm: { thinker: 20 } } }
+          { label: "Oui, comparatif actif en cours (Analyse poussée / Conforme C)", weights: { disc: { blue: 20 }, pcm: { thinker: 20 } } },
+          { label: "Non, QuestIA est le premier outil évalué", weights: { disc: { red: 15 }, pcm: { promoter: 15 } } }
         ]
       },
       {
-        id: 24, pillar: "4. Alignement & Exécution Tactique",
-        text: "Q24. Délai souhaité pour le lancement de l'entraînement des équipes :",
+        id: 26, pillar: "4. Pricing, Budget & Étape 0 (Section E)",
+        text: "Q26. Intérêt pour un essai pilote / entretien de 20 min (Recontact) :",
         options: [
-          { label: "Immédiat (Sous 15 jours)", weights: { disc: { red: 25 }, pcm: { promoter: 25 } } },
-          { label: "Prochain trimestre", weights: { disc: { green: 15 }, pcm: { thinker: 15 } } }
+          { label: "Validé — Conversion vers Étape 0 (Diagnostic Coach 1-sur-1 à 2 000 € HT)", weights: { disc: { red: 35 }, pcm: { promoter: 35 } } },
+          { label: "En attente d'arbitrage budgétaire interne", weights: { disc: { green: 15 }, pcm: { persister: 15 } } }
+        ]
+      },
+
+      // 5. SECTION S : ÉLÉMENTS SUPPLÉMENTAIRES RH, SIRH & RQTH
+      {
+        id: "S1", pillar: "5. Éléments Supplémentaires RH & SIRH (Section S)",
+        text: "S1. LMS existant — Utilisez-vous déjà un LMS (Learning Management System) ? Lequel ?",
+        options: [
+          { label: "Oui (Cornerstone, Moodle, 360Learning...) — Éligibilité ICP Rang A", weights: { disc: { blue: 25 }, pcm: { thinker: 25 } } },
+          { label: "Non (Pas de LMS centralisé)", weights: { disc: { yellow: 15 }, pcm: { promoter: 15 } } }
         ]
       },
       {
-        id: 25, pillar: "4. Alignement & Exécution Tactique",
-        text: "Q25. Accord pour évaluation post-audit avec étude de cas et témoignage :",
+        id: "S2", pillar: "5. Éléments Supplémentaires RH & SIRH (Section S)",
+        text: "S2. Accessibilité / RQTH — Collaborateurs en situation de handicap dans le périmètre ?",
+        legalBadge: "⚖️ Obligation Légale : Art. L5213-6 du Code du travail (Obligation sans seuil d'effectif d'adapter les logiciels du poste de travail des personnes handicapées).",
         options: [
-          { label: "Oui (Accès prioritaire Programme Bêta)", weights: { disc: { yellow: 25 }, pcm: { promoter: 20 } } },
-          { label: "Non", weights: { disc: { blue: 15 }, pcm: { thinker: 15 } } }
+          { label: "Oui (Obligation d'accessibilité numérique Art. L5213-6 / Conforme C)", weights: { disc: { blue: 25 }, pcm: { persister: 20 } } },
+          { label: "Non / Périmètre sans contrainte RQTH", weights: { disc: { red: 10 } } }
         ]
       },
       {
-        id: 26, pillar: "4. Alignement & Exécution Tactique",
-        text: "Q26. Validation de la réservation de l'Étape 0 (Diagnostic Coach 15 min) :",
+        id: "S3.1", pillar: "5. Éléments Supplémentaires RH & SIRH (Section S)",
+        text: "S3.1. Identifiant pivot utilisé au niveau organisationnel (SSO / SIRH) :",
         options: [
-          { label: "Validé (Réservation Immédiate en Visio)", weights: { disc: { red: 30 }, pcm: { promoter: 30 } } },
-          { label: "En attente de confirmation interne", weights: { disc: { green: 15 }, pcm: { persister: 15 } } }
+          { label: "SSO Entreprise (Azure AD, Okta...) — Intégration Sécurisée", weights: { disc: { blue: 25 }, pcm: { thinker: 25 } } },
+          { label: "Email professionnel nominatif", weights: { disc: { green: 15 }, pcm: { thinker: 15 } } },
+          { label: "Matricule SIRH interne", weights: { disc: { blue: 20 }, pcm: { persister: 20 } } }
+        ]
+      },
+      {
+        id: "S3.2", pillar: "5. Éléments Supplémentaires RH & SIRH (Section S)",
+        text: "S3.2. Présence de comptes partagés ou génériques (boîte mutualisée) :",
+        options: [
+          { label: "Oui (Nécessite gestion spécifique des accès partagés)", weights: { disc: { yellow: 15 }, pcm: { harmonizer: 15 } } },
+          { label: "Non (100% des comptes sont nominatifs)", weights: { disc: { blue: 20 }, pcm: { thinker: 20 } } }
+        ]
+      },
+      {
+        id: "S3.3", pillar: "5. Éléments Supplémentaires RH & SIRH (Section S)",
+        text: "S3.3. Règle de conservation & mobilité interne (historique collaborateur) :",
+        options: [
+          { label: "Historique suit le collaborateur lors d'une mobilité interne", weights: { disc: { green: 20 }, pcm: { harmonizer: 20 } } },
+          { label: "Historique reste rattaché au poste / Purge à la sortie (Conformité RGPD)", weights: { disc: { blue: 25 }, pcm: { thinker: 25 } } }
         ]
       }
     ];
@@ -1168,7 +1191,7 @@
     let userNotes = {};      // qId -> noteString
     let crmLeads = [];
 
-    // Render 26 questions
+    // Render questions dynamically with legal warning badges
     function renderQuestions() {
       const container = document.getElementById('surveyQuestionsContainer');
       container.innerHTML = '';
@@ -1195,20 +1218,22 @@
 
         let optsHtml = q.options.map((opt, idx) => {
           const isSel = userSelections[q.id] === idx;
-          return `<button class="opt-btn ${isSel ? 'selected' : ''}" onclick="selectOption(${q.id}, ${idx})">${opt.label}</button>`;
+          return `<button class="opt-btn ${isSel ? 'selected' : ''}" onclick="selectOption('${q.id}', ${idx})">${opt.label}</button>`;
         }).join('');
 
         const savedNote = userNotes[q.id] || '';
+        let legalHtml = q.legalBadge ? `<div class="legal-warning-box"><i class="fa-solid fa-scale-balanced"></i> ${q.legalBadge}</div>` : '';
 
         qDiv.innerHTML = `
           <div class="q-header">
             <div class="q-label">${q.text}</div>
-            <span class="q-badge-weight">Q${q.id}</span>
+            <span class="q-badge-weight">${typeof q.id === 'number' ? 'Q' + q.id : q.id}</span>
           </div>
+          ${legalHtml}
           <div class="q-options">${optsHtml}</div>
           <div class="q-note-box">
-            <input type="text" class="q-note-input" placeholder="💬 Notes & verbatims prospect sur la Q${q.id}..." 
-                   value="${savedNote}" oninput="saveQuestionNote(${q.id}, this.value)">
+            <input type="text" class="q-note-input" placeholder="💬 Notes & verbatims prospect sur ${q.id}..." 
+                   value="${savedNote}" oninput="saveQuestionNote('${q.id}', this.value)">
           </div>
         `;
         pillarCard.appendChild(qDiv);
@@ -1265,10 +1290,9 @@
       const discScores = { red: 0, yellow: 0, green: 0, blue: 0 };
       const pcmScores = { thinker: 0, persister: 0, promoter: 0, harmonizer: 0, rebel: 0, imaginer: 0 };
 
-      Object.keys(userSelections).forEach(qIdStr => {
-        const qId = parseInt(qIdStr, 10);
-        const optIdx = userSelections[qId];
-        const qData = QUESTIONS_DATA.find(q => q.id === qId);
+      Object.keys(userSelections).forEach(qIdKey => {
+        const optIdx = userSelections[qIdKey];
+        const qData = QUESTIONS_DATA.find(q => String(q.id) === String(qIdKey));
         if (qData && qData.options[optIdx]) {
           const w = qData.options[optIdx].weights;
           if (w.disc) {
@@ -1281,22 +1305,32 @@
       });
 
       // Update Summary Header Progress Badges
-      const p1Count = [1,2,3,4,5,6].filter(id => userSelections[id] !== undefined).length;
-      const p2Count = [7,8,9,10,11,12].filter(id => userSelections[id] !== undefined).length;
-      const p3Count = [13,14,15,16,17,18,19,20].filter(id => userSelections[id] !== undefined).length;
-      const p4Count = [21,22,23,24,25,26].filter(id => userSelections[id] !== undefined).length;
-      const totalAns = p1Count + p2Count + p3Count + p4Count;
+      const p1List = ['F1', 1, 3, 4, 5];
+      const p2List = [6, 7, 8, 9];
+      const p3List = [11, 12, 14, 15, 16, 18, 20];
+      const p4List = [21, 23, 25, 26];
+      const p5List = ['S1', 'S2', 'S3.1', 'S3.2', 'S3.3'];
+
+      const p1Count = p1List.filter(id => userSelections[id] !== undefined).length;
+      const p2Count = p2List.filter(id => userSelections[id] !== undefined).length;
+      const p3Count = p3List.filter(id => userSelections[id] !== undefined).length;
+      const p4Count = p4List.filter(id => userSelections[id] !== undefined).length;
+      const p5Count = p5List.filter(id => userSelections[id] !== undefined).length;
+      const totalAns = p1Count + p2Count + p3Count + p4Count + p5Count;
+      const totalQuestions = QUESTIONS_DATA.length;
 
       if (document.getElementById('badge-p1')) {
-        document.getElementById('badge-p1').innerText = `${p1Count}/6 Q`;
-        document.getElementById('pbar-p1').style.width = `${(p1Count / 6) * 100}%`;
-        document.getElementById('badge-p2').innerText = `${p2Count}/6 Q`;
-        document.getElementById('pbar-p2').style.width = `${(p2Count / 6) * 100}%`;
-        document.getElementById('badge-p3').innerText = `${p3Count}/8 Q`;
-        document.getElementById('pbar-p3').style.width = `${(p3Count / 8) * 100}%`;
-        document.getElementById('badge-p4').innerText = `${p4Count}/6 Q`;
-        document.getElementById('pbar-p4').style.width = `${(p4Count / 6) * 100}%`;
-        document.getElementById('overallCompletionBadge').innerText = `${totalAns} / 26 Questions Répondues (${Math.round((totalAns / 26) * 100)}%)`;
+        document.getElementById('badge-p1').innerText = `${p1Count}/${p1List.length} Q`;
+        document.getElementById('pbar-p1').style.width = `${(p1Count / p1List.length) * 100}%`;
+        document.getElementById('badge-p2').innerText = `${p2Count}/${p2List.length} Q`;
+        document.getElementById('pbar-p2').style.width = `${(p2Count / p2List.length) * 100}%`;
+        document.getElementById('badge-p3').innerText = `${p3Count}/${p3List.length} Q`;
+        document.getElementById('pbar-p3').style.width = `${(p3Count / p3List.length) * 100}%`;
+        document.getElementById('badge-p4').innerText = `${p4Count}/${p4List.length} Q`;
+        document.getElementById('pbar-p4').style.width = `${(p4Count / p4List.length) * 100}%`;
+        document.getElementById('badge-p5').innerText = `${p5Count}/${p5List.length} Q`;
+        document.getElementById('pbar-p5').style.width = `${(p5Count / p5List.length) * 100}%`;
+        document.getElementById('overallCompletionBadge').innerText = `${totalAns} / ${totalQuestions} Évaluations Répondues (${Math.round((totalAns / totalQuestions) * 100)}%)`;
       }
 
       // Normalize DISC %
