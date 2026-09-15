@@ -681,11 +681,11 @@
     <!-- LEFT COLUMN: 26 QUESTIONS WITH NOTES -->
     <div class="survey-column">
       
-      <!-- RECAPITULATIF DES SECTIONS DU QUESTIONNAIRE VOLET RH (25 QUESTIONS & FILTRES) -->
+      <!-- RECAPITULATIF DES SECTIONS DU QUESTIONNAIRE INTEGRAL (26 QUESTIONS INITIALES + 2 FILTRES + 10 RH) -->
       <div class="pillar-summary-container">
         <div class="pillar-summary-header">
-          <h3><i class="fa-solid fa-list-check"></i> Récapitulatif Volet RH / Prescripteur (25 Questions & Filtres)</h3>
-          <span class="pillar-summary-badge" id="overallCompletionBadge">0 / 25 Évaluations Répondues (0%)</span>
+          <h3><i class="fa-solid fa-list-check"></i> Récapitulatif Questionnaire Intégral QuestIA (38 Évaluations : Q1-Q26 + F1/F2 + S1-S10)</h3>
+          <span class="pillar-summary-badge" id="overallCompletionBadge">0 / 38 Évaluations Répondues (0%)</span>
         </div>
         
         <div class="pillar-summary-grid">
@@ -693,10 +693,10 @@
           <div class="pillar-summary-card" onclick="scrollToPillar(1)">
             <div class="pillar-summary-card-header">
               <span class="pillar-tag p1">Section A</span>
-              <span class="pillar-qcount" id="badge-p1">0/5 Q</span>
+              <span class="pillar-qcount" id="badge-p1">0/7 Q</span>
             </div>
-            <h4>1. Entreprise, Rôle & Qualification</h4>
-            <p>Filtres B2B, effectif anglophone, rôle & outils actuels (F1-F2, Q1 à Q5)</p>
+            <h4>1. Entreprise, Filtres & Rôle</h4>
+            <p>Filtres d'entrée F1-F2, secteur, taille, pôles export, rôle & outils actuels (Q1 à Q5)</p>
             <div class="pillar-progress-bar"><div class="pillar-progress-fill" id="pbar-p1"></div></div>
           </div>
 
@@ -704,10 +704,10 @@
           <div class="pillar-summary-card" onclick="scrollToPillar(2)">
             <div class="pillar-summary-card-header">
               <span class="pillar-tag p2">Section B</span>
-              <span class="pillar-qcount" id="badge-p2">0/4 Q</span>
+              <span class="pillar-qcount" id="badge-p2">0/5 Q</span>
             </div>
-            <h4>2. Gouvernance, CSE & Vigilance AI Act</h4>
-            <p>Initiation d'achat, consultation CSE (L2312-38) & risques AI Act (Q6 à Q10)</p>
+            <h4>2. Gouvernance, CSE & Legal AI Act</h4>
+            <p>Initiation d'achat, consultation CSE (L2312-38), risques AI Act & visibilité (Q6 à Q10)</p>
             <div class="pillar-progress-bar"><div class="pillar-progress-fill" id="pbar-p2"></div></div>
           </div>
 
@@ -715,7 +715,7 @@
           <div class="pillar-summary-card" onclick="scrollToPillar(3)">
             <div class="pillar-summary-card-header">
               <span class="pillar-tag p3">Section C & D</span>
-              <span class="pillar-qcount" id="badge-p3">0/7 Q</span>
+              <span class="pillar-qcount" id="badge-p3">0/10 Q</span>
             </div>
             <h4>3. Besoins Linguistiques & Fonctionnalités</h4>
             <p>Freins oral/technique, coach IA, avatar & conformité émotionnelle (Q11 à Q20)</p>
@@ -726,7 +726,7 @@
           <div class="pillar-summary-card" onclick="scrollToPillar(4)">
             <div class="pillar-summary-card-header">
               <span class="pillar-tag p4">Section E</span>
-              <span class="pillar-qcount" id="badge-p4">0/4 Q</span>
+              <span class="pillar-qcount" id="badge-p4">0/6 Q</span>
             </div>
             <h4>4. Pricing, Budget & Étape 0</h4>
             <p>Modèle High-Ticket vs SaaS, plafonds & conversion Étape 0 (Q21 à Q26)</p>
@@ -737,10 +737,10 @@
           <div class="pillar-summary-card" onclick="scrollToPillar(5)" style="grid-column: span 2;">
             <div class="pillar-summary-card-header">
               <span class="pillar-tag p5">Section S</span>
-              <span class="pillar-qcount" id="badge-p5">0/5 Q</span>
+              <span class="pillar-qcount" id="badge-p5">0/10 Q</span>
             </div>
-            <h4>5. Éléments Supplémentaires RH, SIRH & RQTH (Nouveautés 14/09)</h4>
-            <p>LMS existant (ICP Rang A), accessibilité handicap RQTH (L5213-6), identifiants SSO / SIRH, comptes partagés & conservation RGPD (S1, S2, S3.1 à S3.3)</p>
+            <h4>5. Volet RH, SIRH, RQTH & RGPD (10 Nouvelles Questions S1 à S10)</h4>
+            <p>LMS (ICP Rang A), accessibilité RQTH (L5213-6), SSO/SIRH, comptes partagés, statut alternants, mobilité, conservation RGPD, onboarding, OPCO & ROI (S1 à S10)</p>
             <div class="pillar-progress-bar"><div class="pillar-progress-fill" id="pbar-p5"></div></div>
           </div>
         </div>
@@ -957,39 +957,58 @@
   </div>
 
   <script>
-    // 25 QUESTIONS & FILTRES DATA (VOLET RH / PRESCRIPTEUR & DISC/PCM)
+    // 38 QUESTIONS & FILTRES DATA INTEGRAL (26 QUESTIONS D'ORIGINE + 2 FILTRES + 10 NOUVELLES RH S1-S10)
     const QUESTIONS_DATA = [
-      // 1. FILTRES & SECTION A : ENTREPRISE ET RÔLE (Q1 à Q5 + F1/F2)
+      // 1. FILTRES & SECTION A : ENTREPRISE ET RÔLE (F1, F2, Q1 à Q5)
       {
-        id: "F1", pillar: "1. Entreprise, Rôle & Qualification (Section A)",
-        text: "Filtres d'entrée F1 & F2. Cible B2B International & Volume de l'effectif anglophone :",
+        id: "F1", pillar: "1. Entreprise, Filtres & Rôle (Section A)",
+        text: "Filtre F1. Votre entreprise opère-t-elle sur des marchés B2B Internationaux ?",
         options: [
-          { label: "B2B International (Plus de 20 commerciaux anglophones)", weights: { disc: { red: 20 }, pcm: { promoter: 20 } } },
-          { label: "B2B International (6 à 20 commerciaux anglophones)", weights: { disc: { yellow: 15 }, pcm: { thinker: 15 } } },
-          { label: "B2B International (1 à 5 commerciaux anglophones)", weights: { disc: { green: 10 }, pcm: { harmonizer: 10 } } },
-          { label: "France Uniquement (0 commercial anglophone)", weights: { disc: { blue: 10 }, pcm: { persister: 10 } } }
+          { label: "Oui, activité B2B internationale active (> 40% de l'activité à l'export)", weights: { disc: { red: 20 }, pcm: { promoter: 20 } } },
+          { label: "Oui, développement international en cours", weights: { disc: { yellow: 15 }, pcm: { thinker: 15 } } },
+          { label: "Non, marché purement national (France)", weights: { disc: { blue: 10 }, pcm: { persister: 10 } } }
         ]
       },
       {
-        id: 1, pillar: "1. Entreprise, Rôle & Qualification (Section A)",
-        text: "Q1 & Q2. Secteur d'activité & Taille de l'entreprise (effectif total) :",
+        id: "F2", pillar: "1. Entreprise, Filtres & Rôle (Section A)",
+        text: "Filtre F2. Quel est le volume de l'effectif commercial/CSM exposé à l'anglais ?",
         options: [
-          { label: "ETI / Groupe International (800 à 2 000+ salariés — ICP Rang A)", weights: { disc: { blue: 25 }, pcm: { thinker: 25 } } },
-          { label: "PME (100 à 799 salariés)", weights: { disc: { yellow: 15 }, pcm: { promoter: 15 } } },
-          { label: "TPE / Startup (< 100 salariés)", weights: { disc: { red: 15 }, pcm: { rebel: 15 } } }
+          { label: "Plus de 20 commerciaux anglophones (Qualification High-Ticket)", weights: { disc: { red: 25 }, pcm: { promoter: 25 } } },
+          { label: "6 à 20 commerciaux anglophones", weights: { disc: { yellow: 15 }, pcm: { thinker: 15 } } },
+          { label: "1 à 5 commerciaux anglophones", weights: { disc: { green: 10 }, pcm: { harmonizer: 10 } } },
+          { label: "0 commercial (Aucun besoin immédiat)", weights: { disc: { blue: 10 }, pcm: { persister: 10 } } }
         ]
       },
       {
-        id: 3, pillar: "1. Entreprise, Rôle & Qualification (Section A)",
-        text: "Q3. Sur quels pôles économiques (Londres, NY, Dublin…) vos équipes opèrent-elles ?",
+        id: 1, pillar: "1. Entreprise, Filtres & Rôle (Section A)",
+        text: "Q1. Quel est le secteur d'activité principal de votre entreprise ?",
         options: [
-          { label: "Pôles Majeurs US / UK / Dublin (Exposition directe aux acheteurs natifs)", weights: { disc: { red: 25 }, pcm: { promoter: 25 } } },
-          { label: "Europe Continentale & APAC", weights: { disc: { blue: 15 }, pcm: { thinker: 15 } } },
-          { label: "Marché local prioritaire", weights: { disc: { green: 15 }, pcm: { harmonizer: 15 } } }
+          { label: "Aéronautique / Industrie High-Tech / Défense (Process complexes & Exigence)", weights: { disc: { blue: 25 }, pcm: { thinker: 25 } } },
+          { label: "SaaS / Digital / Software / Finance (Croissance rapide & Agilité)", weights: { disc: { red: 20 }, pcm: { promoter: 20 } } },
+          { label: "Services B2B / Conseil / Luxe (Relationnel & Image)", weights: { disc: { yellow: 20 }, pcm: { harmonizer: 20 } } },
+          { label: "Autre secteur industriel / Distribution", weights: { disc: { green: 15 }, pcm: { persister: 15 } } }
         ]
       },
       {
-        id: 4, pillar: "1. Entreprise, Rôle & Qualification (Section A)",
+        id: 2, pillar: "1. Entreprise, Filtres & Rôle (Section A)",
+        text: "Q2. Quelle est la taille totale de votre entreprise (effectif global) ?",
+        options: [
+          { label: "ETI / Groupe (800 à 2 000+ salariés — ICP Rang A Prioritaire)", weights: { disc: { blue: 25 }, pcm: { thinker: 25 } } },
+          { label: "PME en croissance (100 à 799 salariés)", weights: { disc: { yellow: 20 }, pcm: { promoter: 20 } } },
+          { label: "TPE / Small Business (< 100 salariés)", weights: { disc: { red: 15 }, pcm: { rebel: 15 } } }
+        ]
+      },
+      {
+        id: 3, pillar: "1. Entreprise, Filtres & Rôle (Section A)",
+        text: "Q3. Sur quels pôles économiques internationaux vos équipes opèrent-elles ?",
+        options: [
+          { label: "Pôles majeurs anglophones (Londres, New York, Dublin, Singapour)", weights: { disc: { red: 25 }, pcm: { promoter: 25 } } },
+          { label: "Europe Continentale (Allemagne, Bénélux, Nordiques)", weights: { disc: { blue: 20 }, pcm: { thinker: 20 } } },
+          { label: "Zone APAC / LATAM / Moyen-Orient", weights: { disc: { yellow: 15 }, pcm: { harmonizer: 15 } } }
+        ]
+      },
+      {
+        id: 4, pillar: "1. Entreprise, Filtres & Rôle (Section A)",
         text: "Q4. Quel est votre rôle au sein de l'organisation ?",
         options: [
           { label: "RH / L&D (Ressources Humaines & Formation) — Profil Conforme (C) / Travaillomane", weights: { disc: { blue: 25 }, pcm: { thinker: 25 } } },
@@ -998,29 +1017,29 @@
         ]
       },
       {
-        id: 5, pillar: "1. Entreprise, Rôle & Qualification (Section A)",
+        id: 5, pillar: "1. Entreprise, Filtres & Rôle (Section A)",
         text: "Q5. Utilisez-vous déjà un outil de formation linguistique ? Lequel ?",
         options: [
-          { label: "Outil standard / Babbel / Duolingo (Orientation Process & Standardisation)", weights: { disc: { blue: 20 }, pcm: { thinker: 20 } } },
-          { label: "Rien / Approche empirique (Orientation Action / Impulsif)", weights: { disc: { red: 20 }, pcm: { promoter: 20 } } },
-          { label: "Coaching individuel 1-sur-1 (Exigence Qualité High-Ticket)", weights: { disc: { red: 25 }, pcm: { persister: 25 } } }
+          { label: "Outil standard / Babbel / Duolingo / Speexx (Processus standardisé)", weights: { disc: { blue: 20 }, pcm: { thinker: 20 } } },
+          { label: "Rien / Approche informelle (Orientation Action & Impulsif)", weights: { disc: { red: 20 }, pcm: { promoter: 20 } } },
+          { label: "Coaching individuel 1-sur-1 traditionnel (Exigence Qualité / High-Ticket)", weights: { disc: { red: 25 }, pcm: { persister: 25 } } }
         ]
       },
 
-      // 2. SECTION B : GOUVERNANCE, CSE & APPRÉHENSION DE L'EGO (Q6 à Q10)
+      // 2. SECTION B : GOUVERNANCE, CSE & VIGILANCE JURIDIQUE (Q6 à Q10)
       {
-        id: 6, pillar: "2. Gouvernance, CSE & Vigilance AI Act (Section B)",
-        text: "Q6. Qui initie l'achat d’un outil linguistique chez vous ?",
+        id: 6, pillar: "2. Gouvernance, CSE & Legal AI Act (Section B)",
+        text: "Q6. Qui initie l'achat d'un outil linguistique chez vous ?",
         options: [
           { label: "RH / L&D (Orientation Processus & Conformité Légale)", weights: { disc: { blue: 25 }, pcm: { thinker: 20 } } },
-          { label: "Direction Commerciale / VP Sales (Orientation Résultats & ROI)", weights: { disc: { red: 25 }, pcm: { promoter: 25 } } },
-          { label: "Managers de proximité (Orientation Équipe & Stabilité)", weights: { disc: { green: 20 }, pcm: { harmonizer: 20 } } }
+          { label: "Direction Commerciale / VP Sales (Orientation Résultats & ROI Commercial)", weights: { disc: { red: 25 }, pcm: { promoter: 25 } } },
+          { label: "Managers de proximité / Heads of Sales (Orientation Équipe & Stabilité)", weights: { disc: { green: 20 }, pcm: { harmonizer: 20 } } }
         ]
       },
       {
-        id: 7, pillar: "2. Gouvernance, CSE & Vigilance AI Act (Section B)",
-        text: "Q7. Suivi individuel : Nécessité d’une consultation du CSE (Comité Social et Économique) ?",
-        legalBadge: "⚖️ Cadre Légal : Art. L2312-38 du Code du travail (Consultation préalable du CSE obligatoire avant tout moyen de contrôle de l'activité des salariés).",
+        id: 7, pillar: "2. Gouvernance, CSE & Legal AI Act (Section B)",
+        text: "Q7. Suivi individuel : Nécessité d'une consultation du CSE (Comité Social et Économique) ?",
+        legalBadge: "⚖️ Cadre Légal : Art. L2312-38 du Code du travail (Consultation préalable du CSE obligatoire avant la mise en place de tout moyen de contrôle de l'activité des salariés).",
         options: [
           { label: "Oui (Analyse légale des risques obligatoire / Profil Conforme C)", weights: { disc: { blue: 25 }, pcm: { thinker: 20 } } },
           { label: "Non (Vitesse d'exécution sans frein / Profil Dominant D)", weights: { disc: { red: 25 }, pcm: { promoter: 20 } } },
@@ -1028,40 +1047,58 @@
         ]
       },
       {
-        id: 8, pillar: "2. Gouvernance, CSE & Vigilance AI Act (Section B)",
-        text: "Q8. Scénario d'achat prioritaire :",
-        legalBadge: "⚠️ AI Act Annexe III pt 4 b : Un dashboard RH qui suit et évalue les performances individuelles est classé Système à Haut Risque.",
+        id: 8, pillar: "2. Gouvernance, CSE & Legal AI Act (Section B)",
+        text: "Q8. Scénario d'achat prioritaire entre autonomie et reporting :",
+        legalBadge: "⚠️ AI Act Annexe III pt 4 b : Un système qui surveille et évalue le comportement des salariés à des fins d'évaluation de performance est classé Système à Haut Risque.",
         options: [
-          { label: "(a) Outil vocal 100% sans reporting hiérarchique (Peur du contrôle / Profil Influent I / Rebelle)", weights: { disc: { yellow: 25 }, pcm: { rebel: 25 } } },
+          { label: "(a) Outil vocal sans reporting hiérarchique (Peur du contrôle / Profil Influent I / Rebelle)", weights: { disc: { yellow: 25 }, pcm: { rebel: 25 } } },
           { label: "(b) Dashboard RH de pilotage sans module vocal (Orienté Data / Profil Conforme C / Travaillomane)", weights: { disc: { blue: 25 }, pcm: { thinker: 25 } } }
         ]
       },
       {
-        id: 9, pillar: "2. Gouvernance, CSE & Vigilance AI Act (Section B)",
-        text: "Q9 & Q10. Réticence sur la visibilité de la progression par la hiérarchie & partage manager avant RDV :",
+        id: 9, pillar: "2. Gouvernance, CSE & Legal AI Act (Section B)",
+        text: "Q9. Réticence sur la visibilité de la progression par la hiérarchie :",
         options: [
-          { label: "Réticent / Résultats isolés (Besoin de sécurité / Empathique / Rebelle)", weights: { disc: { green: 20 }, pcm: { harmonizer: 20 } } },
-          { label: "Transparent / Partage manager (Travaillomane / Persévérant)", weights: { disc: { blue: 25 }, pcm: { thinker: 25 } } }
+          { label: "Réticent / Préférence pour des résultats isolés (Sécurité / Empathique / Rebelle)", weights: { disc: { green: 20 }, pcm: { harmonizer: 20 } } },
+          { label: "Transparent / Visibilité totale par la hiérarchie (Travaillomane / Persévérant)", weights: { disc: { blue: 25 }, pcm: { thinker: 25 } } }
+        ]
+      },
+      {
+        id: 10, pillar: "2. Gouvernance, CSE & Legal AI Act (Section B)",
+        text: "Q10. Partage systématique des bilans de niveau avec le manager avant les RDV clients :",
+        options: [
+          { label: "Oui, validation et brief systématique avec le manager avant RDV", weights: { disc: { blue: 25 }, pcm: { thinker: 25 } } },
+          { label: "Sur décision du collaborateur uniquement", weights: { disc: { yellow: 20 }, pcm: { rebel: 20 } } },
+          { label: "Non, entraînement strictement confidentiel", weights: { disc: { green: 15 }, pcm: { harmonizer: 15 } } }
         ]
       },
 
       // 3. SECTION C & D : BESOINS LINGUISTIQUES & FONCTIONNALITÉS (Q11 à Q20)
       {
         id: 11, pillar: "3. Besoins Linguistiques & Fonctionnalités (Section C & D)",
-        text: "Q11. Principal frein linguistique de vos équipes ?",
+        text: "Q11. Principal frein linguistique de vos équipes commerciales :",
         options: [
           { label: "Vocabulaire technique & contractuel (Travaillomane / Conforme C)", weights: { disc: { blue: 25 }, pcm: { thinker: 25 } } },
-          { label: "Aisance à l'oral & spontanéité (Rebelle / Influent I)", weights: { disc: { yellow: 20 }, pcm: { rebel: 20 } } },
-          { label: "Codes culturels d'affaires & fermeté (Promoteur / Dominant D)", weights: { disc: { red: 25 }, pcm: { promoter: 25 } } }
+          { label: "Aisance à l'oral & spontanéité sous pression (Rebelle / Influent I)", weights: { disc: { yellow: 20 }, pcm: { rebel: 20 } } },
+          { label: "Codes culturels d'affaires & fermeté de négociation (Promoteur / Dominant D)", weights: { disc: { red: 25 }, pcm: { promoter: 25 } } }
         ]
       },
       {
         id: 12, pillar: "3. Besoins Linguistiques & Fonctionnalités (Section C & D)",
-        text: "Q12 & Q13. Importance de l'anglais d’affaires (1-5) & temps hebdomadaire consacré :",
+        text: "Q12. Importance stratégique attribuée à l'anglais d'affaires (Échelle 1 à 5) :",
         options: [
-          { label: "Score Élevé (4-5) & <30 min/semaine (Recherche d'efficacité immédiate / Dominant D)", weights: { disc: { red: 25 }, pcm: { promoter: 20 } } },
-          { label: "Score Moyen (3) & 1h-2h/semaine (Pratique régulière)", weights: { disc: { blue: 15 }, pcm: { thinker: 15 } } },
-          { label: "Score Faible & >2h/semaine (Formation longue)", weights: { disc: { green: 15 }, pcm: { harmonizer: 15 } } }
+          { label: "Critique (Note 5/5 — Facteur clé de closing international)", weights: { disc: { red: 25 }, pcm: { promoter: 25 } } },
+          { label: "Élevée (Note 4/5 — Important pour la marge export)", weights: { disc: { blue: 20 }, pcm: { thinker: 20 } } },
+          { label: "Moyenne / Faiblesse tolérée (Note 1-3/5)", weights: { disc: { green: 15 }, pcm: { harmonizer: 15 } } }
+        ]
+      },
+      {
+        id: 13, pillar: "3. Besoins Linguistiques & Fonctionnalités (Section C & D)",
+        text: "Q13. Temps hebdomadaire pouvant être consacré par collaborateur :",
+        options: [
+          { label: "Format ultra-court (< 30 min/semaine — Efficacité immédiate / Dominant D)", weights: { disc: { red: 25 }, pcm: { promoter: 20 } } },
+          { label: "Format standard (1h à 2h/semaine — Pratique régulière)", weights: { disc: { blue: 20 }, pcm: { thinker: 20 } } },
+          { label: "Format intensif (> 2h/semaine — Immersion complète)", weights: { disc: { green: 15 }, pcm: { persister: 15 } } }
         ]
       },
       {
@@ -1074,115 +1111,200 @@
       },
       {
         id: 15, pillar: "3. Besoins Linguistiques & Fonctionnalités (Section C & D)",
-        text: "Q15. Utilité des fonctionnalités clés (1 à 5) :",
+        text: "Q15. Utilité prioritaire des fonctionnalités du produit (1 à 5) :",
         options: [
           { label: "Scénarios commerciaux de négociation (Dominant D / Promoteur)", weights: { disc: { red: 25 }, pcm: { promoter: 25 } } },
-          { label: "Coach vocal IA & correction de syntaxe (Travaillomane / Analyste)", weights: { disc: { blue: 25 }, pcm: { thinker: 25 } } },
-          { label: "Jeux de rôle de groupe (Empathique / Stable S)", weights: { disc: { green: 20 }, pcm: { harmonizer: 20 } } },
-          { label: "Gamification & badges (Rebelle / Influent I)", weights: { disc: { yellow: 20 }, pcm: { rebel: 20 } } }
+          { label: "Coach vocal IA & correction syntaxique (Travaillomane / Analyste)", weights: { disc: { blue: 25 }, pcm: { thinker: 25 } } },
+          { label: "Jeux de rôle de groupe & mise en situation (Empathique / Stable S)", weights: { disc: { green: 20 }, pcm: { harmonizer: 20 } } },
+          { label: "Gamification & badges de niveau (Rebelle / Influent I)", weights: { disc: { yellow: 20 }, pcm: { rebel: 20 } } }
         ]
       },
       {
         id: 16, pillar: "3. Besoins Linguistiques & Fonctionnalités (Section C & D)",
-        text: "Q16 & Q17. Avatar visuel animé & suivi de performance :",
-        legalBadge: "🚨 AI Act Art. 5 § 1 f (2024/1689) : Inférer un état affectif ou émotionnel sur le lieu de travail est une PRATIQUE INTERDITE. Seule la mesure comportementale et vocale est licite.",
+        text: "Q16. Utilisation d'un avatar visuel animé dans le simulateur d'entraînement :",
         options: [
-          { label: "Avatar & Suivi Émotionnel (⚠️ Requiert recadrage strict sur le comportemental / Empathique)", weights: { disc: { yellow: 15 }, pcm: { harmonizer: 15 } } },
-          { label: "Avatar Neutre & Suivi Comportemental / Factuel (Travaillomane / Conforme C)", weights: { disc: { blue: 25 }, pcm: { thinker: 25 } } }
+          { label: "Oui, avatar visuel immersif souhaité (Valeur perçue / Influent I)", weights: { disc: { yellow: 20 }, pcm: { harmonizer: 20 } } },
+          { label: "Non, interface neutre & épurée centrée sur la voix/data (Conforme C)", weights: { disc: { blue: 25 }, pcm: { thinker: 25 } } }
+        ]
+      },
+      {
+        id: 17, pillar: "3. Besoins Linguistiques & Fonctionnalités (Section C & D)",
+        legalBadge: "🚨 AI Act Art. 5 § 1 f (Règlement UE 2024/1689) : Inférer les émotions d'une personne sur le lieu de travail est une PRATIQUE INTERDITE. Seul le suivi comportemental et vocal est licite.",
+        text: "Q17. Orientations du suivi de performance :",
+        options: [
+          { label: "Suivi Émotionnel / Affectif (⚠️ Pratique Interdite par AI Act Art. 5 § 1 f — Recadrage comportemental obligatoire)", weights: { disc: { yellow: 15 }, pcm: { harmonizer: 15 } } },
+          { label: "Suivi Comportemental & Factuel (Conforme AI Act / Travaillomane / Conforme C)", weights: { disc: { blue: 25 }, pcm: { thinker: 25 } } }
         ]
       },
       {
         id: 18, pillar: "3. Besoins Linguistiques & Fonctionnalités (Section C & D)",
-        text: "Q18 & Q19. Interface (Web vs CRM/Teams) & scénarios ciblés par pôle (Londres, NY) :",
+        text: "Q18. Environnement d'intégration privilégié pour les équipes :",
         options: [
-          { label: "Intégration CRM & Hubs ciblés (High-Ticket / Promoteur / Dominant D)", weights: { disc: { red: 25 }, pcm: { promoter: 25 } } },
-          { label: "Interface Web générique", weights: { disc: { blue: 15 }, pcm: { thinker: 15 } } }
+          { label: "Intégration directe CRM (Salesforce/Hubspot) / MS Teams (Dominant D / Promoteur)", weights: { disc: { red: 25 }, pcm: { promoter: 25 } } },
+          { label: "Application Web dédiée standalone (Conforme C / Travaillomane)", weights: { disc: { blue: 15 }, pcm: { thinker: 15 } } }
+        ]
+      },
+      {
+        id: 19, pillar: "3. Besoins Linguistiques & Fonctionnalités (Section C & D)",
+        text: "Q19. Degré de personnalisation des scénarios par pôle géographique :",
+        options: [
+          { label: "Scénarios ultra-ciblés par pôle (Londres, NY, Dublin) & secteur", weights: { disc: { red: 25 }, pcm: { promoter: 25 } } },
+          { label: "Scénarios généraux d'anglais d'affaires international", weights: { disc: { blue: 15 }, pcm: { thinker: 15 } } }
         ]
       },
       {
         id: 20, pillar: "3. Besoins Linguistiques & Fonctionnalités (Section C & D)",
-        text: "Q20. Fonctionnalité manquante éliminatoire (Champ ouvert d'évaluation ultime) :",
+        text: "Q20. Quelle serait la fonctionnalité manquante qui serait éliminatoire pour vous ?",
         options: [
-          { label: "Simulation d'objections agressives à chaud (Urgence / Dominant D)", weights: { disc: { red: 25 }, pcm: { promoter: 20 } } },
-          { label: "Certification officielle RNS / CPF (Conformité / Conforme C)", weights: { disc: { blue: 25 }, pcm: { persister: 20 } } }
+          { label: "Absence de simulation d'objections agressives à chaud (Urgence / Dominant D)", weights: { disc: { red: 25 }, pcm: { promoter: 20 } } },
+          { label: "Absence de certification officielle / CPF / RS (Conformité / Conforme C)", weights: { disc: { blue: 25 }, pcm: { persister: 20 } } },
+          { label: "Absence d'intégration SSO entreprise (Sécurité IT)", weights: { disc: { blue: 20 }, pcm: { thinker: 20 } } }
         ]
       },
 
-      // 4. SECTION E : PRICING & PROCHAINE ÉTAPE (Q21 à Q26)
+      // 4. SECTION E : PRICING, BUDGET & ÉTAPE 0 (Q21 à Q26)
       {
         id: 21, pillar: "4. Pricing, Budget & Étape 0 (Section E)",
-        text: "Q21 & Q22. Budget actuel par collaborateur & modèle tarifaire préféré :",
+        text: "Q21. Quel est votre budget actuel alloué par collaborateur et par an ?",
         options: [
-          { label: "Modèle High-Ticket / Forfait global annuel (Dominant D / Promoteur)", weights: { disc: { red: 30 }, pcm: { promoter: 30 } } },
-          { label: "Modèle SaaS classique par utilisateur/mois (Conforme C / Travaillomane)", weights: { disc: { blue: 20 }, pcm: { thinker: 20 } } }
+          { label: "> 2 000 € HT / collaborateur / an (Budget High-Ticket Exclusif)", weights: { disc: { red: 30 }, pcm: { promoter: 30 } } },
+          { label: "1 000 € à 2 000 € HT / collaborateur / an", weights: { disc: { blue: 20 }, pcm: { thinker: 20 } } },
+          { label: "< 1 000 € HT / collaborateur / an", weights: { disc: { green: 15 }, pcm: { harmonizer: 15 } } }
+        ]
+      },
+      {
+        id: 22, pillar: "4. Pricing, Budget & Étape 0 (Section E)",
+        text: "Q22. Quel est votre modèle tarifaire préféré ?",
+        options: [
+          { label: "Forfait global annuel d'équipe (Dominant D / Promoteur)", weights: { disc: { red: 25 }, pcm: { promoter: 25 } } },
+          { label: "Abonnement mensuel par utilisateur / mois (SaaS classique / Conforme C)", weights: { disc: { blue: 20 }, pcm: { thinker: 20 } } },
+          { label: "Facturation au module ou à l'usage réel", weights: { disc: { green: 15 }, pcm: { harmonizer: 15 } } }
         ]
       },
       {
         id: 23, pillar: "4. Pricing, Budget & Étape 0 (Section E)",
-        text: "Q23 & Q24. Seuil de prix trop cher & seuil sous lequel vous doutez de la qualité :",
+        text: "Q23. Quel est le seuil de prix à partir duquel vous jugez l'offre trop chère ?",
         options: [
-          { label: "Prix perçu > 2 000 € HT / apprenant (Valeur d'excellence / Persévérant)", weights: { disc: { red: 25 }, pcm: { persister: 25 } } },
-          { label: "Doute sur la qualité si < 500 € (Sensibilité à la crédibilité)", weights: { disc: { blue: 20 }, pcm: { thinker: 20 } } }
+          { label: "Plafond > 3 000 € HT / apprenant", weights: { disc: { red: 25 }, pcm: { promoter: 25 } } },
+          { label: "Plafond à 2 000 € HT / apprenant (Ancrage Diagnostic Coach Étape 0)", weights: { disc: { blue: 20 }, pcm: { thinker: 20 } } },
+          { label: "Plafond < 1 000 € HT / apprenant", weights: { disc: { green: 15 }, pcm: { harmonizer: 15 } } }
+        ]
+      },
+      {
+        id: 24, pillar: "4. Pricing, Budget & Étape 0 (Section E)",
+        text: "Q24. Quel est le seuil de prix en dessous duquel vous doutez de la qualité ?",
+        options: [
+          { label: "Doute sur la qualité si < 1 000 € HT (Attente de coaching premium)", weights: { disc: { red: 25 }, pcm: { persister: 25 } } },
+          { label: "Doute sur la qualité si < 500 € HT", weights: { disc: { blue: 20 }, pcm: { thinker: 20 } } },
+          { label: "Pas de doute, recherche du prix le plus bas", weights: { disc: { yellow: 15 }, pcm: { rebel: 15 } } }
         ]
       },
       {
         id: 25, pillar: "4. Pricing, Budget & Étape 0 (Section E)",
-        text: "Q25. Avez-vous évalué d'autres outils concurrents (Speexx, Babbel, Coaching 1-1) ?",
+        text: "Q25. Avez-vous déjà évalué d'autres outils concurrents (Speexx, Babbel, Coaching 1-1) ?",
         options: [
-          { label: "Oui, comparatif actif en cours (Analyse poussée / Conforme C)", weights: { disc: { blue: 20 }, pcm: { thinker: 20 } } },
-          { label: "Non, QuestIA est le premier outil évalué", weights: { disc: { red: 15 }, pcm: { promoter: 15 } } }
+          { label: "Oui, comparatif actif et formalisé en cours (Analyse poussée / Conforme C)", weights: { disc: { blue: 25 }, pcm: { thinker: 25 } } },
+          { label: "Oui, mais solutions jugées inadaptées à la négociation commercial High-Ticket", weights: { disc: { red: 25 }, pcm: { promoter: 25 } } },
+          { label: "Non, QuestIA est le premier outil évalué sur ce besoin", weights: { disc: { yellow: 15 }, pcm: { rebel: 15 } } }
         ]
       },
       {
         id: 26, pillar: "4. Pricing, Budget & Étape 0 (Section E)",
-        text: "Q26. Intérêt pour un essai pilote / entretien de 20 min (Recontact) :",
+        text: "Q26. Intérêt pour un essai pilote / entretien de 20 min (Recontact immédiat) :",
         options: [
-          { label: "Validé — Conversion vers Étape 0 (Diagnostic Coach 1-sur-1 à 2 000 € HT)", weights: { disc: { red: 35 }, pcm: { promoter: 35 } } },
-          { label: "En attente d'arbitrage budgétaire interne", weights: { disc: { green: 15 }, pcm: { persister: 15 } } }
+          { label: "Validé — Conversion vers Étape 0 (Diagnostic Coach 1-sur-1 à 2 000 € HT / apprenant)", weights: { disc: { red: 35 }, pcm: { promoter: 35 } } },
+          { label: "Demande de démo complémentaire avec la Direction Commerciale", weights: { disc: { blue: 20 }, pcm: { thinker: 20 } } },
+          { label: "En attente d'arbitrage budgétaire RH interne", weights: { disc: { green: 15 }, pcm: { persister: 15 } } }
         ]
       },
 
-      // 5. SECTION S : ÉLÉMENTS SUPPLÉMENTAIRES RH, SIRH & RQTH
+      // 5. SECTION S : VOLET RH, SIRH, RQTH & RGPD (10 NOUVELLES QUESTIONS S1 à S10)
       {
-        id: "S1", pillar: "5. Éléments Supplémentaires RH & SIRH (Section S)",
-        text: "S1. LMS existant — Utilisez-vous déjà un LMS (Learning Management System) ? Lequel ?",
+        id: "S1", pillar: "5. Volet RH, SIRH, RQTH & RGPD (Section S)",
+        text: "S1. LMS existant — Utilisez-vous déjà un LMS (Learning Management System) dans l'entreprise ?",
         options: [
           { label: "Oui (Cornerstone, Moodle, 360Learning...) — Éligibilité ICP Rang A", weights: { disc: { blue: 25 }, pcm: { thinker: 25 } } },
-          { label: "Non (Pas de LMS centralisé)", weights: { disc: { yellow: 15 }, pcm: { promoter: 15 } } }
+          { label: "En cours de déploiement / projet", weights: { disc: { yellow: 15 }, pcm: { promoter: 15 } } },
+          { label: "Non (Pas de LMS centralisé)", weights: { disc: { green: 15 }, pcm: { harmonizer: 15 } } }
         ]
       },
       {
-        id: "S2", pillar: "5. Éléments Supplémentaires RH & SIRH (Section S)",
-        text: "S2. Accessibilité / RQTH — Collaborateurs en situation de handicap dans le périmètre ?",
+        id: "S2", pillar: "5. Volet RH, SIRH, RQTH & RGPD (Section S)",
         legalBadge: "⚖️ Obligation Légale : Art. L5213-6 du Code du travail (Obligation sans seuil d'effectif d'adapter les logiciels du poste de travail des personnes handicapées).",
+        text: "S2. Accessibilité / RQTH — Collaborateurs en situation de handicap (reconnaissance RQTH) dans le périmètre ?",
         options: [
-          { label: "Oui (Obligation d'accessibilité numérique Art. L5213-6 / Conforme C)", weights: { disc: { blue: 25 }, pcm: { persister: 20 } } },
-          { label: "Non / Périmètre sans contrainte RQTH", weights: { disc: { red: 10 } } }
+          { label: "Oui (Exigence d'accessibilité numérique conforme RGAA / Art. L5213-6)", weights: { disc: { blue: 25 }, pcm: { persister: 25 } } },
+          { label: "Non / Aucun besoin identifié à ce jour", weights: { disc: { red: 10 }, pcm: { promoter: 10 } } },
+          { label: "Je ne sais pas (Vérification RH requise)", weights: { disc: { green: 15 }, pcm: { harmonizer: 15 } } }
         ]
       },
       {
-        id: "S3.1", pillar: "5. Éléments Supplémentaires RH & SIRH (Section S)",
-        text: "S3.1. Identifiant pivot utilisé au niveau organisationnel (SSO / SIRH) :",
+        id: "S3", pillar: "5. Volet RH, SIRH, RQTH & RGPD (Section S)",
+        text: "S3. Identifiant pivot technique — Quel est l'identifiant unique pivot utilisé pour vos outils internes ?",
         options: [
-          { label: "SSO Entreprise (Azure AD, Okta...) — Intégration Sécurisée", weights: { disc: { blue: 25 }, pcm: { thinker: 25 } } },
+          { label: "SSO Entreprise (Azure AD, Okta...) — Intégration informatique sécurisée", weights: { disc: { blue: 25 }, pcm: { thinker: 25 } } },
           { label: "Email professionnel nominatif", weights: { disc: { green: 15 }, pcm: { thinker: 15 } } },
           { label: "Matricule SIRH interne", weights: { disc: { blue: 20 }, pcm: { persister: 20 } } }
         ]
       },
       {
-        id: "S3.2", pillar: "5. Éléments Supplémentaires RH & SIRH (Section S)",
-        text: "S3.2. Présence de comptes partagés ou génériques (boîte mutualisée) :",
+        id: "S4", pillar: "5. Volet RH, SIRH, RQTH & RGPD (Section S)",
+        text: "S4. Gestion des comptes partagés — Existe-t-il des comptes partagés ou boîtes mutualisées sur vos outils ?",
         options: [
-          { label: "Oui (Nécessite gestion spécifique des accès partagés)", weights: { disc: { yellow: 15 }, pcm: { harmonizer: 15 } } },
-          { label: "Non (100% des comptes sont nominatifs)", weights: { disc: { blue: 20 }, pcm: { thinker: 20 } } }
+          { label: "Oui (Nécessite une gestion d'accès spécifiques pour comptes partagés)", weights: { disc: { yellow: 15 }, pcm: { harmonizer: 15 } } },
+          { label: "Non (100% des comptes et accès sont strictement nominatifs)", weights: { disc: { blue: 20 }, pcm: { thinker: 20 } } }
         ]
       },
       {
-        id: "S3.3", pillar: "5. Éléments Supplémentaires RH & SIRH (Section S)",
-        text: "S3.3. Règle de conservation & mobilité interne (historique collaborateur) :",
+        id: "S5", pillar: "5. Volet RH, SIRH, RQTH & RGPD (Section S)",
+        text: "S5. Statuts particuliers — Comment sont gérés les alternants, stagiaires et prestataires externes ?",
         options: [
-          { label: "Historique suit le collaborateur lors d'une mobilité interne", weights: { disc: { green: 20 }, pcm: { harmonizer: 20 } } },
-          { label: "Historique reste rattaché au poste / Purge à la sortie (Conformité RGPD)", weights: { disc: { blue: 25 }, pcm: { thinker: 25 } } }
+          { label: "Intégrés dans le même parcours de formation que les permanents", weights: { disc: { green: 20 }, pcm: { harmonizer: 20 } } },
+          { label: "Comptes temporaires avec date d'expiration automatisée", weights: { disc: { blue: 25 }, pcm: { thinker: 25 } } },
+          { label: "Exclus du périmètre de formation", weights: { disc: { red: 10 }, pcm: { promoter: 10 } } }
+        ]
+      },
+      {
+        id: "S6", pillar: "5. Volet RH, SIRH, RQTH & RGPD (Section S)",
+        text: "S6. Mobilité interne — En cas de changement de poste, l'historique de formation doit-il suivre le collaborateur ?",
+        options: [
+          { label: "Oui, l'historique et la progression suivent le collaborateur", weights: { disc: { green: 20 }, pcm: { harmonizer: 20 } } },
+          { label: "Non, l'historique reste rattaché au poste d'origine", weights: { disc: { blue: 20 }, pcm: { thinker: 20 } } }
+        ]
+      },
+      {
+        id: "S7", pillar: "5. Volet RH, SIRH, RQTH & RGPD (Section S)",
+        text: "S7. Conservation RGPD — Quelle est la politique de conservation/purge des données à la sortie d'un salarié ?",
+        options: [
+          { label: "Anonymisation / Purge automatique sous 30 jours (Conformité RGPD stricte)", weights: { disc: { blue: 25 }, pcm: { thinker: 25 } } },
+          { label: "Archivage sécurisé RH sur durée légale (3-5 ans)", weights: { disc: { blue: 20 }, pcm: { persister: 20 } } },
+          { label: "Pas de politique automatisée définie", weights: { disc: { yellow: 10 }, pcm: { rebel: 10 } } }
+        ]
+      },
+      {
+        id: "S8", pillar: "5. Volet RH, SIRH, RQTH & RGPD (Section S)",
+        text: "S8. Onboarding RH — À quel moment la formation linguistique est-elle déclenchée pour un nouveau commercial ?",
+        options: [
+          { label: "Dès le jour J de l'onboarding (Intégration systématique)", weights: { disc: { red: 25 }, pcm: { promoter: 25 } } },
+          { label: "Après la période d'essai (Validation de poste)", weights: { disc: { blue: 20 }, pcm: { thinker: 20 } } },
+          { label: "À la demande du manager direct", weights: { disc: { green: 15 }, pcm: { harmonizer: 15 } } }
+        ]
+      },
+      {
+        id: "S9", pillar: "5. Volet RH, SIRH, RQTH & RGPD (Section S)",
+        text: "S9. Financement RH — Prévoyez-vous un cofinancement ou adossement (OPCO / FNE / CPF) ?",
+        options: [
+          { label: "Oui, recherche d'optimisation et subvention RH / OPCO", weights: { disc: { blue: 25 }, pcm: { thinker: 25 } } },
+          { label: "Non, budget de fonctionnement en propre (Financement direct Direction Commerciale)", weights: { disc: { red: 25 }, pcm: { promoter: 25 } } }
+        ]
+      },
+      {
+        id: "S10", pillar: "5. Volet RH, SIRH, RQTH & RGPD (Section S)",
+        text: "S10. Reporting RH & ROI global — Fréquence et format de la revue de bilan attendue par la DRH :",
+        options: [
+          { label: "Revue mensuelle automatisée avec KPIs de conversion commercial & ROI", weights: { disc: { red: 25 }, pcm: { promoter: 25 } } },
+          { label: "Bilan trimestriel / semestriel synthétique RH", weights: { disc: { blue: 20 }, pcm: { thinker: 20 } } },
+          { label: "Bilan annuel lors de la revue du plan de développement des compétences", weights: { disc: { green: 15 }, pcm: { persister: 15 } } }
         ]
       }
     ];
@@ -1305,11 +1427,11 @@
       });
 
       // Update Summary Header Progress Badges
-      const p1List = ['F1', 1, 3, 4, 5];
-      const p2List = [6, 7, 8, 9];
-      const p3List = [11, 12, 14, 15, 16, 18, 20];
-      const p4List = [21, 23, 25, 26];
-      const p5List = ['S1', 'S2', 'S3.1', 'S3.2', 'S3.3'];
+      const p1List = ['F1', 'F2', 1, 2, 3, 4, 5];
+      const p2List = [6, 7, 8, 9, 10];
+      const p3List = [11, 12, 13, 14, 15, 16, 17, 18, 19, 20];
+      const p4List = [21, 22, 23, 24, 25, 26];
+      const p5List = ['S1', 'S2', 'S3', 'S4', 'S5', 'S6', 'S7', 'S8', 'S9', 'S10'];
 
       const p1Count = p1List.filter(id => userSelections[id] !== undefined).length;
       const p2Count = p2List.filter(id => userSelections[id] !== undefined).length;
