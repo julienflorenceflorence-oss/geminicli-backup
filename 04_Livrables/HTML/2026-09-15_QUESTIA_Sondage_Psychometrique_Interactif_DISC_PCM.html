@@ -1662,26 +1662,65 @@
       alert(`✅ Sondage Psychométrique Temps Réel sauvegardé dans le CRM QuestIA LAB !\n\nProspect : ${company}\nProfil DISC : ${leadObj.disc}\nBase PCM : ${leadObj.pcm}`);
     }
 
-    // EXPORT NOTE D'ÉVALUATION PÉDAGOGIQUE & RH PRINTABLE
+    // EXPORT NOTE D'ÉVALUATION PÉDAGOGIQUE & RH PRINTABLE (ULTRA-PRO & VISUEL)
     function exportAuditRHReport() {
       const company = document.getElementById('cCompany').value || "Airbus Subcontracting SAS";
-      const contact = document.getElementById('cContact').value || "Jean-Claude VASSEUR";
+      const contact = document.getElementById('cContact').value || "Jean-Claude VASSEUR (VP Sales)";
       const rev = document.getElementById('cRevenue').value || "15000000";
-      const disc = document.getElementById('discDominantBadge').innerText.replace('Dominant: ', '');
-      const pcm = document.getElementById('pcmDominantBadge').innerText.replace('Base: ', '');
-      const isEligible = (userSelections['S1'] === 0 || userSelections['S3'] === 0);
-      const itEligibleText = isEligible ? '✅ VALIDE (SSO / LMS)' : '⚠️ À CONFIRMER';
+      const discDominant = document.getElementById('discDominantBadge').innerText.replace('Dominant: ', '');
+      const pcmBase = document.getElementById('pcmDominantBadge').innerText.replace('Base: ', '');
+      
+      const s1Val = userSelections['S1'];
+      const s3Val = userSelections['S3'];
+      const isITEligible = (s1Val === 0 || s3Val === 0);
+      const itEligibleText = isITEligible ? '✅ VALIDÉE (SSO / LMS)' : '⚠️ À CONFIRMER (Non identifié)';
 
-      let itemsRows = QUESTIONS_DATA.map(q => {
-        const selIdx = userSelections[q.id];
-        const ansText = selIdx !== undefined ? q.options[selIdx].label : '<em style="color:#94A3B8;">Non renseigné</em>';
-        const noteText = userNotes[q.id] ? `<div style="margin-top:4px; font-style:italic; color:#475569;">💬 Verbatim : ${userNotes[q.id]}</div>` : '';
+      // DISC Scores
+      const discRed = document.getElementById('score-disc-red') ? document.getElementById('score-disc-red').innerText : '0%';
+      const discYellow = document.getElementById('score-disc-yellow') ? document.getElementById('score-disc-yellow').innerText : '0%';
+      const discGreen = document.getElementById('score-disc-green') ? document.getElementById('score-disc-green').innerText : '0%';
+      const discBlue = document.getElementById('score-disc-blue') ? document.getElementById('score-disc-blue').innerText : '0%';
+
+      // PCM Scores
+      const pcmThinker = document.getElementById('score-pcm-thinker') ? document.getElementById('score-pcm-thinker').innerText : '0%';
+      const pcmPersister = document.getElementById('score-pcm-persister') ? document.getElementById('score-pcm-persister').innerText : '0%';
+      const pcmPromoter = document.getElementById('score-pcm-promoter') ? document.getElementById('score-pcm-promoter').innerText : '0%';
+      const pcmHarmonizer = document.getElementById('score-pcm-harmonizer') ? document.getElementById('score-pcm-harmonizer').innerText : '0%';
+      const pcmRebel = document.getElementById('score-pcm-rebel') ? document.getElementById('score-pcm-rebel').innerText : '0%';
+      const pcmImaginer = document.getElementById('score-pcm-imaginer') ? document.getElementById('score-pcm-imaginer').innerText : '0%';
+
+      const aiScriptHtml = document.getElementById('aiScriptContent') ? document.getElementById('aiScriptContent').innerHTML : '';
+
+      // Group questions by pillar
+      const pillarsMap = {};
+      QUESTIONS_DATA.forEach(q => {
+        if (!pillarsMap[q.pillar]) pillarsMap[q.pillar] = [];
+        pillarsMap[q.pillar].push(q);
+      });
+
+      let pillarsHtml = Object.keys(pillarsMap).map(pillarName => {
+        const qList = pillarsMap[pillarName];
+        let qRows = qList.map(q => {
+          const selIdx = userSelections[q.id];
+          const ansText = selIdx !== undefined ? q.options[selIdx].label : '<em style="color:#94A3B8;">Non évalué lors de l\'entretien</em>';
+          const noteText = userNotes[q.id] ? `<div class="q-note-pdf">💬 <strong>Verbatim / Note Prospect :</strong> ${userNotes[q.id]}</div>` : '';
+          const legalBadge = q.legalBadge ? `<div style="font-size:10px; color:#DC2626; font-weight:700; margin-top:2px;"><i class="fa-solid fa-scale-balanced"></i> ${q.legalBadge}</div>` : '';
+
+          return `
+            <div class="q-row-pdf">
+              <div class="q-title-pdf">${q.text} <span style="font-size:9.5px; color:#64748B; background:#F1F5F9; padding:1px 6px; border-radius:4px;">${typeof q.id === 'number' ? 'Q' + q.id : q.id}</span></div>
+              ${legalBadge}
+              <div style="margin-top:4px;"><span class="q-ans-pdf">${ansText}</span></div>
+              ${noteText}
+            </div>
+          `;
+        }).join('');
+
         return `
-          <tr style="border-bottom:1px solid #E2E8F0;">
-            <td style="padding:10px; font-weight:700; width:38%; color:#0F172A;">${q.text}</td>
-            <td style="padding:10px; width:42%; color:#1E293B;">${ansText}${noteText}</td>
-            <td style="padding:10px; font-size:11px; color:#64748B; width:20%;">${q.pillar}</td>
-          </tr>
+          <div class="pole-section-pdf">
+            <div class="pole-title-pdf"><i class="fa-solid fa-layer-group" style="color:#7B5CFF;"></i> ${pillarName}</div>
+            ${qRows}
+          </div>
         `;
       }).join('');
 
@@ -1692,72 +1731,298 @@
         <head>
           <meta charset="UTF-8">
           <title>Note d'Évaluation Pédagogique & RH - ${company}</title>
+          <link rel="preconnect" href="https://fonts.googleapis.com">
+          <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+          <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&family=Outfit:wght@600;700;800&display=swap" rel="stylesheet">
+          <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
           <style>
-            body { font-family: 'Helvetica Neue', Arial, sans-serif; color: #0F172A; padding: 40px; line-height: 1.5; background: #FFF; }
-            .header-bar { display: flex; justify-content: space-between; align-items: center; border-bottom: 3px solid #7B5CFF; padding-bottom: 15px; margin-bottom: 25px; }
-            .logo-text { font-size: 26px; font-weight: 800; color: #00E5FF; letter-spacing: -0.5px; }
-            .logo-text span { color: #7B5CFF; }
-            .doc-title { font-size: 16px; font-weight: 800; text-transform: uppercase; color: #1E293B; letter-spacing: 0.5px; text-align: right; }
-            .summary-box { background: #F8FAFC; border: 1px solid #CBD5E1; border-radius: 10px; padding: 20px; margin-bottom: 25px; display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
-            .info-label { font-size: 11px; text-transform: uppercase; color: #64748B; font-weight: 700; }
-            .info-val { font-size: 14px; font-weight: 700; color: #0F172A; margin-bottom: 8px; }
-            .badge-status { background: #00E676; color: #000; font-weight: 800; padding: 4px 10px; border-radius: 6px; display: inline-block; font-size: 11px; }
-            table { width: 100%; border-collapse: collapse; margin-top: 15px; font-size: 11.5px; }
-            th { background: #0F172A; color: #FFF; text-align: left; padding: 10px; font-size: 11px; text-transform: uppercase; }
-            @media print { body { padding: 0; } }
+            * { box-sizing: border-box; margin: 0; padding: 0; }
+            @page { size: A4 portrait; margin: 12mm; }
+            body { font-family: 'Inter', sans-serif; color: #0F172A; background: #F8FAFC; padding: 20px; font-size: 11px; line-height: 1.4; }
+
+            /* EXECUTIVE HEADER BAR */
+            .report-header {
+              background: linear-gradient(135deg, #05070D, #0B0F19);
+              border: 1px solid #1E293B;
+              border-radius: 14px;
+              padding: 20px 24px;
+              color: #FFF;
+              display: flex;
+              justify-content: space-between;
+              align-items: center;
+              margin-bottom: 20px;
+              box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+            }
+
+            .logo-header { display: flex; align-items: center; gap: 12px; }
+            .logo-text { font-family: 'Outfit', sans-serif; font-size: 24px; font-weight: 800; color: #FFF; letter-spacing: -0.5px; }
+            .logo-text span { color: #00E5FF; }
+            .logo-sub { font-size: 11px; color: #94A3B8; text-transform: uppercase; font-weight: 700; letter-spacing: 0.5px; }
+
+            .header-right { text-align: right; }
+            .report-title-badge { background: rgba(0, 229, 255, 0.15); border: 1px solid #00E5FF; color: #00E5FF; padding: 4px 12px; border-radius: 20px; font-size: 10px; font-weight: 800; text-transform: uppercase; display: inline-block; margin-bottom: 6px; }
+            .report-date { font-size: 11px; color: #94A3B8; font-weight: 600; }
+
+            /* EXECUTIVE CARDS GRID */
+            .summary-cards-grid {
+              display: grid;
+              grid-template-columns: 1fr 1fr 1fr;
+              gap: 14px;
+              margin-bottom: 20px;
+            }
+
+            .summary-card-pdf {
+              background: #FFF;
+              border: 1px solid #E2E8F0;
+              border-radius: 12px;
+              padding: 14px 16px;
+              box-shadow: 0 2px 6px rgba(0,0,0,0.03);
+            }
+
+            .card-title-pdf { font-size: 10px; font-weight: 800; text-transform: uppercase; color: #64748B; margin-bottom: 6px; letter-spacing: 0.5px; display: flex; align-items: center; gap: 6px; }
+            .card-val-pdf { font-size: 14px; font-weight: 800; color: #0F172A; }
+            .card-sub-pdf { font-size: 11px; color: #475569; margin-top: 2px; font-weight: 600; }
+
+            /* BADGES */
+            .badge-pill-green { background: #DCFCE7; color: #166534; font-weight: 800; padding: 4px 10px; border-radius: 12px; font-size: 10.5px; border: 1px solid #86EFAC; display: inline-block; }
+            .badge-pill-violet { background: #F3E8FF; color: #6B21A8; font-weight: 800; padding: 4px 10px; border-radius: 12px; font-size: 10.5px; border: 1px solid #D8B4FE; display: inline-block; }
+            .badge-pill-cyan { background: #E0F2FE; color: #075985; font-weight: 800; padding: 4px 10px; border-radius: 12px; font-size: 10.5px; border: 1px solid #7DD3FC; display: inline-block; }
+
+            /* PSYCHOMETRIC SENSORS VISUAL GRID */
+            .psy-grid-pdf {
+              display: grid;
+              grid-template-columns: 1fr 1fr;
+              gap: 14px;
+              margin-bottom: 20px;
+            }
+
+            .psy-box-pdf {
+              background: #FFF;
+              border: 1px solid #CBD5E1;
+              border-radius: 12px;
+              padding: 16px;
+              box-shadow: 0 2px 6px rgba(0,0,0,0.03);
+            }
+
+            .psy-box-pdf h4 {
+              font-family: 'Outfit', sans-serif;
+              font-size: 13px;
+              font-weight: 800;
+              color: #0F172A;
+              margin-bottom: 12px;
+              display: flex;
+              justify-content: space-between;
+              align-items: center;
+              border-bottom: 2px solid #F1F5F9;
+              padding-bottom: 8px;
+            }
+
+            .disc-row-pdf { display: flex; align-items: center; justify-content: space-between; margin-bottom: 8px; font-size: 11px; font-weight: 700; }
+            .disc-bar-bg-pdf { height: 10px; width: 120px; background: #F1F5F9; border-radius: 6px; overflow: hidden; border: 1px solid #E2E8F0; }
+            .disc-bar-fill-pdf { height: 100%; border-radius: 6px; }
+
+            .pcm-row-pdf { display: flex; align-items: center; justify-content: space-between; padding: 6px 10px; border-radius: 8px; background: #F8FAFC; border: 1px solid #E2E8F0; margin-bottom: 5px; font-size: 11px; }
+            .pcm-row-pdf.dominant { background: #EFF6FF; border-color: #3B82F6; font-weight: 800; }
+
+            /* SCRIPT RECOMMENDATION BOX IN PDF */
+            .ai-script-pdf-box {
+              background: #F8FAFC;
+              border: 1px solid #7B5CFF;
+              border-radius: 12px;
+              padding: 14px;
+              margin-bottom: 20px;
+              font-size: 11px;
+            }
+
+            .ai-script-pdf-box h4 {
+              font-family: 'Outfit', sans-serif;
+              font-size: 12px;
+              color: #7B5CFF;
+              margin-bottom: 8px;
+            }
+
+            /* AUDIT POLES & QUESTIONS SECTIONS */
+            .section-header-pdf {
+              font-family: 'Outfit', sans-serif;
+              font-size: 15px;
+              font-weight: 800;
+              color: #0F172A;
+              text-transform: uppercase;
+              letter-spacing: 0.5px;
+              margin-bottom: 12px;
+              padding-bottom: 6px;
+              border-bottom: 2px solid #00E5FF;
+            }
+
+            .pole-section-pdf {
+              background: #FFF;
+              border: 1px solid #CBD5E1;
+              border-radius: 12px;
+              padding: 16px;
+              margin-bottom: 16px;
+              box-shadow: 0 2px 4px rgba(0,0,0,0.02);
+              page-break-inside: avoid;
+            }
+
+            .pole-title-pdf {
+              font-family: 'Outfit', sans-serif;
+              font-size: 13px;
+              font-weight: 800;
+              color: #0F172A;
+              border-bottom: 2px solid #7B5CFF;
+              padding-bottom: 8px;
+              margin-bottom: 12px;
+            }
+
+            .q-row-pdf { border-bottom: 1px dashed #E2E8F0; padding: 10px 0; }
+            .q-row-pdf:last-child { border-bottom: none; }
+            .q-title-pdf { font-weight: 700; color: #1E293B; font-size: 11px; margin-bottom: 4px; }
+            .q-ans-pdf { color: #0F172A; font-weight: 700; font-size: 11px; background: #F1F5F9; padding: 4px 10px; border-radius: 6px; display: inline-block; border: 1px solid #CBD5E1; }
+            .q-note-pdf { margin-top: 6px; font-size: 10.5px; color: #475569; background: #FEF3C7; border-left: 3px solid #F59E0B; padding: 6px 10px; border-radius: 6px; }
+
+            /* PRINT STYLES */
+            @media print {
+              body { background: #FFF; padding: 0; }
+              .report-header { background: #0B0F19 !important; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+              .pole-section-pdf { page-break-inside: avoid; }
+              .psy-grid-pdf { page-break-inside: avoid; }
+            }
           </style>
         </head>
         <body>
-          <div class="header-bar">
-            <div>
-              <div class="logo-text">Quest<span>IA</span> LAB</div>
-              <div style="font-size:12px; color:#64748B; font-weight:600;">Audit & Capteurs Psychométriques (DISC & PCM)</div>
+
+          <!-- EXECUTIVE HEADER -->
+          <div class="report-header">
+            <div class="logo-header">
+              <div>
+                <div class="logo-text">Quest<span>IA</span> LAB</div>
+                <div class="logo-sub">Audit & Capteurs Psychométriques B2B</div>
+              </div>
             </div>
-            <div>
-              <div class="doc-title">Note d'Évaluation Pédagogique & RH</div>
-              <div style="font-size:12px; color:#64748B; text-align:right;">Date de Restitution : ${new Date().toLocaleDateString('fr-FR')}</div>
+            <div class="header-right">
+              <div class="report-title-badge"><i class="fa-solid fa-file-contract"></i> Note d'Évaluation RH & Direction</div>
+              <div class="report-date">Restitution Officielle : ${new Date().toLocaleDateString('fr-FR')}</div>
             </div>
           </div>
 
-          <div class="summary-box">
-            <div>
-              <div class="info-label">Entreprise Cible</div>
-              <div class="info-val">${company}</div>
-              <div class="info-label">Décisionnaire Identifié</div>
-              <div class="info-val">${contact}</div>
-              <div class="info-label">CA Export Estimé</div>
-              <div class="info-val" style="color:#D4AF37;">${Number(rev).toLocaleString('fr-FR')} €</div>
+          <!-- EXECUTIVE KPI DASHBOARD -->
+          <div class="summary-cards-grid">
+            <div class="summary-card-pdf">
+              <div class="card-title-pdf"><i class="fa-solid fa-building" style="color:#00E5FF;"></i> Entreprise Cible</div>
+              <div class="card-val-pdf">${company}</div>
+              <div class="card-sub-pdf"><i class="fa-solid fa-user-tie"></i> ${contact}</div>
+              <div class="card-sub-pdf" style="color:#D4AF37; font-weight:700;"><i class="fa-solid fa-coins"></i> CA Export : ${Number(rev).toLocaleString('fr-FR')} €</div>
             </div>
-            <div>
-              <div class="info-label">Profil DISC Dominant Capté</div>
-              <div class="info-val">${disc}</div>
-              <div class="info-label">Base Structure PCM</div>
-              <div class="info-val">${pcm}</div>
-              <div class="info-label">Statut Éligibilité Technique IT</div>
-              <div><span class="badge-status">${itEligibleText}</span></div>
+
+            <div class="summary-card-pdf">
+              <div class="card-title-pdf"><i class="fa-solid fa-shield-halved" style="color:#7B5CFF;"></i> Profil & Conformité</div>
+              <div style="margin-bottom:4px;"><span class="badge-pill-cyan">DISC : ${discDominant}</span></div>
+              <div style="margin-bottom:4px;"><span class="badge-pill-violet">PCM Base : ${pcmBase}</span></div>
+              <div><span class="badge-pill-green">${itEligibleText}</span></div>
+            </div>
+
+            <div class="summary-card-pdf">
+              <div class="card-title-pdf"><i class="fa-solid fa-list-check" style="color:#00E676;"></i> Volume d'Audit</div>
+              <div class="card-val-pdf">38 Points d'Audit Réalisés</div>
+              <div class="card-sub-pdf">5 Pôles d'Investigation Complétés</div>
+              <div class="card-sub-pdf" style="color:#166534; font-weight:700;">✅ Conversion Étape 0 Accessible</div>
             </div>
           </div>
 
-          <h3 style="font-size:15px; text-transform:uppercase; color:#0F172A; margin-bottom:10px; border-bottom:2px solid #E2E8F0; padding-bottom:6px;">
-            Détail des 38 Points d'Audit d'Acquisition de Formation Linguistique
-          </h3>
-          <table>
-            <thead>
-              <tr>
-                <th>Point d'Audit & Question</th>
-                <th>Réponse Captée & Verbatims</th>
-                <th>Pôle d'Audit</th>
-              </tr>
-            </thead>
-            <tbody>
-              ${itemsRows}
-            </tbody>
-          </table>
+          <!-- PSYCHOMETRIC SENSORS VISUAL DASHBOARD -->
+          <div class="psy-grid-pdf">
+            
+            <!-- DISC SENSORS -->
+            <div class="psy-box-pdf">
+              <h4>
+                <span>🔴🟡🟢🔵 Capteur DISC (4 Couleurs)</span>
+                <span class="badge-pill-cyan" style="font-size:9.5px;">${discDominant}</span>
+              </h4>
+              <div class="disc-row-pdf">
+                <span style="color:#FF2E55;">🔴 Dominant (Rouge)</span>
+                <div>
+                  <div class="disc-bar-bg-pdf"><div class="disc-bar-fill-pdf" style="width:${discRed}; background:#FF2E55;"></div></div>
+                  <span style="margin-left:8px;">${discRed}</span>
+                </div>
+              </div>
+              <div class="disc-row-pdf">
+                <span style="color:#FFD600;">🟡 Influent (Jaune)</span>
+                <div>
+                  <div class="disc-bar-bg-pdf"><div class="disc-bar-fill-pdf" style="width:${discYellow}; background:#FFD600;"></div></div>
+                  <span style="margin-left:8px;">${discYellow}</span>
+                </div>
+              </div>
+              <div class="disc-row-pdf">
+                <span style="color:#00E676;">🟢 Stable (Vert)</span>
+                <div>
+                  <div class="disc-bar-bg-pdf"><div class="disc-bar-fill-pdf" style="width:${discGreen}; background:#00E676;"></div></div>
+                  <span style="margin-left:8px;">${discGreen}</span>
+                </div>
+              </div>
+              <div class="disc-row-pdf">
+                <span style="color:#00E5FF;">🔵 Consciencieux (Bleu)</span>
+                <div>
+                  <div class="disc-bar-bg-pdf"><div class="disc-bar-fill-pdf" style="width:${discBlue}; background:#00E5FF;"></div></div>
+                  <span style="margin-left:8px;">${discBlue}</span>
+                </div>
+              </div>
+            </div>
+
+            <!-- PCM BUILDING STACK -->
+            <div class="psy-box-pdf">
+              <h4>
+                <span>💼 Immeuble PCM (6 Profils Process Com)</span>
+                <span class="badge-pill-violet" style="font-size:9.5px;">${pcmBase}</span>
+              </h4>
+              <div class="pcm-row-pdf ${pcmBase.includes('Travaillomane') ? 'dominant' : ''}">
+                <span style="color:#00E5FF;"><i class="fa-solid fa-briefcase"></i> Travaillomane</span>
+                <strong>${pcmThinker}</strong>
+              </div>
+              <div class="pcm-row-pdf ${pcmBase.includes('Persévérant') ? 'dominant' : ''}">
+                <span style="color:#A78BFA;"><i class="fa-solid fa-landmark"></i> Persévérant</span>
+                <strong>${pcmPersister}</strong>
+              </div>
+              <div class="pcm-row-pdf ${pcmBase.includes('Promoteur') ? 'dominant' : ''}">
+                <span style="color:#FF5A6A;"><i class="fa-solid fa-bolt"></i> Promoteur</span>
+                <strong>${pcmPromoter}</strong>
+              </div>
+              <div class="pcm-row-pdf ${pcmBase.includes('Empathique') ? 'dominant' : ''}">
+                <span style="color:#FF66C4;"><i class="fa-solid fa-handshake"></i> Empathique</span>
+                <strong>${pcmHarmonizer}</strong>
+              </div>
+              <div class="pcm-row-pdf ${pcmBase.includes('Rebelle') ? 'dominant' : ''}">
+                <span style="color:#FFD600;"><i class="fa-solid fa-palette"></i> Rebelle</span>
+                <strong>${pcmRebel}</strong>
+              </div>
+              <div class="pcm-row-pdf ${pcmBase.includes('Rêveur') || pcmBase.includes('Imaginatif') ? 'dominant' : ''}">
+                <span style="color:#B8FF3D;"><i class="fa-solid fa-shield-cat"></i> Imaginatif</span>
+                <strong>${pcmImaginer}</strong>
+              </div>
+            </div>
+
+          </div>
+
+          <!-- POSTURE IA RECOMMANDEE BOX -->
+          <div class="ai-script-pdf-box">
+            ${aiScriptHtml}
+          </div>
+
+          <!-- DETAILED 38 AUDIT POINTS BY POLES -->
+          <div class="section-header-pdf"><i class="fa-solid fa-list-check"></i> Restitution des 38 Points d'Audit par Pôle d'Investigation</div>
+
+          ${pillarsHtml}
+
+          <!-- FOOTER -->
+          <div style="margin-top:30px; border-top:1px solid #CBD5E1; padding-top:10px; font-size:10px; color:#94A3B8; display:flex; justify-content:space-between;">
+            <div>QuestIA LAB — Document d'Audit d'Acquisition & Restitution RH Officielle</div>
+            <div>Strictement Confidentiel</div>
+          </div>
+
         </body>
         </html>
       `);
       printWin.document.close();
-      setTimeout(() => printWin.print(), 500);
+      setTimeout(() => printWin.print(), 600);
     }
 
     // INITIALIZATION
