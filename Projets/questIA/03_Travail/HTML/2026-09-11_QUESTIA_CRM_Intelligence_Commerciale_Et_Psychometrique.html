@@ -1,0 +1,871 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>QuestIA - CRM Intelligence Commerciale (Sélection par Menu Déroulant & Batch PDF)</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&family=Outfit:wght@400;600;700;800&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <style>
+    :root {
+      --bg-dark: #05070D;
+      --bg-card: #0B0F19;
+      --bg-card-hover: #121827;
+      --cyan-neon: #00E5FF;
+      --violet-neon: #7B5CFF;
+      --gold-accent: #D4AF37;
+      --lime-accent: #B8FF3D;
+      --coral-accent: #FF5A6A;
+      --text-white: #F8FAFC;
+      --text-muted: #94A3B8;
+      --border-cyan: rgba(0, 229, 255, 0.3);
+      --border-violet: rgba(123, 92, 255, 0.3);
+      --shadow-cyan: 0 0 25px rgba(0, 229, 255, 0.2);
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      background-color: var(--bg-dark);
+      color: var(--text-white);
+      font-family: 'Inter', sans-serif;
+      padding: 24px;
+    }
+
+    /* Top Ecosystem Nav */
+    .ecosystem-nav {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background: rgba(11, 15, 25, 0.8);
+      border: 1px solid var(--border-violet);
+      border-radius: 12px;
+      padding: 10px 20px;
+      margin-bottom: 20px;
+      font-size: 12px;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 16px;
+    }
+
+    .nav-link {
+      color: var(--text-muted);
+      text-decoration: none;
+      font-weight: 600;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      transition: color 0.2s ease;
+    }
+
+    .nav-link.active, .nav-link:hover {
+      color: var(--cyan-neon);
+    }
+
+    header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 20px 30px;
+      background: var(--bg-card);
+      border: 1px solid var(--border-cyan);
+      border-radius: 16px;
+      box-shadow: var(--shadow-cyan);
+      margin-bottom: 24px;
+    }
+
+    .brand-header {
+      display: flex;
+      align-items: center;
+      gap: 20px;
+    }
+
+    .questia-logo-img {
+      height: 48px;
+      width: auto;
+      object-fit: contain;
+      filter: drop-shadow(0 0 10px rgba(0,229,255,0.4));
+    }
+
+    .brand-title h1 {
+      font-family: 'Outfit', sans-serif;
+      font-size: 24px;
+      font-weight: 800;
+    }
+
+    .brand-title h1 span { color: var(--cyan-neon); }
+    .brand-title p {
+      font-size: 11px;
+      color: var(--violet-neon);
+      font-weight: 700;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+    }
+
+    .header-actions {
+      display: flex;
+      gap: 10px;
+    }
+
+    .btn-crm {
+      background: linear-gradient(135deg, var(--cyan-neon), var(--violet-neon));
+      color: #000;
+      font-weight: 800;
+      padding: 10px 18px;
+      border-radius: 8px;
+      border: none;
+      cursor: pointer;
+      font-size: 12.5px;
+      text-transform: uppercase;
+      transition: all 0.2s ease;
+    }
+
+    .btn-crm:hover {
+      transform: translateY(-2px);
+      box-shadow: var(--shadow-cyan);
+    }
+
+    .btn-sec {
+      background: var(--bg-card);
+      border: 1px solid var(--border-violet);
+      color: var(--cyan-neon);
+      font-weight: 700;
+      padding: 10px 14px;
+      border-radius: 8px;
+      cursor: pointer;
+      font-size: 12px;
+    }
+
+    .btn-excel {
+      background: rgba(184, 255, 61, 0.15);
+      border: 1px solid var(--lime-accent);
+      color: var(--lime-accent);
+      font-weight: 700;
+      padding: 10px 14px;
+      border-radius: 8px;
+      cursor: pointer;
+      font-size: 12px;
+    }
+
+    /* Prospect Selector Toolbar */
+    .selector-bar {
+      background: var(--bg-card);
+      border: 1px solid var(--cyan-neon);
+      border-radius: 12px;
+      padding: 14px 20px;
+      margin-bottom: 24px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 20px;
+      box-shadow: var(--shadow-cyan);
+    }
+
+    .selector-title {
+      font-weight: 700;
+      color: var(--cyan-neon);
+      font-size: 13px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .prospect-dropdown {
+      flex: 1;
+      max-width: 450px;
+      background: #121827;
+      border: 1px solid var(--cyan-neon);
+      color: var(--text-white);
+      padding: 10px 14px;
+      border-radius: 8px;
+      font-size: 13.5px;
+      font-family: 'Inter', sans-serif;
+      font-weight: 600;
+
+    }
+
+    .prospect-dropdown:focus {
+      outline: none;
+      box-shadow: 0 0 15px rgba(0, 229, 255, 0.3);
+    }
+
+    .kpi-row {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 16px;
+      margin-bottom: 24px;
+    }
+
+    .kpi-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border-violet);
+      border-radius: 12px;
+      padding: 18px;
+    }
+
+    .kpi-card h3 {
+      font-size: 11px;
+      color: var(--text-muted);
+      text-transform: uppercase;
+      margin-bottom: 6px;
+    }
+
+    .kpi-card .val {
+      font-family: 'Outfit', sans-serif;
+      font-size: 22px;
+      font-weight: 800;
+      color: var(--cyan-neon);
+    }
+
+    .crm-layout {
+      display: grid;
+      grid-template-columns: 320px 1fr;
+      gap: 24px;
+    }
+
+    .leads-panel {
+      background: var(--bg-card);
+      border: 1px solid var(--border-cyan);
+      border-radius: 16px;
+      padding: 20px;
+    }
+
+    .panel-title {
+      font-family: 'Outfit', sans-serif;
+      font-size: 16px;
+      color: var(--cyan-neon);
+      margin-bottom: 16px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .lead-item {
+      background: #121827;
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      border-radius: 10px;
+      padding: 14px;
+      margin-bottom: 10px;
+      cursor: pointer;
+      transition: all 0.2s ease;
+    }
+
+    .lead-item.active, .lead-item:hover {
+      border-color: var(--cyan-neon);
+      background: var(--bg-card-hover);
+      box-shadow: 0 0 15px rgba(0, 229, 255, 0.15);
+    }
+
+    .lead-company {
+      font-weight: 700;
+      font-size: 13.5px;
+      color: var(--text-white);
+    }
+
+    .lead-contact {
+      font-size: 11.5px;
+      color: var(--text-muted);
+      margin-bottom: 6px;
+    }
+
+    .badge-group {
+      display: flex;
+      gap: 6px;
+      flex-wrap: wrap;
+    }
+
+    .badge {
+      font-size: 9.5px;
+      font-weight: 700;
+      padding: 3px 8px;
+      border-radius: 12px;
+      text-transform: uppercase;
+    }
+
+    .badge-disc { background: rgba(0, 229, 255, 0.15); color: var(--cyan-neon); border: 1px solid var(--cyan-neon); }
+    .badge-pcm { background: rgba(123, 92, 255, 0.15); color: var(--violet-neon); border: 1px solid var(--violet-neon); }
+    .badge-loss { background: rgba(255, 90, 106, 0.15); color: var(--coral-accent); border: 1px solid var(--coral-accent); }
+
+    .detail-panel {
+      background: var(--bg-card);
+      border: 1px solid var(--border-cyan);
+      border-radius: 16px;
+      padding: 24px;
+    }
+
+    .detail-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      border-bottom: 1px solid rgba(0, 229, 255, 0.2);
+      padding-bottom: 16px;
+      margin-bottom: 20px;
+    }
+
+    .detail-title h2 {
+      font-family: 'Outfit', sans-serif;
+      font-size: 20px;
+      color: var(--text-white);
+    }
+
+    .detail-title p {
+      font-size: 13px;
+      color: var(--cyan-neon);
+    }
+
+    .data-sections-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 20px;
+    }
+
+    .data-box {
+      background: #121827;
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      border-radius: 12px;
+      padding: 18px;
+    }
+
+    .data-box h4 {
+      font-size: 13px;
+      color: var(--cyan-neon);
+      margin-bottom: 12px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+
+    .data-row {
+      display: flex;
+      justify-content: space-between;
+      font-size: 12px;
+      margin-bottom: 8px;
+      border-bottom: 1px dashed rgba(255,255,255,0.05);
+      padding-bottom: 4px;
+    }
+
+    .data-row span { color: var(--text-muted); }
+    .data-row strong { color: var(--text-white); }
+
+    .modal-overlay {
+      display: none;
+      position: fixed;
+      top: 0; left: 0; right: 0; bottom: 0;
+      background: rgba(5, 7, 13, 0.85);
+      backdrop-filter: blur(8px);
+      z-index: 999;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .modal-content {
+      background: var(--bg-card);
+      border: 1px solid var(--cyan-neon);
+      border-radius: 16px;
+      padding: 30px;
+      width: 100%;
+      max-width: 600px;
+      box-shadow: var(--shadow-cyan);
+    }
+
+    .modal-content h3 {
+      font-family: 'Outfit', sans-serif;
+      color: var(--cyan-neon);
+      margin-bottom: 18px;
+    }
+
+    .form-group { margin-bottom: 14px; }
+    .form-group label { display: block; font-size: 12px; margin-bottom: 4px; color: var(--text-white); }
+    .form-control { width: 100%; background: #121827; border: 1px solid rgba(255,255,255,0.2); color: #FFF; padding: 8px 12px; border-radius: 6px; }
+
+  </style>
+</head>
+<body>
+
+  <!-- Ecosystem Nav Bar -->
+  <div class="ecosystem-nav">
+    <div style="font-weight:700; color:var(--cyan-neon);"><i class="fa-solid fa-network-wired"></i> ÉCOSYSTÈME CONNECTÉ QUESTIA</div>
+    <div class="nav-links">
+      <a href="2026-09-11_QUESTIA_Trame_Diagnostic_Visio_DISC_PCM.html" class="nav-link"><i class="fa-solid fa-list-check"></i> Questionnaire Audit (26Q)</a>
+      <a href="2026-09-11_QUESTIA_CRM_Intelligence_Commerciale_Et_Psychometrique.html" class="nav-link active"><i class="fa-solid fa-users-gear"></i> CRM Intelligence</a>
+      <a href="2026-09-11_QUESTIA_Studio_Personnalisation_PDF.html" class="nav-link"><i class="fa-solid fa-file-pdf"></i> Studio PDF Personnalisé</a>
+    </div>
+  </div>
+
+  <header>
+    <div class="brand-header">
+      <img src="../../Images/QuestIA_Logo.png" alt="QuestIA Logo" class="questia-logo-img" onerror="this.style.display='none'" />
+      <div class="brand-title">
+        <h1>Quest<span>IA</span> CRM</h1>
+        <p>Intelligence Commerciale & Profilage Psychométrique (Sélection par Menu Déroulant)</p>
+      </div>
+    </div>
+    <div class="header-actions">
+      <input type="file" id="csvFileInput" accept=".csv" style="display:none;" onchange="importCSV(event)">
+      <button class="btn-sec" onclick="document.getElementById('csvFileInput').click()"><i class="fa-solid fa-file-import"></i> Importer CSV</button>
+      <button class="btn-excel" onclick="exportCSV()"><i class="fa-solid fa-file-excel"></i> Exporter CSV (Excel)</button>
+      <button class="btn-crm" onclick="openModal()"><i class="fa-solid fa-plus"></i> Nouveau Prospect</button>
+    </div>
+  </header>
+
+  <!-- PROSPECT DROPDOWN SELECTOR BAR -->
+  <div class="selector-bar">
+    <div class="selector-title">
+      <i class="fa-solid fa-square-poll-vertical" style="font-size:16px;"></i>
+      <span>SÉLECTIONNER UN PROSPECT DANS LE CRM :</span>
+    </div>
+    <select class="prospect-dropdown" id="mainProspectDropdown" onchange="onDropdownSelectProspect(this.value)">
+      <!-- Dynamically filled with prospects -->
+    </select>
+    <div>
+      <button class="btn-sec" style="color:var(--lime-accent); border-color:var(--lime-accent);" onclick="copyBatchCLICmd()">
+        <i class="fa-solid fa-layer-group"></i> Générer Tous les PDFs (Batch CSV)
+      </button>
+    </div>
+  </div>
+
+  <!-- KPI Row -->
+  <div class="kpi-row">
+    <div class="kpi-card">
+      <h3>Prospects En Portefeuille</h3>
+      <div class="val" id="kpiCount">0</div>
+    </div>
+    <div class="kpi-card">
+      <h3>CA Export Total Traqué</h3>
+      <div class="val" id="kpiRevenue">0 M€</div>
+    </div>
+    <div class="kpi-card">
+      <h3>Manque à Gagner Identifié</h3>
+      <div class="val" style="color:var(--coral-accent);" id="kpiLoss">0 k€ / an</div>
+    </div>
+    <div class="kpi-card">
+      <h3>Opportunités High-Ticket</h3>
+      <div class="val" style="color:var(--gold-accent);" id="kpiTicket">10 000 € HT</div>
+    </div>
+  </div>
+
+  <div class="crm-layout">
+    <!-- Left Sidebar: Leads List -->
+    <div class="leads-panel">
+      <div class="panel-title">
+        <span>Prospects Qualifiés</span>
+        <i class="fa-solid fa-sync" style="font-size:12px; cursor:pointer;" title="Recharger CRM" onclick="loadLeadsFromStorage()"></i>
+      </div>
+
+      <div id="leadsListContainer">
+        <!-- Dynamically rendered leads -->
+      </div>
+    </div>
+
+    <!-- Right Detailed Prospect View -->
+    <div class="detail-panel" id="detailPanel">
+      <!-- Dynamically filled prospect details -->
+    </div>
+  </div>
+
+  <!-- Modal Nouveau Prospect -->
+  <div class="modal-overlay" id="addModal">
+    <div class="modal-content">
+      <h3>➕ Ajouter un Nouveau Prospect CRM</h3>
+      
+      <div class="form-group">
+        <label>Nom de l'Entreprise :</label>
+        <input type="text" class="form-control" id="mCompany" placeholder="Ex: Dassault Systemes Subcontracting">
+      </div>
+      <div class="form-group">
+        <label>Nom & Titre du Décisionnaire :</label>
+        <input type="text" class="form-control" id="mContact" placeholder="Ex: Pierre MARTIN (VP Global Sales)">
+      </div>
+      <div class="form-group">
+        <label>Secteur ICP :</label>
+        <select class="form-control" id="mICP">
+          <option value="ICP 1 - Aéronautique">ICP 1 - Aéronautique & Spatial</option>
+          <option value="ICP 2 - Agro Export">ICP 2 - Agro & Produits de Luxe</option>
+          <option value="ICP 3 - SaaS DeepTech">ICP 3 - SaaS DeepTech B2B</option>
+          <option value="ICP 4 - Équipements Indu">ICP 4 - Équipements Industriels</option>
+          <option value="ICP 5 - MedTech Export">ICP 5 - MedTech & Santé</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label>CA Export Estime (€) :</label>
+        <input type="number" class="form-control" id="mRev" value="15000000">
+      </div>
+      <div class="form-group">
+        <label>Taux de Fuite Marge (%) :</label>
+        <input type="number" step="0.1" class="form-control" id="mLeak" value="4.2">
+      </div>
+      <div class="form-group">
+        <label>Profil DISC :</label>
+        <select class="form-control" id="mDISC">
+          <option value="Dominant (D)">🔴 Dominant (D)</option>
+          <option value="Influent (I)">🟡 Influent (I)</option>
+          <option value="Stable (S)">🟢 Stable (S)</option>
+          <option value="Consciencieux (C)">🔵 Consciencieux (C)</option>
+        </select>
+      </div>
+
+      <div style="display:flex; justify-content:flex-end; gap:10px; margin-top:20px;">
+        <button class="btn-sec" onclick="closeModal()">Annuler</button>
+        <button class="btn-crm" onclick="saveNewLead()">Enregistrer Prospect</button>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    let defaultLeads = [
+      {
+        id: "QUESTIA-001",
+        company: "Airbus Subcontracting SAS",
+        contact: "Jean-Claude VASSEUR",
+        title: "VP Commercial & Business Dev",
+        phone: "+33 6 61 74 75 73",
+        email: "jc.vasseur@airbus-sub.com",
+        icp: "ICP 1 - Aéronautique",
+        revenue: 15000000,
+        leak: 4.2,
+        disc: "Dominant (D)",
+        pcm: "Travaillomane",
+        stress: "Attaque directe / Pression tarifaire",
+        cse: "Non Concerné",
+        status: "Visio Audit 26Q Réalisé",
+        nextAction: "Envoi PDF #2 Note Choc & Prise RDV Étape 0"
+      },
+      {
+        id: "QUESTIA-002",
+        company: "Château Prestige Export",
+        contact: "Élisabeth DE SAINT-GERMAIN",
+        title: "Directrice Export US & Asie",
+        phone: "+33 6 12 34 56 78",
+        email: "e.stgermain@chateau-prestige.fr",
+        icp: "ICP 2 - Agro Export",
+        revenue: 8000000,
+        leak: 5.4,
+        disc: "Influent (I)",
+        pcm: "Persévérant",
+        stress: "Manipulation / Négociation de remises",
+        cse: "Non",
+        status: "Diagnostic Signé",
+        nextAction: "Lancement Bêta-Testeur (Offre 2 000 € HT)"
+      },
+      {
+        id: "QUESTIA-003",
+        company: "DeepTech Software SaaS",
+        contact: "Alexandre CHEN",
+        title: "Head of Global Sales",
+        phone: "+33 7 89 01 23 45",
+        email: "a.chen@deeptech.io",
+        icp: "ICP 3 - SaaS DeepTech",
+        revenue: 25000000,
+        leak: 3.0,
+        disc: "Consciencieux (C)",
+        pcm: "Promoteur",
+        stress: "Retrait analytique",
+        cse: "Non",
+        status: "Cold Call Validé",
+        nextAction: "Visio Audit 30 min programmé"
+      },
+      {
+        id: "QUESTIA-004",
+        company: "Safran Aircraft Engines",
+        contact: "Marc DUBOIS",
+        title: "VP Supply Chain & Export",
+        phone: "+33 6 55 44 33 22",
+        email: "m.dubois@safran-group.com",
+        icp: "ICP 1 - Aéronautique",
+        revenue: 30000000,
+        leak: 4.2,
+        disc: "Dominant (D)",
+        pcm: "Travaillomane",
+        stress: "Pression sur les délais et révisions",
+        cse: "Oui",
+        status: "Filtre Phoning Validé",
+        nextAction: "Visio Audit 26Q à programmer"
+      },
+      {
+        id: "QUESTIA-005",
+        company: "MedTech Surgical International",
+        contact: "Dr. Chantal BERNARD",
+        title: "VP Global Commercialisation",
+        phone: "+33 6 99 88 77 66",
+        email: "c.bernard@medtech-surg.com",
+        icp: "ICP 5 - MedTech Export",
+        revenue: 12000000,
+        leak: 5.4,
+        disc: "Stable (S)",
+        pcm: "Empatique",
+        stress: "Concessions lors des audits FDA",
+        cse: "Non Concerné",
+        status: "Prospect Qualifié",
+        nextAction: "Envoi PDF #3 Passe-Barrage"
+      }
+    ];
+
+    let leadsData = [];
+    let selectedIndex = 0;
+
+    function loadLeadsFromStorage() {
+      let stored = localStorage.getItem('QUESTIA_CRM_LEADS');
+      if (!stored) {
+        localStorage.setItem('QUESTIA_CRM_LEADS', JSON.stringify(defaultLeads));
+        leadsData = defaultLeads;
+      } else {
+        leadsData = JSON.parse(stored);
+      }
+      populateDropdown();
+      renderLeads();
+    }
+
+    function populateDropdown() {
+      const select = document.getElementById('mainProspectDropdown');
+      select.innerHTML = '';
+
+      leadsData.forEach((lead, idx) => {
+        const opt = document.createElement('option');
+        opt.value = idx;
+        opt.innerText = `🏢 ${lead.company} — ${lead.contact} (${(lead.revenue/1000000).toFixed(1)}M€ | ${lead.disc})`;
+        if (idx === selectedIndex) opt.selected = true;
+        select.appendChild(opt);
+      });
+    }
+
+    function onDropdownSelectProspect(idxStr) {
+      selectedIndex = parseInt(idxStr, 10);
+      renderLeads();
+    }
+
+    function renderLeads() {
+      const container = document.getElementById('leadsListContainer');
+      container.innerHTML = '';
+
+      let totalRev = 0;
+      let totalLoss = 0;
+
+      leadsData.forEach((lead, idx) => {
+        let loss = Math.round((lead.revenue || 0) * ((lead.leak || 0) / 100));
+        totalRev += (lead.revenue || 0);
+        totalLoss += loss;
+
+        const div = document.createElement('div');
+        div.className = `lead-item ${idx === selectedIndex ? 'active' : ''}`;
+        div.onclick = () => { 
+          selectedIndex = idx; 
+          document.getElementById('mainProspectDropdown').value = idx;
+          renderLeads(); 
+        };
+
+        div.innerHTML = `
+          <div class="lead-company">${lead.company}</div>
+          <div class="lead-contact">${lead.contact} (${lead.icp})</div>
+          <div class="badge-group">
+            <span class="badge badge-disc">${lead.disc}</span>
+            <span class="badge badge-pcm">${lead.pcm}</span>
+            <span class="badge badge-loss">-${(loss/1000).toFixed(0)}k€/an</span>
+          </div>
+        `;
+        container.appendChild(div);
+      });
+
+      document.getElementById('kpiCount').innerText = leadsData.length;
+      document.getElementById('kpiRevenue').innerText = (totalRev / 1000000).toFixed(1) + " M€";
+      document.getElementById('kpiLoss').innerText = (totalLoss / 1000).toFixed(0) + " k€ / an";
+
+      renderDetail();
+    }
+
+    function renderDetail() {
+      const panel = document.getElementById('detailPanel');
+      const lead = leadsData[selectedIndex];
+      if (!lead) return;
+
+      let loss = Math.round((lead.revenue || 0) * ((lead.leak || 0) / 100));
+
+      panel.innerHTML = `
+        <div class="detail-header">
+          <div class="detail-title">
+            <h2>${lead.company}</h2>
+            <p>${lead.contact} — ${lead.title || 'Décisionnaire'}</p>
+          </div>
+          <div style="display:flex; gap:8px;">
+            <button class="btn-sec" onclick="launchAudit26Q()"><i class="fa-solid fa-list-check"></i> Lancer Audit 26Q</button>
+            <button class="btn-crm" onclick="openStudio()"><i class="fa-solid fa-file-pdf"></i> Générer PDF Personnalisé</button>
+          </div>
+        </div>
+
+        <div class="data-sections-grid">
+          <!-- Commercial Data -->
+          <div class="data-box">
+            <h4>📊 Datas Commerciales & Financières</h4>
+            <div class="data-row"><span>Secteur ICP :</span><strong>${lead.icp}</strong></div>
+            <div class="data-row"><span>Chiffre d'Affaires Export :</span><strong>${(lead.revenue || 0).toLocaleString('fr-FR')} €</strong></div>
+            <div class="data-row"><span>Taux de Fuite de Marge :</span><strong>${lead.leak} %</strong></div>
+            <div class="data-row"><span>Perte Nette Annuelle :</span><strong style="color:var(--coral-accent);">${loss.toLocaleString('fr-FR')} € / an</strong></div>
+            <div class="data-row"><span>Téléphone Direct :</span><strong>${lead.phone || '-'}</strong></div>
+            <div class="data-row"><span>Email :</span><strong>${lead.email || '-'}</strong></div>
+          </div>
+
+          <!-- Psychometric Data -->
+          <div class="data-box">
+            <h4>🧠 Intelligence Psychométrique (DISC/PCM)</h4>
+            <div class="data-row"><span>Profil DISC Acheteur :</span><strong style="color:var(--cyan-neon);">${lead.disc}</strong></div>
+            <div class="data-row"><span>Base Process Com (PCM) :</span><strong style="color:var(--violet-neon);">${lead.pcm}</strong></div>
+            <div class="data-row"><span>Comportement Sous Stress :</span><strong>${lead.stress || 'Sous pression L2'}</strong></div>
+            <div class="data-row"><span>Statut Consultation CSE :</span><strong>${lead.cse || 'Non Concerné'}</strong></div>
+            <div class="data-row"><span>Statut Prospect :</span><strong>${lead.status || 'Prospection'}</strong></div>
+            <div class="data-row"><span>Prochaine Action :</span><strong style="color:var(--lime-accent);">${lead.nextAction || 'Relance Visio'}</strong></div>
+          </div>
+        </div>
+      `;
+    }
+
+    function openModal() { document.getElementById('addModal').style.display = 'flex'; }
+    function closeModal() { document.getElementById('addModal').style.display = 'none'; }
+
+    function saveNewLead() {
+      const comp = document.getElementById('mCompany').value;
+      const cont = document.getElementById('mContact').value;
+      const icp = document.getElementById('mICP').value;
+      const rev = parseFloat(document.getElementById('mRev').value) || 10000000;
+      const leak = parseFloat(document.getElementById('mLeak').value) || 4.2;
+      const disc = document.getElementById('mDISC').value;
+
+      if (!comp) return alert("Veuillez saisir le nom de l'entreprise.");
+
+      leadsData.push({
+        id: "QUESTIA-" + (leadsData.length + 1),
+        company: comp,
+        contact: cont || "Direction Commerciale",
+        title: "VP Sales / DG",
+        phone: "+33 6 00 00 00 00",
+        email: "contact@" + comp.toLowerCase().replace(/[^a-z0-9]/g, '') + ".com",
+        icp: icp,
+        revenue: rev,
+        leak: leak,
+        disc: disc,
+        pcm: "Travaillomane",
+        stress: "Pression de prix sous stress L2",
+        cse: "Non Concerné",
+        status: "Prospection Initiale",
+        nextAction: "Planification Visio Audit 30 min"
+      });
+
+      localStorage.setItem('QUESTIA_CRM_LEADS', JSON.stringify(leadsData));
+      closeModal();
+      selectedIndex = leadsData.length - 1;
+      populateDropdown();
+      renderLeads();
+    }
+
+    function launchAudit26Q() {
+      window.location.href = "2026-09-11_QUESTIA_Trame_Diagnostic_Visio_DISC_PCM.html";
+    }
+
+    function openStudio() {
+      window.location.href = "2026-09-11_QUESTIA_Studio_Personnalisation_PDF.html";
+    }
+
+    function copyBatchCLICmd() {
+      const cmd = "python3 05_Outils_Systeme/generate_batch_questia_pdfs.py --csv 04_Livrables/Data/QUESTIA_Exemple_Import_Prospects.csv --out 04_Livrables/PDF/Batch_Prospects";
+      navigator.clipboard.writeText(cmd);
+      alert("Commande CLI Python de Génération en Lot copié dans le presse-papier !\n\n" + cmd);
+    }
+
+    /* EXPORT CSV COMPATIBLE EXCEL */
+    function exportCSV() {
+      if (!leadsData || leadsData.length === 0) return alert("Aucun prospect à exporter.");
+
+      let headers = [
+        "ID_Prospect", "Entreprise", "Contact_Nom", "Titre_Fonction", "Telephone", "Email",
+        "Secteur_ICP", "CA_Export_EUR", "Taux_Fuite_Marge_PCT", "Perte_Nette_Annuelle_EUR",
+        "Profil_DISC", "Base_PCM", "Comportement_Stress", "Consultation_CSE", "Statut_Prospect", "Prochaine_Action"
+      ];
+
+      let csvRows = [];
+      csvRows.push(headers.join(";"));
+
+      leadsData.forEach(l => {
+        let loss = Math.round((l.revenue || 0) * ((l.leak || 0) / 100));
+        let row = [
+          `"${l.id || ''}"`,
+          `"${l.company || ''}"`,
+          `"${l.contact || ''}"`,
+          `"${l.title || ''}"`,
+          `"${l.phone || ''}"`,
+          `"${l.email || ''}"`,
+          `"${l.icp || ''}"`,
+          `${l.revenue || 0}`,
+          `${l.leak || 0}`,
+          `${loss}`,
+          `"${l.disc || ''}"`,
+          `"${l.pcm || ''}"`,
+          `"${l.stress || ''}"`,
+          `"${l.cse || ''}"`,
+          `"${l.status || ''}"`,
+          `"${l.nextAction || ''}"`
+        ];
+        csvRows.push(row.join(";"));
+      });
+
+      let csvContent = "\uFEFF" + csvRows.join("\n"); // BOM UTF-8 for Excel
+      let blob = new Blob([csvContent], { type: 'text/csv;charset=utf-8;' });
+      let url = URL.createObjectURL(blob);
+      let a = document.createElement('a');
+      a.setAttribute('href', url);
+      a.setAttribute('download', `QUESTIA_CRM_Export_Prospects_${new Date().toISOString().slice(0,10)}.csv`);
+      a.click();
+    }
+
+    /* IMPORT CSV */
+    function importCSV(event) {
+      const file = event.target.files[0];
+      if (!file) return;
+
+      const reader = new FileReader();
+      reader.onload = function(e) {
+        const text = e.target.result;
+        const lines = text.split(/\r\n|\n/);
+        if (lines.length < 2) return alert("Fichier CSV vide ou invalide.");
+
+        let countAdded = 0;
+        for (let i = 1; i < lines.length; i++) {
+          if (!lines[i].trim()) continue;
+          let cols = lines[i].split(";").map(c => c.replace(/^"|"$/g, '').trim());
+
+          if (cols.length >= 2 && cols[1]) {
+            leadsData.push({
+              id: cols[0] || ("QUESTIA-" + (leadsData.length + 1)),
+              company: cols[1],
+              contact: cols[2] || "Direction Commerciale",
+              title: cols[3] || "VP Sales",
+              phone: cols[4] || "",
+              email: cols[5] || "",
+              icp: cols[6] || "ICP 1 - Aéronautique",
+              revenue: parseFloat(cols[7]) || 10000000,
+              leak: parseFloat(cols[8]) || 4.2,
+              disc: cols[10] || "Dominant (D)",
+              pcm: cols[11] || "Travaillomane",
+              stress: cols[12] || "Pression L2",
+              cse: cols[13] || "Non Concerné",
+              status: cols[14] || "Importé CSV",
+              nextAction: cols[15] || "Lancer Audit 26Q"
+            });
+            countAdded++;
+          }
+        }
+
+        localStorage.setItem('QUESTIA_CRM_LEADS', JSON.stringify(leadsData));
+        alert(`✅ Importation réussie ! ${countAdded} nouveaux prospects ajoutés au CRM.`);
+        populateDropdown();
+        renderLeads();
+      };
+      reader.readAsText(file);
+    }
+
+    loadLeadsFromStorage();
+  </script>
+</body>
+</html>

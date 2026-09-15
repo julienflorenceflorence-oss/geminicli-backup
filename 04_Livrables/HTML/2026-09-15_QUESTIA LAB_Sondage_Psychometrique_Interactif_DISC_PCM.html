@@ -859,15 +859,15 @@
       <div class="cockpit-card">
         <div class="form-group-sm">
           <label style="font-weight:700; color:var(--cyan-neon); font-size:12px;"><i class="fa-solid fa-building"></i> Entreprise Cible :</label>
-          <input type="text" id="cCompany" value="Airbus Subcontracting SAS" style="font-weight:700; color:#FFF; font-size:13px;">
+          <input type="text" id="cCompany" value="Kuehne+Nagel" style="font-weight:700; color:#FFF; font-size:13px;">
         </div>
         <div class="form-group-sm">
           <label style="font-weight:700; color:var(--text-white); font-size:11.5px;"><i class="fa-solid fa-user-tie"></i> Décisionnaire (Nom & Titre) :</label>
-          <input type="text" id="cContact" value="Jean-Claude VASSEUR (VP Sales)" style="font-weight:600; color:#F8FAFC; font-size:12px;">
+          <input type="text" id="cContact" value="David Dufour" style="font-weight:600; color:#F8FAFC; font-size:12px;">
         </div>
         <div class="form-group-sm" style="margin-bottom:0;">
           <label style="font-weight:700; color:var(--gold-accent); font-size:11.5px;"><i class="fa-solid fa-coins"></i> CA Export Estimé (€) :</label>
-          <input type="number" id="cRevenue" value="15000000" style="font-weight:700; color:var(--gold-accent); font-size:13px;">
+          <input type="number" id="cRevenue" value="922000000" style="font-weight:700; color:var(--gold-accent); font-size:13px;">
         </div>
         <div id="itEligibilityBadge" class="it-eligibility-badge" style="display:none;">
           <i class="fa-solid fa-shield-check"></i> Éligibilité Technique Validée (SSO / LMS)
@@ -1623,9 +1623,9 @@
     }
 
     function saveAuditToCRM() {
-      const company = document.getElementById('cCompany').value || "Airbus Subcontracting SAS";
-      const contact = document.getElementById('cContact').value || "Jean-Claude VASSEUR";
-      const rev = parseFloat(document.getElementById('cRevenue').value) || 15000000;
+      const company = document.getElementById('cCompany').value || "Kuehne+Nagel";
+      const contact = document.getElementById('cContact').value || "David Dufour";
+      const rev = parseFloat(document.getElementById('cRevenue').value) || 922000000;
 
       let answersPayload = { ...userSelections };
       Object.keys(userNotes).forEach(qId => {
@@ -1664,9 +1664,9 @@
 
     // EXPORT NOTE D'ÉVALUATION PÉDAGOGIQUE & RH PRINTABLE (ULTRA-PRO & VISUEL)
     function exportAuditRHReport() {
-      const company = document.getElementById('cCompany').value || "Airbus Subcontracting SAS";
-      const contact = document.getElementById('cContact').value || "Jean-Claude VASSEUR (VP Sales)";
-      const rev = document.getElementById('cRevenue').value || "15000000";
+      const company = document.getElementById('cCompany').value || "Kuehne+Nagel";
+      const contact = document.getElementById('cContact').value || "David Dufour";
+      const rev = document.getElementById('cRevenue').value || "922000000";
       const discDominant = document.getElementById('discDominantBadge').innerText.replace('Dominant: ', '');
       const pcmBase = document.getElementById('pcmDominantBadge').innerText.replace('Base: ', '');
       
