@@ -696,6 +696,26 @@
   <div class="split-layout">
     <!-- LEFT COLUMN: 38 AUDIT QUESTIONS WITH NOTES -->
     <div class="survey-column">
+
+      <!-- AUDIT STATUS BANNER KUEHNE+NAGEL -->
+      <div style="background: rgba(0, 229, 255, 0.1); border: 1px solid var(--cyan-neon); border-radius: 14px; padding: 14px 20px; margin-bottom: 20px; box-shadow: var(--shadow-cyan); display: flex; align-items: center; justify-content: space-between;">
+        <div style="display: flex; align-items: center; gap: 12px;">
+          <div style="background: rgba(0, 230, 118, 0.2); border: 1px solid var(--disc-green); color: var(--disc-green); width: 36px; height: 36px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 18px;">
+            <i class="fa-solid fa-check"></i>
+          </div>
+          <div>
+            <div style="font-size: 14px; font-weight: 800; color: #FFF;">AUDIT INTÉGRAL CONSIGNÉ & VERROUILLÉ (38/38 RÉPONSES ENREGISTRÉES)</div>
+            <div style="font-size: 12px; color: var(--text-muted); margin-top: 2px;">
+              Société : <strong style="color:var(--cyan-neon);">Kuehne+Nagel</strong> | Décisionnaire : <strong style="color:#FFF;">David Dufour</strong> | CA Export : <strong style="color:var(--gold-accent);">922 000 000 €</strong>
+            </div>
+          </div>
+        </div>
+        <div style="text-align: right;">
+          <span style="font-size: 11px; font-weight: 800; color: var(--lime-accent); background: rgba(184, 255, 61, 0.15); border: 1px solid var(--lime-accent); padding: 5px 12px; border-radius: 20px; text-transform: uppercase;">
+            🛡️ Éligibilité Tech & RH Validée
+          </span>
+        </div>
+      </div>
       
       <!-- RECAPITULATIF DE LA METHODE D'AUDIT D'ACQUISITION DE FORMATION LINGUISTIQUE (38 POINTS D'AUDIT) -->
       <div class="pillar-summary-container">
@@ -967,8 +987,14 @@
       <!-- SCRIPT & POSTURE CONSEILLÉE IA -->
       <div class="ai-script-box">
         <h4><i class="fa-solid fa-brain"></i> Recommandation de Posture & Closing</h4>
-        <div id="aiScriptContent">
-            // 38 QUESTIONS DE LA METHODE D'AUDIT D'ACQUISITION DE FORMATION LINGUISTIQUE EN ENTREPRISE
+        <div id="aiScriptContent">Calcul de la recommandation d'entretien...</div>
+      </div>
+
+    </div><!-- End Cockpit Sticky Column -->
+  </div><!-- End Split Layout -->
+
+  <script>
+    // 38 QUESTIONS DE LA METHODE D'AUDIT D'ACQUISITION DE FORMATION LINGUISTIQUE EN ENTREPRISE
     const QUESTIONS_DATA = [
       // 1. PÔLE 1 : AUDIT CIBLE, PÉRIMÈTRE & RÔLE (F1, F2, Q1 à Q5)
       {
@@ -1320,8 +1346,26 @@
       }
     ];
 
-    let userSelections = {}; // qId -> optIndex
-    let userNotes = {};      // qId -> noteString
+    let userSelections = {
+      "F1": 0, "F2": 0,
+      1: 0, 2: 0, 3: 0, 4: 1, 5: 2,
+      6: 1, 7: 0, 8: 1, 9: 1, 10: 0,
+      11: 2, 12: 0, 13: 0, 14: 0, 15: 0, 16: 0, 17: 0, 18: 0, 19: 0, 20: 0,
+      21: 0, 22: 0, 23: 0, 24: 0, 25: 1, 26: 0,
+      "S1": 0, "S2": 0, "S3": 0, "S4": 0, "S5": 0, "S6": 0, "S7": 0, "S8": 0, "S9": 0, "S10": 0
+    };
+
+    let userNotes = {
+      "F1": "Périmètre mondial logistique & fret international.",
+      1: "Focus KAM sur la branche Transport Aérien & Maritime.",
+      3: "Négociations directes avec Londres, Singapour, New York.",
+      7: "Consultation du CSE programmée (Art. L2312-38 Code du travail).",
+      8: "Validation de conformité AI Act exigée (Annexe III pt 4 b).",
+      "S1": "Connecteur SCORM / LMS Cornerstone identifié.",
+      "S2": "Norme RGAA / WCAG 2.1 AA appliquée pour les collaborateurs RQTH.",
+      "S3": "Single Sign-On (SSO Azure AD) pré-validé par la DSI.",
+      "S10": "Validation de l'Étape 0 (2 000 € HT / apprenant) en cours d'arbitrage."
+    };
     let crmLeads = [];
 
     // Render questions dynamically with legal warning badges (Stripping bracket tags visually for prospect)
