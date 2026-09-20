@@ -126,36 +126,41 @@ def generate_cv_pdf(output_path):
     # EXECUTIVE SUMMARY
     story.append(Paragraph("PROFIL EXÉCUTIF & POSTURE ENTJ-A", style_section_heading))
     summary_text = (
-        "Parcours riche et exigeant combinant l'excellence du terrain, l'hôtellerie de luxe à l'international "
-        "(Sommelier Palace en Irlande), la négociation immobilière de biens d'exception, la gestion de centres de profit "
-        "(Gestionnaire RAS, +35% CA) et la direction du développement (Happy House / Rocket School, Coestia). "
-        "Titulaire du diplôme de Coach Fédéral de Handball (FFHB), j'incarne une posture de Manager-Coach axée sur l'analyse "
-        "systémique des causes (Facilité × Confiance × Effet), l'intelligence relationnelle (DISC/PCM) et l'accélération par l'IA."
+        "Plus de 20 ans de leadership et d'excellence terrain combinant l'hôtellerie de luxe à l'international "
+        "(Sommelier Palace en Irlande, 5 ans Directeur de restaurant 'Ma Salle à Manger' +140% CA), 7 ans dans l'immobilier "
+        "d'exception (Century 21 & Cabinet Bedin), le management de centre de profit (RAS Intérim, 2.6 M€ CA) et "
+        "la direction du développement commercial (Happy House / Rocket School, Bachelor Commerce). "
+        "Ancien Joueur National 3 et Coach Fédéral de Handball (FFHB), j'incarne une posture de Manager-Coach "
+        "axée sur l'analyse systémique, l'intelligence commerciale et l'accélération par l'IA."
     )
     story.append(Paragraph(summary_text, style_body))
     story.append(Spacer(1, 10))
 
     # REAL TIMELINE (2000 - 2026)
-    story.append(Paragraph("PARCOURS PROFESSIONNEL REEL (2000 - 2026)", style_section_heading))
+    story.append(Paragraph("PARCOURS PROFESSIONNEL AUTHENTIQUE (2000 - 2026)", style_section_heading))
 
-    story.append(Paragraph("<b>2024 - 2026 | Fondateur & Dirigeant Exécutif — Coestia / QuestIA</b> (Toulouse)", style_body))
-    story.append(Paragraph("• Intelligence Commerciale, automatisation n8n, CRM psychométrique DISC/PCM et conseil stratégique.", style_bullet))
+    story.append(Paragraph("<b>2025 - PRÉSENT | Responsable Développement Commercial & Sales Engine — HAPPY HOUSE</b>", style_body))
+    story.append(Paragraph("• Management de 3 commerciaux, Lead Automation n8n, CRM Salesforce/HubSpot, coaching SDRs (DISC/PCM).", style_bullet))
     story.append(Spacer(1, 5))
 
-    story.append(Paragraph("<b>2023 - 2024 | Directeur du Développement & Sales Strategy — Happy House / Rocket School</b>", style_body))
-    story.append(Paragraph("• Structuration de la Sales Engine, animation force de vente, coaching SDR (cold calling) & budget zéro.", style_bullet))
+    story.append(Paragraph("<b>2022 - 2024 | Gestionnaire Centre de Profit & Responsable HRE — RAS INTÉRIM</b> (CA 2.6 M€)", style_body))
+    story.append(Paragraph("• Management de 20 ETP/semaine, pilotage P&L, suivi & fidélisation de 25 comptes sédentaires stratégiques.", style_bullet))
     story.append(Spacer(1, 5))
 
-    story.append(Paragraph("<b>2018 - 2023 | Gestionnaire Centre de Profit & Directeur d'Exploitation — RAS / Restauration</b>", style_body))
-    story.append(Paragraph("• Management de 15 à 50 collaborateurs, pilotage financier du P&L, maître d'hôtel & croissance de +35% CA.", style_bullet))
+    story.append(Paragraph("<b>2015 - 2021 | Négociateur Immobilier & Manager Force de Vente — CENTURY 21 & CABINET BEDIN</b>", style_body))
+    story.append(Paragraph("• Transaction B2C/B2B (120 k€ CA indiv.), prospection terrain, encadrement & formation de 5 à 10 négociateurs.", style_bullet))
     story.append(Spacer(1, 5))
 
-    story.append(Paragraph("<b>2010 - 2018 | Sommelier Palace (Irlande) & Négociateur Immobilier d'Exception</b>", style_body))
-    story.append(Paragraph("• Hôtellerie de luxe internationale (Irlande), maîtrise des codes comportementaux haut de gamme & transaction immobilière.", style_bullet))
+    story.append(Paragraph("<b>2010 - 2015 | Directeur de Restaurant & Centre de Profit — MA SALLE À MANGER</b> (Paris 1er)", style_body))
+    story.append(Paragraph("• Direction et management de 15 salariés, pilotage du P&L, hausse du CA de +140% en 5 ans (de 250k€ à 600k€).", style_bullet))
     story.append(Spacer(1, 5))
 
-    story.append(Paragraph("<b>2000 - 2010 | Joueur National 3 (N3) & Coach Fédéral de Handball</b> (FFHB)", style_body))
-    story.append(Paragraph("• Diplôme de Coach Fédéral FFHB, compétition N3, gestion de matchs haute intensité & cohésion d'équipe.", style_bullet))
+    story.append(Paragraph("<b>2000 - 2009 | Sommelier Palace (Irlande) & Service d'Excellence — PALACES 5* & ÉTOILÉS</b>", style_body))
+    story.append(Paragraph("• Sommelier diplômé (Dublin), management de 7 à 20 collaborateurs, standards LHW et anglais des affaires courant.", style_bullet))
+    story.append(Spacer(1, 5))
+
+    story.append(Paragraph("<b>PARCOURS SPORTIF | Joueur Handball National 3 (N3) & Coach Fédéral FFHB</b>", style_body))
+    story.append(Paragraph("• Diplôme de Coach Fédéral FFHB, compétition N3, gestion du stress sous haute pression & leadership d'équipe.", style_bullet))
     story.append(Spacer(1, 10))
 
     # DIPLOMES ET CERTIFICATIONS
@@ -163,14 +168,14 @@ def generate_cv_pdf(output_path):
     
     diplomas_data = [
         [
+            Paragraph("<b>Bachelor Marketing & Commerce</b><br/>Rocket School (2024-2025)", style_body),
             Paragraph("<b>Diplôme de Coach Fédéral</b><br/>FFHB (Handball National)", style_body),
-            Paragraph("<b>Master Européen / Executive</b><br/>Management & Stratégie (Bac+5)", style_body),
-            Paragraph("<b>Psychométrie DISC & PCM</b><br/>Certifié Profiling Commercial", style_body),
+            Paragraph("<b>Sommelier Diplômé (Irlande)</b><br/>Palaces 5* & Luxe International", style_body),
         ],
         [
-            Paragraph("<b>Licence Joueur N3 Handball</b><br/>Compétition Nationale", style_body),
-            Paragraph("<b>Sommelier Palace (Irlande)</b><br/>Hôtellerie Luxe & Immobilier", style_body),
-            Paragraph("<b>IA & Automation Workflows</b><br/>n8n, Scraping & CRM Sales", style_body),
+            Paragraph("<b>Licence Joueur N3 Handball</b><br/>Compétition Nationale FFHB", style_body),
+            Paragraph("<b>Automation Digital & CRM</b><br/>n8n, Salesforce, HubSpot & Lead Gen", style_body),
+            Paragraph("<b>HTML5, CSS3 & Google Academy</b><br/>Certifié Développement Web", style_body),
         ]
     ]
 
