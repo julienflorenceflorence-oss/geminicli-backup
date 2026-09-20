@@ -24,3 +24,7 @@ node_modules/
 
 # Generated HTML report for local PDF compilation
 RAPPORT_DE_MISSION_SOUTENANCE.html
+
+token.json
+credentials.json
+
