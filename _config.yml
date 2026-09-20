@@ -1,0 +1,29 @@
+title: Julien FLORENCE
+description: Portfolio Exécutif, CV Dashboard et Supports Multi-liens
+theme: null
+
+# Exclude internal folders containing liquid tags ({{...}}) that break Jekyll builds
+exclude:
+  - "02_Espace_Soutenance"
+  - "03_IA_Metier"
+  - "03_Travail"
+  - "05_Outils_Systeme"
+  - "A_classer"
+  - "Archives"
+  - "Projets"
+  - "scratch"
+  - ".agents"
+  - ".devcontainer"
+  - "*.json"
+  - "*.py"
+  - "*.md"
+  - "package-lock.json"
+
+# Explicitly include static deliverable files
+include:
+  - .nojekyll
+  - "*.vcf"
+  - "*.pdf"
+  - "*.png"
+  - "*.html"
+  - "04_Livrables"
