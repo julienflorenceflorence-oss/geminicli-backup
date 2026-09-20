@@ -18,7 +18,6 @@ def generate_cv_pdf(output_path):
 
     styles = getSampleStyleSheet()
     
-    # Custom Colors
     DARK_BLUE = colors.HexColor("#0B0E14")
     GOLD = colors.HexColor("#B89628")
     CYAN = colors.HexColor("#0284C7")
@@ -27,7 +26,6 @@ def generate_cv_pdf(output_path):
     BG_LIGHT = colors.HexColor("#F8FAFC")
     BORDER_COLOR = colors.HexColor("#E2E8F0")
 
-    # Custom Typography Styles
     style_name = ParagraphStyle(
         'CVName',
         fontName='Helvetica-Bold',
@@ -50,7 +48,7 @@ def generate_cv_pdf(output_path):
         fontSize=8.5,
         leading=12,
         textColor=TEXT_MUTED,
-        alignment=2 # Right aligned
+        alignment=2
     )
 
     style_section_heading = ParagraphStyle(
@@ -92,7 +90,7 @@ def generate_cv_pdf(output_path):
         Spacer(1, 2),
         Paragraph("DIRECTEUR COMMERCIAL • BU MANAGER • MANAGEMENT DE TRANSITION", style_title),
         Spacer(1, 3),
-        Paragraph("26 Ans de Trajectoire (2000-2026) | Culture P&L & ROI | Coach Fédéral FFHB", style_body)
+        Paragraph("Parcours Authentique (2000-2026) | Hôtellerie Luxe, Immobilier, BU & Coach FFHB", style_body)
     ]
 
     if photo_img:
@@ -128,38 +126,36 @@ def generate_cv_pdf(output_path):
     # EXECUTIVE SUMMARY
     story.append(Paragraph("PROFIL EXÉCUTIF & POSTURE ENTJ-A", style_section_heading))
     summary_text = (
-        "Manager chevronné (2000-2026), fort de 20 ans d'expérience dans la création, la direction et "
-        "l'expansion de centres de profit. Alliant rigueur analytique, culture du résultat P&L et posture de "
-        "Manager-Coach issue du sport collectif au niveau national (Handball N3 & Coach Fédéral FFHB), j'interviens sur la Direction Commerciale, "
-        "la gestion de Business Unit ou le Management de Transition. Expert en stratégie Go-to-Market, "
-        "prospection B2B augmentée par l'Intelligence Artificielle et psychométrie commerciale (DISC/PCM)."
+        "Parcours riche et exigeant combinant l'excellence du terrain, l'hôtellerie de luxe à l'international "
+        "(Sommelier Palace en Irlande), la négociation immobilière de biens d'exception, la gestion de centres de profit "
+        "(Gestionnaire RAS, +35% CA) et la direction du développement (Happy House / Rocket School, Coestia). "
+        "Titulaire du diplôme de Coach Fédéral de Handball (FFHB), j'incarne une posture de Manager-Coach axée sur l'analyse "
+        "systémique des causes (Facilité × Confiance × Effet), l'intelligence relationnelle (DISC/PCM) et l'accélération par l'IA."
     )
     story.append(Paragraph(summary_text, style_body))
     story.append(Spacer(1, 10))
 
-    # PARCOURS CHRONOLOGIQUE COMPLET (2000 - 2026)
-    story.append(Paragraph("PARCOURS PROFESSIONNEL (2000 - 2026)", style_section_heading))
+    # REAL TIMELINE (2000 - 2026)
+    story.append(Paragraph("PARCOURS PROFESSIONNEL REEL (2000 - 2026)", style_section_heading))
 
     story.append(Paragraph("<b>2024 - 2026 | Fondateur & Dirigeant Exécutif — Coestia / QuestIA</b> (Toulouse)", style_body))
-    story.append(Paragraph("• Développement d'outils d'Intelligence Commerciale, workflows CRM et accompagnement des PME/ETI.", style_bullet))
-    story.append(Paragraph("• Conception de pipelines de prospection B2B augmentés par l'IA et le profiling relationnel DISC/PCM.", style_bullet))
-    story.append(Spacer(1, 6))
+    story.append(Paragraph("• Intelligence Commerciale, automatisation n8n, CRM psychométrique DISC/PCM et conseil stratégique.", style_bullet))
+    story.append(Spacer(1, 5))
 
-    story.append(Paragraph("<b>2018 - 2024 | Business Unit Manager & Directeur d'Exploitation — CHR / Services</b> (Occitanie)", style_body))
-    story.append(Paragraph("• Pilotage complet de l'EBITDA et du P&L, management direct de 15 à 50 collaborateurs.", style_bullet))
-    story.append(Paragraph("• Croissance de +35% du chiffre d'affaires par restructuration de l'offre et dynamisation commerciale.", style_bullet))
-    story.append(Spacer(1, 6))
+    story.append(Paragraph("<b>2023 - 2024 | Directeur du Développement & Sales Strategy — Happy House / Rocket School</b>", style_body))
+    story.append(Paragraph("• Structuration de la Sales Engine, animation force de vente, coaching SDR (cold calling) & budget zéro.", style_bullet))
+    story.append(Spacer(1, 5))
 
-    story.append(Paragraph("<b>2012 - 2018 | Responsable du Développement Commercial & Grands Comptes</b> (Grand Sud-Ouest)", style_body))
-    story.append(Paragraph("• Déploiement de stratégies Go-to-Market, négociation de contrats nationaux et structuration de la force de vente.", style_bullet))
-    story.append(Spacer(1, 6))
+    story.append(Paragraph("<b>2018 - 2023 | Gestionnaire Centre de Profit & Directeur d'Exploitation — RAS / Restauration</b>", style_body))
+    story.append(Paragraph("• Management de 15 à 50 collaborateurs, pilotage financier du P&L, maître d'hôtel & croissance de +35% CA.", style_bullet))
+    story.append(Spacer(1, 5))
 
-    story.append(Paragraph("<b>2006 - 2012 | Manager de Terrain & Chef de Ventes Operations</b> (France)", style_body))
-    story.append(Paragraph("• Recrutement, formation et coaching terrain des équipes commerciales, pilotage des objectifs mensuels CA.", style_bullet))
-    story.append(Spacer(1, 6))
+    story.append(Paragraph("<b>2010 - 2018 | Sommelier Palace (Irlande) & Négociateur Immobilier d'Exception</b>", style_body))
+    story.append(Paragraph("• Hôtellerie de luxe internationale (Irlande), maîtrise des codes comportementaux haut de gamme & transaction immobilière.", style_bullet))
+    story.append(Spacer(1, 5))
 
-    story.append(Paragraph("<b>2000 - 2006 | Joueur National 3 (N3) & Entraîneur / Coach Fédéral Handball</b> (FFHB)", style_body))
-    story.append(Paragraph("• Pratique du handball haut niveau (N3), coaching d'équipes en compétition, résilience et cohésion collective.", style_bullet))
+    story.append(Paragraph("<b>2000 - 2010 | Joueur National 3 (N3) & Coach Fédéral de Handball</b> (FFHB)", style_body))
+    story.append(Paragraph("• Diplôme de Coach Fédéral FFHB, compétition N3, gestion de matchs haute intensité & cohésion d'équipe.", style_bullet))
     story.append(Spacer(1, 10))
 
     # DIPLOMES ET CERTIFICATIONS
@@ -172,9 +168,9 @@ def generate_cv_pdf(output_path):
             Paragraph("<b>Psychométrie DISC & PCM</b><br/>Certifié Profiling Commercial", style_body),
         ],
         [
-            Paragraph("<b>Licence Joueur N3 Handball</b><br/>Championnat de France", style_body),
-            Paragraph("<b>Certification IA & Automation</b><br/>Workflows CRM & Prompting", style_body),
-            Paragraph("<b>Culture Management P&L</b><br/>20 Ans d'Expérience Exécutive", style_body),
+            Paragraph("<b>Licence Joueur N3 Handball</b><br/>Compétition Nationale", style_body),
+            Paragraph("<b>Sommelier Palace (Irlande)</b><br/>Hôtellerie Luxe & Immobilier", style_body),
+            Paragraph("<b>IA & Automation Workflows</b><br/>n8n, Scraping & CRM Sales", style_body),
         ]
     ]
 
@@ -192,7 +188,7 @@ def generate_cv_pdf(output_path):
     story.append(diplomas_table)
 
     doc.build(story)
-    print("Updated PDF build complete:", output_path)
+    print("Authentic PDF build complete:", output_path)
 
 if __name__ == "__main__":
     out_dir = "/Users/admin/Desktop/geminicli-backup/04_Livrables/PDF"

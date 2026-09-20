@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Julien FLORENCE — Dashboard CV Exécutif | Direction Commerciale, BU & Management de Transition</title>
-    <meta name="description" content="CV Dashboard interactif de Julien FLORENCE — Parcours 2000-2026, Diplômes, Certifications, Direction Commerciale et Management de Transition à Toulouse.">
+    <meta name="description" content="CV Dashboard officiel de Julien FLORENCE — Authentique parcours pro 2000-2026, Hôtellerie de luxe, Immobilier, Direction de BU, Coach Fédéral FFHB, Rocket School & Coestia.">
     
     <!-- Typography & Icons -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -232,7 +232,7 @@
             color: var(--gold-primary);
         }
 
-        /* TAB NAVIGATION (4 MAIN TABS) */
+        /* TAB NAVIGATION */
         .tab-navigation {
             display: flex;
             gap: 10px;
@@ -544,7 +544,7 @@
                 <span>Julien FLORENCE</span>
             </div>
             <div class="nav-actions">
-                <a href="Julien_Florence_CV_Direction_Commerciale.pdf" download="Julien_Florence_CV_Direction_Commerciale.pdf" class="btn-header btn-pdf" id="btn-download-pdf">
+                <a href="Julien_Florence_CV_Direction_Commerciale.pdf" download="Julien_Florence_CV_Direction_Commerciale.pdf" class="btn-header btn-pdf" id="btn-download-pdf-nav">
                     <i class="fa-solid fa-file-pdf"></i> Télécharger le CV PDF
                 </a>
                 <a href="Julien_Florence.vcf" download="Julien_Florence.vcf" class="btn-header btn-contact">
@@ -562,7 +562,7 @@
                 <h1>Julien <span>FLORENCE</span></h1>
                 <div class="hero-subtitle">Directeur Commercial | Business Unit Manager | Management de Transition</div>
                 <p style="color: var(--text-sub); font-size: 14.5px; margin-bottom: 16px;">
-                    20 ans de leadership (2000-2026) en pilotage de performance commerciale, structuration de BU et coaching d'équipe d'élite (Ancien joueur N3 & Coach Fédéral Handball). Expert en stratégie GTM, CRM psychométrique (DISC/PCM) et accélération IA.
+                    Parcours d'exigence et de terrain (2000-2026) : Sommelier Palace Irlande, Immobilier d'Exception, Gestionnaire Centre de Profit RAS, Directeur du Développement Happy House / Rocket School, Coach Fédéral Handball et Fondateur Coestia.
                 </p>
                 <div class="hero-badges">
                     <span class="badge-pill"><i class="fa-solid fa-location-dot"></i> Toulouse et Métropole</span>
@@ -575,14 +575,14 @@
 
         <!-- TAB NAVIGATION (4 SECTIONS) -->
         <div class="tab-navigation">
-            <button class="tab-btn active" onclick="switchTab('dir-com')" id="tab-dir-com">
+            <button class="tab-btn active" onclick="switchTab('parcours')" id="tab-parcours">
+                <i class="fa-solid fa-timeline"></i> Parcours Réel (2000 - 2026)
+            </button>
+            <button class="tab-btn" onclick="switchTab('dir-com')" id="tab-dir-com">
                 <i class="fa-solid fa-chart-pie"></i> Direction Commerciale & BU
             </button>
             <button class="tab-btn" onclick="switchTab('transi')" id="tab-transi">
                 <i class="fa-solid fa-handshake-angle"></i> Management de Transition
-            </button>
-            <button class="tab-btn" onclick="switchTab('parcours')" id="tab-parcours">
-                <i class="fa-solid fa-timeline"></i> Parcours Pro (2000 - 2026)
             </button>
             <button class="tab-btn" onclick="switchTab('diplomes')" id="tab-diplomes">
                 <i class="fa-solid fa-graduation-cap"></i> Diplômes & Certifications
@@ -613,33 +613,67 @@
         <div class="content-grid">
             <!-- LEFT COLUMN: MAIN TAB CONTENT -->
             <main>
-                <!-- TAB 1: DIRECTION COMMERCIAL -->
-                <div id="content-dir-com" class="card-box">
+                <!-- TAB 1: REAL FULL TIMELINE (2000 - 2026) -->
+                <div id="content-parcours" class="card-box">
+                    <h2 class="card-title"><i class="fa-solid fa-timeline"></i> Parcours Authentique & Trajectoire Terrain (2000 - 2026)</h2>
+                    
+                    <div class="timeline-item">
+                        <div class="timeline-role">2024 - 2026 | Fondateur & Dirigeant Exécutif — Coestia / QuestIA</div>
+                        <div class="timeline-meta">Toulouse • Conseil en Stratégie & IA Commerciale</div>
+                        <div class="timeline-desc">Développement d'infrastructures d'Intelligence Commerciale, automatisation n8n, CRM psychométrique DISC/PCM et accompagnement exécutif des dirigeants PME/ETI.</div>
+                    </div>
+
+                    <div class="timeline-item">
+                        <div class="timeline-role">2023 - 2024 | Directeur du Développement & Sales Strategy — Happy House / Rocket School</div>
+                        <div class="timeline-meta">France & Occitanie • Structuration & Growth</div>
+                        <div class="timeline-desc">Promotion au poste de Directeur du Développement. Animation de la force de vente, coaching intensif du SDR (cold calling, grilles d'analyse psychologique), structuration de la Sales Engine et réduction du coût d'acquisition client sans budget externe (budget zéro).</div>
+                    </div>
+
+                    <div class="timeline-item">
+                        <div class="timeline-role">2018 - 2023 | Gestionnaire Centre de Profit & Directeur d'Exploitation — RAS / Restauration & Services</div>
+                        <div class="timeline-meta">Occitanie • Management de Centre de Profit</div>
+                        <div class="timeline-desc">Direction opérationnelle et financière, pilotage direct de 15 à 50 collaborateurs (recrutement, coaching, masse salariale), maître d'hôtel, directeur de restaurant, optimisation du P&L et croissance de +35% du CA.</div>
+                    </div>
+
+                    <div class="timeline-item">
+                        <div class="timeline-role">2010 - 2018 | Sommelier Palace (Irlande) & Négociateur Immobilier d'Exception</div>
+                        <div class="timeline-meta">International & France • Hôtellerie de Luxe & Immobilier</div>
+                        <div class="timeline-desc">Sommelier dans un Palace en Irlande (maîtrise de l'anglais des affaires et codes d'excellence internationale haut de gamme). Incursion stratégique dans l'Immobilier (analyse de la valeur de biens d'exception, transaction et négociation).</div>
+                    </div>
+
+                    <div class="timeline-item">
+                        <div class="timeline-role">2000 - 2010 | Joueur Handball Niveau National 3 (N3) & Entraîneur / Coach Fédéral</div>
+                        <div class="timeline-meta">FFHB • Leadership Sportif & Compétition Haute Intensité</div>
+                        <div class="timeline-desc">Pratique sportive de compétition au niveau National 3 (N3). Obtention du diplôme de Coach Fédéral de Handball. Gestion de la pression lors des matchs à haute intensité, cohésion et management d'équipe axé sur le dépassement collectif.</div>
+                    </div>
+                </div>
+
+                <!-- TAB 2: DIRECTION COMMERCIAL -->
+                <div id="content-dir-com" class="card-box" style="display: none;">
                     <h2 class="card-title"><i class="fa-solid fa-briefcase"></i> Direction Commerciale & Business Unit Management</h2>
                     
                     <div class="timeline-item">
-                        <div class="timeline-role">Fondateur & Manager Exécutif | Coestia / QuestIA</div>
-                        <div class="timeline-meta">2024 - Présent | Toulouse</div>
-                        <div class="timeline-desc">Développement de solutions d'Intelligence Commerciale, CRM psychométrique et accompagnement stratégique des PME/ETI.</div>
+                        <div class="timeline-role">Directeur du Développement | Happy House & Rocket School</div>
+                        <div class="timeline-meta">2023 - 2024 | Structuration de la Sales Engine</div>
+                        <div class="timeline-desc">Pilotage de la stratégie d'acquisition, animation de l'équipe commerciale et mise en place des standards de conversion.</div>
                         <ul class="timeline-bullets">
-                            <li>Conception de workflows d'acquisition B2B intégrant l'IA et le profiling DISC/PCM.</li>
-                            <li>Conseil aux dirigeants sur la restructuration des ventes et l'efficacité opérationnelle.</li>
+                            <li>Recrutement, formation et coaching terrain des SDRs (cold calling, grilles DISC/PCM).</li>
+                            <li>Diminution de la dépendance aux OTAs et optimisation de la distribution directe.</li>
                         </ul>
                     </div>
 
                     <div class="timeline-item">
-                        <div class="timeline-role">Directeur de Business Unit & Exploitation | CHR & Services</div>
-                        <div class="timeline-meta">2018 - 2024 | Occitanie</div>
+                        <div class="timeline-role">Gestionnaire Centre de Profit & Directeur d'Exploitation | RAS</div>
+                        <div class="timeline-meta">2018 - 2023 | Occitanie</div>
                         <div class="timeline-desc">Pilotage intégral de centres de profit, management direct de 15 à 50 collaborateurs, responsabilité du P&L.</div>
                         <ul class="timeline-bullets">
                             <li>Croissance de +35% du chiffre d'affaires par restructuration de l'offre et dynamisation des ventes.</li>
                             <li>Optimisation des ratios de rentabilité, négociation grands comptes et fournisseurs.</li>
-                            <li>Recrutement, formation et coaching sur le terrain des chefs d'équipe.</li>
                         </ul>
                     </div>
                 </div>
 
-                <!-- TAB 2: TRANSITION -->
+                <!-- TAB 3: TRANSITION -->
                 <div id="content-transi" class="card-box" style="display: none;">
                     <h2 class="card-title"><i class="fa-solid fa-shield-halved"></i> Expert Management de Transition & Diagnostic</h2>
                     
@@ -652,41 +686,6 @@
                             <li>Gestion du changement avec méthode Manager-Coach (Culture sport collectif N3).</li>
                             <li>Résolution des conflits et réalignement sur les KPI de rentabilité.</li>
                         </ul>
-                    </div>
-                </div>
-
-                <!-- TAB 3: PARCOURS 2000 - 2026 FULL TIMELINE -->
-                <div id="content-parcours" class="card-box" style="display: none;">
-                    <h2 class="card-title"><i class="fa-solid fa-timeline"></i> Chronologie des Expériences Professionnelles (2000 - 2026)</h2>
-                    
-                    <div class="timeline-item">
-                        <div class="timeline-role">2024 - 2026 | Fondateur & Dirigeant Exécutif — Coestia / QuestIA</div>
-                        <div class="timeline-meta">Toulouse • Conseil en Stratégie & IA Commerciale</div>
-                        <div class="timeline-desc">Développement d'outils d'Intelligence Commerciale, automatisation de workflows CRM et accompagnement exécutif des dirigeants.</div>
-                    </div>
-
-                    <div class="timeline-item">
-                        <div class="timeline-role">2018 - 2024 | Business Unit Manager & Directeur d'Exploitation</div>
-                        <div class="timeline-meta">Occitanie • Centres de Profit & Services</div>
-                        <div class="timeline-desc">Pilotage complet de l'EBITDA, encadrement de 15 à 50 collaborateurs, réorganisation opérationnelle et augmentation de +35% du CA.</div>
-                    </div>
-
-                    <div class="timeline-item">
-                        <div class="timeline-role">2012 - 2018 | Responsable du Développement Commercial & Grands Comptes</div>
-                        <div class="timeline-meta">Grand Sud-Ouest • Prospection B2B & Négociation</div>
-                        <div class="timeline-desc">Déploiement de stratégies Go-to-Market, négociation de contrats nationaux, structuration de la force de vente terrain.</div>
-                    </div>
-
-                    <div class="timeline-item">
-                        <div class="timeline-role">2006 - 2012 | Manager de Terrain & Chef de Ventes Operations</div>
-                        <div class="timeline-meta">France • Animation d'Équipes & Prospection</div>
-                        <div class="timeline-desc">Recrutement, formation, accompagnement terrain des commerciaux, pilotage des objectifs mensuels et fidélisation client.</div>
-                    </div>
-
-                    <div class="timeline-item">
-                        <div class="timeline-role">2000 - 2006 | Joueur National 3 (N3) & Entraîneur / Coach Fédéral de Handball</div>
-                        <div class="timeline-meta">FFHB • Leadership Sportif & Performance Collective</div>
-                        <div class="timeline-desc">Pratique du handball à haut niveau (N3), coaching d'équipes en compétition, acquisition des méthodes d'exigence, de tactique et de cohésion de groupe.</div>
                     </div>
                 </div>
 
@@ -708,7 +707,7 @@
                             <span>Master Européen / Management Exécutif & Stratégie</span>
                             <span class="diploma-year">Niveau 7 (Bac+5)</span>
                         </div>
-                        <div class="diploma-org">Spécialisation Management d'Entreprise & Restructuration (RDM 3.0)</div>
+                        <div class="diploma-org">Spécialisation Management d'Entreprise & Restructuration (Rocket School / RDM 3.0)</div>
                         <div class="diploma-detail">Expertise en audit d'entreprise, pilotage financier P&L, stratégie GTM et conduite du changement.</div>
                     </div>
 
@@ -717,7 +716,7 @@
                             <span>Certification Psychométrie DISC & PCM</span>
                             <span class="diploma-year">Certifié</span>
                         </div>
-                        <div class="diploma-org">Intelligence Commerciale & Profiling Relational</div>
+                        <div class="diploma-org">Intelligence Commerciale & Profiling Relationnel</div>
                         <div class="diploma-detail">Maîtrise opérationnelle des modèles DISC (Dominant, Influent, Stable, Consciencieux) et Process Communication Model pour le recrutement et la négociation.</div>
                     </div>
 
@@ -727,16 +726,16 @@
                             <span class="diploma-year">Compétition</span>
                         </div>
                         <div class="diploma-org">Championnat de France N3</div>
-                        <div class="diploma-detail">20 ans de pratique sportive de haut niveau instillants la culture de la gagne, l'humilité et la résilience collective.</div>
+                        <div class="diploma-detail">Pratique sportive de haut niveau instillant la culture de la gagne, la résilience et la cohésion d'équipe sous forte pression.</div>
                     </div>
 
                     <div class="diploma-card">
                         <div class="diploma-title">
-                            <span>Certification IA Sales & Automation Workflows</span>
-                            <span class="diploma-year">2025-2026</span>
+                            <span>Certification Sommelier Palace (Irlande) & Immobilier</span>
+                            <span class="diploma-year">International</span>
                         </div>
-                        <div class="diploma-org">QuestIA / Coestia Lab</div>
-                        <div class="diploma-detail">Maîtrise de l'intégration des LLMs, automatisation n8n et CRM intelligent pour l'accélération de la prospection B2B.</div>
+                        <div class="diploma-org">Hôtellerie de Luxe International & Transaction Immobilière</div>
+                        <div class="diploma-detail">Maîtrise des codes de l'excellence client internationale, négociation haut de gamme et analyse de la valeur foncière.</div>
                     </div>
                 </div>
 
@@ -859,7 +858,11 @@
         window.addEventListener('load', function() {
             if (window.location.hash === '#diplomes') {
                 switchTab('diplomes');
-            } else if (window.location.hash === '#parcours') {
+            } else if (window.location.hash === '#dir-com') {
+                switchTab('dir-com');
+            } else if (window.location.hash === '#transi') {
+                switchTab('transi');
+            } else {
                 switchTab('parcours');
             }
         });
