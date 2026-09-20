@@ -1,0 +1,692 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <title>Portfolio de Certifications & Diplômes — Julien FLORENCE</title>
+    <meta name="description" content="Portfolio officiel des certifications et diplômes de Julien FLORENCE — Rocket School, FFHB, Google Digital, HubSpot, Century 21 & Hôtellerie Luxe.">
+    
+    <!-- Typography & Icons -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <style>
+        :root { 
+            --bg-deep: #0B0E14;
+            --bg-surface: #131822;
+            --bg-card: rgba(19, 24, 36, 0.85);
+            --bg-pill: #1E2638;
+            --gold-primary: #D4AF37;
+            --gold-light: #FACC15;
+            --gold-glow: rgba(212, 175, 55, 0.3);
+            --cyan-accent: #38BDF8;
+            --cyan-glow: rgba(56, 189, 248, 0.2);
+            --text-main: #F8FAFC;
+            --text-sub: #94A3B8;
+            --text-muted: #64748B;
+            --border-gold: rgba(212, 175, 55, 0.4);
+            --border-subtle: rgba(255, 255, 255, 0.08);
+            --radius-xl: 20px;
+            --radius-lg: 14px;
+            --radius-md: 10px;
+            --shadow-glass: 0 15px 35px rgba(0, 0, 0, 0.5);
+            --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        * { 
+            box-sizing: border-box; 
+            margin: 0; 
+            padding: 0; 
+            -webkit-tap-highlight-color: transparent; 
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: var(--bg-deep);
+            color: var(--text-main);
+            line-height: 1.6;
+            min-height: 100vh;
+            padding-bottom: 90px;
+            background-image: 
+                radial-gradient(circle at 10% 20%, rgba(212, 175, 55, 0.08) 0%, transparent 45%),
+                radial-gradient(circle at 90% 80%, rgba(56, 189, 248, 0.06) 0%, transparent 45%);
+            background-attachment: fixed;
+        }
+
+        .container {
+            max-width: 1150px;
+            margin: 0 auto;
+            padding: 30px 20px;
+        }
+
+        /* HEADER & TOP NAVBAR */
+        .top-navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: rgba(19, 24, 34, 0.85);
+            backdrop-filter: blur(14px);
+            -webkit-backdrop-filter: blur(14px);
+            border: 1px solid var(--border-gold);
+            padding: 14px 24px;
+            border-radius: var(--radius-lg);
+            margin-bottom: 30px;
+            position: sticky;
+            top: 15px;
+            z-index: 100;
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.4);
+        }
+
+        .nav-brand {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .nav-brand .badge-tag {
+            background: linear-gradient(135deg, var(--gold-primary), var(--gold-light));
+            color: #000;
+            font-family: 'Outfit', sans-serif;
+            font-weight: 800;
+            font-size: 13px;
+            padding: 4px 10px;
+            border-radius: 6px;
+            letter-spacing: 0.5px;
+        }
+
+        .nav-brand span {
+            font-family: 'Outfit', sans-serif;
+            font-weight: 700;
+            font-size: 18px;
+            color: var(--text-main);
+        }
+
+        .nav-actions {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .btn-nav {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 9px 16px;
+            border-radius: var(--radius-md);
+            font-family: 'Outfit', sans-serif;
+            font-weight: 600;
+            font-size: 13.5px;
+            text-decoration: none;
+            transition: var(--transition);
+            cursor: pointer;
+        }
+
+        .btn-nav-primary {
+            background: linear-gradient(135deg, var(--gold-primary), var(--gold-light));
+            color: #0F1117;
+            box-shadow: 0 4px 15px var(--gold-glow);
+            border: none;
+        }
+
+        .btn-nav-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(212, 175, 55, 0.4);
+        }
+
+        .btn-nav-subtle {
+            background: var(--bg-pill);
+            color: var(--text-main);
+            border: 1px solid var(--border-gold);
+        }
+
+        .btn-nav-subtle:hover {
+            background: rgba(212, 175, 55, 0.15);
+            color: var(--gold-light);
+        }
+
+        /* PAGE HEADER */
+        .portfolio-header {
+            text-align: center;
+            margin-bottom: 40px;
+            padding: 30px;
+            background: var(--bg-card);
+            backdrop-filter: blur(16px);
+            border: 1px solid var(--border-gold);
+            border-radius: var(--radius-xl);
+            box-shadow: var(--shadow-glass);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .portfolio-header::before {
+            content: '';
+            position: absolute;
+            top: -50px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 300px;
+            height: 200px;
+            background: radial-gradient(circle, var(--gold-glow) 0%, transparent 70%);
+            pointer-events: none;
+        }
+
+        .portfolio-header h1 {
+            font-family: 'Outfit', sans-serif;
+            font-size: 32px;
+            font-weight: 800;
+            color: var(--gold-primary);
+            margin-bottom: 8px;
+            letter-spacing: -0.5px;
+        }
+
+        .portfolio-header p {
+            font-size: 15px;
+            color: var(--text-sub);
+            max-width: 700px;
+            margin: 0 auto;
+        }
+
+        /* GRID OF DIPLOMA CARDS */
+        .diploma-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
+            gap: 24px;
+            margin-bottom: 40px;
+        }
+
+        .card {
+            background: var(--bg-card);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border: 1px solid var(--border-subtle);
+            border-radius: var(--radius-xl);
+            padding: 28px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            transition: var(--transition);
+            position: relative;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+        }
+
+        .card::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; width: 100%; height: 3px;
+            background: linear-gradient(90deg, transparent, var(--gold-primary), transparent);
+            opacity: 0.6;
+            transition: var(--transition);
+        }
+
+        .card:hover {
+            transform: translateY(-6px);
+            border-color: var(--border-gold);
+            box-shadow: 0 15px 40px rgba(212, 175, 55, 0.2);
+        }
+
+        .card:hover::before {
+            opacity: 1;
+        }
+
+        .card-meta-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 14px;
+        }
+
+        .card-badge {
+            font-size: 11px;
+            font-family: 'Outfit', sans-serif;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            font-weight: 700;
+            color: var(--cyan-accent);
+            background: rgba(56, 189, 248, 0.1);
+            border: 1px solid rgba(56, 189, 248, 0.3);
+            padding: 3px 10px;
+            border-radius: 20px;
+        }
+
+        .card-icon {
+            color: var(--gold-primary);
+            font-size: 18px;
+        }
+
+        .card h3 {
+            font-family: 'Outfit', sans-serif;
+            color: var(--gold-primary);
+            font-size: 19px;
+            font-weight: 700;
+            margin-bottom: 8px;
+            line-height: 1.3;
+        }
+
+        .card-org {
+            font-size: 13.5px;
+            color: var(--text-main);
+            font-weight: 600;
+            margin-bottom: 10px;
+        }
+
+        .card p {
+            font-size: 13.5px;
+            color: var(--text-sub);
+            margin-bottom: 20px;
+            line-height: 1.5;
+            flex-grow: 1;
+        }
+
+        .btn-view {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            padding: 12px 20px;
+            border: 1px solid var(--border-gold);
+            background: linear-gradient(135deg, rgba(212, 175, 55, 0.15), rgba(212, 175, 55, 0.05));
+            color: var(--gold-light);
+            text-decoration: none;
+            font-family: 'Outfit', sans-serif;
+            font-size: 13.5px;
+            font-weight: 700;
+            border-radius: var(--radius-md);
+            transition: var(--transition);
+            cursor: pointer;
+            width: 100%;
+        }
+
+        .btn-view:hover {
+            background: linear-gradient(135deg, var(--gold-primary), var(--gold-light));
+            color: #0F1117;
+            border-color: var(--gold-light);
+            box-shadow: 0 4px 15px var(--gold-glow);
+            transform: translateY(-2px);
+        }
+
+        /* LIGHTBOX MODAL STYLES */
+        .modal-overlay {
+            position: fixed;
+            top: 0; left: 0; width: 100vw; height: 100vh;
+            background: rgba(5, 7, 12, 0.92);
+            backdrop-filter: blur(16px);
+            display: none;
+            align-items: center;
+            justify-content: center;
+            z-index: 9999;
+            padding: 20px;
+        }
+
+        .modal-overlay.active {
+            display: flex;
+            animation: fadeIn 0.3s ease;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        .modal-content {
+            background: #131822;
+            border: 2px solid var(--border-gold);
+            border-radius: var(--radius-xl);
+            max-width: 920px;
+            width: 100%;
+            max-height: 90vh;
+            display: flex;
+            flex-direction: column;
+            overflow: hidden;
+            position: relative;
+            box-shadow: 0 25px 60px rgba(0, 0, 0, 0.85);
+        }
+
+        .modal-close {
+            position: absolute;
+            top: 15px; right: 20px;
+            background: rgba(212, 175, 55, 0.15);
+            border: 1px solid var(--border-gold);
+            color: var(--gold-primary);
+            width: 38px; height: 38px;
+            border-radius: 50%;
+            font-size: 20px;
+            cursor: pointer;
+            z-index: 10;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: var(--transition);
+        }
+
+        .modal-close:hover {
+            background: var(--gold-primary);
+            color: #000;
+        }
+
+        .modal-header {
+            padding: 20px 24px;
+            border-bottom: 1px solid var(--border-subtle);
+            background: var(--bg-surface);
+        }
+
+        .modal-header h3 {
+            color: var(--gold-primary);
+            font-family: 'Outfit', sans-serif;
+            font-size: 19px;
+            font-weight: 700;
+        }
+
+        .modal-body {
+            padding: 20px;
+            overflow-y: auto;
+            text-align: center;
+            max-height: 70vh;
+            background: #0B0E14;
+        }
+
+        .modal-body img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 12px;
+            border: 1px solid var(--border-subtle);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+        }
+
+        .modal-footer {
+            padding: 14px 24px;
+            border-top: 1px solid var(--border-subtle);
+            background: var(--bg-surface);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .btn-modal-dl {
+            background: linear-gradient(135deg, var(--gold-primary), var(--gold-light));
+            color: #0F1117;
+            padding: 10px 20px;
+            border-radius: var(--radius-md);
+            font-family: 'Outfit', sans-serif;
+            font-weight: 700;
+            text-decoration: none;
+            font-size: 13.5px;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            transition: var(--transition);
+        }
+
+        .btn-modal-dl:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 15px var(--gold-glow);
+        }
+
+        /* FIXED FOOTER DOCK */
+        .fixed-dock {
+            position: fixed;
+            bottom: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: rgba(19, 24, 34, 0.95);
+            backdrop-filter: blur(16px);
+            border: 1px solid var(--border-gold);
+            padding: 10px 24px;
+            border-radius: 30px;
+            box-shadow: 0 10px 35px rgba(0, 0, 0, 0.7);
+            display: flex;
+            gap: 16px;
+            z-index: 1000;
+        }
+
+        .dock-btn {
+            color: var(--text-main);
+            text-decoration: none;
+            font-size: 13.5px;
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-family: 'Outfit', sans-serif;
+            transition: var(--transition);
+        }
+
+        .dock-btn i {
+            color: var(--gold-primary);
+        }
+
+        .dock-btn:hover {
+            color: var(--gold-light);
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <!-- TOP NAVBAR -->
+        <header class="top-navbar">
+            <div class="nav-brand">
+                <span class="badge-tag">PORTFOLIO</span>
+                <span>Julien FLORENCE</span>
+            </div>
+            <div class="nav-actions">
+                <a href="dashboard.html" class="btn-nav btn-nav-primary">
+                    <i class="fa-solid fa-chart-line"></i> CV Dashboard
+                </a>
+                <a href="index.html" class="btn-nav btn-nav-subtle">
+                    <i class="fa-solid fa-house"></i> Accueil
+                </a>
+            </div>
+        </header>
+
+        <!-- PAGE HEADER -->
+        <section class="portfolio-header">
+            <h1>Dossier de Certifications & Diplômes</h1>
+            <p>
+                Parcours d'Excellence Commerciale, Management d'Équipe et Compétences Techniques (2000-2026). Cliquez sur n'importe quel diplôme pour visualiser l'attestation officielle en haute définition.
+            </p>
+        </section>
+
+        <!-- DIPLOMA CARDS GRID (10 REAL CERTIFICATES) -->
+        <div class="diploma-grid">
+            
+            <!-- 1. BACHELOR ROCKET SCHOOL -->
+            <div class="card">
+                <div class="card-meta-row">
+                    <span class="card-badge">Académie & Tech</span>
+                    <i class="fa-solid fa-graduation-cap card-icon"></i>
+                </div>
+                <h3>Bachelor Marketing & Commerce</h3>
+                <div class="card-org">Rocket School • Top 1% Acquisition B2B</div>
+                <p>Responsable Marketing et Commercial. Spécialisation en Acquisition Tech, Lead Generation, CRM Salesforce/HubSpot & Sales Engine.</p>
+                <button class="btn-view" onclick="openDiplomaModal('diplomes_images/2026-07-27_Certificat_Bachelor_Rocket_School.png', 'Bachelor Marketing & Commerce — Rocket School')">
+                    <i class="fa-solid fa-eye"></i> Visualiser le Diplôme HD
+                </button>
+            </div>
+
+            <!-- 2. HANDBALL COACH -->
+            <div class="card">
+                <div class="card-meta-row">
+                    <span class="card-badge">Performance & Sport</span>
+                    <i class="fa-solid fa-trophy card-icon"></i>
+                </div>
+                <h3>Diplôme de Coach Fédéral FFHB</h3>
+                <div class="card-org">Fédération Française de Handball (FFHB)</div>
+                <div class="card-detail"></div>
+                <p>Certification d'État en entraînement, préparation tactique, coaching mental et management d'équipe de compétition niveau National 3.</p>
+                <button class="btn-view" onclick="openDiplomaModal('diplomes_images/2026-07-25_Certificat_sportif.png', 'Diplôme de Coach Fédéral — FFHB')">
+                    <i class="fa-solid fa-eye"></i> Visualiser le Diplôme HD
+                </button>
+            </div>
+
+            <!-- 3. HTML5 & CSS3 -->
+            <div class="card">
+                <div class="card-meta-row">
+                    <span class="card-badge">Développement Web</span>
+                    <i class="fa-solid fa-code card-icon"></i>
+                </div>
+                <h3>Certification HTML5 & CSS3</h3>
+                <div class="card-org">Google Academy & Web Architecture</div>
+                <p>Maîtrise du développement web moderne, des standards sémantiques, du design responsive et de l'architecture CSS Prestige.</p>
+                <button class="btn-view" onclick="openDiplomaModal('diplomes_images/2026-07-25_Certificat_HTML&CSS.png', 'Certification HTML5 & CSS3')">
+                    <i class="fa-solid fa-eye"></i> Visualiser l\'Attestation HD
+                </button>
+            </div>
+
+            <!-- 4. GOOGLE DIGITAL MARKETING -->
+            <div class="card">
+                <div class="card-meta-row">
+                    <span class="card-badge">Marketing Digital</span>
+                    <i class="fa-brands fa-google card-icon"></i>
+                </div>
+                <h3>Google Digital Fundamentals</h3>
+                <div class="card-org">Google Digital Academy</div>
+                <p>Certification Google : SEO, SEM, Analyse de données de trafic, stratégie d'acquisition multicanale et optimisation du ROI.</p>
+                <button class="btn-view" onclick="openDiplomaModal('diplomes_images/2026-07-25_Certificat_Digital_Marketing.png', 'Certification Google Digital Marketing')">
+                    <i class="fa-solid fa-eye"></i> Visualiser l\'Attestation HD
+                </button>
+            </div>
+
+            <!-- 5. HUBSPOT INBOUND -->
+            <div class="card">
+                <div class="card-meta-row">
+                    <span class="card-badge">Stratégie Inbound</span>
+                    <i class="fa-solid fa-filter-circle-dollar card-icon"></i>
+                </div>
+                <h3>HubSpot Inbound Certification</h3>
+                <div class="card-org">HubSpot Academy</div>
+                <p>Optimisation du tunnel de conversion, lead nurturing, CRM automatisé et ingénierie des workflows commerciaux B2B.</p>
+                <button class="btn-view" onclick="openDiplomaModal('diplomes_images/2026-07-25_Certificat_Inband.png', 'Certification HubSpot Inbound Sales')">
+                    <i class="fa-solid fa-eye"></i> Visualiser l\'Attestation HD
+                </button>
+            </div>
+
+            <!-- 6. IMMOBILIER EXPERT -->
+            <div class="card">
+                <div class="card-meta-row">
+                    <span class="card-badge">Expertise Immobilière</span>
+                    <i class="fa-solid fa-building-user card-icon"></i>
+                </div>
+                <h3>Conseiller Expert Immobilier</h3>
+                <div class="card-org">Century 21 France</div>
+                <p>Négociation haut de gamme, droit immobilier, évaluation foncière de biens d'exception et transaction B2B/B2C.</p>
+                <button class="btn-view" onclick="openDiplomaModal('diplomes_images/2026-07-25_Certificat_Conseiller_en_Immobilier.png', 'Certificat Conseiller Expert Immobilier')">
+                    <i class="fa-solid fa-eye"></i> Visualiser l\'Attestation HD
+                </button>
+            </div>
+
+            <!-- 7. IMMOBILIER QUALIFICATION -->
+            <div class="card">
+                <div class="card-meta-row">
+                    <span class="card-badge">Qualification Pro</span>
+                    <i class="fa-solid fa-file-contract card-icon"></i>
+                </div>
+                <h3>Qualification Professionnelle Immo</h3>
+                <div class="card-org">Cabinet Bedin & Branche Immobilière</div>
+                <p>Certification de compétences en transactions immobilières complexes et ingénierie de la force de vente.</p>
+                <button class="btn-view" onclick="openDiplomaModal('diplomes_images/2026-07-25_Certificat_Qualification_Conseillier_en_Immobilier.png', 'Qualification Professionnelle Conseiller Immobilier')">
+                    <i class="fa-solid fa-eye"></i> Visualiser l\'Attestation HD
+                </button>
+            </div>
+
+            <!-- 8. NÉERLANDAIS B2 -->
+            <div class="card">
+                <div class="card-meta-row">
+                    <span class="card-badge">Langues & International</span>
+                    <i class="fa-solid fa-language card-icon"></i>
+                </div>
+                <h3>Certificat Néerlandais B2</h3>
+                <div class="card-org">CBE Centre Multilingue</div>
+                <p>Négociation commerciale et gestion de projets en environnement multilingue et multiculturel international.</p>
+                <button class="btn-view" onclick="openDiplomaModal('diplomes_images/2026-07-25_Certificat_Néerlandais.png', 'Certificat Néerlandais B2')">
+                    <i class="fa-solid fa-eye"></i> Visualiser l\'Attestation HD
+                </button>
+            </div>
+
+            <!-- 9. RESTAURATION & PALACE -->
+            <div class="card">
+                <div class="card-meta-row">
+                    <span class="card-badge">Art de Vivre & Luxe</span>
+                    <i class="fa-solid fa-wine-glass card-icon"></i>
+                </div>
+                <h3>Sommelerie Palace & Restauration</h3>
+                <div class="card-org">Palaces 5* & Restaurants Étoilés (Dublin, Irlande)</div>
+                <p>Maîtrise des codes de l'excellence client internationale, sommelerie de prestige et direction de centres de profit hôteliers.</p>
+                <button class="btn-view" onclick="openDiplomaModal('diplomes_images/2026-07-25_Certificat_Restauration.png', 'Diplôme Restauration & Sommelerie Palace')">
+                    <i class="fa-solid fa-eye"></i> Visualiser l\'Attestation HD
+                </button>
+            </div>
+
+            <!-- 10. LEADERSHIP & PILOTAGE -->
+            <div class="card">
+                <div class="card-meta-row">
+                    <span class="card-badge">Management & Leadership</span>
+                    <i class="fa-solid fa-users-gear card-icon"></i>
+                </div>
+                <h3>Certification Leadership & Pilotage</h3>
+                <div class="card-org">Management de Centre de Profit</div>
+                <p>Direction d'équipes (15 à 50 collaborateurs), pilotage de la performance P&L et posture de Manager-Coach ENTJ-A.</p>
+                <button class="btn-view" onclick="openDiplomaModal('diplomes_images/2026-07-25_Certificat_Lead_Ship.png', 'Certification Leadership & Management')">
+                    <i class="fa-solid fa-eye"></i> Visualiser l\'Attestation HD
+                </button>
+            </div>
+
+        </div>
+    </div>
+
+    <!-- DIPLOMA LIGHTBOX MODAL -->
+    <div id="diploma-modal" class="modal-overlay" onclick="closeDiplomaModal(event)">
+        <div class="modal-content" onclick="event.stopPropagation()">
+            <button class="modal-close" onclick="closeDiplomaModal()" title="Fermer (Échap)">&times;</button>
+            <div class="modal-header">
+                <h3 id="modal-title">Visualisation du Diplôme</h3>
+            </div>
+            <div class="modal-body">
+                <img id="modal-image" src="" alt="Attestation Diplôme Julien Florence">
+            </div>
+            <div class="modal-footer">
+                <span style="font-size: 12.5px; color: var(--text-sub);">Julien FLORENCE • Attestation Officielle</span>
+                <a id="modal-download" href="" download class="btn-modal-dl">
+                    <i class="fa-solid fa-download"></i> Télécharger l'Image HD
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <!-- FIXED DOCK BAR -->
+    <div class="fixed-dock">
+        <a href="dashboard.html" class="dock-btn">
+            <i class="fa-solid fa-chart-line"></i> Dashboard CV
+        </a>
+        <a href="Julien_Florence_CV_Direction_Commerciale.pdf" download class="dock-btn">
+            <i class="fa-solid fa-file-pdf"></i> CV PDF
+        </a>
+        <a href="Julien_Florence.vcf" download class="dock-btn">
+            <i class="fa-solid fa-address-card"></i> Contact vCard
+        </a>
+    </div>
+
+    <script>
+        function openDiplomaModal(imgSrc, title) {
+            document.getElementById('modal-image').src = imgSrc;
+            document.getElementById('modal-title').textContent = title;
+            document.getElementById('modal-download').href = imgSrc;
+            document.getElementById('diploma-modal').classList.add('active');
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeDiplomaModal(e) {
+            if(!e || e.target === document.getElementById('diploma-modal') || e.target.classList.contains('modal-close')) {
+                document.getElementById('diploma-modal').classList.remove('active');
+                document.body.style.overflow = 'auto';
+            }
+        }
+
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'Escape') closeDiplomaModal();
+        });
+    </script>
+</body>
+</html>
