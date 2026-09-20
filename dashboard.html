@@ -429,11 +429,15 @@
             padding: 20px;
             margin-bottom: 16px;
             transition: var(--transition);
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
         }
 
         .diploma-card:hover {
             border-color: var(--border-gold);
-            transform: translateX(4px);
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(212, 175, 55, 0.15);
         }
 
         .diploma-title {
@@ -441,7 +445,7 @@
             font-size: 16.5px;
             font-weight: 700;
             color: var(--gold-primary);
-            margin-bottom: 4px;
+            margin-bottom: 2px;
             display: flex;
             align-items: center;
             justify-content: space-between;
@@ -459,12 +463,153 @@
             font-size: 13.5px;
             color: var(--cyan-accent);
             font-weight: 600;
-            margin-bottom: 8px;
         }
 
         .diploma-detail {
             font-size: 13px;
             color: var(--text-sub);
+            margin-bottom: 6px;
+        }
+
+        .btn-view-diploma {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 8px 16px;
+            background: rgba(212, 175, 55, 0.1);
+            border: 1px solid var(--border-gold);
+            color: var(--gold-light);
+            border-radius: 8px;
+            font-family: 'Outfit', sans-serif;
+            font-weight: 600;
+            font-size: 13px;
+            cursor: pointer;
+            transition: var(--transition);
+            text-decoration: none;
+            align-self: flex-start;
+        }
+
+        .btn-view-diploma:hover {
+            background: var(--gold-primary);
+            color: #0F1117;
+            box-shadow: 0 4px 15px var(--gold-glow);
+        }
+
+        /* LIGHTBOX MODAL STYLES */
+        .modal-overlay {
+            position: fixed;
+            top: 0; left: 0; width: 100vw; height: 100vh;
+            background: rgba(5, 7, 12, 0.92);
+            backdrop-filter: blur(16px);
+            display: none;
+            align-items: center;
+            justify-content: center;
+            z-index: 9999;
+            padding: 20px;
+        }
+
+        .modal-overlay.active {
+            display: flex;
+            animation: fadeIn 0.3s ease;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        .modal-content {
+            background: #131822;
+            border: 2px solid var(--border-gold);
+            border-radius: var(--radius-xl);
+            max-width: 900px;
+            width: 100%;
+            max-height: 90vh;
+            display: flex;
+            flex-direction: column;
+            overflow: hidden;
+            position: relative;
+            box-shadow: 0 25px 60px rgba(0, 0, 0, 0.85);
+        }
+
+        .modal-close {
+            position: absolute;
+            top: 15px; right: 20px;
+            background: rgba(212, 175, 55, 0.15);
+            border: 1px solid var(--border-gold);
+            color: var(--gold-primary);
+            width: 38px; height: 38px;
+            border-radius: 50%;
+            font-size: 20px;
+            cursor: pointer;
+            z-index: 10;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: var(--transition);
+        }
+
+        .modal-close:hover {
+            background: var(--gold-primary);
+            color: #000;
+        }
+
+        .modal-header {
+            padding: 20px 24px;
+            border-bottom: 1px solid var(--border-subtle);
+            background: var(--bg-surface);
+        }
+
+        .modal-header h3 {
+            color: var(--gold-primary);
+            font-family: 'Outfit', sans-serif;
+            font-size: 19px;
+            font-weight: 700;
+        }
+
+        .modal-body {
+            padding: 20px;
+            overflow-y: auto;
+            text-align: center;
+            max-height: 70vh;
+            background: #0B0E14;
+        }
+
+        .modal-body img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 12px;
+            border: 1px solid var(--border-subtle);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+        }
+
+        .modal-footer {
+            padding: 14px 24px;
+            border-top: 1px solid var(--border-subtle);
+            background: var(--bg-surface);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .btn-modal-dl {
+            background: linear-gradient(135deg, var(--gold-primary), var(--gold-light));
+            color: #0F1117;
+            padding: 10px 20px;
+            border-radius: var(--radius-md);
+            font-family: 'Outfit', sans-serif;
+            font-weight: 700;
+            text-decoration: none;
+            font-size: 13.5px;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            transition: var(--transition);
+        }
+
+        .btn-modal-dl:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 15px var(--gold-glow);
         }
 
         /* SKILLS TAGS */
@@ -707,17 +852,25 @@
 
                 <!-- TAB 4: DIPLOMES & CERTIFICATIONS -->
                 <div id="content-diplomes" class="card-box" style="display: none;">
-                    <h2 class="card-title"><i class="fa-solid fa-graduation-cap"></i> Diplômes, Certifications & Titres</h2>
+                    <h2 class="card-title"><i class="fa-solid fa-graduation-cap"></i> Diplômes, Certifications & Attestations Visuelles</h2>
+                    <p style="font-size: 13.5px; color: var(--text-sub); margin-bottom: 20px;">
+                        Cliquez sur <strong>« Visualiser le Diplôme »</strong> pour afficher l'attestation officielle en haute définition dans la visionneuse interactive.
+                    </p>
                     
+                    <!-- DIPLOME 1 -->
                     <div class="diploma-card">
                         <div class="diploma-title">
                             <span>Bachelor Marketing & Commerce</span>
                             <span class="diploma-year">2024 - 2025</span>
                         </div>
                         <div class="diploma-org">Rocket School (Top 1% Acquisition B2B)</div>
-                        <div class="diploma-detail">Expertise en Lead Generation, Growth Automation, CRM Salesforce/HubSpot et ingénierie commerciale B2B.</div>
+                        <div class="diploma-detail">Responsable Marketing et Commercial. Spécialisation Acquisition Tech, Lead Generation & Growth Sales Engine.</div>
+                        <button class="btn-view-diploma" onclick="openDiplomaModal('diplomes_images/2026-07-27_Certificat_Bachelor_Rocket_School.png', 'Bachelor Marketing & Commerce — Rocket School')">
+                            <i class="fa-solid fa-eye"></i> Visualiser le Diplôme (PNG HD)
+                        </button>
                     </div>
 
+                    <!-- DIPLOME 2 -->
                     <div class="diploma-card">
                         <div class="diploma-title">
                             <span>Diplôme de Coach Fédéral de Handball</span>
@@ -725,24 +878,113 @@
                         </div>
                         <div class="diploma-org">Fédération Française de Handball (FFHB)</div>
                         <div class="diploma-detail">Certification d'État en entraînement, préparation tactique, coaching mental et management d'équipe de compétition niveau national.</div>
+                        <button class="btn-view-diploma" onclick="openDiplomaModal('diplomes_images/2026-07-25_Certificat_sportif.png', 'Diplôme de Coach Fédéral — FFHB')">
+                            <i class="fa-solid fa-eye"></i> Visualiser le Diplôme (PNG HD)
+                        </button>
                     </div>
 
+                    <!-- DIPLOME 3 -->
                     <div class="diploma-card">
                         <div class="diploma-title">
-                            <span>Sommelier Diplômé (Irlande) & Palaces 5*</span>
+                            <span>Certification HTML5 & CSS3</span>
+                            <span class="diploma-year">Certifié Web</span>
+                        </div>
+                        <div class="diploma-org">Google Academy & Web Architecture</div>
+                        <div class="diploma-detail">Maîtrise du développement web moderne, des standards sémantiques et de l'architecture d'interface web responsive.</div>
+                        <button class="btn-view-diploma" onclick="openDiplomaModal('diplomes_images/2026-07-25_Certificat_HTML&CSS.png', 'Certification HTML5 & CSS3')">
+                            <i class="fa-solid fa-eye"></i> Visualiser l\'Attestation (PNG HD)
+                        </button>
+                    </div>
+
+                    <!-- DIPLOME 4 -->
+                    <div class="diploma-card">
+                        <div class="diploma-title">
+                            <span>Certification Google Fundamentals & Marketing Digital</span>
+                            <span class="diploma-year">Google Digital</span>
+                        </div>
+                        <div class="diploma-org">Google Digital Academy</div>
+                        <div class="diploma-detail">Certification Google Academy : SEO, SEM, Analyse de données de trafic et stratégies d'acquisition multicanale.</div>
+                        <button class="btn-view-diploma" onclick="openDiplomaModal('diplomes_images/2026-07-25_Certificat_Digital_Marketing.png', 'Certification Google Digital Marketing')">
+                            <i class="fa-solid fa-eye"></i> Visualiser l\'Attestation (PNG HD)
+                        </button>
+                    </div>
+
+                    <!-- DIPLOME 5 -->
+                    <div class="diploma-card">
+                        <div class="diploma-title">
+                            <span>Certification Inbound Marketing & HubSpot</span>
+                            <span class="diploma-year">HubSpot Academy</span>
+                        </div>
+                        <div class="diploma-org">HubSpot Inbound Sales</div>
+                        <div class="diploma-detail">Optimisation du tunnel de conversion, lead nurturing et automatisation des workflows marketing B2B.</div>
+                        <button class="btn-view-diploma" onclick="openDiplomaModal('diplomes_images/2026-07-25_Certificat_Inband.png', 'Certification HubSpot Inbound Marketing')">
+                            <i class="fa-solid fa-eye"></i> Visualiser l\'Attestation (PNG HD)
+                        </button>
+                    </div>
+
+                    <!-- DIPLOME 6 -->
+                    <div class="diploma-card">
+                        <div class="diploma-title">
+                            <span>Certificat Conseiller Expert Immobilier</span>
+                            <span class="diploma-year">Expertise Immo</span>
+                        </div>
+                        <div class="diploma-org">Century 21 France</div>
+                        <div class="diploma-detail">Négociation de haut niveau, droit immobilier, estimation de biens d'exception et transaction B2B/B2C.</div>
+                        <button class="btn-view-diploma" onclick="openDiplomaModal('diplomes_images/2026-07-25_Certificat_Conseiller_en_Immobilier.png', 'Certificat Conseiller Expert Immobilier')">
+                            <i class="fa-solid fa-eye"></i> Visualiser l\'Attestation (PNG HD)
+                        </button>
+                    </div>
+
+                    <!-- DIPLOME 7 -->
+                    <div class="diploma-card">
+                        <div class="diploma-title">
+                            <span>Qualification Professionnelle Conseiller Immobilier</span>
+                            <span class="diploma-year">Titre Pro</span>
+                        </div>
+                        <div class="diploma-org">Cabinet Bedin & Branche Immobilier</div>
+                        <div class="diploma-detail">Certification de compétences en transactions immobilières complexes et ingénierie de vente.</div>
+                        <button class="btn-view-diploma" onclick="openDiplomaModal('diplomes_images/2026-07-25_Certificat_Qualification_Conseillier_en_Immobilier.png', 'Qualification Professionnelle Conseiller Immobilier')">
+                            <i class="fa-solid fa-eye"></i> Visualiser l\'Attestation (PNG HD)
+                        </button>
+                    </div>
+
+                    <!-- DIPLOME 8 -->
+                    <div class="diploma-card">
+                        <div class="diploma-title">
+                            <span>Certificat Néerlandais B2</span>
+                            <span class="diploma-year">International</span>
+                        </div>
+                        <div class="diploma-org">CBE Centre Multilingue</div>
+                        <div class="diploma-detail">Capacité de négociation et gestion de projets en environnement multilingue international.</div>
+                        <button class="btn-view-diploma" onclick="openDiplomaModal('diplomes_images/2026-07-25_Certificat_Néerlandais.png', 'Certificat Néerlandais B2')">
+                            <i class="fa-solid fa-eye"></i> Visualiser l\'Attestation (PNG HD)
+                        </button>
+                    </div>
+
+                    <!-- DIPLOME 9 -->
+                    <div class="diploma-card">
+                        <div class="diploma-title">
+                            <span>Sommelier Diplômé & Service d'Excellence</span>
                             <span class="diploma-year">International</span>
                         </div>
                         <div class="diploma-org">Hôtellerie de Luxe International (Dublin, Irlande)</div>
-                        <div class="diploma-detail">Maîtrise des codes de l'excellence client internationale, sommelerie de prestige et anglais des affaires courant.</div>
+                        <div class="diploma-detail">Maîtrise des codes de l'excellence client internationale, sommelerie de prestige et direction de restauration haut de gamme.</div>
+                        <button class="btn-view-diploma" onclick="openDiplomaModal('diplomes_images/2026-07-25_Certificat_Restauration.png', 'Diplôme Restauration & Sommelerie Palace')">
+                            <i class="fa-solid fa-eye"></i> Visualiser l\'Attestation (PNG HD)
+                        </button>
                     </div>
 
+                    <!-- DIPLOME 10 -->
                     <div class="diploma-card">
                         <div class="diploma-title">
-                            <span>Certification HTML5, CSS3 & Automation Digital</span>
-                            <span class="diploma-year">Certifié</span>
+                            <span>Certification Leadership & Pilotage d'Équipe</span>
+                            <span class="diploma-year">Management</span>
                         </div>
-                        <div class="diploma-org">Google Academy & Lead Automation Workflows</div>
-                        <div class="diploma-detail">Conception d'interfaces web, automatisation n8n et structuration d'outils digitaux pour la performance commercial.</div>
+                        <div class="diploma-org">Management de Centre de Profit</div>
+                        <div class="diploma-detail">Direction d'équipes (15 à 50 collaborateurs), pilotage de la performance P&L et posture de Manager-Coach.</div>
+                        <button class="btn-view-diploma" onclick="openDiplomaModal('diplomes_images/2026-07-25_Certificat_Lead_Ship.png', 'Certification Leadership & Management')">
+                            <i class="fa-solid fa-eye"></i> Visualiser l\'Attestation (PNG HD)
+                        </button>
                     </div>
                 </div>
 
@@ -848,6 +1090,25 @@
         </a>
     </div>
 
+    <!-- DIPLOMA LIGHTBOX MODAL -->
+    <div id="diploma-modal" class="modal-overlay" onclick="closeDiplomaModal(event)">
+        <div class="modal-content" onclick="event.stopPropagation()">
+            <button class="modal-close" onclick="closeDiplomaModal()" title="Fermer (Échap)">&times;</button>
+            <div class="modal-header">
+                <h3 id="modal-title">Visualisation du Diplôme</h3>
+            </div>
+            <div class="modal-body">
+                <img id="modal-image" src="" alt="Attestation Diplôme Julien Florence">
+            </div>
+            <div class="modal-footer">
+                <span style="font-size: 12.5px; color: var(--text-sub);">Julien FLORENCE • Attestation Officielle</span>
+                <a id="modal-download" href="" download class="btn-modal-dl">
+                    <i class="fa-solid fa-download"></i> Télécharger l'Image HD
+                </a>
+            </div>
+        </div>
+    </div>
+
     <script>
         function switchTab(tab) {
             document.getElementById('content-dir-com').style.display = (tab === 'dir-com') ? 'block' : 'none';
@@ -860,6 +1121,25 @@
             document.getElementById('tab-parcours').classList.toggle('active', tab === 'parcours');
             document.getElementById('tab-diplomes').classList.toggle('active', tab === 'diplomes');
         }
+
+        function openDiplomaModal(imgSrc, title) {
+            document.getElementById('modal-image').src = imgSrc;
+            document.getElementById('modal-title').textContent = title;
+            document.getElementById('modal-download').href = imgSrc;
+            document.getElementById('diploma-modal').classList.add('active');
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeDiplomaModal(e) {
+            if(!e || e.target === document.getElementById('diploma-modal') || e.target.classList.contains('modal-close')) {
+                document.getElementById('diploma-modal').classList.remove('active');
+                document.body.style.overflow = 'auto';
+            }
+        }
+
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'Escape') closeDiplomaModal();
+        });
 
         // Auto hash tab switcher
         window.addEventListener('load', function() {
