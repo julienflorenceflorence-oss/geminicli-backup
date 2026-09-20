@@ -1,0 +1,738 @@
+[
+  {
+    "id": "194bd19e738a449c",
+    "query_matched": "weezevent",
+    "subject": "Invitation Wine Paris et Femmes de Vin",
+    "sender": "Domaine Ollier Taillefer <contact@olliertaillefer.fr>",
+    "date": "Fri, 31 Jan 2025 17:02:47 +0100",
+    "snippet": "Si vous ne voyez pas ce message correctement, consultez-le en ligne. Bonjour à tous, J – 7 !!! Venez nous retrouver du 10 au 12 février à Wine Paris. Je serai présente dans l&#39;espace Languedoc,"
+  },
+  {
+    "id": "18c49846e2366437",
+    "query_matched": "dice",
+    "subject": "Votre abonnement au service de l'eau - ref 1460044500168903",
+    "sender": "service-client@veolia.com",
+    "date": "Fri, 8 Dec 2023 13:01:02 +0000",
+    "snippet": "Documents contractuels à conserver Bonjour, Nous avons le plaisir de vous confirmer les éléments contractuels concernant votre abonnement au service de l&#39;eau. Nous vous invitons également à bien"
+  },
+  {
+    "id": "1849ebec77b9adca",
+    "query_matched": "dice",
+    "subject": "Votre contrat AUTO PASS n° 003981857791V est validé ",
+    "sender": "\"Votre signature électronique GMF\" <noreply@gmf.fr>",
+    "date": "Tue, 22 Nov 2022 10:50:07 +0100",
+    "snippet": "header Cher Monsieur Julien FLORENCE, La signature électronique de votre avenant AUTO PASS a bien été effectuée. En cas d&#39;édition d&#39;une carte verte, celle-ci est envoyée séparément par courrier"
+  },
+  {
+    "id": "18490672707abaf6",
+    "query_matched": "dice",
+    "subject": "Votre contrat HABITATION n° 004070056065J est validé ",
+    "sender": "\"Votre signature électronique GMF\" <noreply@gmf.fr>",
+    "date": "Sat, 19 Nov 2022 15:59:42 +0100",
+    "snippet": "header Cher Monsieur Julien FLORENCE, La signature électronique de votre avenant HABITATION a bien été effectuée. Vous trouverez en pièces jointes : les Conditions Générales, la Convention d&#39;"
+  },
+  {
+    "id": "1849054f12e2ddac",
+    "query_matched": "dice",
+    "subject": "Dernière étape pour valider votre contrat HABITATION n° 004070056065J",
+    "sender": "\"Votre signature électronique GMF\" <noreply@gmf.fr>",
+    "date": "Sat, 19 Nov 2022 15:39:50 +0100",
+    "snippet": "Cher Monsieur Julien FLORENCE, Vous venez de modifier le contrat HABITATION et vous avez choisi la signature électronique pour valider votre contrat. Cette validation se fait en quelques clics :"
+  },
+  {
+    "id": "1849054f052e3f68",
+    "query_matched": "dice",
+    "subject": "Dernière étape pour valider votre contrat AUTO PASS n° 003981857791V",
+    "sender": "\"Votre signature électronique GMF\" <noreply@gmf.fr>",
+    "date": "Sat, 19 Nov 2022 15:39:50 +0100",
+    "snippet": "Cher Monsieur Julien FLORENCE, Vous venez de modifier le contrat de votre RENAULT CLIO et vous avez choisi la signature électronique pour valider votre contrat AUTO PASS. Cette validation se fait en"
+  },
+  {
+    "id": "18123a02b3d3e280",
+    "query_matched": "dice",
+    "subject": "Votre contrat AUTO PASS n° 003981857791V est validé ",
+    "sender": "\"Votre signature électronique GMF\" <noreply@gmf.fr>",
+    "date": "Thu, 2 Jun 2022 10:55:00 +0200",
+    "snippet": "header Cher Monsieur Julien FLORENCE, La signature électronique de votre avenant AUTO PASS a bien été effectuée. En cas d&#39;édition d&#39;une carte verte, celle-ci est envoyée séparément par courrier"
+  },
+  {
+    "id": "1811f698d8fe91fc",
+    "query_matched": "dice",
+    "subject": "Dernière étape pour valider votre contrat AUTO PASS n° 003981857791V",
+    "sender": "\"Votre signature électronique GMF\" <noreply@gmf.fr>",
+    "date": "Wed, 1 Jun 2022 15:16:23 +0200",
+    "snippet": "Cher Monsieur Julien FLORENCE, Vous venez de modifier le contrat de votre RENAULT CLIO et vous avez choisi la signature électronique pour valider votre contrat AUTO PASS. Cette validation se fait en"
+  },
+  {
+    "id": "17825de7ad078e0c",
+    "query_matched": "dice",
+    "subject": "Dernière étape pour valider votre contrat AUTO PASS n° 003981857791V",
+    "sender": "\"Votre signature électronique GMF\" <noreply@gmf.fr>",
+    "date": "Fri, 12 Mar 2021 10:57:08 +0100",
+    "snippet": "Cher Monsieur Julien FLORENCE, Vous venez de modifier le contrat de votre RENAULT CLIO et vous avez choisi la signature électronique pour valider votre contrat AUTO PASS. Cette validation se fait en"
+  },
+  {
+    "id": "17786a8a12a298c6",
+    "query_matched": "dice",
+    "subject": "Votre contrat HABITATION n° 004070056065J est validé ",
+    "sender": "\"Votre signature électronique GMF\" <noreply@gmf.fr>",
+    "date": "Tue, 9 Feb 2021 12:58:02 +0100",
+    "snippet": "header Cher Monsieur Julien FLORENCE, La signature électronique de votre contrat HABITATION a bien été effectuée. Vous trouverez en pièces jointes : les Conditions Générales, la Convention d&#39;"
+  },
+  {
+    "id": "17786a6debb6d73c",
+    "query_matched": "dice",
+    "subject": "Votre contrat AUTO PASS n° 003981857791V est validé ",
+    "sender": "\"Votre signature électronique GMF\" <noreply@gmf.fr>",
+    "date": "Tue, 9 Feb 2021 12:56:54 +0100",
+    "snippet": "header Cher Monsieur Julien FLORENCE, La signature électronique de votre avenant AUTO PASS a bien été effectuée. En cas d&#39;édition d&#39;une carte verte, celle-ci est envoyée séparément par courrier"
+  },
+  {
+    "id": "17771ecfcc4833d4",
+    "query_matched": "dice",
+    "subject": "Dernière étape pour valider votre contrat AUTO PASS n° 003981857791V",
+    "sender": "\"Votre signature électronique GMF\" <noreply@gmf.fr>",
+    "date": "Fri, 5 Feb 2021 12:19:03 +0100",
+    "snippet": "Cher Monsieur Julien FLORENCE, Vous venez de modifier le contrat de votre RENAULT CLIO et vous avez choisi la signature électronique pour valider votre contrat AUTO PASS. Cette validation se fait en"
+  },
+  {
+    "id": "17251bdbebb3ef39",
+    "query_matched": "dice",
+    "subject": "Votre contrat AUTO PASS n° 003981857791V est validé ",
+    "sender": "\"Votre signature électronique GMF\" <noreply@gmf.fr>",
+    "date": "Tue, 26 May 2020 18:08:03 +0200",
+    "snippet": "header Cher Monsieur Julien FLORENCE, La signature électronique de votre avenant AUTO PASS a bien été effectuée. En cas d&#39;édition d&#39;une carte verte, celle-ci est envoyée séparément par courrier"
+  },
+  {
+    "id": "17251a830714ecbb",
+    "query_matched": "dice",
+    "subject": "Dernière étape pour valider votre contrat AUTO PASS n° 003981857791V",
+    "sender": "\"Votre signature électronique GMF\" <noreply@gmf.fr>",
+    "date": "Tue, 26 May 2020 17:44:32 +0200",
+    "snippet": "Cher Monsieur Julien FLORENCE, Vous venez de modifier le contrat de votre OPEL AGILA et vous avez choisi la signature électronique pour valider votre contrat AUTO PASS. Cette validation se fait en"
+  },
+  {
+    "id": "16f18c9c9df3aa04",
+    "query_matched": "dice",
+    "subject": "Votre contrat AUTO PASS n° 003981857791V est validé ",
+    "sender": "\"Votre signature électronique GMF\" <noreply@gmf.fr>",
+    "date": "Wed, 18 Dec 2019 12:34:22 +0100",
+    "snippet": "header Cher Monsieur Julien FLORENCE, La signature électronique de votre contrat AUTO PASS a bien été effectuée. En cas d&#39;édition d&#39;une carte verte, celle-ci est envoyée séparément par courrier"
+  },
+  {
+    "id": "16efa469848e289d",
+    "query_matched": "dice",
+    "subject": "Dernière étape pour valider votre contrat AUTO PASS n° 003981857791V",
+    "sender": "\"Votre signature électronique GMF\" <noreply@gmf.fr>",
+    "date": "Thu, 12 Dec 2019 14:22:12 +0100",
+    "snippet": "Cher Monsieur Julien FLORENCE, Vous venez de souscrire une assurance pour votre OPEL AGILA et vous avez choisi la signature électronique pour valider votre contrat AUTO PASS. Cette validation se fait"
+  },
+  {
+    "id": "1a05c899a23d11b0",
+    "query_matched": "billet",
+    "subject": "Sept ans d’attente. ",
+    "sender": "\"Club Pépites\" <contact@pepites-club.com>",
+    "date": "Tue, 01 Sep 2026 10:35:09 +0000",
+    "snippet": "Pour un voyage au japon‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌"
+  },
+  {
+    "id": "19f9db37603a48e3",
+    "query_matched": "billet",
+    "subject": "Vente Flash TGV INOUI, rendez-vous le 28 juillet !",
+    "sender": "SNCF Connect <info@mail.sncf-connect.com>",
+    "date": "Sun, 26 Jul 2026 11:13:29 +0200",
+    "snippet": "J-2 avant de profiter de prix promo. Consultez la version en ligne. Julien Florence Vente Flash TGV INOUI Billets à prix promo : rendez-vous mardi ! Du 28 au 30 juillet, plus de 150 000 billets à 19€ ("
+  },
+  {
+    "id": "19ef941756a2aa0d",
+    "query_matched": "billet",
+    "subject": "IMPORTANT SNCF - Suppression de votre train 8516 du 24/06",
+    "sender": "SNCF Voyageurs <noreply@infos.sncf-voyageurs.com>",
+    "date": "Wed, 24 Jun 2026 10:51:17 +0000",
+    "snippet": "Si vous ne visualisez pas cet email, cliquez ici Bonjour, Votre train 8516 du 24/06 départ à 17:09 à destination de PARIS MONTPARNASSE 1 ET 2 est supprimé en raison des conditions météorologiques. Si"
+  },
+  {
+    "id": "19ef93495604b831",
+    "query_matched": "billet",
+    "subject": "ALERTE SNCF - Suppression de votre train 8516 du 24/06/2026",
+    "sender": "SNCF Voyageurs <noreply@infos.sncf-voyageurs.com>",
+    "date": "Wed, 24 Jun 2026 10:37:11 +0000",
+    "snippet": "Si vous ne visualisez pas cet email, cliquez ici Bonjour, Votre train 8516 du 24/06/2026 à destination de PARIS MONTPARNASSE 1 ET 2 a dû être supprimé en raison de Conditions météorologiques. Vous"
+  },
+  {
+    "id": "19ef91cda422deae",
+    "query_matched": "billet",
+    "subject": "J-1 avant votre voyage à Paris Est",
+    "sender": "TGV INOUI <noreply@info.sncf-voyageurs.com>",
+    "date": "Wed, 24 Jun 2026 10:09:59 +0000",
+    "snippet": "On vous a préparé un récapitulatif. Voir la version en ligne TGV INOUI Julien, départ imminent ! Tout est prêt ? Nous partons ensemble demain et sommes ravis que vous nous ayez choisis. Merci pour"
+  },
+  {
+    "id": "19ef3f37b93405a3",
+    "query_matched": "billet",
+    "subject": "J-1 avant votre voyage à Paris - Montparnasse - Hall 1 & 2",
+    "sender": "TGV INOUI <noreply@info.sncf-voyageurs.com>",
+    "date": "Tue, 23 Jun 2026 10:07:20 +0000",
+    "snippet": "On vous a préparé un récapitulatif. Voir la version en ligne TGV INOUI Julien, départ imminent ! Tout est prêt ? Nous partons ensemble demain et sommes ravis que vous nous ayez choisis. Merci pour"
+  },
+  {
+    "id": "19ef32e1248c62c6",
+    "query_matched": "billet",
+    "subject": "Votre voyage à Paris Gare de l’Est le jeudi 25 juin",
+    "sender": "SNCF Connect  <info@mail.sncf-connect.com>",
+    "date": "Tue, 23 Jun 2026 08:32:23 +0200",
+    "snippet": "Pour visualiser correctement cette lettre d&#39;information, consultez la version en ligne. Julien Florence ‌ Informations utiles pour votre voyage Notre conseil : pensez à vous hydrater avant votre"
+  },
+  {
+    "id": "19eee98f28580dbf",
+    "query_matched": "billet",
+    "subject": "IMPORTANT SNCF - Suppression de votre train 3694 du 24/06",
+    "sender": "SNCF Voyageurs <noreply@infos.sncf-voyageurs.com>",
+    "date": "Mon, 22 Jun 2026 09:11:01 +0000",
+    "snippet": "Si vous ne visualisez pas cet email, cliquez ici Bonjour, Votre train 3694 du 24/06 départ à 16:07 à destination de PARIS-BERCY BOURGOGNE-PAYS D&#39;AUVERGNE est supprimé en raison des fortes chaleurs."
+  },
+  {
+    "id": "19ed112680041629",
+    "query_matched": "billet",
+    "subject": "E-mail de justificatif de paiement",
+    "sender": "FlixBus <noreply@fs.flixbus.com>",
+    "date": "Tue, 16 Jun 2026 15:35:04 +0000",
+    "snippet": "Logo Cher·ère client·e FlixBus, Merci pour votre réservation (nº 3365372461) Votre justificatif de paiement est en pièce jointe. Voulez-vous annuler ou modifier votre trajet ? Veuillez utiliser notre"
+  },
+  {
+    "id": "19ed112663de8a48",
+    "query_matched": "billet",
+    "subject": "Confirmation de réservation #3365372461",
+    "sender": "Flix <noreply@booking.flixbus.com>",
+    "date": "Tue, 16 Jun 2026 15:35:04 +0000",
+    "snippet": "Réservation confirmée ! N° de réservation : 3365372461 Icon Voir le billet mer. 24 juin → jeu. 25 juin Départ Station Paris (Bercy Seine) Heure 23:55 Arrivée Station Strasbourg Heure 06:40 Mises à jour"
+  },
+  {
+    "id": "19ed11265a5edd46",
+    "query_matched": "billet",
+    "subject": "Votre voyage Paris (bercy Seine) - Strasbourg, aller le mercredi 24 juin 2026",
+    "sender": "SNCF Connect <noreply@connect.sncf>",
+    "date": "Tue, 16 Jun 2026 17:35:04 +0200 (CEST)",
+    "snippet": "Merci Et bon voyage ! Votre récapitulatif de commande Pour récupérer votre billet, avoir plus de détails sur votre réservation, la compléter, la modifier ou l&#39;annuler, rendez-vous sur votre espace"
+  },
+  {
+    "id": "19ed107ed37b5210",
+    "query_matched": "billet",
+    "subject": "Votre voyage Toulouse Matabiau - Paris-Bercy Bourgogne-Pays D'auvergne, aller le mercredi 24 juin 2026, retour le jeudi 25 juin 2026",
+    "sender": "SNCF Connect <noreply@connect.sncf>",
+    "date": "Tue, 16 Jun 2026 17:23:37 +0200 (CEST)",
+    "snippet": "Merci Et bon voyage ! Votre récapitulatif de commande Pour récupérer votre billet, avoir plus de détails sur votre réservation, la compléter, la modifier ou l&#39;annuler, rendez-vous sur votre espace"
+  },
+  {
+    "id": "19e939165cbfcf67",
+    "query_matched": "billet",
+    "subject": "Confirmation de commande - Vos billets et facture",
+    "sender": "REDES <contact@redes.fr>",
+    "date": "Thu, 04 Jun 2026 16:57:18 +0000",
+    "snippet": "Confirmation de commande P100 Homologué REDES - Padel &amp; Business Bonjour Julien, Nous te confirmons la réception de ta commande pour l&#39;événement P100 Homologué REDES - Padel &amp; Business. Ta"
+  },
+  {
+    "id": "19d86061f8ab30f2",
+    "query_matched": "billet",
+    "subject": "Confirmation de commande - Vos billets et facture",
+    "sender": "REDES <contact@redes.fr>",
+    "date": "Mon, 13 Apr 2026 08:47:19 +0000",
+    "snippet": "Confirmation de commande Auberge Espagnole REDES x ETS Richart Bonjour Julien, Nous te confirmons la réception de ta commande pour l&#39;événement Auberge Espagnole REDES x ETS Richart . Ta commande"
+  },
+  {
+    "id": "19d6e4132bf82351",
+    "query_matched": "billet",
+    "subject": "Confirmation de commande - Vos billets et facture",
+    "sender": "REDES <contact@redes.fr>",
+    "date": "Wed, 08 Apr 2026 18:00:58 +0000",
+    "snippet": "Confirmation de commande Auberge Espagnole REDES x ETS Richart Bonjour Julien, Nous te confirmons la réception de ta commande pour l&#39;événement Auberge Espagnole REDES x ETS Richart . Ta commande"
+  },
+  {
+    "id": "1a04e3847053bccd",
+    "query_matched": "billetterie",
+    "subject": "Confirmation de réinitialisation de votre mot de passe Ten'Up",
+    "sender": "Mon Compte FFT <mon-compte@fft.fr>",
+    "date": "Sat, 29 Aug 2026 15:51:45 +0000",
+    "snippet": "Confirmation de réinitialisation de mot de passe CONFIRMATION RÉINITIALISATION DE VOTRE MOT DE PASSE Bonjour Julien FLORENCE, Nous vous confirmons la modification du mot de passe de votre compte. Cette"
+  },
+  {
+    "id": "1a04e358820a6e7f",
+    "query_matched": "billetterie",
+    "subject": "Réinitialisation de votre mot de passe Ten'Up",
+    "sender": "Mon Compte FFT <mon-compte@fft.fr>",
+    "date": "Sat, 29 Aug 2026 15:48:46 +0000",
+    "snippet": "Demande de réinitialisation de mot de passe RÉINITIALISATION DE VOTRE MOT DE PASSE Bonjour Julien FLORENCE, Nous avons reçu une demande de réinitialisation du mot de passe associé à votre compte. Cette"
+  },
+  {
+    "id": "1a04cd9691b2e638",
+    "query_matched": "billetterie",
+    "subject": "2 offres adhérents exclusives ce week-end !",
+    "sender": "Fnac <info@fnac.com>",
+    "date": "Sat, 29 Aug 2026 11:28:30 +0200",
+    "snippet": "✨ Jusqu&#39;à 15€ offerts tous les 100€ d&#39;achat avec le code BTS26 Voir la version en ligne fnac.com 📍 CHOISIR MON MAGASIN | 👤 MON COMPTE Pour en profiter en magasin* : Code-barres à présenter en"
+  },
+  {
+    "id": "19fb9c3f7528623f",
+    "query_matched": "billetterie",
+    "subject": "OUVERTURE BILLETTERIE : Les deux premières rencontres à domicile  😁",
+    "sender": "FENIX Toulouse Handball <billetterie@fenix-toulouse.fr>",
+    "date": "Fri, 31 Jul 2026 20:00:53 +0000",
+    "snippet": "Faites votre grand retour au Palais ! Les deux premières sensations au Palais ! Chers supporters du FENIX ! Il est grand temps de reprendre le chemin du Palais. La saison 26/27 est lancée ! Le FENIX"
+  },
+  {
+    "id": "19f85550a2cb6a9c",
+    "query_matched": "billetterie",
+    "subject": "Information sur l’utilisation d’indicateurs dans nos e-mails",
+    "sender": "FFT <info@informations.fft.fr>",
+    "date": "Tue, 21 Jul 2026 15:39:30 +0000",
+    "snippet": "Nous faisons évoluer nos communications ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ Voir la version en ligne Bonjour, Vous recevez des communications de la Fédération Française de Tennis (newsletters, informations"
+  },
+  {
+    "id": "19f4d0c125e5f2e4",
+    "query_matched": "billetterie",
+    "subject": "La billetterie est ouverte : vivez les 40 ans du Rolex Paris Masters !",
+    "sender": "Billetterie Rolex Paris Masters 2026 <info@informations.fft.fr>",
+    "date": "Fri, 10 Jul 2026 17:21:04 +0000",
+    "snippet": "Une édition anniversaire exceptionnelle à découvrir ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ Voir la version en ligne LA BILLETTERIE EST OUVERTE ! Et cette année, le Rolex Paris Masters célèbre ses 40 ans ! 40 ans d"
+  },
+  {
+    "id": "19f14822a757b043",
+    "query_matched": "billetterie",
+    "subject": "Ouvertures des ventes Grand Public, mercredi 1er juillet à 10h",
+    "sender": "Billetterie Rolex Paris Masters 2026 <info@informations.fft.fr>",
+    "date": "Mon, 29 Jun 2026 17:51:41 +0000",
+    "snippet": "Réservez vos billets pour le Rolex Paris Masters 2026 ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ Voir la version en ligne RENDEZ-VOUS MERCREDI 1 er JUILLET, À 10H Et cette année, le Rolex Paris Masters célèbre ses 40"
+  },
+  {
+    "id": "19e8c4b40f129818",
+    "query_matched": "billetterie",
+    "subject": "✨ J-12 avant les Trophées de la Comédie Musicale 2026",
+    "sender": "\"Les Trophées de la Comédie Musicale\" <communication@tropheesdelacomediemusicale.fr>",
+    "date": "Wed, 03 Jun 2026 07:03:19 +0000",
+    "snippet": "FLORENCE plus que quelques jours avant la cérémonie. Découvrez les horaires et soutenez les Trophées dans cette dernière ligne droite.‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌"
+  },
+  {
+    "id": "19e068fe56f3faad",
+    "query_matched": "billetterie",
+    "subject": "Ils sont nommés… qui va gagner ?",
+    "sender": "\"Les Trophées de la Comédie Musicale\" <communication@tropheesdelacomediemusicale.fr>",
+    "date": "Fri, 08 May 2026 07:49:14 +0000",
+    "snippet": "Qui seront les lauréats 2026 ? Réponse le 15 juin au Théâtre Mogador.‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌"
+  },
+  {
+    "id": "19ddda30b48e2c30",
+    "query_matched": "billetterie",
+    "subject": "Julien, c’est bientôt votre anniversaire !",
+    "sender": "GMF ASSURANCES <info.md-client@comm.gmf-assurances.fr>",
+    "date": "Thu, 30 Apr 2026 09:05:41 +0000",
+    "snippet": "Profitez de nos réductions pour fêter ça ! Si vous avez des difficultés pour visualiser ce message, accédez à la version en ligne. Merci de ne pas répondre à cet email, aucune demande ne sera prise en"
+  },
+  {
+    "id": "19d9aff0c2886496",
+    "query_matched": "billetterie",
+    "subject": "🤾‍♀️ Les enjeux de la J24",
+    "sender": "Ligue Nationale de Handball <mailing@lnh.fr>",
+    "date": "Fri, 17 Apr 2026 10:31:39 +0000",
+    "snippet": "Découvrez les rencontres, horaires, enjeux de la 24ème journée de Liqui Moly StarLigue et de la 27ème journée de ProLigue !‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌"
+  },
+  {
+    "id": "19cb2e3ed381d161",
+    "query_matched": "billetterie",
+    "subject": "Re: 🎉Invitation Afterwork organisetonseminaire.com",
+    "sender": "julien florence <julienflorence.florence@gmail.com>",
+    "date": "Tue, 3 Mar 2026 09:50:07 +0100",
+    "snippet": "Je viens de le faire ! Directeur du développement commercial Julien 06 61 74 75 73 https://www.my-happy.house/ Le mar. 3 mars 2026, 09:22, Patrice Kermarrec &lt;patrice.kermarrec@my-happy.house&gt; a"
+  },
+  {
+    "id": "19cb2cafa587df1d",
+    "query_matched": "billetterie",
+    "subject": "Re: 🎉Invitation Afterwork organisetonseminaire.com",
+    "sender": "Patrice Kermarrec <patrice.kermarrec@my-happy.house>",
+    "date": "Tue, 3 Mar 2026 09:22:40 +0100",
+    "snippet": "Inscrit toi Et je reviens Jamila dès que tu es inscrit Le 3 mars 2026 à 09:16, julien florence &lt;julienflorence.florence@gmail.com&gt; a écrit : Oui ça peut être pas mal ! Directeur du développement"
+  },
+  {
+    "id": "19cb2c51ddab959d",
+    "query_matched": "billetterie",
+    "subject": "Re: 🎉Invitation Afterwork organisetonseminaire.com",
+    "sender": "julien florence <julienflorence.florence@gmail.com>",
+    "date": "Tue, 3 Mar 2026 09:16:28 +0100",
+    "snippet": "Oui ça peut être pas mal ! Directeur du développement commercial Julien 06 61 74 75 73 https://www.my-happy.house/ Le mar. 3 mars 2026, 09:09, Patrice Kermarrec &lt;kermarrec.p@gmail.com&gt; a écrit :"
+  },
+  {
+    "id": "19cb2bea6b5147ed",
+    "query_matched": "billetterie",
+    "subject": "Fwd: 🎉Invitation Afterwork organisetonseminaire.com",
+    "sender": "Patrice Kermarrec <kermarrec.p@gmail.com>",
+    "date": "Tue, 3 Mar 2026 09:09:10 +0100",
+    "snippet": "Ca t intéresse ? Je devais y aller mais ne peux pas vu mon état de santé ￼ Patrice KERMARREC CEO +33 (0)6 98 00 25 32 __ HAPPY HOUSE, la première chaine responsable d&#39;hébergements touristiques"
+  },
+  {
+    "id": "19f03b3164d15453",
+    "query_matched": "réservation VIP",
+    "subject": "",
+    "sender": "julien florence <julienflorence.florence@gmail.com>",
+    "date": "Fri, 26 Jun 2026 13:31:28 +0200",
+    "snippet": ""
+  },
+  {
+    "id": "19efb94d9e36268a",
+    "query_matched": "réservation VIP",
+    "subject": "Re: test",
+    "sender": "julien florence <julienflorence.florence@gmail.com>",
+    "date": "Wed, 24 Jun 2026 23:41:30 +0200",
+    "snippet": "Le mer. 24 juin 2026 à 23:16, julien florence &lt;julienflorence.florence@gmail.com&gt; a écrit : Le mer. 24 juin 2026 à 22:18, julien florence &lt;julienflorence.florence@gmail.com&gt; a écrit :"
+  },
+  {
+    "id": "19efb7e625cd180a",
+    "query_matched": "réservation VIP",
+    "subject": "Re: test",
+    "sender": "julien florence <julienflorence.florence@gmail.com>",
+    "date": "Wed, 24 Jun 2026 23:16:57 +0200",
+    "snippet": "Le mer. 24 juin 2026 à 22:18, julien florence &lt;julienflorence.florence@gmail.com&gt; a écrit :"
+  },
+  {
+    "id": "19efb48c2cee1091",
+    "query_matched": "réservation VIP",
+    "subject": "test",
+    "sender": "julien florence <julienflorence.florence@gmail.com>",
+    "date": "Wed, 24 Jun 2026 22:18:26 +0200",
+    "snippet": ""
+  },
+  {
+    "id": "19efafc8b3a507a1",
+    "query_matched": "réservation VIP",
+    "subject": "test",
+    "sender": "julien florence <julienflorence.florence@gmail.com>",
+    "date": "Wed, 24 Jun 2026 20:55:10 +0200",
+    "snippet": ""
+  },
+  {
+    "id": "19ed5a68c4cafd90",
+    "query_matched": "réservation VIP",
+    "subject": "Re: merci",
+    "sender": "julien florence <julienflorence.florence@gmail.com>",
+    "date": "Wed, 17 Jun 2026 14:55:19 +0200",
+    "snippet": "La version final sans bug de bas de page Julien FLORENCE Expert en Stratégie &amp; Management et Coaching 06 61 74 75 73 | julien.florence@gmail.com Prendre RDV Le mer. 17 juin 2026 à 13:50, julien"
+  },
+  {
+    "id": "19ed54baa312c545",
+    "query_matched": "réservation VIP",
+    "subject": "merci",
+    "sender": "julien florence <julienflorence.florence@gmail.com>",
+    "date": "Wed, 17 Jun 2026 13:16:03 +0200",
+    "snippet": "Salut Marie, voici mon RDM bonne lecture. Julien FLORENCE Expert en Stratégie &amp; Management et Coaching 06 61 74 75 73 | julien.florence@gmail.com Prendre RDV"
+  },
+  {
+    "id": "190b706a61492108",
+    "query_matched": "réservation VIP",
+    "subject": "Ce que marques et médias vous préparent pour Paris 2024",
+    "sender": "\"Stratégies via LinkedIn\" <newsletters-noreply@linkedin.com>",
+    "date": "Mon, 15 Jul 2024 15:33:01 +0000 (UTC)",
+    "snippet": "͏ ͏ ͏ ͏ ͏ ͏ ͏ ͏ ͏ ͏ ͏ ͏ ͏ ͏ ͏ ͏ ͏ ͏ ͏ ͏ ͏ ͏ ͏ ͏ ͏ ͏ ͏ ͏ ͏ ͏ ͏ ͏ ͏ ͏ ͏ ͏ ͏ ͏ ͏ ͏ ͏ ͏ ͏ ͏ ͏ ͏ ͏ ͏ ͏ ͏ ͏ ͏ ͏ ͏ ͏ ͏ ͏ ͏ ͏ ͏ ͏ ͏ ͏ ͏ ͏ ͏ ͏ ͏ ͏ ͏ ͏ ͏ ͏ ͏ ͏ ͏ ͏ ͏ ͏ ͏ ͏ ͏ ͏ ͏ ͏ ͏ ͏ ͏ ͏ ͏ ͏ ͏ ͏ ͏ ͏ ͏ ͏ ͏ ͏ ͏ ͏"
+  },
+  {
+    "id": "1a085aa50ae23828",
+    "query_matched": "VIP",
+    "subject": "Re: Puis-je t'aider Julien?",
+    "sender": "julien florence <julienflorence.florence@gmail.com>",
+    "date": "Wed, 9 Sep 2026 12:15:26 +0200",
+    "snippet": "Merci pour ta proposition. voici mon CV Le mer. 9 sept. 2026 à 12:06, Léo Protière &lt;leo.protiere.bot@kandi.jobs&gt; a écrit : Bonjour Julien, Je vois que tu viens de t&#39;inscrire sur kandi.jobs."
+  },
+  {
+    "id": "19f6b8b058d6ae64",
+    "query_matched": "VIP",
+    "subject": "Re: 📩 Jean Marc vous a envoyé un nouveau message",
+    "sender": "julien florence <julienflorence.florence@gmail.com>",
+    "date": "Thu, 16 Jul 2026 17:28:15 +0200",
+    "snippet": "Bonjour, [Tapez votre message ici...] Julien FLORENCE Expert en Stratégie, Développement &amp; Coaching 06 61 74 75 73 | julienflorence.florence@gmail.com Prendre RDV CV Interactif LinkedIn Le jeu. 16"
+  },
+  {
+    "id": "19f5ae1f10d38672",
+    "query_matched": "VIP",
+    "subject": "Prise de contact – Profil Direction Start-up / CHR / Immobilier – Bordeaux",
+    "sender": "julien florence <julienflorence.florence@gmail.com>",
+    "date": "Mon, 13 Jul 2026 11:49:43 +0200",
+    "snippet": "Bonjour, En recherche active d&#39;un poste de Directeur ou Directeur Adjoint dans la région bordelaise, je me permets de vous contacter. Spécialisé dans le développement commercial et fort d&#39;un"
+  },
+  {
+    "id": "19f5a7f6697a78d3",
+    "query_matched": "VIP",
+    "subject": "Candidature M Julien FLORENCE – Envoi de CV suite à notre échange",
+    "sender": "julien florence <julienflorence.florence@gmail.com>",
+    "date": "Mon, 13 Jul 2026 10:02:05 +0200",
+    "snippet": "Bonjour, Suite à notre échange de ce jour, je vous transmets comme convenu mon CV en pièce jointe. Je me tiens à votre disposition pour un nouvel échange, qui nous permettra d&#39;aborder plus"
+  },
+  {
+    "id": "19f466603126c910",
+    "query_matched": "VIP",
+    "subject": "Candidature au poste de Responsable Commercial & Événementiel – Julien FLORENCE",
+    "sender": "julien florence <julienflorence.florence@gmail.com>",
+    "date": "Thu, 9 Jul 2026 12:21:56 +0200",
+    "snippet": "Bonjour Madame Valérie MOIROD, Une connaissance m&#39;a suggéré d&#39;accorder une attention particulière à votre opportunité Le projet de repositionnement du Grand Hôtel Capitole sous la signature d"
+  },
+  {
+    "id": "19f3c80e90db7d53",
+    "query_matched": "VIP",
+    "subject": " Candidature spontanée – Responsable Commercial & Événementiel – Julien FLORENCE",
+    "sender": "julien florence <julienflorence.florence@gmail.com>",
+    "date": "Tue, 7 Jul 2026 14:15:04 +0200",
+    "snippet": "Bonjour Madame, Monsieur, Le projet de repositionnement du Grand Hôtel Capitole sous la signature d&#39;Orso marque un tournant ambitieux. Piloter commercialement le pivot d&#39;un établissement vers"
+  },
+  {
+    "id": "19e8e3a360d0240b",
+    "query_matched": "VIP",
+    "subject": "Fête des pères : on a déniché le cadeau parfait !",
+    "sender": "\"Nature & Découvertes\" <natureetdecouvertes@elettre.natureetdecouvertes.com>",
+    "date": "Wed, 03 Jun 2026 17:03:57 +0100",
+    "snippet": "Découvrez notre (super) sélection pour l&#39;occasion ͏‌͏‌͏‌͏‌͏‌͏‌ ͏‌͏‌͏‌͏‌͏‌͏‌ ͏‌͏‌͏‌͏‌͏‌͏‌ ͏‌͏‌͏‌͏‌͏‌͏‌ ͏‌͏‌͏‌͏‌͏‌͏‌ ͏‌͏‌͏‌͏‌͏‌͏‌ ͏‌͏‌͏‌͏‌͏‌͏‌ ͏‌͏‌͏‌͏‌͏‌͏‌ ͏‌͏‌͏‌͏‌͏‌͏‌ ͏‌͏‌͏‌͏‌͏‌͏‌ ͏‌͏‌͏‌͏‌͏‌͏‌"
+  },
+  {
+    "id": "19e840ef7891a59b",
+    "query_matched": "VIP",
+    "subject": "💪 Le Meilleur du Week-end !",
+    "sender": "Ligue Nationale de Handball <mailing@lnh.fr>",
+    "date": "Mon, 01 Jun 2026 16:40:32 +0000",
+    "snippet": "Découvrez les résultats et les meilleures actions de la 28ème journée de Liqui Moly StarLigue et des Demi-Finales de Playoffs de ProLigue‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌"
+  },
+  {
+    "id": "1990a91711e23a79",
+    "query_matched": "independant",
+    "subject": "Fwd: Partenariat Vigneron Indépendant",
+    "sender": "julien florence <julienflorence.florence@gmail.com>",
+    "date": "Tue, 2 Sep 2025 15:15:26 +0200",
+    "snippet": "---------- Forwarded message --------- De : Marguerite De Toffoli &lt;m.dardel@vigneron-independant-aquitaine.com&gt; Date: mar. 2 sept. 2025 à 11:29 Subject: Partenariat Vigneron Indépendant To: &lt;"
+  },
+  {
+    "id": "19909c21c53f881e",
+    "query_matched": "independant",
+    "subject": "Partenariat Vigneron Indépendant",
+    "sender": "Marguerite De Toffoli <m.dardel@vigneron-independant-aquitaine.com>",
+    "date": "Tue, 2 Sep 2025 11:28:57 +0200",
+    "snippet": "Monsieur, Je vous remercie de l&#39;intérêt que vous portez à notre mouvement. Je vous propose de vous présenter le partenariat Vigneron Indépendant. Le partenariat se conclue entre votre société et"
+  },
+  {
+    "id": "1962db864df7e822",
+    "query_matched": "independant",
+    "subject": "     Saint-Gobain recrute un Technico-commercial itinérant CLIM+ (H/F) TOULOUSE \n",
+    "sender": "Alerte Emploi Meteojob <ne-pas-repondre@meteojob.com>",
+    "date": "Sun, 13 Apr 2025 07:56:21 +0200 (CEST)",
+    "snippet": "Meteojob - Meteojob Bonjour Julien 16 nouvelles offres ont été repérées à partir de vos critères : Business Developer (H/F) Bordeaux (33) CDI Modifier mes critères Pour ne manquer aucune alerte,"
+  },
+  {
+    "id": "195f6c1be5407e0c",
+    "query_matched": "independant",
+    "subject": "c'est mieux",
+    "sender": "julien florence <julienflorence.florence@gmail.com>",
+    "date": "Wed, 2 Apr 2025 15:47:27 +0200",
+    "snippet": "https://www.vigneron-independant.com/search-vigneron?keywords=gaillac"
+  },
+  {
+    "id": "195f6c10257e1252",
+    "query_matched": "independant",
+    "subject": "merci",
+    "sender": "julien florence <julienflorence.florence@gmail.com>",
+    "date": "Wed, 2 Apr 2025 15:46:39 +0200",
+    "snippet": "https://www.vigneron-independant.com/domaine-vayssette"
+  },
+  {
+    "id": "19487ce8733b9c08",
+    "query_matched": "independant",
+    "subject": "Kangourou Kids recherche un/e Chargé(e) RH H/F + 8 nouvelles offres de \"recrutement rh\" à Toulouse (31) ",
+    "sender": "Indeed <alert@indeed.com>",
+    "date": "Tue, 21 Jan 2025 07:40:46 +0000",
+    "snippet": "Postulez aux offres publiées par Kangourou Kids, IKEA et Groupe IDEA ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌"
+  },
+  {
+    "id": "193d819688ff2f22",
+    "query_matched": "independant",
+    "subject": "URSSAF CAISSE NATIONALE recherche un/e Gestionnaire administration des ressources humaines - F/H + 9 nouvelles offres de \"recrutement rh\" à Toulouse (31) ",
+    "sender": "Indeed <alert@indeed.com>",
+    "date": "Wed, 18 Dec 2024 04:49:23 +0000",
+    "snippet": "Postulez aux offres publiées par URSSAF CAISSE NATIONALE, PROSOL et Rentreediscount ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌"
+  },
+  {
+    "id": "193009981459d850",
+    "query_matched": "independant",
+    "subject": "     SUPPLAY INTERIM recrute un Consultant en recrutement sénior H/F \n",
+    "sender": "Alerte Emploi Meteojob <ne-pas-repondre@meteojob.com>",
+    "date": "Wed, 6 Nov 2024 09:31:19 +0100 (CET)",
+    "snippet": "Meteojob - Meteojob Bonjour Julien 11 nouvelles offres ont été repérées à partir de vos critères : Consultant en recrutement (H/F) Toulouse (31) CDI Modifier mes critères Pour ne manquer aucune alerte,"
+  },
+  {
+    "id": "192e6936b2c6eda9",
+    "query_matched": "independant",
+    "subject": "FLORIAN MANTIONE INSTITUT  recrute un ENTREPRENEUR CONSULTANT EN RECRUTEMENT DE CADRES - INDEPENDANT - TOULOUSE H/F",
+    "sender": "Alerte Emploi Meteojob <ne-pas-repondre@meteojob.com>",
+    "date": "Fri, 1 Nov 2024 08:14:25 +0100 (CET)",
+    "snippet": "Meteojob - Meteojob Bonjour Julien 18 nouvelles offres ont été repérées à partir de vos critères : Consultant en recrutement (H/F) Toulouse (31) CDI Modifier mes critères Pour ne manquer aucune alerte,"
+  },
+  {
+    "id": "192c484921582237",
+    "query_matched": "independant",
+    "subject": "Jusqu'à 20% de remise sur nos vins ",
+    "sender": "Domaine du Mas Rouge <domainedumasrouge@emails-vignerons.com>",
+    "date": "Fri, 25 Oct 2024 16:30:36 +0000",
+    "snippet": "Livraison offerte à partir de 3 cartons. La foire au vin continue !͏‌ ͏‌ ͏‌ ͏‌ ͏‌ ͏‌ ͏‌ ͏‌ ͏‌ ͏‌ ͏‌ ͏‌ ͏‌ ͏‌ ͏‌ ͏‌ ͏‌ ͏‌ ͏‌ ͏‌ ͏‌ ͏‌ ͏‌ ͏‌ ͏‌ ͏‌ ͏‌ ͏‌ ͏‌ ͏‌ ͏‌ ͏‌ ͏‌ ͏‌ ͏‌ ͏‌ ͏‌ ͏‌ ͏‌ ͏‌ ͏‌ ͏‌ ͏‌ ͏‌ ͏‌"
+  },
+  {
+    "id": "1927562dc08ff9d5",
+    "query_matched": "independant",
+    "subject": "     Odyssée RH recrute un Consultant en Recrutement Indépendant H/F \n",
+    "sender": "Alerte Emploi Meteojob <ne-pas-repondre@meteojob.com>",
+    "date": "Thu, 10 Oct 2024 09:44:25 +0200 (CEST)",
+    "snippet": "Meteojob - Meteojob Bonjour Julien 20+ nouvelles offres ont été repérées à partir de vos critères : Consultant en recrutement (H/F) Toulouse (31) CDI Modifier mes critères Pour ne manquer aucune alerte"
+  },
+  {
+    "id": "192607733ce347da",
+    "query_matched": "independant",
+    "subject": "@COM recrute un Consultant en recrutement H/F - St Jean (31)",
+    "sender": "Alerte Emploi Meteojob <ne-pas-repondre@meteojob.com>",
+    "date": "Sun, 6 Oct 2024 08:14:37 +0200 (CEST)",
+    "snippet": "Meteojob - Meteojob Bonjour Julien 8 nouvelles offres ont été repérées à partir de vos critères : Consultant en recrutement (H/F) Toulouse (31) CDI Modifier mes critères Pour ne manquer aucune alerte,"
+  },
+  {
+    "id": "192563e263c0b096",
+    "query_matched": "independant",
+    "subject": "SYNERGIE recrute un Consultant en recrutement F/H",
+    "sender": "Alerte Emploi Meteojob <ne-pas-repondre@meteojob.com>",
+    "date": "Fri, 4 Oct 2024 08:36:06 +0200 (CEST)",
+    "snippet": "Meteojob - Meteojob Bonjour Julien 20+ nouvelles offres ont été repérées à partir de vos critères : Consultant en recrutement (H/F) Toulouse (31) CDI Modifier mes critères Pour ne manquer aucune alerte"
+  },
+  {
+    "id": "192514acfdf2a968",
+    "query_matched": "independant",
+    "subject": "SYNERGIE recrute un Consultant en recrutement F/H",
+    "sender": "Alerte Emploi Meteojob <ne-pas-repondre@meteojob.com>",
+    "date": "Thu, 3 Oct 2024 09:31:49 +0200 (CEST)",
+    "snippet": "Meteojob - Meteojob Bonjour Julien 18 nouvelles offres ont été repérées à partir de vos critères : Consultant en recrutement (H/F) Toulouse (31) CDI Modifier mes critères Pour ne manquer aucune alerte,"
+  },
+  {
+    "id": "191ea22370f0cd25",
+    "query_matched": "independant",
+    "subject": "FLORIAN MANTIONE INSTITUT  recrute un ENTREPRENEUR CONSULTANT EN RECRUTEMENT DE CADRES - INDEPENDANT H/F",
+    "sender": "Alerte Emploi Meteojob <ne-pas-repondre@meteojob.com>",
+    "date": "Fri, 13 Sep 2024 08:46:35 +0200 (CEST)",
+    "snippet": "Meteojob - Meteojob Bonjour Julien 20+ nouvelles offres ont été repérées à partir de vos critères : Consultant en recrutement (H/F) Toulouse (31) CDI Modifier mes critères Pour ne manquer aucune alerte"
+  },
+  {
+    "id": "1a01e55bacb29103",
+    "query_matched": "day",
+    "subject": " Les solutions de votre mutuelle ",
+    "sender": "\"CÃ©cile Lefort\" <julienflorence.florence@gmail.com>",
+    "date": "Thu, 20 Aug 2026 08:42:08 -0000",
+    "snippet": "Mutuelle intercommunale Le Service Santé et Conseil du Département met à votre disposition une mutuelle intercommunale permettant à tous les résidents de bénéficier dune couverture santé complémentaire"
+  },
+  {
+    "id": "19fc91e20e9aac1b",
+    "query_matched": "day",
+    "subject": "Welcome to Read AI 🎉",
+    "sender": "Team at Read AI <no-reply@read.ai>",
+    "date": "Mon, 03 Aug 2026 19:33:41 +0000 (UTC)",
+    "snippet": "What to know about your Meeting Report. Get to know your first Meeting Report Welcome to Read AI! It&#39;s our mission to help you be more productive at work. Here&#39;s what to do now that you have"
+  },
+  {
+    "id": "19f9d2691483c443",
+    "query_matched": "day",
+    "subject": "Attach your files as PDF in 1 click ✨",
+    "sender": "cloudHQ <marketing.emails@cloudhq.net>",
+    "date": "Sun, 26 Jul 2026 06:39:37 +0000",
+    "snippet": "Right version, password-protected 🔒 ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ Hi there, Your recipient&#39;s computer decides how your document looks. Unless you send a PDF. Attach Files as PDF does it in one click,"
+  },
+  {
+    "id": "19f65233b40c7a34",
+    "query_matched": "day",
+    "subject": "July Product Updates",
+    "sender": "Qoblex <marketing@qoblexhq.com>",
+    "date": "Wed, 15 Jul 2026 09:37:13 +0000 (UTC)",
+    "snippet": "Forecast-driven purchasing, batch trace, two-way ShipStation, and less manual data entry — what shipped this month. Here&#39;s what shipped in Qoblex this July. If you&#39;ve ever placed a purchase"
+  },
+  {
+    "id": "19f4359c6dfb89af",
+    "query_matched": "day",
+    "subject": "Grid Lanes, Infinite Galleries, and Newspaper Vibes",
+    "sender": "CodePen <support@codepen.io>",
+    "date": "Wed, 08 Jul 2026 19:09:00 +0000",
+    "snippet": "View this issue on CodePen Grid Lanes, Infinite Galleries, and Newspaper Vibes This week&#39;s CodePen community highlights include a look at the new CSS display: grid-lanes with Paweł Grzybek, an"
+  },
+  {
+    "id": "19f2b84f521f5eb3",
+    "query_matched": "day",
+    "subject": "[Webinar] Smily IA MCP : See what AI can actually do for your vacation rental business!",
+    "sender": "Ella Fraase Storm <ella@smily.com>",
+    "date": "Sat, 4 Jul 2026 07:06:01 +0200",
+    "snippet": "Live demo of the new Smily MCP AI Connector: free, limited seats. ͏ ͏ ͏ ͏ ͏ ͏ ͏ ͏ ͏ ͏ ͏ ͏ ͏ ͏ ͏ ͏ ͏ ͏ ͏ ͏ ͏ ͏ ͏ ͏ ͏ ͏ ͏ ͏ ͏ ͏ ͏ ͏ ͏ ͏ ͏ ͏ ͏ ͏ ͏ ͏ ͏ ͏ ͏ ͏ ͏ ͏ ͏ ͏ ͏ ͏ ͏ ͏ ͏ ͏ ͏ ͏ ͏ ͏ ͏ ͏ ͏ ͏ ͏ ͏ ͏ ͏ ͏ ͏"
+  },
+  {
+    "id": "19f247de2ea14e65",
+    "query_matched": "day",
+    "subject": "Rename Your Email Subject Lines 💬✍️",
+    "sender": "cloudHQ <marketing.emails@cloudhq.net>",
+    "date": "Thu, 2 Jul 2026 16:20:57 -0400",
+    "snippet": "Search-friendly, ready for Gmail! 📧🔍 ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ Have you ever received an important email you know you&#39;ll need later, but the subject line will make it nearly"
+  },
+  {
+    "id": "19dffb06d039658b",
+    "query_matched": "day",
+    "subject": "What's new in HeyGen: April 2026",
+    "sender": "HeyGen <no_reply@email.heygen.com>",
+    "date": "Wed, 06 May 2026 23:47:25 +0000",
+    "snippet": "Avatar V, Seedance 2.0 with your Digital Twin, Instant Highlights v2, and video native to your stack. ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ Hi Julien, We shipped 15 things in April. Look at them together,"
+  },
+  {
+    "id": "19d4ec1cbc7abba6",
+    "query_matched": "day",
+    "subject": "Updates to the Tally MCP server (and more)",
+    "sender": "Marie at Tally <marie@tally.so>",
+    "date": "Thu, 02 Apr 2026 15:13:35 +0000 (UTC)",
+    "snippet": "Analyze submissions with your favorite AI tools, content tables for long forms faster and more control of your data. Hi julien, We&#39;ve been focusing on two things lately: making Tally work better"
+  },
+  {
+    "id": "19cd1982b3a05a1a",
+    "query_matched": "day",
+    "subject": "You have successfully applied for French-Speaking",
+    "sender": "TP Greece <no-reply@tp-greece.com>",
+    "date": "Mon, 09 Mar 2026 07:55:35 +0000",
+    "snippet": "Dear Julien Florence! We are delighted to inform you that your application has been registered in our system! Thank you for taking the time to apply for a position within TP Greece. Your application"
+  },
+  {
+    "id": "19c904ce69cafe74",
+    "query_matched": "day",
+    "subject": "Meet your new AI agents 🤖",
+    "sender": "Make <info@make.com>",
+    "date": "Tue, 24 Feb 2026 15:38:04 +0000",
+    "snippet": "Rebuilt for full visibility, transparency and real business value. ͏ ͏ ͏ ͏ ͏ ͏ ͏ ͏ ͏ ͏ ͏ ͏ ͏ ͏ ͏ ͏ ͏ ͏ ͏ ͏ ͏ ͏ ͏ ͏ ͏ ͏ ͏ ͏ ͏ ͏ ͏ ͏ ͏ ͏ ͏ ͏ ͏ ͏ ͏ ͏ ͏ ͏ ͏ ͏ ͏ ͏ ͏ ͏ ͏ ͏ ͏ ͏ ͏ ͏ ͏ ͏ ͏ ͏ ͏ ͏ ͏ ͏ ͏ ͏ ͏ ͏ ͏"
+  },
+  {
+    "id": "19b932f3acd4df1e",
+    "query_matched": "day",
+    "subject": "Post linkedin",
+    "sender": "\"Ruddy MARIE-LUCE (Google Docs)\" <comments-noreply@docs.google.com>",
+    "date": "Tue, 06 Jan 2026 04:01:44 -0800",
+    "snippet": "Nouvelle activité dans le document suivant Post linkedin 3 suggestions Ruddy MARIE-LUCE • 12:33, 6 janv. (CET) Nouveau Remplacer : “La Stratégie Le charme d&#39;un lieu ne suffit pas. Il faut savoir le"
+  },
+  {
+    "id": "19b92c173551cf80",
+    "query_matched": "day",
+    "subject": "Post linkedin - Remplacer : “Post 2 : Le \"Boxing Day\"...",
+    "sender": "\"Ruddy MARIE-LUCE (Google Docs)\" <comments-noreply@docs.google.com>",
+    "date": "Tue, 06 Jan 2026 02:01:49 -0800",
+    "snippet": "Ruddy MARIE-LUCE a ajouté une suggestion au document suivant Post linkedin 1 suggestion Ruddy MARIE-LUCE • 10:54, 6 janv. (CET) Nouveau Remplacer : “Post 2 : Le &quot;Boxing Day&quot; de l&#39;"
+  },
+  {
+    "id": "19b4babb1d8ef260",
+    "query_matched": "day",
+    "subject": "Post linkedin - Pas très parlant, à supprimer",
+    "sender": "\"Ruddy MARIE-LUCE (Google Docs)\" <comments-noreply@docs.google.com>",
+    "date": "Tue, 23 Dec 2025 06:45:01 -0800",
+    "snippet": "Ruddy MARIE-LUCE a ajouté un commentaire au document suivant Post linkedin 1 commentaire Accroche : 🎁 C&#39;est le Boxing Day : on joue les prolongations au pied du sapin. Ruddy MARIE-LUCE • 15:34, 23"
+  },
+  {
+    "id": "19a9c24171809330",
+    "query_matched": "day",
+    "subject": "Pas eu le temps de tester ? On vous offre 7 jours de plus",
+    "sender": "Camille <camillew@zeliq.com>",
+    "date": "Wed, 19 Nov 2025 12:43:20 +0000",
+    "snippet": "Prolongez votre essai gratuitement. Aucun engagement, aucun stress. ͏ ͏ ͏ ͏ ͏ ͏ ͏ ͏ ͏ ͏ ͏ ͏ ͏ ͏ ͏ ͏ ͏ ͏ ͏ ͏ ͏ ͏ ͏ ͏ ͏ ͏ ͏ ͏ ͏ ͏ ͏ ͏ ͏ ͏ ͏ ͏ ͏ ͏ ͏ ͏ ͏ ͏ ͏ ͏ ͏ ͏ ͏ ͏ ͏ ͏ ͏ ͏ ͏ ͏ ͏ ͏ ͏ ͏ ͏ ͏ ͏ ͏ ͏ ͏ ͏ ͏ ͏"
+  }
+]

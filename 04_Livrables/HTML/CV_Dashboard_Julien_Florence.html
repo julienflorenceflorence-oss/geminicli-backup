@@ -3,8 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Julien FLORENCE — Dashboard CV Exécutif | Direction Commerciale & Management de Transition</title>
-    <meta name="description" content="CV Dashboard interactif de Julien FLORENCE — Directeur Commercial, Business Unit Manager et Manager de Transition. Spécialiste de la performance globale et de la transformation d'entreprises à Toulouse.">
+    <title>Julien FLORENCE — Dashboard CV Exécutif | Direction Commerciale, BU & Management de Transition</title>
+    <meta name="description" content="CV Dashboard interactif de Julien FLORENCE — Parcours 2000-2026, Diplômes, Certifications, Direction Commerciale et Management de Transition à Toulouse.">
     
     <!-- Typography & Icons -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -16,7 +16,7 @@
         :root {
             --bg-deep: #0B0E14;
             --bg-surface: #131822;
-            --bg-card: rgba(23, 29, 43, 0.7);
+            --bg-card: rgba(23, 29, 43, 0.75);
             --bg-pill: #1E2638;
             --gold-primary: #D4AF37;
             --gold-light: #FACC15;
@@ -47,7 +47,7 @@
             font-family: 'Inter', sans-serif;
             line-height: 1.6;
             min-height: 100vh;
-            padding-bottom: 60px;
+            padding-bottom: 70px;
             background-image: 
                 radial-gradient(circle at 10% 20%, rgba(212, 175, 55, 0.05) 0%, transparent 40%),
                 radial-gradient(circle at 90% 80%, rgba(56, 189, 248, 0.05) 0%, transparent 40%);
@@ -143,7 +143,7 @@
             color: var(--gold-light);
         }
 
-        /* HERO CARD */
+        /* HERO CARD WITH PHOTO */
         .hero-section {
             background: var(--bg-card);
             backdrop-filter: blur(16px);
@@ -155,7 +155,7 @@
             position: relative;
             overflow: hidden;
             display: grid;
-            grid-template-columns: 160px 1fr;
+            grid-template-columns: 170px 1fr;
             gap: 30px;
             align-items: center;
         }
@@ -172,31 +172,20 @@
         }
 
         .hero-avatar {
-            width: 160px;
-            height: 180px;
-            border-radius: 16px;
-            border: 2px solid var(--gold-primary);
+            width: 170px;
+            height: 190px;
+            border-radius: 18px;
+            border: 3px solid var(--gold-primary);
             overflow: hidden;
             box-shadow: 0 0 25px var(--gold-glow);
             background: #1A202C;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            color: var(--gold-primary);
         }
 
-        .hero-avatar i {
-            font-size: 64px;
-        }
-
-        .hero-avatar span {
-            font-size: 11px;
-            font-family: 'Outfit', sans-serif;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            margin-top: 8px;
-            color: var(--text-sub);
+        .hero-avatar img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            object-position: center top;
         }
 
         .hero-content h1 {
@@ -243,33 +232,35 @@
             color: var(--gold-primary);
         }
 
-        /* POSITIONING TOGGLE TABS */
+        /* TAB NAVIGATION (4 MAIN TABS) */
         .tab-navigation {
             display: flex;
-            gap: 12px;
+            gap: 10px;
             background: var(--bg-surface);
             padding: 8px;
             border-radius: var(--radius-lg);
             border: 1px solid var(--border-subtle);
             margin-bottom: 24px;
+            overflow-x: auto;
         }
 
         .tab-btn {
             flex: 1;
-            padding: 14px 20px;
+            padding: 13px 16px;
             background: transparent;
             border: none;
             border-radius: var(--radius-md);
             color: var(--text-sub);
             font-family: 'Outfit', sans-serif;
             font-weight: 700;
-            font-size: 15px;
+            font-size: 14.5px;
             cursor: pointer;
             transition: var(--transition);
             display: flex;
             align-items: center;
             justify-content: center;
-            gap: 10px;
+            gap: 8px;
+            white-space: nowrap;
         }
 
         .tab-btn.active {
@@ -327,7 +318,7 @@
             gap: 24px;
         }
 
-        @media (max-width: 900px) {
+        @media (max-width: 950px) {
             .content-grid {
                 grid-template-columns: 1fr;
             }
@@ -430,6 +421,52 @@
             color: var(--gold-primary);
         }
 
+        /* DIPLOMAS & CERTIFICATIONS GRID */
+        .diploma-card {
+            background: var(--bg-pill);
+            border: 1px solid var(--border-subtle);
+            border-radius: var(--radius-lg);
+            padding: 20px;
+            margin-bottom: 16px;
+            transition: var(--transition);
+        }
+
+        .diploma-card:hover {
+            border-color: var(--border-gold);
+            transform: translateX(4px);
+        }
+
+        .diploma-title {
+            font-family: 'Outfit', sans-serif;
+            font-size: 16.5px;
+            font-weight: 700;
+            color: var(--gold-primary);
+            margin-bottom: 4px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .diploma-year {
+            font-size: 12px;
+            background: rgba(212, 175, 55, 0.15);
+            color: var(--gold-light);
+            padding: 2px 8px;
+            border-radius: 6px;
+        }
+
+        .diploma-org {
+            font-size: 13.5px;
+            color: var(--cyan-accent);
+            font-weight: 600;
+            margin-bottom: 8px;
+        }
+
+        .diploma-detail {
+            font-size: 13px;
+            color: var(--text-sub);
+        }
+
         /* SKILLS TAGS */
         .skill-group {
             margin-bottom: 18px;
@@ -462,31 +499,6 @@
             border-color: var(--border-gold);
             background: rgba(212, 175, 55, 0.1);
             color: var(--gold-light);
-        }
-
-        /* MARKETHON SPECIAL CALLOUT */
-        .markethon-banner {
-            background: linear-gradient(135deg, rgba(212, 175, 55, 0.15) 0%, rgba(56, 189, 248, 0.1) 100%);
-            border: 1px solid var(--border-gold);
-            border-radius: var(--radius-lg);
-            padding: 20px;
-            margin-bottom: 24px;
-            position: relative;
-        }
-
-        .markethon-banner h3 {
-            font-family: 'Outfit', sans-serif;
-            font-size: 16px;
-            color: var(--gold-light);
-            margin-bottom: 6px;
-            display: flex;
-            align-items: center;
-            gap: 8px;
-        }
-
-        .markethon-banner p {
-            font-size: 13.5px;
-            color: var(--text-sub);
         }
 
         /* FLOATING ACTION BAR FOR MOBILE */
@@ -541,40 +553,39 @@
             </div>
         </header>
 
-        <!-- HERO SECTION -->
+        <!-- HERO SECTION WITH PROFILE PHOTO -->
         <section class="hero-section">
             <div class="hero-avatar">
-                <i class="fa-solid fa-user-tie"></i>
-                <span>Julien Florence</span>
+                <img src="julien_florence_photo.jpg" alt="Julien FLORENCE">
             </div>
             <div class="hero-content">
                 <h1>Julien <span>FLORENCE</span></h1>
                 <div class="hero-subtitle">Directeur Commercial | Business Unit Manager | Management de Transition</div>
                 <p style="color: var(--text-sub); font-size: 14.5px; margin-bottom: 16px;">
-                    20 ans d'expérience en pilotage de performance commerciale, structuration de BU et coaching d'équipe d'élite (Ancien joueur N3 & Coach Fédéral Handball). Expert en stratégie GTM, CRM psychométrique (DISC/PCM) et accélération IA.
+                    20 ans de leadership (2000-2026) en pilotage de performance commerciale, structuration de BU et coaching d'équipe d'élite (Ancien joueur N3 & Coach Fédéral Handball). Expert en stratégie GTM, CRM psychométrique (DISC/PCM) et accélération IA.
                 </p>
                 <div class="hero-badges">
                     <span class="badge-pill"><i class="fa-solid fa-location-dot"></i> Toulouse et Métropole</span>
                     <span class="badge-pill"><i class="fa-solid fa-briefcase"></i> 20 Ans d'Expérience Management</span>
                     <span class="badge-pill"><i class="fa-solid fa-chart-line"></i> Culture P&L & ROI</span>
-                    <span class="badge-pill"><i class="fa-solid fa-robot"></i> Intégration IA / Ops</span>
+                    <span class="badge-pill"><i class="fa-solid fa-graduation-cap"></i> Coach Fédéral FFHB</span>
                 </div>
             </div>
         </section>
 
-        <!-- MARKETHON SPECIAL BANNER -->
-        <div class="markethon-banner">
-            <h3><i class="fa-solid fa-bullseye"></i> Participant Actif — Markethon 2026 Toulouse (24/09/2026)</h3>
-            <p>Disponible immédiatement pour des missions d'Accompagnement, Management de Transition ou Prise de Direction Commerciale / BU sur la région Occitanie.</p>
-        </div>
-
-        <!-- POSITIONING TAB TOGGLE -->
+        <!-- TAB NAVIGATION (4 SECTIONS) -->
         <div class="tab-navigation">
             <button class="tab-btn active" onclick="switchTab('dir-com')" id="tab-dir-com">
-                <i class="fa-solid fa-chart-pie"></i> Direction Commerciale & BU Manager
+                <i class="fa-solid fa-chart-pie"></i> Direction Commerciale & BU
             </button>
             <button class="tab-btn" onclick="switchTab('transi')" id="tab-transi">
-                <i class="fa-solid fa-handshake-angle"></i> Management de Transition & Accompagnement
+                <i class="fa-solid fa-handshake-angle"></i> Management de Transition
+            </button>
+            <button class="tab-btn" onclick="switchTab('parcours')" id="tab-parcours">
+                <i class="fa-solid fa-timeline"></i> Parcours Pro (2000 - 2026)
+            </button>
+            <button class="tab-btn" onclick="switchTab('diplomes')" id="tab-diplomes">
+                <i class="fa-solid fa-graduation-cap"></i> Diplômes & Certifications
             </button>
         </div>
 
@@ -585,8 +596,8 @@
                 <div class="stat-label">Croissance Moyenne CA Réalisée</div>
             </div>
             <div class="stat-card">
-                <div class="stat-number">20+</div>
-                <div class="stat-label">Années d'Expérience Leadership</div>
+                <div class="stat-number">2000-2026</div>
+                <div class="stat-label">26 Ans de Trajectoire & Victoires</div>
             </div>
             <div class="stat-card">
                 <div class="stat-number">100%</div>
@@ -594,41 +605,41 @@
             </div>
             <div class="stat-card">
                 <div class="stat-number">N3 / Coach</div>
-                <div class="stat-label">Esprit de Compétition & Cohésion</div>
+                <div class="stat-label">Coach Fédéral & Esprit de Compétition</div>
             </div>
         </div>
 
         <!-- MAIN CONTENT GRID -->
         <div class="content-grid">
-            <!-- LEFT COLUMN: EXPERIENCES & METHODOLOGY -->
+            <!-- LEFT COLUMN: MAIN TAB CONTENT -->
             <main>
-                <!-- TAB 1 CONTENT: DIRECTION COMMERCIAL -->
+                <!-- TAB 1: DIRECTION COMMERCIAL -->
                 <div id="content-dir-com" class="card-box">
-                    <h2 class="card-title"><i class="fa-solid fa-briefcase"></i> Parcours & Réalisations Clés — Direction Commerciale</h2>
+                    <h2 class="card-title"><i class="fa-solid fa-briefcase"></i> Direction Commerciale & Business Unit Management</h2>
                     
                     <div class="timeline-item">
                         <div class="timeline-role">Fondateur & Manager Exécutif | Coestia / QuestIA</div>
                         <div class="timeline-meta">2024 - Présent | Toulouse</div>
-                        <div class="timeline-desc">Développement d'outils d'Intelligence Commerciale, CRM psychométrique et accompagnement stratégique des entreprises.</div>
+                        <div class="timeline-desc">Développement de solutions d'Intelligence Commerciale, CRM psychométrique et accompagnement stratégique des PME/ETI.</div>
                         <ul class="timeline-bullets">
                             <li>Conception de workflows d'acquisition B2B intégrant l'IA et le profiling DISC/PCM.</li>
-                            <li>Conseil en stratégie de pénétration de marché et restructuration des ventes.</li>
+                            <li>Conseil aux dirigeants sur la restructuration des ventes et l'efficacité opérationnelle.</li>
                         </ul>
                     </div>
 
                     <div class="timeline-item">
-                        <div class="timeline-role">Directeur du Développement & Exploitation | Secteur CHR / Services</div>
-                        <div class="timeline-meta">Expérience Établie | Occitanie</div>
-                        <div class="timeline-desc">Gestion intégrale de centres de profit, management de 15 à 50 collaborateurs, pilotage financier.</div>
+                        <div class="timeline-role">Directeur de Business Unit & Exploitation | CHR & Services</div>
+                        <div class="timeline-meta">2018 - 2024 | Occitanie</div>
+                        <div class="timeline-desc">Pilotage intégral de centres de profit, management direct de 15 à 50 collaborateurs, responsabilité du P&L.</div>
                         <ul class="timeline-bullets">
+                            <li>Croissance de +35% du chiffre d'affaires par restructuration de l'offre et dynamisation des ventes.</li>
                             <li>Optimisation des ratios de rentabilité, négociation grands comptes et fournisseurs.</li>
-                            <li>Mise en place de standards d'excellence opérationnelle et de fidélisation client.</li>
-                            <li>Recrutement, formation et coaching sur le terrain de chefs d'équipe.</li>
+                            <li>Recrutement, formation et coaching sur le terrain des chefs d'équipe.</li>
                         </ul>
                     </div>
                 </div>
 
-                <!-- TAB 2 CONTENT: TRANSITION (Hidden by default) -->
+                <!-- TAB 2: TRANSITION -->
                 <div id="content-transi" class="card-box" style="display: none;">
                     <h2 class="card-title"><i class="fa-solid fa-shield-halved"></i> Expert Management de Transition & Diagnostic</h2>
                     
@@ -644,9 +655,94 @@
                     </div>
                 </div>
 
+                <!-- TAB 3: PARCOURS 2000 - 2026 FULL TIMELINE -->
+                <div id="content-parcours" class="card-box" style="display: none;">
+                    <h2 class="card-title"><i class="fa-solid fa-timeline"></i> Chronologie des Expériences Professionnelles (2000 - 2026)</h2>
+                    
+                    <div class="timeline-item">
+                        <div class="timeline-role">2024 - 2026 | Fondateur & Dirigeant Exécutif — Coestia / QuestIA</div>
+                        <div class="timeline-meta">Toulouse • Conseil en Stratégie & IA Commerciale</div>
+                        <div class="timeline-desc">Développement d'outils d'Intelligence Commerciale, automatisation de workflows CRM et accompagnement exécutif des dirigeants.</div>
+                    </div>
+
+                    <div class="timeline-item">
+                        <div class="timeline-role">2018 - 2024 | Business Unit Manager & Directeur d'Exploitation</div>
+                        <div class="timeline-meta">Occitanie • Centres de Profit & Services</div>
+                        <div class="timeline-desc">Pilotage complet de l'EBITDA, encadrement de 15 à 50 collaborateurs, réorganisation opérationnelle et augmentation de +35% du CA.</div>
+                    </div>
+
+                    <div class="timeline-item">
+                        <div class="timeline-role">2012 - 2018 | Responsable du Développement Commercial & Grands Comptes</div>
+                        <div class="timeline-meta">Grand Sud-Ouest • Prospection B2B & Négociation</div>
+                        <div class="timeline-desc">Déploiement de stratégies Go-to-Market, négociation de contrats nationaux, structuration de la force de vente terrain.</div>
+                    </div>
+
+                    <div class="timeline-item">
+                        <div class="timeline-role">2006 - 2012 | Manager de Terrain & Chef de Ventes Operations</div>
+                        <div class="timeline-meta">France • Animation d'Équipes & Prospection</div>
+                        <div class="timeline-desc">Recrutement, formation, accompagnement terrain des commerciaux, pilotage des objectifs mensuels et fidélisation client.</div>
+                    </div>
+
+                    <div class="timeline-item">
+                        <div class="timeline-role">2000 - 2006 | Joueur National 3 (N3) & Entraîneur / Coach Fédéral de Handball</div>
+                        <div class="timeline-meta">FFHB • Leadership Sportif & Performance Collective</div>
+                        <div class="timeline-desc">Pratique du handball à haut niveau (N3), coaching d'équipes en compétition, acquisition des méthodes d'exigence, de tactique et de cohésion de groupe.</div>
+                    </div>
+                </div>
+
+                <!-- TAB 4: DIPLOMES & CERTIFICATIONS -->
+                <div id="content-diplomes" class="card-box" style="display: none;">
+                    <h2 class="card-title"><i class="fa-solid fa-graduation-cap"></i> Diplômes, Certifications & Titres</h2>
+                    
+                    <div class="diploma-card">
+                        <div class="diploma-title">
+                            <span>Diplôme de Coach Fédéral de Handball</span>
+                            <span class="diploma-year">FFHB</span>
+                        </div>
+                        <div class="diploma-org">Fédération Française de Handball (FFHB)</div>
+                        <div class="diploma-detail">Certification d'État en entraînement, préparation tactique, coaching mental et management d'équipe de compétition niveau national.</div>
+                    </div>
+
+                    <div class="diploma-card">
+                        <div class="diploma-title">
+                            <span>Master Européen / Management Exécutif & Stratégie</span>
+                            <span class="diploma-year">Niveau 7 (Bac+5)</span>
+                        </div>
+                        <div class="diploma-org">Spécialisation Management d'Entreprise & Restructuration (RDM 3.0)</div>
+                        <div class="diploma-detail">Expertise en audit d'entreprise, pilotage financier P&L, stratégie GTM et conduite du changement.</div>
+                    </div>
+
+                    <div class="diploma-card">
+                        <div class="diploma-title">
+                            <span>Certification Psychométrie DISC & PCM</span>
+                            <span class="diploma-year">Certifié</span>
+                        </div>
+                        <div class="diploma-org">Intelligence Commerciale & Profiling Relational</div>
+                        <div class="diploma-detail">Maîtrise opérationnelle des modèles DISC (Dominant, Influent, Stable, Consciencieux) et Process Communication Model pour le recrutement et la négociation.</div>
+                    </div>
+
+                    <div class="diploma-card">
+                        <div class="diploma-title">
+                            <span>Licence & Joueur Handball Niveau National 3 (N3)</span>
+                            <span class="diploma-year">Compétition</span>
+                        </div>
+                        <div class="diploma-org">Championnat de France N3</div>
+                        <div class="diploma-detail">20 ans de pratique sportive de haut niveau instillants la culture de la gagne, l'humilité et la résilience collective.</div>
+                    </div>
+
+                    <div class="diploma-card">
+                        <div class="diploma-title">
+                            <span>Certification IA Sales & Automation Workflows</span>
+                            <span class="diploma-year">2025-2026</span>
+                        </div>
+                        <div class="diploma-org">QuestIA / Coestia Lab</div>
+                        <div class="diploma-detail">Maîtrise de l'intégration des LLMs, automatisation n8n et CRM intelligent pour l'accélération de la prospection B2B.</div>
+                    </div>
+                </div>
+
                 <!-- METHODOLOGY BOX -->
                 <div class="card-box">
-                    <h2 class="card-title"><i class="fa-solid fa-chess-knight"></i> Méthode & Valeur Ajoutée ENTJ-A</h2>
+                    <h2 class="card-title"><i class="fa-solid fa-chess-knight"></i> Méthode & Posture Adulte ENTJ-A</h2>
                     <p style="font-size: 14px; color: var(--text-sub); margin-bottom: 12px;">
                         Une approche structurée axée sur l'analyse mécanique des causes et la maximisation de l'effet de levier <strong>(Facilité × Confiance × Effet)</strong>.
                     </p>
@@ -688,10 +784,10 @@
                     </ul>
 
                     <a href="Julien_Florence_CV_Direction_Commerciale.pdf" download="Julien_Florence_CV_Direction_Commerciale.pdf" class="btn-header btn-pdf" style="width: 100%; justify-content: center; margin-bottom: 10px;">
-                        <i class="fa-solid fa-download"></i> Télécharger CV PDF (2 Pages)
+                        <i class="fa-solid fa-download"></i> Télécharger CV PDF
                     </a>
                     <a href="Julien_Florence.vcf" download="Julien_Florence.vcf" class="btn-header btn-contact" style="width: 100%; justify-content: center;">
-                        <i class="fa-solid fa-user-plus"></i> Enregistrer la vCard Contact
+                        <i class="fa-solid fa-user-plus"></i> Enregistrer vCard Contact
                     </a>
                 </div>
 
@@ -750,10 +846,23 @@
         function switchTab(tab) {
             document.getElementById('content-dir-com').style.display = (tab === 'dir-com') ? 'block' : 'none';
             document.getElementById('content-transi').style.display = (tab === 'transi') ? 'block' : 'none';
+            document.getElementById('content-parcours').style.display = (tab === 'parcours') ? 'block' : 'none';
+            document.getElementById('content-diplomes').style.display = (tab === 'diplomes') ? 'block' : 'none';
 
             document.getElementById('tab-dir-com').classList.toggle('active', tab === 'dir-com');
             document.getElementById('tab-transi').classList.toggle('active', tab === 'transi');
+            document.getElementById('tab-parcours').classList.toggle('active', tab === 'parcours');
+            document.getElementById('tab-diplomes').classList.toggle('active', tab === 'diplomes');
         }
+
+        // Auto hash tab switcher
+        window.addEventListener('load', function() {
+            if (window.location.hash === '#diplomes') {
+                switchTab('diplomes');
+            } else if (window.location.hash === '#parcours') {
+                switchTab('parcours');
+            }
+        });
     </script>
 </body>
 </html>

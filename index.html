@@ -18,7 +18,7 @@
             --card-bg: rgba(19, 24, 36, 0.85);
             --gold-main: #D4AF37;
             --gold-light: #FACC15;
-            --gold-glow: rgba(212, 175, 55, 0.3);
+            --gold-glow: rgba(212, 175, 55, 0.35);
             --cyan-main: #38BDF8;
             --text-light: #F8FAFC;
             --text-sub: #94A3B8;
@@ -58,7 +58,7 @@
             border: 1px solid var(--border-gold);
             border-radius: var(--radius-main);
             width: 100%;
-            max-width: 440px;
+            max-width: 450px;
             padding: 36px 24px;
             box-shadow: var(--shadow-card);
             text-align: center;
@@ -78,7 +78,7 @@
             pointer-events: none;
         }
 
-        /* PROFILE HEADER */
+        /* PROFILE HEADER WITH PHOTO */
         .profile-badge {
             display: inline-block;
             background: linear-gradient(135deg, var(--gold-main), var(--gold-light));
@@ -94,18 +94,21 @@
         }
 
         .avatar-box {
-            width: 110px;
-            height: 110px;
+            width: 120px;
+            height: 120px;
             margin: 0 auto 16px;
             border-radius: 50%;
-            border: 2px solid var(--gold-main);
-            box-shadow: 0 0 20px var(--gold-glow);
+            border: 3px solid var(--gold-main);
+            box-shadow: 0 0 25px var(--gold-glow);
+            overflow: hidden;
             background: #181E2B;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: var(--gold-main);
-            font-size: 48px;
+        }
+
+        .avatar-box img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            object-position: center top;
         }
 
         .profile-name {
@@ -133,7 +136,7 @@
         .profile-bio {
             font-size: 13px;
             color: var(--text-sub);
-            margin-bottom: 24px;
+            margin-bottom: 20px;
             line-height: 1.5;
         }
 
@@ -155,7 +158,7 @@
         .links-container {
             display: flex;
             flex-direction: column;
-            gap: 14px;
+            gap: 12px;
             margin-bottom: 24px;
         }
 
@@ -163,12 +166,12 @@
             display: flex;
             align-items: center;
             justify-content: space-between;
-            padding: 16px 20px;
+            padding: 15px 18px;
             border-radius: var(--radius-btn);
             text-decoration: none;
             font-family: 'Outfit', sans-serif;
             font-weight: 700;
-            font-size: 15px;
+            font-size: 14.5px;
             transition: var(--transition);
             border: 1px solid var(--border-glass);
             cursor: pointer;
@@ -179,12 +182,12 @@
         .link-btn-content {
             display: flex;
             align-items: center;
-            gap: 14px;
+            gap: 12px;
         }
 
         .link-btn i.icon-main {
-            font-size: 22px;
-            width: 24px;
+            font-size: 20px;
+            width: 22px;
             text-align: center;
         }
 
@@ -200,7 +203,6 @@
         }
 
         /* BUTTON SPECIFIC STYLES */
-        /* BUTTON 1: VCARD CONTACT (PRIMARY GOLD ACTION) */
         .btn-vcard {
             background: linear-gradient(135deg, #D4AF37 0%, #FACC15 100%);
             color: #0F1117;
@@ -213,7 +215,6 @@
             box-shadow: 0 10px 25px rgba(212, 175, 55, 0.5);
         }
 
-        /* BUTTON 2: DASHBOARD CV */
         .btn-dashboard {
             background: #182030;
             color: var(--text-light);
@@ -231,7 +232,23 @@
             color: var(--gold-main);
         }
 
-        /* BUTTON 3: LINKEDIN */
+        .btn-diplomes {
+            background: #151D2A;
+            color: var(--text-light);
+            border-color: rgba(56, 189, 248, 0.3);
+        }
+
+        .btn-diplomes:hover {
+            background: rgba(56, 189, 248, 0.15);
+            border-color: var(--cyan-main);
+            color: var(--cyan-main);
+            transform: translateY(-2px);
+        }
+
+        .btn-diplomes i.icon-main {
+            color: var(--cyan-main);
+        }
+
         .btn-linkedin {
             background: #0A66C2;
             color: #FFFFFF;
@@ -245,7 +262,6 @@
             box-shadow: 0 6px 20px rgba(10, 102, 194, 0.5);
         }
 
-        /* BUTTON 4: PDF CV */
         .btn-pdf-dl {
             background: #1E2638;
             color: var(--text-light);
@@ -273,8 +289,8 @@
         }
 
         .quick-action-btn {
-            width: 46px;
-            height: 46px;
+            width: 44px;
+            height: 44px;
             border-radius: 50%;
             background: rgba(255, 255, 255, 0.05);
             border: 1px solid var(--border-glass);
@@ -283,7 +299,7 @@
             align-items: center;
             justify-content: center;
             text-decoration: none;
-            font-size: 18px;
+            font-size: 17px;
             transition: var(--transition);
         }
 
@@ -307,15 +323,16 @@
     <main class="landing-card">
         <span class="profile-badge">Direction & Management Exécutif</span>
         
+        <!-- PROFILE PHOTO -->
         <div class="avatar-box">
-            <i class="fa-solid fa-user-tie"></i>
+            <img src="julien_florence_photo.jpg" alt="Julien FLORENCE">
         </div>
 
         <h1 class="profile-name">Julien <span>FLORENCE</span></h1>
         <div class="profile-title">Direction Commerciale • BU Manager<br>Management de Transition</div>
         
         <p class="profile-bio">
-            20 ans de leadership commercial, management d'équipes et conduite du changement. Ancien joueur N3 & Coach Fédéral Handball. Spécialiste de la performance globale et de l'accélération IA.
+            20 ans de leadership commercial (2000-2026), management d'équipes et conduite du changement. Ancien joueur N3 & Coach Fédéral Handball. Spécialiste de la performance globale et de l'accélération IA.
         </p>
 
         <div class="markethon-tag">
@@ -337,12 +354,21 @@
             <a href="dashboard.html" class="link-btn btn-dashboard" id="link-dashboard-root">
                 <div class="link-btn-content">
                     <i class="fa-solid fa-chart-line icon-main"></i>
-                    <span>Consulter le CV Dashboard</span>
+                    <span>CV Dashboard & Parcours (2000-2026)</span>
                 </div>
                 <i class="fa-solid fa-chevron-right arrow"></i>
             </a>
 
-            <!-- BUTTON 3: LINKEDIN -->
+            <!-- BUTTON 3: DIPLOMAS & CERTIFICATIONS -->
+            <a href="dashboard.html#diplomes" class="link-btn btn-diplomes" id="link-diplomes-root">
+                <div class="link-btn-content">
+                    <i class="fa-solid fa-graduation-cap icon-main"></i>
+                    <span>Diplômes & Certifications</span>
+                </div>
+                <i class="fa-solid fa-chevron-right arrow"></i>
+            </a>
+
+            <!-- BUTTON 4: LINKEDIN -->
             <a href="https://www.linkedin.com/in/julien-florence-2536a083" target="_blank" rel="noopener" class="link-btn btn-linkedin" id="link-linkedin-root">
                 <div class="link-btn-content">
                     <i class="fa-brands fa-linkedin icon-main"></i>
@@ -351,7 +377,7 @@
                 <i class="fa-solid fa-arrow-up-right-from-square arrow"></i>
             </a>
 
-            <!-- BUTTON 4: EXECUTIVE PDF CV -->
+            <!-- BUTTON 5: EXECUTIVE PDF CV -->
             <a href="Julien_Florence_CV_Direction_Commerciale.pdf" download="Julien_Florence_CV_Direction_Commerciale.pdf" class="link-btn btn-pdf-dl" id="link-pdf-root">
                 <div class="link-btn-content">
                     <i class="fa-solid fa-file-pdf icon-main"></i>
