@@ -27,14 +27,14 @@ jobs:
       - name: Prepare Ultra-Fast Public Site
         run: |
           mkdir -p _site
-          cp index.html _site/
-          cp dashboard.html _site/
-          cp Julien_Florence.vcf _site/
-          cp Julien_Florence_CV_Direction_Commerciale.pdf _site/
-          cp julien_florence_photo.jpg _site/
-          cp QR_Code_Carte_De_Visite.png _site/
-          cp .nojekyll _site/
-          cp -r 04_Livrables _site/
+          cp *.html _site/ 2>/dev/null || true
+          cp *.vcf _site/ 2>/dev/null || true
+          cp *.pdf _site/ 2>/dev/null || true
+          cp *.png _site/ 2>/dev/null || true
+          cp *.jpg _site/ 2>/dev/null || true
+          cp .nojekyll _site/ 2>/dev/null || true
+          cp -r diplomes_images _site/ 2>/dev/null || true
+          cp -r 04_Livrables _site/ 2>/dev/null || true
 
       - name: Setup Pages
         uses: actions/configure-pages@v5
