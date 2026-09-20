@@ -1,0 +1,759 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Julien FLORENCE — Dashboard CV Exécutif | Direction Commerciale & Management de Transition</title>
+    <meta name="description" content="CV Dashboard interactif de Julien FLORENCE — Directeur Commercial, Business Unit Manager et Manager de Transition. Spécialiste de la performance globale et de la transformation d'entreprises à Toulouse.">
+    
+    <!-- Typography & Icons -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <style>
+        :root {
+            --bg-deep: #0B0E14;
+            --bg-surface: #131822;
+            --bg-card: rgba(23, 29, 43, 0.7);
+            --bg-pill: #1E2638;
+            --gold-primary: #D4AF37;
+            --gold-light: #FACC15;
+            --gold-glow: rgba(212, 175, 55, 0.25);
+            --cyan-accent: #38BDF8;
+            --cyan-glow: rgba(56, 189, 248, 0.2);
+            --text-main: #F8FAFC;
+            --text-sub: #94A3B8;
+            --text-muted: #64748B;
+            --border-gold: rgba(212, 175, 55, 0.35);
+            --border-subtle: rgba(255, 255, 255, 0.08);
+            --radius-xl: 20px;
+            --radius-lg: 14px;
+            --radius-md: 10px;
+            --shadow-glass: 0 15px 35px rgba(0, 0, 0, 0.5);
+            --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            background-color: var(--bg-deep);
+            color: var(--text-main);
+            font-family: 'Inter', sans-serif;
+            line-height: 1.6;
+            min-height: 100vh;
+            padding-bottom: 60px;
+            background-image: 
+                radial-gradient(circle at 10% 20%, rgba(212, 175, 55, 0.05) 0%, transparent 40%),
+                radial-gradient(circle at 90% 80%, rgba(56, 189, 248, 0.05) 0%, transparent 40%);
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        /* HEADER & TOP BAR */
+        .top-navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: rgba(19, 24, 34, 0.85);
+            backdrop-filter: blur(12px);
+            border: 1px solid var(--border-subtle);
+            padding: 14px 24px;
+            border-radius: var(--radius-lg);
+            margin-bottom: 24px;
+            position: sticky;
+            top: 15px;
+            z-index: 100;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+        }
+
+        .nav-brand {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .nav-brand .badge-tag {
+            background: linear-gradient(135deg, var(--gold-primary), var(--gold-light));
+            color: #000;
+            font-family: 'Outfit', sans-serif;
+            font-weight: 800;
+            font-size: 13px;
+            padding: 4px 10px;
+            border-radius: 6px;
+            letter-spacing: 0.5px;
+        }
+
+        .nav-brand span {
+            font-family: 'Outfit', sans-serif;
+            font-weight: 700;
+            font-size: 18px;
+            color: var(--text-main);
+        }
+
+        .nav-actions {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .btn-header {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 10px 18px;
+            border-radius: var(--radius-md);
+            font-family: 'Outfit', sans-serif;
+            font-weight: 600;
+            font-size: 14px;
+            text-decoration: none;
+            transition: var(--transition);
+            cursor: pointer;
+        }
+
+        .btn-pdf {
+            background: linear-gradient(135deg, #D4AF37 0%, #FACC15 100%);
+            color: #0F1117;
+            box-shadow: 0 4px 15px var(--gold-glow);
+            border: none;
+        }
+
+        .btn-pdf:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(212, 175, 55, 0.4);
+        }
+
+        .btn-contact {
+            background: var(--bg-pill);
+            color: var(--text-main);
+            border: 1px solid var(--border-gold);
+        }
+
+        .btn-contact:hover {
+            background: rgba(212, 175, 55, 0.15);
+            color: var(--gold-light);
+        }
+
+        /* HERO CARD */
+        .hero-section {
+            background: var(--bg-card);
+            backdrop-filter: blur(16px);
+            border: 1px solid var(--border-gold);
+            border-radius: var(--radius-xl);
+            padding: 32px;
+            margin-bottom: 24px;
+            box-shadow: var(--shadow-glass);
+            position: relative;
+            overflow: hidden;
+            display: grid;
+            grid-template-columns: 160px 1fr;
+            gap: 30px;
+            align-items: center;
+        }
+
+        .hero-section::before {
+            content: '';
+            position: absolute;
+            top: -40%;
+            right: -10%;
+            width: 350px;
+            height: 350px;
+            background: radial-gradient(circle, var(--gold-glow) 0%, transparent 70%);
+            pointer-events: none;
+        }
+
+        .hero-avatar {
+            width: 160px;
+            height: 180px;
+            border-radius: 16px;
+            border: 2px solid var(--gold-primary);
+            overflow: hidden;
+            box-shadow: 0 0 25px var(--gold-glow);
+            background: #1A202C;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            color: var(--gold-primary);
+        }
+
+        .hero-avatar i {
+            font-size: 64px;
+        }
+
+        .hero-avatar span {
+            font-size: 11px;
+            font-family: 'Outfit', sans-serif;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-top: 8px;
+            color: var(--text-sub);
+        }
+
+        .hero-content h1 {
+            font-family: 'Outfit', sans-serif;
+            font-size: 34px;
+            font-weight: 800;
+            color: var(--text-main);
+            line-height: 1.2;
+            margin-bottom: 6px;
+        }
+
+        .hero-content h1 span {
+            color: var(--gold-primary);
+        }
+
+        .hero-subtitle {
+            font-family: 'Outfit', sans-serif;
+            font-size: 18px;
+            font-weight: 600;
+            color: var(--cyan-accent);
+            margin-bottom: 14px;
+        }
+
+        .hero-badges {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-bottom: 20px;
+        }
+
+        .badge-pill {
+            background: var(--bg-pill);
+            border: 1px solid var(--border-subtle);
+            padding: 6px 14px;
+            border-radius: 20px;
+            font-size: 13px;
+            color: var(--text-sub);
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .badge-pill i {
+            color: var(--gold-primary);
+        }
+
+        /* POSITIONING TOGGLE TABS */
+        .tab-navigation {
+            display: flex;
+            gap: 12px;
+            background: var(--bg-surface);
+            padding: 8px;
+            border-radius: var(--radius-lg);
+            border: 1px solid var(--border-subtle);
+            margin-bottom: 24px;
+        }
+
+        .tab-btn {
+            flex: 1;
+            padding: 14px 20px;
+            background: transparent;
+            border: none;
+            border-radius: var(--radius-md);
+            color: var(--text-sub);
+            font-family: 'Outfit', sans-serif;
+            font-weight: 700;
+            font-size: 15px;
+            cursor: pointer;
+            transition: var(--transition);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+        }
+
+        .tab-btn.active {
+            background: linear-gradient(135deg, var(--gold-primary), #B89628);
+            color: #000;
+            box-shadow: 0 4px 15px var(--gold-glow);
+        }
+
+        .tab-btn:hover:not(.active) {
+            background: rgba(255, 255, 255, 0.05);
+            color: var(--text-main);
+        }
+
+        /* STATS GRID */
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 16px;
+            margin-bottom: 24px;
+        }
+
+        .stat-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border-subtle);
+            border-radius: var(--radius-lg);
+            padding: 20px;
+            text-align: center;
+            transition: var(--transition);
+        }
+
+        .stat-card:hover {
+            border-color: var(--border-gold);
+            transform: translateY(-3px);
+        }
+
+        .stat-number {
+            font-family: 'Outfit', sans-serif;
+            font-size: 32px;
+            font-weight: 800;
+            color: var(--gold-primary);
+            line-height: 1.1;
+            margin-bottom: 4px;
+        }
+
+        .stat-label {
+            font-size: 13px;
+            color: var(--text-sub);
+            font-weight: 500;
+        }
+
+        /* CONTENT SECTIONS GRID */
+        .content-grid {
+            display: grid;
+            grid-template-columns: 2fr 1fr;
+            gap: 24px;
+        }
+
+        @media (max-width: 900px) {
+            .content-grid {
+                grid-template-columns: 1fr;
+            }
+            .hero-section {
+                grid-template-columns: 1fr;
+                text-align: center;
+            }
+            .hero-avatar {
+                margin: 0 auto;
+            }
+            .hero-badges {
+                justify-content: center;
+            }
+            .top-navbar {
+                flex-direction: column;
+                gap: 12px;
+            }
+        }
+
+        .card-box {
+            background: var(--bg-card);
+            backdrop-filter: blur(12px);
+            border: 1px solid var(--border-subtle);
+            border-radius: var(--radius-xl);
+            padding: 28px;
+            margin-bottom: 24px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+        }
+
+        .card-title {
+            font-family: 'Outfit', sans-serif;
+            font-size: 20px;
+            font-weight: 700;
+            color: var(--gold-primary);
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            border-bottom: 1px solid var(--border-subtle);
+            padding-bottom: 12px;
+        }
+
+        /* TIMELINE & EXPERIENCE */
+        .timeline-item {
+            position: relative;
+            padding-left: 28px;
+            margin-bottom: 24px;
+            border-left: 2px solid var(--border-gold);
+        }
+
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            left: -7px;
+            top: 4px;
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background: var(--gold-primary);
+            box-shadow: 0 0 10px var(--gold-glow);
+        }
+
+        .timeline-role {
+            font-family: 'Outfit', sans-serif;
+            font-size: 17px;
+            font-weight: 700;
+            color: var(--text-main);
+        }
+
+        .timeline-meta {
+            font-size: 13px;
+            color: var(--cyan-accent);
+            margin-bottom: 8px;
+            font-weight: 500;
+        }
+
+        .timeline-desc {
+            font-size: 14px;
+            color: var(--text-sub);
+            margin-bottom: 10px;
+        }
+
+        .timeline-bullets {
+            list-style: none;
+            padding-left: 0;
+        }
+
+        .timeline-bullets li {
+            font-size: 13.5px;
+            color: var(--text-sub);
+            margin-bottom: 6px;
+            position: relative;
+            padding-left: 18px;
+        }
+
+        .timeline-bullets li::before {
+            content: '▹';
+            position: absolute;
+            left: 0;
+            color: var(--gold-primary);
+        }
+
+        /* SKILLS TAGS */
+        .skill-group {
+            margin-bottom: 18px;
+        }
+
+        .skill-group h4 {
+            font-size: 13px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: var(--text-muted);
+            margin-bottom: 8px;
+        }
+
+        .skill-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+        }
+
+        .skill-tag {
+            background: var(--bg-pill);
+            border: 1px solid var(--border-subtle);
+            padding: 5px 12px;
+            border-radius: 8px;
+            font-size: 12.5px;
+            color: var(--text-main);
+        }
+
+        .skill-tag.highlight {
+            border-color: var(--border-gold);
+            background: rgba(212, 175, 55, 0.1);
+            color: var(--gold-light);
+        }
+
+        /* MARKETHON SPECIAL CALLOUT */
+        .markethon-banner {
+            background: linear-gradient(135deg, rgba(212, 175, 55, 0.15) 0%, rgba(56, 189, 248, 0.1) 100%);
+            border: 1px solid var(--border-gold);
+            border-radius: var(--radius-lg);
+            padding: 20px;
+            margin-bottom: 24px;
+            position: relative;
+        }
+
+        .markethon-banner h3 {
+            font-family: 'Outfit', sans-serif;
+            font-size: 16px;
+            color: var(--gold-light);
+            margin-bottom: 6px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .markethon-banner p {
+            font-size: 13.5px;
+            color: var(--text-sub);
+        }
+
+        /* FLOATING ACTION BAR FOR MOBILE */
+        .floating-bar {
+            position: fixed;
+            bottom: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: rgba(19, 24, 34, 0.95);
+            backdrop-filter: blur(16px);
+            border: 1px solid var(--border-gold);
+            padding: 10px 20px;
+            border-radius: 30px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.6);
+            display: flex;
+            gap: 15px;
+            z-index: 1000;
+        }
+
+        .floating-btn {
+            color: var(--text-main);
+            text-decoration: none;
+            font-size: 13px;
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            font-family: 'Outfit', sans-serif;
+        }
+
+        .floating-btn i {
+            color: var(--gold-primary);
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <!-- TOP NAVBAR -->
+        <header class="top-navbar">
+            <div class="nav-brand">
+                <span class="badge-tag">ENTJ-A</span>
+                <span>Julien FLORENCE</span>
+            </div>
+            <div class="nav-actions">
+                <a href="Julien_Florence_CV_Direction_Commerciale.pdf" download="Julien_Florence_CV_Direction_Commerciale.pdf" class="btn-header btn-pdf" id="btn-download-pdf-nav">
+                    <i class="fa-solid fa-file-pdf"></i> Télécharger le CV PDF
+                </a>
+                <a href="Julien_Florence.vcf" download="Julien_Florence.vcf" class="btn-header btn-contact">
+                    <i class="fa-solid fa-address-card"></i> Contact vCard
+                </a>
+            </div>
+        </header>
+
+        <!-- HERO SECTION -->
+        <section class="hero-section">
+            <div class="hero-avatar">
+                <i class="fa-solid fa-user-tie"></i>
+                <span>Julien Florence</span>
+            </div>
+            <div class="hero-content">
+                <h1>Julien <span>FLORENCE</span></h1>
+                <div class="hero-subtitle">Directeur Commercial | Business Unit Manager | Management de Transition</div>
+                <p style="color: var(--text-sub); font-size: 14.5px; margin-bottom: 16px;">
+                    20 ans d'expérience en pilotage de performance commerciale, structuration de BU et coaching d'équipe d'élite (Ancien joueur N3 & Coach Fédéral Handball). Expert en stratégie GTM, CRM psychométrique (DISC/PCM) et accélération IA.
+                </p>
+                <div class="hero-badges">
+                    <span class="badge-pill"><i class="fa-solid fa-location-dot"></i> Toulouse et Métropole</span>
+                    <span class="badge-pill"><i class="fa-solid fa-briefcase"></i> 20 Ans d'Expérience Management</span>
+                    <span class="badge-pill"><i class="fa-solid fa-chart-line"></i> Culture P&L & ROI</span>
+                    <span class="badge-pill"><i class="fa-solid fa-robot"></i> Intégration IA / Ops</span>
+                </div>
+            </div>
+        </section>
+
+        <!-- MARKETHON SPECIAL BANNER -->
+        <div class="markethon-banner">
+            <h3><i class="fa-solid fa-bullseye"></i> Participant Actif — Markethon 2026 Toulouse (24/09/2026)</h3>
+            <p>Disponible immédiatement pour des missions d'Accompagnement, Management de Transition ou Prise de Direction Commerciale / BU sur la région Occitanie.</p>
+        </div>
+
+        <!-- POSITIONING TAB TOGGLE -->
+        <div class="tab-navigation">
+            <button class="tab-btn active" onclick="switchTab('dir-com')" id="tab-dir-com">
+                <i class="fa-solid fa-chart-pie"></i> Direction Commerciale & BU Manager
+            </button>
+            <button class="tab-btn" onclick="switchTab('transi')" id="tab-transi">
+                <i class="fa-solid fa-handshake-angle"></i> Management de Transition & Accompagnement
+            </button>
+        </div>
+
+        <!-- STATS GRID -->
+        <div class="stats-grid">
+            <div class="stat-card">
+                <div class="stat-number">+35%</div>
+                <div class="stat-label">Croissance Moyenne CA Réalisée</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-number">20+</div>
+                <div class="stat-label">Années d'Expérience Leadership</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-number">100%</div>
+                <div class="stat-label">Posture Adulte & Alignement ROI</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-number">N3 / Coach</div>
+                <div class="stat-label">Esprit de Compétition & Cohésion</div>
+            </div>
+        </div>
+
+        <!-- MAIN CONTENT GRID -->
+        <div class="content-grid">
+            <!-- LEFT COLUMN: EXPERIENCES & METHODOLOGY -->
+            <main>
+                <!-- TAB 1 CONTENT: DIRECTION COMMERCIAL -->
+                <div id="content-dir-com" class="card-box">
+                    <h2 class="card-title"><i class="fa-solid fa-briefcase"></i> Parcours & Réalisations Clés — Direction Commerciale</h2>
+                    
+                    <div class="timeline-item">
+                        <div class="timeline-role">Fondateur & Manager Exécutif | Coestia / QuestIA</div>
+                        <div class="timeline-meta">2024 - Présent | Toulouse</div>
+                        <div class="timeline-desc">Développement d'outils d'Intelligence Commerciale, CRM psychométrique et accompagnement stratégique des entreprises.</div>
+                        <ul class="timeline-bullets">
+                            <li>Conception de workflows d'acquisition B2B intégrant l'IA et le profiling DISC/PCM.</li>
+                            <li>Conseil en stratégie de pénétration de marché et restructuration des ventes.</li>
+                        </ul>
+                    </div>
+
+                    <div class="timeline-item">
+                        <div class="timeline-role">Directeur du Développement & Exploitation | Secteur CHR / Services</div>
+                        <div class="timeline-meta">Expérience Établie | Occitanie</div>
+                        <div class="timeline-desc">Gestion intégrale de centres de profit, management de 15 à 50 collaborateurs, pilotage financier.</div>
+                        <ul class="timeline-bullets">
+                            <li>Optimisation des ratios de rentabilité, négociation grands comptes et fournisseurs.</li>
+                            <li>Mise en place de standards d'excellence opérationnelle et de fidélisation client.</li>
+                            <li>Recrutement, formation et coaching sur le terrain de chefs d'équipe.</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- TAB 2 CONTENT: TRANSITION (Hidden by default) -->
+                <div id="content-transi" class="card-box" style="display: none;">
+                    <h2 class="card-title"><i class="fa-solid fa-shield-halved"></i> Expert Management de Transition & Diagnostic</h2>
+                    
+                    <div class="timeline-item">
+                        <div class="timeline-role">Manager de Transition & Coach en Restructuration</div>
+                        <div class="timeline-meta">Missions sur mesure | Réactivité sous 48h</div>
+                        <div class="timeline-desc">Intervention d'urgence ou de retournement pour sécuriser les opérations et remobiliser les équipes.</div>
+                        <ul class="timeline-bullets">
+                            <li>Audit flash des processus commerciaux et opérationnels (Analyse systémique ENTJ-A).</li>
+                            <li>Gestion du changement avec méthode Manager-Coach (Culture sport collectif N3).</li>
+                            <li>Résolution des conflits et réalignement sur les KPI de rentabilité.</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- METHODOLOGY BOX -->
+                <div class="card-box">
+                    <h2 class="card-title"><i class="fa-solid fa-chess-knight"></i> Méthode & Valeur Ajoutée ENTJ-A</h2>
+                    <p style="font-size: 14px; color: var(--text-sub); margin-bottom: 12px;">
+                        Une approche structurée axée sur l'analyse mécanique des causes et la maximisation de l'effet de levier <strong>(Facilité × Confiance × Effet)</strong>.
+                    </p>
+                    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 15px;">
+                        <div style="background: var(--bg-pill); padding: 12px; border-radius: 8px;">
+                            <strong style="color: var(--gold-primary); font-size: 14px;">1. Posture Adulte Factuelle</strong>
+                            <p style="font-size: 12.5px; color: var(--text-sub); margin-top: 4px;">Communication directe, respectueuse de la pyramide de Maslow, sans jargon passif.</p>
+                        </div>
+                        <div style="background: var(--bg-pill); padding: 12px; border-radius: 8px;">
+                            <strong style="color: var(--cyan-accent); font-size: 14px;">2. Synergie IA & Terrain</strong>
+                            <p style="font-size: 12.5px; color: var(--text-sub); margin-top: 4px;">Intégration d'automatismes modernes pour libérer le temps de prospection terrain.</p>
+                        </div>
+                    </div>
+                </div>
+            </main>
+
+            <!-- RIGHT COLUMN: SKILLS, CONTACT, DOWNLOADS -->
+            <aside>
+                <!-- QUICK CONTACT & DOWNLOADS CARD -->
+                <div class="card-box">
+                    <h2 class="card-title"><i class="fa-solid fa-address-book"></i> Coordonnées & Accès</h2>
+                    <ul style="list-style: none; margin-bottom: 20px;">
+                        <li style="margin-bottom: 12px; font-size: 14px; display: flex; align-items: center; gap: 10px;">
+                            <i class="fa-solid fa-phone" style="color: var(--gold-primary);"></i>
+                            <a href="tel:+33661747573" style="color: var(--text-main); text-decoration: none; font-weight: 600;">06 61 74 75 73</a>
+                        </li>
+                        <li style="margin-bottom: 12px; font-size: 13.5px; display: flex; align-items: center; gap: 10px;">
+                            <i class="fa-solid fa-envelope" style="color: var(--gold-primary);"></i>
+                            <a href="mailto:julienflorence.florence@gmail.com" style="color: var(--text-sub); text-decoration: none;">julienflorence.florence@gmail.com</a>
+                        </li>
+                        <li style="margin-bottom: 12px; font-size: 13.5px; display: flex; align-items: center; gap: 10px;">
+                            <i class="fa-brands fa-linkedin" style="color: var(--cyan-accent);"></i>
+                            <a href="https://www.linkedin.com/in/julien-florence-2536a083" target="_blank" style="color: var(--cyan-accent); text-decoration: none; font-weight: 500;">Profil LinkedIn Officiel</a>
+                        </li>
+                        <li style="font-size: 13.5px; display: flex; align-items: center; gap: 10px;">
+                            <i class="fa-solid fa-map-location-dot" style="color: var(--gold-primary);"></i>
+                            <span>Toulouse (Labège, Blagnac, Colomiers)</span>
+                        </li>
+                    </ul>
+
+                    <a href="Julien_Florence_CV_Direction_Commerciale.pdf" download="Julien_Florence_CV_Direction_Commerciale.pdf" class="btn-header btn-pdf" style="width: 100%; justify-content: center; margin-bottom: 10px;">
+                        <i class="fa-solid fa-download"></i> Télécharger CV PDF (2 Pages)
+                    </a>
+                    <a href="Julien_Florence.vcf" download="Julien_Florence.vcf" class="btn-header btn-contact" style="width: 100%; justify-content: center;">
+                        <i class="fa-solid fa-user-plus"></i> Enregistrer la vCard Contact
+                    </a>
+                </div>
+
+                <!-- SKILLS MATRIX -->
+                <div class="card-box">
+                    <h2 class="card-title"><i class="fa-solid fa-layer-group"></i> Compétences Clés</h2>
+                    
+                    <div class="skill-group">
+                        <h4>Management & Strategy</h4>
+                        <div class="skill-tags">
+                            <span class="skill-tag highlight">Direction Commerciale</span>
+                            <span class="skill-tag highlight">BU Management</span>
+                            <span class="skill-tag">Management de Transition</span>
+                            <span class="skill-tag">Pilotage P&L / ROI</span>
+                            <span class="skill-tag">Coach Fédéral / Team Building</span>
+                        </div>
+                    </div>
+
+                    <div class="skill-group">
+                        <h4>Business Development</h4>
+                        <div class="skill-tags">
+                            <span class="skill-tag highlight">Négociation Grands Comptes</span>
+                            <span class="skill-tag">Prospection B2B Terrain</span>
+                            <span class="skill-tag">Psychométrie DISC / PCM</span>
+                            <span class="skill-tag">Stratégie Go-to-Market</span>
+                        </div>
+                    </div>
+
+                    <div class="skill-group">
+                        <h4>Digital & IA Ops</h4>
+                        <div class="skill-tags">
+                            <span class="skill-tag highlight">Intelligence Artificielle Sales</span>
+                            <span class="skill-tag">Automation Workflows</span>
+                            <span class="skill-tag">CRM & Analytics</span>
+                        </div>
+                    </div>
+                </div>
+            </aside>
+        </div>
+    </div>
+
+    <!-- FLOATING BAR FOR QUICK ACCESSIBILITY -->
+    <div class="floating-bar">
+        <a href="Julien_Florence_CV_Direction_Commerciale.pdf" download class="floating-btn">
+            <i class="fa-solid fa-file-pdf"></i> CV PDF
+        </a>
+        <a href="Julien_Florence.vcf" download class="floating-btn">
+            <i class="fa-solid fa-address-card"></i> Contact vCard
+        </a>
+        <a href="https://www.linkedin.com/in/julien-florence-2536a083" target="_blank" class="floating-btn">
+            <i class="fa-brands fa-linkedin"></i> LinkedIn
+        </a>
+    </div>
+
+    <script>
+        function switchTab(tab) {
+            document.getElementById('content-dir-com').style.display = (tab === 'dir-com') ? 'block' : 'none';
+            document.getElementById('content-transi').style.display = (tab === 'transi') ? 'block' : 'none';
+
+            document.getElementById('tab-dir-com').classList.toggle('active', tab === 'dir-com');
+            document.getElementById('tab-transi').classList.toggle('active', tab === 'transi');
+        }
+    </script>
+</body>
+</html>
