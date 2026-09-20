@@ -12,7 +12,7 @@ permissions:
 
 concurrency:
   group: "pages"
-  cancel-in-progress: false
+  cancel-in-progress: true
 
 jobs:
   deploy:
@@ -23,12 +23,27 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v4
+
+      - name: Prepare Ultra-Fast Public Site
+        run: |
+          mkdir -p _site
+          cp index.html _site/
+          cp dashboard.html _site/
+          cp Julien_Florence.vcf _site/
+          cp Julien_Florence_CV_Direction_Commerciale.pdf _site/
+          cp julien_florence_photo.jpg _site/
+          cp QR_Code_Carte_De_Visite.png _site/
+          cp .nojekyll _site/
+          cp -r 04_Livrables _site/
+
       - name: Setup Pages
         uses: actions/configure-pages@v5
+
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
-          path: '.'
+          path: '_site'
+
       - name: Deploy to GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v4
