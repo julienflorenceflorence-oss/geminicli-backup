@@ -32,6 +32,8 @@ jobs:
           cp *.pdf _site/ 2>/dev/null || true
           cp *.png _site/ 2>/dev/null || true
           cp *.jpg _site/ 2>/dev/null || true
+          cp *.gif _site/ 2>/dev/null || true
+          cp *.mp4 _site/ 2>/dev/null || true
           cp .nojekyll _site/ 2>/dev/null || true
           cp -r diplomes_images _site/ 2>/dev/null || true
           cp -r 04_Livrables _site/ 2>/dev/null || true
