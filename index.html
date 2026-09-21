@@ -387,25 +387,28 @@
             background: var(--border-glass);
         }
 
-        /* ANIMATED CYBER GOLD BRAIN HERO (FIRST VISUAL IMPRESSION) */
+        /* ANIMATED CYBER GOLD BRAIN HERO (FIRST VISUAL IMPRESSION - USER VIDEO ASSET) */
         .brain-hero-container {
             width: 100%;
-            height: 200px;
+            height: 220px;
             margin-bottom: 20px;
             border-radius: 18px;
-            background: linear-gradient(135deg, rgba(11, 14, 20, 0.95), rgba(19, 24, 36, 0.95));
+            background: #0B0E14;
             border: 1px solid var(--border-gold);
             position: relative;
             overflow: hidden;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5), inset 0 0 25px rgba(212, 175, 55, 0.15);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.6), 0 0 25px rgba(212, 175, 55, 0.25);
             display: flex;
             align-items: center;
             justify-content: center;
         }
 
-        #brainCanvas {
+        .brain-hero-container video,
+        .brain-hero-container img {
             width: 100%;
             height: 100%;
+            object-fit: cover;
+            object-position: center;
             display: block;
         }
 
@@ -450,9 +453,12 @@
 <body>
 
     <main class="landing-card">
-        <!-- FIRST VISUAL IMPRESSION: ANIMATED CYBER GOLD BRAIN VIDEO / CANVAS HERO -->
+        <!-- FIRST VISUAL IMPRESSION: USER'S ANIMATED BRAIN VIDEO HERO -->
         <div class="brain-hero-container">
-            <canvas id="brainCanvas"></canvas>
+            <video id="brainVideo" autoplay loop muted playsinline poster="cerveau_3.0_gif.gif">
+                <source src="cerveau_video.mp4" type="video/mp4">
+                <img src="cerveau_42.gif" alt="Vidéo Cerveau Animé Julien Florence">
+            </video>
             <div class="brain-hero-overlay">
                 <span class="brain-live-badge"><i class="fa-solid fa-brain"></i> IA & SALES ENGINE • QUESTIA</span>
             </div>
@@ -572,134 +578,6 @@
         <div class="dock-divider"></div>
         <a href="https://www.linkedin.com/in/julien-florence-2536a083" target="_blank" rel="noopener" class="dock-link"><i class="fa-brands fa-linkedin"></i> LinkedIn</a>
     </nav>
-
-    <!-- 3D CYBER GOLD NEURAL BRAIN ANIMATION ENGINE -->
-    <script>
-    (function() {
-        const canvas = document.getElementById('brainCanvas');
-        if (!canvas) return;
-        const ctx = canvas.getContext('2d');
-        
-        function resize() {
-            canvas.width = canvas.offsetWidth * (window.devicePixelRatio || 1);
-            canvas.height = canvas.offsetHeight * (window.devicePixelRatio || 1);
-        }
-        resize();
-        window.addEventListener('resize', resize);
-
-        const numPoints = 140;
-        const points = [];
-        
-        for (let i = 0; i < numPoints; i++) {
-            const u = Math.random() * Math.PI * 2;
-            const v = (Math.random() - 0.5) * Math.PI;
-            const side = Math.random() > 0.5 ? 1 : -1;
-            const rx = (0.7 + 0.3 * Math.cos(v)) * Math.cos(u) * 65;
-            const ry = (0.8 + 0.2 * Math.sin(u)) * Math.sin(v) * 60;
-            const rz = (0.7 + 0.3 * Math.sin(v)) * (side * 0.4 + Math.sin(u) * 0.6) * 55;
-            
-            points.push({
-                x: rx + (side * 12),
-                y: ry,
-                z: rz,
-                pulse: Math.random() * Math.PI * 2,
-                pulseSpeed: 0.03 + Math.random() * 0.04
-            });
-        }
-
-        let angleY = 0;
-        let angleX = 0.2;
-        let mouseX = 0;
-
-        canvas.parentElement.addEventListener('mousemove', (e) => {
-            const rect = canvas.getBoundingClientRect();
-            mouseX = (e.clientX - rect.left - rect.width / 2) * 0.0005;
-        });
-
-        function animate() {
-            const w = canvas.width;
-            const h = canvas.height;
-            ctx.clearRect(0, 0, w, h);
-            
-            const cx = w / 2;
-            const cy = h / 2 + 8 * (window.devicePixelRatio || 1);
-            const scale = Math.min(w, h) / 185;
-
-            angleY += 0.012 + mouseX;
-            angleX = 0.15 + Math.sin(angleY * 0.5) * 0.08;
-
-            const projected = [];
-
-            for (let i = 0; i < points.length; i++) {
-                const p = points[i];
-                p.pulse += p.pulseSpeed;
-
-                let x1 = p.x * Math.cos(angleY) - p.z * Math.sin(angleY);
-                let z1 = p.x * Math.sin(angleY) + p.z * Math.cos(angleY);
-                
-                let y2 = p.y * Math.cos(angleX) - z1 * Math.sin(angleX);
-                let z2 = p.y * Math.sin(angleX) + z1 * Math.cos(angleX);
-
-                const fov = 300;
-                const factor = fov / (fov + z2);
-                const projX = cx + x1 * factor * scale;
-                const projY = cy + y2 * factor * scale;
-
-                projected.push({
-                    x: projX,
-                    y: projY,
-                    z: z2,
-                    pulse: Math.sin(p.pulse)
-                });
-            }
-
-            // Synaptic Connections
-            ctx.lineWidth = 0.9 * (window.devicePixelRatio || 1);
-            for (let i = 0; i < projected.length; i++) {
-                for (let j = i + 1; j < projected.length; j++) {
-                    const p1 = projected[i];
-                    const p2 = projected[j];
-                    const dx = p1.x - p2.x;
-                    const dy = p1.y - p2.y;
-                    const dist = Math.sqrt(dx * dx + dy * dy);
-
-                    const maxDist = 44 * scale;
-                    if (dist < maxDist) {
-                        const alpha = (1 - dist / maxDist) * 0.45;
-                        const isCyan = (i + j) % 3 === 0;
-                        ctx.strokeStyle = isCyan 
-                            ? `rgba(56, 189, 248, ${alpha})`
-                            : `rgba(212, 175, 55, ${alpha})`;
-                        ctx.beginPath();
-                        ctx.moveTo(p1.x, p1.y);
-                        ctx.lineTo(p2.x, p2.y);
-                        ctx.stroke();
-                    }
-                }
-            }
-
-            // Brain Nodes
-            for (let i = 0; i < projected.length; i++) {
-                const p = projected[i];
-                const radius = Math.max(1.2, (2.0 + p.pulse * 1.2) * (window.devicePixelRatio || 1));
-                const isHighlight = p.pulse > 0.65;
-
-                ctx.beginPath();
-                ctx.arc(p.x, p.y, radius, 0, Math.PI * 2);
-                ctx.fillStyle = isHighlight 
-                    ? '#FACC15'
-                    : (i % 2 === 0 ? '#D4AF37' : '#38BDF8');
-                ctx.shadowBlur = isHighlight ? 12 : 6;
-                ctx.shadowColor = isHighlight ? '#FACC15' : '#38BDF8';
-                ctx.fill();
-                ctx.shadowBlur = 0;
-            }
-
-            requestAnimationFrame(animate);
-        }
-        animate();
-    })();
-    </script>
 
 </body>
 </html>

@@ -19,6 +19,7 @@ node_modules/
 *.zip
 *.exe
 *.mp4
+!cerveau_video.mp4
 *.m4a
 3dbc24ad-4abc-4572-8335-6239ea858b18.png
 
