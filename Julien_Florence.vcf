@@ -1,13 +1,13 @@
 BEGIN:VCARD
 VERSION:3.0
-N:Florence;Julien;;;
-FN:Julien FLORENCE
-TITLE:EXPERT EN STRATÉGIE, Pilotage P&L / ROI et DÉVELOPPEMENT & COACHING
-ORG:Management Exécutif / Co-Fondateur QuestIA
+N;CHARSET=UTF-8:Florence;Julien;;;
+FN;CHARSET=UTF-8:Julien FLORENCE
+TITLE;CHARSET=UTF-8:EXPERT EN STRATÉGIE, Pilotage P&L / ROI et DÉVELOPPEMENT & COACHING
+ORG;CHARSET=UTF-8:Management Exécutif / Co-Fondateur QuestIA
 TEL;TYPE=CELL,VOICE;PREF:+33661747573
 EMAIL;TYPE=INTERNET,HOME,PREF:julienflorence.florence@gmail.com
 URL;TYPE=WORK:https://julienflorenceflorence-oss.github.io/geminicli-backup/
 URL;TYPE=LinkedIn:https://www.linkedin.com/in/julien-florence-2536a083
-ADR;TYPE=WORK;PARCEL;POSTAL:;;Toulouse et Métropole;Toulouse;Occitanie;31000;France
-NOTE:20 ans de leadership commercial et de pilotage P&L condensés au service d'une obsession : transformer la stratégie en résultats ROI mesurables. Ancien sportif de haut niveau et coach, j'allie la rigueur collective du terrain à la puissance de l'IA pour accélérer la croissance des équipes et des organisations.
+ADR;TYPE=WORK;PARCEL;POSTAL;CHARSET=UTF-8:;;Toulouse et Métropole;Toulouse;Occitanie;31000;France
+NOTE;CHARSET=UTF-8:20 ans de leadership commercial et de pilotage P&L condensés au service d'une obsession : transformer la stratégie en résultats ROI mesurables. Ancien sportif de haut niveau et coach, j'allie la rigueur collective du terrain à la puissance de l'IA pour accélérer la croissance des équipes et des organisations.
 END:VCARD
