@@ -334,6 +334,58 @@
             margin-top: 16px;
             opacity: 0.7;
         }
+
+        /* FLOATING EXECUTIVE DOCK */
+        .floating-dock {
+            position: fixed;
+            bottom: 16px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: rgba(11, 14, 20, 0.95);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border: 1px solid var(--border-gold);
+            padding: 8px 16px;
+            border-radius: 30px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.8);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            z-index: 9999;
+            max-width: 95vw;
+            overflow-x: auto;
+        }
+
+        .dock-link {
+            color: var(--text-light);
+            text-decoration: none;
+            font-family: 'Outfit', sans-serif;
+            font-size: 12.5px;
+            font-weight: 700;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            padding: 6px 12px;
+            border-radius: 20px;
+            transition: var(--transition);
+            white-space: nowrap;
+        }
+
+        .dock-link i {
+            color: var(--gold-main);
+            font-size: 14px;
+        }
+
+        .dock-link:hover, .dock-link.active {
+            background: rgba(212, 175, 55, 0.2);
+            color: var(--gold-light);
+        }
+
+        .dock-divider {
+            width: 1px;
+            height: 18px;
+            background: var(--border-glass);
+        }
     </style>
 </head>
 <body>
@@ -431,6 +483,19 @@
             © 2026 Julien Florence • Co-Fondateur QuestIA • Toulouse
         </div>
     </main>
+
+    <!-- FLOATING EXECUTIVE NAVIGATION DOCK -->
+    <nav class="floating-dock" aria-label="Navigation rapide">
+        <a href="index.html" class="dock-link active"><i class="fa-solid fa-house"></i> Accueil</a>
+        <div class="dock-divider"></div>
+        <a href="dashboard.html" class="dock-link"><i class="fa-solid fa-chart-line"></i> CV Dashboard</a>
+        <div class="dock-divider"></div>
+        <a href="carte_de_visite.html" class="dock-link"><i class="fa-solid fa-id-card"></i> Carte 3D</a>
+        <div class="dock-divider"></div>
+        <a href="portfolio.html" class="dock-link"><i class="fa-solid fa-graduation-cap"></i> Diplômes</a>
+        <div class="dock-divider"></div>
+        <a href="https://www.linkedin.com/in/julien-florence-2536a083" target="_blank" rel="noopener" class="dock-link"><i class="fa-brands fa-linkedin"></i> LinkedIn</a>
+    </nav>
 
 </body>
 </html>

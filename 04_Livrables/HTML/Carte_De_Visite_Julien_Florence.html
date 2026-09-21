@@ -3,19 +3,19 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Carte de Visite Exécutive & QR Code — Julien FLORENCE</title>
-    <meta name="description" content="Carte de visite interactive et imprimable de Julien FLORENCE avec QR Code direct vers le CV Dashboard.">
-    
+    <title>Julien FLORENCE — Carte de Visite Multi-Liens Exécutive</title>
+    <meta name="description" content="Carte de visite digitale & multi-liens de Julien FLORENCE. Directeur Commercial, BU Manager et Manager de Transition à Toulouse. Contact, CV Dashboard et LinkedIn.">
+
     <!-- Fonts & Icons -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
     <style>
         :root {
             --bg-dark: #0B0E14;
-            --card-bg: rgba(19, 24, 36, 0.95);
+            --card-bg: rgba(19, 24, 36, 0.85);
             --gold-main: #D4AF37;
             --gold-light: #FACC15;
             --gold-glow: rgba(212, 175, 55, 0.35);
@@ -24,12 +24,17 @@
             --text-sub: #94A3B8;
             --border-gold: rgba(212, 175, 55, 0.4);
             --border-glass: rgba(255, 255, 255, 0.1);
-            --radius-card: 20px;
-            --shadow-card: 0 25px 60px rgba(0, 0, 0, 0.7);
-            --transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            --radius-main: 24px;
+            --radius-btn: 16px;
+            --shadow-card: 0 20px 50px rgba(0, 0, 0, 0.6);
+            --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
         }
 
-        * { box-sizing: border-box; margin: 0; padding: 0; }
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
 
         body {
             background-color: var(--bg-dark);
@@ -37,333 +42,460 @@
             font-family: 'Inter', sans-serif;
             min-height: 100vh;
             display: flex;
-            flex-direction: column;
             justify-content: center;
             align-items: center;
-            padding: 30px 20px;
+            padding: 20px;
             background-image: 
-                radial-gradient(circle at 50% 15%, rgba(212, 175, 55, 0.12) 0%, transparent 60%),
-                radial-gradient(circle at 20% 85%, rgba(56, 189, 248, 0.08) 0%, transparent 50%);
+                radial-gradient(circle at 50% 10%, rgba(212, 175, 55, 0.12) 0%, transparent 60%),
+                radial-gradient(circle at 20% 80%, rgba(56, 189, 248, 0.08) 0%, transparent 50%);
             background-attachment: fixed;
         }
 
-        .header-title {
-            text-align: center;
-            margin-bottom: 30px;
-        }
-
-        .header-title h1 {
-            font-family: 'Outfit', sans-serif;
-            font-size: 28px;
-            font-weight: 800;
-            color: var(--gold-main);
-            margin-bottom: 6px;
-        }
-
-        .header-title p {
-            font-size: 14px;
-            color: var(--text-sub);
-        }
-
-        /* 3D FLIP CONTAINER */
-        .card-perspective {
-            perspective: 1000px;
-            width: 480px;
-            height: 290px;
-            margin-bottom: 35px;
-        }
-
-        @media (max-width: 520px) {
-            .card-perspective {
-                width: 340px;
-                height: 220px;
-            }
-        }
-
-        .card-inner {
-            width: 100%;
-            height: 100%;
-            position: relative;
-            transform-style: preserve-3d;
-            transition: transform 0.8s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-            cursor: pointer;
-        }
-
-        .card-perspective:hover .card-inner,
-        .card-inner.flipped {
-            transform: rotateY(180deg);
-        }
-
-        .card-side {
-            position: absolute;
-            width: 100%;
-            height: 100%;
-            backface-visibility: hidden;
-            -webkit-backface-visibility: hidden;
-            border-radius: var(--radius-card);
-            border: 1px solid var(--border-gold);
+        .landing-card {
             background: var(--card-bg);
             backdrop-filter: blur(20px);
-            padding: 24px;
+            -webkit-backdrop-filter: blur(20px);
+            border: 1px solid var(--border-gold);
+            border-radius: var(--radius-main);
+            width: 100%;
+            max-width: 450px;
+            padding: 36px 24px;
             box-shadow: var(--shadow-card);
-            display: flex;
-            flex-direction: column;
-            justify-content: space-between;
+            text-align: center;
+            position: relative;
             overflow: hidden;
         }
 
-        .card-side::before {
+        .landing-card::before {
             content: '';
             position: absolute;
-            top: 0; left: 0; width: 100%; height: 3px;
-            background: linear-gradient(90deg, transparent, var(--gold-main), transparent);
+            top: -50px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 200px;
+            height: 200px;
+            background: radial-gradient(circle, var(--gold-glow) 0%, transparent 70%);
+            pointer-events: none;
         }
 
-        /* RECTO (FRONT SIDE) */
-        .front-side {
-            display: grid;
-            grid-template-columns: 100px 1fr;
-            gap: 20px;
-            align-items: center;
+        /* PROFILE HEADER WITH PHOTO */
+        .profile-badge {
+            display: inline-block;
+            background: linear-gradient(135deg, var(--gold-main), var(--gold-light));
+            color: #0F1117;
+            font-family: 'Outfit', sans-serif;
+            font-size: 11px;
+            font-weight: 800;
+            letter-spacing: 1px;
+            padding: 4px 12px;
+            border-radius: 20px;
+            margin-bottom: 16px;
+            text-transform: uppercase;
         }
 
-        @media (max-width: 520px) {
-            .front-side {
-                grid-template-columns: 75px 1fr;
-                gap: 12px;
-                padding: 16px;
-            }
-        }
-
-        .profile-photo {
-            width: 100px;
-            height: 115px;
-            border-radius: 12px;
-            border: 2px solid var(--gold-main);
+        .avatar-box {
+            width: 120px;
+            height: 120px;
+            margin: 0 auto 16px;
+            border-radius: 50%;
+            border: 3px solid var(--gold-main);
+            box-shadow: 0 0 25px var(--gold-glow);
             overflow: hidden;
-            box-shadow: 0 0 15px var(--gold-glow);
+            background: #181E2B;
         }
 
-        @media (max-width: 520px) {
-            .profile-photo {
-                width: 75px;
-                height: 90px;
-            }
-        }
-
-        .profile-photo img {
+        .avatar-box img {
             width: 100%;
             height: 100%;
             object-fit: cover;
+            object-position: center top;
         }
 
-        .front-info h2 {
+        .profile-name {
             font-family: 'Outfit', sans-serif;
-            font-size: 20px;
+            font-size: 26px;
             font-weight: 800;
             color: var(--text-light);
-            margin-bottom: 2px;
+            margin-bottom: 4px;
+            letter-spacing: -0.5px;
         }
 
-        @media (max-width: 520px) {
-            .front-info h2 { font-size: 16px; }
-        }
-
-        .front-info .job {
-            font-family: 'Outfit', sans-serif;
-            font-size: 12.5px;
-            font-weight: 700;
+        .profile-name span {
             color: var(--gold-main);
-            margin-bottom: 6px;
-            text-transform: uppercase;
-            letter-spacing: 0.5px;
         }
 
-        .front-info .tag {
-            font-size: 11px;
+        .profile-title {
+            font-family: 'Outfit', sans-serif;
+            font-size: 15px;
+            font-weight: 600;
             color: var(--cyan-main);
-            margin-bottom: 10px;
-            font-weight: 500;
+            margin-bottom: 12px;
+            line-height: 1.3;
         }
 
-        .front-contact {
-            list-style: none;
-            font-size: 11.5px;
+        .profile-bio {
+            font-size: 13px;
             color: var(--text-sub);
+            margin-bottom: 20px;
+            line-height: 1.5;
         }
 
-        .front-contact li {
-            margin-bottom: 3px;
+        .markethon-tag {
+            background: rgba(212, 175, 55, 0.1);
+            border: 1px dashed var(--border-gold);
+            padding: 8px 12px;
+            border-radius: 10px;
+            font-size: 12px;
+            color: var(--gold-light);
+            margin-bottom: 24px;
             display: flex;
             align-items: center;
+            justify-content: center;
             gap: 6px;
         }
 
-        .front-contact i {
-            color: var(--gold-main);
-            width: 14px;
-        }
-
-        /* VERSO (BACK SIDE WITH QR CODE) */
-        .back-side {
-            transform: rotateY(180deg);
-            align-items: center;
-            justify-content: center;
-            text-align: center;
-            padding: 20px;
-        }
-
-        .qr-box {
-            background: #FFFFFF;
-            padding: 8px;
-            border-radius: 12px;
-            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.5);
-            display: inline-block;
-            margin-bottom: 12px;
-        }
-
-        .qr-box img {
-            width: 125px;
-            height: 125px;
-            display: block;
-        }
-
-        @media (max-width: 520px) {
-            .qr-box img {
-                width: 90px;
-                height: 90px;
-            }
-        }
-
-        .back-title {
-            font-family: 'Outfit', sans-serif;
-            font-size: 13.5px;
-            font-weight: 700;
-            color: var(--gold-main);
-            margin-bottom: 4px;
-        }
-
-        .back-url {
-            font-size: 11px;
-            color: var(--cyan-main);
-            font-weight: 600;
-            word-break: break-all;
-        }
-
-        /* ACTIONS & BUTTONS */
-        .actions-bar {
+        /* MULTI-LINK BUTTONS */
+        .links-container {
             display: flex;
-            flex-wrap: wrap;
+            flex-direction: column;
             gap: 12px;
-            justify-content: center;
-            max-width: 500px;
+            margin-bottom: 24px;
         }
 
-        .btn-action {
-            display: inline-flex;
+        .link-btn {
+            display: flex;
             align-items: center;
-            gap: 8px;
-            padding: 12px 20px;
-            border-radius: 12px;
+            justify-content: space-between;
+            padding: 15px 18px;
+            border-radius: var(--radius-btn);
+            text-decoration: none;
             font-family: 'Outfit', sans-serif;
             font-weight: 700;
-            font-size: 14px;
-            text-decoration: none;
+            font-size: 14.5px;
             transition: var(--transition);
+            border: 1px solid var(--border-glass);
             cursor: pointer;
+            position: relative;
+            overflow: hidden;
         }
 
-        .btn-primary {
-            background: linear-gradient(135deg, var(--gold-main), var(--gold-light));
+        .link-btn-content {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .link-btn i.icon-main {
+            font-size: 20px;
+            width: 22px;
+            text-align: center;
+        }
+
+        .link-btn i.arrow {
+            font-size: 14px;
+            opacity: 0.6;
+            transition: var(--transition);
+        }
+
+        .link-btn:hover i.arrow {
+            opacity: 1;
+            transform: translateX(4px);
+        }
+
+        /* BUTTON SPECIFIC STYLES */
+        .btn-carte3d {
+            background: linear-gradient(135deg, rgba(212, 175, 55, 0.25) 0%, rgba(56, 189, 248, 0.25) 100%);
+            color: #FFFFFF;
+            border: 1px solid var(--gold-main);
+            box-shadow: 0 6px 20px rgba(212, 175, 55, 0.25);
+        }
+
+        .btn-carte3d:hover {
+            background: linear-gradient(135deg, rgba(212, 175, 55, 0.45) 0%, rgba(56, 189, 248, 0.45) 100%);
+            transform: translateY(-3px);
+            box-shadow: 0 10px 25px rgba(212, 175, 55, 0.45);
+            color: var(--gold-light);
+        }
+
+        .btn-carte3d i.icon-main {
+            color: var(--gold-light);
+        }
+
+        .btn-vcard {
+            background: linear-gradient(135deg, #D4AF37 0%, #FACC15 100%);
             color: #0F1117;
             border: none;
-            box-shadow: 0 4px 15px var(--gold-glow);
+            box-shadow: 0 6px 20px var(--gold-glow);
         }
 
-        .btn-primary:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 6px 20px rgba(212, 175, 55, 0.4);
+        .btn-vcard:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 25px rgba(212, 175, 55, 0.5);
         }
 
-        .btn-secondary {
-            background: rgba(255, 255, 255, 0.05);
+        .btn-dashboard {
+            background: #182030;
             color: var(--text-light);
-            border: 1px solid var(--border-gold);
+            border-color: var(--border-gold);
         }
 
-        .btn-secondary:hover {
+        .btn-dashboard:hover {
             background: rgba(212, 175, 55, 0.15);
+            border-color: var(--gold-main);
             color: var(--gold-light);
             transform: translateY(-2px);
         }
 
-        .flip-hint {
-            font-size: 12px;
+        .btn-dashboard i.icon-main {
+            color: var(--gold-main);
+        }
+
+        .btn-diplomes {
+            background: #151D2A;
+            color: var(--text-light);
+            border-color: rgba(56, 189, 248, 0.3);
+        }
+
+        .btn-diplomes:hover {
+            background: rgba(56, 189, 248, 0.15);
+            border-color: var(--cyan-main);
+            color: var(--cyan-main);
+            transform: translateY(-2px);
+        }
+
+        .btn-diplomes i.icon-main {
+            color: var(--cyan-main);
+        }
+
+        .btn-linkedin {
+            background: #0A66C2;
+            color: #FFFFFF;
+            border: none;
+            box-shadow: 0 4px 15px rgba(10, 102, 194, 0.3);
+        }
+
+        .btn-linkedin:hover {
+            background: #084e96;
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(10, 102, 194, 0.5);
+        }
+
+        .btn-pdf-dl {
+            background: #1E2638;
+            color: var(--text-light);
+            border-color: var(--border-glass);
+        }
+
+        .btn-pdf-dl:hover {
+            background: #273248;
+            border-color: var(--cyan-main);
+            color: var(--cyan-main);
+            transform: translateY(-2px);
+        }
+
+        .btn-pdf-dl i.icon-main {
+            color: var(--cyan-main);
+        }
+
+        /* QUICK ACTION ICONS */
+        .quick-actions {
+            display: flex;
+            justify-content: center;
+            gap: 16px;
+            padding-top: 16px;
+            border-top: 1px solid var(--border-glass);
+        }
+
+        .quick-action-btn {
+            width: 44px;
+            height: 44px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid var(--border-glass);
             color: var(--text-sub);
-            margin-top: 15px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-decoration: none;
+            font-size: 17px;
+            transition: var(--transition);
+        }
+
+        .quick-action-btn:hover {
+            background: var(--gold-glow);
+            color: var(--gold-light);
+            border-color: var(--gold-main);
+            transform: scale(1.1);
+        }
+
+        .footer-note {
+            font-size: 11px;
+            color: var(--text-sub);
+            margin-top: 16px;
+            opacity: 0.7;
+        }
+
+        /* FLOATING EXECUTIVE DOCK */
+        .floating-dock {
+            position: fixed;
+            bottom: 16px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: rgba(11, 14, 20, 0.95);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border: 1px solid var(--border-gold);
+            padding: 8px 16px;
+            border-radius: 30px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.8);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            z-index: 9999;
+            max-width: 95vw;
+            overflow-x: auto;
+        }
+
+        .dock-link {
+            color: var(--text-light);
+            text-decoration: none;
+            font-family: 'Outfit', sans-serif;
+            font-size: 12.5px;
+            font-weight: 700;
             display: flex;
             align-items: center;
             gap: 6px;
+            padding: 6px 12px;
+            border-radius: 20px;
+            transition: var(--transition);
+            white-space: nowrap;
+        }
+
+        .dock-link i {
+            color: var(--gold-main);
+            font-size: 14px;
+        }
+
+        .dock-link:hover, .dock-link.active {
+            background: rgba(212, 175, 55, 0.2);
+            color: var(--gold-light);
+        }
+
+        .dock-divider {
+            width: 1px;
+            height: 18px;
+            background: var(--border-glass);
         }
     </style>
 </head>
 <body>
 
-    <div class="header-title">
-        <h1>Carte de Visite Exécutive</h1>
-        <p>Survolez ou touchez la carte pour afficher le QR Code direct</p>
-    </div>
-
-    <!-- 3D FLIPPABLE BUSINESS CARD -->
-    <div class="card-perspective" onclick="document.querySelector('.card-inner').classList.toggle('flipped')">
-        <div class="card-inner">
-            
-            <!-- RECTO (FRONT) -->
-            <div class="card-side front-side">
-                <div class="profile-photo">
-                    <img src="julien_florence_photo.jpg" alt="Julien FLORENCE">
-                </div>
-                <div class="front-info">
-                    <h2>Julien FLORENCE</h2>
-                    <div class="job">Directeur Commercial • BU Manager</div>
-                    <div class="tag"><i class="fa-solid fa-crown"></i> Management de Transition</div>
-                    <ul class="front-contact">
-                        <li><i class="fa-solid fa-phone"></i> 06 61 74 75 73</li>
-                        <li><i class="fa-solid fa-envelope"></i> julienflorence.florence@gmail.com</li>
-                        <li><i class="fa-solid fa-briefcase"></i> Co-Fondateur QuestIA</li>
-                        <li><i class="fa-solid fa-location-dot"></i> Toulouse & Métropole</li>
-                    </ul>
-                </div>
-            </div>
-
-            <!-- VERSO (BACK WITH QR CODE) -->
-            <div class="card-side back-side">
-                <div class="back-title">SCANNEZ POUR ENREGISTRER MON CONTACT</div>
-                <div class="qr-box">
-                    <img src="QR_Code_Carte_De_Visite.png" alt="QR Code Julien Florence">
-                </div>
-                <div class="back-url">https://julienflorenceflorence-oss.github.io/geminicli-backup/</div>
-            </div>
-
+    <main class="landing-card">
+        <span class="profile-badge">Direction & Management Exécutif</span>
+        
+        <!-- PROFILE PHOTO -->
+        <div class="avatar-box">
+            <img src="julien_florence_photo.jpg" alt="Julien FLORENCE">
         </div>
-    </div>
 
-    <!-- ACTION BUTTONS -->
-    <div class="actions-bar">
-        <a href="Carte_De_Visite_Julien_Florence.pdf" download="Carte_De_Visite_Julien_Florence.pdf" class="btn-action btn-primary">
-            <i class="fa-solid fa-file-pdf"></i> Imprimer la Carte PDF
-        </a>
-        <a href="Julien_Florence.vcf" download="Julien_Florence.vcf" class="btn-action btn-secondary">
-            <i class="fa-solid fa-address-card"></i> Contact vCard
-        </a>
-        <a href="dashboard.html" class="btn-action btn-secondary">
-            <i class="fa-solid fa-chart-line"></i> CV Dashboard
-        </a>
-    </div>
+        <h1 class="profile-name">Julien <span>FLORENCE</span></h1>
+        <div class="profile-title">Direction Commerciale • BU Manager<br>Management de Transition</div>
+        
+        <p class="profile-bio">
+            20 ans de leadership commercial (2000-2026), management d'équipes et conduite du changement. Ancien joueur N3 & Coach Fédéral Handball. Spécialiste de la performance globale et de l'accélération IA.
+        </p>
 
-    <div class="flip-hint">
-        <i class="fa-solid fa-arrows-rotate"></i> Cliquez sur la carte pour la retourner (Recto / Verso)
-    </div>
+        <div class="markethon-tag">
+            <i class="fa-solid fa-trophy"></i> Participant Markethon 2026 Toulouse
+        </div>
+
+        <!-- MULTI-LINK BUTTONS -->
+        <div class="links-container">
+            <!-- BUTTON 0: CARTE DE VISITE WEB 3D -->
+            <a href="carte_de_visite.html" class="link-btn btn-carte3d" id="link-carte3d-root">
+                <div class="link-btn-content">
+                    <i class="fa-solid fa-id-card icon-main"></i>
+                    <span>Carte de Visite Web 3D & QR Code</span>
+                </div>
+                <i class="fa-solid fa-chevron-right arrow"></i>
+            </a>
+
+            <!-- BUTTON 1: DIRECT VCARD DOWNLOAD (INTO PHONE CONTACTS) -->
+            <a href="Julien_Florence.vcf" download="Julien_Florence.vcf" class="link-btn btn-vcard" id="link-vcard-root">
+                <div class="link-btn-content">
+                    <i class="fa-solid fa-address-book icon-main"></i>
+                    <span>Enregistrer le Contact</span>
+                </div>
+                <i class="fa-solid fa-download arrow"></i>
+            </a>
+
+            <!-- BUTTON 2: INTERACTIVE CV DASHBOARD -->
+            <a href="dashboard.html" class="link-btn btn-dashboard" id="link-dashboard-root">
+                <div class="link-btn-content">
+                    <i class="fa-solid fa-chart-line icon-main"></i>
+                    <span>CV Dashboard & Parcours (2000-2026)</span>
+                </div>
+                <i class="fa-solid fa-chevron-right arrow"></i>
+            </a>
+
+            <!-- BUTTON 3: DIPLOMAS & CERTIFICATIONS PORTFOLIO -->
+            <a href="portfolio.html" class="link-btn btn-diplomes" id="link-diplomes-root">
+                <div class="link-btn-content">
+                    <i class="fa-solid fa-graduation-cap icon-main"></i>
+                    <span>Portfolio Diplômes & Certifications</span>
+                </div>
+                <i class="fa-solid fa-chevron-right arrow"></i>
+            </a>
+
+            <!-- BUTTON 4: LINKEDIN -->
+            <a href="https://www.linkedin.com/in/julien-florence-2536a083" target="_blank" rel="noopener" class="link-btn btn-linkedin" id="link-linkedin-root">
+                <div class="link-btn-content">
+                    <i class="fa-brands fa-linkedin icon-main"></i>
+                    <span>Profil LinkedIn Officiel</span>
+                </div>
+                <i class="fa-solid fa-arrow-up-right-from-square arrow"></i>
+            </a>
+
+            <!-- BUTTON 5: EXECUTIVE PDF CV -->
+            <a href="Julien_Florence_CV_Direction_Commerciale.pdf" download="Julien_Florence_CV_Direction_Commerciale.pdf" class="link-btn btn-pdf-dl" id="link-pdf-root">
+                <div class="link-btn-content">
+                    <i class="fa-solid fa-file-pdf icon-main"></i>
+                    <span>Télécharger le CV PDF</span>
+                </div>
+                <i class="fa-solid fa-download arrow"></i>
+            </a>
+        </div>
+
+        <!-- QUICK DIRECT CONTACT -->
+        <div class="quick-actions">
+            <a href="tel:+33661747573" class="quick-action-btn" title="Appeler direct">
+                <i class="fa-solid fa-phone"></i>
+            </a>
+            <a href="mailto:julienflorence.florence@gmail.com" class="quick-action-btn" title="Envoyer un email">
+                <i class="fa-solid fa-envelope"></i>
+            </a>
+            <a href="https://julienflorenceflorence-oss.github.io/geminicli-backup/" class="quick-action-btn" title="Site web / Portfolio">
+                <i class="fa-solid fa-globe"></i>
+            </a>
+        </div>
+
+        <div class="footer-note">
+            © 2026 Julien Florence • Co-Fondateur QuestIA • Toulouse
+        </div>
+    </main>
+
+    <!-- FLOATING EXECUTIVE NAVIGATION DOCK -->
+    <nav class="floating-dock" aria-label="Navigation rapide">
+        <a href="index.html" class="dock-link active"><i class="fa-solid fa-house"></i> Accueil</a>
+        <div class="dock-divider"></div>
+        <a href="dashboard.html" class="dock-link"><i class="fa-solid fa-chart-line"></i> CV Dashboard</a>
+        <div class="dock-divider"></div>
+        <a href="carte_de_visite.html" class="dock-link"><i class="fa-solid fa-id-card"></i> Carte 3D</a>
+        <div class="dock-divider"></div>
+        <a href="portfolio.html" class="dock-link"><i class="fa-solid fa-graduation-cap"></i> Diplômes</a>
+        <div class="dock-divider"></div>
+        <a href="https://www.linkedin.com/in/julien-florence-2536a083" target="_blank" rel="noopener" class="dock-link"><i class="fa-brands fa-linkedin"></i> LinkedIn</a>
+    </nav>
 
 </body>
 </html>
