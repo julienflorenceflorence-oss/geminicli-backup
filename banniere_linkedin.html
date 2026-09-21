@@ -1,0 +1,295 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <title>Bannière LinkedIn Julien FLORENCE</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800;900&family=Inter:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400;1,500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+        body {
+            width: 1584px;
+            height: 396px;
+            background: #0B0E14;
+            color: #F8FAFC;
+            font-family: 'Inter', sans-serif;
+            overflow: hidden;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .banner-container {
+            width: 1584px;
+            height: 396px;
+            position: relative;
+            background: radial-gradient(circle at 85% 20%, rgba(212, 175, 55, 0.18) 0%, transparent 45%),
+                        radial-gradient(circle at 15% 90%, rgba(56, 189, 248, 0.12) 0%, transparent 40%),
+                        linear-gradient(135deg, #090B10 0%, #111622 50%, #0B0E14 100%);
+            border: 2px solid rgba(212, 175, 55, 0.4);
+            display: flex;
+            padding: 28px 45px;
+            justify-content: space-between;
+            align-items: center;
+            overflow: hidden;
+        }
+
+        /* CYBER GRID BACKGROUND OVERLAY */
+        .cyber-grid {
+            position: absolute;
+            inset: 0;
+            background-image: 
+                linear-gradient(to right, rgba(212, 175, 55, 0.05) 1px, transparent 1px),
+                linear-gradient(to bottom, rgba(212, 175, 55, 0.05) 1px, transparent 1px);
+            background-size: 40px 40px;
+            pointer-events: none;
+            opacity: 0.7;
+        }
+
+        .ambient-glow-left {
+            position: absolute;
+            left: -100px;
+            top: -100px;
+            width: 350px;
+            height: 350px;
+            background: radial-gradient(circle, rgba(212, 175, 55, 0.25) 0%, transparent 70%);
+            pointer-events: none;
+        }
+
+        .ambient-glow-right {
+            position: absolute;
+            right: -80px;
+            bottom: -80px;
+            width: 400px;
+            height: 400px;
+            background: radial-gradient(circle, rgba(56, 189, 248, 0.2) 0%, transparent 70%);
+            pointer-events: none;
+        }
+
+        /* LEFT CONTENT COLUMN (Avoids avatar overlay area bottom-left) */
+        .left-col {
+            position: relative;
+            z-index: 2;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            height: 100%;
+            max-width: 580px;
+            padding-left: 200px; /* Offset to leave room for avatar on LinkedIn desktop */
+        }
+
+        .brand-header {
+            display: flex;
+            flex-direction: column;
+            gap: 4px;
+        }
+
+        .badge-exec {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: linear-gradient(135deg, rgba(212, 175, 55, 0.2), rgba(212, 175, 55, 0.05));
+            border: 1px solid rgba(212, 175, 55, 0.5);
+            color: #FACC15;
+            font-family: 'Outfit', sans-serif;
+            font-size: 11px;
+            font-weight: 800;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+            padding: 4px 12px;
+            border-radius: 20px;
+            width: fit-content;
+        }
+
+        .name-title {
+            font-family: 'Outfit', sans-serif;
+            font-size: 38px;
+            font-weight: 900;
+            letter-spacing: -0.5px;
+            line-height: 1.1;
+            color: #FFFFFF;
+        }
+
+        .name-title span {
+            background: linear-gradient(135deg, #D4AF37 0%, #FACC15 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .subtitle {
+            font-family: 'Outfit', sans-serif;
+            font-size: 15.5px;
+            font-weight: 700;
+            color: #38BDF8;
+            letter-spacing: 0.2px;
+        }
+
+        /* BADGES GRID */
+        .badges-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 8px 12px;
+            margin-top: 10px;
+        }
+
+        .badge-item {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            background: rgba(19, 24, 36, 0.85);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            padding: 6px 12px;
+            border-radius: 10px;
+            font-size: 12px;
+            color: #E2E8F0;
+            font-weight: 500;
+        }
+
+        .badge-item i {
+            color: #D4AF37;
+            font-size: 13px;
+        }
+
+        .badge-item span {
+            font-weight: 700;
+            color: #FFFFFF;
+        }
+
+        /* RIGHT CONTENT COLUMN: QUOTE & HUB CARD */
+        .right-col {
+            position: relative;
+            z-index: 2;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            align-items: flex-end;
+            height: 100%;
+            max-width: 680px;
+            text-align: right;
+        }
+
+        /* QUOTE BOX */
+        .quote-box {
+            background: rgba(19, 24, 36, 0.85);
+            backdrop-filter: blur(16px);
+            border: 1px solid rgba(212, 175, 55, 0.4);
+            border-left: 4px solid #D4AF37;
+            border-radius: 16px;
+            padding: 16px 20px;
+            position: relative;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+            max-width: 640px;
+        }
+
+        .quote-text {
+            font-family: 'Inter', sans-serif;
+            font-size: 15px;
+            font-weight: 500;
+            font-style: italic;
+            color: #F8FAFC;
+            line-height: 1.45;
+            margin-bottom: 6px;
+        }
+
+        .quote-text span {
+            color: #FACC15;
+            font-weight: 700;
+        }
+
+        .quote-author {
+            font-family: 'Outfit', sans-serif;
+            font-size: 12.5px;
+            font-weight: 800;
+            color: #38BDF8;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+        }
+
+        /* HUB FOOTER BAR */
+        .hub-bar {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            background: rgba(11, 14, 20, 0.9);
+            border: 1px solid rgba(212, 175, 55, 0.3);
+            padding: 8px 18px;
+            border-radius: 20px;
+            margin-top: 10px;
+        }
+
+        .hub-tag {
+            font-family: 'Outfit', sans-serif;
+            font-size: 12px;
+            font-weight: 700;
+            color: #D4AF37;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .hub-url {
+            font-family: 'Outfit', sans-serif;
+            font-size: 13px;
+            font-weight: 800;
+            color: #FFFFFF;
+            letter-spacing: 0.5px;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="banner-container">
+        <div class="cyber-grid"></div>
+        <div class="ambient-glow-left"></div>
+        <div class="ambient-glow-right"></div>
+
+        <!-- LEFT COLUMN -->
+        <div class="left-col">
+            <div class="brand-header">
+                <div class="badge-exec">
+                    <i class="fa-solid fa-crown"></i> Direction Commerciale & Leadership
+                </div>
+                <h1 class="name-title">Julien <span>FLORENCE</span></h1>
+                <div class="subtitle">BU Manager • Management de Transition • Sales Engine</div>
+            </div>
+
+            <div class="badges-grid">
+                <div class="badge-item">
+                    <i class="fa-solid fa-chart-line"></i> <span>P&L & Croissance (+140%)</span>
+                </div>
+                <div class="badge-item">
+                    <i class="fa-solid fa-trophy"></i> <span>Coach Fédéral FFHB & N3</span>
+                </div>
+                <div class="badge-item">
+                    <i class="fa-solid fa-brain"></i> <span>Co-Fondateur QuestIA</span>
+                </div>
+                <div class="badge-item">
+                    <i class="fa-solid fa-rocket"></i> <span>Bachelor Rocket School</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- RIGHT COLUMN -->
+        <div class="right-col">
+            <div class="quote-box">
+                <div class="quote-text">
+                    « <span>Ce n'est pas ce que vous êtes qui vous retient</span>, c'est ce que vous croyez ne pas être. »
+                </div>
+                <div class="quote-author">— Denis Waitley</div>
+            </div>
+
+            <div class="hub-bar">
+                <div class="hub-tag"><i class="fa-solid fa-globe"></i> Hub Exécutif 2026 :</div>
+                <div class="hub-url">julienflorenceflorence-oss.github.io/geminicli-backup/</div>
+            </div>
+        </div>
+    </div>
+
+</body>
+</html>
