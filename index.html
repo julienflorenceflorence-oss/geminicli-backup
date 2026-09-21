@@ -203,6 +203,24 @@
         }
 
         /* BUTTON SPECIFIC STYLES */
+        .btn-carte3d {
+            background: linear-gradient(135deg, rgba(212, 175, 55, 0.25) 0%, rgba(56, 189, 248, 0.25) 100%);
+            color: #FFFFFF;
+            border: 1px solid var(--gold-main);
+            box-shadow: 0 6px 20px rgba(212, 175, 55, 0.25);
+        }
+
+        .btn-carte3d:hover {
+            background: linear-gradient(135deg, rgba(212, 175, 55, 0.45) 0%, rgba(56, 189, 248, 0.45) 100%);
+            transform: translateY(-3px);
+            box-shadow: 0 10px 25px rgba(212, 175, 55, 0.45);
+            color: var(--gold-light);
+        }
+
+        .btn-carte3d i.icon-main {
+            color: var(--gold-light);
+        }
+
         .btn-vcard {
             background: linear-gradient(135deg, #D4AF37 0%, #FACC15 100%);
             color: #0F1117;
@@ -341,6 +359,15 @@
 
         <!-- MULTI-LINK BUTTONS -->
         <div class="links-container">
+            <!-- BUTTON 0: CARTE DE VISITE WEB 3D -->
+            <a href="carte_de_visite.html" class="link-btn btn-carte3d" id="link-carte3d-root">
+                <div class="link-btn-content">
+                    <i class="fa-solid fa-id-card icon-main"></i>
+                    <span>Carte de Visite Web 3D & QR Code</span>
+                </div>
+                <i class="fa-solid fa-chevron-right arrow"></i>
+            </a>
+
             <!-- BUTTON 1: DIRECT VCARD DOWNLOAD (INTO PHONE CONTACTS) -->
             <a href="Julien_Florence.vcf" download="Julien_Florence.vcf" class="link-btn btn-vcard" id="link-vcard-root">
                 <div class="link-btn-content">
