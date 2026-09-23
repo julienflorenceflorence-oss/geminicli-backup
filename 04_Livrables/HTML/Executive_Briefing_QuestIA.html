@@ -1,0 +1,493 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>QuestIA — Executive Briefing : Acquisition Linguistique & Psychométrie Comportementale par l'IA</title>
+    <meta name="description" content="Executive Briefing QuestIA — Note de cadrage stratégique sur l'acquisition linguistique, la psychométrie comportementale et l'intelligence artificielle.">
+    
+    <!-- Fonts & Icons -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <style>
+        :root {
+            --bg-deep: #0B0E14;
+            --bg-surface: #131822;
+            --bg-card: rgba(23, 29, 43, 0.85);
+            --gold-main: #D4AF37;
+            --gold-light: #FACC15;
+            --gold-glow: rgba(212, 175, 55, 0.25);
+            --cyan-accent: #38BDF8;
+            --cyan-glow: rgba(56, 189, 248, 0.2);
+            --text-main: #F8FAFC;
+            --text-sub: #94A3B8;
+            --text-muted: #64748B;
+            --border-gold: rgba(212, 175, 55, 0.4);
+            --border-subtle: rgba(255, 255, 255, 0.08);
+            --radius-lg: 16px;
+            --radius-md: 10px;
+        }
+
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+
+        body {
+            background-color: var(--bg-deep);
+            color: var(--text-main);
+            font-family: 'Inter', sans-serif;
+            line-height: 1.5;
+            padding: 30px 15px;
+        }
+
+        .briefing-container {
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        /* 2-PAGE PRINT / VIEW LAYOUT */
+        .page-sheet {
+            background: var(--bg-surface);
+            border: 1px solid var(--border-gold);
+            border-radius: var(--radius-lg);
+            padding: 40px;
+            margin-bottom: 40px;
+            box-shadow: 0 20px 50px rgba(0,0,0,0.6);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .page-sheet::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; width: 100%; height: 5px;
+            background: linear-gradient(90deg, var(--gold-main), var(--cyan-accent));
+        }
+
+        /* HEADER */
+        .sheet-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            border-bottom: 1px solid var(--border-subtle);
+            padding-bottom: 20px;
+            margin-bottom: 25px;
+        }
+
+        .brand-box {
+            display: flex;
+            align-items: center;
+            gap: 14px;
+        }
+
+        .brand-logo {
+            width: 48px;
+            height: 48px;
+            background: linear-gradient(135deg, var(--gold-main), var(--gold-light));
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #0B0E14;
+            font-size: 24px;
+            font-weight: 800;
+            box-shadow: 0 0 20px var(--gold-glow);
+        }
+
+        .brand-titles h1 {
+            font-family: 'Outfit', sans-serif;
+            font-size: 26px;
+            font-weight: 800;
+            color: var(--text-main);
+            letter-spacing: -0.5px;
+        }
+
+        .brand-titles h1 span { color: var(--gold-main); }
+
+        .brand-titles p {
+            font-size: 13px;
+            color: var(--cyan-accent);
+            font-weight: 600;
+        }
+
+        .doc-meta {
+            text-align: right;
+            font-size: 12px;
+            color: var(--text-sub);
+        }
+
+        .doc-meta .badge-confidential {
+            background: rgba(212, 175, 55, 0.15);
+            border: 1px solid var(--border-gold);
+            color: var(--gold-light);
+            padding: 4px 10px;
+            border-radius: 20px;
+            font-family: 'Outfit', sans-serif;
+            font-weight: 700;
+            font-size: 11px;
+            text-transform: uppercase;
+            display: inline-block;
+            margin-bottom: 6px;
+        }
+
+        /* SECTION TITLES */
+        .section-title {
+            font-family: 'Outfit', sans-serif;
+            font-size: 18px;
+            font-weight: 700;
+            color: var(--gold-main);
+            margin-bottom: 14px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .section-title i {
+            color: var(--cyan-accent);
+            font-size: 16px;
+        }
+
+        .intro-callout {
+            background: var(--bg-card);
+            border-left: 4px solid var(--gold-main);
+            padding: 16px 20px;
+            border-radius: 0 10px 10px 0;
+            font-size: 14px;
+            color: var(--text-main);
+            margin-bottom: 25px;
+            line-height: 1.6;
+        }
+
+        .intro-callout strong { color: var(--gold-light); }
+
+        /* GRID LAYOUTS */
+        .two-col-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+            margin-bottom: 25px;
+        }
+
+        .card-box {
+            background: rgba(255, 255, 255, 0.02);
+            border: 1px solid var(--border-subtle);
+            border-radius: var(--radius-md);
+            padding: 18px;
+        }
+
+        .card-box h3 {
+            font-family: 'Outfit', sans-serif;
+            font-size: 15px;
+            color: var(--text-main);
+            margin-bottom: 8px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .card-box h3 i { color: var(--gold-main); }
+
+        .card-box p {
+            font-size: 13px;
+            color: var(--text-sub);
+            line-height: 1.5;
+        }
+
+        /* 3 PILLARS ARCHITECTURE */
+        .pillars-wrapper {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 15px;
+            margin-bottom: 25px;
+        }
+
+        .pillar-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border-gold);
+            border-radius: var(--radius-md);
+            padding: 16px;
+            text-align: center;
+        }
+
+        .pillar-icon {
+            width: 40px; height: 40px;
+            border-radius: 50%;
+            background: rgba(56, 189, 248, 0.15);
+            color: var(--cyan-accent);
+            display: flex; align-items: center; justify-content: center;
+            margin: 0 auto 10px auto;
+            font-size: 18px;
+        }
+
+        .pillar-card h4 {
+            font-family: 'Outfit', sans-serif;
+            font-size: 14px;
+            color: var(--gold-light);
+            margin-bottom: 6px;
+        }
+
+        .pillar-card p {
+            font-size: 12px;
+            color: var(--text-sub);
+            line-height: 1.4;
+        }
+
+        /* USE CASES TABLE */
+        .use-case-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 25px;
+            font-size: 12.5px;
+        }
+
+        .use-case-table th {
+            background: rgba(212, 175, 55, 0.15);
+            color: var(--gold-light);
+            text-align: left;
+            padding: 10px 14px;
+            font-family: 'Outfit', sans-serif;
+            font-size: 13px;
+            border-bottom: 1px solid var(--border-gold);
+        }
+
+        .use-case-table td {
+            padding: 12px 14px;
+            border-bottom: 1px solid var(--border-subtle);
+            color: var(--text-sub);
+        }
+
+        .use-case-table tr:nth-child(even) {
+            background: rgba(255, 255, 255, 0.015);
+        }
+
+        .use-case-table td strong {
+            color: var(--text-main);
+        }
+
+        /* PAGE FOOTER */
+        .page-footer {
+            border-top: 1px solid var(--border-subtle);
+            padding-top: 15px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-size: 11px;
+            color: var(--text-muted);
+        }
+
+        .page-number {
+            font-family: 'Outfit', sans-serif;
+            font-weight: 700;
+            color: var(--gold-main);
+        }
+
+        /* ACTION BAR */
+        .action-bar {
+            text-align: center;
+            margin-top: 20px;
+        }
+
+        .btn-dl-pdf {
+            background: linear-gradient(135deg, var(--gold-main), var(--gold-light));
+            color: #0B0E14;
+            font-family: 'Outfit', sans-serif;
+            font-weight: 700;
+            font-size: 14px;
+            padding: 12px 26px;
+            border-radius: 30px;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            box-shadow: 0 8px 25px var(--gold-glow);
+            transition: all 0.3s ease;
+        }
+
+        .btn-dl-pdf:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 12px 30px rgba(212, 175, 55, 0.4);
+        }
+
+        @media print {
+            body { background: white; color: black; padding: 0; }
+            .page-sheet { border: none; box-shadow: none; margin: 0; page-break-after: always; }
+            .action-bar { display: none; }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="briefing-container">
+        
+        <!-- PAGE 1 : VISION & ARCHITECTURE TECHNIQUE -->
+        <div class="page-sheet">
+            <header class="sheet-header">
+                <div class="brand-box">
+                    <div class="brand-logo">Q</div>
+                    <div class="brand-titles">
+                        <h1>Quest<span>IA</span></h1>
+                        <p>Executive Briefing • Vision & Architecture</p>
+                    </div>
+                </div>
+                <div class="doc-meta">
+                    <span class="badge-confidential">Note de Cadrage Stratégique</span>
+                    <p><strong>Auteur :</strong> Julien FLORENCE (Co-Président)</p>
+                    <p><strong>Sujet :</strong> Acquisition Linguistique & Psychométrie IA</p>
+                </div>
+            </header>
+
+            <div class="intro-callout">
+                <strong>Thèse Centrale QuestIA :</strong> Dans les négociations B2B complexes, les levées de fonds et le scaling international, ce n'est jamais le produit qui fait échouer une transaction. <strong>C'est l'incapacité à décoder instantanément la psychologie comportementale, la sécurité psychologique et les codes culturels de l'interlocuteur.</strong>
+            </div>
+
+            <div class="section-title">
+                <i class="fa-solid fa-brain"></i> 1. Le Défi : Rupture des Frictions Comportementales
+            </div>
+
+            <div class="two-col-grid">
+                <div class="card-box">
+                    <h3><i class="fa-solid fa-triangle-exclamation"></i> Les Limites de la Formation Classique</h3>
+                    <p>Les approches académiques traditionnelles se limitent au vocabulaire ou à la grammaire, ignorant les dynamiques de pouvoir, la gestion du stress sous pression et le décodage psychométrique des décisionnaires.</p>
+                </div>
+                <div class="card-box">
+                    <h3><i class="fa-solid fa-lightbulb"></i> La Réponse QuestIA</h3>
+                    <p>Un moteur d'IA générative et cognitif qui modélise en temps réel les profils psychométriques (DISC, PCM / Process Communication Model) et simule des interactions à haut enjeu.</p>
+                </div>
+            </div>
+
+            <div class="section-title">
+                <i class="fa-solid fa-layer-group"></i> 2. L'Architecture QuestIA en 3 Piliers
+            </div>
+
+            <div class="pillars-wrapper">
+                <div class="pillar-card">
+                    <div class="pillar-icon"><i class="fa-solid fa-chart-pie"></i></div>
+                    <h4>1. Psychométrie Cognition</h4>
+                    <p>Décodage des signaux comportementaux (PCM/DISC), identification des canaux sous stress et alignement du style de négociation.</p>
+                </div>
+                <div class="pillar-card">
+                    <div class="pillar-icon"><i class="fa-solid fa-robot"></i></div>
+                    <h4>2. Simulateur IA & Feedback</h4>
+                    <p>Agent conversationnel d'immersion capable d'incarner 4 archétypes d'acheteurs (Promoteur, Analytique, Persévérant, Empathique).</p>
+                </div>
+                <div class="pillar-card">
+                    <div class="pillar-icon"><i class="fa-solid fa-earth-americas"></i></div>
+                    <h4>3. Business English & Diplomatie</h4>
+                    <p>Maîtrise de la diplomatie d'affaires internationale et des nuances de posture décisionnelle (US / Europe / Asie).</p>
+                </div>
+            </div>
+
+            <div class="section-title">
+                <i class="fa-solid fa-microscope"></i> 3. Ancrage Scientifique & Modélisation
+            </div>
+
+            <p style="font-size: 13px; color: var(--text-sub); line-height: 1.6; margin-bottom: 20px;">
+                Inspiré des travaux de <strong>Marston (DISC)</strong> et du <strong>Dr. Taibi Kahler (PCM / NASA)</strong>, QuestIA transforme la grille psychométrique en outil tactique d'exécution. Les recherches de <i>Rackham (SPIN Selling)</i> et <i>Dixon (The Challenger Sale)</i> démontrent une augmentation de <strong>+38% du taux de closing</strong> lorsque le négociateur synchronise son style sur le canal cognitif dominant de son interlocuteur.
+            </p>
+
+            <footer class="page-footer">
+                <span>QuestIA — Confidential Strategic Executive Briefing</span>
+                <span class="page-number">Page 1 / 2</span>
+            </footer>
+        </div>
+
+        <!-- PAGE 2 : CAS D'USAGE & PASSERELLES STRATÉGIQUES -->
+        <div class="page-sheet">
+            <header class="sheet-header">
+                <div class="brand-box">
+                    <div class="brand-logo">Q</div>
+                    <div class="brand-titles">
+                        <h1>Quest<span>IA</span></h1>
+                        <p>Executive Briefing • Cas d'Usage & Partenariats</p>
+                    </div>
+                </div>
+                <div class="doc-meta">
+                    <span class="badge-confidential">Partenariat & Synergies</span>
+                    <p><strong>Contact Direct :</strong> 06 61 74 75 73</p>
+                    <p><strong>Email :</strong> julienflorence.florence@gmail.com</p>
+                </div>
+            </header>
+
+            <div class="section-title">
+                <i class="fa-solid fa-bullseye"></i> 4. Matrice des Cas d'Usage & Impact ROI
+            </div>
+
+            <table class="use-case-table">
+                <thead>
+                    <tr>
+                        <th>Profil Cible</th>
+                        <th>Besoins & Frictions</th>
+                        <th>Impact QuestIA & Résultat ROI</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>VP Sales & Scale-ups</strong></td>
+                        <td>Deals internationaux (>250k€) bloqués par quiproquo culturel.</td>
+                        <td>Sécurisation des closings US/Europe & hausse du taux de transformation.</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Tech Founders / CEOs</strong></td>
+                        <td>Stress & décalage de posture lors des pitchs VCs internationaux (Levées 2 à 10M€).</td>
+                        <td>Immersion en simulateur d'investisseurs & alignement de la posture d'autorité.</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Direction Grands Comptes</strong></td>
+                        <td>Tactiques de pression agressives subies face aux acheteurs du CAC40/Fortune 500.</td>
+                        <td>Maîtrise du décodage PCM sous stress & reprise d'ascendant stratégique.</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Équipes Multiculturelles</strong></td>
+                        <td>Friction de communication & perte de sécurité psychologique.</td>
+                        <td>Fluidification des habitudes d'interaction et réduction du turnover d'équipe.</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <div class="section-title">
+                <i class="fa-solid fa-handshake"></i> 5. Passerelles Stratégiques & Partenariat (Communication Intelligence™)
+            </div>
+
+            <div class="intro-callout" style="border-left-color: var(--cyan-accent); margin-bottom: 20px;">
+                <strong>Opportunité de Collaboration Exécutive :</strong> L'alliance entre l'approche humaine de la <i>Communication Intelligence™</i> et les algorithmes d'acquisition linguistique et comportementale de <strong>QuestIA</strong> crée une synergie unique sur le marché européen :
+            </div>
+
+            <div class="two-col-grid">
+                <div class="card-box">
+                    <h3><i class="fa-solid fa-arrows-split-up-and-left"></i> 1. Co-Développement de Grilles Cognitives</h3>
+                    <p>Intégration de la méthodologie de réduction des frictions comportementales dans les scénarios et boucles de feedback de l'IA QuestIA.</p>
+                </div>
+                <div class="card-box">
+                    <h3><i class="fa-solid fa-globe"></i> 2. Déploiement Accompagné Startups / Scale-ups</h3>
+                    <p>Combinaison du coaching humain exécutif et du simulateur IA continu pour garantir la pérennité de la culture startup à l'international.</p>
+                </div>
+            </div>
+
+            <div class="section-title">
+                <i class="fa-solid fa-user-check"></i> 6. À Propos du Lead Exécutif
+            </div>
+
+            <div class="card-box" style="margin-bottom: 25px;">
+                <p style="font-size: 13.5px; color: var(--text-main); line-height: 1.6;">
+                    <strong>Julien FLORENCE — Co-Président @QuestIA & Directeur Commercial Externalisé</strong><br>
+                    20 ans de leadership opérationnel, pilotage P&L/ROI et management d'équipes (jusqu'à 20 ETP). Ex-joueur N3 & Coach Fédéral FFHB, spécialiste de la performance collective, des architectures CRM (Salesforce, HubSpot) et de la transformation IA.
+                </p>
+            </div>
+
+            <footer class="page-footer">
+                <span>Hub Officiel : https://julienflorenceflorence-oss.github.io/geminicli-backup/</span>
+                <span class="page-number">Page 2 / 2</span>
+            </footer>
+        </div>
+
+        <div class="action-bar">
+            <a href="Executive_Briefing_QuestIA.pdf" download="Executive_Briefing_QuestIA.pdf" class="btn-dl-pdf">
+                <i class="fa-solid fa-file-pdf"></i> Télécharger l'Executive Briefing (PDF)
+            </a>
+        </div>
+
+    </div>
+
+</body>
+</html>
