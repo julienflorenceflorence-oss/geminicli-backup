@@ -1,0 +1,637 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Analyse Stratégique & Playbook Commercial : Organismes de Formation POE / POEC</title>
+    <meta name="description" content="Dashboard d'analyse des Organismes de Formation (OF) utilisateurs de POEC / POAI et stratégie de prospection B2B.">
+    
+    <!-- Typography & Icons -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <style>
+        :root {
+            --bg-deep: #0B0E14;
+            --bg-surface: #131822;
+            --bg-card: rgba(23, 29, 43, 0.85);
+            --bg-pill: #1E2638;
+            --gold-main: #D4AF37;
+            --gold-light: #FACC15;
+            --gold-glow: rgba(212, 175, 55, 0.25);
+            --cyan-main: #38BDF8;
+            --cyan-glow: rgba(56, 189, 248, 0.2);
+            --red-alert: #EF4444;
+            --green-success: #10B981;
+            --text-main: #F8FAFC;
+            --text-sub: #94A3B8;
+            --text-muted: #64748B;
+            --border-gold: rgba(212, 175, 55, 0.4);
+            --border-subtle: rgba(255, 255, 255, 0.08);
+            --radius-lg: 16px;
+            --radius-md: 10px;
+            --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+
+        body {
+            background-color: var(--bg-deep);
+            color: var(--text-main);
+            font-family: 'Inter', sans-serif;
+            line-height: 1.6;
+            padding-bottom: 60px;
+        }
+
+        .container {
+            max-width: 1240px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        /* HEADER */
+        .header-nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: var(--bg-surface);
+            border: 1px solid var(--border-gold);
+            padding: 16px 24px;
+            border-radius: var(--radius-lg);
+            margin-bottom: 24px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+        }
+
+        .brand-title h1 {
+            font-family: 'Outfit', sans-serif;
+            font-size: 22px;
+            font-weight: 800;
+            color: var(--text-main);
+        }
+
+        .brand-title h1 span { color: var(--gold-main); }
+
+        .brand-title p {
+            font-size: 13px;
+            color: var(--cyan-main);
+            font-weight: 600;
+        }
+
+        .header-actions {
+            display: flex;
+            gap: 12px;
+        }
+
+        .btn-action {
+            background: var(--bg-pill);
+            color: var(--text-main);
+            border: 1px solid var(--border-gold);
+            padding: 8px 16px;
+            border-radius: var(--radius-md);
+            font-family: 'Outfit', sans-serif;
+            font-weight: 600;
+            font-size: 13px;
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            transition: var(--transition);
+        }
+
+        .btn-action:hover {
+            background: rgba(212, 175, 55, 0.2);
+            color: var(--gold-light);
+            transform: translateY(-2px);
+        }
+
+        /* METRICS GRID */
+        .metrics-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 16px;
+            margin-bottom: 28px;
+        }
+
+        .metric-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border-subtle);
+            border-radius: var(--radius-lg);
+            padding: 20px;
+            text-align: center;
+            transition: var(--transition);
+        }
+
+        .metric-card:hover {
+            border-color: var(--border-gold);
+            transform: translateY(-3px);
+        }
+
+        .metric-value {
+            font-family: 'Outfit', sans-serif;
+            font-size: 32px;
+            font-weight: 800;
+            color: var(--gold-main);
+            line-height: 1.1;
+            margin-bottom: 4px;
+        }
+
+        .metric-label {
+            font-size: 12.5px;
+            color: var(--text-sub);
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        /* SECTION TILES */
+        .section-box {
+            background: var(--bg-surface);
+            border: 1px solid var(--border-subtle);
+            border-radius: var(--radius-lg);
+            padding: 24px;
+            margin-bottom: 28px;
+        }
+
+        .section-header {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 20px;
+            border-bottom: 1px solid var(--border-subtle);
+            padding-bottom: 12px;
+        }
+
+        .section-header h2 {
+            font-family: 'Outfit', sans-serif;
+            font-size: 19px;
+            font-weight: 700;
+            color: var(--gold-main);
+        }
+
+        .section-header i {
+            color: var(--cyan-main);
+            font-size: 18px;
+        }
+
+        /* PAIN POINTS GRID */
+        .pain-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 16px;
+        }
+
+        .pain-card {
+            background: rgba(255, 255, 255, 0.02);
+            border: 1px solid var(--border-subtle);
+            border-left: 4px solid var(--red-alert);
+            border-radius: var(--radius-md);
+            padding: 16px;
+        }
+
+        .pain-card h3 {
+            font-family: 'Outfit', sans-serif;
+            font-size: 15px;
+            color: var(--text-main);
+            margin-bottom: 6px;
+        }
+
+        .pain-card p {
+            font-size: 13px;
+            color: var(--text-sub);
+        }
+
+        /* OF TABLE & FILTER */
+        .filter-bar {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 16px;
+            flex-wrap: wrap;
+        }
+
+        .filter-btn {
+            background: var(--bg-pill);
+            border: 1px solid var(--border-subtle);
+            color: var(--text-sub);
+            padding: 6px 14px;
+            border-radius: 20px;
+            font-size: 12.5px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: var(--transition);
+        }
+
+        .filter-btn.active, .filter-btn:hover {
+            background: rgba(212, 175, 55, 0.2);
+            color: var(--gold-light);
+            border-color: var(--border-gold);
+        }
+
+        .data-table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 13px;
+        }
+
+        .data-table th {
+            background: rgba(212, 175, 55, 0.1);
+            color: var(--gold-light);
+            text-align: left;
+            padding: 12px 14px;
+            font-family: 'Outfit', sans-serif;
+            border-bottom: 1px solid var(--border-gold);
+        }
+
+        .data-table td {
+            padding: 12px 14px;
+            border-bottom: 1px solid var(--border-subtle);
+            color: var(--text-sub);
+        }
+
+        .data-table tr:hover {
+            background: rgba(255, 255, 255, 0.02);
+        }
+
+        .badge-heat {
+            padding: 3px 8px;
+            border-radius: 6px;
+            font-family: 'Outfit', sans-serif;
+            font-weight: 700;
+            font-size: 11px;
+            text-transform: uppercase;
+        }
+
+        .heat-chaud { background: rgba(239, 68, 68, 0.2); color: #FCA5A5; border: 1px solid rgba(239, 68, 68, 0.4); }
+        .heat-tiede { background: rgba(245, 158, 11, 0.2); color: #FDE047; border: 1px solid rgba(245, 158, 11, 0.4); }
+        .heat-froid { background: rgba(56, 189, 248, 0.2); color: #7DD3FC; border: 1px solid rgba(56, 189, 248, 0.4); }
+
+        /* SCRIPT TIMELINE */
+        .script-steps {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+            gap: 16px;
+        }
+
+        .script-step-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border-gold);
+            border-radius: var(--radius-md);
+            padding: 16px;
+            position: relative;
+        }
+
+        .step-num {
+            position: absolute;
+            top: 12px; right: 14px;
+            font-family: 'Outfit', sans-serif;
+            font-size: 24px;
+            font-weight: 800;
+            color: rgba(212, 175, 55, 0.2);
+        }
+
+        .script-step-card h3 {
+            font-family: 'Outfit', sans-serif;
+            font-size: 15px;
+            color: var(--gold-light);
+            margin-bottom: 8px;
+        }
+
+        .script-step-card p {
+            font-size: 12.5px;
+            color: var(--text-sub);
+            font-style: italic;
+            line-height: 1.5;
+        }
+
+        /* OBJECTIONS TABLE */
+        .obj-table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 13px;
+        }
+
+        .obj-table th {
+            background: rgba(56, 189, 248, 0.1);
+            color: var(--cyan-main);
+            padding: 10px 14px;
+            text-align: left;
+            font-family: 'Outfit', sans-serif;
+        }
+
+        .obj-table td {
+            padding: 12px 14px;
+            border-bottom: 1px solid var(--border-subtle);
+        }
+
+        .obj-table tr td:first-child {
+            color: var(--red-alert);
+            font-weight: 600;
+            width: 35%;
+        }
+
+        .obj-table tr td:last-child {
+            color: var(--text-main);
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        
+        <!-- HEADER NAV -->
+        <header class="header-nav">
+            <div class="brand-title">
+                <h1>Analyse <span>Organismes de Formation POE</span></h1>
+                <p>Playbook Commercial & Segmentation des POEC / POAI</p>
+            </div>
+            <div class="header-actions">
+                <a href="Analyse_Organismes_Formation_POE_POEC.md" download class="btn-action">
+                    <i class="fa-solid fa-file-code"></i> Télécharger le Playbook (Markdown)
+                </a>
+                <a href="index.html" class="btn-action">
+                    <i class="fa-solid fa-house"></i> Hub Exécutif
+                </a>
+            </div>
+        </header>
+
+        <!-- METRICS GRID -->
+        <div class="metrics-grid">
+            <div class="metric-card">
+                <div class="metric-value">88</div>
+                <div class="metric-label">Organismes POE Identifiés</div>
+            </div>
+            <div class="metric-card">
+                <div class="metric-value">13 CHAUDS</div>
+                <div class="metric-label">Multi-Sessions (>4 POEC)</div>
+            </div>
+            <div class="metric-card">
+                <div class="metric-value">77%</div>
+                <div class="metric-label">Accès Téléphone Direct</div>
+            </div>
+            <div class="metric-card">
+                <div class="metric-value">100%</div>
+                <div class="metric-label">Conditionné aux Embauches Entreprise</div>
+            </div>
+        </div>
+
+        <!-- TRIANGLE POE & MECANISME -->
+        <section class="section-box">
+            <div class="section-header">
+                <i class="fa-solid fa-diagram-project"></i>
+                <h2>1. Le Mécanisme Vital de la POE (POEC / POA)</h2>
+            </div>
+            <p style="font-size: 14px; color: var(--text-sub); margin-bottom: 16px;">
+                Une <strong>POEC (Collective)</strong> ou une <strong>POAI (Individuelle)</strong> ne peut se déclencher que si des entreprises s'engagent formellement à embaucher les stagiaires à la sortie de la formation. L'OPCO et France Travail ne débloquent le financement qu'en présence d'entreprises partenaires.
+            </p>
+            <div style="background: rgba(212, 175, 55, 0.08); border-left: 4px solid var(--gold-main); padding: 14px 18px; border-radius: 0 10px 10px 0; font-size: 13.5px;">
+                <strong>Règle d'or Commerciale :</strong> L'organisme de formation gère parfaitement la pédagogie et le recrutement des stagiaires. Son point de douleur majeur est la **prospection commerciale des entreprises recruteuses**. Notre offre résout ce blocage de CA.
+            </div>
+        </section>
+
+        <!-- LES 5 DOULEURS OPERATIONNELLES -->
+        <section class="section-box">
+            <div class="section-header">
+                <i class="fa-solid fa-triangle-exclamation"></i>
+                <h2>2. Les 5 Douleurs Opérationnelles de l'Organisme</h2>
+            </div>
+            <div class="pain-grid">
+                <div class="pain-card">
+                    <h3>1. Sans employeur, 0 session</h3>
+                    <p>Le chiffre d'affaires est bloqué par une tâche commerciale de prospection, pas par la pédagogie.</p>
+                </div>
+                <div class="pain-card">
+                    <h3>2. Registres publics aveugles</h3>
+                    <p>SIRENE / Qualiopi donnent le nom de l'établissement mais pas le numéro direct du dirigeant ou RH.</p>
+                </div>
+                <div class="pain-card">
+                    <h3>3. Code NAF vs Moment de Recrutement</h3>
+                    <p>Un code APE donne une catégorie. Ce qui compte, ce sont les entreprises qui recrutent EN CE MOMENT.</p>
+                </div>
+                <div class="pain-card">
+                    <h3>4. Complexité Branche & OPCO</h3>
+                    <p>Chaque branche est rattachée à un OPCO spécifique. Aucune liste du marché ne fournit cette information.</p>
+                </div>
+                <div class="pain-card">
+                    <h3>5. Équipes restreintes & surchargées</h3>
+                    <p>Le coordinateur de session gère la pédagogie ET la prospection. Chaque heure de fichier est du temps perdu.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- CARTOGRAPHIE DES ORGANISMES DE FORMATION -->
+        <section class="section-box">
+            <div class="section-header">
+                <i class="fa-solid fa-list-check"></i>
+                <h2>3. Échantillon Réseau des Organismes de Formation Cibles</h2>
+            </div>
+
+            <div class="filter-bar">
+                <button class="filter-btn active" onclick="filterTable('all')">Tous (88 OF)</button>
+                <button class="filter-btn" onclick="filterTable('chaud')">13 Chauds (High Volume)</button>
+                <button class="filter-btn" onclick="filterTable('tiede')">18 Tièdes</button>
+                <button class="filter-btn" onclick="filterTable('froid')">57 Froids</button>
+            </div>
+
+            <table class="data-table" id="ofTable">
+                <thead>
+                    <tr>
+                        <th>Organisme</th>
+                        <th>Chaleur</th>
+                        <th>Sessions POE</th>
+                        <th>Téléphone</th>
+                        <th>Région / Périmètre</th>
+                        <th>Spécialité & OPCO Dominant</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr class="row-chaud">
+                        <td><strong>AFPA</strong></td>
+                        <td><span class="badge-heat heat-chaud">CHAUD</span></td>
+                        <td><strong>14 sessions</strong></td>
+                        <td>3936 (Centralisé)</td>
+                        <td>National</td>
+                        <td>Industrie, BTP, Tertiaire, Logistique</td>
+                    </tr>
+                    <tr class="row-chaud">
+                        <td><strong>IDC FORMATION</strong></td>
+                        <td><span class="badge-heat heat-chaud">CHAUD</span></td>
+                        <td><strong>11 sessions</strong></td>
+                        <td>01 45 58 75 07</td>
+                        <td>Île-de-France</td>
+                        <td>Tertiaire, Services, Commerce (OPCO EP)</td>
+                    </tr>
+                    <tr class="row-chaud">
+                        <td><strong>INFREP</strong></td>
+                        <td><span class="badge-heat heat-chaud">CHAUD</span></td>
+                        <td><strong>7 sessions</strong></td>
+                        <td>01 43 58 98 95</td>
+                        <td>IDF, Normandie</td>
+                        <td>Insertion, Logistique, Services</td>
+                    </tr>
+                    <tr class="row-chaud">
+                        <td><strong>ÉLÉGANCE ACADÉMIE DE COIFFURE</strong></td>
+                        <td><span class="badge-heat heat-chaud">CHAUD</span></td>
+                        <td><strong>5 sessions</strong></td>
+                        <td>09 53 69 32 83</td>
+                        <td>Occitanie</td>
+                        <td>Coiffure, Esthétique, Beauté (OPCO EP)</td>
+                    </tr>
+                    <tr class="row-chaud">
+                        <td><strong>ACPPAV</strong></td>
+                        <td><span class="badge-heat heat-chaud">CHAUD</span></td>
+                        <td><strong>4 sessions</strong></td>
+                        <td>01 39 22 10 60</td>
+                        <td>Île-de-France</td>
+                        <td>Santé, Pharmacie, Sanitaire & Social</td>
+                    </tr>
+                    <tr class="row-chaud">
+                        <td><strong>AFTRAL</strong></td>
+                        <td><span class="badge-heat heat-chaud">CHAUD</span></td>
+                        <td><strong>4 sessions</strong></td>
+                        <td>01 42 12 50 50</td>
+                        <td>National</td>
+                        <td>Transport, Logistique (OPCO Mobilités)</td>
+                    </tr>
+                    <tr class="row-chaud">
+                        <td><strong>ABSKILL</strong></td>
+                        <td><span class="badge-heat heat-chaud">CHAUD</span></td>
+                        <td><strong>4 sessions</strong></td>
+                        <td>02 99 86 86 99</td>
+                        <td>ARA, Bourgogne</td>
+                        <td>Transport, Logistique, BTP, Industrie</td>
+                    </tr>
+                    <tr class="row-tiede">
+                        <td><strong>CFA DE L'AUDE</strong></td>
+                        <td><span class="badge-heat heat-tiede">TIÈDE</span></td>
+                        <td><strong>3 sessions</strong></td>
+                        <td>04 68 11 22 00</td>
+                        <td>Occitanie</td>
+                        <td>Artisanat, Métiers de bouche, BTP</td>
+                    </tr>
+                    <tr class="row-tiede">
+                        <td><strong>IFE-BAT</strong></td>
+                        <td><span class="badge-heat heat-tiede">TIÈDE</span></td>
+                        <td><strong>3 sessions</strong></td>
+                        <td>01 40 31 78 26</td>
+                        <td>Île-de-France</td>
+                        <td>BTP, Second œuvre (Constructys)</td>
+                    </tr>
+                    <tr class="row-tiede">
+                        <td><strong>GRETA CÔTES NORMANDES</strong></td>
+                        <td><span class="badge-heat heat-tiede">TIÈDE</span></td>
+                        <td><strong>3 sessions</strong></td>
+                        <td>02 33 05 91 44</td>
+                        <td>Normandie</td>
+                        <td>Industrie, Tertiaire, Éducation</td>
+                    </tr>
+                    <tr class="row-tiede">
+                        <td><strong>SIGMA FORMATION</strong></td>
+                        <td><span class="badge-heat heat-tiede">TIÈDE</span></td>
+                        <td><strong>3 sessions</strong></td>
+                        <td>04 91 29 63 80</td>
+                        <td>PACA</td>
+                        <td>Service aux entreprises, Commerce</td>
+                    </tr>
+                    <tr class="row-tiede">
+                        <td><strong>INSTITUT DE FORMATION DE LA RÉUNION</strong></td>
+                        <td><span class="badge-heat heat-tiede">TIÈDE</span></td>
+                        <td><strong>3 sessions</strong></td>
+                        <td>02 62 20 03 92</td>
+                        <td>La Réunion</td>
+                        <td>Outre-Mer, Tertiaire, Services</td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+
+        <!-- SCRIPT COMMERCIAL 4 TEMPS -->
+        <section class="section-box">
+            <div class="section-header">
+                <i class="fa-solid fa-phone-volume"></i>
+                <h2>4. Script Commercial Téléphonique en 4 Temps</h2>
+            </div>
+            <div class="script-steps">
+                <div class="script-step-card">
+                    <span class="step-num">01</span>
+                    <h3>1. L'Accroche</h3>
+                    <p>« Bonjour, je vous appelle à froid. Vous me donnez 30 secondes pour vous dire pourquoi vous avez tout intérêt à poursuivre ? »</p>
+                </div>
+                <div class="script-step-card">
+                    <span class="step-num">02</span>
+                    <h3>2. Le Pont</h3>
+                    <p>« Sur vos POEC, ce qui prend le plus de temps, c'est de trouver les entreprises qui s'engagent à embaucher à la sortie. Vous en êtes où ? »</p>
+                </div>
+                <div class="script-step-card">
+                    <span class="step-num">03</span>
+                    <h3>3. Le Pivot (Machine)</h3>
+                    <p>« Notre système lit les offres d'emploi actives et fait ressortir les entreprises qui recrutent vraiment avec le téléphone direct du dirigeant. »</p>
+                </div>
+                <div class="script-step-card">
+                    <span class="step-num">04</span>
+                    <h3>4. La Sortie</h3>
+                    <p>« Romain prend 15 minutes avec vous pour vous montrer ce qu'on trouve sur votre secteur. Plutôt début ou fin de semaine ? »</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- TRAITEMENT DES OBJECTIONS -->
+        <section class="section-box">
+            <div class="section-header">
+                <i class="fa-solid fa-shield-halved"></i>
+                <h2>5. Matrice de Traitement des Objections</h2>
+            </div>
+            <table class="obj-table">
+                <thead>
+                    <tr>
+                        <th>Objection Client</th>
+                        <th>Réponse Stratégique & Factuelle</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>« On a déjà un fichier »</td>
+                        <td>« Il vous donne le nom du dirigeant et son portable direct, ou vous tombez sur le standard ? »</td>
+                    </tr>
+                    <tr>
+                        <td>« On achète des listes »</td>
+                        <td>« Une liste achetée ne dit pas qui recrute aujourd'hui. Chez nous, 5 lignes sur 100 seulement passent le filtre. »</td>
+                    </tr>
+                    <tr>
+                        <td>« C'est trop cher »</td>
+                        <td>« Combien d'heures votre coordinatrice passe-t-elle à fabriquer le fichier ? Comparez à ça, pas à une liste au kilo. »</td>
+                    </tr>
+                    <tr>
+                        <td>« On est sur du CPF / Particuliers »</td>
+                        <td>« On arrête là, ce n'est pas notre terrain. Nous n'intervenons que là où l'engagement d'une entreprise est obligatoire. »</td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+
+    </div>
+
+    <script>
+        function filterTable(heat) {
+            const rows = document.querySelectorAll('#ofTable tbody tr');
+            const btns = document.querySelectorAll('.filter-btn');
+            
+            btns.forEach(b => b.classList.remove('active'));
+            event.target.classList.add('active');
+
+            rows.forEach(row => {
+                if (heat === 'all') {
+                    row.style.display = '';
+                } else if (heat === 'chaud' && row.classList.contains('row-chaud')) {
+                    row.style.display = '';
+                } else if (heat === 'tiede' && row.classList.contains('row-tiede')) {
+                    row.style.display = '';
+                } else if (heat === 'froid' && row.classList.contains('row-froid')) {
+                    row.style.display = '';
+                } else {
+                    row.style.display = 'none';
+                }
+            });
+        }
+    </script>
+</body>
+</html>
