@@ -1,0 +1,538 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Plaquette Commerciale — Moteur de Détection d'Entreprises en Recherche Active</title>
+    <meta name="description" content="Plaquette Commerciale officielle : Moteur de détection en temps réel des entreprises qui recrutent (Salariés, Alternants, POEC, Stagiaires). Par Julien FLORENCE.">
+    
+    <!-- Typography & Icons -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <style>
+        :root {
+            --bg-deep: #0B0E14;
+            --bg-surface: #131822;
+            --bg-card: rgba(23, 29, 43, 0.85);
+            --bg-pill: #1E2638;
+            --gold-main: #D4AF37;
+            --gold-light: #FACC15;
+            --gold-glow: rgba(212, 175, 55, 0.3);
+            --cyan-main: #38BDF8;
+            --cyan-glow: rgba(56, 189, 248, 0.2);
+            --green-accent: #10B981;
+            --text-main: #F8FAFC;
+            --text-sub: #94A3B8;
+            --text-muted: #64748B;
+            --border-gold: rgba(212, 175, 55, 0.4);
+            --border-subtle: rgba(255, 255, 255, 0.08);
+            --radius-lg: 20px;
+            --radius-md: 12px;
+            --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+
+        body {
+            background-color: var(--bg-deep);
+            color: var(--text-main);
+            font-family: 'Inter', sans-serif;
+            line-height: 1.6;
+            padding: 30px 15px;
+            background-image: 
+                radial-gradient(circle at 10% 15%, rgba(212, 175, 55, 0.08) 0%, transparent 40%),
+                radial-gradient(circle at 90% 85%, rgba(56, 189, 248, 0.08) 0%, transparent 40%);
+        }
+
+        .brochure-container {
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        /* SHEET / PAGE CONTAINER */
+        .brochure-card {
+            background: var(--bg-surface);
+            border: 1px solid var(--border-gold);
+            border-radius: var(--radius-lg);
+            padding: 40px;
+            margin-bottom: 35px;
+            box-shadow: 0 25px 60px rgba(0,0,0,0.7);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .brochure-card::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; width: 100%; height: 6px;
+            background: linear-gradient(90deg, var(--gold-main), var(--cyan-main), var(--gold-light));
+        }
+
+        /* HERO BRAIN BANNER */
+        .hero-brain-box {
+            display: grid;
+            grid-template-columns: 240px 1fr;
+            gap: 25px;
+            align-items: center;
+            background: rgba(11, 14, 20, 0.8);
+            border: 1px solid var(--border-gold);
+            border-radius: var(--radius-md);
+            padding: 20px;
+            margin-bottom: 30px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+        }
+
+        .brain-media {
+            width: 100%;
+            height: 160px;
+            border-radius: 12px;
+            overflow: hidden;
+            border: 2px solid var(--gold-main);
+            box-shadow: 0 0 25px var(--gold-glow);
+            background: #0B0E14;
+        }
+
+        .brain-media img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+        }
+
+        .hero-text-content h1 {
+            font-family: 'Outfit', sans-serif;
+            font-size: 26px;
+            font-weight: 800;
+            color: var(--text-main);
+            line-height: 1.25;
+            margin-bottom: 8px;
+        }
+
+        .hero-text-content h1 span { color: var(--gold-main); }
+
+        .hero-text-content p.subtitle {
+            font-size: 14.5px;
+            color: var(--cyan-main);
+            font-weight: 600;
+            margin-bottom: 12px;
+        }
+
+        .hero-badges {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+        }
+
+        .badge-tag {
+            background: rgba(212, 175, 55, 0.15);
+            border: 1px solid var(--border-gold);
+            color: var(--gold-light);
+            padding: 4px 10px;
+            border-radius: 20px;
+            font-size: 11.5px;
+            font-weight: 700;
+            font-family: 'Outfit', sans-serif;
+        }
+
+        /* SECTION TITLES */
+        .section-title {
+            font-family: 'Outfit', sans-serif;
+            font-size: 20px;
+            font-weight: 700;
+            color: var(--gold-main);
+            margin-bottom: 16px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .section-title i { color: var(--cyan-main); }
+
+        /* GRID COMPARISON */
+        .grid-2 {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+            margin-bottom: 30px;
+        }
+
+        .box-bad {
+            background: rgba(239, 68, 68, 0.05);
+            border: 1px solid rgba(239, 68, 68, 0.3);
+            border-radius: var(--radius-md);
+            padding: 20px;
+        }
+
+        .box-bad h3 {
+            font-family: 'Outfit', sans-serif;
+            font-size: 16px;
+            color: #FCA5A5;
+            margin-bottom: 10px;
+            display: flex; align-items: center; gap: 8px;
+        }
+
+        .box-good {
+            background: rgba(16, 185, 129, 0.05);
+            border: 1px solid rgba(16, 185, 129, 0.4);
+            border-radius: var(--radius-md);
+            padding: 20px;
+        }
+
+        .box-good h3 {
+            font-family: 'Outfit', sans-serif;
+            font-size: 16px;
+            color: #6EE7B7;
+            margin-bottom: 10px;
+            display: flex; align-items: center; gap: 8px;
+        }
+
+        .list-features {
+            list-style: none;
+            font-size: 13.5px;
+        }
+
+        .list-features li {
+            margin-bottom: 8px;
+            display: flex;
+            align-items: flex-start;
+            gap: 8px;
+        }
+
+        /* PRICING CARDS GRID */
+        .pricing-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+            margin-bottom: 35px;
+        }
+
+        .price-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border-subtle);
+            border-radius: var(--radius-md);
+            padding: 24px 20px;
+            text-align: center;
+            position: relative;
+            transition: var(--transition);
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        .price-card.featured {
+            border-color: var(--gold-main);
+            box-shadow: 0 10px 30px var(--gold-glow);
+            transform: scale(1.03);
+            background: linear-gradient(180deg, rgba(212, 175, 55, 0.1) 0%, var(--bg-card) 100%);
+        }
+
+        .featured-ribbon {
+            position: absolute;
+            top: -12px; left: 50%;
+            transform: translateX(-50%);
+            background: linear-gradient(135deg, var(--gold-main), var(--gold-light));
+            color: #0B0E14;
+            font-family: 'Outfit', sans-serif;
+            font-size: 11px;
+            font-weight: 800;
+            padding: 3px 14px;
+            border-radius: 20px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .price-card h3 {
+            font-family: 'Outfit', sans-serif;
+            font-size: 18px;
+            color: var(--text-main);
+            margin-bottom: 6px;
+        }
+
+        .price-value {
+            font-family: 'Outfit', sans-serif;
+            font-size: 32px;
+            font-weight: 800;
+            color: var(--gold-main);
+            margin-bottom: 12px;
+        }
+
+        .price-value span {
+            font-size: 14px;
+            font-weight: 600;
+            color: var(--text-sub);
+        }
+
+        .price-features {
+            list-style: none;
+            text-align: left;
+            font-size: 12.5px;
+            color: var(--text-sub);
+            margin-bottom: 20px;
+        }
+
+        .price-features li {
+            margin-bottom: 8px;
+            display: flex;
+            align-items: flex-start;
+            gap: 6px;
+        }
+
+        .price-features li i {
+            color: var(--cyan-main);
+            margin-top: 3px;
+        }
+
+        /* ROI BANNER */
+        .roi-callout {
+            background: linear-gradient(135deg, rgba(212, 175, 55, 0.15) 0%, rgba(56, 189, 248, 0.15) 100%);
+            border: 1px solid var(--border-gold);
+            border-radius: var(--radius-md);
+            padding: 20px 25px;
+            margin-bottom: 30px;
+            display: flex;
+            align-items: center;
+            gap: 20px;
+        }
+
+        .roi-icon {
+            font-size: 36px;
+            color: var(--gold-light);
+        }
+
+        .roi-text h4 {
+            font-family: 'Outfit', sans-serif;
+            font-size: 16px;
+            color: var(--gold-light);
+            margin-bottom: 4px;
+        }
+
+        .roi-text p {
+            font-size: 13.5px;
+            color: var(--text-main);
+            line-height: 1.5;
+        }
+
+        /* FOOTER & CONTACT BAR */
+        .footer-contact-bar {
+            border-top: 1px solid var(--border-subtle);
+            padding-top: 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 15px;
+        }
+
+        .contact-info p {
+            font-size: 13px;
+            color: var(--text-sub);
+        }
+
+        .contact-info strong {
+            color: var(--text-main);
+        }
+
+        .btn-contact-action {
+            background: linear-gradient(135deg, var(--gold-main), var(--gold-light));
+            color: #0B0E14;
+            font-family: 'Outfit', sans-serif;
+            font-weight: 700;
+            font-size: 14px;
+            padding: 12px 24px;
+            border-radius: 30px;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            box-shadow: 0 6px 20px var(--gold-glow);
+            transition: var(--transition);
+        }
+
+        .btn-contact-action:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 25px rgba(212, 175, 55, 0.5);
+        }
+
+        @media (max-width: 768px) {
+            .hero-brain-box { grid-template-columns: 1fr; text-align: center; }
+            .grid-2 { grid-template-columns: 1fr; }
+            .pricing-grid { grid-template-columns: 1fr; }
+            .price-card.featured { transform: none; }
+        }
+
+        @media print {
+            body { background: white; color: black; padding: 0; }
+            .brochure-card { border: none; box-shadow: none; margin: 0; }
+            .btn-contact-action { display: none; }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="brochure-container">
+
+        <!-- PLAQUETTE COMMERCIALE CARD -->
+        <main class="brochure-card">
+
+            <!-- HERO WITH ANIMATED BRAIN (CERVEAU_42.GIF) -->
+            <header class="hero-brain-box">
+                <div class="brain-media">
+                    <img src="cerveau_42.gif" alt="Cerveau Animé Moteur de Recherche QuestIA">
+                </div>
+                <div class="hero-text-content">
+                    <h1>Moteur de Détection d'Entreprises <span>en Recherche Active</span></h1>
+                    <p class="subtitle">Ne prospectez plus dans le vide. Accédez directement aux entreprises qui recrutent EN CE MOMENT.</p>
+                    <div class="hero-badges">
+                        <span class="badge-tag"><i class="fa-solid fa-bolt"></i> Signaux d'Embauche Réels</span>
+                        <span class="badge-tag"><i class="fa-solid fa-phone"></i> 77% Téléphones Directs</span>
+                        <span class="badge-tag"><i class="fa-solid fa-briefcase"></i> Salariés • Alternants • POE • Stagiaires</span>
+                    </div>
+                </div>
+            </header>
+
+            <!-- RUPTURE TECHNOLOGIQUE -->
+            <section style="margin-bottom: 30px;">
+                <div class="section-title">
+                    <i class="fa-solid fa-shield-halved"></i> 1. La Rupture : Fichier Mort vs Détection d'Intention
+                </div>
+                
+                <div class="grid-2">
+                    <div class="box-bad">
+                        <h3><i class="fa-solid fa-xmark"></i> Les Fichiers Classiques du Commerce</h3>
+                        <ul class="list-features">
+                            <li><i class="fa-solid fa-minus" style="color:#EF4444"></i> Fichiers statiques tirés du registre SIRENE/NAF.</li>
+                            <li><i class="fa-solid fa-minus" style="color:#EF4444"></i> 95% d'entreprises ne recrutant pas aujourd'hui.</li>
+                            <li><i class="fa-solid fa-minus" style="color:#EF4444"></i> Numéro de standard généraliste (barrage d'accueil).</li>
+                            <li><i class="fa-solid fa-minus" style="color:#EF4444"></i> Aucune information sur la branche ou l'OPCO.</li>
+                        </ul>
+                    </div>
+
+                    <div class="box-good">
+                        <h3><i class="fa-solid fa-check"></i> Notre Moteur de Détection en Temps Réel</h3>
+                        <ul class="list-features">
+                            <li><i class="fa-solid fa-check" style="color:#10B981"></i> Détection automatique des offres d'emploi ouvertes (2+ postes).</li>
+                            <li><i class="fa-solid fa-check" style="color:#10B981"></i> 5 lignes seulement sur 100 retenues après filtrage d'activité.</li>
+                            <li><i class="fa-solid fa-check" style="color:#10B981"></i> 77% avec numéro direct / portable du dirigeant ou DRH.</li>
+                            <li><i class="fa-solid fa-check" style="color:#10B981"></i> Branche professionnelle & OPCO reconstitués ligne par ligne.</li>
+                        </ul>
+                    </div>
+                </div>
+            </section>
+
+            <!-- CIBLES ET SECTEURS -->
+            <section style="margin-bottom: 30px;">
+                <div class="section-title">
+                    <i class="fa-solid fa-users-gear"></i> 2. À Qui S'Adresse Ce Service ?
+                </div>
+
+                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 15px; margin-bottom: 20px;">
+                    <div style="background: var(--bg-card); border: 1px solid var(--border-subtle); padding: 16px; border-radius: 10px;">
+                        <h4 style="color: var(--gold-light); font-family: 'Outfit', sans-serif; margin-bottom: 6px;"><i class="fa-solid fa-graduation-cap"></i> CFAs & Alternance</h4>
+                        <p style="font-size: 12.5px; color: var(--text-sub);">Placer vos étudiants en contrat d'apprentissage et débloquer les financements OPCO avant la date limite.</p>
+                    </div>
+
+                    <div style="background: var(--bg-card); border: 1px solid var(--border-subtle); padding: 16px; border-radius: 10px;">
+                        <h4 style="color: var(--gold-light); font-family: 'Outfit', sans-serif; margin-bottom: 6px;"><i class="fa-solid fa-briefcase"></i> Organismes POE / POEC</h4>
+                        <p style="font-size: 12.5px; color: var(--text-sub);">Obtenir les promesses d'embauche d'entreprises indispensables au lancement de vos promos collectives.</p>
+                    </div>
+
+                    <div style="background: var(--bg-card); border: 1px solid var(--border-subtle); padding: 16px; border-radius: 10px;">
+                        <h4 style="color: var(--gold-light); font-family: 'Outfit', sans-serif; margin-bottom: 6px;"><i class="fa-solid fa-building-user"></i> Intérim & Recrutement</h4>
+                        <p style="font-size: 12.5px; color: var(--text-sub);">Donner chaque matin à vos commerciaux la liste des entreprises qui cherchent des salariés en urgence.</p>
+                    </div>
+
+                    <div style="background: var(--bg-card); border: 1px solid var(--border-subtle); padding: 16px; border-radius: 10px;">
+                        <h4 style="color: var(--gold-light); font-family: 'Outfit', sans-serif; margin-bottom: 6px;"><i class="fa-solid fa-school"></i> Écoles Supérieures</h4>
+                        <p style="font-size: 12.5px; color: var(--text-sub);">Alimenter votre service carrières en opportunités de stages de fin d'études et 1er emploi.</p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- GRILLE TARIFAIRE OFFICIELLE -->
+            <section style="margin-bottom: 30px;">
+                <div class="section-title">
+                    <i class="fa-solid fa-tags"></i> 3. Offres & Grille Tarifaire Officielle
+                </div>
+
+                <div class="pricing-grid">
+                    <!-- PACK STARTER -->
+                    <div class="price-card">
+                        <div>
+                            <h3>PACK STARTER</h3>
+                            <p style="font-size: 12px; color: var(--text-muted); margin-bottom: 10px;">Test Métier ou Local</p>
+                            <div class="price-value">1 500 € <span>HT</span></div>
+                            <ul class="price-features">
+                                <li><i class="fa-solid fa-check"></i> 1 Département / 1 Filière ciblée</li>
+                                <li><i class="fa-solid fa-check"></i> 300 à 500 Entreprises détectées</li>
+                                <li><i class="fa-solid fa-check"></i> Coordonnées Dirigeant/RH directes</li>
+                                <li><i class="fa-solid fa-check"></i> Fichier CSV/Excel prêt à prospecter</li>
+                            </ul>
+                        </div>
+                        <a href="Julien_Florence.vcf" download class="btn-action" style="justify-content: center; width: 100%;">Commander</a>
+                    </div>
+
+                    <!-- PACK REGIONAL POWER (FEATURED) -->
+                    <div class="price-card featured">
+                        <span class="featured-ribbon">⭐ LE BEST-SELLER</span>
+                        <div>
+                            <h3 style="color: var(--gold-light);">PACK RÉGIONAL POWER</h3>
+                            <p style="font-size: 12px; color: var(--gold-light); margin-bottom: 10px;">Pipeline Continu 6 Mois</p>
+                            <div class="price-value">2 500 € <span>HT</span></div>
+                            <ul class="price-features">
+                                <li><i class="fa-solid fa-check"></i> 1 Région entière (ex: Occitanie / IDF)</li>
+                                <li><i class="fa-solid fa-check"></i> Alimentation continue pendant 6 mois</li>
+                                <li><i class="fa-solid fa-check"></i> 3 000 à 5 000 Entreprises qualifiées</li>
+                                <li><i class="fa-solid fa-check"></i> Branche & OPCO reconstitués</li>
+                                <li><i class="fa-solid fa-check"></i> Accompagnement & Suivi de relance</li>
+                            </ul>
+                        </div>
+                        <a href="Julien_Florence.vcf" download class="btn-action" style="background: linear-gradient(135deg, var(--gold-main), var(--gold-light)); color: #0B0E14; justify-content: center; width: 100%;">Réserver le Pipeline</a>
+                    </div>
+
+                    <!-- PACK NATIONAL ENTERPRISE -->
+                    <div class="price-card">
+                        <div>
+                            <h3>PACK NATIONAL</h3>
+                            <p style="font-size: 12px; color: var(--text-muted); margin-bottom: 10px;">Réseau & Multi-Sites</p>
+                            <div class="price-value">7 500 € <span>HT</span></div>
+                            <ul class="price-features">
+                                <li><i class="fa-solid fa-check"></i> France Entière / Toutes branches</li>
+                                <li><i class="fa-solid fa-check"></i> 50 000+ à 100 000 Leads livrés</li>
+                                <li><i class="fa-solid fa-check"></i> Flux automatisé directement dans le CRM</li>
+                                <li><i class="fa-solid fa-check"></i> Accompagnement 6 à 12 mois dédié</li>
+                            </ul>
+                        </div>
+                        <a href="Julien_Florence.vcf" download class="btn-action" style="justify-content: center; width: 100%;">Sur Devis</a>
+                    </div>
+                </div>
+            </section>
+
+            <!-- CALCULATEUR DE ROI -->
+            <div class="roi-callout">
+                <div class="roi-icon"><i class="fa-solid fa-calculator"></i></div>
+                <div class="roi-text">
+                    <h4>Calcul de Rentabilité Immédiate (Le ROI No-Brainer)</h4>
+                    <p>Un seul alternant non placé représente une perte de <strong>6 000 € à 9 000 €</strong> de budget OPCO pour votre centre. Une promo POEC annulée représente <strong>30 000 € de CA perdu</strong>. En souscrivant au Pack Régional à 2 500 € HT, <strong>2 seuls placements réussis rentabilisent l'intégralité de votre investissement.</strong></p>
+                </div>
+            </div>
+
+            <!-- FOOTER CONTACT BAR -->
+            <footer class="footer-contact-bar">
+                <div class="contact-info">
+                    <p><strong>Julien FLORENCE</strong> — Co-Président @QuestIA & Direction Commerciale B2B</p>
+                    <p>📞 06 61 74 75 73 | 📧 julienflorence.florence@gmail.com | 🌐 <a href="index.html" style="color: var(--cyan-main);">Hub Exécutif</a></p>
+                </div>
+                <a href="Julien_Florence.vcf" download="Julien_Florence.vcf" class="btn-contact-action">
+                    <i class="fa-solid fa-address-book"></i> Enregistrer mon Contact
+                </a>
+            </footer>
+
+        </main>
+
+    </div>
+
+</body>
+</html>
